@@ -1,0 +1,250 @@
+clc; close all; clear;
+
+% Load CasADi
+addpath('C:\Users\pindiche\Documents\MATLAB\casadi-3.6.7-windows64-matlab2018b\')
+% addpath('C:\Users\Elena\Documents\MATLAB\casadi-3.6.6-windows64-matlab2018b\')
+import casadi.*;
+load("trajectory.mat")
+
+%% Parameters
+N_pred_val = 12;        % Prediction horizon
+Q_val = 10000000;          % State weight value
+R_val = 2;              % Input weight value
+P_val = 1000;           % Terminal state value
+l = 0.256;
+
+% Define prediction and simulation steps
+Ts = 0.1;                           % Sampling time
+Npred = N_pred_val;                 % Prediction horizon
+Nsim = 1500;                        % Number of simulation steps
+
+% Define system dimensions
+dx = 4;              % State dimensions: x, y, theta
+du = 2;              % Control dimensions: V, omega
+
+% Initial condition and references
+x0 = [0; 2.5; 0; pi/3];   % Initial state [x; y; theta; phi]
+u0 = zeros(du, 1);
+
+%% Trajectories
+% Time
+t = 0 : 0.1 : 50;
+t = 0 : 0.1 : 200;
+
+% % % % % % % % % % % % % % % % % 
+% Line reference
+alpha   = 0.5;
+beta    = 0.8;
+xr = alpha * t;     dxr = alpha + 0*t;    ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
+yr = beta * t;      dyr = beta + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
+
+% Stairs trajectory
+st = zeros(1,length(t))+[2*ones(1, 100), 5*ones(1,300), 4*ones(1, length(t)-400)];
+xr = t;     dxr = 1 + 0*t;     ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
+yr = st;    dyr = 0 + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
+
+% Circle reference
+alpha   = 5;
+beta    = 5;
+ang     = 0.2;
+xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
+yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
+
+% Spline reference
+xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
+yr = yref;      dyr = dyref;        ddyr = ddyref;      dddyr = dddyref;
+% % % % % % % % % % % % % % % % %
+
+% Computing real input reference
+Vr      = sqrt(dxr.*dxr + dyr.*dyr);
+omegar  = l * Vr .* ((dddyr.*dxr - dddxr.*dyr).*Vr.*Vr - 3 * (ddyr.*dxr - ddxr.*dyr) .* (dxr.*ddxr + dyr.*ddyr)) ...
+          ./ (Vr.^6 + l*l*(ddyr.*dxr - ddxr.*dyr).^2);
+uref = [Vr; omegar];
+
+% Computing angle reference
+thetar  = atan2(dyr ./ Vr, dxr ./ Vr);
+phir    = atan((l*(ddyr.*dxr - ddxr.*dyr)) ./ Vr.^3);
+
+xref = [xr; yr; thetar; phir];
+
+%% Constraints 
+Vmin = -1; Vmax = 1;             % Velocity limits
+omegamin = -1; omegamax = 1;     % Angular velocity limits
+phimax = pi/2;                   % Front wheels orientation limits
+
+% Weights for cost function
+Q = Q_val * eye(dx);
+Q(3,3) = 0.1;
+Q(4,4) = 0.1;
+R = R_val * eye(du);
+P = P_val * Q;
+
+%% CasADi nonlinear optimization
+solver = casadi.Opti();
+
+% Define optimization variables
+x = solver.variable(dx, Npred + 1); 
+u = solver.variable(du, Npred);     
+
+% Define initial state as a parameter
+xinit = solver.parameter(dx, 1);
+xref_param = solver.parameter(dx, Npred+1);
+uref_param = solver.parameter(du, Npred+1);
+
+% Nonlinear dynamics 
+f_dynamics = @(x, u) [ u(1) * cos(x(3));
+                       u(1) * sin(x(3));
+                       u(1)/l * tan(x(4));
+                       u(2) ];
+
+% Add initial state constraint
+solver.subject_to(x(:, 1) == xinit);
+
+% Add constraints and dynamics for each prediction step
+for k = 1 : Npred
+    % State constraints
+    solver.subject_to(x(:, k+1) == x(:, k) + Ts * f_dynamics(x(:, k), u(:, k)));
+    solver.subject_to(-phimax <= x(4, k + 1) <= phimax);
+    
+    % Control input constraints
+    solver.subject_to(Vmin <= u(1, k) <= Vmax);
+    solver.subject_to(omegamin <= u(2, k) <= omegamax);
+end
+
+objective = 0;
+for k = 1 : Npred                                                      
+    objective = objective + (x(:, k) - xref_param(:, k))' * Q * (x(:, k) - xref_param(:, i + k - 1)) + ...
+                            (u(:, k) - uref_param(:, i + k - 1))' * R * (u(:, k) - uref_param(:, i + k - 1));
+end
+
+objective = objective + (x(:, Npred + 1) - xref(:, i + Npred))' * P * (x(:, Npred + 1) - xref(:, i + Npred));
+
+
+%% Define the objective function
+% Define the solver
+options.ipopt.print_level = 0;
+options.ipopt.sb= 'yes';
+options.print_time = 0;
+
+solver.minimize(objective)
+solver.solver('ipopt', options)
+
+% Simulation loop
+usim = zeros(du, Nsim);
+xsim = zeros(dx, Nsim);
+xsim(:, 1) = x0;
+
+tfin = [];
+tcv = tic;
+for i = 1 : Nsim
+    solver.set_value(xinit, xsim(:, i))
+
+    if i < Nsim-Npred
+        solver.set_value(xref_param, xref(:, i:i+Npred))
+        solver.set_value(uref_param, uref(:, i:i+Npred))
+    else
+        solver.set_value(xref_param, xref(:, i:i+Npred))
+        solver.set_value(uref_param, uref(:, i:i+Npred))
+    end
+
+    t1 = tic;
+    sol = solver.solve();
+    tfin = [tfin toc(t1)];
+    usol = sol.value(u);
+    usim(:, i) = usol(:, 1);
+    xsim(:, i + 1) = xsim(:, i) + Ts * f_dynamics(xsim(:, i), usim(:, i));
+end
+taltcv = toc(tcv);
+s2 = taltcv / (Nsim)
+s = sum(tfin);
+s = s/Nsim
+
+err = zeros(dx,Nsim);
+for i =1:Nsim
+    err(:,i) = (xsim(:, i) - xref(:, i));
+end
+
+%% Plot results
+figure
+plot(t(1:Nsim),err(1,:))
+hold on
+plot(t(1:Nsim),err(2,:))
+legend('err_x', 'err_y')
+title('Reference tracking error')
+grid
+
+figure
+subplot(2,1,1)
+plot(xsim(1,:))
+xlabel('Nsim')
+ylabel('x_1')
+hold on
+plot(xref(1,1:Nsim),'--')
+xlabel('Nsim')
+ylabel('x_1')
+legend('x_1','ref x_1')
+title('Simulation and reference for x_{state}')
+grid
+
+subplot(2,1,2)
+plot(xsim(2,:))
+xlabel('Nsim')
+ylabel('x_2')
+hold on
+plot(xref(2,1:Nsim),'--')
+legend('x_2','ref x_2')
+xlabel('Nsim')
+ylabel('x_2')
+title('Simulation and reference for y_{state}')
+grid
+
+figure
+plot(xsim(1,:),xsim(2,:))
+title('car position')
+xlabel('x (m)')
+ylabel('y (m)')
+grid
+
+figure
+subplot(2,1,1)
+plot(1:Nsim, xsim(3,1:end-1))
+hold on
+plot(1:Nsim, xref(3,1:Nsim), '--')
+legend('$\theta$','interpreter','latex')
+xlabel('time (s)')
+grid
+
+subplot(2,1,2)
+plot(1:Nsim, xsim(4,1:end-1))
+hold on
+plot(1:Nsim, xref(4,1:Nsim), '--')
+legend('$\varphi$','interpreter','latex')
+xlabel('time (s)')
+grid
+
+figure
+subplot(2,1,1)
+plot(usim(1, :))
+legend('V')
+grid
+subplot(2,1,2)
+plot(usim(2, :))
+legend('\omega')
+grid
+
+figure
+hold on
+height = 0.4; width = 0.2;
+st = 50;
+st = 200;
+k=1;
+while k < Nsim
+   drawSteeringCar(xsim(:,k), l, height, width)
+    k = k + st;
+end
+plot(xsim(1,:),xsim(2,:),'linewidth',2)
+
+title('car position')
+
+xlabel('x (m)')
+ylabel('y (m)')

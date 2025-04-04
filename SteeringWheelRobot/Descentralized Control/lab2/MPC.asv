@@ -1,0 +1,182 @@
+clc, close all, clear all;
+
+mu = 0.5;
+N_pred_val = 5;
+Q_val = 1;
+R_val = 1;
+P_val = 10;
+
+A = [1 0 mu 0; 0 1 0 mu; 0 0 1 0; 0 0 0 1];
+B = [0 0; 0 0; mu 0; 0 mu];
+C = [1 0 0 0; 0 1 0 0];
+D = zeros(2);
+
+A = [0 1; -2 -3];
+B = eye(2);
+delta = [1; 1];
+
+Te = 0.5;
+A = eye(2) + Te * A;
+B = Te * B;
+C = eye(2);
+D = zeros(2);
+
+% Sys dimensions
+[dx, du] = size(B);
+dy = size(C, 1);
+
+% Initial condition
+x0 = [0.8; 0.2; 0; 0];
+% x0 = [1; 1.5; 0; 0];
+% x0 = [0.8; 0.2];
+u0 = zeros(du, 1);
+% xref = [1; 1; 0; 0];
+% xref = [0; 0; 0; 0];
+% xref = [0; 0];
+t = 1 : 1 : 100 + N_pred_val;
+xref = [sin(t); cos(t); zeros(1,100 + N_pred_val); zeros(1,100+N_pred_val)];
+
+% Constraints 
+xmin = -1 * 0.1 * ones(4, 1);
+% xmin = -1 * 0.1 * ones(2, 1);
+xmax =  1 * 0.1 * ones(4, 1);
+% xmax =  1 * 0.1 * ones(2, 1);
+umin = -1 * 0.25;
+umax =  1 * 0.25;
+delta_umin = -1 * 0.1;
+delta_umax =  1 * 0.1;
+ymin = -10;
+ymax = 10;
+
+
+computation = [];
+avg_in = [];
+avg_out = [];
+avg_terminal = [];
+
+valori1 = [0.001	0.011	0.021	0.031	0.091	0.101	0.151...
+           0.161	0.201	0.211	0.271	0.281	0.421	0.431	0.981	0.991];
+valori2 = [1 2 3 4 10 100];
+
+valori = [valori1 valori2];
+
+for idx = 1 : 1
+
+    % Define control parameters
+    Q = Q_val * eye(dx);
+    R = R_val;
+    Qy = eye(dy);
+    P = P_val * Q;
+
+    % number of predictions and simulations
+    Npred = N_pred_val;
+    Nsim = 50 / Te;
+
+    import casadi.*
+    solver = casadi.Opti();
+
+    % Define variables
+    x = solver.variable(dx, Npred + 1);
+    u = solver.variable(du, Npred);
+    xinit = solver.parameter(dx, 1);
+    uinit = solver.parameter(du, 1);
+
+    % Initialize constraints
+    solver.subject_to(x(:, 1) == xinit)
+    for k = 1 : Npred
+        solver.subject_to(x(:, k + 1) == A * x(:, k) + B * u(:, k))
+        % solver.subject_to(xmin <= x(:, k + 1) - x(:, k) <= xmax)
+        solver.subject_to(umin <= u(:, k) <= umax)
+        solver.subject_to(ymin <= C * x(:, k) + D * u(:, k) <= ymax)
+        if k == 1
+            solver.subject_to(delta_umin <= u(:, k) - uinit <= delta_umax);
+        else
+            solver.subject_to(delta_umin <= u(:, k) - u(:, k - 1) <= delta_umax)
+        end
+    end
+
+    % Initialize objective
+    objective = 0;
+    for k = 1 : Npred
+        objective = objective + (x(:, k) - xref(:, k))' * Q * (x(:, k) - xref) + u(:, k)' * R * u(:, k);
+    end
+
+    objective = objective + (x(:, Npred + 1) - xref)' * P * (x(:, Npred + 1) - xref);
+    solver.minimize(objective)
+
+    % Define the solver
+    options.ipopt.print_level = 0;
+    options.ipopt.sb= 'yes';
+    options.print_time = 0;
+    solver.solver('ipopt', options)
+
+    % simulation loop
+    usim = zeros(du, Nsim);
+    ysim = zeros(dy, Nsim);
+    xsim = zeros(dx, Nsim);
+    xsim(:, 1) = x0;
+    usim_init = u0;
+
+    x_fin = [];
+
+    timer = tic;
+    for i = 1 : Nsim
+        solver.set_value(xinit, xsim(:, i))
+        solver.set_value(uinit, usim_init)
+        sol = solver.solve();
+        usol = sol.value(u);
+        usim_init = usol(:, 1);
+        usim(:, i) = usol(:, 1);
+        xsim(:, i + 1) = A * xsim(:, i) + B * usim(:, i);
+        ysim(:, i) = C * xsim(:, i) + D * usim(:, i);
+
+        aux = sol.value(x);
+        x_fin = [x_fin, aux(:, end)];
+
+    end
+    time_Casadi = toc(timer);
+
+
+    figure
+    stem(ysim(1, :));
+    hold on
+    stem(ysim(2, :));
+    grid
+    title('Output y');
+    legend ('y1', 'y2');
+
+    figure
+    scatter(xsim(1, :), xsim(2, :))
+    grid
+    title('State space');
+    xlabel 'x1'
+    ylabel 'x2'
+
+    figure
+    stem(usim(1, :))
+    hold on
+    stem(usim(2, :));
+    grid
+    title('Input u');
+    legend ('u1', 'u2');
+
+    % How to compute the tracking error
+    error = sqrt(xsim(1, :) .^ 2 + xsim(2, :) .^ 2);
+
+    Avg_error = mean(error);
+    Avg_u1 = mean(abs(usim(1, :)));
+    Avg_u2 = mean(abs(usim(2, :)));
+
+    error = sqrt(usim(1, :) .^ 2 + usim(2, :) .^ 2);
+    Avg_u_error = mean(error);
+
+    error_terminal = sqrt(x_fin(1, :) .^ 2 + x_fin(2, :) .^ 2);
+    Avg_ter = mean(error_terminal);
+
+    computation = [computation time_Casadi];
+    avg_in = [avg_in; Avg_u1 Avg_u2];
+    avg_out = [avg_out Avg_error];
+    avg_terminal = [avg_terminal Avg_ter];
+
+end
+avg_in = avg_in';
