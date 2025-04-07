@@ -16,7 +16,7 @@ l = 0.256;
 % Define prediction and simulation steps
 Ts = 0.1;                           % Sampling time
 Npred = N_pred_val;                 % Prediction horizon
-Nsim = 650;                        % Number of simulation steps
+Nsim = 1500;                        % Number of simulation steps
 
 % Define system dimensions
 dx = 4;              % State dimensions: x, y, theta
@@ -29,7 +29,7 @@ u0 = zeros(du, 1);
 %% Trajectories
 % Time
 t = 0 : 0.1 : 50;
-t = 0 : 0.1 : 70;
+t = 0 : 0.1 : 200;
 
 % % % % % % % % % % % % % % % % % 
 % Line reference
@@ -39,50 +39,20 @@ xr = alpha * t;     dxr = alpha + 0*t;    ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
 yr = beta * t;      dyr = beta + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Stairs trajectory
-% st = zeros(1,length(t))+[2*ones(1, 100), 5*ones(1,300), 4*ones(1, length(t)-400)];
-% xr = t;     dxr = 1 + 0*t;     ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
-% yr = st;    dyr = 0 + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
-
-% Square trajectory
-n = 700;
-
-side_length = 10; 
-total_points = n;
-quarter = round(total_points / 4);
-
-xr = zeros(1, n);
-yr = zeros(1, n);
-
-% Fill square trajectory
-% Bottom edge: (0,0) to (10,0)
-xr(1:quarter) = linspace(0, side_length, quarter);
-yr(1:quarter) = 0;
-
-% Right edge: (10,0) to (10,10)
-xr(quarter+1:2*quarter) = side_length;
-yr(quarter+1:2*quarter) = linspace(0, side_length, quarter);
-
-% Top edge: (10,10) to (0,10)
-xr(2*quarter+1:3*quarter) = linspace(side_length, 0, quarter);
-yr(2*quarter+1:3*quarter) = side_length;
-
-% Left edge: (0,10) to (0,0)
-xr(3*quarter+1:end) = 0;
-yr(3*quarter+1:end) = linspace(side_length, 0, n - 3*quarter);
-
-dxr = gradient(xr, 0.1);        ddxr = gradient(dxr, 0.1);      dddxr = gradient(ddxr, 0.1);   
-dyr = gradient(yr, 0.1);        ddyr = gradient(dyr, 0.1);      dddyr = gradient(ddyr, 0.1); 
+st = zeros(1,length(t))+[2*ones(1, 100), 5*ones(1,300), 4*ones(1, length(t)-400)];
+xr = t;     dxr = 1 + 0*t;     ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
+yr = st;    dyr = 0 + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Circle reference
-% alpha   = 5;
-% beta    = 5;
-% ang     = 0.2;
-% xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
-% yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
-% 
-% % Spline reference
-% xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
-% yr = yref;      dyr = dyref;        ddyr = ddyref;      dddyr = dddyref;
+alpha   = 5;
+beta    = 5;
+ang     = 0.2;
+xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
+yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
+
+% Spline reference
+xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
+yr = yref;      dyr = dyref;        ddyr = ddyref;      dddyr = dddyref;
 % % % % % % % % % % % % % % % % %
 
 % Computing real input reference
@@ -266,7 +236,7 @@ figure
 hold on
 height = 0.4; width = 0.2;
 st = 50;
-% st = 200;
+st = 200;
 k=1;
 while k < Nsim
    drawSteeringCar(xsim(:,k), l, height, width)
