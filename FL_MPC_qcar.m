@@ -126,11 +126,11 @@ P = P_val * Q;
 A = eye(dz);
 B = Ts * eye(dz);
 
-ptsU = [];
-for tta = linspace(0,2*pi-1e-4,20)
-    ptsU = [ptsU; [rhat*cos(tta), rhat*sin(tta)]];
-end
-U_approx = Polyhedron('V',ptsU).computeVRep();
+% ptsU = [];
+% for tta = linspace(0,2*pi-1e-4,20)
+%     ptsU = [ptsU; [rhat*cos(tta), rhat*sin(tta)]];
+% end
+% U_approx = Polyhedron('V',ptsU).computeVRep();
 
 %% CasADi optimization
 solver = casadi.Opti();

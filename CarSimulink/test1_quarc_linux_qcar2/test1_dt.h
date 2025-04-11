@@ -1,0 +1,121 @@
+/*
+ * test1_dt.h
+ *
+ * Classroom License -- for classroom instructional use only.  Not for
+ * government, commercial, academic research, or other organizational use.
+ *
+ * Code generation for model "test1".
+ *
+ * Model version              : 15.0
+ * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
+ * C source code generated on : Wed Apr  9 10:58:55 2025
+ *
+ * Target selection: quarc_linux_qcar2.tlc
+ * Note: GRT includes extra infrastructure and instrumentation for prototyping
+ * Embedded hardware selection: ARM Compatible->ARM 64-bit (LP64)
+ * Code generation objectives: Unspecified
+ * Validation result: Not run
+ */
+
+#include "ext_types.h"
+
+/* data type size table */
+static uint_T rtDataTypeSizes[] = {
+  sizeof(real_T),
+  sizeof(real32_T),
+  sizeof(int8_T),
+  sizeof(uint8_T),
+  sizeof(int16_T),
+  sizeof(uint16_T),
+  sizeof(int32_T),
+  sizeof(uint32_T),
+  sizeof(boolean_T),
+  sizeof(fcn_call_T),
+  sizeof(int_T),
+  sizeof(pointer_T),
+  sizeof(action_T),
+  2*sizeof(uint32_T),
+  sizeof(int32_T),
+  sizeof(int64_T),
+  sizeof(uint64_T),
+  sizeof(t_card),
+  sizeof(uint64_T),
+  sizeof(int64_T),
+  sizeof(uint_T),
+  sizeof(char_T),
+  sizeof(uchar_T),
+  sizeof(time_T)
+};
+
+/* data type name table */
+static const char_T * rtDataTypeNames[] = {
+  "real_T",
+  "real32_T",
+  "int8_T",
+  "uint8_T",
+  "int16_T",
+  "uint16_T",
+  "int32_T",
+  "uint32_T",
+  "boolean_T",
+  "fcn_call_T",
+  "int_T",
+  "pointer_T",
+  "action_T",
+  "timer_uint32_pair_T",
+  "physical_connection",
+  "int64_T",
+  "uint64_T",
+  "t_card",
+  "uint64_T",
+  "int64_T",
+  "uint_T",
+  "char_T",
+  "uchar_T",
+  "time_T"
+};
+
+/* data type transitions for block I/O structure */
+static DataTypeTransition rtBTransitions[] = {
+  { (char_T *)(&test1_B.HILRead_o1), 0, 0, 9 }
+  ,
+
+  { (char_T *)(&test1_DW.UnitDelay_DSTATE), 0, 0, 25 },
+
+  { (char_T *)(&test1_DW.HILInitialize_Card), 17, 0, 1 },
+
+  { (char_T *)(&test1_DW.HILRead_PWORK), 11, 0, 7 },
+
+  { (char_T *)(&test1_DW.HILInitialize_DOStates[0]), 6, 0, 28 },
+
+  { (char_T *)(&test1_DW.HILInitialize_POSortedChans[0]), 7, 0, 2 },
+
+  { (char_T *)(&test1_DW.HILInitialize_DOBits[0]), 8, 0, 16 }
+};
+
+/* data type transition table for block I/O structure */
+static DataTypeTransitionTable rtBTransTable = {
+  7U,
+  rtBTransitions
+};
+
+/* data type transitions for Parameters structure */
+static DataTypeTransition rtPTransitions[] = {
+  { (char_T *)(&test1_P.HILRead_other_channels[0]), 7, 0, 6 },
+
+  { (char_T *)(&test1_P.HILInitialize_OOTerminate), 0, 0, 20 },
+
+  { (char_T *)(&test1_P.HILInitialize_DOWatchdog), 6, 0, 6 },
+
+  { (char_T *)(&test1_P.HILInitialize_AIChannels[0]), 7, 0, 44 },
+
+  { (char_T *)(&test1_P.HILInitialize_Active), 8, 0, 37 }
+};
+
+/* data type transition table for Parameters structure */
+static DataTypeTransitionTable rtPTransTable = {
+  5U,
+  rtPTransitions
+};
+
+/* [EOF] test1_dt.h */

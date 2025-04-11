@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/ci/19700101 http://schema.mathworks.com/mf0/sl_modelref_info/R2023a http://schema.mathworks.com/mf0/slexec_mm_sto/R2023a_202208151321 http://schema.mathworks.com/mf0/sltp_mm/R2023a_202209151115">
+  <ModelRefInfoRepo.ModelRefInfoRoot type="ModelRefInfoRepo.ModelRefInfoRoot" uuid="c3612bb6-15ea-4fdc-a22a-686b5c020f45">
+    <JITEngines>s4PVLiA32bq4H4LoqS1qClB</JITEngines>
+    <JITEngines>sHRkNY2XQzcUJOTGBhJHkTD</JITEngines>
+    <JITEngines>sSKjO8OZF5zpN7a8o9A3b7</JITEngines>
+    <JITEngines>sTuaO7SBaDPdJsZ1hVqNOX</JITEngines>
+    <JITEngines>sVtpPkEQ7dokzdnKHQHucPB</JITEngines>
+    <JITEngines>sXe7luKTqo5GTCX9DR3BIzB</JITEngines>
+    <JITEngines>saezymhQz4msGPKD30xQmkE</JITEngines>
+    <JITEngines>scfPBN9gXBlDsobQ9XYVT5G</JITEngines>
+    <JITEngines>skOiATwxqKdyiBHoHED372E</JITEngines>
+    <JITEngines>sutL8aEQIAWlKxORpmWXix</JITEngines>
+    <childModelRefInfo type="ModelRefInfoRepo.ChildModelRefInfo" uuid="a0ca3f57-f4b3-49f1-9fca-35e1e9c0bae5">
+      <modelName>Autonomous_Driving_Car_Example2</modelName>
+      <modelPath>Autonomous_Driving_Car_Example2</modelPath>
+    </childModelRefInfo>
+    <clockResolutions type="ModelRefInfoRepo.ClockResolutionInfo" uuid="2361b940-8867-43af-b259-6787f6a62569">
+      <rateIdx>1</rateIdx>
+      <resolution>.0016666666666666668</resolution>
+      <source>DeducedFromSampleTime</source>
+    </clockResolutions>
+    <dataTransferInfos>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAAAgAAAAAAAAAFAAAACAAAAAAAAAABAAAAAQAAAAAAAAAFAAQAAQAAAAEAAAAAAAAA</dataTransferInfos>
+    <defaultsCMapping>{&quot;Inports&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;\&quot;}&quot;,&quot;Outports&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;\&quot;}&quot;,&quot;ParameterArguments&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;LocalParameters&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;\&quot;}&quot;,&quot;GlobalParameters&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;\&quot;}&quot;,&quot;InternalData&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;\&quot;}&quot;,&quot;SharedLocalDataStores&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;GlobalDataStores&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;Constants&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;\&quot;}&quot;,&quot;DataTransfers&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;ModelData&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;InitializeTerminate&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;\&quot;}&quot;,&quot;Execution&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;\&quot;}&quot;,&quot;SharedUtility&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;\&quot;}&quot;}</defaultsCMapping>
+    <fastestNoncontSigFeedingDerivPorts>.0016666666666666668</fastestNoncontSigFeedingDerivPorts>
+    <forceAutoToImplicitSolver>3</forceAutoToImplicitSolver>
+    <hasBlockWithPeriodicDiscreteSampleTime>true</hasBlockWithPeriodicDiscreteSampleTime>
+    <hasBwsAccessed>true</hasBwsAccessed>
+    <hasBwsAccessedByAnyModel>true</hasBwsAccessedByAnyModel>
+    <hasContinuousSampleTime>true</hasContinuousSampleTime>
+    <hasNonVirtualConstantTs>true</hasNonVirtualConstantTs>
+    <hasNoncontSigFeedingDerivPorts>true</hasNoncontSigFeedingDerivPorts>
+    <isBdInSimModeForSimCodegenVariants>false</isBdInSimModeForSimCodegenVariants>
+    <loggingSaveFormat>2</loggingSaveFormat>
+    <massMatrixNzMax>7</massMatrixNzMax>
+    <maxFreqHz>-1.0</maxFreqHz>
+    <needAbsoluteTimeDisallowInitPort>true</needAbsoluteTimeDisallowInitPort>
+    <nonTunableVariables>camera_rate</nonTunableVariables>
+    <nonTunableVariables>depth_rate</nonTunableVariables>
+    <numCStateRecs>7</numCStateRecs>
+    <numContinuousStates>7</numContinuousStates>
+    <numDStateRecs>1</numDStateRecs>
+    <numDataInputPorts>0</numDataInputPorts>
+    <numLoggableCStateRecs>7</numLoggableCStateRecs>
+    <numLoggableDStateRecs>1</numLoggableDStateRecs>
+    <numLoggableJacobianDStates>3</numLoggableJacobianDStates>
+    <runtimeNonFcnCallRateInfos type="ModelRefInfoRepo.RateInfo">
+      <compiled>true</compiled>
+      <period>0.0</period>
+      <priority>40</priority>
+      <rateIdx>0</rateIdx>
+    </runtimeNonFcnCallRateInfos>
+    <runtimeNonFcnCallRateInfos type="ModelRefInfoRepo.RateInfo">
+      <compiled>true</compiled>
+      <needAbsoluteTime>true</needAbsoluteTime>
+      <nonFcnCallPartitionName>Cont</nonFcnCallPartitionName>
+      <period>.0016666666666666668</period>
+      <priority>40</priority>
+      <rateIdx>1</rateIdx>
+    </runtimeNonFcnCallRateInfos>
+    <runtimeNonFcnCallRateInfos type="ModelRefInfoRepo.RateInfo">
+      <compiled>true</compiled>
+      <nonFcnCallPartitionName>D2</nonFcnCallPartitionName>
+      <period>.008333333333333333</period>
+      <priority>39</priority>
+      <rateIdx>2</rateIdx>
+    </runtimeNonFcnCallRateInfos>
+    <runtimeNonFcnCallRateInfos type="ModelRefInfoRepo.RateInfo">
+      <compiled>true</compiled>
+      <nonFcnCallPartitionName>D3</nonFcnCallPartitionName>
+      <period>.01</period>
+      <priority>38</priority>
+      <rateIdx>3</rateIdx>
+    </runtimeNonFcnCallRateInfos>
+    <sampleTimeInheritanceRule>2</sampleTimeInheritanceRule>
+    <solverStatusFlags>323</solverStatusFlags>
+    <standaloneEnumInfos type="ModelRefInfoRepo.StandaloneEnumInfo" uuid="73d2bd1c-8f1b-495f-bbb4-297dc7fafcc5">
+      <defaultValue>CHANNEL_0</defaultValue>
+      <enumName>t_channel</enumName>
+      <labels>CHANNEL_0</labels>
+      <labels>CHANNEL_1</labels>
+      <labels>CHANNEL_2</labels>
+      <labels>CHANNEL_3</labels>
+      <labels>CHANNEL_4</labels>
+      <labels>CHANNEL_5</labels>
+      <labels>CHANNEL_6</labels>
+      <labels>CHANNEL_7</labels>
+      <labels>CHANNEL_8</labels>
+      <labels>CHANNEL_9</labels>
+      <labels>CHANNEL_10</labels>
+      <labels>CHANNEL_11</labels>
+      <labels>CHANNEL_12</labels>
+      <labels>CHANNEL_13</labels>
+      <labels>CHANNEL_14</labels>
+      <labels>CHANNEL_15</labels>
+      <labels>CHANNEL_16</labels>
+      <labels>CHANNEL_17</labels>
+      <labels>CHANNEL_18</labels>
+      <labels>CHANNEL_19</labels>
+      <labels>CHANNEL_20</labels>
+      <labels>CHANNEL_21</labels>
+      <labels>CHANNEL_22</labels>
+      <labels>CHANNEL_23</labels>
+      <labels>CHANNEL_24</labels>
+      <labels>CHANNEL_25</labels>
+      <labels>CHANNEL_26</labels>
+      <labels>CHANNEL_27</labels>
+      <labels>CHANNEL_28</labels>
+      <labels>CHANNEL_29</labels>
+      <labels>CHANNEL_30</labels>
+      <labels>CHANNEL_31</labels>
+      <labels>CHANNEL_32</labels>
+      <labels>CHANNEL_33</labels>
+      <labels>CHANNEL_34</labels>
+      <labels>CHANNEL_35</labels>
+      <labels>CHANNEL_36</labels>
+      <labels>CHANNEL_37</labels>
+      <labels>CHANNEL_38</labels>
+      <labels>CHANNEL_39</labels>
+      <labels>CHANNEL_40</labels>
+      <labels>CHANNEL_41</labels>
+      <labels>CHANNEL_42</labels>
+      <labels>CHANNEL_43</labels>
+      <labels>CHANNEL_44</labels>
+      <labels>CHANNEL_45</labels>
+      <labels>CHANNEL_46</labels>
+      <labels>CHANNEL_47</labels>
+      <labels>CHANNEL_48</labels>
+      <labels>CHANNEL_49</labels>
+      <labels>CHANNEL_50</labels>
+      <labels>CHANNEL_51</labels>
+      <labels>CHANNEL_52</labels>
+      <labels>CHANNEL_53</labels>
+      <labels>CHANNEL_54</labels>
+      <labels>CHANNEL_55</labels>
+      <labels>CHANNEL_56</labels>
+      <labels>CHANNEL_57</labels>
+      <labels>CHANNEL_58</labels>
+      <labels>CHANNEL_59</labels>
+      <labels>CHANNEL_60</labels>
+      <labels>CHANNEL_61</labels>
+      <labels>CHANNEL_62</labels>
+      <labels>CHANNEL_63</labels>
+      <labels>CHANNEL_64</labels>
+      <labels>CHANNEL_65</labels>
+      <labels>CHANNEL_66</labels>
+      <labels>CHANNEL_67</labels>
+      <labels>CHANNEL_68</labels>
+      <labels>CHANNEL_69</labels>
+      <labels>CHANNEL_70</labels>
+      <labels>CHANNEL_71</labels>
+      <labels>CHANNEL_72</labels>
+      <labels>CHANNEL_73</labels>
+      <labels>CHANNEL_74</labels>
+      <labels>CHANNEL_75</labels>
+      <labels>CHANNEL_76</labels>
+      <labels>CHANNEL_77</labels>
+      <labels>CHANNEL_78</labels>
+      <labels>CHANNEL_79</labels>
+      <labels>CHANNEL_80</labels>
+      <labels>CHANNEL_81</labels>
+      <labels>CHANNEL_82</labels>
+      <labels>CHANNEL_83</labels>
+      <labels>CHANNEL_84</labels>
+      <labels>CHANNEL_85</labels>
+      <labels>CHANNEL_86</labels>
+      <labels>CHANNEL_87</labels>
+      <labels>CHANNEL_88</labels>
+      <labels>CHANNEL_89</labels>
+      <labels>CHANNEL_90</labels>
+      <labels>CHANNEL_91</labels>
+      <labels>CHANNEL_92</labels>
+      <labels>CHANNEL_93</labels>
+      <labels>CHANNEL_94</labels>
+      <labels>CHANNEL_95</labels>
+      <labels>CHANNEL_96</labels>
+      <labels>CHANNEL_97</labels>
+      <labels>CHANNEL_98</labels>
+      <labels>CHANNEL_99</labels>
+      <labels>CHANNEL_100</labels>
+      <labels>CHANNEL_101</labels>
+      <labels>CHANNEL_102</labels>
+      <labels>CHANNEL_103</labels>
+      <labels>CHANNEL_104</labels>
+      <labels>CHANNEL_105</labels>
+      <labels>CHANNEL_106</labels>
+      <labels>CHANNEL_107</labels>
+      <labels>CHANNEL_108</labels>
+      <labels>CHANNEL_109</labels>
+      <labels>CHANNEL_110</labels>
+      <labels>CHANNEL_111</labels>
+      <labels>CHANNEL_112</labels>
+      <labels>CHANNEL_113</labels>
+      <labels>CHANNEL_114</labels>
+      <labels>CHANNEL_115</labels>
+      <labels>CHANNEL_116</labels>
+      <labels>CHANNEL_117</labels>
+      <labels>CHANNEL_118</labels>
+      <labels>CHANNEL_119</labels>
+      <labels>CHANNEL_120</labels>
+      <labels>CHANNEL_121</labels>
+      <labels>CHANNEL_122</labels>
+      <labels>CHANNEL_123</labels>
+      <labels>CHANNEL_124</labels>
+      <labels>CHANNEL_125</labels>
+      <labels>CHANNEL_126</labels>
+      <labels>CHANNEL_127</labels>
+      <labels>CHANNEL_128</labels>
+      <labels>CHANNEL_129</labels>
+      <labels>CHANNEL_130</labels>
+      <labels>CHANNEL_131</labels>
+      <labels>CHANNEL_132</labels>
+      <labels>CHANNEL_133</labels>
+      <labels>CHANNEL_134</labels>
+      <labels>CHANNEL_135</labels>
+      <labels>CHANNEL_136</labels>
+      <labels>CHANNEL_137</labels>
+      <labels>CHANNEL_138</labels>
+      <labels>CHANNEL_139</labels>
+      <labels>CHANNEL_140</labels>
+      <labels>CHANNEL_141</labels>
+      <labels>CHANNEL_142</labels>
+      <labels>CHANNEL_143</labels>
+      <labels>CHANNEL_144</labels>
+      <labels>CHANNEL_145</labels>
+      <labels>CHANNEL_146</labels>
+      <labels>CHANNEL_147</labels>
+      <labels>CHANNEL_148</labels>
+      <labels>CHANNEL_149</labels>
+      <labels>CHANNEL_150</labels>
+      <labels>CHANNEL_151</labels>
+      <labels>CHANNEL_152</labels>
+      <labels>CHANNEL_153</labels>
+      <labels>CHANNEL_154</labels>
+      <labels>CHANNEL_155</labels>
+      <labels>CHANNEL_156</labels>
+      <labels>CHANNEL_157</labels>
+      <labels>CHANNEL_158</labels>
+      <labels>CHANNEL_159</labels>
+      <labels>CHANNEL_160</labels>
+      <labels>CHANNEL_161</labels>
+      <labels>CHANNEL_162</labels>
+      <labels>CHANNEL_163</labels>
+      <labels>CHANNEL_164</labels>
+      <labels>CHANNEL_165</labels>
+      <labels>CHANNEL_166</labels>
+      <labels>CHANNEL_167</labels>
+      <labels>CHANNEL_168</labels>
+      <labels>CHANNEL_169</labels>
+      <labels>CHANNEL_170</labels>
+      <labels>CHANNEL_171</labels>
+      <labels>CHANNEL_172</labels>
+      <labels>CHANNEL_173</labels>
+      <labels>CHANNEL_174</labels>
+      <labels>CHANNEL_175</labels>
+      <labels>CHANNEL_176</labels>
+      <labels>CHANNEL_177</labels>
+      <labels>CHANNEL_178</labels>
+      <labels>CHANNEL_179</labels>
+      <labels>CHANNEL_180</labels>
+      <labels>CHANNEL_181</labels>
+      <labels>CHANNEL_182</labels>
+      <labels>CHANNEL_183</labels>
+      <labels>CHANNEL_184</labels>
+      <labels>CHANNEL_185</labels>
+      <labels>CHANNEL_186</labels>
+      <labels>CHANNEL_187</labels>
+      <labels>CHANNEL_188</labels>
+      <labels>CHANNEL_189</labels>
+      <labels>CHANNEL_190</labels>
+      <labels>CHANNEL_191</labels>
+      <labels>CHANNEL_192</labels>
+      <labels>CHANNEL_193</labels>
+      <labels>CHANNEL_194</labels>
+      <labels>CHANNEL_195</labels>
+      <labels>CHANNEL_196</labels>
+      <labels>CHANNEL_197</labels>
+      <labels>CHANNEL_198</labels>
+      <labels>CHANNEL_199</labels>
+      <labels>CHANNEL_200</labels>
+      <labels>CHANNEL_201</labels>
+      <labels>CHANNEL_202</labels>
+      <labels>CHANNEL_203</labels>
+      <labels>CHANNEL_204</labels>
+      <labels>CHANNEL_205</labels>
+      <labels>CHANNEL_206</labels>
+      <labels>CHANNEL_207</labels>
+      <labels>CHANNEL_208</labels>
+      <labels>CHANNEL_209</labels>
+      <labels>CHANNEL_210</labels>
+      <labels>CHANNEL_211</labels>
+      <labels>CHANNEL_212</labels>
+      <labels>CHANNEL_213</labels>
+      <labels>CHANNEL_214</labels>
+      <labels>CHANNEL_215</labels>
+      <labels>CHANNEL_216</labels>
+      <labels>CHANNEL_217</labels>
+      <labels>CHANNEL_218</labels>
+      <labels>CHANNEL_219</labels>
+      <labels>CHANNEL_220</labels>
+      <labels>CHANNEL_221</labels>
+      <labels>CHANNEL_222</labels>
+      <labels>CHANNEL_223</labels>
+      <labels>CHANNEL_224</labels>
+      <labels>CHANNEL_225</labels>
+      <labels>CHANNEL_226</labels>
+      <labels>CHANNEL_227</labels>
+      <labels>CHANNEL_228</labels>
+      <labels>CHANNEL_229</labels>
+      <labels>CHANNEL_230</labels>
+      <labels>CHANNEL_231</labels>
+      <labels>CHANNEL_232</labels>
+      <labels>CHANNEL_233</labels>
+      <labels>CHANNEL_234</labels>
+      <labels>CHANNEL_235</labels>
+      <labels>CHANNEL_236</labels>
+      <labels>CHANNEL_237</labels>
+      <labels>CHANNEL_238</labels>
+      <labels>CHANNEL_239</labels>
+      <labels>CHANNEL_240</labels>
+      <labels>CHANNEL_241</labels>
+      <labels>CHANNEL_242</labels>
+      <labels>CHANNEL_243</labels>
+      <labels>CHANNEL_244</labels>
+      <labels>CHANNEL_245</labels>
+      <labels>CHANNEL_246</labels>
+      <labels>CHANNEL_247</labels>
+      <labels>CHANNEL_248</labels>
+      <labels>CHANNEL_249</labels>
+      <labels>CHANNEL_250</labels>
+      <labels>CHANNEL_251</labels>
+      <labels>CHANNEL_252</labels>
+      <labels>CHANNEL_253</labels>
+      <labels>CHANNEL_254</labels>
+      <labels>CHANNEL_255</labels>
+      <storageType>int32</storageType>
+      <values>0</values>
+      <values>1</values>
+      <values>2</values>
+      <values>3</values>
+      <values>4</values>
+      <values>5</values>
+      <values>6</values>
+      <values>7</values>
+      <values>8</values>
+      <values>9</values>
+      <values>10</values>
+      <values>11</values>
+      <values>12</values>
+      <values>13</values>
+      <values>14</values>
+      <values>15</values>
+      <values>16</values>
+      <values>17</values>
+      <values>18</values>
+      <values>19</values>
+      <values>20</values>
+      <values>21</values>
+      <values>22</values>
+      <values>23</values>
+      <values>24</values>
+      <values>25</values>
+      <values>26</values>
+      <values>27</values>
+      <values>28</values>
+      <values>29</values>
+      <values>30</values>
+      <values>31</values>
+      <values>32</values>
+      <values>33</values>
+      <values>34</values>
+      <values>35</values>
+      <values>36</values>
+      <values>37</values>
+      <values>38</values>
+      <values>39</values>
+      <values>40</values>
+      <values>41</values>
+      <values>42</values>
+      <values>43</values>
+      <values>44</values>
+      <values>45</values>
+      <values>46</values>
+      <values>47</values>
+      <values>48</values>
+      <values>49</values>
+      <values>50</values>
+      <values>51</values>
+      <values>52</values>
+      <values>53</values>
+      <values>54</values>
+      <values>55</values>
+      <values>56</values>
+      <values>57</values>
+      <values>58</values>
+      <values>59</values>
+      <values>60</values>
+      <values>61</values>
+      <values>62</values>
+      <values>63</values>
+      <values>64</values>
+      <values>65</values>
+      <values>66</values>
+      <values>67</values>
+      <values>68</values>
+      <values>69</values>
+      <values>70</values>
+      <values>71</values>
+      <values>72</values>
+      <values>73</values>
+      <values>74</values>
+      <values>75</values>
+      <values>76</values>
+      <values>77</values>
+      <values>78</values>
+      <values>79</values>
+      <values>80</values>
+      <values>81</values>
+      <values>82</values>
+      <values>83</values>
+      <values>84</values>
+      <values>85</values>
+      <values>86</values>
+      <values>87</values>
+      <values>88</values>
+      <values>89</values>
+      <values>90</values>
+      <values>91</values>
+      <values>92</values>
+      <values>93</values>
+      <values>94</values>
+      <values>95</values>
+      <values>96</values>
+      <values>97</values>
+      <values>98</values>
+      <values>99</values>
+      <values>100</values>
+      <values>101</values>
+      <values>102</values>
+      <values>103</values>
+      <values>104</values>
+      <values>105</values>
+      <values>106</values>
+      <values>107</values>
+      <values>108</values>
+      <values>109</values>
+      <values>110</values>
+      <values>111</values>
+      <values>112</values>
+      <values>113</values>
+      <values>114</values>
+      <values>115</values>
+      <values>116</values>
+      <values>117</values>
+      <values>118</values>
+      <values>119</values>
+      <values>120</values>
+      <values>121</values>
+      <values>122</values>
+      <values>123</values>
+      <values>124</values>
+      <values>125</values>
+      <values>126</values>
+      <values>127</values>
+      <values>128</values>
+      <values>129</values>
+      <values>130</values>
+      <values>131</values>
+      <values>132</values>
+      <values>133</values>
+      <values>134</values>
+      <values>135</values>
+      <values>136</values>
+      <values>137</values>
+      <values>138</values>
+      <values>139</values>
+      <values>140</values>
+      <values>141</values>
+      <values>142</values>
+      <values>143</values>
+      <values>144</values>
+      <values>145</values>
+      <values>146</values>
+      <values>147</values>
+      <values>148</values>
+      <values>149</values>
+      <values>150</values>
+      <values>151</values>
+      <values>152</values>
+      <values>153</values>
+      <values>154</values>
+      <values>155</values>
+      <values>156</values>
+      <values>157</values>
+      <values>158</values>
+      <values>159</values>
+      <values>160</values>
+      <values>161</values>
+      <values>162</values>
+      <values>163</values>
+      <values>164</values>
+      <values>165</values>
+      <values>166</values>
+      <values>167</values>
+      <values>168</values>
+      <values>169</values>
+      <values>170</values>
+      <values>171</values>
+      <values>172</values>
+      <values>173</values>
+      <values>174</values>
+      <values>175</values>
+      <values>176</values>
+      <values>177</values>
+      <values>178</values>
+      <values>179</values>
+      <values>180</values>
+      <values>181</values>
+      <values>182</values>
+      <values>183</values>
+      <values>184</values>
+      <values>185</values>
+      <values>186</values>
+      <values>187</values>
+      <values>188</values>
+      <values>189</values>
+      <values>190</values>
+      <values>191</values>
+      <values>192</values>
+      <values>193</values>
+      <values>194</values>
+      <values>195</values>
+      <values>196</values>
+      <values>197</values>
+      <values>198</values>
+      <values>199</values>
+      <values>200</values>
+      <values>201</values>
+      <values>202</values>
+      <values>203</values>
+      <values>204</values>
+      <values>205</values>
+      <values>206</values>
+      <values>207</values>
+      <values>208</values>
+      <values>209</values>
+      <values>210</values>
+      <values>211</values>
+      <values>212</values>
+      <values>213</values>
+      <values>214</values>
+      <values>215</values>
+      <values>216</values>
+      <values>217</values>
+      <values>218</values>
+      <values>219</values>
+      <values>220</values>
+      <values>221</values>
+      <values>222</values>
+      <values>223</values>
+      <values>224</values>
+      <values>225</values>
+      <values>226</values>
+      <values>227</values>
+      <values>228</values>
+      <values>229</values>
+      <values>230</values>
+      <values>231</values>
+      <values>232</values>
+      <values>233</values>
+      <values>234</values>
+      <values>235</values>
+      <values>236</values>
+      <values>237</values>
+      <values>238</values>
+      <values>239</values>
+      <values>240</values>
+      <values>241</values>
+      <values>242</values>
+      <values>243</values>
+      <values>244</values>
+      <values>245</values>
+      <values>246</values>
+      <values>247</values>
+      <values>248</values>
+      <values>249</values>
+      <values>250</values>
+      <values>251</values>
+      <values>252</values>
+      <values>253</values>
+      <values>254</values>
+      <values>255</values>
+    </standaloneEnumInfos>
+    <timingAndTaskingRegistry>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;slexec_sto version=&quot;1.1&quot; packageUris=&quot;http://schema.mathworks.com/mf0/slexec_mm_sto/R2023a_202208151321&quot;&gt;
+  &lt;sto.Registry type=&quot;sto.Registry&quot; uuid=&quot;3a933574-b85f-4f36-a7a6-9dd4a6151b61&quot;&gt;
+    &lt;executionSpec&gt;Undetermined&lt;/executionSpec&gt;
+    &lt;identifier&gt;Autonomous_Driving_Car_Example2&lt;/identifier&gt;
+    &lt;clockRegistry type=&quot;sto.ClockRegistry&quot; uuid=&quot;2441637f-4526-4ab8-acb1-416c2cb92f29&quot;&gt;
+      &lt;clocks type=&quot;sto.Timer&quot; uuid=&quot;cf68dedf-581e-4384-bb6a-d8631475332d&quot;&gt;
+        &lt;clockTickConstraint&gt;PeriodicWithFixedResolution&lt;/clockTickConstraint&gt;
+        &lt;computedFundamentalDiscretePeriod&gt;.0016666666666666668&lt;/computedFundamentalDiscretePeriod&gt;
+        &lt;fastestDiscreteRate type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;e4334045-2e4c-4672-b548-399038b75501&quot;/&gt;
+        &lt;isDefaultTimer&gt;true&lt;/isDefaultTimer&gt;
+        &lt;resolution&gt;.0016666666666666668&lt;/resolution&gt;
+        &lt;timeAdvanceMode&gt;FixedStep&lt;/timeAdvanceMode&gt;
+        &lt;identifier&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/identifier&gt;
+        &lt;rates type=&quot;sto.ContinuousRate&quot; uuid=&quot;a4dae9f0-9951-4fb0-a36b-218ba96dc652&quot;&gt;
+          &lt;annotation&gt;Cont&lt;/annotation&gt;
+          &lt;clockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockId&gt;
+          &lt;description&gt;Continuous&lt;/description&gt;
+          &lt;taskId&gt;_task0&lt;/taskId&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;b352e7fb-bcdc-4bdc-9fed-9b54c9bd60e4&quot;/&gt;
+        &lt;/rates&gt;
+        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;e4334045-2e4c-4672-b548-399038b75501&quot;&gt;
+          &lt;annotation&gt;D1&lt;/annotation&gt;
+          &lt;clockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockId&gt;
+          &lt;colorIndex&gt;2&lt;/colorIndex&gt;
+          &lt;description&gt;Discrete 1&lt;/description&gt;
+          &lt;rateIdx&gt;1&lt;/rateIdx&gt;
+          &lt;taskId&gt;_task0&lt;/taskId&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;f944d332-3ac6-4d68-9802-016607ffce84&quot;&gt;
+            &lt;period&gt;.0016666666666666668&lt;/period&gt;
+            &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
+          &lt;/rateSpec&gt;
+        &lt;/rates&gt;
+        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;3148720f-c828-43f5-9669-69f4b96ac584&quot;&gt;
+          &lt;annotation&gt;D2&lt;/annotation&gt;
+          &lt;clockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockId&gt;
+          &lt;colorIndex&gt;3&lt;/colorIndex&gt;
+          &lt;description&gt;Discrete 2&lt;/description&gt;
+          &lt;rateIdx&gt;2&lt;/rateIdx&gt;
+          &lt;taskId&gt;_task1&lt;/taskId&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;9bc62302-3054-4f0a-b669-a326be06217a&quot;&gt;
+            &lt;period&gt;.008333333333333333&lt;/period&gt;
+            &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
+          &lt;/rateSpec&gt;
+        &lt;/rates&gt;
+        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;b7570ed3-d319-437a-95e9-6af53be3bd6e&quot;&gt;
+          &lt;annotation&gt;D3&lt;/annotation&gt;
+          &lt;clockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockId&gt;
+          &lt;colorIndex&gt;4&lt;/colorIndex&gt;
+          &lt;description&gt;Discrete 3&lt;/description&gt;
+          &lt;rateIdx&gt;3&lt;/rateIdx&gt;
+          &lt;taskId&gt;_task2&lt;/taskId&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;b4e7eb90-0e08-40b4-8562-ea58da2ab6b6&quot;&gt;
+            &lt;period&gt;.01&lt;/period&gt;
+            &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
+          &lt;/rateSpec&gt;
+        &lt;/rates&gt;
+        &lt;baseRate type=&quot;sto.ContinuousRate&quot; uuid=&quot;7153c9f0-fd98-47bf-849d-2495a33118ac&quot;&gt;
+          &lt;annotation&gt;Cont&lt;/annotation&gt;
+          &lt;clockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockId&gt;
+          &lt;description&gt;Continuous&lt;/description&gt;
+          &lt;taskId&gt;_task0&lt;/taskId&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;8212368b-e82a-43ae-add6-debd8514079d&quot;/&gt;
+        &lt;/baseRate&gt;
+      &lt;/clocks&gt;
+      &lt;clocks type=&quot;sto.Event&quot; uuid=&quot;53512f28-4eba-49f4-9327-f28c37a69689&quot;&gt;
+        &lt;eventType&gt;PARAMETER_CHANGE_EVENT&lt;/eventType&gt;
+        &lt;cNum&gt;1&lt;/cNum&gt;
+        &lt;clockType&gt;Event&lt;/clockType&gt;
+        &lt;identifier&gt;ParameterChangeEvent&lt;/identifier&gt;
+        &lt;rates type=&quot;sto.ModelWideEventRate&quot; uuid=&quot;4c5ad8ed-28bc-4b59-b660-ed9eca3f2f0a&quot;&gt;
+          &lt;clockId&gt;ParameterChangeEvent&lt;/clockId&gt;
+          &lt;rateIdx&gt;-1&lt;/rateIdx&gt;
+          &lt;taskId&gt;ModelWideParameterChangeEvent&lt;/taskId&gt;
+          &lt;useForExecution&gt;NotForExecution&lt;/useForExecution&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;7c3ee144-c8e7-455b-8f68-796798efa63c&quot;&gt;
+            &lt;period&gt;inf&lt;/period&gt;
+            &lt;rateType&gt;ModelWideParameterChangeEvent&lt;/rateType&gt;
+          &lt;/rateSpec&gt;
+        &lt;/rates&gt;
+      &lt;/clocks&gt;
+      &lt;timeAdvanceMode&gt;FixedStep&lt;/timeAdvanceMode&gt;
+    &lt;/clockRegistry&gt;
+    &lt;taskRegistry type=&quot;sto.TaskRegistry&quot; uuid=&quot;16796234-6ab8-4856-896c-d00a9192c8c6&quot;&gt;
+      &lt;rootTaskHierarchyElements type=&quot;sto.Task&quot; uuid=&quot;49fc428c-f744-4034-a754-1fcfa49fde75&quot;&gt;
+        &lt;isExplicit&gt;true&lt;/isExplicit&gt;
+        &lt;rates type=&quot;sto.ModelWideEventRate&quot; uuid=&quot;896b6207-4654-48a3-b389-dd82a82e1677&quot;&gt;
+          &lt;clockId&gt;ParameterChangeEvent&lt;/clockId&gt;
+          &lt;rateIdx&gt;-1&lt;/rateIdx&gt;
+          &lt;taskId&gt;ModelWideParameterChangeEvent&lt;/taskId&gt;
+          &lt;useForExecution&gt;NotForExecution&lt;/useForExecution&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;af9fff6f-9f1b-43f7-8446-3d5a954030f1&quot;&gt;
+            &lt;period&gt;inf&lt;/period&gt;
+            &lt;rateType&gt;ModelWideParameterChangeEvent&lt;/rateType&gt;
+          &lt;/rateSpec&gt;
+        &lt;/rates&gt;
+        &lt;schedulingClockId&gt;ParameterChangeEvent&lt;/schedulingClockId&gt;
+        &lt;timeKeeperClockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/timeKeeperClockId&gt;
+        &lt;elementType&gt;Task&lt;/elementType&gt;
+        &lt;identifier&gt;ModelWideParameterChangeEvent&lt;/identifier&gt;
+        &lt;priority&gt;-1&lt;/priority&gt;
+      &lt;/rootTaskHierarchyElements&gt;
+      &lt;rootTaskHierarchyElements type=&quot;sto.Task&quot; uuid=&quot;0731e777-16ca-47e5-a8a6-b1e128a0d425&quot;&gt;
+        &lt;isExecutable&gt;true&lt;/isExecutable&gt;
+        &lt;orderIndex&gt;1&lt;/orderIndex&gt;
+        &lt;rates type=&quot;sto.ContinuousRate&quot; uuid=&quot;f8a79582-7074-4e18-8349-1f63b003567a&quot;&gt;
+          &lt;annotation&gt;Cont&lt;/annotation&gt;
+          &lt;clockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockId&gt;
+          &lt;description&gt;Continuous&lt;/description&gt;
+          &lt;taskId&gt;_task0&lt;/taskId&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;a4b6fd70-f6c2-48c1-826d-cb5f2998d333&quot;/&gt;
+        &lt;/rates&gt;
+        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;4fd612ad-9e57-4510-96da-23a9a2a090e9&quot;&gt;
+          &lt;annotation&gt;D1&lt;/annotation&gt;
+          &lt;clockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockId&gt;
+          &lt;colorIndex&gt;2&lt;/colorIndex&gt;
+          &lt;description&gt;Discrete 1&lt;/description&gt;
+          &lt;rateIdx&gt;1&lt;/rateIdx&gt;
+          &lt;taskId&gt;_task0&lt;/taskId&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;a079f725-878f-4b45-b54f-5124ea9b6048&quot;&gt;
+            &lt;period&gt;.0016666666666666668&lt;/period&gt;
+            &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
+          &lt;/rateSpec&gt;
+        &lt;/rates&gt;
+        &lt;schedulingClockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/schedulingClockId&gt;
+        &lt;timeKeeperClockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/timeKeeperClockId&gt;
+        &lt;elementType&gt;Task&lt;/elementType&gt;
+        &lt;identifier&gt;_task0&lt;/identifier&gt;
+        &lt;priority&gt;40&lt;/priority&gt;
+      &lt;/rootTaskHierarchyElements&gt;
+      &lt;rootTaskHierarchyElements type=&quot;sto.Task&quot; uuid=&quot;42119432-a9fc-4765-88ee-7d2a8412b46f&quot;&gt;
+        &lt;isExecutable&gt;true&lt;/isExecutable&gt;
+        &lt;orderIndex&gt;2&lt;/orderIndex&gt;
+        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;39b64197-d1a2-4fcc-9421-f938255a268a&quot;&gt;
+          &lt;annotation&gt;D2&lt;/annotation&gt;
+          &lt;clockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockId&gt;
+          &lt;colorIndex&gt;3&lt;/colorIndex&gt;
+          &lt;description&gt;Discrete 2&lt;/description&gt;
+          &lt;rateIdx&gt;2&lt;/rateIdx&gt;
+          &lt;taskId&gt;_task1&lt;/taskId&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;9faa3802-9223-4fea-96ad-0db1e192468f&quot;&gt;
+            &lt;period&gt;.008333333333333333&lt;/period&gt;
+            &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
+          &lt;/rateSpec&gt;
+        &lt;/rates&gt;
+        &lt;schedulingClockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/schedulingClockId&gt;
+        &lt;tNum&gt;1&lt;/tNum&gt;
+        &lt;timeKeeperClockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/timeKeeperClockId&gt;
+        &lt;elementType&gt;Task&lt;/elementType&gt;
+        &lt;identifier&gt;_task1&lt;/identifier&gt;
+        &lt;priority&gt;39&lt;/priority&gt;
+      &lt;/rootTaskHierarchyElements&gt;
+      &lt;rootTaskHierarchyElements type=&quot;sto.Task&quot; uuid=&quot;64170d2e-4455-43e8-b934-71871a71127c&quot;&gt;
+        &lt;isExecutable&gt;true&lt;/isExecutable&gt;
+        &lt;orderIndex&gt;3&lt;/orderIndex&gt;
+        &lt;rates type=&quot;sto.ClassicPeriodicDiscreteRate&quot; uuid=&quot;16c6b86d-6f9f-4db7-87c0-33bb73c865e4&quot;&gt;
+          &lt;annotation&gt;D3&lt;/annotation&gt;
+          &lt;clockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockId&gt;
+          &lt;colorIndex&gt;4&lt;/colorIndex&gt;
+          &lt;description&gt;Discrete 3&lt;/description&gt;
+          &lt;rateIdx&gt;3&lt;/rateIdx&gt;
+          &lt;taskId&gt;_task2&lt;/taskId&gt;
+          &lt;rateSpec type=&quot;sto.RateSpec&quot; uuid=&quot;f847ce45-b2e2-4fec-ad42-f275e615c7dd&quot;&gt;
+            &lt;period&gt;.01&lt;/period&gt;
+            &lt;rateType&gt;ClassicPeriodicDiscrete&lt;/rateType&gt;
+          &lt;/rateSpec&gt;
+        &lt;/rates&gt;
+        &lt;schedulingClockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/schedulingClockId&gt;
+        &lt;tNum&gt;2&lt;/tNum&gt;
+        &lt;timeKeeperClockId&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/timeKeeperClockId&gt;
+        &lt;elementType&gt;Task&lt;/elementType&gt;
+        &lt;identifier&gt;_task2&lt;/identifier&gt;
+        &lt;priority&gt;38&lt;/priority&gt;
+      &lt;/rootTaskHierarchyElements&gt;
+      &lt;taskDependencyGraph type=&quot;sto.SerializedTaskConnectionList&quot; uuid=&quot;2d0bf069-3f47-4191-9bf4-99af62d32a09&quot;&gt;
+        &lt;clockIdentifier&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockIdentifier&gt;
+        &lt;serializedConnectionProperties type=&quot;sto.SerializedConnectionProperties&quot; uuid=&quot;4d82a9d9-c826-45cd-9d29-d5e51584d5eb&quot;&gt;
+          &lt;isInternal&gt;true&lt;/isInternal&gt;
+          &lt;targetClockIdentifier&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/targetClockIdentifier&gt;
+          &lt;targetTaskIdentifier&gt;_task1&lt;/targetTaskIdentifier&gt;
+        &lt;/serializedConnectionProperties&gt;
+        &lt;serializedConnectionProperties type=&quot;sto.SerializedConnectionProperties&quot; uuid=&quot;7fb5b60d-fb39-440a-a389-dece2bca583d&quot;&gt;
+          &lt;orderingImpact&gt;Impacted&lt;/orderingImpact&gt;
+          &lt;targetClockIdentifier&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/targetClockIdentifier&gt;
+          &lt;targetTaskIdentifier&gt;_task0&lt;/targetTaskIdentifier&gt;
+        &lt;/serializedConnectionProperties&gt;
+        &lt;taskIdentifier&gt;_task2&lt;/taskIdentifier&gt;
+      &lt;/taskDependencyGraph&gt;
+      &lt;taskDependencyGraph type=&quot;sto.SerializedTaskConnectionList&quot; uuid=&quot;2a7a4d5b-aa27-484d-ae7a-06c80d85a0b2&quot;&gt;
+        &lt;clockIdentifier&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockIdentifier&gt;
+        &lt;serializedConnectionProperties type=&quot;sto.SerializedConnectionProperties&quot; uuid=&quot;5a681462-41fd-4355-acab-d082d531e519&quot;&gt;
+          &lt;orderingImpact&gt;Impacted&lt;/orderingImpact&gt;
+          &lt;targetClockIdentifier&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/targetClockIdentifier&gt;
+          &lt;targetTaskIdentifier&gt;_task2&lt;/targetTaskIdentifier&gt;
+        &lt;/serializedConnectionProperties&gt;
+        &lt;serializedConnectionProperties type=&quot;sto.SerializedConnectionProperties&quot; uuid=&quot;aaed61b9-9609-46e3-8424-1bba6639e9fc&quot;&gt;
+          &lt;orderingImpact&gt;Impacted&lt;/orderingImpact&gt;
+          &lt;targetClockIdentifier&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/targetClockIdentifier&gt;
+          &lt;targetTaskIdentifier&gt;_task0&lt;/targetTaskIdentifier&gt;
+        &lt;/serializedConnectionProperties&gt;
+        &lt;taskIdentifier&gt;_task1&lt;/taskIdentifier&gt;
+      &lt;/taskDependencyGraph&gt;
+      &lt;taskDependencyGraph type=&quot;sto.SerializedTaskConnectionList&quot; uuid=&quot;8be5080d-b0be-468d-81f8-69bd8da87e79&quot;&gt;
+        &lt;clockIdentifier&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/clockIdentifier&gt;
+        &lt;serializedConnectionProperties type=&quot;sto.SerializedConnectionProperties&quot; uuid=&quot;9a0f0bf4-6f7e-4f8a-b8b7-409f203b301c&quot;&gt;
+          &lt;isInternal&gt;true&lt;/isInternal&gt;
+          &lt;targetClockIdentifier&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/targetClockIdentifier&gt;
+          &lt;targetTaskIdentifier&gt;_task2&lt;/targetTaskIdentifier&gt;
+        &lt;/serializedConnectionProperties&gt;
+        &lt;serializedConnectionProperties type=&quot;sto.SerializedConnectionProperties&quot; uuid=&quot;832a47b3-a519-4590-a7cb-d8f13effa640&quot;&gt;
+          &lt;orderingImpact&gt;Impacted&lt;/orderingImpact&gt;
+          &lt;targetClockIdentifier&gt;Autonomous_Driving_Car_Example2::defaultTimer&lt;/targetClockIdentifier&gt;
+          &lt;targetTaskIdentifier&gt;_task1&lt;/targetTaskIdentifier&gt;
+        &lt;/serializedConnectionProperties&gt;
+        &lt;taskIdentifier&gt;_task0&lt;/taskIdentifier&gt;
+      &lt;/taskDependencyGraph&gt;
+      &lt;taskDependencyGraph type=&quot;sto.SerializedTaskConnectionList&quot; uuid=&quot;5e73fbb6-c7d2-4fc5-b2d2-a9fbab1eb296&quot;&gt;
+        &lt;clockIdentifier&gt;ParameterChangeEvent&lt;/clockIdentifier&gt;
+        &lt;taskIdentifier&gt;ModelWideParameterChangeEvent&lt;/taskIdentifier&gt;
+      &lt;/taskDependencyGraph&gt;
+      &lt;taskingMode&gt;ClassicMultiTasking&lt;/taskingMode&gt;
+    &lt;/taskRegistry&gt;
+  &lt;/sto.Registry&gt;
+&lt;/slexec_sto&gt;</timingAndTaskingRegistry>
+    <zeroCrossingInfo type="ModelRefInfoRepo.ZeroCrossingInfo" uuid="15d9854b-b2ea-47bf-ba05-a86e20556d74">
+      <direction>63</direction>
+      <isDiscrete>true</isDiscrete>
+      <name>Reset</name>
+      <needsEventNotification>true</needsEventNotification>
+      <needsSolverReset>true</needsSolverReset>
+      <tolerance>-1.0</tolerance>
+      <type>1</type>
+      <width>1</width>
+    </zeroCrossingInfo>
+    <FMUBlockMap type="ModelRefInfoRepo.FMUBlockInfo" uuid="a7c01a94-dedd-48ab-9437-41a7dc08e1d4"/>
+    <codeGenInfo type="ModelRefInfoRepo.CodeGenInformation" uuid="a1318df4-8b19-4bc7-b182-bf6284d5585b"/>
+    <compiledVariantInfos type="ModelRefInfoRepo.CompiledVariantInfoMap" uuid="5d6f6429-1604-4ff8-9044-83aed9ae0b25"/>
+    <configSettingsForConsistencyChecks type="ModelRefInfoRepo.ConfigSettingsForConsistencyChecks" uuid="ba203fcb-da6d-4a20-b6ea-19d49907724b">
+      <consistentOutportInitialization>true</consistentOutportInitialization>
+      <fixedStepSize>.0016666666666666668</fixedStepSize>
+      <frameDiagnosticSetting>2</frameDiagnosticSetting>
+      <hasHybridSampleTime>true</hasHybridSampleTime>
+      <isRateGrouped>true</isRateGrouped>
+      <signalLoggingSaveFormat>2</signalLoggingSaveFormat>
+      <simSIMDOptimization>1</simSIMDOptimization>
+      <solverMode>SOLVER_MODE_MULTITASKING</solverMode>
+      <solverName>ode2</solverName>
+      <solverType>SOLVER_TYPE_FIXEDSTEP</solverType>
+      <hardwareSettings type="ModelRefInfoRepo.HardwareSettings" uuid="d61b24f5-53c9-41c4-ac67-89a12d570788">
+        <prodBitPerChar>8</prodBitPerChar>
+        <prodBitPerDouble>64</prodBitPerDouble>
+        <prodBitPerFloat>32</prodBitPerFloat>
+        <prodBitPerInt>32</prodBitPerInt>
+        <prodBitPerLong>64</prodBitPerLong>
+        <prodBitPerLongLong>64</prodBitPerLongLong>
+        <prodBitPerPointer>64</prodBitPerPointer>
+        <prodBitPerPtrDiffT>64</prodBitPerPtrDiffT>
+        <prodBitPerShort>16</prodBitPerShort>
+        <prodBitPerSizeT>64</prodBitPerSizeT>
+        <prodEndianess>1</prodEndianess>
+        <prodLargestAtomicFloat>1</prodLargestAtomicFloat>
+        <prodLargestAtomicInteger>4</prodLargestAtomicInteger>
+        <prodLongLongMode>true</prodLongLongMode>
+        <prodShiftRight>true</prodShiftRight>
+        <prodWordSize>64</prodWordSize>
+      </hardwareSettings>
+    </configSettingsForConsistencyChecks>
+    <controllableInputRatesMap type="ModelRefInfoRepo.VarTsUIDMap" uuid="72a2fede-266c-41ba-bde6-5788216e5f58"/>
+    <controllableOutputRatesMap type="ModelRefInfoRepo.VarTsUIDMap" uuid="1d7a6d4d-25f8-4d72-b9a3-bb7a092a1e71"/>
+    <dataPortGroup type="ModelRefInfoRepo.DataPortGroup" uuid="7f2bd418-1b7b-4b8f-910d-788b6ef5439c"/>
+    <expFcnUnconnectedDataPortGroup type="ModelRefInfoRepo.DataPortGroup" uuid="0e2e4d16-0ed4-4e34-b01c-1e6654e44efc"/>
+    <interfaceParameterInfo type="ModelRefInfoRepo.InterfaceParameterInfo" uuid="ae630a1c-51fa-4b21-87ad-0eb6b98fc98a"/>
+    <messageInfo type="ModelRefInfoRepo.MessageInformation" uuid="51be2576-cfc7-4161-a55f-161fe7e32e46"/>
+    <methodInfo type="ModelRefInfoRepo.MethodExistenceInfo" uuid="26e2480d-bdc1-4611-acee-5bc52b911472">
+      <hasDerivMethod>true</hasDerivMethod>
+      <hasDisableMethod>true</hasDisableMethod>
+      <hasForcingFunctionMethod>true</hasForcingFunctionMethod>
+      <hasSystemInitializeMethod>true</hasSystemInitializeMethod>
+      <hasSystemResetMethod>true</hasSystemResetMethod>
+      <hasTerminateMethod>true</hasTerminateMethod>
+      <hasUpdateMethod>true</hasUpdateMethod>
+    </methodInfo>
+    <periodicEventPortUnsupportedBlockInfo type="ModelRefInfoRepo.PeriodicEventPortUnsupportedBlockInfo" uuid="fc10cb0a-26b4-40e7-9ce2-62b4f888041e">
+      <deterministicRTBs>Autonomous_Driving_Car_Example2/Rate Transition</deterministicRTBs>
+      <deterministicRTBs>Autonomous_Driving_Car_Example2/Rate Transition1</deterministicRTBs>
+      <deterministicRTBs>Autonomous_Driving_Car_Example2/Rate Transition3</deterministicRTBs>
+      <deterministicRTBs>Autonomous_Driving_Car_Example2/Rate Transition4</deterministicRTBs>
+      <deterministicRTBs>Autonomous_Driving_Car_Example2/Rate Transition5</deterministicRTBs>
+    </periodicEventPortUnsupportedBlockInfo>
+    <portGroupsRequireSameRate type="ModelRefInfoRepo.PortGroupsRequireSameRate" uuid="e354460c-8b5a-417e-b6da-9139e908f57e">
+      <DSMPortGroups type="ModelRefInfoRepo.NameToPortGroupIdxVectMap" uuid="1c3f23e1-232c-4db1-b364-9644dd9412f2"/>
+      <GlobalDSMPortGroups type="ModelRefInfoRepo.NameToPortGroupIdxVectMap" uuid="6ee53d19-2dbc-4823-ab95-4fe46435d639"/>
+      <mergedPortGroups type="ModelRefInfoRepo.NameToPortGroupIdxVectMap" uuid="758dbfea-5ec6-4ccd-8039-fd3ec7288cb6"/>
+    </portGroupsRequireSameRate>
+    <rateBasedMdlGlobalDSMRateSpec type="ModelRefInfoRepo.GlobalDSMRateSpecMap" uuid="195f1db3-40da-4276-87dd-81d9f11635c1"/>
+    <rateSpecOfGlobalDSMAccessedByDescExpFcnMdlMap type="ModelRefInfoRepo.GlobalDSMRateSpecMap" uuid="ce45983d-0bb0-415b-a5ea-3dc9ace6e562"/>
+    <rootBlockDiagramInterface type="ci.Model" uuid="201d2a0a-40bf-4f86-b34d-173cbaf40de6">
+      <p_RootComponentInterface type="ci.ComponentInterface" uuid="626be327-7018-4833-9fbd-5e304dc740b9">
+        <p_Name>Autonomous_Driving_Car_Example2</p_Name>
+        <p_Type>ROOT</p_Type>
+      </p_RootComponentInterface>
+    </rootBlockDiagramInterface>
+    <simulinkFunctions type="ModelRefInfoRepo.SimulinkFunctions" uuid="8aec5219-b667-4572-bf0c-a0d7548680f2">
+      <compSimulinkFunctionCatalog></compSimulinkFunctionCatalog>
+    </simulinkFunctions>
+    <sltpContext type="sltp.mm.core.Context" uuid="913994d2-1066-4eed-9d9c-57fbc7f5ae8e">
+      <defaultEventBehavior type="sltp.mm.core.EventBehavior" uuid="615c40a0-081b-4914-9bab-4fc93d10e2b0"/>
+      <editorState type="sltp.mm.core.EditorState" uuid="3bc23e87-1a02-4d31-b835-1284c9d7ec31">
+        <isSynchronized>true</isSynchronized>
+        <panelState type="sltp.mm.core.EditorPanelState" uuid="2208da90-989a-4e33-9db5-710562ad46a6"/>
+      </editorState>
+      <rootTask type="sltp.mm.core.Task" uuid="25975247-0ebe-41d3-8f66-f83a9402faa1">
+        <context type="sltp.mm.core.Context" uuid="913994d2-1066-4eed-9d9c-57fbc7f5ae8e"/>
+        <explicit>false</explicit>
+        <name>Default</name>
+        <priority>-2147483648</priority>
+        <subgraph type="sltp.mm.core.Graph" uuid="b0100d5a-5f6b-4bda-9243-5fe40de3ee38">
+          <connections type="sltp.mm.core.Connection" uuid="40d2037f-3acc-456d-8ad5-d292eb467281">
+            <dst type="sltp.mm.core.Task" uuid="b601d7ed-d5d5-42e1-8f9f-8f8d3ca06e6b"/>
+            <src type="sltp.mm.core.Task" uuid="06bd3179-5ccd-49f2-a158-7f805c6db381"/>
+          </connections>
+          <connections type="sltp.mm.core.Connection" uuid="9cf551dd-8700-4487-911c-531adf6c7198">
+            <dst type="sltp.mm.core.Task" uuid="16c6e15a-56c3-4269-b120-c190225ab381"/>
+            <src type="sltp.mm.core.Task" uuid="b601d7ed-d5d5-42e1-8f9f-8f8d3ca06e6b"/>
+          </connections>
+          <connections type="sltp.mm.core.Connection" uuid="029727d1-3d9a-4514-ac90-3b404998f6e1">
+            <dst type="sltp.mm.core.Task" uuid="06bd3179-5ccd-49f2-a158-7f805c6db381"/>
+            <src type="sltp.mm.core.Task" uuid="b601d7ed-d5d5-42e1-8f9f-8f8d3ca06e6b"/>
+          </connections>
+          <connections type="sltp.mm.core.Connection" uuid="8fa92282-2106-461a-b0bb-cea4ddd00f48">
+            <dst type="sltp.mm.core.Task" uuid="06bd3179-5ccd-49f2-a158-7f805c6db381"/>
+            <src type="sltp.mm.core.Task" uuid="16c6e15a-56c3-4269-b120-c190225ab381"/>
+          </connections>
+          <tasks type="sltp.mm.core.Task" uuid="06bd3179-5ccd-49f2-a158-7f805c6db381">
+            <baseTask>true</baseTask>
+            <context type="sltp.mm.core.Context" uuid="913994d2-1066-4eed-9d9c-57fbc7f5ae8e"/>
+            <explicit>false</explicit>
+            <id>1</id>
+            <inConnections type="sltp.mm.core.Connection" uuid="029727d1-3d9a-4514-ac90-3b404998f6e1"/>
+            <inConnections type="sltp.mm.core.Connection" uuid="8fa92282-2106-461a-b0bb-cea4ddd00f48"/>
+            <isTimed>true</isTimed>
+            <name>Cont</name>
+            <outConnections type="sltp.mm.core.Connection" uuid="40d2037f-3acc-456d-8ad5-d292eb467281"/>
+            <priority>40</priority>
+            <rates type="sltp.mm.core.Rate" uuid="43a86d3a-91e9-4321-942d-9ff0a101a37b">
+              <annotation>Cont</annotation>
+              <color>255</color>
+              <hasBlocks>true</hasBlocks>
+              <rateIndex>0</rateIndex>
+              <rateSpec type="sltp.mm.core.RateSpec">
+                <period>0.0</period>
+              </rateSpec>
+              <sti>0</sti>
+            </rates>
+            <rates type="sltp.mm.core.Rate" uuid="9acd840d-32ed-4bf5-904c-005e84ee299d">
+              <annotation>D1</annotation>
+              <color>-436207361</color>
+              <hasBlocks>true</hasBlocks>
+              <rateIndex>1</rateIndex>
+              <rateSpec type="sltp.mm.core.RateSpec">
+                <period>.0016666666666666668</period>
+              </rateSpec>
+              <sti>1</sti>
+            </rates>
+          </tasks>
+          <tasks type="sltp.mm.core.Task" uuid="b601d7ed-d5d5-42e1-8f9f-8f8d3ca06e6b">
+            <context type="sltp.mm.core.Context" uuid="913994d2-1066-4eed-9d9c-57fbc7f5ae8e"/>
+            <explicit>false</explicit>
+            <id>2</id>
+            <inConnections type="sltp.mm.core.Connection" uuid="40d2037f-3acc-456d-8ad5-d292eb467281"/>
+            <isTimed>true</isTimed>
+            <name>D2</name>
+            <outConnections type="sltp.mm.core.Connection" uuid="9cf551dd-8700-4487-911c-531adf6c7198"/>
+            <outConnections type="sltp.mm.core.Connection" uuid="029727d1-3d9a-4514-ac90-3b404998f6e1"/>
+            <priority>39</priority>
+            <rates type="sltp.mm.core.Rate" uuid="59eb1d9b-b8fb-427c-a802-0785fe370e91">
+              <annotation>D2</annotation>
+              <color>13697279</color>
+              <hasBlocks>true</hasBlocks>
+              <rateIndex>2</rateIndex>
+              <rateSpec type="sltp.mm.core.RateSpec">
+                <period>.008333333333333333</period>
+              </rateSpec>
+              <sti>2</sti>
+            </rates>
+          </tasks>
+          <tasks type="sltp.mm.core.Task" uuid="16c6e15a-56c3-4269-b120-c190225ab381">
+            <context type="sltp.mm.core.Context" uuid="913994d2-1066-4eed-9d9c-57fbc7f5ae8e"/>
+            <explicit>false</explicit>
+            <id>3</id>
+            <inConnections type="sltp.mm.core.Connection" uuid="9cf551dd-8700-4487-911c-531adf6c7198"/>
+            <isTimed>true</isTimed>
+            <name>D3</name>
+            <outConnections type="sltp.mm.core.Connection" uuid="8fa92282-2106-461a-b0bb-cea4ddd00f48"/>
+            <priority>38</priority>
+            <rates type="sltp.mm.core.Rate" uuid="0947ba23-260a-436b-9fec-0489b1bbe319">
+              <annotation>D3</annotation>
+              <color>52479</color>
+              <hasBlocks>true</hasBlocks>
+              <rateIndex>3</rateIndex>
+              <rateSpec type="sltp.mm.core.RateSpec">
+                <period>.01</period>
+              </rateSpec>
+              <sti>3</sti>
+            </rates>
+          </tasks>
+        </subgraph>
+      </rootTask>
+    </sltpContext>
+    <stateWriterToOwnerMap type="ModelRefInfoRepo.StateWriterInfo" uuid="e3eedacb-3991-4a20-8fd0-b9e4b75a92ab"/>
+    <stoClientDataRegistry type="sto.ClientDataRegistry" uuid="dc816818-fbea-4a96-8868-2e95458b87e3">
+      <dataSets type="sto.ClientClockNamedDataSet" uuid="94de66bc-2243-4699-b6a7-57c296fc6350">
+        <tag>sltpEvents</tag>
+      </dataSets>
+      <dataSets type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="b498866f-10f1-46e6-810a-86e38396f8c4">
+        <tag>sltpTaskGroups</tag>
+      </dataSets>
+      <dataSets type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="7018ac57-ed8b-49ed-b101-035f6f266a16">
+        <dSet type="ModelRefInfoRepo.SltpTaskData" uuid="e7cfa3d3-ba5f-4c0b-9ab1-617f5cd4b849"/>
+        <dSet type="ModelRefInfoRepo.SltpTaskData" uuid="5604c7eb-a793-4b8b-9d90-ffb8d1f66ea7"/>
+        <dSet type="ModelRefInfoRepo.SltpTaskData" uuid="00aa01c9-a267-429f-86bb-b32fd04d5081"/>
+        <tSet type="ModelRefInfoRepo.SltpTaskData" uuid="e7cfa3d3-ba5f-4c0b-9ab1-617f5cd4b849">
+          <dataName>Cont</dataName>
+          <linkedSet type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="7018ac57-ed8b-49ed-b101-035f6f266a16"/>
+          <id type="sto.TaskHierarchyElementId">
+            <clockId>Autonomous_Driving_Car_Example2::defaultTimer</clockId>
+            <id>_task0</id>
+          </id>
+        </tSet>
+        <tSet type="ModelRefInfoRepo.SltpTaskData" uuid="5604c7eb-a793-4b8b-9d90-ffb8d1f66ea7">
+          <dataName>D2</dataName>
+          <linkedSet type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="7018ac57-ed8b-49ed-b101-035f6f266a16"/>
+          <id type="sto.TaskHierarchyElementId">
+            <clockId>Autonomous_Driving_Car_Example2::defaultTimer</clockId>
+            <id>_task1</id>
+          </id>
+        </tSet>
+        <tSet type="ModelRefInfoRepo.SltpTaskData" uuid="00aa01c9-a267-429f-86bb-b32fd04d5081">
+          <dataName>D3</dataName>
+          <linkedSet type="sto.ClientTaskHierarchyElementNamedDataSet" uuid="7018ac57-ed8b-49ed-b101-035f6f266a16"/>
+          <id type="sto.TaskHierarchyElementId">
+            <clockId>Autonomous_Driving_Car_Example2::defaultTimer</clockId>
+            <id>_task2</id>
+          </id>
+        </tSet>
+        <tag>sltpTasks</tag>
+      </dataSets>
+    </stoClientDataRegistry>
+    <varTsUIDMap type="ModelRefInfoRepo.VarTsUIDMap" uuid="123219b1-2a55-4399-9a89-b02cd3b97267"/>
+  </ModelRefInfoRepo.ModelRefInfoRoot>
+</MF0>
