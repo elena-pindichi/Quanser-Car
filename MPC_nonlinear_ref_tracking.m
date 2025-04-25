@@ -3,21 +3,23 @@ clc; close all; clear;
 % Load CasADi
 % addpath('C:\Users\pindiche\Documents\MATLAB\casadi-3.6.7-windows64-matlab2018b\')
 % addpath('C:\Users\Elena\Documents\MATLAB\casadi-3.6.6-windows64-matlab2018b\')
-% addpath('C:\Users\bajdus\Documents\MATLAB\casadi-3.6.7-windows64-matlab2018b\')
+addpath('C:\Users\bajdus\Documents\Qcar2\Collision-Avoidance-Algorithm\SteeringWheelRobot\casadi-3.6.7-windows64-matlab2018b\')
 import casadi.*;
 load("trajectory.mat")
 
 %% Parameters
 N_pred_val = 12;        % Prediction horizon
 Q_val = 10000000;          % State weight value
+Q_val = 1000;
 R_val = 2;              % Input weight value
 P_val = 1000;           % Terminal state value
+P_val = 10;
 l = 0.256;
 
 % Define prediction and simulation steps
 Ts = 0.1;                           % Sampling time
 Npred = N_pred_val;                 % Prediction horizon
-Nsim = 650;                        % Number of simulation steps
+Nsim = 1200;                        % Number of simulation steps
 
 % Define system dimensions
 dx = 4;              % State dimensions: x, y, theta
@@ -30,7 +32,7 @@ u0 = zeros(du, 1);
 %% Trajectories
 % Time
 t = 0 : 0.1 : 50;
-t = 0 : 0.1 : 70;
+t = 0 : 0.1 : 2000;
 
 % % % % % % % % % % % % % % % % % 
 % Line reference
@@ -38,11 +40,6 @@ alpha   = 0.5;
 beta    = 0.8;
 xr = alpha * t;     dxr = alpha + 0*t;    ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
 yr = beta * t;      dyr = beta + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
-
-% Stairs trajectory
-% st = zeros(1,length(t))+[2*ones(1, 100), 5*ones(1,300), 4*ones(1, length(t)-400)];
-% xr = t;     dxr = 1 + 0*t;     ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
-% yr = st;    dyr = 0 + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Square trajectory
 n = 700;
@@ -74,14 +71,19 @@ yr(3*quarter+1:end) = linspace(side_length, 0, n - 3*quarter);
 dxr = gradient(xr, 0.1);        ddxr = gradient(dxr, 0.1);      dddxr = gradient(ddxr, 0.1);   
 dyr = gradient(yr, 0.1);        ddyr = gradient(dyr, 0.1);      dddyr = gradient(ddyr, 0.1); 
 
+% Stairs trajectory
+% st = zeros(1,length(t))+[2*ones(1, 100), 5*ones(1,300), 4*ones(1, length(t)-400)];
+% xr = t;     dxr = 1 + 0*t;     ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
+% yr = st;    dyr = 0 + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
+
 % Circle reference
 % alpha   = 5;
 % beta    = 5;
 % ang     = 0.2;
 % xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
 % yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
-% 
-% % Spline reference
+
+% Spline reference
 % xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
 % yr = yref;      dyr = dyref;        ddyr = ddyref;      dddyr = dddyref;
 % % % % % % % % % % % % % % % % %
@@ -101,7 +103,7 @@ xref = [xr; yr; thetar; phir];
 %% Constraints 
 Vmin = -1; Vmax = 1;             % Velocity limits
 omegamin = -1; omegamax = 1;     % Angular velocity limits
-phimax = pi/3;                   % Front wheels orientation limits
+phimax = pi/2;                   % Front wheels orientation limits
 
 % Weights for cost function
 Q = Q_val * eye(dx);
@@ -267,7 +269,7 @@ figure
 hold on
 height = 0.4; width = 0.2;
 st = 50;
-% st = 200;
+st = 200;
 k=1;
 while k < Nsim
    drawSteeringCar(xsim(:,k), l, height, width)

@@ -1,22 +1,26 @@
 clc; close all; clear;
 
 % Load CasADi
-addpath('C:\Users\pindiche\Documents\MATLAB\casadi-3.6.7-windows64-matlab2018b\')
+% addpath('C:\Users\pindiche\Documents\MATLAB\casadi-3.6.7-windows64-matlab2018b\')
 % addpath('C:\Users\Elena\Documents\MATLAB\casadi-3.6.6-windows64-matlab2018b\')
+addpath('C:\Users\bajdus\Documents\Qcar2\Collision-Avoidance-Algorithm\SteeringWheelRobot\casadi-3.6.7-windows64-matlab2018b\')
 import casadi.*;
 load("trajectory.mat")
 
 %% Parameters
 N_pred_val = 12;        % Prediction horizon
+% N_pred_val = 15;
 Q_val = 10000000;          % State weight value
+Q_val = 1000;
 R_val = 2;              % Input weight value
 P_val = 1000;           % Terminal state value
+P_val = 10;
 l = 0.256;
 
 % Define prediction and simulation steps
 Ts = 0.1;                           % Sampling time
 Npred = N_pred_val;                 % Prediction horizon
-Nsim = 1500;                        % Number of simulation steps
+Nsim = 1200;                        % Number of simulation steps
 
 % Define system dimensions
 dx = 4;              % State dimensions: x, y, theta
@@ -29,7 +33,7 @@ u0 = zeros(du, 1);
 %% Trajectories
 % Time
 t = 0 : 0.1 : 50;
-t = 0 : 0.1 : 200;
+t = 0 : 0.1 : 2000;
 
 % % % % % % % % % % % % % % % % % 
 % Line reference
@@ -51,8 +55,8 @@ xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*an
 yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
 
 % Spline reference
-xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
-yr = yref;      dyr = dyref;        ddyr = ddyref;      dddyr = dddyref;
+% xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
+% yr = yref;      dyr = dyref;        ddyr = ddyref;      dddyr = dddyref;
 % % % % % % % % % % % % % % % % %
 
 % Computing real input reference
