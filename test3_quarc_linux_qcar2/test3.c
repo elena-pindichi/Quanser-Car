@@ -6,9 +6,9 @@
  *
  * Code generation for model "test3".
  *
- * Model version              : 15.44
+ * Model version              : 15.48
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Thu Apr 24 16:07:37 2025
+ * C source code generated on : Tue Apr 29 15:35:05 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -20,8 +20,8 @@
 #include "test3.h"
 #include "rtwtypes.h"
 #include "test3_types.h"
-#include <math.h>
 #include "rt_nonfinite.h"
+#include <math.h>
 #include <string.h>
 #include "test3_private.h"
 #include <stdlib.h>
@@ -53,15 +53,20 @@ static void test3_emxInit_real_T(emxArray_real_T_test3_T **pEmxArray, int32_T
   numDimensions);
 static void test3_emxEnsureCapacity_real_T(emxArray_real_T_test3_T *emxArray,
   int32_T oldNumel);
+static void test3_emxFree_real_T(emxArray_real_T_test3_T **pEmxArray);
+static void test3_eML_blk_kernel_anonFcn2(const real_T x0[4], real_T N, const
+  emxArray_real_T_test3_T *u, emxArray_real_T_test3_T *varargout_1,
+  emxArray_real_T_test3_T *varargout_2);
 static void test3_emxInit_int32_T(emxArray_int32_T_test3_T **pEmxArray, int32_T
   numDimensions);
-static void emxInitStruct_s_PLLLBDg14rHiR3q(s_PLLLBDg14rHiR3qEakQweE_test_T
+static void emxInitStruct_s_0Mw3d4AlMrOoSnA(s_0Mw3d4AlMrOoSnA1Aci4tH_test_T
   *pStruct);
 static void test3_emxEnsureCapacity_int32_T(emxArray_int32_T_test3_T *emxArray,
   int32_T oldNumel);
-static void test3_factoryConstruct(int32_T nVarMax, int32_T mConstrMax, const
-  emxArray_real_T_test3_T *x0, s_PLLLBDg14rHiR3qEakQweE_test_T *obj);
-static void emxInitStruct_s_IhzSggsSakhYrqT(s_IhzSggsSakhYrqTLyRPh4_test3_T
+static void test3_factoryConstruct(int32_T nVarMax, int32_T mConstrMax, int32_T
+  mIneq, int32_T mEq, const emxArray_real_T_test3_T *x0, int32_T mNonlinIneq,
+  int32_T mNonlinEq, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *obj);
+static void emxInitStruct_s_orfxVcOir3wnnUk(s_orfxVcOir3wnnUkquctgqH_test_T
   *pStruct);
 static void emxInitStruct_anonymous_functio(anonymous_function_test3_T *pStruct);
 static void emxInitStruct_coder_in_kyv1kfe2(coder_internal_stickyStruct_1_T
@@ -84,15 +89,16 @@ static void emxInitStruct_coder_internal_st(coder_internal_stickyStruct_9_T
   *pStruct);
 static void test3_emxInit_boolean_T(emxArray_boolean_T_test3_T **pEmxArray,
   int32_T numDimensions);
-static void emxInitStruct_s_ZbRibKlg6Coahma(s_ZbRibKlg6CoahmaZOjRYjD_test_T
+static void emxInitStruct_s_tzdJIwhhx1jgWYI(s_tzdJIwhhx1jgWYIJOPrjUD_test_T
   *pStruct);
 static void tes_emxEnsureCapacity_boolean_T(emxArray_boolean_T_test3_T *emxArray,
   int32_T oldNumel);
-static void test3_factoryConstruct_i(const real_T objfun_workspace_x0[3], const
+static void test3_factoryConstruct_i(const real_T objfun_workspace_x0[4], const
   emxArray_real_T_test3_T *objfun_workspace_xref, const emxArray_real_T_test3_T *
-  objfun_workspace_uref, real_T objfun_workspace_N, int32_T nVar, const
-  emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub,
-  s_ZbRibKlg6CoahmaZOjRYjD_test_T *obj);
+  objfun_workspace_uref, real_T objfun_workspace_N, const
+  s6lIrH89xwD47fl4e1dZNiE_test3_T nonlin_workspace, int32_T nVar, int32_T mCineq,
+  int32_T mCeq, const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T
+  *ub, s_tzdJIwhhx1jgWYIJOPrjUD_test_T *obj);
 static void emxInitStruct_s_l1Gll5dfO9DpqQr(s_l1Gll5dfO9DpqQrvRqAf7E_test_T
   *pStruct);
 static void emxInitStruct_s_vdGXtauKr5HuLAq(s_vdGXtauKr5HuLAqoxBLhXH_test_T
@@ -101,56 +107,103 @@ static void emxInitStruct_s_saWPFfMboRdWeRq(s_saWPFfMboRdWeRqIEJ4x8C_test_T
   *pStruct);
 static void emxInitStruct_s_pIaUYPkQBTqVmAK(s_pIaUYPkQBTqVmAKxFPiGQF_test_T
   *pStruct);
-static void emxInitStruct_s_k8kXP0ntDjd4qxs(s_k8kXP0ntDjd4qxsrByEVbG_test_T
+static void emxInitStruct_s_Wd0eYcEyLXg48EJ(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *pStruct);
-static void test3_factoryConstruct_ir(int32_T nVar, int32_T nVarMax, int32_T
-  mConstrMax, s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj);
+static void test3_factoryConstruct_ir(int32_T mIneqMax, int32_T mEqMax, int32_T
+  nVar, int32_T nVarMax, int32_T mConstrMax, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *obj);
 static void test3_compressBounds(int32_T nVar, emxArray_int32_T_test3_T *indexLB,
   emxArray_int32_T_test3_T *indexUB, emxArray_int32_T_test3_T *indexFixed, const
   emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub, int32_T *mLB,
   int32_T *mUB, int32_T *mFixed);
 static void test3_binary_expand_op(real_T in1[2], const emxArray_real_T_test3_T *
   in2, int32_T in3, int32_T in4, const emxArray_real_T_test3_T *in5, int32_T in6);
-static void test3_emxFree_real_T(emxArray_real_T_test3_T **pEmxArray);
-static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[3], const
+static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[4], const
   emxArray_real_T_test3_T *xref, const emxArray_real_T_test3_T *uref, real_T N,
   const emxArray_real_T_test3_T *u);
-static boolean_T test3_computeFiniteDifferences(s_ZbRibKlg6CoahmaZOjRYjD_test_T *
-  obj, real_T fCurrent, emxArray_real_T_test3_T *xk, emxArray_real_T_test3_T
-  *gradf, const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub);
-static void test3_modifyOverheadPhaseOne_(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj);
-static void test3_setProblemType(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj, int32_T
+static void test3_emxFree_int32_T(emxArray_int32_T_test3_T **pEmxArray);
+static int32_T test3_checkVectorNonFinite(int32_T N, const
+  emxArray_real_T_test3_T *vec, int32_T iv0);
+static int32_T test3_computeConstraints_(int32_T obj_next_next_next_next_b_value,
+  int32_T obj_next_next_next_next_next_b_, const real_T
+  obj_next_next_next_next_next_ne[4], real_T obj_next_next_next_next_next__0,
+  const emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *Cineq_workspace,
+  int32_T ineq0, emxArray_real_T_test3_T *Ceq_workspace, int32_T eq0);
+static boolean_T test3_finDiffEvalAndChkErr(const real_T
+  obj_objfun_workspace_x0[4], const emxArray_real_T_test3_T
+  *obj_objfun_workspace_xref, const emxArray_real_T_test3_T
+  *obj_objfun_workspace_uref, real_T obj_objfun_workspace_N, const real_T
+  obj_nonlin_workspace_x0[4], real_T obj_nonlin_workspace_N, int32_T obj_mIneq,
+  int32_T obj_mEq, real_T *fplus, emxArray_real_T_test3_T *cIneqPlus,
+  emxArray_real_T_test3_T *cEqPlus, int32_T dim, real_T delta,
+  emxArray_real_T_test3_T *xk);
+static boolean_T test3_computeFiniteDifferences(s_tzdJIwhhx1jgWYIJOPrjUD_test_T *
+  obj, real_T fCurrent, const emxArray_real_T_test3_T *cIneqCurrent, int32_T
+  ineq0, const emxArray_real_T_test3_T *cEqCurrent, int32_T eq0,
+  emxArray_real_T_test3_T *xk, emxArray_real_T_test3_T *gradf,
+  emxArray_real_T_test3_T *JacCineqTrans, int32_T CineqColStart, int32_T ldJI,
+  emxArray_real_T_test3_T *JacCeqTrans, int32_T CeqColStart, int32_T ldJE, const
+  emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub);
+static void test3_updateWorkingSetForNewQP(const emxArray_real_T_test3_T *xk,
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet, int32_T mIneq, int32_T
+  mNonlinIneq, const emxArray_real_T_test3_T *cIneq, int32_T mEq, int32_T
+  mNonlinEq, const emxArray_real_T_test3_T *cEq, int32_T mLB, const
+  emxArray_real_T_test3_T *lb, int32_T mUB, const emxArray_real_T_test3_T *ub,
+  int32_T mFixed);
+static void test3_modifyOverheadPhaseOne_(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj);
+static void test3_setProblemType(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj, int32_T
   PROBLEM_TYPE);
-static void test3_computeGradLag(emxArray_real_T_test3_T *workspace, int32_T
-  nVar, const emxArray_real_T_test3_T *grad, const emxArray_int32_T_test3_T
-  *finiteFixed, int32_T mFixed, const emxArray_int32_T_test3_T *finiteLB,
-  int32_T mLB, const emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const
-  emxArray_real_T_test3_T *lambda);
+static void test3_xgemv(int32_T m, int32_T n, const emxArray_real_T_test3_T *A,
+  int32_T lda, const emxArray_real_T_test3_T *x, int32_T ix0,
+  emxArray_real_T_test3_T *y);
+static void test3_computeGradLag(emxArray_real_T_test3_T *workspace, int32_T ldA,
+  int32_T nVar, const emxArray_real_T_test3_T *grad, int32_T mIneq, const
+  emxArray_real_T_test3_T *AineqTrans, int32_T mEq, const
+  emxArray_real_T_test3_T *AeqTrans, const emxArray_int32_T_test3_T *finiteFixed,
+  int32_T mFixed, const emxArray_int32_T_test3_T *finiteLB, int32_T mLB, const
+  emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const emxArray_real_T_test3_T
+  *lambda);
+static real_T test3_computePrimalFeasError(const emxArray_real_T_test3_T *x,
+  int32_T mLinIneq, int32_T mNonlinIneq, const emxArray_real_T_test3_T *cIneq,
+  int32_T mLinEq, int32_T mNonlinEq, const emxArray_real_T_test3_T *cEq, const
+  emxArray_int32_T_test3_T *finiteLB, int32_T mLB, const emxArray_real_T_test3_T
+  *lb, const emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const
+  emxArray_real_T_test3_T *ub);
 static void test3_computeDualFeasError(int32_T nVar, const
   emxArray_real_T_test3_T *gradLag, boolean_T *gradOK, real_T *val);
 static void test3_test_exit(sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
-  const s_k8kXP0ntDjd4qxsrByEVbG_test_T *WorkingSet,
-  s_PLLLBDg14rHiR3qEakQweE_test_T *TrialState, const emxArray_real_T_test3_T *lb,
+  const s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet,
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState, const emxArray_real_T_test3_T *lb,
   const emxArray_real_T_test3_T *ub, int32_T runTimeOptions_MaxFunctionEvalu,
   boolean_T *Flags_gradOK, boolean_T *Flags_fevalOK, boolean_T *Flags_done,
   boolean_T *Flags_stepAccepted, boolean_T *Flags_failedLineSearch, int32_T
   *Flags_stepType);
-static real_T test3_computeComplError(const emxArray_real_T_test3_T *xCurrent,
-  const emxArray_int32_T_test3_T *finiteLB, int32_T mLB, const
-  emxArray_real_T_test3_T *lb, const emxArray_int32_T_test3_T *finiteUB, int32_T
-  mUB, const emxArray_real_T_test3_T *ub, const emxArray_real_T_test3_T *lambda,
-  int32_T iL0);
+static void test3_saveJacobian(s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *obj, int32_T
+  nVar, int32_T mIneq, const emxArray_real_T_test3_T *JacCineqTrans, int32_T
+  ineqCol0, int32_T mEq, const emxArray_real_T_test3_T *JacCeqTrans, int32_T
+  eqCol0, int32_T ldJ);
+static real_T test3_computeComplError(const emxArray_real_T_test3_T
+  *fscales_cineq_constraint, const emxArray_real_T_test3_T *xCurrent, int32_T
+  mIneq, const emxArray_real_T_test3_T *cIneq, const emxArray_int32_T_test3_T
+  *finiteLB, int32_T mLB, const emxArray_real_T_test3_T *lb, const
+  emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const emxArray_real_T_test3_T
+  *ub, const emxArray_real_T_test3_T *lambda, int32_T iL0);
+static void test3_xgemv_b(int32_T m, int32_T n, const emxArray_real_T_test3_T *A,
+  int32_T lda, const emxArray_real_T_test3_T *x, int32_T ix0,
+  emxArray_real_T_test3_T *y);
 static void test3_computeGradLag_l(emxArray_real_T_test3_T *workspace, int32_T
-  nVar, const emxArray_real_T_test3_T *grad, const emxArray_int32_T_test3_T
-  *finiteFixed, int32_T mFixed, const emxArray_int32_T_test3_T *finiteLB,
-  int32_T mLB, const emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const
-  emxArray_real_T_test3_T *lambda);
+  ldA, int32_T nVar, const emxArray_real_T_test3_T *grad, int32_T mIneq, const
+  emxArray_real_T_test3_T *AineqTrans, int32_T mEq, const
+  emxArray_real_T_test3_T *AeqTrans, const emxArray_int32_T_test3_T *finiteFixed,
+  int32_T mFixed, const emxArray_int32_T_test3_T *finiteLB, int32_T mLB, const
+  emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const emxArray_real_T_test3_T
+  *lambda);
 static real_T test3_xnrm2(int32_T n, const emxArray_real_T_test3_T *x, int32_T
   ix0);
 static real_T test3_xzlarfg(int32_T n, real_T *alpha1, emxArray_real_T_test3_T
   *x, int32_T ix0);
-static void test3_xgemv(int32_T m, int32_T n, const emxArray_real_T_test3_T *A,
-  int32_T ia0, int32_T lda, const emxArray_real_T_test3_T *x, int32_T ix0,
+static void test3_xgemv_bu(int32_T m, int32_T n, const emxArray_real_T_test3_T
+  *A, int32_T ia0, int32_T lda, const emxArray_real_T_test3_T *x, int32_T ix0,
   emxArray_real_T_test3_T *y);
 static void test3_xgerc(int32_T m, int32_T n, real_T alpha1, int32_T ix0, const
   emxArray_real_T_test3_T *y, emxArray_real_T_test3_T *A, int32_T ia0, int32_T
@@ -163,8 +216,8 @@ static void test3_qrf(emxArray_real_T_test3_T *A, int32_T m, int32_T n, int32_T
 static void test3_xgeqp3(emxArray_real_T_test3_T *A, int32_T m, int32_T n,
   emxArray_int32_T_test3_T *jpvt, emxArray_real_T_test3_T *tau);
 static void test3_computeQ_(s_l1Gll5dfO9DpqQrvRqAf7E_test_T *obj, int32_T nrows);
-static void test3_xgemv_b(int32_T m, int32_T n, const emxArray_real_T_test3_T *A,
-  int32_T lda, const emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *y);
+static void test3_xgemv_buj(int32_T m, int32_T n, const emxArray_real_T_test3_T *
+  A, int32_T lda, const emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *y);
 static void test3_sortLambdaQP(emxArray_real_T_test3_T *lambda, int32_T
   WorkingSet_nActiveConstr, const int32_T WorkingSet_sizes[5], const int32_T
   WorkingSet_isActiveIdx[6], const emxArray_int32_T_test3_T *WorkingSet_Wid,
@@ -172,48 +225,60 @@ static void test3_sortLambdaQP(emxArray_real_T_test3_T *lambda, int32_T
   workspace);
 static void test3_test_exit_k(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
   s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, sG8JZ69axY52WWR6RKyApQC_test3_T
-  *MeritFunction, const s_k8kXP0ntDjd4qxsrByEVbG_test_T *WorkingSet,
-  s_PLLLBDg14rHiR3qEakQweE_test_T *TrialState, s_l1Gll5dfO9DpqQrvRqAf7E_test_T
-  *QRManager, const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T
-  *ub, int32_T runTimeOptions_MaxFunctionEvalu);
+  *MeritFunction, const emxArray_real_T_test3_T *fscales_cineq_constraint,
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T
+  *TrialState, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager, const
+  emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub, int32_T
+  runTimeOptions_MaxFunctionEvalu);
 static boolean_T test3_BFGSUpdate(int32_T nvar, emxArray_real_T_test3_T *Bk,
   const emxArray_real_T_test3_T *sk, emxArray_real_T_test3_T *yk,
   emxArray_real_T_test3_T *workspace);
-static void test3_emxCopy_real_T_0(emxArray_real_T_0_test3_T *dst, const
-  emxArray_real_T_0_test3_T *src);
+static void test3_xgemv_bujmjslzp1(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T lda, const emxArray_real_T_test3_T *x,
+  emxArray_real_T_test3_T *y);
+static void test3_countsort(emxArray_int32_T_test3_T *x, int32_T xLen,
+  emxArray_int32_T_test3_T *workspace, int32_T xMin, int32_T xMax);
+static void test3_removeConstr(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj, int32_T
+  idx_global);
+static void test3_factorQR(s_l1Gll5dfO9DpqQrvRqAf7E_test_T *obj, const
+  emxArray_real_T_test3_T *A, int32_T mrows, int32_T ncols, int32_T ldA);
+static void test3_xgemv_bujm(int32_T m, int32_T n, const emxArray_real_T_test3_T
+  *A, int32_T lda, const emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *y);
+static void test3_xgemv_bujmj(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T lda, const emxArray_real_T_test3_T *x,
+  int32_T ix0, emxArray_real_T_test3_T *y);
+static real_T test3_maxConstraintViolation(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj,
+  const emxArray_real_T_test3_T *x, int32_T ix0);
+static boolean_T test3_feasibleX0ForWorkingSet(emxArray_real_T_test3_T
+  *workspace, emxArray_real_T_test3_T *xCurrent, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager);
+static void test3_xgemv_bujmjs(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T lda, const emxArray_real_T_test3_T *x,
+  emxArray_real_T_test3_T *y);
+static real_T test3_maxConstraintViolation_h(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *obj, const emxArray_real_T_test3_T *x);
+static void test3_PresolveWorkingSet(s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager);
 static void test3_emxCopy_real_T(emxArray_real_T_test3_T **dst,
   emxArray_real_T_test3_T * const *src);
 static void test3_emxCopy_int32_T(emxArray_int32_T_test3_T **dst,
   emxArray_int32_T_test3_T * const *src);
-static void test3_emxCopyMatrix_int32_T1(int32_T dst[5], const int32_T src[5]);
-static void test3_emxCopyMatrix_int32_T2(int32_T dst[6], const int32_T src[6]);
+static void test3_emxCopyMatrix_int32_T(int32_T dst[5], const int32_T src[5]);
+static void test3_emxCopyMatrix_int32_T1(int32_T dst[6], const int32_T src[6]);
 static void test3_emxCopy_boolean_T(emxArray_boolean_T_test3_T **dst,
   emxArray_boolean_T_test3_T * const *src);
-static void emxCopyStruct_s_k8kXP0ntDjd4qxs(s_k8kXP0ntDjd4qxsrByEVbG_test_T *dst,
-  const s_k8kXP0ntDjd4qxsrByEVbG_test_T *src);
-static void test3_countsort(emxArray_int32_T_test3_T *x, int32_T xLen,
-  emxArray_int32_T_test3_T *workspace, int32_T xMin, int32_T xMax);
-static void test3_removeConstr(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj, int32_T
-  idx_global);
-static void test3_factorQR(s_l1Gll5dfO9DpqQrvRqAf7E_test_T *obj, const
-  emxArray_real_T_test3_T *A, int32_T mrows, int32_T ncols, int32_T ldA);
-static boolean_T test3_feasibleX0ForWorkingSet(emxArray_real_T_test3_T
-  *workspace, emxArray_real_T_test3_T *xCurrent, const
-  s_k8kXP0ntDjd4qxsrByEVbG_test_T *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T
-  *qrmanager);
-static real_T test3_maxConstraintViolation(const s_k8kXP0ntDjd4qxsrByEVbG_test_T
-  *obj, const emxArray_real_T_test3_T *x);
-static void test3_PresolveWorkingSet(s_PLLLBDg14rHiR3qEakQweE_test_T *solution,
-  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_k8kXP0ntDjd4qxsrByEVbG_test_T
-  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager);
+static void emxCopyStruct_s_Wd0eYcEyLXg48EJ(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *dst,
+  const s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *src);
 static void test3_linearForm_(boolean_T obj_hasLinear, int32_T obj_nvar,
   emxArray_real_T_test3_T *workspace, const emxArray_real_T_test3_T *H, const
   emxArray_real_T_test3_T *f, const emxArray_real_T_test3_T *x);
 static real_T test3_computeFval(const s_saWPFfMboRdWeRqIEJ4x8C_test_T *obj,
   emxArray_real_T_test3_T *workspace, const emxArray_real_T_test3_T *H, const
   emxArray_real_T_test3_T *f, const emxArray_real_T_test3_T *x);
-static void test3_xgemv_bu(int32_T m, int32_T n, const emxArray_real_T_test3_T
-  *A, int32_T lda, const emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *y);
+static void test3_xgemv_bujmjsl(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T lda, const emxArray_real_T_test3_T *x,
+  emxArray_real_T_test3_T *y);
 static void test3_computeGrad_StoreHx(s_saWPFfMboRdWeRqIEJ4x8C_test_T *obj,
   const emxArray_real_T_test3_T *H, const emxArray_real_T_test3_T *f, const
   emxArray_real_T_test3_T *x);
@@ -235,9 +300,9 @@ static void test3_fullColLDL2_(s_vdGXtauKr5HuLAqoxBLhXH_test_T *obj, int32_T
 static void test3_partialColLDL3_(s_vdGXtauKr5HuLAqoxBLhXH_test_T *obj, int32_T
   LD_offset, int32_T NColsRemain);
 static int32_T test3_xpotrf(int32_T n, emxArray_real_T_test3_T *A, int32_T lda);
-static void test3_xgemv_buj(int32_T m, int32_T n, const emxArray_real_T_test3_T *
-  A, int32_T ia0, int32_T lda, const emxArray_real_T_test3_T *x,
-  emxArray_real_T_test3_T *y);
+static void test3_xgemv_bujmjslz(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T ia0, int32_T lda, const
+  emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *y);
 static void test3_solve(const s_vdGXtauKr5HuLAqoxBLhXH_test_T *obj,
   emxArray_real_T_test3_T *rhs);
 static void test3_factor(s_vdGXtauKr5HuLAqoxBLhXH_test_T *obj, const
@@ -245,67 +310,90 @@ static void test3_factor(s_vdGXtauKr5HuLAqoxBLhXH_test_T *obj, const
 static void test3_solve_k(const s_vdGXtauKr5HuLAqoxBLhXH_test_T *obj,
   emxArray_real_T_test3_T *rhs);
 static void test3_compute_deltax(const emxArray_real_T_test3_T *H,
-  s_PLLLBDg14rHiR3qEakQweE_test_T *solution, s_pIaUYPkQBTqVmAKxFPiGQF_test_T
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution, s_pIaUYPkQBTqVmAKxFPiGQF_test_T
   *memspace, const s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager,
   s_vdGXtauKr5HuLAqoxBLhXH_test_T *cholmanager, const
   s_saWPFfMboRdWeRqIEJ4x8C_test_T *objective, boolean_T alwaysPositiveDef);
 static real_T test3_xnrm2_a(int32_T n, const emxArray_real_T_test3_T *x);
+static void test3_xgemv_bujmjslzp(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T lda, const emxArray_real_T_test3_T *x,
+  emxArray_real_T_test3_T *y);
 static void test3_feasibleratiotest(const emxArray_real_T_test3_T
-  *solution_xstar, const emxArray_real_T_test3_T *solution_searchDir, int32_T
-  workingset_nVar, const emxArray_real_T_test3_T *workingset_lb, const
-  emxArray_real_T_test3_T *workingset_ub, const emxArray_int32_T_test3_T
-  *workingset_indexLB, const emxArray_int32_T_test3_T *workingset_indexUB, const
-  int32_T workingset_sizes[5], const int32_T workingset_isActiveIdx[6], const
-  emxArray_boolean_T_test3_T *workingset_isActiveConstr, const int32_T
-  workingset_nWConstr[5], boolean_T isPhaseOne, real_T *alpha, boolean_T
-  *newBlocking, int32_T *constrType, int32_T *constrIdx);
-static void test_addBoundToActiveSetMatrix_(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj,
+  *solution_xstar, const emxArray_real_T_test3_T *solution_searchDir,
+  emxArray_real_T_test3_T *workspace, int32_T workingset_nVar, int32_T
+  workingset_ldA, const emxArray_real_T_test3_T *workingset_Aineq, const
+  emxArray_real_T_test3_T *workingset_bineq, const emxArray_real_T_test3_T
+  *workingset_lb, const emxArray_real_T_test3_T *workingset_ub, const
+  emxArray_int32_T_test3_T *workingset_indexLB, const emxArray_int32_T_test3_T
+  *workingset_indexUB, const int32_T workingset_sizes[5], const int32_T
+  workingset_isActiveIdx[6], const emxArray_boolean_T_test3_T
+  *workingset_isActiveConstr, const int32_T workingset_nWConstr[5], boolean_T
+  isPhaseOne, real_T *alpha, boolean_T *newBlocking, int32_T *constrType,
+  int32_T *constrIdx);
+static void test_addBoundToActiveSetMatrix_(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj,
   int32_T TYPE, int32_T idx_local);
+static void test3_addAineqConstr(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj, int32_T
+  idx_local);
 static void test3_iterate(const emxArray_real_T_test3_T *H, const
-  emxArray_real_T_test3_T *f, s_PLLLBDg14rHiR3qEakQweE_test_T *solution,
-  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_k8kXP0ntDjd4qxsrByEVbG_test_T
+  emxArray_real_T_test3_T *f, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager,
   s_vdGXtauKr5HuLAqoxBLhXH_test_T *cholmanager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
   objective, const char_T options_SolverName[7], real_T options_StepTolerance,
   real_T options_ObjectiveLimit, int32_T runTimeOptions_MaxIterations);
-static void test3_emxFree_int32_T(emxArray_int32_T_test3_T **pEmxArray);
 static void test3_emxFree_boolean_T(emxArray_boolean_T_test3_T **pEmxArray);
-static void emxFreeStruct_s_k8kXP0ntDjd4qxs(s_k8kXP0ntDjd4qxsrByEVbG_test_T
+static void emxFreeStruct_s_Wd0eYcEyLXg48EJ(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *pStruct);
 static void test3_driver_d(const emxArray_real_T_test3_T *H, const
-  emxArray_real_T_test3_T *f, s_PLLLBDg14rHiR3qEakQweE_test_T *solution,
-  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_k8kXP0ntDjd4qxsrByEVbG_test_T
+  emxArray_real_T_test3_T *f, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager,
   s_vdGXtauKr5HuLAqoxBLhXH_test_T *cholmanager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
   objective, somzaGboVhDG7PNQS6E98jD_test3_T *options, int32_T
   runTimeOptions_MaxIterations);
+static void test3_addAeqConstr(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj, int32_T
+  idx_local);
+static boolean_T test3_soc(const emxArray_real_T_test3_T *Hessian, const
+  emxArray_real_T_test3_T *grad, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  QPObjective, const somzaGboVhDG7PNQS6E98jD_test3_T *qpoptions);
 static void test3_relaxed(const emxArray_real_T_test3_T *Hessian, const
-  emxArray_real_T_test3_T *grad, s_PLLLBDg14rHiR3qEakQweE_test_T *TrialState,
+  emxArray_real_T_test3_T *grad, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState,
   sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
-  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_k8kXP0ntDjd4qxsrByEVbG_test_T
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
   s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
   QPObjective, somzaGboVhDG7PNQS6E98jD_test3_T *qpoptions);
 static boolean_T test3_step_o(int32_T *STEP_TYPE, emxArray_real_T_test3_T
   *Hessian, const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub,
-  s_PLLLBDg14rHiR3qEakQweE_test_T *TrialState, sG8JZ69axY52WWR6RKyApQC_test3_T
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState, sG8JZ69axY52WWR6RKyApQC_test3_T
   *MeritFunction, s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace,
-  s_k8kXP0ntDjd4qxsrByEVbG_test_T *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T
   *QRManager, s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager,
   s_saWPFfMboRdWeRqIEJ4x8C_test_T *QPObjective, somzaGboVhDG7PNQS6E98jD_test3_T *
   qpoptions);
-static void test3_evalObjAndConstr(const s_IhzSggsSakhYrqTLyRPh4_test3_T
-  obj_next_next_next_next_next_ne, const emxArray_real_T_test3_T *x, real_T
-  *fval, int32_T *status);
+static void test3_evalObjAndConstr(int32_T obj_next_next_next_next_b_value,
+  int32_T obj_next_next_next_next_next_b_, const real_T
+  obj_next_next_next_next_next_ne[4], real_T obj_next_next_next_next_next__0,
+  const s_orfxVcOir3wnnUkquctgqH_test_T obj_next_next_next_next_next__1, const
+  emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *Cineq_workspace, int32_T
+  ineq0, emxArray_real_T_test3_T *Ceq_workspace, int32_T eq0, real_T *fval,
+  int32_T *status);
+static real_T test3_computeMeritFcn(real_T obj_penaltyParam, real_T fval, const
+  emxArray_real_T_test3_T *Cineq_workspace, int32_T mIneq, const
+  emxArray_real_T_test3_T *Ceq_workspace, int32_T mEq, boolean_T evalWellDefined);
 static void test3_driver(emxArray_real_T_test3_T *Hessian, const
   emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub,
-  s_PLLLBDg14rHiR3qEakQweE_test_T *TrialState, sG8JZ69axY52WWR6RKyApQC_test3_T
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState, sG8JZ69axY52WWR6RKyApQC_test3_T
   *MeritFunction, const coder_internal_stickyStruct_9_T *FcnEvaluator,
-  s_ZbRibKlg6CoahmaZOjRYjD_test_T *FiniteDifferences,
-  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_k8kXP0ntDjd4qxsrByEVbG_test_T
+  s_tzdJIwhhx1jgWYIJOPrjUD_test_T *FiniteDifferences,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
   s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
-  QPObjective, int32_T runTimeOptions_MaxFunctionEvalu);
+  QPObjective, const emxArray_real_T_test3_T *fscales_cineq_constraint, int32_T
+  runTimeOptions_MaxFunctionEvalu);
 static void emxFreeStruct_s_pIaUYPkQBTqVmAK(s_pIaUYPkQBTqVmAKxFPiGQF_test_T
   *pStruct);
 static void emxFreeStruct_s_saWPFfMboRdWeRq(s_saWPFfMboRdWeRqIEJ4x8C_test_T
@@ -314,10 +402,10 @@ static void emxFreeStruct_s_vdGXtauKr5HuLAq(s_vdGXtauKr5HuLAqoxBLhXH_test_T
   *pStruct);
 static void emxFreeStruct_s_l1Gll5dfO9DpqQr(s_l1Gll5dfO9DpqQrvRqAf7E_test_T
   *pStruct);
-static void emxFreeStruct_s_IhzSggsSakhYrqT(s_IhzSggsSakhYrqTLyRPh4_test3_T
+static void emxFreeStruct_s_orfxVcOir3wnnUk(s_orfxVcOir3wnnUkquctgqH_test_T
   *pStruct);
 static void emxFreeStruct_anonymous_functio(anonymous_function_test3_T *pStruct);
-static void emxFreeStruct_s_ZbRibKlg6Coahma(s_ZbRibKlg6CoahmaZOjRYjD_test_T
+static void emxFreeStruct_s_tzdJIwhhx1jgWYI(s_tzdJIwhhx1jgWYIJOPrjUD_test_T
   *pStruct);
 static void emxFreeStruct_coder_internal_st(coder_internal_stickyStruct_1_T
   *pStruct);
@@ -337,13 +425,13 @@ static void emxFreeStruct_coder_int_kyv1kfe(coder_internal_stickyStruct_8_T
   *pStruct);
 static void emxFreeStruct_coder_in_kyv1kfe2(coder_internal_stickyStruct_9_T
   *pStruct);
-static void emxFreeStruct_s_PLLLBDg14rHiR3q(s_PLLLBDg14rHiR3qEakQweE_test_T
+static void emxFreeStruct_s_0Mw3d4AlMrOoSnA(s_0Mw3d4AlMrOoSnA1Aci4tH_test_T
   *pStruct);
-static void test3_fmincon(const real_T fun_workspace_x0[3], const
+static void test3_fmincon(const real_T fun_workspace_x0[4], const
   emxArray_real_T_test3_T *fun_workspace_xref, const emxArray_real_T_test3_T
   *fun_workspace_uref, real_T fun_workspace_N, const emxArray_real_T_test3_T *x0,
-  const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub,
-  emxArray_real_T_test3_T *x);
+  const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub, const
+  s6lIrH89xwD47fl4e1dZNiE_test3_T nonlcon_workspace, emxArray_real_T_test3_T *x);
 
 /*
  * This function updates continuous states using the ODE1 fixed-step
@@ -357,7 +445,7 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   ODE1_IntgData *id = (ODE1_IntgData *)rtsiGetSolverData(si);
   real_T *f0 = id->f[0];
   int_T i;
-  int_T nXc = 16;
+  int_T nXc = 19;
   rtsiSetSimTimeStep(si,MINOR_TIME_STEP);
   rtsiSetdX(si, f0);
   test3_derivatives();
@@ -429,6 +517,132 @@ static void test3_emxEnsureCapacity_real_T(emxArray_real_T_test3_T *emxArray,
   }
 }
 
+static void test3_emxFree_real_T(emxArray_real_T_test3_T **pEmxArray)
+{
+  if (*pEmxArray != (emxArray_real_T_test3_T *)NULL) {
+    if (((*pEmxArray)->data != (real_T *)NULL) && (*pEmxArray)->canFreeData) {
+      free((*pEmxArray)->data);
+    }
+
+    free((*pEmxArray)->size);
+    free(*pEmxArray);
+    *pEmxArray = (emxArray_real_T_test3_T *)NULL;
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static void test3_eML_blk_kernel_anonFcn2(const real_T x0[4], real_T N, const
+  emxArray_real_T_test3_T *u, emxArray_real_T_test3_T *varargout_1,
+  emxArray_real_T_test3_T *varargout_2)
+{
+  emxArray_real_T_test3_T *varargout_1_tmp;
+  emxArray_real_T_test3_T *x;
+  real_T x_next_idx_0;
+  real_T x_next_idx_1;
+  real_T x_next_idx_2;
+  real_T x_next_idx_3;
+  int32_T b;
+  int32_T d;
+  int32_T loop_ub;
+  int32_T tmp;
+  uint32_T c;
+
+  /* '<S1>:1:294' */
+  /* '<S1>:1:288' */
+  test3_emxInit_real_T(&x, 2);
+  tmp = x->size[0] * x->size[1];
+  x->size[0] = 4;
+  x->size[1] = (int32_T)(N + 1.0);
+  test3_emxEnsureCapacity_real_T(x, tmp);
+  loop_ub = (int32_T)(N + 1.0) << 2;
+  if (loop_ub - 1 >= 0) {
+    memset(&x->data[0], 0, (uint32_T)loop_ub * sizeof(real_T));
+  }
+
+  /* '<S1>:1:289' */
+  x->data[0] = x0[0];
+  x->data[1] = x0[1];
+  x->data[2] = x0[2];
+  x->data[3] = x0[3];
+
+  /* '<S1>:1:290' */
+  varargout_2->size[0] = 0;
+  b = (int32_T)N;
+
+  /* '<S1>:1:292' */
+  for (loop_ub = 0; loop_ub < b; loop_ub++) {
+    c = ((uint32_T)loop_ub << 1) + 1U;
+    if (c > ((real_T)loop_ub + 1.0) * 2.0) {
+      d = 0;
+    } else {
+      d = (int32_T)c - 1;
+    }
+
+    /* '<S1>:1:293' */
+    /* '<S1>:1:294' */
+    /* '<S1>:1:306' */
+    x_next_idx_2 = x->data[(loop_ub << 2) + 2];
+    x_next_idx_3 = x->data[(loop_ub << 2) + 3];
+    x_next_idx_0 = u->data[d] * cos(x_next_idx_2) * 0.1 + x->data[loop_ub << 2];
+    x_next_idx_1 = u->data[d] * sin(x_next_idx_2) * 0.1 + x->data[(loop_ub << 2)
+      + 1];
+    x_next_idx_2 += u->data[d] / 0.256 * tan(x_next_idx_3) * 0.1;
+    x_next_idx_3 += u->data[d + 1] * 0.1;
+
+    /* '<S1>:1:295' */
+    /* '<S1>:1:296' */
+    d = varargout_2->size[0];
+    tmp = varargout_2->size[0];
+    varargout_2->size[0] += 4;
+    test3_emxEnsureCapacity_real_T(varargout_2, tmp);
+    x->data[(loop_ub + 1) << 2] = x_next_idx_0;
+    varargout_2->data[d] = x_next_idx_0 - x_next_idx_0;
+    tmp = (loop_ub + 1) << 2;
+    x->data[1 + tmp] = x_next_idx_1;
+    varargout_2->data[d + 1] = x_next_idx_1 - x_next_idx_1;
+    x->data[2 + tmp] = x_next_idx_2;
+    varargout_2->data[d + 2] = x_next_idx_2 - x_next_idx_2;
+    x->data[3 + tmp] = x_next_idx_3;
+    varargout_2->data[d + 3] = x_next_idx_3 - x_next_idx_3;
+  }
+
+  if (x->size[1] < 2) {
+    b = 0;
+    loop_ub = 0;
+  } else {
+    b = 1;
+    loop_ub = x->size[1];
+  }
+
+  /* '<S1>:1:300' */
+  /* '<S1>:1:301' */
+  test3_emxInit_real_T(&varargout_1_tmp, 1);
+  loop_ub -= b;
+  tmp = varargout_1_tmp->size[0];
+  varargout_1_tmp->size[0] = loop_ub;
+  test3_emxEnsureCapacity_real_T(varargout_1_tmp, tmp);
+  for (d = 0; d < loop_ub; d++) {
+    varargout_1_tmp->data[d] = x->data[((b + d) << 2) + 3];
+  }
+
+  test3_emxFree_real_T(&x);
+  tmp = varargout_1->size[0];
+  varargout_1->size[0] = varargout_1_tmp->size[0] + varargout_1_tmp->size[0];
+  test3_emxEnsureCapacity_real_T(varargout_1, tmp);
+  loop_ub = varargout_1_tmp->size[0];
+  for (d = 0; d < loop_ub; d++) {
+    varargout_1->data[d] = varargout_1_tmp->data[d] - 1.5707963267948966;
+  }
+
+  loop_ub = varargout_1_tmp->size[0];
+  for (d = 0; d < loop_ub; d++) {
+    varargout_1->data[d + varargout_1_tmp->size[0]] = -varargout_1_tmp->data[d]
+      - 1.5707963267948966;
+  }
+
+  test3_emxFree_real_T(&varargout_1_tmp);
+}
+
 static void test3_emxInit_int32_T(emxArray_int32_T_test3_T **pEmxArray, int32_T
   numDimensions)
 {
@@ -447,11 +661,15 @@ static void test3_emxInit_int32_T(emxArray_int32_T_test3_T **pEmxArray, int32_T
   }
 }
 
-static void emxInitStruct_s_PLLLBDg14rHiR3q(s_PLLLBDg14rHiR3qEakQweE_test_T
+static void emxInitStruct_s_0Mw3d4AlMrOoSnA(s_0Mw3d4AlMrOoSnA1Aci4tH_test_T
   *pStruct)
 {
   test3_emxInit_real_T(&pStruct->xstarsqp, 1);
   test3_emxInit_real_T(&pStruct->xstarsqp_old, 1);
+  test3_emxInit_real_T(&pStruct->cIneq, 1);
+  test3_emxInit_real_T(&pStruct->cIneq_old, 1);
+  test3_emxInit_real_T(&pStruct->cEq, 1);
+  test3_emxInit_real_T(&pStruct->cEq_old, 1);
   test3_emxInit_real_T(&pStruct->grad, 1);
   test3_emxInit_real_T(&pStruct->grad_old, 1);
   test3_emxInit_real_T(&pStruct->lambdasqp, 1);
@@ -460,6 +678,8 @@ static void emxInitStruct_s_PLLLBDg14rHiR3q(s_PLLLBDg14rHiR3qEakQweE_test_T
   test3_emxInit_real_T(&pStruct->delta_x, 1);
   test3_emxInit_real_T(&pStruct->socDirection, 1);
   test3_emxInit_int32_T(&pStruct->workingset_old, 1);
+  test3_emxInit_real_T(&pStruct->JacCineqTrans_old, 2);
+  test3_emxInit_real_T(&pStruct->JacCeqTrans_old, 2);
   test3_emxInit_real_T(&pStruct->gradLag, 1);
   test3_emxInit_real_T(&pStruct->delta_gradLag, 1);
   test3_emxInit_real_T(&pStruct->xstar, 1);
@@ -511,17 +731,18 @@ static void test3_emxEnsureCapacity_int32_T(emxArray_int32_T_test3_T *emxArray,
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_factoryConstruct(int32_T nVarMax, int32_T mConstrMax, const
-  emxArray_real_T_test3_T *x0, s_PLLLBDg14rHiR3qEakQweE_test_T *obj)
+static void test3_factoryConstruct(int32_T nVarMax, int32_T mConstrMax, int32_T
+  mIneq, int32_T mEq, const emxArray_real_T_test3_T *x0, int32_T mNonlinIneq,
+  int32_T mNonlinEq, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *obj)
 {
   int32_T i;
   obj->nVarMax = nVarMax;
-  obj->mNonlinIneq = 0;
-  obj->mNonlinEq = 0;
-  obj->mIneq = 0;
-  obj->mEq = 0;
-  obj->iNonIneq0 = 1;
-  obj->iNonEq0 = 1;
+  obj->mNonlinIneq = mNonlinIneq;
+  obj->mNonlinEq = mNonlinEq;
+  obj->mIneq = mIneq;
+  obj->mEq = mEq;
+  obj->iNonIneq0 = (mIneq - mNonlinIneq) + 1;
+  obj->iNonEq0 = (mEq - mNonlinEq) + 1;
   obj->sqpFval = 0.0;
   obj->sqpFval_old = 0.0;
   i = obj->xstarsqp->size[0];
@@ -530,6 +751,18 @@ static void test3_factoryConstruct(int32_T nVarMax, int32_T mConstrMax, const
   i = obj->xstarsqp_old->size[0];
   obj->xstarsqp_old->size[0] = x0->size[0];
   test3_emxEnsureCapacity_real_T(obj->xstarsqp_old, i);
+  i = obj->cIneq->size[0];
+  obj->cIneq->size[0] = mIneq;
+  test3_emxEnsureCapacity_real_T(obj->cIneq, i);
+  i = obj->cIneq_old->size[0];
+  obj->cIneq_old->size[0] = mIneq;
+  test3_emxEnsureCapacity_real_T(obj->cIneq_old, i);
+  i = obj->cEq->size[0];
+  obj->cEq->size[0] = mEq;
+  test3_emxEnsureCapacity_real_T(obj->cEq, i);
+  i = obj->cEq_old->size[0];
+  obj->cEq_old->size[0] = mEq;
+  test3_emxEnsureCapacity_real_T(obj->cEq_old, i);
   i = obj->grad->size[0];
   obj->grad->size[0] = nVarMax;
   test3_emxEnsureCapacity_real_T(obj->grad, i);
@@ -566,6 +799,26 @@ static void test3_factoryConstruct(int32_T nVarMax, int32_T mConstrMax, const
   i = obj->workingset_old->size[0];
   obj->workingset_old->size[0] = mConstrMax;
   test3_emxEnsureCapacity_int32_T(obj->workingset_old, i);
+  if (mNonlinIneq > 0) {
+    i = obj->JacCineqTrans_old->size[0] * obj->JacCineqTrans_old->size[1];
+    obj->JacCineqTrans_old->size[0] = nVarMax;
+    obj->JacCineqTrans_old->size[1] = mNonlinIneq;
+    test3_emxEnsureCapacity_real_T(obj->JacCineqTrans_old, i);
+  } else {
+    obj->JacCineqTrans_old->size[0] = 0;
+    obj->JacCineqTrans_old->size[1] = 0;
+  }
+
+  if (mNonlinEq > 0) {
+    i = obj->JacCeqTrans_old->size[0] * obj->JacCeqTrans_old->size[1];
+    obj->JacCeqTrans_old->size[0] = nVarMax;
+    obj->JacCeqTrans_old->size[1] = mNonlinEq;
+    test3_emxEnsureCapacity_real_T(obj->JacCeqTrans_old, i);
+  } else {
+    obj->JacCeqTrans_old->size[0] = 0;
+    obj->JacCeqTrans_old->size[1] = 0;
+  }
+
   i = obj->gradLag->size[0];
   obj->gradLag->size[0] = nVarMax;
   test3_emxEnsureCapacity_real_T(obj->gradLag, i);
@@ -592,7 +845,7 @@ static void test3_factoryConstruct(int32_T nVarMax, int32_T mConstrMax, const
   test3_emxEnsureCapacity_real_T(obj->searchDir, i);
 }
 
-static void emxInitStruct_s_IhzSggsSakhYrqT(s_IhzSggsSakhYrqTLyRPh4_test3_T
+static void emxInitStruct_s_orfxVcOir3wnnUk(s_orfxVcOir3wnnUkquctgqH_test_T
   *pStruct)
 {
   test3_emxInit_real_T(&pStruct->xref, 2);
@@ -601,7 +854,7 @@ static void emxInitStruct_s_IhzSggsSakhYrqT(s_IhzSggsSakhYrqTLyRPh4_test3_T
 
 static void emxInitStruct_anonymous_functio(anonymous_function_test3_T *pStruct)
 {
-  emxInitStruct_s_IhzSggsSakhYrqT(&pStruct->workspace);
+  emxInitStruct_s_orfxVcOir3wnnUk(&pStruct->workspace);
 }
 
 static void emxInitStruct_coder_in_kyv1kfe2(coder_internal_stickyStruct_1_T
@@ -676,10 +929,14 @@ static void test3_emxInit_boolean_T(emxArray_boolean_T_test3_T **pEmxArray,
   }
 }
 
-static void emxInitStruct_s_ZbRibKlg6Coahma(s_ZbRibKlg6CoahmaZOjRYjD_test_T
+static void emxInitStruct_s_tzdJIwhhx1jgWYI(s_tzdJIwhhx1jgWYIJOPrjUD_test_T
   *pStruct)
 {
   emxInitStruct_anonymous_functio(&pStruct->objfun);
+  test3_emxInit_real_T(&pStruct->cIneq_1, 1);
+  test3_emxInit_real_T(&pStruct->cEq_1, 1);
+  test3_emxInit_real_T(&pStruct->cIneq_2, 1);
+  test3_emxInit_real_T(&pStruct->cEq_2, 1);
   test3_emxInit_boolean_T(&pStruct->hasLB, 1);
   test3_emxInit_boolean_T(&pStruct->hasUB, 1);
 }
@@ -728,11 +985,12 @@ static void tes_emxEnsureCapacity_boolean_T(emxArray_boolean_T_test3_T *emxArray
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_factoryConstruct_i(const real_T objfun_workspace_x0[3], const
+static void test3_factoryConstruct_i(const real_T objfun_workspace_x0[4], const
   emxArray_real_T_test3_T *objfun_workspace_xref, const emxArray_real_T_test3_T *
-  objfun_workspace_uref, real_T objfun_workspace_N, int32_T nVar, const
-  emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub,
-  s_ZbRibKlg6CoahmaZOjRYjD_test_T *obj)
+  objfun_workspace_uref, real_T objfun_workspace_N, const
+  s6lIrH89xwD47fl4e1dZNiE_test3_T nonlin_workspace, int32_T nVar, int32_T mCineq,
+  int32_T mCeq, const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T
+  *ub, s_tzdJIwhhx1jgWYIJOPrjUD_test_T *obj)
 {
   int32_T idx;
   int32_T loop_ub;
@@ -740,11 +998,12 @@ static void test3_factoryConstruct_i(const real_T objfun_workspace_x0[3], const
   obj->objfun.workspace.x0[0] = objfun_workspace_x0[0];
   obj->objfun.workspace.x0[1] = objfun_workspace_x0[1];
   obj->objfun.workspace.x0[2] = objfun_workspace_x0[2];
+  obj->objfun.workspace.x0[3] = objfun_workspace_x0[3];
   idx = obj->objfun.workspace.xref->size[0] * obj->objfun.workspace.xref->size[1];
-  obj->objfun.workspace.xref->size[0] = 3;
+  obj->objfun.workspace.xref->size[0] = 4;
   obj->objfun.workspace.xref->size[1] = objfun_workspace_xref->size[1];
   test3_emxEnsureCapacity_real_T(obj->objfun.workspace.xref, idx);
-  loop_ub = 3 * objfun_workspace_xref->size[1];
+  loop_ub = objfun_workspace_xref->size[1] << 2;
   for (idx = 0; idx < loop_ub; idx++) {
     obj->objfun.workspace.xref->data[idx] = objfun_workspace_xref->data[idx];
   }
@@ -759,15 +1018,28 @@ static void test3_factoryConstruct_i(const real_T objfun_workspace_x0[3], const
   }
 
   obj->objfun.workspace.N = objfun_workspace_N;
+  obj->nonlin.workspace = nonlin_workspace;
   obj->f_1 = 0.0;
+  idx = obj->cIneq_1->size[0];
+  obj->cIneq_1->size[0] = mCineq;
+  test3_emxEnsureCapacity_real_T(obj->cIneq_1, idx);
+  idx = obj->cEq_1->size[0];
+  obj->cEq_1->size[0] = mCeq;
+  test3_emxEnsureCapacity_real_T(obj->cEq_1, idx);
   obj->f_2 = 0.0;
+  idx = obj->cIneq_2->size[0];
+  obj->cIneq_2->size[0] = mCineq;
+  test3_emxEnsureCapacity_real_T(obj->cIneq_2, idx);
+  idx = obj->cEq_2->size[0];
+  obj->cEq_2->size[0] = mCeq;
+  test3_emxEnsureCapacity_real_T(obj->cEq_2, idx);
   obj->nVar = nVar;
-  obj->mIneq = 0;
-  obj->mEq = 0;
+  obj->mIneq = mCineq;
+  obj->mEq = mCeq;
   obj->numEvals = 0;
   obj->SpecifyObjectiveGradient = false;
   obj->SpecifyConstraintGradient = false;
-  obj->isEmptyNonlcon = true;
+  obj->isEmptyNonlcon = (mCeq + mCineq == 0);
   idx = obj->hasLB->size[0];
   obj->hasLB->size[0] = nVar;
   tes_emxEnsureCapacity_boolean_T(obj->hasLB, idx);
@@ -864,16 +1136,19 @@ static void emxInitStruct_s_pIaUYPkQBTqVmAK(s_pIaUYPkQBTqVmAKxFPiGQF_test_T
   test3_emxInit_int32_T(&pStruct->workspace_sort, 1);
 }
 
-static void emxInitStruct_s_k8kXP0ntDjd4qxs(s_k8kXP0ntDjd4qxsrByEVbG_test_T
+static void emxInitStruct_s_Wd0eYcEyLXg48EJ(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *pStruct)
 {
-  pStruct->Aineq.size = 0;
-  pStruct->Aeq.size = 0;
+  test3_emxInit_real_T(&pStruct->Aineq, 1);
+  test3_emxInit_real_T(&pStruct->bineq, 1);
+  test3_emxInit_real_T(&pStruct->Aeq, 1);
+  test3_emxInit_real_T(&pStruct->beq, 1);
   test3_emxInit_real_T(&pStruct->lb, 1);
   test3_emxInit_real_T(&pStruct->ub, 1);
   test3_emxInit_int32_T(&pStruct->indexLB, 1);
   test3_emxInit_int32_T(&pStruct->indexUB, 1);
   test3_emxInit_int32_T(&pStruct->indexFixed, 1);
+  test3_emxInit_int32_T(&pStruct->indexEqRemoved, 1);
   test3_emxInit_real_T(&pStruct->ATwset, 1);
   test3_emxInit_real_T(&pStruct->bwset, 1);
   test3_emxInit_real_T(&pStruct->maxConstrWorkspace, 1);
@@ -883,8 +1158,9 @@ static void emxInitStruct_s_k8kXP0ntDjd4qxs(s_k8kXP0ntDjd4qxsrByEVbG_test_T
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_factoryConstruct_ir(int32_T nVar, int32_T nVarMax, int32_T
-  mConstrMax, s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj)
+static void test3_factoryConstruct_ir(int32_T mIneqMax, int32_T mEqMax, int32_T
+  nVar, int32_T nVarMax, int32_T mConstrMax, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *obj)
 {
   int32_T i;
   obj->mConstr = 0;
@@ -894,8 +1170,18 @@ static void test3_factoryConstruct_ir(int32_T nVar, int32_T nVarMax, int32_T
   obj->nVarOrig = nVar;
   obj->nVarMax = nVarMax;
   obj->ldA = nVarMax;
-  obj->Aineq.size = 0;
-  obj->Aeq.size = 0;
+  i = obj->Aineq->size[0];
+  obj->Aineq->size[0] = mIneqMax * nVarMax;
+  test3_emxEnsureCapacity_real_T(obj->Aineq, i);
+  i = obj->bineq->size[0];
+  obj->bineq->size[0] = mIneqMax;
+  test3_emxEnsureCapacity_real_T(obj->bineq, i);
+  i = obj->Aeq->size[0];
+  obj->Aeq->size[0] = mEqMax * nVarMax;
+  test3_emxEnsureCapacity_real_T(obj->Aeq, i);
+  i = obj->beq->size[0];
+  obj->beq->size[0] = mEqMax;
+  test3_emxEnsureCapacity_real_T(obj->beq, i);
   i = obj->lb->size[0];
   obj->lb->size[0] = nVarMax;
   test3_emxEnsureCapacity_real_T(obj->lb, i);
@@ -912,6 +1198,9 @@ static void test3_factoryConstruct_ir(int32_T nVar, int32_T nVarMax, int32_T
   obj->indexFixed->size[0] = nVarMax;
   test3_emxEnsureCapacity_int32_T(obj->indexFixed, i);
   obj->mEqRemoved = 0;
+  i = obj->indexEqRemoved->size[0];
+  obj->indexEqRemoved->size[0] = mEqMax;
+  test3_emxEnsureCapacity_int32_T(obj->indexEqRemoved, i);
   i = obj->ATwset->size[0];
   obj->ATwset->size[0] = nVarMax * mConstrMax;
   test3_emxEnsureCapacity_real_T(obj->ATwset, i);
@@ -1022,70 +1311,61 @@ static void test3_binary_expand_op(real_T in1[2], const emxArray_real_T_test3_T 
   in1[1] = in2->data[((in4 - in3) + 1 != 1) + in3] - in5->data[(in6 << 1) + 1];
 }
 
-static void test3_emxFree_real_T(emxArray_real_T_test3_T **pEmxArray)
-{
-  if (*pEmxArray != (emxArray_real_T_test3_T *)NULL) {
-    if (((*pEmxArray)->data != (real_T *)NULL) && (*pEmxArray)->canFreeData) {
-      free((*pEmxArray)->data);
-    }
-
-    free((*pEmxArray)->size);
-    free(*pEmxArray);
-    *pEmxArray = (emxArray_real_T_test3_T *)NULL;
-  }
-}
-
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[3], const
+static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[4], const
   emxArray_real_T_test3_T *xref, const emxArray_real_T_test3_T *uref, real_T N,
   const emxArray_real_T_test3_T *u)
 {
   emxArray_real_T_test3_T *x;
-  real_T err_x[3];
+  real_T err_x[4];
   real_T err_u[2];
   real_T d;
   real_T varargout_1;
   real_T x_0;
   real_T x_1;
+  real_T x_2;
   int32_T b;
   int32_T e;
   int32_T f;
   int32_T k;
   int32_T loop_ub;
   uint32_T c;
-  static const int16_T y[9] = { 10000, 0, 0, 0, 10000, 0, 0, 0, 1 };
+  static const int16_T y[16] = { 1000, 0, 0, 0, 0, 1000, 0, 0, 0, 0, 100, 0, 0,
+    0, 0, 50 };
 
-  static const real_T b_y[9] = { 1000.0, 0.0, 0.0, 0.0, 1000.0, 0.0, 0.0, 0.0,
-    0.1 };
+  static const int8_T b_y[16] = { 100, 0, 0, 0, 0, 100, 0, 0, 0, 0, 10, 0, 0, 0,
+    0, 5 };
 
   int32_T d_tmp;
   int32_T x_tmp;
   int32_T x_tmp_0;
+  int32_T x_tmp_1;
 
-  /* '<S1>:1:102' */
-  /* '<S1>:1:106' */
-  /* '<S1>:1:110' */
-  /* '<S1>:1:96' */
+  /* '<S1>:1:274' */
+  /* '<S1>:1:278' */
+  /* '<S1>:1:282' */
+  /* '<S1>:1:268' */
   test3_emxInit_real_T(&x, 2);
   loop_ub = x->size[0] * x->size[1];
-  x->size[0] = 3;
+  x->size[0] = 4;
   x->size[1] = (int32_T)(N + 1.0);
   test3_emxEnsureCapacity_real_T(x, loop_ub);
-  loop_ub = (int32_T)(N + 1.0) * 3;
+  loop_ub = (int32_T)(N + 1.0) << 2;
   if (loop_ub - 1 >= 0) {
     memset(&x->data[0], 0, (uint32_T)loop_ub * sizeof(real_T));
   }
 
-  /* '<S1>:1:97' */
+  /* '<S1>:1:269' */
   x->data[0] = x0[0];
   x->data[1] = x0[1];
   x->data[2] = x0[2];
+  x->data[3] = x0[3];
 
-  /* '<S1>:1:98' */
+  /* '<S1>:1:270' */
   varargout_1 = 0.0;
   b = (int32_T)N;
 
-  /* '<S1>:1:100' */
+  /* '<S1>:1:272' */
   for (k = 0; k < b; k++) {
     c = ((uint32_T)k << 1) + 1U;
     d = ((real_T)k + 1.0) * 2.0;
@@ -1097,26 +1377,30 @@ static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[3], const
       e = (int32_T)d;
     }
 
-    /* '<S1>:1:101' */
-    /* '<S1>:1:102' */
-    /* '<S1>:1:130' */
-    d_tmp = 3 * k + 2;
+    /* '<S1>:1:273' */
+    /* '<S1>:1:274' */
+    /* '<S1>:1:306' */
+    d_tmp = (k << 2) + 2;
     d = x->data[d_tmp];
-    x_tmp_0 = 3 * k + 1;
+    x_tmp_0 = (k << 2) + 1;
     x_0 = x->data[x_tmp_0];
-    x_tmp = 3 * k;
-    x_1 = x->data[x_tmp];
-    loop_ub = (k + 1) * 3;
-    x->data[loop_ub] = u->data[f] * cos(d) * 0.1 + x_1;
+    x_tmp_1 = (k << 2) + 3;
+    x_1 = x->data[x_tmp_1];
+    x_tmp = k << 2;
+    x_2 = x->data[x_tmp];
+    loop_ub = (k + 1) << 2;
+    x->data[loop_ub] = u->data[f] * cos(d) * 0.1 + x_2;
     x->data[1 + loop_ub] = u->data[f] * sin(d) * 0.1 + x_0;
-    x->data[2 + loop_ub] = u->data[f] / 0.256 * tan(u->data[f + 1]) * 0.1 + d;
+    x->data[2 + loop_ub] = u->data[f] / 0.256 * tan(x_1) * 0.1 + d;
+    x->data[3 + loop_ub] = u->data[f + 1] * 0.1 + x_1;
 
-    /* '<S1>:1:104' */
-    err_x[0] = x_1 - xref->data[x_tmp];
+    /* '<S1>:1:276' */
+    err_x[0] = x_2 - xref->data[x_tmp];
     err_x[1] = x_0 - xref->data[x_tmp_0];
     err_x[2] = d - xref->data[d_tmp];
+    err_x[3] = x_1 - xref->data[x_tmp_1];
 
-    /* '<S1>:1:105' */
+    /* '<S1>:1:277' */
     loop_ub = e - f;
     if (loop_ub == 2) {
       for (e = 0; e < loop_ub; e++) {
@@ -1126,56 +1410,252 @@ static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[3], const
       test3_binary_expand_op(err_u, u, f, e - 1, uref, k);
     }
 
-    /* '<S1>:1:106' */
+    /* '<S1>:1:278' */
     d = 0.0;
-    for (e = 0; e < 3; e++) {
-      d += ((b_y[3 * e + 1] * err_x[1] + b_y[3 * e] * err_x[0]) + b_y[3 * e + 2]
-            * err_x[2]) * err_x[e];
+    for (e = 0; e < 4; e++) {
+      loop_ub = e << 2;
+      d += ((((real_T)b_y[loop_ub + 1] * err_x[1] + (real_T)b_y[loop_ub] *
+              err_x[0]) + (real_T)b_y[loop_ub + 2] * err_x[2]) + (real_T)
+            b_y[loop_ub + 3] * err_x[3]) * err_x[e];
     }
 
     varargout_1 = ((err_u[0] * 2.0 + err_u[1] * 0.0) * err_u[0] + (err_u[0] *
       0.0 + err_u[1] * 2.0) * err_u[1]) + (varargout_1 + d);
   }
 
-  /* '<S1>:1:109' */
-  err_x[0] = x->data[(x->size[1] - 1) * 3] - xref->data[(xref->size[1] - 1) * 3];
-  err_x[1] = x->data[(x->size[1] - 1) * 3 + 1] - xref->data[(xref->size[1] - 1) *
-    3 + 1];
-  err_x[2] = x->data[(x->size[1] - 1) * 3 + 2] - xref->data[(xref->size[1] - 1) *
-    3 + 2];
+  /* '<S1>:1:281' */
+  err_x[0] = x->data[(x->size[1] - 1) << 2] - xref->data[(xref->size[1] - 1) <<
+    2];
+  err_x[1] = x->data[((x->size[1] - 1) << 2) + 1] - xref->data[((xref->size[1] -
+    1) << 2) + 1];
+  err_x[2] = x->data[((x->size[1] - 1) << 2) + 2] - xref->data[((xref->size[1] -
+    1) << 2) + 2];
+  err_x[3] = x->data[((x->size[1] - 1) << 2) + 3] - xref->data[((xref->size[1] -
+    1) << 2) + 3];
   test3_emxFree_real_T(&x);
 
-  /* '<S1>:1:110' */
+  /* '<S1>:1:282' */
   d = 0.0;
-  for (e = 0; e < 3; e++) {
-    d += (((real_T)y[3 * e + 1] * err_x[1] + (real_T)y[3 * e] * err_x[0]) +
-          (real_T)y[3 * e + 2] * err_x[2]) * err_x[e];
+  for (e = 0; e < 4; e++) {
+    loop_ub = e << 2;
+    d += ((((real_T)y[loop_ub + 1] * err_x[1] + (real_T)y[loop_ub] * err_x[0]) +
+           (real_T)y[loop_ub + 2] * err_x[2]) + (real_T)y[loop_ub + 3] * err_x[3])
+      * err_x[e];
   }
 
   varargout_1 += d;
   return varargout_1;
 }
 
-/* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static boolean_T test3_computeFiniteDifferences(s_ZbRibKlg6CoahmaZOjRYjD_test_T *
-  obj, real_T fCurrent, emxArray_real_T_test3_T *xk, emxArray_real_T_test3_T
-  *gradf, const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub)
+static void test3_emxFree_int32_T(emxArray_int32_T_test3_T **pEmxArray)
 {
-  emxArray_real_T_test3_T *b_xk;
+  if (*pEmxArray != (emxArray_int32_T_test3_T *)NULL) {
+    if (((*pEmxArray)->data != (int32_T *)NULL) && (*pEmxArray)->canFreeData) {
+      free((*pEmxArray)->data);
+    }
+
+    free((*pEmxArray)->size);
+    free(*pEmxArray);
+    *pEmxArray = (emxArray_int32_T_test3_T *)NULL;
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static int32_T test3_checkVectorNonFinite(int32_T N, const
+  emxArray_real_T_test3_T *vec, int32_T iv0)
+{
+  int32_T idx_current;
+  int32_T idx_end;
+  int32_T status;
+  boolean_T allFinite;
+  status = 1;
+  allFinite = true;
+  idx_current = iv0 - 2;
+  idx_end = (iv0 + N) - 1;
+  while (allFinite && (idx_current + 2 <= idx_end)) {
+    real_T allFinite_tmp;
+    allFinite_tmp = vec->data[idx_current + 1];
+    allFinite = ((!rtIsInf(allFinite_tmp)) && (!rtIsNaN(allFinite_tmp)));
+    idx_current++;
+  }
+
+  if (!allFinite) {
+    if (rtIsNaN(vec->data[idx_current])) {
+      status = -3;
+    } else if (vec->data[idx_current] < 0.0) {
+      status = -1;
+    } else {
+      status = -2;
+    }
+  }
+
+  return status;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static int32_T test3_computeConstraints_(int32_T obj_next_next_next_next_b_value,
+  int32_T obj_next_next_next_next_next_b_, const real_T
+  obj_next_next_next_next_next_ne[4], real_T obj_next_next_next_next_next__0,
+  const emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *Cineq_workspace,
+  int32_T ineq0, emxArray_real_T_test3_T *Ceq_workspace, int32_T eq0)
+{
+  emxArray_int32_T_test3_T *eqRange;
+  emxArray_int32_T_test3_T *ineqRange;
+  emxArray_real_T_test3_T *b;
+  emxArray_real_T_test3_T *c;
+  int32_T k;
+  int32_T n;
+  int32_T status;
+  int32_T yk;
+  if (obj_next_next_next_next_next_b_ - 1 < 0) {
+    n = 0;
+  } else {
+    n = obj_next_next_next_next_next_b_;
+  }
+
+  test3_emxInit_int32_T(&ineqRange, 2);
+  k = ineqRange->size[0] * ineqRange->size[1];
+  ineqRange->size[0] = 1;
+  ineqRange->size[1] = n;
+  test3_emxEnsureCapacity_int32_T(ineqRange, k);
+  if (n > 0) {
+    ineqRange->data[0] = 0;
+    yk = 0;
+    for (k = 2; k <= n; k++) {
+      yk++;
+      ineqRange->data[k - 1] = yk;
+    }
+  }
+
+  k = ineqRange->size[0] * ineqRange->size[1];
+  ineqRange->size[0] = 1;
+  test3_emxEnsureCapacity_int32_T(ineqRange, k);
+  n = ineqRange->size[1] - 1;
+  for (k = 0; k <= n; k++) {
+    ineqRange->data[k] += ineq0;
+  }
+
+  if (obj_next_next_next_next_b_value - 1 < 0) {
+    n = 0;
+  } else {
+    n = obj_next_next_next_next_b_value;
+  }
+
+  test3_emxInit_int32_T(&eqRange, 2);
+  k = eqRange->size[0] * eqRange->size[1];
+  eqRange->size[0] = 1;
+  eqRange->size[1] = n;
+  test3_emxEnsureCapacity_int32_T(eqRange, k);
+  if (n > 0) {
+    eqRange->data[0] = 0;
+    yk = 0;
+    for (k = 2; k <= n; k++) {
+      yk++;
+      eqRange->data[k - 1] = yk;
+    }
+  }
+
+  k = eqRange->size[0] * eqRange->size[1];
+  eqRange->size[0] = 1;
+  test3_emxEnsureCapacity_int32_T(eqRange, k);
+  n = eqRange->size[1] - 1;
+  for (k = 0; k <= n; k++) {
+    eqRange->data[k] += eq0;
+  }
+
+  test3_emxInit_real_T(&b, 1);
+  test3_emxInit_real_T(&c, 1);
+  test3_eML_blk_kernel_anonFcn2(obj_next_next_next_next_next_ne,
+    obj_next_next_next_next_next__0, x, b, c);
+  n = ineqRange->size[1];
+  for (k = 0; k < n; k++) {
+    Cineq_workspace->data[ineqRange->data[k] - 1] = b->data[k];
+  }
+
+  test3_emxFree_real_T(&b);
+  test3_emxFree_int32_T(&ineqRange);
+  n = eqRange->size[1];
+  for (k = 0; k < n; k++) {
+    Ceq_workspace->data[eqRange->data[k] - 1] = c->data[k];
+  }
+
+  test3_emxFree_real_T(&c);
+  test3_emxFree_int32_T(&eqRange);
+  status = test3_checkVectorNonFinite(obj_next_next_next_next_next_b_,
+    Cineq_workspace, ineq0);
+  if (status == 1) {
+    status = test3_checkVectorNonFinite(obj_next_next_next_next_b_value,
+      Ceq_workspace, eq0);
+  }
+
+  return status;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static boolean_T test3_finDiffEvalAndChkErr(const real_T
+  obj_objfun_workspace_x0[4], const emxArray_real_T_test3_T
+  *obj_objfun_workspace_xref, const emxArray_real_T_test3_T
+  *obj_objfun_workspace_uref, real_T obj_objfun_workspace_N, const real_T
+  obj_nonlin_workspace_x0[4], real_T obj_nonlin_workspace_N, int32_T obj_mIneq,
+  int32_T obj_mEq, real_T *fplus, emxArray_real_T_test3_T *cIneqPlus,
+  emxArray_real_T_test3_T *cEqPlus, int32_T dim, real_T delta,
+  emxArray_real_T_test3_T *xk)
+{
+  real_T temp_tmp;
+  int32_T idx;
+  boolean_T evalOK;
+  temp_tmp = xk->data[dim - 1];
+  xk->data[dim - 1] = temp_tmp + delta;
+  *fplus = test3_eML_blk_kernel_anonFcn1(obj_objfun_workspace_x0,
+    obj_objfun_workspace_xref, obj_objfun_workspace_uref, obj_objfun_workspace_N,
+    xk);
+  evalOK = ((!rtIsInf(*fplus)) && (!rtIsNaN(*fplus)));
+  if (evalOK) {
+    test3_eML_blk_kernel_anonFcn2(obj_nonlin_workspace_x0,
+      obj_nonlin_workspace_N, xk, cIneqPlus, cEqPlus);
+    idx = 0;
+    while (evalOK && (idx + 1 <= obj_mIneq)) {
+      evalOK = ((!rtIsInf(cIneqPlus->data[idx])) && (!rtIsNaN(cIneqPlus->
+                  data[idx])));
+      idx++;
+    }
+
+    if (evalOK) {
+      idx = 0;
+      while (evalOK && (idx + 1 <= obj_mEq)) {
+        evalOK = ((!rtIsInf(cEqPlus->data[idx])) && (!rtIsNaN(cEqPlus->data[idx])));
+        idx++;
+      }
+
+      xk->data[dim - 1] = temp_tmp;
+    }
+  }
+
+  return evalOK;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static boolean_T test3_computeFiniteDifferences(s_tzdJIwhhx1jgWYIJOPrjUD_test_T *
+  obj, real_T fCurrent, const emxArray_real_T_test3_T *cIneqCurrent, int32_T
+  ineq0, const emxArray_real_T_test3_T *cEqCurrent, int32_T eq0,
+  emxArray_real_T_test3_T *xk, emxArray_real_T_test3_T *gradf,
+  emxArray_real_T_test3_T *JacCineqTrans, int32_T CineqColStart, int32_T ldJI,
+  emxArray_real_T_test3_T *JacCeqTrans, int32_T CeqColStart, int32_T ldJE, const
+  emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub)
+{
   real_T deltaX;
   real_T tmp;
   real_T ubDiff;
+  int32_T b;
   int32_T b_idx;
-  int32_T loop_ub;
+  int32_T b_idx_row;
   boolean_T evalOK;
   boolean_T exitg1;
   boolean_T guard1;
   boolean_T modifiedStep;
-  boolean_T tmp_0;
   evalOK = true;
   obj->numEvals = 0;
   b_idx = 0;
-  test3_emxInit_real_T(&b_xk, 1);
   exitg1 = false;
   while ((!exitg1) && (b_idx <= obj->nVar - 1)) {
     modifiedStep = false;
@@ -1215,40 +1695,18 @@ static boolean_T test3_computeFiniteDifferences(s_ZbRibKlg6CoahmaZOjRYjD_test_T 
       }
     }
 
-    loop_ub = b_xk->size[0];
-    b_xk->size[0] = xk->size[0];
-    test3_emxEnsureCapacity_real_T(b_xk, loop_ub);
-    loop_ub = xk->size[0];
-    if (loop_ub - 1 >= 0) {
-      memcpy(&b_xk->data[0], &xk->data[0], (uint32_T)loop_ub * sizeof(real_T));
-    }
-
-    b_xk->data[b_idx] = xk->data[b_idx] + deltaX;
-    ubDiff = test3_eML_blk_kernel_anonFcn1(obj->objfun.workspace.x0,
+    evalOK = test3_finDiffEvalAndChkErr(obj->objfun.workspace.x0,
       obj->objfun.workspace.xref, obj->objfun.workspace.uref,
-      obj->objfun.workspace.N, b_xk);
-    evalOK = ((!rtIsInf(ubDiff)) && (!rtIsNaN(ubDiff)));
-    tmp_0 = !evalOK;
-    if (!tmp_0) {
-      b_xk->data[b_idx] = xk->data[b_idx];
-    }
-
-    obj->f_1 = ubDiff;
-    loop_ub = xk->size[0];
-    xk->size[0] = b_xk->size[0];
-    test3_emxEnsureCapacity_real_T(xk, loop_ub);
-    loop_ub = b_xk->size[0];
-    if (loop_ub - 1 >= 0) {
-      memcpy(&xk->data[0], &b_xk->data[0], (uint32_T)loop_ub * sizeof(real_T));
-    }
-
+      obj->objfun.workspace.N, obj->nonlin.workspace.x0, obj->nonlin.workspace.N,
+      obj->mIneq, obj->mEq, &obj->f_1, obj->cIneq_1, obj->cEq_1, b_idx + 1,
+      deltaX, xk);
     obj->numEvals++;
     guard1 = false;
-    if (tmp_0) {
+    if (!evalOK) {
       if (!modifiedStep) {
         deltaX = -deltaX;
         if (obj->hasLB->data[b_idx]) {
-          tmp = b_xk->data[b_idx] + deltaX;
+          tmp = xk->data[b_idx] + deltaX;
           if ((tmp >= lb->data[b_idx]) && obj->hasUB->data[b_idx] && (tmp <=
                ub->data[b_idx])) {
             modifiedStep = true;
@@ -1256,16 +1714,11 @@ static boolean_T test3_computeFiniteDifferences(s_ZbRibKlg6CoahmaZOjRYjD_test_T 
         }
 
         if ((!obj->hasBounds) || modifiedStep) {
-          xk->data[b_idx] = b_xk->data[b_idx] + deltaX;
-          ubDiff = test3_eML_blk_kernel_anonFcn1(obj->objfun.workspace.x0,
+          evalOK = test3_finDiffEvalAndChkErr(obj->objfun.workspace.x0,
             obj->objfun.workspace.xref, obj->objfun.workspace.uref,
-            obj->objfun.workspace.N, xk);
-          evalOK = ((!rtIsInf(ubDiff)) && (!rtIsNaN(ubDiff)));
-          if (evalOK) {
-            xk->data[b_idx] = b_xk->data[b_idx];
-          }
-
-          obj->f_1 = ubDiff;
+            obj->objfun.workspace.N, obj->nonlin.workspace.x0,
+            obj->nonlin.workspace.N, obj->mIneq, obj->mEq, &obj->f_1,
+            obj->cIneq_1, obj->cEq_1, b_idx + 1, deltaX, xk);
           obj->numEvals++;
         }
       }
@@ -1281,30 +1734,166 @@ static boolean_T test3_computeFiniteDifferences(s_ZbRibKlg6CoahmaZOjRYjD_test_T 
 
     if (guard1) {
       gradf->data[b_idx] = (obj->f_1 - fCurrent) / deltaX;
+      b = obj->mIneq;
+      for (b_idx_row = 0; b_idx_row < b; b_idx_row++) {
+        JacCineqTrans->data[b_idx + ldJI * ((CineqColStart + b_idx_row) - 1)] =
+          (obj->cIneq_1->data[b_idx_row] - cIneqCurrent->data[(ineq0 + b_idx_row)
+           - 1]) / deltaX;
+      }
+
+      b = obj->mEq;
+      for (b_idx_row = 0; b_idx_row < b; b_idx_row++) {
+        JacCeqTrans->data[b_idx + ldJE * ((CeqColStart + b_idx_row) - 1)] =
+          (obj->cEq_1->data[b_idx_row] - cEqCurrent->data[(eq0 + b_idx_row) - 1])
+          / deltaX;
+      }
+
       b_idx++;
     }
   }
 
-  test3_emxFree_real_T(&b_xk);
   return evalOK;
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_modifyOverheadPhaseOne_(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj)
+static void test3_updateWorkingSetForNewQP(const emxArray_real_T_test3_T *xk,
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet, int32_T mIneq, int32_T
+  mNonlinIneq, const emxArray_real_T_test3_T *cIneq, int32_T mEq, int32_T
+  mNonlinEq, const emxArray_real_T_test3_T *cEq, int32_T mLB, const
+  emxArray_real_T_test3_T *lb, int32_T mUB, const emxArray_real_T_test3_T *ub,
+  int32_T mFixed)
 {
-  int32_T c;
+  real_T WorkingSet_0;
+  int32_T iEq0;
+  int32_T ineqStart;
+  int32_T iw0;
+  int32_T mLinEq;
+  int32_T nVar;
+  boolean_T hasLB;
+  boolean_T hasUB;
+  nVar = WorkingSet->nVar - 1;
+  for (iw0 = 0; iw0 < mEq; iw0++) {
+    WorkingSet_0 = -cEq->data[iw0];
+    WorkingSet->beq->data[iw0] = WorkingSet_0;
+    WorkingSet->bwset->data[mFixed + iw0] = WorkingSet_0;
+  }
+
+  mLinEq = mEq - mNonlinEq;
+  iw0 = (mFixed + mLinEq) * WorkingSet->ldA;
+  iEq0 = WorkingSet->ldA * mLinEq;
+  for (mLinEq = 0; mLinEq < mNonlinEq; mLinEq++) {
+    for (ineqStart = 0; ineqStart <= nVar; ineqStart++) {
+      WorkingSet->ATwset->data[iw0 + ineqStart] = WorkingSet->Aeq->data[iEq0 +
+        ineqStart];
+    }
+
+    iw0 += WorkingSet->ldA;
+    iEq0 += WorkingSet->ldA;
+  }
+
+  for (iw0 = 0; iw0 < mIneq; iw0++) {
+    WorkingSet->bineq->data[iw0] = -cIneq->data[iw0];
+  }
+
+  hasLB = (lb->size[0] != 0);
+  hasUB = (ub->size[0] != 0);
+  if (hasLB) {
+    for (iw0 = 0; iw0 < mLB; iw0++) {
+      WorkingSet->lb->data[WorkingSet->indexLB->data[iw0] - 1] = -lb->
+        data[WorkingSet->indexLB->data[iw0] - 1] + xk->data[WorkingSet->
+        indexLB->data[iw0] - 1];
+    }
+  }
+
+  if (hasUB) {
+    for (iw0 = 0; iw0 < mUB; iw0++) {
+      WorkingSet->ub->data[WorkingSet->indexUB->data[iw0] - 1] = ub->
+        data[WorkingSet->indexUB->data[iw0] - 1] - xk->data[WorkingSet->
+        indexUB->data[iw0] - 1];
+    }
+  }
+
+  if (hasLB && hasUB) {
+    for (iw0 = 0; iw0 < mFixed; iw0++) {
+      WorkingSet_0 = ub->data[WorkingSet->indexFixed->data[iw0] - 1] - xk->
+        data[WorkingSet->indexFixed->data[iw0] - 1];
+      WorkingSet->ub->data[WorkingSet->indexFixed->data[iw0] - 1] = WorkingSet_0;
+      WorkingSet->bwset->data[iw0] = WorkingSet_0;
+    }
+  }
+
+  mLinEq = mFixed + mEq;
+  if (WorkingSet->nActiveConstr > mLinEq) {
+    if (mLinEq + 1 >= 1) {
+      ineqStart = mLinEq + 1;
+    } else {
+      ineqStart = 1;
+    }
+
+    iEq0 = WorkingSet->nActiveConstr;
+    for (iw0 = ineqStart; iw0 <= iEq0; iw0++) {
+      switch (WorkingSet->Wid->data[iw0 - 1]) {
+       case 4:
+        WorkingSet->bwset->data[iw0 - 1] = WorkingSet->lb->data
+          [WorkingSet->indexLB->data[WorkingSet->Wlocalidx->data[iw0 - 1] - 1] -
+          1];
+        break;
+
+       case 5:
+        WorkingSet->bwset->data[iw0 - 1] = WorkingSet->ub->data
+          [WorkingSet->indexUB->data[WorkingSet->Wlocalidx->data[iw0 - 1] - 1] -
+          1];
+        break;
+
+       default:
+        {
+          mLinEq = WorkingSet->Wlocalidx->data[iw0 - 1];
+          WorkingSet->bwset->data[iw0 - 1] = WorkingSet->bineq->data[mLinEq - 1];
+          if ((mNonlinIneq > 0) && (mLinEq >= mNonlinIneq)) {
+            int32_T ix0;
+            int32_T iy0;
+            iy0 = (iw0 - 1) * WorkingSet->ldA;
+            ix0 = (mLinEq - 1) * WorkingSet->ldA;
+            for (mLinEq = 0; mLinEq <= nVar; mLinEq++) {
+              WorkingSet->ATwset->data[iy0 + mLinEq] = WorkingSet->Aineq->
+                data[mLinEq + ix0];
+            }
+          }
+        }
+        break;
+      }
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static void test3_modifyOverheadPhaseOne_(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj)
+{
   int32_T idx;
+  int32_T idxEq;
   int32_T idxStartIneq;
   idxStartIneq = obj->sizes[0];
   for (idx = 0; idx < idxStartIneq; idx++) {
     obj->ATwset->data[(obj->nVar + obj->ldA * idx) - 1] = 0.0;
   }
 
+  idxStartIneq = obj->sizes[1];
+  for (idx = 0; idx < idxStartIneq; idx++) {
+    idxEq = (obj->ldA * idx + obj->nVar) - 1;
+    obj->Aeq->data[idxEq] = 0.0;
+    obj->ATwset->data[idxEq + obj->ldA * (obj->isActiveIdx[1] - 1)] = 0.0;
+  }
+
+  idxStartIneq = obj->sizes[2];
+  for (idx = 0; idx < idxStartIneq; idx++) {
+    obj->Aineq->data[(obj->nVar + obj->ldA * idx) - 1] = -1.0;
+  }
+
   obj->indexLB->data[obj->sizes[3] - 1] = obj->nVar;
   obj->lb->data[obj->nVar - 1] = 1.0E-5;
   idxStartIneq = obj->isActiveIdx[2];
-  c = obj->nActiveConstr;
-  for (idx = idxStartIneq; idx <= c; idx++) {
+  idxEq = obj->nActiveConstr;
+  for (idx = idxStartIneq; idx <= idxEq; idx++) {
     obj->ATwset->data[(obj->nVar + obj->ldA * (idx - 1)) - 1] = -1.0;
   }
 
@@ -1319,15 +1908,17 @@ static void test3_modifyOverheadPhaseOne_(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj)
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_setProblemType(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj, int32_T
+static void test3_setProblemType(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj, int32_T
   PROBLEM_TYPE)
 {
-  int32_T c;
+  int32_T b_idx_col;
   int32_T colOffsetATw;
-  int32_T d;
+  int32_T colOffsetAineq;
   int32_T e;
-  int32_T e_tmp;
-  int32_T idxStartIneq;
+  int32_T mEq;
+  int32_T offsetEq1;
+  int32_T offsetEq1_tmp;
+  int32_T offsetEq2;
   int32_T offsetIneq;
   int32_T offsetIneq_tmp;
   switch (PROBLEM_TYPE) {
@@ -1373,66 +1964,130 @@ static void test3_setProblemType(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj, int32_T
     }
 
     if (obj->probType != 4) {
+      offsetIneq = obj->sizes[2];
+      mEq = obj->sizes[1];
       offsetIneq_tmp = obj->nVarOrig + 1;
-      c = obj->sizes[0];
-      for (offsetIneq = 0; offsetIneq < c; offsetIneq++) {
-        colOffsetATw = obj->ldA * offsetIneq;
+      offsetEq1_tmp = obj->nVarOrig + obj->sizes[2];
+      offsetEq2 = offsetEq1_tmp + obj->sizes[1];
+      offsetEq1 = obj->sizes[0];
+      for (b_idx_col = 0; b_idx_col < offsetEq1; b_idx_col++) {
+        colOffsetATw = obj->ldA * b_idx_col;
         e = obj->nVar;
-        for (idxStartIneq = offsetIneq_tmp; idxStartIneq <= e; idxStartIneq++) {
-          obj->ATwset->data[(idxStartIneq + colOffsetATw) - 1] = 0.0;
+        for (colOffsetAineq = offsetIneq_tmp; colOffsetAineq <= e;
+             colOffsetAineq++) {
+          obj->ATwset->data[(colOffsetAineq + colOffsetATw) - 1] = 0.0;
         }
       }
 
-      offsetIneq = obj->nVarOrig;
-      idxStartIneq = obj->sizesNormal[3] + 1;
-      c = obj->sizesRegularized[3];
-      for (colOffsetATw = idxStartIneq; colOffsetATw <= c; colOffsetATw++) {
-        offsetIneq++;
-        obj->indexLB->data[colOffsetATw - 1] = offsetIneq;
+      for (colOffsetATw = 0; colOffsetATw < offsetIneq; colOffsetATw++) {
+        colOffsetAineq = obj->ldA * colOffsetATw - 1;
+        b_idx_col = offsetIneq_tmp + colOffsetATw;
+        e = b_idx_col - 1;
+        for (offsetEq1 = offsetIneq_tmp; offsetEq1 <= e; offsetEq1++) {
+          obj->Aineq->data[offsetEq1 + colOffsetAineq] = 0.0;
+        }
+
+        obj->Aineq->data[b_idx_col + colOffsetAineq] = -1.0;
+        offsetEq1 = b_idx_col + 1;
+        e = obj->nVar;
+        for (b_idx_col = offsetEq1; b_idx_col <= e; b_idx_col++) {
+          obj->Aineq->data[b_idx_col + colOffsetAineq] = 0.0;
+        }
+      }
+
+      for (offsetIneq = 0; offsetIneq < mEq; offsetIneq++) {
+        colOffsetAineq = offsetIneq * obj->ldA - 1;
+        colOffsetATw = (obj->isActiveIdx[1] - 1) * obj->ldA + colOffsetAineq;
+        for (offsetEq1 = offsetIneq_tmp; offsetEq1 <= offsetEq1_tmp; offsetEq1++)
+        {
+          obj->Aeq->data[offsetEq1 + colOffsetAineq] = 0.0;
+          obj->ATwset->data[offsetEq1 + colOffsetATw] = 0.0;
+        }
+
+        b_idx_col = offsetIneq + offsetEq1_tmp;
+        for (offsetEq1 = offsetEq1_tmp + 1; offsetEq1 <= b_idx_col; offsetEq1++)
+        {
+          obj->Aeq->data[offsetEq1 + colOffsetAineq] = 0.0;
+          obj->ATwset->data[offsetEq1 + colOffsetATw] = 0.0;
+        }
+
+        obj->Aeq->data[(b_idx_col + colOffsetAineq) + 1] = -1.0;
+        obj->ATwset->data[(b_idx_col + colOffsetATw) + 1] = -1.0;
+        e = b_idx_col + 2;
+        for (offsetEq1 = e; offsetEq1 <= offsetEq2; offsetEq1++) {
+          obj->Aeq->data[offsetEq1 + colOffsetAineq] = 0.0;
+          obj->ATwset->data[offsetEq1 + colOffsetATw] = 0.0;
+        }
+
+        b_idx_col = offsetIneq + offsetEq2;
+        for (offsetEq1 = offsetEq2 + 1; offsetEq1 <= b_idx_col; offsetEq1++) {
+          obj->Aeq->data[offsetEq1 + colOffsetAineq] = 0.0;
+          obj->ATwset->data[offsetEq1 + colOffsetATw] = 0.0;
+        }
+
+        obj->Aeq->data[(b_idx_col + colOffsetAineq) + 1] = 1.0;
+        obj->ATwset->data[(b_idx_col + colOffsetATw) + 1] = 1.0;
+        offsetEq1 = b_idx_col + 2;
+        e = obj->nVar;
+        for (b_idx_col = offsetEq1; b_idx_col <= e; b_idx_col++) {
+          obj->Aeq->data[b_idx_col + colOffsetAineq] = 0.0;
+          obj->ATwset->data[b_idx_col + colOffsetATw] = 0.0;
+        }
+      }
+
+      mEq = obj->nVarOrig;
+      offsetEq1 = obj->sizesNormal[3] + 1;
+      offsetEq2 = obj->sizesRegularized[3];
+      for (colOffsetATw = offsetEq1; colOffsetATw <= offsetEq2; colOffsetATw++)
+      {
+        mEq++;
+        obj->indexLB->data[colOffsetATw - 1] = mEq;
       }
 
       if (obj->nWConstr[4] > 0) {
-        offsetIneq = obj->sizesRegularized[4];
-        for (colOffsetATw = 0; colOffsetATw < offsetIneq; colOffsetATw++) {
+        mEq = obj->sizesRegularized[4];
+        for (colOffsetATw = 0; colOffsetATw < mEq; colOffsetATw++) {
           obj->isActiveConstr->data[obj->isActiveIdxRegularized[4] +
             colOffsetATw] = obj->isActiveConstr->data[(obj->isActiveIdx[4] +
             colOffsetATw) - 1];
         }
       }
 
-      offsetIneq = obj->isActiveIdx[4];
-      idxStartIneq = obj->isActiveIdxRegularized[4] - 1;
-      for (colOffsetATw = offsetIneq; colOffsetATw <= idxStartIneq; colOffsetATw
-           ++) {
+      mEq = obj->isActiveIdx[4];
+      offsetEq1 = obj->isActiveIdxRegularized[4] - 1;
+      for (colOffsetATw = mEq; colOffsetATw <= offsetEq1; colOffsetATw++) {
         obj->isActiveConstr->data[colOffsetATw - 1] = false;
       }
 
-      idxStartIneq = obj->nVarOrig;
-      for (colOffsetATw = offsetIneq_tmp; colOffsetATw <= idxStartIneq;
+      offsetEq1 = (obj->sizes[1] << 1) + offsetEq1_tmp;
+      for (colOffsetATw = offsetIneq_tmp; colOffsetATw <= offsetEq1;
            colOffsetATw++) {
         obj->lb->data[colOffsetATw - 1] = 0.0;
       }
 
-      idxStartIneq = obj->isActiveIdx[2];
-      c = obj->nActiveConstr;
-      for (offsetIneq = idxStartIneq; offsetIneq <= c; offsetIneq++) {
-        colOffsetATw = (offsetIneq - 1) * obj->ldA - 1;
-        if (obj->Wid->data[offsetIneq - 1] == 3) {
-          e_tmp = obj->Wlocalidx->data[offsetIneq - 1] + offsetIneq_tmp;
-          e = e_tmp - 2;
-          for (d = offsetIneq_tmp; d <= e; d++) {
-            obj->ATwset->data[d + colOffsetATw] = 0.0;
+      offsetEq1 = obj->isActiveIdx[2];
+      offsetEq2 = obj->nActiveConstr;
+      for (mEq = offsetEq1; mEq <= offsetEq2; mEq++) {
+        colOffsetATw = (mEq - 1) * obj->ldA - 1;
+        if (obj->Wid->data[mEq - 1] == 3) {
+          offsetEq1_tmp = obj->Wlocalidx->data[mEq - 1] + offsetIneq_tmp;
+          offsetIneq = offsetEq1_tmp - 2;
+          for (b_idx_col = offsetIneq_tmp; b_idx_col <= offsetIneq; b_idx_col++)
+          {
+            obj->ATwset->data[b_idx_col + colOffsetATw] = 0.0;
           }
 
-          obj->ATwset->data[(e_tmp + colOffsetATw) - 1] = -1.0;
-          e = obj->nVar;
-          for (d = e_tmp; d <= e; d++) {
-            obj->ATwset->data[d + colOffsetATw] = 0.0;
+          obj->ATwset->data[(offsetEq1_tmp + colOffsetATw) - 1] = -1.0;
+          colOffsetAineq = obj->nVar;
+          for (b_idx_col = offsetEq1_tmp; b_idx_col <= colOffsetAineq; b_idx_col
+               ++) {
+            obj->ATwset->data[b_idx_col + colOffsetATw] = 0.0;
           }
         } else {
-          e = obj->nVar;
-          for (d = offsetIneq_tmp; d <= e; d++) {
-            obj->ATwset->data[d + colOffsetATw] = 0.0;
+          offsetIneq = obj->nVar;
+          for (b_idx_col = offsetIneq_tmp; b_idx_col <= offsetIneq; b_idx_col++)
+          {
+            obj->ATwset->data[b_idx_col + colOffsetATw] = 0.0;
           }
         }
       }
@@ -1462,13 +2117,42 @@ static void test3_setProblemType(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj, int32_T
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_computeGradLag(emxArray_real_T_test3_T *workspace, int32_T
-  nVar, const emxArray_real_T_test3_T *grad, const emxArray_int32_T_test3_T
-  *finiteFixed, int32_T mFixed, const emxArray_int32_T_test3_T *finiteLB,
-  int32_T mLB, const emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const
-  emxArray_real_T_test3_T *lambda)
+static void test3_xgemv(int32_T m, int32_T n, const emxArray_real_T_test3_T *A,
+  int32_T lda, const emxArray_real_T_test3_T *x, int32_T ix0,
+  emxArray_real_T_test3_T *y)
+{
+  int32_T ia;
+  int32_T iac;
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T ix;
+    ix = ix0;
+    b = (n - 1) * lda + 1;
+    for (iac = 1; lda < 0 ? iac >= b : iac <= b; iac += lda) {
+      int32_T c;
+      c = (iac + m) - 1;
+      for (ia = iac; ia <= c; ia++) {
+        int32_T tmp;
+        tmp = ia - iac;
+        y->data[tmp] += A->data[ia - 1] * x->data[ix - 1];
+      }
+
+      ix++;
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static void test3_computeGradLag(emxArray_real_T_test3_T *workspace, int32_T ldA,
+  int32_T nVar, const emxArray_real_T_test3_T *grad, int32_T mIneq, const
+  emxArray_real_T_test3_T *AineqTrans, int32_T mEq, const
+  emxArray_real_T_test3_T *AeqTrans, const emxArray_int32_T_test3_T *finiteFixed,
+  int32_T mFixed, const emxArray_int32_T_test3_T *finiteLB, int32_T mLB, const
+  emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const emxArray_real_T_test3_T
+  *lambda)
 {
   int32_T finiteFixed_0;
+  int32_T finiteLB_0;
   int32_T iL0;
   if (nVar - 1 >= 0) {
     memcpy(&workspace->data[0], &grad->data[0], (uint32_T)nVar * sizeof(real_T));
@@ -1479,17 +2163,56 @@ static void test3_computeGradLag(emxArray_real_T_test3_T *workspace, int32_T
     workspace->data[finiteFixed_0 - 1] += lambda->data[iL0];
   }
 
+  test3_xgemv(nVar, mEq, AeqTrans, ldA, lambda, mFixed + 1, workspace);
+  iL0 = mFixed + mEq;
+  test3_xgemv(nVar, mIneq, AineqTrans, ldA, lambda, iL0 + 1, workspace);
+  iL0 += mIneq;
   for (finiteFixed_0 = 0; finiteFixed_0 < mLB; finiteFixed_0++) {
-    iL0 = finiteLB->data[finiteFixed_0];
-    workspace->data[iL0 - 1] -= lambda->data[mFixed + finiteFixed_0];
+    finiteLB_0 = finiteLB->data[finiteFixed_0];
+    workspace->data[finiteLB_0 - 1] -= lambda->data[iL0 + finiteFixed_0];
   }
 
-  iL0 = mLB - 1 < 0 ? mFixed : mFixed + mLB;
+  iL0 = mLB - 1 < 0 ? iL0 : iL0 + mLB;
   for (finiteFixed_0 = 0; finiteFixed_0 < mUB; finiteFixed_0++) {
-    int32_T finiteUB_0;
-    finiteUB_0 = finiteUB->data[finiteFixed_0];
-    workspace->data[finiteUB_0 - 1] += lambda->data[iL0 + finiteFixed_0];
+    finiteLB_0 = finiteUB->data[finiteFixed_0];
+    workspace->data[finiteLB_0 - 1] += lambda->data[iL0 + finiteFixed_0];
   }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static real_T test3_computePrimalFeasError(const emxArray_real_T_test3_T *x,
+  int32_T mLinIneq, int32_T mNonlinIneq, const emxArray_real_T_test3_T *cIneq,
+  int32_T mLinEq, int32_T mNonlinEq, const emxArray_real_T_test3_T *cEq, const
+  emxArray_int32_T_test3_T *finiteLB, int32_T mLB, const emxArray_real_T_test3_T
+  *lb, const emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const
+  emxArray_real_T_test3_T *ub)
+{
+  real_T feasError;
+  int32_T idx;
+  int32_T mEq;
+  int32_T mIneq;
+  feasError = 0.0;
+  mEq = mNonlinEq + mLinEq;
+  mIneq = mNonlinIneq + mLinIneq;
+  for (idx = 0; idx < mEq; idx++) {
+    feasError = fmax(feasError, fabs(cEq->data[idx]));
+  }
+
+  for (mEq = 0; mEq < mIneq; mEq++) {
+    feasError = fmax(feasError, cIneq->data[mEq]);
+  }
+
+  for (mIneq = 0; mIneq < mLB; mIneq++) {
+    mEq = finiteLB->data[mIneq];
+    feasError = fmax(feasError, lb->data[mEq - 1] - x->data[mEq - 1]);
+  }
+
+  for (mIneq = 0; mIneq < mUB; mIneq++) {
+    mEq = finiteUB->data[mIneq];
+    feasError = fmax(feasError, x->data[mEq - 1] - ub->data[mEq - 1]);
+  }
+
+  return feasError;
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
@@ -1515,8 +2238,8 @@ static void test3_computeDualFeasError(int32_T nVar, const
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
 static void test3_test_exit(sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
-  const s_k8kXP0ntDjd4qxsrByEVbG_test_T *WorkingSet,
-  s_PLLLBDg14rHiR3qEakQweE_test_T *TrialState, const emxArray_real_T_test3_T *lb,
+  const s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet,
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState, const emxArray_real_T_test3_T *lb,
   const emxArray_real_T_test3_T *ub, int32_T runTimeOptions_MaxFunctionEvalu,
   boolean_T *Flags_gradOK, boolean_T *Flags_fevalOK, boolean_T *Flags_done,
   boolean_T *Flags_stepAccepted, boolean_T *Flags_failedLineSearch, int32_T
@@ -1526,9 +2249,7 @@ static void test3_test_exit(sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
   real_T smax;
   int32_T idx_max;
   int32_T k;
-  int32_T mLB;
   int32_T mLambda;
-  int32_T mUB;
   int32_T nVar;
   boolean_T isFeasible;
   *Flags_fevalOK = true;
@@ -1536,15 +2257,15 @@ static void test3_test_exit(sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
   *Flags_failedLineSearch = false;
   *Flags_stepType = 1;
   nVar = WorkingSet->nVar;
-  mLB = WorkingSet->sizes[3];
-  mUB = WorkingSet->sizes[4];
-  mLambda = ((WorkingSet->sizes[0] + WorkingSet->sizes[3]) + WorkingSet->sizes[4])
-    - 1;
+  mLambda = ((((WorkingSet->sizes[0] + WorkingSet->sizes[1]) + WorkingSet->
+               sizes[2]) + WorkingSet->sizes[3]) + WorkingSet->sizes[4]) - 1;
   for (k = 0; k <= mLambda; k++) {
     TrialState->lambdaStopTest->data[k] = TrialState->lambdasqp->data[k];
   }
 
-  test3_computeGradLag(TrialState->gradLag, WorkingSet->nVar, TrialState->grad,
+  test3_computeGradLag(TrialState->gradLag, WorkingSet->ldA, WorkingSet->nVar,
+                       TrialState->grad, WorkingSet->sizes[2], WorkingSet->Aineq,
+                       WorkingSet->sizes[1], WorkingSet->Aeq,
                        WorkingSet->indexFixed, WorkingSet->sizes[0],
                        WorkingSet->indexLB, WorkingSet->sizes[3],
                        WorkingSet->indexUB, WorkingSet->sizes[4],
@@ -1570,20 +2291,16 @@ static void test3_test_exit(sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
     smax = 1.0;
   }
 
-  s = 0.0;
-  for (k = 0; k < mLB; k++) {
-    s = fmax(s, lb->data[WorkingSet->indexLB->data[k] - 1] -
-             TrialState->xstarsqp->data[WorkingSet->indexLB->data[k] - 1]);
-  }
-
-  for (k = 0; k < mUB; k++) {
-    s = fmax(s, TrialState->xstarsqp->data[WorkingSet->indexUB->data[k] - 1] -
-             ub->data[WorkingSet->indexUB->data[k] - 1]);
-  }
-
-  MeritFunction->nlpPrimalFeasError = s;
-  MeritFunction->feasRelativeFactor = fmax(1.0, s);
-  isFeasible = (s <= 1.0E-6 * MeritFunction->feasRelativeFactor);
+  MeritFunction->nlpPrimalFeasError = test3_computePrimalFeasError
+    (TrialState->xstarsqp, WorkingSet->sizes[2] - TrialState->mNonlinIneq,
+     TrialState->mNonlinIneq, TrialState->cIneq, WorkingSet->sizes[1] -
+     TrialState->mNonlinEq, TrialState->mNonlinEq, TrialState->cEq,
+     WorkingSet->indexLB, WorkingSet->sizes[3], lb, WorkingSet->indexUB,
+     WorkingSet->sizes[4], ub);
+  MeritFunction->feasRelativeFactor = fmax(1.0,
+    MeritFunction->nlpPrimalFeasError);
+  isFeasible = (MeritFunction->nlpPrimalFeasError <= 1.0E-6 *
+                MeritFunction->feasRelativeFactor);
   test3_computeDualFeasError(WorkingSet->nVar, TrialState->gradLag, Flags_gradOK,
     &MeritFunction->nlpDualFeasError);
   if (!*Flags_gradOK) {
@@ -1619,33 +2336,82 @@ static void test3_test_exit(sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static real_T test3_computeComplError(const emxArray_real_T_test3_T *xCurrent,
-  const emxArray_int32_T_test3_T *finiteLB, int32_T mLB, const
-  emxArray_real_T_test3_T *lb, const emxArray_int32_T_test3_T *finiteUB, int32_T
-  mUB, const emxArray_real_T_test3_T *ub, const emxArray_real_T_test3_T *lambda,
-  int32_T iL0)
+static void test3_saveJacobian(s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *obj, int32_T
+  nVar, int32_T mIneq, const emxArray_real_T_test3_T *JacCineqTrans, int32_T
+  ineqCol0, int32_T mEq, const emxArray_real_T_test3_T *JacCeqTrans, int32_T
+  eqCol0, int32_T ldJ)
+{
+  int32_T b;
+  int32_T b_k;
+  int32_T iCol;
+  int32_T iCol_old;
+  int32_T idx_col;
+  iCol = (ineqCol0 - 1) * ldJ;
+  iCol_old = -1;
+  b = mIneq - ineqCol0;
+  for (idx_col = 0; idx_col <= b; idx_col++) {
+    for (b_k = 0; b_k < nVar; b_k++) {
+      obj->JacCineqTrans_old->data[(iCol_old + b_k) + 1] = JacCineqTrans->
+        data[b_k + iCol];
+    }
+
+    iCol += ldJ;
+    iCol_old += ldJ;
+  }
+
+  iCol = (eqCol0 - 1) * ldJ;
+  iCol_old = -1;
+  b = mEq - eqCol0;
+  for (idx_col = 0; idx_col <= b; idx_col++) {
+    for (b_k = 0; b_k < nVar; b_k++) {
+      obj->JacCeqTrans_old->data[(iCol_old + b_k) + 1] = JacCeqTrans->data[b_k +
+        iCol];
+    }
+
+    iCol += ldJ;
+    iCol_old += ldJ;
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static real_T test3_computeComplError(const emxArray_real_T_test3_T
+  *fscales_cineq_constraint, const emxArray_real_T_test3_T *xCurrent, int32_T
+  mIneq, const emxArray_real_T_test3_T *cIneq, const emxArray_int32_T_test3_T
+  *finiteLB, int32_T mLB, const emxArray_real_T_test3_T *lb, const
+  emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const emxArray_real_T_test3_T
+  *ub, const emxArray_real_T_test3_T *lambda, int32_T iL0)
 {
   real_T nlpComplError;
-  int32_T idx;
+  int32_T b_idx;
+  int32_T lbOffset;
+  int32_T mNonlinIneq;
   nlpComplError = 0.0;
-  if (mLB + mUB > 0) {
+  mNonlinIneq = fscales_cineq_constraint->size[0];
+  if ((mIneq + mLB) + mUB > 0) {
     real_T lbDelta;
     real_T lbLambda;
-    int32_T finiteLB_0;
-    int32_T ubOffset;
-    ubOffset = (iL0 + mLB) - 1;
-    for (idx = 0; idx < mLB; idx++) {
-      finiteLB_0 = finiteLB->data[idx];
-      lbDelta = xCurrent->data[finiteLB_0 - 1] - lb->data[finiteLB_0 - 1];
-      lbLambda = lambda->data[(iL0 + idx) - 1];
+    for (lbOffset = 0; lbOffset < mNonlinIneq; lbOffset++) {
+      lbDelta = cIneq->data[lbOffset];
+      lbLambda = lambda->data[(iL0 + lbOffset) - 1];
       nlpComplError = fmax(nlpComplError, fmin(fabs(lbDelta * lbLambda), fmin
         (fabs(lbDelta), lbLambda)));
     }
 
-    for (idx = 0; idx < mUB; idx++) {
-      finiteLB_0 = finiteUB->data[idx];
-      lbDelta = ub->data[finiteLB_0 - 1] - xCurrent->data[finiteLB_0 - 1];
-      lbLambda = lambda->data[ubOffset + idx];
+    lbOffset = (iL0 + mIneq) - 1;
+    mNonlinIneq = lbOffset + mLB;
+    for (b_idx = 0; b_idx < mLB; b_idx++) {
+      int32_T finiteLB_0;
+      finiteLB_0 = finiteLB->data[b_idx];
+      lbDelta = xCurrent->data[finiteLB_0 - 1] - lb->data[finiteLB_0 - 1];
+      lbLambda = lambda->data[lbOffset + b_idx];
+      nlpComplError = fmax(nlpComplError, fmin(fabs(lbDelta * lbLambda), fmin
+        (fabs(lbDelta), lbLambda)));
+    }
+
+    for (lbOffset = 0; lbOffset < mUB; lbOffset++) {
+      b_idx = finiteUB->data[lbOffset];
+      lbDelta = ub->data[b_idx - 1] - xCurrent->data[b_idx - 1];
+      lbLambda = lambda->data[mNonlinIneq + lbOffset];
       nlpComplError = fmax(nlpComplError, fmin(fabs(lbDelta * lbLambda), fmin
         (fabs(lbDelta), lbLambda)));
     }
@@ -1655,13 +2421,42 @@ static real_T test3_computeComplError(const emxArray_real_T_test3_T *xCurrent,
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static void test3_xgemv_b(int32_T m, int32_T n, const emxArray_real_T_test3_T *A,
+  int32_T lda, const emxArray_real_T_test3_T *x, int32_T ix0,
+  emxArray_real_T_test3_T *y)
+{
+  int32_T ia;
+  int32_T iac;
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T ix;
+    ix = ix0;
+    b = (n - 1) * lda + 1;
+    for (iac = 1; lda < 0 ? iac >= b : iac <= b; iac += lda) {
+      int32_T c;
+      c = (iac + m) - 1;
+      for (ia = iac; ia <= c; ia++) {
+        int32_T tmp;
+        tmp = ia - iac;
+        y->data[tmp] += A->data[ia - 1] * x->data[ix - 1];
+      }
+
+      ix++;
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
 static void test3_computeGradLag_l(emxArray_real_T_test3_T *workspace, int32_T
-  nVar, const emxArray_real_T_test3_T *grad, const emxArray_int32_T_test3_T
-  *finiteFixed, int32_T mFixed, const emxArray_int32_T_test3_T *finiteLB,
-  int32_T mLB, const emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const
-  emxArray_real_T_test3_T *lambda)
+  ldA, int32_T nVar, const emxArray_real_T_test3_T *grad, int32_T mIneq, const
+  emxArray_real_T_test3_T *AineqTrans, int32_T mEq, const
+  emxArray_real_T_test3_T *AeqTrans, const emxArray_int32_T_test3_T *finiteFixed,
+  int32_T mFixed, const emxArray_int32_T_test3_T *finiteLB, int32_T mLB, const
+  emxArray_int32_T_test3_T *finiteUB, int32_T mUB, const emxArray_real_T_test3_T
+  *lambda)
 {
   int32_T finiteFixed_0;
+  int32_T finiteLB_0;
   int32_T iL0;
   if (nVar - 1 >= 0) {
     memcpy(&workspace->data[0], &grad->data[0], (uint32_T)nVar * sizeof(real_T));
@@ -1672,16 +2467,19 @@ static void test3_computeGradLag_l(emxArray_real_T_test3_T *workspace, int32_T
     workspace->data[finiteFixed_0 - 1] += lambda->data[iL0];
   }
 
+  test3_xgemv_b(nVar, mEq, AeqTrans, ldA, lambda, mFixed + 1, workspace);
+  iL0 = mFixed + mEq;
+  test3_xgemv_b(nVar, mIneq, AineqTrans, ldA, lambda, iL0 + 1, workspace);
+  iL0 += mIneq;
   for (finiteFixed_0 = 0; finiteFixed_0 < mLB; finiteFixed_0++) {
-    iL0 = finiteLB->data[finiteFixed_0];
-    workspace->data[iL0 - 1] -= lambda->data[mFixed + finiteFixed_0];
+    finiteLB_0 = finiteLB->data[finiteFixed_0];
+    workspace->data[finiteLB_0 - 1] -= lambda->data[iL0 + finiteFixed_0];
   }
 
-  iL0 = mLB - 1 < 0 ? mFixed : mFixed + mLB;
+  iL0 = mLB - 1 < 0 ? iL0 : iL0 + mLB;
   for (finiteFixed_0 = 0; finiteFixed_0 < mUB; finiteFixed_0++) {
-    int32_T finiteUB_0;
-    finiteUB_0 = finiteUB->data[finiteFixed_0];
-    workspace->data[finiteUB_0 - 1] += lambda->data[iL0 + finiteFixed_0];
+    finiteLB_0 = finiteUB->data[finiteFixed_0];
+    workspace->data[finiteLB_0 - 1] += lambda->data[iL0 + finiteFixed_0];
   }
 }
 
@@ -1809,8 +2607,8 @@ static real_T test3_xzlarfg(int32_T n, real_T *alpha1, emxArray_real_T_test3_T
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_xgemv(int32_T m, int32_T n, const emxArray_real_T_test3_T *A,
-  int32_T ia0, int32_T lda, const emxArray_real_T_test3_T *x, int32_T ix0,
+static void test3_xgemv_bu(int32_T m, int32_T n, const emxArray_real_T_test3_T
+  *A, int32_T ia0, int32_T lda, const emxArray_real_T_test3_T *x, int32_T ix0,
   emxArray_real_T_test3_T *y)
 {
   int32_T b_iy;
@@ -1914,7 +2712,7 @@ static void test3_xzlarf(int32_T m, int32_T n, int32_T iv0, real_T tau,
   }
 
   if (lastv > 0) {
-    test3_xgemv(lastv, lastc, C, ic0, ldc, C, iv0, work);
+    test3_xgemv_bu(lastv, lastc, C, ic0, ldc, C, iv0, work);
     test3_xgerc(lastv, lastc, -tau, iv0, work, C, ic0, ldc);
   }
 }
@@ -2262,7 +3060,7 @@ static void test3_computeQ_(s_l1Gll5dfO9DpqQrvRqAf7E_test_T *obj, int32_T nrows)
         }
 
         if (lastv > 0) {
-          test3_xgemv(lastv, lastc, obj->Q, ia, b_k, obj->Q, iaii, work);
+          test3_xgemv_bu(lastv, lastc, obj->Q, ia, b_k, obj->Q, iaii, work);
           test3_xgerc(lastv, lastc, -obj->tau->data[itau], iaii, work, obj->Q,
                       ia, b_k);
         }
@@ -2288,8 +3086,8 @@ static void test3_computeQ_(s_l1Gll5dfO9DpqQrvRqAf7E_test_T *obj, int32_T nrows)
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_xgemv_b(int32_T m, int32_T n, const emxArray_real_T_test3_T *A,
-  int32_T lda, const emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *y)
+static void test3_xgemv_buj(int32_T m, int32_T n, const emxArray_real_T_test3_T *
+  A, int32_T lda, const emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *y)
 {
   int32_T b_iy;
   int32_T iyend;
@@ -2325,8 +3123,8 @@ static void test3_sortLambdaQP(emxArray_real_T_test3_T *lambda, int32_T
   if (WorkingSet_nActiveConstr != 0) {
     int32_T idxOffset;
     int32_T mAll;
-    mAll = ((WorkingSet_sizes[0] + WorkingSet_sizes[3]) + WorkingSet_sizes[4]) -
-      1;
+    mAll = ((((WorkingSet_sizes[0] + WorkingSet_sizes[1]) + WorkingSet_sizes[3])
+             + WorkingSet_sizes[4]) + WorkingSet_sizes[2]) - 1;
     for (currentMplier = 0; currentMplier <= mAll; currentMplier++) {
       workspace->data[currentMplier] = lambda->data[currentMplier];
       lambda->data[currentMplier] = 0.0;
@@ -2374,22 +3172,24 @@ static void test3_sortLambdaQP(emxArray_real_T_test3_T *lambda, int32_T
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
 static void test3_test_exit_k(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
   s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, sG8JZ69axY52WWR6RKyApQC_test3_T
-  *MeritFunction, const s_k8kXP0ntDjd4qxsrByEVbG_test_T *WorkingSet,
-  s_PLLLBDg14rHiR3qEakQweE_test_T *TrialState, s_l1Gll5dfO9DpqQrvRqAf7E_test_T
-  *QRManager, const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T
-  *ub, int32_T runTimeOptions_MaxFunctionEvalu)
+  *MeritFunction, const emxArray_real_T_test3_T *fscales_cineq_constraint,
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T
+  *TrialState, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager, const
+  emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub, int32_T
+  runTimeOptions_MaxFunctionEvalu)
 {
   real_T nlpComplErrorLSQ;
   real_T nlpComplErrorTmp;
   real_T s;
   real_T smax;
   real_T tmp;
+  int32_T b_ix;
   int32_T idx_max;
   int32_T ix;
+  int32_T jjA;
   int32_T mFixed;
-  int32_T mLB;
   int32_T mLambda;
-  int32_T mUB;
+  int32_T mLambda_tmp;
   int32_T minDim;
   int32_T nVar;
   boolean_T dxTooSmall;
@@ -2398,17 +3198,18 @@ static void test3_test_exit_k(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
   boolean_T guard2;
   boolean_T isFeasible;
   nVar = WorkingSet->nVar - 1;
-  mFixed = WorkingSet->sizes[0];
-  mLB = WorkingSet->sizes[3];
-  mUB = WorkingSet->sizes[4];
-  mLambda = ((WorkingSet->sizes[0] + WorkingSet->sizes[3]) + WorkingSet->sizes[4])
-    - 1;
+  mFixed = WorkingSet->sizes[0] + 1;
+  mLambda_tmp = WorkingSet->sizes[0] + WorkingSet->sizes[1];
+  mLambda = (((mLambda_tmp + WorkingSet->sizes[2]) + WorkingSet->sizes[3]) +
+             WorkingSet->sizes[4]) - 1;
   for (minDim = 0; minDim <= mLambda; minDim++) {
     TrialState->lambdaStopTest->data[minDim] = TrialState->lambdasqp->
       data[minDim];
   }
 
-  test3_computeGradLag(TrialState->gradLag, WorkingSet->nVar, TrialState->grad,
+  test3_computeGradLag(TrialState->gradLag, WorkingSet->ldA, WorkingSet->nVar,
+                       TrialState->grad, WorkingSet->sizes[2], WorkingSet->Aineq,
+                       WorkingSet->sizes[1], WorkingSet->Aeq,
                        WorkingSet->indexFixed, WorkingSet->sizes[0],
                        WorkingSet->indexLB, WorkingSet->sizes[3],
                        WorkingSet->indexUB, WorkingSet->sizes[4],
@@ -2434,23 +3235,19 @@ static void test3_test_exit_k(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
     smax = 1.0;
   }
 
-  s = 0.0;
-  for (minDim = 0; minDim < mLB; minDim++) {
-    s = fmax(s, lb->data[WorkingSet->indexLB->data[minDim] - 1] -
-             TrialState->xstarsqp->data[WorkingSet->indexLB->data[minDim] - 1]);
-  }
-
-  for (minDim = 0; minDim < mUB; minDim++) {
-    s = fmax(s, TrialState->xstarsqp->data[WorkingSet->indexUB->data[minDim] - 1]
-             - ub->data[WorkingSet->indexUB->data[minDim] - 1]);
-  }
-
-  MeritFunction->nlpPrimalFeasError = s;
+  MeritFunction->nlpPrimalFeasError = test3_computePrimalFeasError
+    (TrialState->xstarsqp, WorkingSet->sizes[2] - TrialState->mNonlinIneq,
+     TrialState->mNonlinIneq, TrialState->cIneq, WorkingSet->sizes[1] -
+     TrialState->mNonlinEq, TrialState->mNonlinEq, TrialState->cEq,
+     WorkingSet->indexLB, WorkingSet->sizes[3], lb, WorkingSet->indexUB,
+     WorkingSet->sizes[4], ub);
   if (TrialState->sqpIterations == 0) {
-    MeritFunction->feasRelativeFactor = fmax(1.0, s);
+    MeritFunction->feasRelativeFactor = fmax(1.0,
+      MeritFunction->nlpPrimalFeasError);
   }
 
-  isFeasible = (s <= 1.0E-6 * MeritFunction->feasRelativeFactor);
+  isFeasible = (MeritFunction->nlpPrimalFeasError <= 1.0E-6 *
+                MeritFunction->feasRelativeFactor);
   test3_computeDualFeasError(WorkingSet->nVar, TrialState->gradLag,
     &Flags->gradOK, &MeritFunction->nlpDualFeasError);
   if (!Flags->gradOK) {
@@ -2461,23 +3258,27 @@ static void test3_test_exit_k(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
       TrialState->sqpExitFlag = -2;
     }
   } else {
-    MeritFunction->nlpComplError = test3_computeComplError(TrialState->xstarsqp,
-      WorkingSet->indexLB, WorkingSet->sizes[3], lb, WorkingSet->indexUB,
-      WorkingSet->sizes[4], ub, TrialState->lambdaStopTest, WorkingSet->sizes[0]
-      + 1);
+    MeritFunction->nlpComplError = test3_computeComplError
+      (fscales_cineq_constraint, TrialState->xstarsqp, WorkingSet->sizes[2],
+       TrialState->cIneq, WorkingSet->indexLB, WorkingSet->sizes[3], lb,
+       WorkingSet->indexUB, WorkingSet->sizes[4], ub, TrialState->lambdaStopTest,
+       mLambda_tmp + 1);
     s = fmax(MeritFunction->nlpDualFeasError, MeritFunction->nlpComplError);
     MeritFunction->firstOrderOpt = s;
     if (TrialState->sqpIterations > 1) {
-      test3_computeGradLag_l(memspace->workspace_double, WorkingSet->nVar,
-        TrialState->grad, WorkingSet->indexFixed, WorkingSet->sizes[0],
-        WorkingSet->indexLB, WorkingSet->sizes[3], WorkingSet->indexUB,
-        WorkingSet->sizes[4], TrialState->lambdaStopTestPrev);
+      test3_computeGradLag_l(memspace->workspace_double, WorkingSet->ldA,
+        WorkingSet->nVar, TrialState->grad, WorkingSet->sizes[2],
+        WorkingSet->Aineq, WorkingSet->sizes[1], WorkingSet->Aeq,
+        WorkingSet->indexFixed, WorkingSet->sizes[0], WorkingSet->indexLB,
+        WorkingSet->sizes[3], WorkingSet->indexUB, WorkingSet->sizes[4],
+        TrialState->lambdaStopTestPrev);
       test3_computeDualFeasError(WorkingSet->nVar, memspace->workspace_double,
         &dxTooSmall, &nlpComplErrorLSQ);
-      nlpComplErrorTmp = test3_computeComplError(TrialState->xstarsqp,
+      nlpComplErrorTmp = test3_computeComplError(fscales_cineq_constraint,
+        TrialState->xstarsqp, WorkingSet->sizes[2], TrialState->cIneq,
         WorkingSet->indexLB, WorkingSet->sizes[3], lb, WorkingSet->indexUB,
-        WorkingSet->sizes[4], ub, TrialState->lambdaStopTestPrev,
-        WorkingSet->sizes[0] + 1);
+        WorkingSet->sizes[4], ub, TrialState->lambdaStopTestPrev, mLambda_tmp +
+        1);
       tmp = fmax(nlpComplErrorLSQ, nlpComplErrorTmp);
       if (tmp < s) {
         MeritFunction->nlpDualFeasError = nlpComplErrorLSQ;
@@ -2537,26 +3338,34 @@ static void test3_test_exit_k(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
                 TrialState->sqpExitFlag = -2;
               }
             } else {
-              mLB = WorkingSet->nActiveConstr - 1;
+              ix = WorkingSet->nActiveConstr - 1;
               if (WorkingSet->nActiveConstr > 0) {
-                for (minDim = 0; minDim <= mLB; minDim++) {
+                if (TrialState->mNonlinEq + TrialState->mNonlinIneq > 0) {
+                  test3_updateWorkingSetForNewQP(TrialState->xstarsqp,
+                    WorkingSet, WorkingSet->sizes[2], TrialState->mNonlinIneq,
+                    TrialState->cIneq, WorkingSet->sizes[1],
+                    TrialState->mNonlinEq, TrialState->cEq, WorkingSet->sizes[3],
+                    lb, WorkingSet->sizes[4], ub, WorkingSet->sizes[0]);
+                }
+
+                for (minDim = 0; minDim <= ix; minDim++) {
                   TrialState->lambda->data[minDim] = 0.0;
                 }
 
-                mUB = WorkingSet->nVar * WorkingSet->nActiveConstr;
+                minDim = WorkingSet->nVar * WorkingSet->nActiveConstr;
                 guard2 = false;
-                if (mUB > 0) {
-                  for (minDim = 0; minDim <= mLB; minDim++) {
-                    idx_max = WorkingSet->ldA * minDim;
-                    ix = QRManager->ldq * minDim;
-                    for (mUB = 0; mUB <= nVar; mUB++) {
-                      QRManager->QR->data[ix + mUB] = WorkingSet->ATwset->
-                        data[mUB + idx_max];
+                if (minDim > 0) {
+                  for (minDim = 0; minDim <= ix; minDim++) {
+                    jjA = WorkingSet->ldA * minDim;
+                    b_ix = QRManager->ldq * minDim;
+                    for (idx_max = 0; idx_max <= nVar; idx_max++) {
+                      QRManager->QR->data[b_ix + idx_max] = WorkingSet->
+                        ATwset->data[idx_max + jjA];
                     }
                   }
 
                   guard2 = true;
-                } else if (mUB == 0) {
+                } else if (minDim == 0) {
                   QRManager->mrows = WorkingSet->nVar;
                   QRManager->ncols = WorkingSet->nActiveConstr;
                   QRManager->minRowCol = 0;
@@ -2580,48 +3389,49 @@ static void test3_test_exit_k(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
                 }
 
                 test3_computeQ_(QRManager, QRManager->mrows);
-                test3_xgemv_b(WorkingSet->nVar, WorkingSet->nVar, QRManager->Q,
-                              QRManager->ldq, TrialState->grad,
-                              memspace->workspace_double);
+                test3_xgemv_buj(WorkingSet->nVar, WorkingSet->nVar, QRManager->Q,
+                                QRManager->ldq, TrialState->grad,
+                                memspace->workspace_double);
                 if (WorkingSet->nVar >= WorkingSet->nActiveConstr) {
-                  mUB = WorkingSet->nVar;
+                  minDim = WorkingSet->nVar;
                 } else {
-                  mUB = WorkingSet->nActiveConstr;
+                  minDim = WorkingSet->nActiveConstr;
                 }
 
-                s = fmin(1.4901161193847656E-8, (real_T)mUB *
+                s = fmin(1.4901161193847656E-8, (real_T)minDim *
                          2.2204460492503131E-16) * fabs(QRManager->QR->data[0]);
                 if (WorkingSet->nVar <= WorkingSet->nActiveConstr) {
-                  mUB = WorkingSet->nVar;
+                  idx_max = WorkingSet->nVar;
                 } else {
-                  mUB = WorkingSet->nActiveConstr;
+                  idx_max = WorkingSet->nActiveConstr;
                 }
 
-                mLB = 0;
+                ix = 0;
                 nVar = 0;
-                while ((mLB < mUB) && (fabs(QRManager->QR->data[nVar]) > s)) {
-                  mLB++;
+                while ((ix < idx_max) && (fabs(QRManager->QR->data[nVar]) > s))
+                {
+                  ix++;
                   nVar = (nVar + QRManager->ldq) + 1;
                 }
 
-                if (mLB != 0) {
-                  for (nVar = mLB; nVar >= 1; nVar--) {
-                    idx_max = ((nVar - 1) * QRManager->ldq + nVar) - 2;
+                if (ix != 0) {
+                  for (nVar = ix; nVar >= 1; nVar--) {
+                    jjA = ((nVar - 1) * QRManager->ldq + nVar) - 2;
                     memspace->workspace_double->data[nVar - 1] /= QRManager->
-                      QR->data[idx_max + 1];
+                      QR->data[jjA + 1];
                     for (minDim = 0; minDim <= nVar - 2; minDim++) {
-                      ix = (nVar - minDim) - 2;
-                      memspace->workspace_double->data[ix] -=
+                      b_ix = (nVar - minDim) - 2;
+                      memspace->workspace_double->data[b_ix] -=
                         memspace->workspace_double->data[nVar - 1] *
-                        QRManager->QR->data[idx_max - minDim];
+                        QRManager->QR->data[jjA - minDim];
                     }
                   }
                 }
 
-                if (WorkingSet->nActiveConstr <= mUB) {
+                if (WorkingSet->nActiveConstr <= idx_max) {
                   minDim = WorkingSet->nActiveConstr;
                 } else {
-                  minDim = mUB;
+                  minDim = idx_max;
                 }
 
                 for (nVar = 0; nVar < minDim; nVar++) {
@@ -2629,8 +3439,7 @@ static void test3_test_exit_k(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
                     memspace->workspace_double->data[nVar];
                 }
 
-                minDim = WorkingSet->sizes[0] + 1;
-                for (nVar = minDim; nVar <= mFixed; nVar++) {
+                for (nVar = mFixed; nVar <= mLambda_tmp; nVar++) {
                   TrialState->lambda->data[nVar - 1] = -TrialState->lambda->
                     data[nVar - 1];
                 }
@@ -2640,15 +3449,19 @@ static void test3_test_exit_k(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
                                    WorkingSet->Wid, WorkingSet->Wlocalidx,
                                    memspace->workspace_double);
                 test3_computeGradLag_l(memspace->workspace_double,
-                  WorkingSet->nVar, TrialState->grad, WorkingSet->indexFixed,
-                  WorkingSet->sizes[0], WorkingSet->indexLB, WorkingSet->sizes[3],
-                  WorkingSet->indexUB, WorkingSet->sizes[4], TrialState->lambda);
+                  WorkingSet->ldA, WorkingSet->nVar, TrialState->grad,
+                  WorkingSet->sizes[2], WorkingSet->Aineq, WorkingSet->sizes[1],
+                  WorkingSet->Aeq, WorkingSet->indexFixed, WorkingSet->sizes[0],
+                  WorkingSet->indexLB, WorkingSet->sizes[3], WorkingSet->indexUB,
+                  WorkingSet->sizes[4], TrialState->lambda);
                 test3_computeDualFeasError(WorkingSet->nVar,
                   memspace->workspace_double, &isFeasible, &s);
-                nlpComplErrorLSQ = test3_computeComplError(TrialState->xstarsqp,
-                  WorkingSet->indexLB, WorkingSet->sizes[3], lb,
-                  WorkingSet->indexUB, WorkingSet->sizes[4], ub,
-                  TrialState->lambda, WorkingSet->sizes[0] + 1);
+                nlpComplErrorLSQ = test3_computeComplError
+                  (fscales_cineq_constraint, TrialState->xstarsqp,
+                   WorkingSet->sizes[2], TrialState->cIneq, WorkingSet->indexLB,
+                   WorkingSet->sizes[3], lb, WorkingSet->indexUB,
+                   WorkingSet->sizes[4], ub, TrialState->lambda,
+                   WorkingSet->sizes[0] + 1);
                 if ((s <= 1.0E-6 * smax) && (nlpComplErrorLSQ <= 1.0E-6 * smax))
                 {
                   MeritFunction->nlpDualFeasError = s;
@@ -2799,141 +3612,31 @@ static boolean_T test3_BFGSUpdate(int32_T nvar, emxArray_real_T_test3_T *Bk,
   return success;
 }
 
-static void test3_emxCopy_real_T_0(emxArray_real_T_0_test3_T *dst, const
-  emxArray_real_T_0_test3_T *src)
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static void test3_xgemv_bujmjslzp1(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T lda, const emxArray_real_T_test3_T *x,
+  emxArray_real_T_test3_T *y)
 {
-  int32_T i;
-  for (i = 0; i < 1; i++) {
-    dst->size = src->size;
-  }
-}
+  int32_T ia;
+  int32_T iac;
+  if (m != 0) {
+    int32_T b;
+    int32_T iy;
+    iy = 0;
+    b = (n - 1) * lda + 1;
+    for (iac = 1; lda < 0 ? iac >= b : iac <= b; iac += lda) {
+      real_T c;
+      int32_T d;
+      c = 0.0;
+      d = (iac + m) - 1;
+      for (ia = iac; ia <= d; ia++) {
+        c += A->data[ia - 1] * x->data[ia - iac];
+      }
 
-static void test3_emxCopy_real_T(emxArray_real_T_test3_T **dst,
-  emxArray_real_T_test3_T * const *src)
-{
-  int32_T i;
-  int32_T numElDst;
-  int32_T numElSrc;
-  numElDst = 1;
-  numElSrc = 1;
-  for (i = 0; i < (*dst)->numDimensions; i++) {
-    numElDst *= (*dst)->size[i];
-    numElSrc *= (*src)->size[i];
+      y->data[iy] += c;
+      iy++;
+    }
   }
-
-  for (i = 0; i < (*dst)->numDimensions; i++) {
-    (*dst)->size[i] = (*src)->size[i];
-  }
-
-  test3_emxEnsureCapacity_real_T(*dst, numElDst);
-  for (i = 0; i < numElSrc; i++) {
-    (*dst)->data[i] = (*src)->data[i];
-  }
-}
-
-static void test3_emxCopy_int32_T(emxArray_int32_T_test3_T **dst,
-  emxArray_int32_T_test3_T * const *src)
-{
-  int32_T i;
-  int32_T numElDst;
-  int32_T numElSrc;
-  numElDst = 1;
-  numElSrc = 1;
-  for (i = 0; i < (*dst)->numDimensions; i++) {
-    numElDst *= (*dst)->size[i];
-    numElSrc *= (*src)->size[i];
-  }
-
-  for (i = 0; i < (*dst)->numDimensions; i++) {
-    (*dst)->size[i] = (*src)->size[i];
-  }
-
-  test3_emxEnsureCapacity_int32_T(*dst, numElDst);
-  for (i = 0; i < numElSrc; i++) {
-    (*dst)->data[i] = (*src)->data[i];
-  }
-}
-
-static void test3_emxCopyMatrix_int32_T1(int32_T dst[5], const int32_T src[5])
-{
-  int32_T i;
-  for (i = 0; i < 5; i++) {
-    dst[i] = src[i];
-  }
-}
-
-static void test3_emxCopyMatrix_int32_T2(int32_T dst[6], const int32_T src[6])
-{
-  int32_T i;
-  for (i = 0; i < 6; i++) {
-    dst[i] = src[i];
-  }
-}
-
-static void test3_emxCopy_boolean_T(emxArray_boolean_T_test3_T **dst,
-  emxArray_boolean_T_test3_T * const *src)
-{
-  int32_T i;
-  int32_T numElDst;
-  int32_T numElSrc;
-  numElDst = 1;
-  numElSrc = 1;
-  for (i = 0; i < (*dst)->numDimensions; i++) {
-    numElDst *= (*dst)->size[i];
-    numElSrc *= (*src)->size[i];
-  }
-
-  for (i = 0; i < (*dst)->numDimensions; i++) {
-    (*dst)->size[i] = (*src)->size[i];
-  }
-
-  tes_emxEnsureCapacity_boolean_T(*dst, numElDst);
-  for (i = 0; i < numElSrc; i++) {
-    (*dst)->data[i] = (*src)->data[i];
-  }
-}
-
-static void emxCopyStruct_s_k8kXP0ntDjd4qxs(s_k8kXP0ntDjd4qxsrByEVbG_test_T *dst,
-  const s_k8kXP0ntDjd4qxsrByEVbG_test_T *src)
-{
-  dst->mConstr = src->mConstr;
-  dst->mConstrOrig = src->mConstrOrig;
-  dst->mConstrMax = src->mConstrMax;
-  dst->nVar = src->nVar;
-  dst->nVarOrig = src->nVarOrig;
-  dst->nVarMax = src->nVarMax;
-  dst->ldA = src->ldA;
-  test3_emxCopy_real_T_0(&dst->Aineq, &src->Aineq);
-  test3_emxCopy_real_T_0(&dst->Aeq, &src->Aeq);
-  test3_emxCopy_real_T(&dst->lb, &src->lb);
-  test3_emxCopy_real_T(&dst->ub, &src->ub);
-  test3_emxCopy_int32_T(&dst->indexLB, &src->indexLB);
-  test3_emxCopy_int32_T(&dst->indexUB, &src->indexUB);
-  test3_emxCopy_int32_T(&dst->indexFixed, &src->indexFixed);
-  dst->mEqRemoved = src->mEqRemoved;
-  test3_emxCopy_real_T(&dst->ATwset, &src->ATwset);
-  test3_emxCopy_real_T(&dst->bwset, &src->bwset);
-  dst->nActiveConstr = src->nActiveConstr;
-  test3_emxCopy_real_T(&dst->maxConstrWorkspace, &src->maxConstrWorkspace);
-  test3_emxCopyMatrix_int32_T1(dst->sizes, src->sizes);
-  test3_emxCopyMatrix_int32_T1(dst->sizesNormal, src->sizesNormal);
-  test3_emxCopyMatrix_int32_T1(dst->sizesPhaseOne, src->sizesPhaseOne);
-  test3_emxCopyMatrix_int32_T1(dst->sizesRegularized, src->sizesRegularized);
-  test3_emxCopyMatrix_int32_T1(dst->sizesRegPhaseOne, src->sizesRegPhaseOne);
-  test3_emxCopyMatrix_int32_T2(dst->isActiveIdx, src->isActiveIdx);
-  test3_emxCopyMatrix_int32_T2(dst->isActiveIdxNormal, src->isActiveIdxNormal);
-  test3_emxCopyMatrix_int32_T2(dst->isActiveIdxPhaseOne,
-    src->isActiveIdxPhaseOne);
-  test3_emxCopyMatrix_int32_T2(dst->isActiveIdxRegularized,
-    src->isActiveIdxRegularized);
-  test3_emxCopyMatrix_int32_T2(dst->isActiveIdxRegPhaseOne,
-    src->isActiveIdxRegPhaseOne);
-  test3_emxCopy_boolean_T(&dst->isActiveConstr, &src->isActiveConstr);
-  test3_emxCopy_int32_T(&dst->Wid, &src->Wid);
-  test3_emxCopy_int32_T(&dst->Wlocalidx, &src->Wlocalidx);
-  test3_emxCopyMatrix_int32_T1(dst->nWConstr, src->nWConstr);
-  dst->probType = src->probType;
-  dst->SLACK0 = src->SLACK0;
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
@@ -2979,7 +3682,7 @@ static void test3_countsort(emxArray_int32_T_test3_T *x, int32_T xLen,
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_removeConstr(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj, int32_T
+static void test3_removeConstr(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj, int32_T
   idx_global)
 {
   int32_T TYPE_tmp;
@@ -3066,26 +3769,189 @@ static void test3_factorQR(s_l1Gll5dfO9DpqQrvRqAf7E_test_T *obj, const
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static void test3_xgemv_bujm(int32_T m, int32_T n, const emxArray_real_T_test3_T
+  *A, int32_T lda, const emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *y)
+{
+  int32_T b_iy;
+  int32_T iyend;
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T iy;
+    for (b_iy = 0; b_iy < n; b_iy++) {
+      y->data[b_iy] = -y->data[b_iy];
+    }
+
+    iy = 0;
+    b = (n - 1) * lda + 1;
+    for (b_iy = 1; lda < 0 ? b_iy >= b : b_iy <= b; b_iy += lda) {
+      real_T c;
+      int32_T d;
+      c = 0.0;
+      d = (b_iy + m) - 1;
+      for (iyend = b_iy; iyend <= d; iyend++) {
+        c += x->data[iyend - b_iy] * A->data[iyend - 1];
+      }
+
+      y->data[iy] += c;
+      iy++;
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static void test3_xgemv_bujmj(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T lda, const emxArray_real_T_test3_T *x,
+  int32_T ix0, emxArray_real_T_test3_T *y)
+{
+  int32_T b_iy;
+  int32_T iyend;
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T iy;
+    for (b_iy = 0; b_iy < n; b_iy++) {
+      y->data[b_iy] = -y->data[b_iy];
+    }
+
+    iy = 0;
+    b = (n - 1) * lda + 1;
+    for (b_iy = 1; lda < 0 ? b_iy >= b : b_iy <= b; b_iy += lda) {
+      real_T c;
+      int32_T d;
+      c = 0.0;
+      d = (b_iy + m) - 1;
+      for (iyend = b_iy; iyend <= d; iyend++) {
+        c += x->data[((ix0 + iyend) - b_iy) - 1] * A->data[iyend - 1];
+      }
+
+      y->data[iy] += c;
+      iy++;
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static real_T test3_maxConstraintViolation(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj,
+  const emxArray_real_T_test3_T *x, int32_T ix0)
+{
+  real_T obj_0;
+  real_T v;
+  int32_T b_mIneq;
+  int32_T mEq;
+  int32_T mFixed;
+  int32_T mIneq;
+  int32_T mLB;
+  int32_T mUB;
+  int32_T offsetEq2;
+  mLB = obj->sizes[3] - 1;
+  mUB = obj->sizes[4] - 1;
+  mFixed = obj->sizes[0] - 1;
+  if (obj->probType == 2) {
+    v = 0.0;
+    b_mIneq = obj->sizes[2] - 1;
+    mIneq = obj->sizes[1] - 1;
+    if (obj->Aineq->size[0] != 0) {
+      for (mEq = 0; mEq <= b_mIneq; mEq++) {
+        obj->maxConstrWorkspace->data[mEq] = obj->bineq->data[mEq];
+      }
+
+      test3_xgemv_bujmj(obj->nVarOrig, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                        ix0, obj->maxConstrWorkspace);
+      for (mEq = 0; mEq <= b_mIneq; mEq++) {
+        obj->maxConstrWorkspace->data[mEq] -= x->data[((ix0 + obj->nVarOrig) +
+          mEq) - 1];
+        v = fmax(v, obj->maxConstrWorkspace->data[mEq]);
+      }
+    }
+
+    if (obj->Aeq->size[0] != 0) {
+      for (mEq = 0; mEq <= mIneq; mEq++) {
+        obj->maxConstrWorkspace->data[mEq] = obj->beq->data[mEq];
+      }
+
+      test3_xgemv_bujmj(obj->nVarOrig, obj->sizes[1], obj->Aeq, obj->ldA, x, ix0,
+                        obj->maxConstrWorkspace);
+      mEq = (obj->nVarOrig + obj->sizes[2]) - 1;
+      offsetEq2 = mEq + obj->sizes[1];
+      for (b_mIneq = 0; b_mIneq <= mIneq; b_mIneq++) {
+        obj_0 = (obj->maxConstrWorkspace->data[b_mIneq] - x->data[(ix0 + mEq) +
+                 b_mIneq]) + x->data[(ix0 + offsetEq2) + b_mIneq];
+        obj->maxConstrWorkspace->data[b_mIneq] = obj_0;
+        v = fmax(v, fabs(obj_0));
+      }
+    }
+  } else {
+    v = 0.0;
+    mIneq = obj->sizes[2] - 1;
+    mEq = obj->sizes[1] - 1;
+    if (obj->Aineq->size[0] != 0) {
+      for (b_mIneq = 0; b_mIneq <= mIneq; b_mIneq++) {
+        obj->maxConstrWorkspace->data[b_mIneq] = obj->bineq->data[b_mIneq];
+      }
+
+      test3_xgemv_bujmj(obj->nVar, obj->sizes[2], obj->Aineq, obj->ldA, x, ix0,
+                        obj->maxConstrWorkspace);
+      for (b_mIneq = 0; b_mIneq <= mIneq; b_mIneq++) {
+        v = fmax(v, obj->maxConstrWorkspace->data[b_mIneq]);
+      }
+    }
+
+    if (obj->Aeq->size[0] != 0) {
+      for (mIneq = 0; mIneq <= mEq; mIneq++) {
+        obj->maxConstrWorkspace->data[mIneq] = obj->beq->data[mIneq];
+      }
+
+      test3_xgemv_bujmj(obj->nVar, obj->sizes[1], obj->Aeq, obj->ldA, x, ix0,
+                        obj->maxConstrWorkspace);
+      for (mIneq = 0; mIneq <= mEq; mIneq++) {
+        v = fmax(v, fabs(obj->maxConstrWorkspace->data[mIneq]));
+      }
+    }
+  }
+
+  if (obj->sizes[3] > 0) {
+    for (mIneq = 0; mIneq <= mLB; mIneq++) {
+      v = fmax(v, -x->data[(ix0 + obj->indexLB->data[mIneq]) - 2] - obj->
+               lb->data[obj->indexLB->data[mIneq] - 1]);
+    }
+  }
+
+  if (obj->sizes[4] > 0) {
+    for (mLB = 0; mLB <= mUB; mLB++) {
+      v = fmax(v, x->data[(ix0 + obj->indexUB->data[mLB]) - 2] - obj->ub->
+               data[obj->indexUB->data[mLB] - 1]);
+    }
+  }
+
+  if (obj->sizes[0] > 0) {
+    for (mUB = 0; mUB <= mFixed; mUB++) {
+      v = fmax(v, fabs(x->data[(ix0 + obj->indexFixed->data[mUB]) - 2] - obj->
+                       ub->data[obj->indexFixed->data[mUB] - 1]));
+    }
+  }
+
+  return v;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
 static boolean_T test3_feasibleX0ForWorkingSet(emxArray_real_T_test3_T
-  *workspace, emxArray_real_T_test3_T *xCurrent, const
-  s_k8kXP0ntDjd4qxsrByEVbG_test_T *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T
-  *qrmanager)
+  *workspace, emxArray_real_T_test3_T *xCurrent, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager)
 {
   emxArray_real_T_test3_T *B;
   real_T c;
-  real_T constrViolation_basicX;
+  real_T workingset_0;
   int32_T ar;
-  int32_T d;
   int32_T exitg1;
   int32_T h;
-  int32_T iAcol;
+  int32_T ix;
   int32_T iy;
   int32_T jBcol;
   int32_T ldq;
-  int32_T ldw;
-  int32_T mLB;
+  int32_T mIneq;
   int32_T mWConstr;
+  int32_T minmana;
   int32_T nVar_tmp_tmp;
+  int32_T offsetEq1;
   boolean_T nonDegenerateWset;
   mWConstr = workingset->nActiveConstr - 1;
   nVar_tmp_tmp = workingset->nVar;
@@ -3097,15 +3963,17 @@ static boolean_T test3_feasibleX0ForWorkingSet(emxArray_real_T_test3_T
         data[jBcol];
     }
 
-    ldw = workingset->ldA;
+    ldq = workingset->ldA;
     if ((workingset->nVar != 0) && (workingset->nActiveConstr != 0)) {
       iy = 0;
-      mLB = (workingset->nActiveConstr - 1) * workingset->ldA + 1;
-      for (ldq = 1; ldw < 0 ? ldq >= mLB : ldq <= mLB; ldq += ldw) {
+      mIneq = (workingset->nActiveConstr - 1) * workingset->ldA + 1;
+      for (minmana = 1; ldq < 0 ? minmana >= mIneq : minmana <= mIneq; minmana +=
+           ldq) {
         c = 0.0;
-        d = (ldq + nVar_tmp_tmp) - 1;
-        for (jBcol = ldq; jBcol <= d; jBcol++) {
-          c += workingset->ATwset->data[jBcol - 1] * xCurrent->data[jBcol - ldq];
+        offsetEq1 = (minmana + nVar_tmp_tmp) - 1;
+        for (jBcol = minmana; jBcol <= offsetEq1; jBcol++) {
+          c += workingset->ATwset->data[jBcol - 1] * xCurrent->data[jBcol -
+            minmana];
         }
 
         workspace->data[iy] -= c;
@@ -3116,10 +3984,10 @@ static boolean_T test3_feasibleX0ForWorkingSet(emxArray_real_T_test3_T
     test3_emxInit_real_T(&B, 2);
     if (workingset->nActiveConstr >= workingset->nVar) {
       for (jBcol = 0; jBcol < nVar_tmp_tmp; jBcol++) {
-        ldw = qrmanager->ldq * jBcol;
-        for (ldq = 0; ldq <= mWConstr; ldq++) {
-          qrmanager->QR->data[ldq + ldw] = workingset->ATwset->data
-            [workingset->ldA * ldq + jBcol];
+        ldq = qrmanager->ldq * jBcol;
+        for (minmana = 0; minmana <= mWConstr; minmana++) {
+          qrmanager->QR->data[minmana + ldq] = workingset->ATwset->
+            data[workingset->ldA * minmana + jBcol];
         }
       }
 
@@ -3142,26 +4010,26 @@ static boolean_T test3_feasibleX0ForWorkingSet(emxArray_real_T_test3_T
         }
 
         qrmanager->minRowCol = jBcol;
-        iy = B->size[0] * B->size[1];
+        mIneq = B->size[0] * B->size[1];
         B->size[0] = qrmanager->QR->size[0];
         B->size[1] = qrmanager->QR->size[1];
-        test3_emxEnsureCapacity_real_T(B, iy);
+        test3_emxEnsureCapacity_real_T(B, mIneq);
         ldq = qrmanager->QR->size[0] * qrmanager->QR->size[1];
-        for (mLB = 0; mLB < ldq; mLB++) {
-          B->data[mLB] = qrmanager->QR->data[mLB];
+        for (mIneq = 0; mIneq < ldq; mIneq++) {
+          B->data[mIneq] = qrmanager->QR->data[mIneq];
         }
 
         if (qrmanager->QR->size[0] <= qrmanager->QR->size[1]) {
-          ldq = qrmanager->QR->size[0];
+          minmana = qrmanager->QR->size[0];
         } else {
-          ldq = qrmanager->QR->size[1];
+          minmana = qrmanager->QR->size[1];
         }
 
-        iy = qrmanager->tau->size[0];
-        qrmanager->tau->size[0] = ldq;
-        test3_emxEnsureCapacity_real_T(qrmanager->tau, iy);
-        for (mLB = 0; mLB < ldq; mLB++) {
-          qrmanager->tau->data[mLB] = 0.0;
+        mIneq = qrmanager->tau->size[0];
+        qrmanager->tau->size[0] = minmana;
+        test3_emxEnsureCapacity_real_T(qrmanager->tau, mIneq);
+        for (mIneq = 0; mIneq < minmana; mIneq++) {
+          qrmanager->tau->data[mIneq] = 0.0;
         }
 
         if (jBcol >= 1) {
@@ -3169,66 +4037,67 @@ static boolean_T test3_feasibleX0ForWorkingSet(emxArray_real_T_test3_T
                     qrmanager->tau);
         }
 
-        iy = qrmanager->QR->size[0] * qrmanager->QR->size[1];
+        mIneq = qrmanager->QR->size[0] * qrmanager->QR->size[1];
         qrmanager->QR->size[0] = B->size[0];
         qrmanager->QR->size[1] = B->size[1];
-        test3_emxEnsureCapacity_real_T(qrmanager->QR, iy);
+        test3_emxEnsureCapacity_real_T(qrmanager->QR, mIneq);
         ldq = B->size[0] * B->size[1];
-        for (mLB = 0; mLB < ldq; mLB++) {
-          qrmanager->QR->data[mLB] = B->data[mLB];
+        for (mIneq = 0; mIneq < ldq; mIneq++) {
+          qrmanager->QR->data[mIneq] = B->data[mIneq];
         }
       }
 
       test3_computeQ_(qrmanager, qrmanager->mrows);
       ldq = qrmanager->ldq;
-      ldw = workspace->size[0];
-      iy = B->size[0] * B->size[1];
+      iy = workspace->size[0];
+      mIneq = B->size[0] * B->size[1];
       B->size[0] = workspace->size[0];
       B->size[1] = workspace->size[1];
-      test3_emxEnsureCapacity_real_T(B, iy);
+      test3_emxEnsureCapacity_real_T(B, mIneq);
       ar = workspace->size[0] * workspace->size[1];
       if (ar - 1 >= 0) {
         memcpy(&B->data[0], &workspace->data[0], (uint32_T)ar * sizeof(real_T));
       }
 
       if (workingset->nVar != 0) {
-        for (jBcol = 0; ldw < 0 ? jBcol >= ldw : jBcol <= ldw; jBcol += ldw) {
-          mLB = jBcol + nVar_tmp_tmp;
-          for (iy = jBcol + 1; iy <= mLB; iy++) {
-            workspace->data[iy - 1] = 0.0;
+        for (jBcol = 0; iy < 0 ? jBcol >= iy : jBcol <= iy; jBcol += iy) {
+          mIneq = jBcol + nVar_tmp_tmp;
+          for (minmana = jBcol + 1; minmana <= mIneq; minmana++) {
+            workspace->data[minmana - 1] = 0.0;
           }
         }
 
         jBcol = -1;
-        for (mLB = 0; ldw < 0 ? mLB >= ldw : mLB <= ldw; mLB += ldw) {
-          iAcol = -1;
-          ar = mLB + nVar_tmp_tmp;
-          for (iy = mLB + 1; iy <= ar; iy++) {
+        for (mIneq = 0; iy < 0 ? mIneq >= iy : mIneq <= iy; mIneq += iy) {
+          minmana = -1;
+          ar = mIneq + nVar_tmp_tmp;
+          for (ix = mIneq + 1; ix <= ar; ix++) {
             c = 0.0;
-            for (d = 0; d <= mWConstr; d++) {
-              c += qrmanager->Q->data[(d + iAcol) + 1] * B->data[(d + jBcol) + 1];
+            for (offsetEq1 = 0; offsetEq1 <= mWConstr; offsetEq1++) {
+              c += qrmanager->Q->data[(offsetEq1 + minmana) + 1] * B->data
+                [(offsetEq1 + jBcol) + 1];
             }
 
-            workspace->data[iy - 1] += c;
-            iAcol += ldq;
+            workspace->data[ix - 1] += c;
+            minmana += ldq;
           }
 
-          jBcol += ldw;
+          jBcol += iy;
         }
       }
 
       for (mWConstr = 0; mWConstr < 2; mWConstr++) {
-        jBcol = ldw * mWConstr - 1;
-        for (iy = nVar_tmp_tmp; iy >= 1; iy--) {
-          iAcol = (iy - 1) * ldq;
-          mLB = iy + jBcol;
-          c = workspace->data[mLB];
+        jBcol = iy * mWConstr - 1;
+        for (ix = nVar_tmp_tmp; ix >= 1; ix--) {
+          minmana = (ix - 1) * ldq;
+          mIneq = ix + jBcol;
+          c = workspace->data[mIneq];
           if (c != 0.0) {
-            workspace->data[mLB] = c / qrmanager->QR->data[(iy + iAcol) - 1];
-            for (d = 0; d <= iy - 2; d++) {
-              ar = (d + jBcol) + 1;
-              workspace->data[ar] -= qrmanager->QR->data[d + iAcol] *
-                workspace->data[mLB];
+            workspace->data[mIneq] = c / qrmanager->QR->data[(ix + minmana) - 1];
+            for (offsetEq1 = 0; offsetEq1 <= ix - 2; offsetEq1++) {
+              ar = (offsetEq1 + jBcol) + 1;
+              workspace->data[ar] -= qrmanager->QR->data[offsetEq1 + minmana] *
+                workspace->data[mIneq];
             }
           }
         }
@@ -3238,53 +4107,54 @@ static boolean_T test3_feasibleX0ForWorkingSet(emxArray_real_T_test3_T
                      workingset->nActiveConstr, workingset->ldA);
       test3_computeQ_(qrmanager, qrmanager->minRowCol);
       ldq = qrmanager->ldq;
-      ldw = workspace->size[0];
-      for (mLB = 0; mLB < 2; mLB++) {
-        jBcol = ldw * mLB;
-        for (iy = 0; iy <= mWConstr; iy++) {
-          iAcol = ldq * iy;
-          ar = iy + jBcol;
+      iy = workspace->size[0];
+      for (mIneq = 0; mIneq < 2; mIneq++) {
+        jBcol = iy * mIneq;
+        for (ix = 0; ix <= mWConstr; ix++) {
+          minmana = ldq * ix;
+          ar = ix + jBcol;
           c = workspace->data[ar];
-          for (d = 0; d < iy; d++) {
-            c -= qrmanager->QR->data[d + iAcol] * workspace->data[d + jBcol];
+          for (offsetEq1 = 0; offsetEq1 < ix; offsetEq1++) {
+            c -= qrmanager->QR->data[offsetEq1 + minmana] * workspace->
+              data[offsetEq1 + jBcol];
           }
 
-          workspace->data[ar] = c / qrmanager->QR->data[iy + iAcol];
+          workspace->data[ar] = c / qrmanager->QR->data[ix + minmana];
         }
       }
 
-      iy = B->size[0] * B->size[1];
+      mIneq = B->size[0] * B->size[1];
       B->size[0] = workspace->size[0];
       B->size[1] = workspace->size[1];
-      test3_emxEnsureCapacity_real_T(B, iy);
+      test3_emxEnsureCapacity_real_T(B, mIneq);
       ar = workspace->size[0] * workspace->size[1];
       if (ar - 1 >= 0) {
         memcpy(&B->data[0], &workspace->data[0], (uint32_T)ar * sizeof(real_T));
       }
 
       if (workingset->nVar != 0) {
-        for (jBcol = 0; ldw < 0 ? jBcol >= ldw : jBcol <= ldw; jBcol += ldw) {
-          mLB = jBcol + nVar_tmp_tmp;
-          for (iy = jBcol + 1; iy <= mLB; iy++) {
-            workspace->data[iy - 1] = 0.0;
+        for (jBcol = 0; iy < 0 ? jBcol >= iy : jBcol <= iy; jBcol += iy) {
+          mIneq = jBcol + nVar_tmp_tmp;
+          for (minmana = jBcol + 1; minmana <= mIneq; minmana++) {
+            workspace->data[minmana - 1] = 0.0;
           }
         }
 
-        iAcol = 1;
-        for (iy = 0; ldw < 0 ? iy >= ldw : iy <= ldw; iy += ldw) {
+        minmana = 1;
+        for (ix = 0; iy < 0 ? ix >= iy : ix <= iy; ix += iy) {
           ar = -1;
-          mLB = iAcol + mWConstr;
-          for (d = iAcol; d <= mLB; d++) {
-            h = iy + nVar_tmp_tmp;
-            for (jBcol = iy + 1; jBcol <= h; jBcol++) {
-              workspace->data[jBcol - 1] += qrmanager->Q->data[(ar + jBcol) - iy]
-                * B->data[d - 1];
+          mIneq = minmana + mWConstr;
+          for (offsetEq1 = minmana; offsetEq1 <= mIneq; offsetEq1++) {
+            h = ix + nVar_tmp_tmp;
+            for (jBcol = ix + 1; jBcol <= h; jBcol++) {
+              workspace->data[jBcol - 1] += qrmanager->Q->data[(ar + jBcol) - ix]
+                * B->data[offsetEq1 - 1];
             }
 
             ar += ldq;
           }
 
-          iAcol += ldw;
+          minmana += iy;
         }
       }
     }
@@ -3314,66 +4184,112 @@ static boolean_T test3_feasibleX0ForWorkingSet(emxArray_real_T_test3_T
           }
         }
 
-        mWConstr = workspace->size[0] - 1;
-        mLB = workingset->sizes[3];
-        iy = workingset->sizes[4];
-        ldw = workingset->sizes[0];
-        c = 0.0;
+        iy = workingset->sizes[3];
+        ldq = workingset->sizes[4];
+        mWConstr = workingset->sizes[0];
+        if (workingset->probType == 2) {
+          c = 0.0;
+          ix = workingset->sizes[2] - 1;
+          mIneq = workingset->sizes[1] - 1;
+          if (workingset->Aineq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= ix; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                bineq->data[jBcol];
+            }
+
+            test3_xgemv_bujm(workingset->nVarOrig, workingset->sizes[2],
+                             workingset->Aineq, workingset->ldA, workspace,
+                             workingset->maxConstrWorkspace);
+            for (minmana = 0; minmana <= ix; minmana++) {
+              workingset->maxConstrWorkspace->data[minmana] -= workspace->
+                data[workingset->nVarOrig + minmana];
+              c = fmax(c, workingset->maxConstrWorkspace->data[minmana]);
+            }
+          }
+
+          if (workingset->Aeq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= mIneq; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                beq->data[jBcol];
+            }
+
+            test3_xgemv_bujm(workingset->nVarOrig, workingset->sizes[1],
+                             workingset->Aeq, workingset->ldA, workspace,
+                             workingset->maxConstrWorkspace);
+            offsetEq1 = workingset->nVarOrig + workingset->sizes[2];
+            jBcol = offsetEq1 + workingset->sizes[1];
+            for (ix = 0; ix <= mIneq; ix++) {
+              workingset_0 = (workingset->maxConstrWorkspace->data[ix] -
+                              workspace->data[offsetEq1 + ix]) + workspace->
+                data[jBcol + ix];
+              workingset->maxConstrWorkspace->data[ix] = workingset_0;
+              c = fmax(c, fabs(workingset_0));
+            }
+          }
+        } else {
+          c = 0.0;
+          mIneq = workingset->sizes[2] - 1;
+          minmana = workingset->sizes[1] - 1;
+          if (workingset->Aineq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= mIneq; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                bineq->data[jBcol];
+            }
+
+            test3_xgemv_bujm(workingset->nVar, workingset->sizes[2],
+                             workingset->Aineq, workingset->ldA, workspace,
+                             workingset->maxConstrWorkspace);
+            for (jBcol = 0; jBcol <= mIneq; jBcol++) {
+              c = fmax(c, workingset->maxConstrWorkspace->data[jBcol]);
+            }
+          }
+
+          if (workingset->Aeq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= minmana; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                beq->data[jBcol];
+            }
+
+            test3_xgemv_bujm(workingset->nVar, workingset->sizes[1],
+                             workingset->Aeq, workingset->ldA, workspace,
+                             workingset->maxConstrWorkspace);
+            for (jBcol = 0; jBcol <= minmana; jBcol++) {
+              c = fmax(c, fabs(workingset->maxConstrWorkspace->data[jBcol]));
+            }
+          }
+        }
+
         if (workingset->sizes[3] > 0) {
-          for (ldq = 0; ldq < mLB; ldq++) {
-            c = fmax(c, -workspace->data[workingset->indexLB->data[ldq] - 1] -
-                     workingset->lb->data[workingset->indexLB->data[ldq] - 1]);
+          for (minmana = 0; minmana < iy; minmana++) {
+            c = fmax(c, -workspace->data[workingset->indexLB->data[minmana] - 1]
+                     - workingset->lb->data[workingset->indexLB->data[minmana] -
+                     1]);
           }
         }
 
         if (workingset->sizes[4] > 0) {
-          for (ldq = 0; ldq < iy; ldq++) {
-            c = fmax(c, workspace->data[workingset->indexUB->data[ldq] - 1] -
-                     workingset->ub->data[workingset->indexUB->data[ldq] - 1]);
+          for (minmana = 0; minmana < ldq; minmana++) {
+            c = fmax(c, workspace->data[workingset->indexUB->data[minmana] - 1]
+                     - workingset->ub->data[workingset->indexUB->data[minmana] -
+                     1]);
           }
         }
 
         if (workingset->sizes[0] > 0) {
-          for (ldq = 0; ldq < ldw; ldq++) {
-            c = fmax(c, fabs(workspace->data[workingset->indexFixed->data[ldq] -
-                             1] - workingset->ub->data[workingset->
-                             indexFixed->data[ldq] - 1]));
+          for (minmana = 0; minmana < mWConstr; minmana++) {
+            c = fmax(c, fabs(workspace->data[workingset->indexFixed->
+                             data[minmana] - 1] - workingset->ub->
+                             data[workingset->indexFixed->data[minmana] - 1]));
           }
         }
 
-        mLB = workingset->sizes[3];
-        iy = workingset->sizes[4];
-        ldw = workingset->sizes[0];
-        constrViolation_basicX = 0.0;
-        if (workingset->sizes[3] > 0) {
-          for (ldq = 0; ldq < mLB; ldq++) {
-            constrViolation_basicX = fmax(constrViolation_basicX,
-              -workspace->data[mWConstr + workingset->indexLB->data[ldq]] -
-              workingset->lb->data[workingset->indexLB->data[ldq] - 1]);
-          }
-        }
-
-        if (workingset->sizes[4] > 0) {
-          for (ldq = 0; ldq < iy; ldq++) {
-            constrViolation_basicX = fmax(constrViolation_basicX,
-              workspace->data[mWConstr + workingset->indexUB->data[ldq]] -
-              workingset->ub->data[workingset->indexUB->data[ldq] - 1]);
-          }
-        }
-
-        if (workingset->sizes[0] > 0) {
-          for (ldq = 0; ldq < ldw; ldq++) {
-            constrViolation_basicX = fmax(constrViolation_basicX, fabs
-              (workspace->data[mWConstr + workingset->indexFixed->data[ldq]] -
-               workingset->ub->data[workingset->indexFixed->data[ldq] - 1]));
-          }
-        }
-
+        workingset_0 = test3_maxConstraintViolation(workingset, workspace,
+          workspace->size[0] + 1);
         for (jBcol = 0; jBcol < nVar_tmp_tmp; jBcol++) {
-          if ((c <= 2.2204460492503131E-16) || (c < constrViolation_basicX)) {
+          if ((c <= 2.2204460492503131E-16) || (c < workingset_0)) {
             xCurrent->data[jBcol] = workspace->data[jBcol];
           } else {
-            xCurrent->data[jBcol] = workspace->data[(mWConstr + jBcol) + 1];
+            xCurrent->data[jBcol] = workspace->data[workspace->size[0] + jBcol];
           }
         }
 
@@ -3386,29 +4302,126 @@ static boolean_T test3_feasibleX0ForWorkingSet(emxArray_real_T_test3_T
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static real_T test3_maxConstraintViolation(const s_k8kXP0ntDjd4qxsrByEVbG_test_T
+static void test3_xgemv_bujmjs(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T lda, const emxArray_real_T_test3_T *x,
+  emxArray_real_T_test3_T *y)
+{
+  int32_T b_iy;
+  int32_T iyend;
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T iy;
+    for (b_iy = 0; b_iy < n; b_iy++) {
+      y->data[b_iy] = -y->data[b_iy];
+    }
+
+    iy = 0;
+    b = (n - 1) * lda + 1;
+    for (b_iy = 1; lda < 0 ? b_iy >= b : b_iy <= b; b_iy += lda) {
+      real_T c;
+      int32_T d;
+      c = 0.0;
+      d = (b_iy + m) - 1;
+      for (iyend = b_iy; iyend <= d; iyend++) {
+        c += A->data[iyend - 1] * x->data[iyend - b_iy];
+      }
+
+      y->data[iy] += c;
+      iy++;
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static real_T test3_maxConstraintViolation_h(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *obj, const emxArray_real_T_test3_T *x)
 {
+  real_T obj_0;
   real_T v;
-  int32_T idx;
+  int32_T mEq;
   int32_T mFixed;
+  int32_T mIneq;
   int32_T mLB;
   int32_T mUB;
+  int32_T offsetEq1;
+  int32_T offsetEq2;
   mLB = obj->sizes[3] - 1;
   mUB = obj->sizes[4] - 1;
   mFixed = obj->sizes[0] - 1;
-  v = 0.0;
+  if (obj->probType == 2) {
+    v = 0.0;
+    mIneq = obj->sizes[2] - 1;
+    mEq = obj->sizes[1] - 1;
+    if (obj->Aineq->size[0] != 0) {
+      for (offsetEq1 = 0; offsetEq1 <= mIneq; offsetEq1++) {
+        obj->maxConstrWorkspace->data[offsetEq1] = obj->bineq->data[offsetEq1];
+      }
+
+      test3_xgemv_bujmjs(obj->nVarOrig, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                         obj->maxConstrWorkspace);
+      for (offsetEq1 = 0; offsetEq1 <= mIneq; offsetEq1++) {
+        obj->maxConstrWorkspace->data[offsetEq1] -= x->data[obj->nVarOrig +
+          offsetEq1];
+        v = fmax(v, obj->maxConstrWorkspace->data[offsetEq1]);
+      }
+    }
+
+    if (obj->Aeq->size[0] != 0) {
+      for (mIneq = 0; mIneq <= mEq; mIneq++) {
+        obj->maxConstrWorkspace->data[mIneq] = obj->beq->data[mIneq];
+      }
+
+      test3_xgemv_bujmjs(obj->nVarOrig, obj->sizes[1], obj->Aeq, obj->ldA, x,
+                         obj->maxConstrWorkspace);
+      offsetEq1 = obj->nVarOrig + obj->sizes[2];
+      offsetEq2 = offsetEq1 + obj->sizes[1];
+      for (mIneq = 0; mIneq <= mEq; mIneq++) {
+        obj_0 = (obj->maxConstrWorkspace->data[mIneq] - x->data[offsetEq1 +
+                 mIneq]) + x->data[offsetEq2 + mIneq];
+        obj->maxConstrWorkspace->data[mIneq] = obj_0;
+        v = fmax(v, fabs(obj_0));
+      }
+    }
+  } else {
+    v = 0.0;
+    mIneq = obj->sizes[2] - 1;
+    mEq = obj->sizes[1] - 1;
+    if (obj->Aineq->size[0] != 0) {
+      for (offsetEq1 = 0; offsetEq1 <= mIneq; offsetEq1++) {
+        obj->maxConstrWorkspace->data[offsetEq1] = obj->bineq->data[offsetEq1];
+      }
+
+      test3_xgemv_bujmjs(obj->nVar, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                         obj->maxConstrWorkspace);
+      for (offsetEq1 = 0; offsetEq1 <= mIneq; offsetEq1++) {
+        v = fmax(v, obj->maxConstrWorkspace->data[offsetEq1]);
+      }
+    }
+
+    if (obj->Aeq->size[0] != 0) {
+      for (mIneq = 0; mIneq <= mEq; mIneq++) {
+        obj->maxConstrWorkspace->data[mIneq] = obj->beq->data[mIneq];
+      }
+
+      test3_xgemv_bujmjs(obj->nVar, obj->sizes[1], obj->Aeq, obj->ldA, x,
+                         obj->maxConstrWorkspace);
+      for (mIneq = 0; mIneq <= mEq; mIneq++) {
+        v = fmax(v, fabs(obj->maxConstrWorkspace->data[mIneq]));
+      }
+    }
+  }
+
   if (obj->sizes[3] > 0) {
-    for (idx = 0; idx <= mLB; idx++) {
-      v = fmax(v, -x->data[obj->indexLB->data[idx] - 1] - obj->lb->data
-               [obj->indexLB->data[idx] - 1]);
+    for (mEq = 0; mEq <= mLB; mEq++) {
+      v = fmax(v, -x->data[obj->indexLB->data[mEq] - 1] - obj->lb->data
+               [obj->indexLB->data[mEq] - 1]);
     }
   }
 
   if (obj->sizes[4] > 0) {
-    for (idx = 0; idx <= mUB; idx++) {
-      v = fmax(v, x->data[obj->indexUB->data[idx] - 1] - obj->ub->data
-               [obj->indexUB->data[idx] - 1]);
+    for (mLB = 0; mLB <= mUB; mLB++) {
+      v = fmax(v, x->data[obj->indexUB->data[mLB] - 1] - obj->ub->data
+               [obj->indexUB->data[mLB] - 1]);
     }
   }
 
@@ -3423,8 +4436,8 @@ static real_T test3_maxConstraintViolation(const s_k8kXP0ntDjd4qxsrByEVbG_test_T
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_PresolveWorkingSet(s_PLLLBDg14rHiR3qEakQweE_test_T *solution,
-  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_k8kXP0ntDjd4qxsrByEVbG_test_T
+static void test3_PresolveWorkingSet(s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager)
 {
   real_T c_tol;
@@ -3563,10 +4576,14 @@ static void test3_PresolveWorkingSet(s_PLLLBDg14rHiR3qEakQweE_test_T *solution,
           if (nVar <= ix) {
             if ((ix == workingset->nActiveConstr) || (ix == nVar)) {
               workingset->mEqRemoved++;
+              workingset->indexEqRemoved->data[workingset->mEqRemoved - 1] =
+                workingset->Wlocalidx->data[nVar - 1];
               test3_removeConstr(workingset, nVar);
             } else {
               workingset->mEqRemoved++;
               TYPE = workingset->Wid->data[nVar - 1] - 1;
+              workingset->indexEqRemoved->data[workingset->mEqRemoved - 1] =
+                workingset->Wlocalidx->data[nVar - 1];
               workingset->isActiveConstr->data[(workingset->
                 isActiveIdx[workingset->Wid->data[nVar - 1] - 1] +
                 workingset->Wlocalidx->data[nVar - 1]) - 2] = false;
@@ -3767,7 +4784,7 @@ static void test3_PresolveWorkingSet(s_PLLLBDg14rHiR3qEakQweE_test_T *solution,
     if (guard1) {
       if (workingset->nWConstr[0] + workingset->nWConstr[1] == workingset->nVar)
       {
-        c_tol = test3_maxConstraintViolation(workingset, solution->xstar);
+        c_tol = test3_maxConstraintViolation_h(workingset, solution->xstar);
         if (c_tol > 1.0E-6) {
           solution->state = -2;
         }
@@ -3789,6 +4806,137 @@ static void test3_PresolveWorkingSet(s_PLLLBDg14rHiR3qEakQweE_test_T *solution,
     workingset->nWConstr[4] = 0;
     workingset->nActiveConstr = workingset->nWConstr[0] + workingset->nWConstr[1];
   }
+}
+
+static void test3_emxCopy_real_T(emxArray_real_T_test3_T **dst,
+  emxArray_real_T_test3_T * const *src)
+{
+  int32_T i;
+  int32_T numElDst;
+  int32_T numElSrc;
+  numElDst = 1;
+  numElSrc = 1;
+  for (i = 0; i < (*dst)->numDimensions; i++) {
+    numElDst *= (*dst)->size[i];
+    numElSrc *= (*src)->size[i];
+  }
+
+  for (i = 0; i < (*dst)->numDimensions; i++) {
+    (*dst)->size[i] = (*src)->size[i];
+  }
+
+  test3_emxEnsureCapacity_real_T(*dst, numElDst);
+  for (i = 0; i < numElSrc; i++) {
+    (*dst)->data[i] = (*src)->data[i];
+  }
+}
+
+static void test3_emxCopy_int32_T(emxArray_int32_T_test3_T **dst,
+  emxArray_int32_T_test3_T * const *src)
+{
+  int32_T i;
+  int32_T numElDst;
+  int32_T numElSrc;
+  numElDst = 1;
+  numElSrc = 1;
+  for (i = 0; i < (*dst)->numDimensions; i++) {
+    numElDst *= (*dst)->size[i];
+    numElSrc *= (*src)->size[i];
+  }
+
+  for (i = 0; i < (*dst)->numDimensions; i++) {
+    (*dst)->size[i] = (*src)->size[i];
+  }
+
+  test3_emxEnsureCapacity_int32_T(*dst, numElDst);
+  for (i = 0; i < numElSrc; i++) {
+    (*dst)->data[i] = (*src)->data[i];
+  }
+}
+
+static void test3_emxCopyMatrix_int32_T(int32_T dst[5], const int32_T src[5])
+{
+  int32_T i;
+  for (i = 0; i < 5; i++) {
+    dst[i] = src[i];
+  }
+}
+
+static void test3_emxCopyMatrix_int32_T1(int32_T dst[6], const int32_T src[6])
+{
+  int32_T i;
+  for (i = 0; i < 6; i++) {
+    dst[i] = src[i];
+  }
+}
+
+static void test3_emxCopy_boolean_T(emxArray_boolean_T_test3_T **dst,
+  emxArray_boolean_T_test3_T * const *src)
+{
+  int32_T i;
+  int32_T numElDst;
+  int32_T numElSrc;
+  numElDst = 1;
+  numElSrc = 1;
+  for (i = 0; i < (*dst)->numDimensions; i++) {
+    numElDst *= (*dst)->size[i];
+    numElSrc *= (*src)->size[i];
+  }
+
+  for (i = 0; i < (*dst)->numDimensions; i++) {
+    (*dst)->size[i] = (*src)->size[i];
+  }
+
+  tes_emxEnsureCapacity_boolean_T(*dst, numElDst);
+  for (i = 0; i < numElSrc; i++) {
+    (*dst)->data[i] = (*src)->data[i];
+  }
+}
+
+static void emxCopyStruct_s_Wd0eYcEyLXg48EJ(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *dst,
+  const s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *src)
+{
+  dst->mConstr = src->mConstr;
+  dst->mConstrOrig = src->mConstrOrig;
+  dst->mConstrMax = src->mConstrMax;
+  dst->nVar = src->nVar;
+  dst->nVarOrig = src->nVarOrig;
+  dst->nVarMax = src->nVarMax;
+  dst->ldA = src->ldA;
+  test3_emxCopy_real_T(&dst->Aineq, &src->Aineq);
+  test3_emxCopy_real_T(&dst->bineq, &src->bineq);
+  test3_emxCopy_real_T(&dst->Aeq, &src->Aeq);
+  test3_emxCopy_real_T(&dst->beq, &src->beq);
+  test3_emxCopy_real_T(&dst->lb, &src->lb);
+  test3_emxCopy_real_T(&dst->ub, &src->ub);
+  test3_emxCopy_int32_T(&dst->indexLB, &src->indexLB);
+  test3_emxCopy_int32_T(&dst->indexUB, &src->indexUB);
+  test3_emxCopy_int32_T(&dst->indexFixed, &src->indexFixed);
+  dst->mEqRemoved = src->mEqRemoved;
+  test3_emxCopy_int32_T(&dst->indexEqRemoved, &src->indexEqRemoved);
+  test3_emxCopy_real_T(&dst->ATwset, &src->ATwset);
+  test3_emxCopy_real_T(&dst->bwset, &src->bwset);
+  dst->nActiveConstr = src->nActiveConstr;
+  test3_emxCopy_real_T(&dst->maxConstrWorkspace, &src->maxConstrWorkspace);
+  test3_emxCopyMatrix_int32_T(dst->sizes, src->sizes);
+  test3_emxCopyMatrix_int32_T(dst->sizesNormal, src->sizesNormal);
+  test3_emxCopyMatrix_int32_T(dst->sizesPhaseOne, src->sizesPhaseOne);
+  test3_emxCopyMatrix_int32_T(dst->sizesRegularized, src->sizesRegularized);
+  test3_emxCopyMatrix_int32_T(dst->sizesRegPhaseOne, src->sizesRegPhaseOne);
+  test3_emxCopyMatrix_int32_T1(dst->isActiveIdx, src->isActiveIdx);
+  test3_emxCopyMatrix_int32_T1(dst->isActiveIdxNormal, src->isActiveIdxNormal);
+  test3_emxCopyMatrix_int32_T1(dst->isActiveIdxPhaseOne,
+    src->isActiveIdxPhaseOne);
+  test3_emxCopyMatrix_int32_T1(dst->isActiveIdxRegularized,
+    src->isActiveIdxRegularized);
+  test3_emxCopyMatrix_int32_T1(dst->isActiveIdxRegPhaseOne,
+    src->isActiveIdxRegPhaseOne);
+  test3_emxCopy_boolean_T(&dst->isActiveConstr, &src->isActiveConstr);
+  test3_emxCopy_int32_T(&dst->Wid, &src->Wid);
+  test3_emxCopy_int32_T(&dst->Wlocalidx, &src->Wlocalidx);
+  test3_emxCopyMatrix_int32_T(dst->nWConstr, src->nWConstr);
+  dst->probType = src->probType;
+  dst->SLACK0 = src->SLACK0;
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
@@ -3880,8 +5028,9 @@ static real_T test3_computeFval(const s_saWPFfMboRdWeRqIEJ4x8C_test_T *obj,
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_xgemv_bu(int32_T m, int32_T n, const emxArray_real_T_test3_T
-  *A, int32_T lda, const emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *y)
+static void test3_xgemv_bujmjsl(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T lda, const emxArray_real_T_test3_T *x,
+  emxArray_real_T_test3_T *y)
 {
   int32_T b_iy;
   int32_T iyend;
@@ -3924,7 +5073,7 @@ static void test3_computeGrad_StoreHx(s_saWPFfMboRdWeRqIEJ4x8C_test_T *obj,
     break;
 
    case 3:
-    test3_xgemv_bu(obj->nvar, obj->nvar, H, obj->nvar, x, obj->Hx);
+    test3_xgemv_bujmjsl(obj->nvar, obj->nvar, H, obj->nvar, x, obj->Hx);
     b_ixlast = obj->nvar;
     for (maxRegVar = 0; maxRegVar < b_ixlast; maxRegVar++) {
       obj->grad->data[maxRegVar] = obj->Hx->data[maxRegVar];
@@ -3940,7 +5089,7 @@ static void test3_computeGrad_StoreHx(s_saWPFfMboRdWeRqIEJ4x8C_test_T *obj,
 
    default:
     maxRegVar = obj->maxVar - 1;
-    test3_xgemv_bu(obj->nvar, obj->nvar, H, obj->nvar, x, obj->Hx);
+    test3_xgemv_bujmjsl(obj->nvar, obj->nvar, H, obj->nvar, x, obj->Hx);
     iy = obj->nvar + 1;
     for (b_ixlast = iy; b_ixlast <= maxRegVar; b_ixlast++) {
       obj->Hx->data[b_ixlast - 1] = x->data[b_ixlast - 1] * obj->beta;
@@ -4561,9 +5710,9 @@ static int32_T test3_xpotrf(int32_T n, emxArray_real_T_test3_T *A, int32_T lda)
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_xgemv_buj(int32_T m, int32_T n, const emxArray_real_T_test3_T *
-  A, int32_T ia0, int32_T lda, const emxArray_real_T_test3_T *x,
-  emxArray_real_T_test3_T *y)
+static void test3_xgemv_bujmjslz(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T ia0, int32_T lda, const
+  emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *y)
 {
   int32_T b_iy;
   int32_T iyend;
@@ -4743,7 +5892,7 @@ static void test3_solve_k(const s_vdGXtauKr5HuLAqoxBLhXH_test_T *obj,
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
 static void test3_compute_deltax(const emxArray_real_T_test3_T *H,
-  s_PLLLBDg14rHiR3qEakQweE_test_T *solution, s_pIaUYPkQBTqVmAKxFPiGQF_test_T
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution, s_pIaUYPkQBTqVmAKxFPiGQF_test_T
   *memspace, const s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager,
   s_vdGXtauKr5HuLAqoxBLhXH_test_T *cholmanager, const
   s_saWPFfMboRdWeRqIEJ4x8C_test_T *objective, boolean_T alwaysPositiveDef)
@@ -4846,9 +5995,9 @@ static void test3_compute_deltax(const emxArray_real_T_test3_T *H,
             [(qrmanager->ncols + nullStart) * qrmanager->ldq + nVar];
         }
 
-        test3_xgemv_buj(qrmanager->mrows, mNull, qrmanager->Q, nullStartIdx_tmp,
-                        qrmanager->ldq, memspace->workspace_double,
-                        solution->searchDir);
+        test3_xgemv_bujmjslz(qrmanager->mrows, mNull, qrmanager->Q,
+                             nullStartIdx_tmp, qrmanager->ldq,
+                             memspace->workspace_double, solution->searchDir);
       } else {
         if (objective->objtype == 3) {
           test3_xgemm(qrmanager->mrows, mNull, qrmanager->mrows, H,
@@ -5036,9 +6185,9 @@ static void test3_compute_deltax(const emxArray_real_T_test3_T *H,
             }
           }
 
-          test3_xgemv_buj(qrmanager->mrows, mNull, qrmanager->Q,
-                          nullStartIdx_tmp, qrmanager->ldq,
-                          memspace->workspace_double, solution->searchDir);
+          test3_xgemv_bujmjslz(qrmanager->mrows, mNull, qrmanager->Q,
+                               nullStartIdx_tmp, qrmanager->ldq,
+                               memspace->workspace_double, solution->searchDir);
         }
       }
     }
@@ -5080,25 +6229,64 @@ static real_T test3_xnrm2_a(int32_T n, const emxArray_real_T_test3_T *x)
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_feasibleratiotest(const emxArray_real_T_test3_T
-  *solution_xstar, const emxArray_real_T_test3_T *solution_searchDir, int32_T
-  workingset_nVar, const emxArray_real_T_test3_T *workingset_lb, const
-  emxArray_real_T_test3_T *workingset_ub, const emxArray_int32_T_test3_T
-  *workingset_indexLB, const emxArray_int32_T_test3_T *workingset_indexUB, const
-  int32_T workingset_sizes[5], const int32_T workingset_isActiveIdx[6], const
-  emxArray_boolean_T_test3_T *workingset_isActiveConstr, const int32_T
-  workingset_nWConstr[5], boolean_T isPhaseOne, real_T *alpha, boolean_T
-  *newBlocking, int32_T *constrType, int32_T *constrIdx)
+static void test3_xgemv_bujmjslzp(int32_T m, int32_T n, const
+  emxArray_real_T_test3_T *A, int32_T lda, const emxArray_real_T_test3_T *x,
+  emxArray_real_T_test3_T *y)
 {
+  int32_T b_iy;
+  int32_T ia;
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T iyend;
+    for (b_iy = 0; b_iy < n; b_iy++) {
+      y->data[b_iy] = -y->data[b_iy];
+    }
+
+    iyend = 0;
+    b = (n - 1) * lda + 1;
+    for (b_iy = 1; lda < 0 ? b_iy >= b : b_iy <= b; b_iy += lda) {
+      real_T c;
+      int32_T d;
+      c = 0.0;
+      d = (b_iy + m) - 1;
+      for (ia = b_iy; ia <= d; ia++) {
+        c += A->data[ia - 1] * x->data[ia - b_iy];
+      }
+
+      y->data[iyend] += c;
+      iyend++;
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static void test3_feasibleratiotest(const emxArray_real_T_test3_T
+  *solution_xstar, const emxArray_real_T_test3_T *solution_searchDir,
+  emxArray_real_T_test3_T *workspace, int32_T workingset_nVar, int32_T
+  workingset_ldA, const emxArray_real_T_test3_T *workingset_Aineq, const
+  emxArray_real_T_test3_T *workingset_bineq, const emxArray_real_T_test3_T
+  *workingset_lb, const emxArray_real_T_test3_T *workingset_ub, const
+  emxArray_int32_T_test3_T *workingset_indexLB, const emxArray_int32_T_test3_T
+  *workingset_indexUB, const int32_T workingset_sizes[5], const int32_T
+  workingset_isActiveIdx[6], const emxArray_boolean_T_test3_T
+  *workingset_isActiveConstr, const int32_T workingset_nWConstr[5], boolean_T
+  isPhaseOne, real_T *alpha, boolean_T *newBlocking, int32_T *constrType,
+  int32_T *constrIdx)
+{
+  real_T alphaTemp;
+  real_T c;
   real_T denomTol;
   real_T phaseOneCorrectionP;
-  real_T phaseOneCorrectionX;
-  real_T pk_corrected;
   real_T ratio;
-  int32_T b;
-  int32_T idx;
+  int32_T b_iy;
+  int32_T d;
+  int32_T e;
+  int32_T ia;
+  int32_T iyend;
+  int32_T ldw;
+  int32_T totalIneq;
   int32_T totalUB;
-  int32_T workingset_indexLB_0;
+  totalIneq = workingset_sizes[2] - 1;
   totalUB = workingset_sizes[4];
   *alpha = 1.0E+30;
   *newBlocking = false;
@@ -5106,39 +6294,84 @@ static void test3_feasibleratiotest(const emxArray_real_T_test3_T
   *constrIdx = 0;
   denomTol = 2.2204460492503131E-13 * test3_xnrm2_a(workingset_nVar,
     solution_searchDir);
+  if (workingset_nWConstr[2] < workingset_sizes[2]) {
+    if (totalIneq >= 0) {
+      memcpy(&workspace->data[0], &workingset_bineq->data[0], (uint32_T)
+             (totalIneq + 1) * sizeof(real_T));
+    }
+
+    test3_xgemv_bujmjslzp(workingset_nVar, workingset_sizes[2], workingset_Aineq,
+                          workingset_ldA, solution_xstar, workspace);
+    ldw = workspace->size[0];
+    if ((workingset_nVar != 0) && (workingset_sizes[2] != 0)) {
+      iyend = workspace->size[0] + workingset_sizes[2];
+      if (ldw + 1 <= iyend) {
+        memset(&workspace->data[ldw], 0, (uint32_T)(iyend - ldw) * sizeof(real_T));
+      }
+
+      iyend = workspace->size[0];
+      d = (workingset_sizes[2] - 1) * workingset_ldA + 1;
+      for (b_iy = 1; workingset_ldA < 0 ? b_iy >= d : b_iy <= d; b_iy +=
+           workingset_ldA) {
+        c = 0.0;
+        e = (b_iy + workingset_nVar) - 1;
+        for (ia = b_iy; ia <= e; ia++) {
+          c += workingset_Aineq->data[ia - 1] * solution_searchDir->data[ia -
+            b_iy];
+        }
+
+        workspace->data[iyend] += c;
+        iyend++;
+      }
+    }
+
+    for (b_iy = 0; b_iy <= totalIneq; b_iy++) {
+      c = workspace->data[ldw + b_iy];
+      if ((c > denomTol) && (!workingset_isActiveConstr->data
+                             [(workingset_isActiveIdx[2] + b_iy) - 1])) {
+        alphaTemp = fmin(fabs(workspace->data[b_iy]), 1.0E-6 - workspace->
+                         data[b_iy]) / c;
+        if (alphaTemp < *alpha) {
+          *alpha = alphaTemp;
+          *constrType = 3;
+          *constrIdx = b_iy + 1;
+          *newBlocking = true;
+        }
+      }
+    }
+  }
+
   if (workingset_nWConstr[3] < workingset_sizes[3]) {
-    phaseOneCorrectionX = solution_xstar->data[workingset_nVar - 1] * (real_T)
-      isPhaseOne;
+    c = solution_xstar->data[workingset_nVar - 1] * (real_T)isPhaseOne;
     phaseOneCorrectionP = solution_searchDir->data[workingset_nVar - 1] *
       (real_T)isPhaseOne;
-    b = workingset_sizes[3];
-    for (idx = 0; idx <= b - 2; idx++) {
-      workingset_indexLB_0 = workingset_indexLB->data[idx];
-      pk_corrected = -solution_searchDir->data[workingset_indexLB_0 - 1] -
-        phaseOneCorrectionP;
-      if ((pk_corrected > denomTol) && (!workingset_isActiveConstr->data
-           [(workingset_isActiveIdx[3] + idx) - 1])) {
-        ratio = (-solution_xstar->data[workingset_indexLB_0 - 1] -
-                 workingset_lb->data[workingset_indexLB_0 - 1]) -
-          phaseOneCorrectionX;
-        pk_corrected = fmin(fabs(ratio), 1.0E-6 - ratio) / pk_corrected;
-        if (pk_corrected < *alpha) {
-          *alpha = pk_corrected;
+    ldw = workingset_sizes[3];
+    for (totalIneq = 0; totalIneq <= ldw - 2; totalIneq++) {
+      b_iy = workingset_indexLB->data[totalIneq];
+      alphaTemp = -solution_searchDir->data[b_iy - 1] - phaseOneCorrectionP;
+      if ((alphaTemp > denomTol) && (!workingset_isActiveConstr->data
+           [(workingset_isActiveIdx[3] + totalIneq) - 1])) {
+        ratio = (-solution_xstar->data[b_iy - 1] - workingset_lb->data[b_iy - 1])
+          - c;
+        alphaTemp = fmin(fabs(ratio), 1.0E-6 - ratio) / alphaTemp;
+        if (alphaTemp < *alpha) {
+          *alpha = alphaTemp;
           *constrType = 4;
-          *constrIdx = idx + 1;
+          *constrIdx = totalIneq + 1;
           *newBlocking = true;
         }
       }
     }
 
-    idx = workingset_indexLB->data[workingset_sizes[3] - 1] - 1;
-    phaseOneCorrectionX = -solution_searchDir->data[idx];
-    if ((phaseOneCorrectionX > denomTol) && (!workingset_isActiveConstr->data
-         [(workingset_isActiveIdx[3] + workingset_sizes[3]) - 2])) {
-      ratio = -solution_xstar->data[idx] - workingset_lb->data[idx];
-      pk_corrected = fmin(fabs(ratio), 1.0E-6 - ratio) / phaseOneCorrectionX;
-      if (pk_corrected < *alpha) {
-        *alpha = pk_corrected;
+    totalIneq = workingset_indexLB->data[workingset_sizes[3] - 1] - 1;
+    c = -solution_searchDir->data[totalIneq];
+    if ((c > denomTol) && (!workingset_isActiveConstr->data
+                           [(workingset_isActiveIdx[3] + workingset_sizes[3]) -
+                           2])) {
+      ratio = -solution_xstar->data[totalIneq] - workingset_lb->data[totalIneq];
+      alphaTemp = fmin(fabs(ratio), 1.0E-6 - ratio) / c;
+      if (alphaTemp < *alpha) {
+        *alpha = alphaTemp;
         *constrType = 4;
         *constrIdx = workingset_sizes[3];
         *newBlocking = true;
@@ -5147,22 +6380,21 @@ static void test3_feasibleratiotest(const emxArray_real_T_test3_T
   }
 
   if (workingset_nWConstr[4] < workingset_sizes[4]) {
-    phaseOneCorrectionX = solution_xstar->data[workingset_nVar - 1] * (real_T)
-      isPhaseOne;
+    c = solution_xstar->data[workingset_nVar - 1] * (real_T)isPhaseOne;
     phaseOneCorrectionP = solution_searchDir->data[workingset_nVar - 1] *
       (real_T)isPhaseOne;
-    for (idx = 0; idx < totalUB; idx++) {
-      b = workingset_indexUB->data[idx];
-      pk_corrected = solution_searchDir->data[b - 1] - phaseOneCorrectionP;
-      if ((pk_corrected > denomTol) && (!workingset_isActiveConstr->data
-           [(workingset_isActiveIdx[4] + idx) - 1])) {
-        ratio = (solution_xstar->data[b - 1] - workingset_ub->data[b - 1]) -
-          phaseOneCorrectionX;
-        pk_corrected = fmin(fabs(ratio), 1.0E-6 - ratio) / pk_corrected;
-        if (pk_corrected < *alpha) {
-          *alpha = pk_corrected;
+    for (totalIneq = 0; totalIneq < totalUB; totalIneq++) {
+      ldw = workingset_indexUB->data[totalIneq];
+      alphaTemp = solution_searchDir->data[ldw - 1] - phaseOneCorrectionP;
+      if ((alphaTemp > denomTol) && (!workingset_isActiveConstr->data
+           [(workingset_isActiveIdx[4] + totalIneq) - 1])) {
+        ratio = (solution_xstar->data[ldw - 1] - workingset_ub->data[ldw - 1]) -
+          c;
+        alphaTemp = fmin(fabs(ratio), 1.0E-6 - ratio) / alphaTemp;
+        if (alphaTemp < *alpha) {
+          *alpha = alphaTemp;
           *constrType = 5;
-          *constrIdx = idx + 1;
+          *constrIdx = totalIneq + 1;
           *newBlocking = true;
         }
       }
@@ -5176,7 +6408,7 @@ static void test3_feasibleratiotest(const emxArray_real_T_test3_T
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test_addBoundToActiveSetMatrix_(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj,
+static void test_addBoundToActiveSetMatrix_(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj,
   int32_T TYPE, int32_T idx_local)
 {
   int32_T b;
@@ -5219,9 +6451,32 @@ static void test_addBoundToActiveSetMatrix_(s_k8kXP0ntDjd4qxsrByEVbG_test_T *obj
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static void test3_addAineqConstr(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj, int32_T
+  idx_local)
+{
+  int32_T b;
+  int32_T iAineq0;
+  int32_T iAw0;
+  int32_T idx;
+  obj->nWConstr[2]++;
+  obj->isActiveConstr->data[(obj->isActiveIdx[2] + idx_local) - 2] = true;
+  obj->nActiveConstr++;
+  obj->Wid->data[obj->nActiveConstr - 1] = 3;
+  obj->Wlocalidx->data[obj->nActiveConstr - 1] = idx_local;
+  iAineq0 = (idx_local - 1) * obj->ldA;
+  iAw0 = (obj->nActiveConstr - 1) * obj->ldA;
+  b = obj->nVar - 1;
+  for (idx = 0; idx <= b; idx++) {
+    obj->ATwset->data[iAw0 + idx] = obj->Aineq->data[iAineq0 + idx];
+  }
+
+  obj->bwset->data[obj->nActiveConstr - 1] = obj->bineq->data[idx_local - 1];
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
 static void test3_iterate(const emxArray_real_T_test3_T *H, const
-  emxArray_real_T_test3_T *f, s_PLLLBDg14rHiR3qEakQweE_test_T *solution,
-  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_k8kXP0ntDjd4qxsrByEVbG_test_T
+  emxArray_real_T_test3_T *f, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager,
   s_vdGXtauKr5HuLAqoxBLhXH_test_T *cholmanager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
   objective, const char_T options_SolverName[7], real_T options_StepTolerance,
@@ -5411,9 +6666,9 @@ static void test3_iterate(const emxArray_real_T_test3_T *H, const
             }
 
             if (guard1) {
-              test3_xgemv_b(qrmanager->mrows, qrmanager->ncols, qrmanager->Q,
-                            qrmanager->ldq, objective->grad,
-                            memspace->workspace_double);
+              test3_xgemv_buj(qrmanager->mrows, qrmanager->ncols, qrmanager->Q,
+                              qrmanager->ldq, objective->grad,
+                              memspace->workspace_double);
               if (qrmanager->ncols != 0) {
                 for (iyend = nActiveConstr; iyend >= 1; iyend--) {
                   b_iy = ((iyend - 1) * qrmanager->ldq + iyend) - 2;
@@ -5469,29 +6724,24 @@ static void test3_iterate(const emxArray_real_T_test3_T *H, const
           updateFval = false;
         } else {
           test3_feasibleratiotest(solution->xstar, solution->searchDir,
-            workingset->nVar, workingset->lb, workingset->ub,
+            memspace->workspace_double, workingset->nVar, workingset->ldA,
+            workingset->Aineq, workingset->bineq, workingset->lb, workingset->ub,
             workingset->indexLB, workingset->indexUB, workingset->sizes,
             workingset->isActiveIdx, workingset->isActiveConstr,
             workingset->nWConstr, (objective->objtype == 5), &normDelta,
-            &updateFval, &iyend, &idxRotGCol);
+            &updateFval, &idxRotGCol, &iyend);
           if (updateFval) {
-            switch (iyend) {
+            switch (idxRotGCol) {
              case 3:
-              workingset->nWConstr[2]++;
-              workingset->isActiveConstr->data[(workingset->isActiveIdx[2] +
-                idxRotGCol) - 2] = true;
-              workingset->nActiveConstr++;
-              workingset->Wid->data[workingset->nActiveConstr - 1] = 3;
-              workingset->Wlocalidx->data[workingset->nActiveConstr - 1] =
-                idxRotGCol;
+              test3_addAineqConstr(workingset, iyend);
               break;
 
              case 4:
-              test_addBoundToActiveSetMatrix_(workingset, 4, idxRotGCol);
+              test_addBoundToActiveSetMatrix_(workingset, 4, iyend);
               break;
 
              default:
-              test_addBoundToActiveSetMatrix_(workingset, 5, idxRotGCol);
+              test_addBoundToActiveSetMatrix_(workingset, 5, iyend);
               break;
             }
 
@@ -5531,7 +6781,7 @@ static void test3_iterate(const emxArray_real_T_test3_T *H, const
         }
 
         if (solution->iterations - solution->iterations / 50 * 50 == 0) {
-          solution->maxConstr = test3_maxConstraintViolation(workingset,
+          solution->maxConstr = test3_maxConstraintViolation_h(workingset,
             solution->xstar);
           normDelta = solution->maxConstr;
           if (objective->objtype == 5) {
@@ -5554,7 +6804,7 @@ static void test3_iterate(const emxArray_real_T_test3_T *H, const
             }
 
             activeSetChangeID = 0;
-            normDelta = test3_maxConstraintViolation(workingset,
+            normDelta = test3_maxConstraintViolation_h(workingset,
               solution->searchDir);
             if (normDelta < solution->maxConstr) {
               for (idxRotGCol = 0; idxRotGCol <= iyend; idxRotGCol++) {
@@ -5587,19 +6837,6 @@ static void test3_iterate(const emxArray_real_T_test3_T *H, const
   } while (exitg1 == 0);
 }
 
-static void test3_emxFree_int32_T(emxArray_int32_T_test3_T **pEmxArray)
-{
-  if (*pEmxArray != (emxArray_int32_T_test3_T *)NULL) {
-    if (((*pEmxArray)->data != (int32_T *)NULL) && (*pEmxArray)->canFreeData) {
-      free((*pEmxArray)->data);
-    }
-
-    free((*pEmxArray)->size);
-    free(*pEmxArray);
-    *pEmxArray = (emxArray_int32_T_test3_T *)NULL;
-  }
-}
-
 static void test3_emxFree_boolean_T(emxArray_boolean_T_test3_T **pEmxArray)
 {
   if (*pEmxArray != (emxArray_boolean_T_test3_T *)NULL) {
@@ -5614,14 +6851,19 @@ static void test3_emxFree_boolean_T(emxArray_boolean_T_test3_T **pEmxArray)
   }
 }
 
-static void emxFreeStruct_s_k8kXP0ntDjd4qxs(s_k8kXP0ntDjd4qxsrByEVbG_test_T
+static void emxFreeStruct_s_Wd0eYcEyLXg48EJ(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *pStruct)
 {
+  test3_emxFree_real_T(&pStruct->Aineq);
+  test3_emxFree_real_T(&pStruct->bineq);
+  test3_emxFree_real_T(&pStruct->Aeq);
+  test3_emxFree_real_T(&pStruct->beq);
   test3_emxFree_real_T(&pStruct->lb);
   test3_emxFree_real_T(&pStruct->ub);
   test3_emxFree_int32_T(&pStruct->indexLB);
   test3_emxFree_int32_T(&pStruct->indexUB);
   test3_emxFree_int32_T(&pStruct->indexFixed);
+  test3_emxFree_int32_T(&pStruct->indexEqRemoved);
   test3_emxFree_real_T(&pStruct->ATwset);
   test3_emxFree_real_T(&pStruct->bwset);
   test3_emxFree_real_T(&pStruct->maxConstrWorkspace);
@@ -5632,14 +6874,14 @@ static void emxFreeStruct_s_k8kXP0ntDjd4qxs(s_k8kXP0ntDjd4qxsrByEVbG_test_T
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
 static void test3_driver_d(const emxArray_real_T_test3_T *H, const
-  emxArray_real_T_test3_T *f, s_PLLLBDg14rHiR3qEakQweE_test_T *solution,
-  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_k8kXP0ntDjd4qxsrByEVbG_test_T
+  emxArray_real_T_test3_T *f, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager,
   s_vdGXtauKr5HuLAqoxBLhXH_test_T *cholmanager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
   objective, somzaGboVhDG7PNQS6E98jD_test3_T *options, int32_T
   runTimeOptions_MaxIterations)
 {
-  s_k8kXP0ntDjd4qxsrByEVbG_test_T b_workingset;
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T b_workingset;
   real_T maxConstr_new;
   int32_T idxEndIneq;
   int32_T idxStartIneq;
@@ -5649,7 +6891,7 @@ static void test3_driver_d(const emxArray_real_T_test3_T *H, const
   boolean_T guard1;
   solution->iterations = 0;
   nVar = workingset->nVar - 1;
-  emxInitStruct_s_k8kXP0ntDjd4qxs(&b_workingset);
+  emxInitStruct_s_Wd0eYcEyLXg48EJ(&b_workingset);
   guard1 = false;
   if (workingset->probType == 3) {
     idxStartIneq = workingset->sizes[0];
@@ -5688,11 +6930,11 @@ static void test3_driver_d(const emxArray_real_T_test3_T *H, const
 
   if (guard1) {
     solution->iterations = 0;
-    solution->maxConstr = test3_maxConstraintViolation(workingset,
+    solution->maxConstr = test3_maxConstraintViolation_h(workingset,
       solution->xstar);
     if (solution->maxConstr > 1.0E-6) {
       solution->xstar->data[workingset->nVar] = solution->maxConstr + 1.0;
-      emxCopyStruct_s_k8kXP0ntDjd4qxs(&b_workingset, workingset);
+      emxCopyStruct_s_Wd0eYcEyLXg48EJ(&b_workingset, workingset);
       if (workingset->probType == 3) {
         mConstr = 1;
       } else {
@@ -5728,7 +6970,7 @@ static void test3_driver_d(const emxArray_real_T_test3_T *H, const
                     1.4901161193847657E-10, 1.0E-6, runTimeOptions_MaxIterations);
       if (b_workingset.isActiveConstr->data[(b_workingset.isActiveIdx[3] +
            b_workingset.sizes[3]) - 2]) {
-        mConstr = b_workingset.sizes[0];
+        mConstr = b_workingset.sizes[0] + b_workingset.sizes[1];
         exitg1 = false;
         while ((!exitg1) && (mConstr + 1 <= b_workingset.nActiveConstr)) {
           if ((b_workingset.Wid->data[mConstr] == 4) &&
@@ -5743,8 +6985,8 @@ static void test3_driver_d(const emxArray_real_T_test3_T *H, const
       }
 
       mConstr = b_workingset.nActiveConstr;
-      while ((mConstr > b_workingset.sizes[0]) && (mConstr > workingset->nVar))
-      {
+      idxStartIneq = b_workingset.sizes[0] + b_workingset.sizes[1];
+      while ((mConstr > idxStartIneq) && (mConstr > workingset->nVar)) {
         test3_removeConstr(&b_workingset, mConstr);
         mConstr--;
       }
@@ -5756,11 +6998,12 @@ static void test3_driver_d(const emxArray_real_T_test3_T *H, const
       objective->hasLinear = objective->prev_hasLinear;
       options->ObjectiveLimit = (rtMinusInf);
       options->StepTolerance = 1.0E-6;
-      emxCopyStruct_s_k8kXP0ntDjd4qxs(workingset, &b_workingset);
+      emxCopyStruct_s_Wd0eYcEyLXg48EJ(workingset, &b_workingset);
       if (solution->state == 0) {
       } else {
-        solution->maxConstr = test3_maxConstraintViolation(&b_workingset,
+        solution->maxConstr = test3_maxConstraintViolation_h(&b_workingset,
           solution->xstar);
+        emxCopyStruct_s_Wd0eYcEyLXg48EJ(workingset, &b_workingset);
         if (solution->maxConstr > 1.0E-6) {
           mConstr = b_workingset.mConstrMax;
           for (nVar = 0; nVar < mConstr; nVar++) {
@@ -5778,8 +7021,8 @@ static void test3_driver_d(const emxArray_real_T_test3_T *H, const
 
             test3_PresolveWorkingSet(solution, memspace, &b_workingset,
               qrmanager);
-            emxCopyStruct_s_k8kXP0ntDjd4qxs(workingset, &b_workingset);
-            maxConstr_new = test3_maxConstraintViolation(workingset,
+            emxCopyStruct_s_Wd0eYcEyLXg48EJ(workingset, &b_workingset);
+            maxConstr_new = test3_maxConstraintViolation_h(workingset,
               solution->xstar);
             if (maxConstr_new >= solution->maxConstr) {
               solution->maxConstr = maxConstr_new;
@@ -5803,74 +7046,315 @@ static void test3_driver_d(const emxArray_real_T_test3_T *H, const
     }
   }
 
-  emxFreeStruct_s_k8kXP0ntDjd4qxs(&b_workingset);
+  emxFreeStruct_s_Wd0eYcEyLXg48EJ(&b_workingset);
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static void test3_addAeqConstr(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj, int32_T
+  idx_local)
+{
+  int32_T c_idx;
+  int32_T iAeq0;
+  int32_T totalEq;
+  totalEq = obj->nWConstr[0] + obj->nWConstr[1];
+  if ((obj->nActiveConstr == totalEq) && (idx_local > obj->nWConstr[1])) {
+    int32_T iAw0;
+    obj->nWConstr[1]++;
+    obj->isActiveConstr->data[(obj->isActiveIdx[1] + idx_local) - 2] = true;
+    obj->nActiveConstr++;
+    obj->Wid->data[obj->nActiveConstr - 1] = 2;
+    obj->Wlocalidx->data[obj->nActiveConstr - 1] = idx_local;
+    iAeq0 = (idx_local - 1) * obj->ldA;
+    iAw0 = (obj->nActiveConstr - 1) * obj->ldA;
+    c_idx = obj->nVar;
+    for (totalEq = 0; totalEq < c_idx; totalEq++) {
+      obj->ATwset->data[iAw0 + totalEq] = obj->Aeq->data[totalEq + iAeq0];
+    }
+
+    obj->bwset->data[obj->nActiveConstr - 1] = obj->beq->data[idx_local - 1];
+  } else {
+    int32_T iAw0;
+    int32_T iAw0_tmp;
+    obj->nActiveConstr++;
+    obj->Wid->data[obj->nActiveConstr - 1] = obj->Wid->data[totalEq];
+    obj->Wlocalidx->data[obj->nActiveConstr - 1] = obj->Wlocalidx->data[totalEq];
+    iAw0_tmp = obj->nVar;
+    for (iAeq0 = 0; iAeq0 < iAw0_tmp; iAeq0++) {
+      obj->ATwset->data[iAeq0 + obj->ldA * (obj->nActiveConstr - 1)] =
+        obj->ATwset->data[obj->ldA * totalEq + iAeq0];
+    }
+
+    obj->bwset->data[obj->nActiveConstr - 1] = obj->bwset->data[totalEq];
+    obj->nWConstr[1]++;
+    obj->isActiveConstr->data[(obj->isActiveIdx[1] + idx_local) - 2] = true;
+    obj->Wid->data[totalEq] = 2;
+    obj->Wlocalidx->data[totalEq] = idx_local;
+    iAeq0 = (idx_local - 1) * obj->ldA;
+    iAw0 = obj->ldA * totalEq;
+    for (c_idx = 0; c_idx < iAw0_tmp; c_idx++) {
+      obj->ATwset->data[iAw0 + c_idx] = obj->Aeq->data[c_idx + iAeq0];
+    }
+
+    obj->bwset->data[totalEq] = obj->beq->data[idx_local - 1];
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static boolean_T test3_soc(const emxArray_real_T_test3_T *Hessian, const
+  emxArray_real_T_test3_T *grad, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  QPObjective, const somzaGboVhDG7PNQS6E98jD_test3_T *qpoptions)
+{
+  somzaGboVhDG7PNQS6E98jD_test3_T qpoptions_0;
+  real_T TrialState_0;
+  int32_T b_mIneq;
+  int32_T c;
+  int32_T idxIneqOffset;
+  int32_T idx_Partition;
+  int32_T idx_upper;
+  int32_T mConstrMax;
+  int32_T mEq;
+  int32_T mIneq;
+  int32_T nVar;
+  int32_T nWIneq_old;
+  int32_T nWLower_old;
+  int32_T nWUpper_old;
+  boolean_T success;
+  nWIneq_old = WorkingSet->nWConstr[2];
+  nWLower_old = WorkingSet->nWConstr[3];
+  nWUpper_old = WorkingSet->nWConstr[4];
+  nVar = WorkingSet->nVar - 1;
+  mConstrMax = WorkingSet->mConstrMax - 1;
+  for (b_mIneq = 0; b_mIneq <= nVar; b_mIneq++) {
+    TrialState->xstarsqp->data[b_mIneq] = TrialState->xstarsqp_old->data[b_mIneq];
+    TrialState->socDirection->data[b_mIneq] = TrialState->xstar->data[b_mIneq];
+  }
+
+  for (b_mIneq = 0; b_mIneq <= mConstrMax; b_mIneq++) {
+    TrialState->lambdaStopTest->data[b_mIneq] = TrialState->lambda->data[b_mIneq];
+  }
+
+  mEq = WorkingSet->sizes[1] - 1;
+  mIneq = WorkingSet->sizes[2];
+  idxIneqOffset = WorkingSet->isActiveIdx[2];
+  if (WorkingSet->sizes[1] > 0) {
+    for (b_mIneq = 0; b_mIneq <= mEq; b_mIneq++) {
+      WorkingSet->beq->data[b_mIneq] = -TrialState->cEq->data[b_mIneq];
+    }
+
+    test3_xgemv_bujmjslzp1(WorkingSet->nVar, WorkingSet->sizes[1],
+      WorkingSet->Aeq, WorkingSet->ldA, TrialState->searchDir, WorkingSet->beq);
+    for (b_mIneq = 0; b_mIneq <= mEq; b_mIneq++) {
+      WorkingSet->bwset->data[WorkingSet->sizes[0] + b_mIneq] = WorkingSet->
+        beq->data[b_mIneq];
+    }
+  }
+
+  if (WorkingSet->sizes[2] > 0) {
+    for (b_mIneq = 0; b_mIneq < mIneq; b_mIneq++) {
+      WorkingSet->bineq->data[b_mIneq] = -TrialState->cIneq->data[b_mIneq];
+    }
+
+    test3_xgemv_bujmjslzp1(WorkingSet->nVar, WorkingSet->sizes[2],
+      WorkingSet->Aineq, WorkingSet->ldA, TrialState->searchDir,
+      WorkingSet->bineq);
+    mIneq = 1;
+    mEq = WorkingSet->sizes[2] + 1;
+    idx_upper = (WorkingSet->sizes[2] + WorkingSet->sizes[3]) + 1;
+    c = WorkingSet->nActiveConstr;
+    for (b_mIneq = idxIneqOffset; b_mIneq <= c; b_mIneq++) {
+      switch (WorkingSet->Wid->data[b_mIneq - 1]) {
+       case 3:
+        idx_Partition = mIneq;
+        mIneq++;
+        WorkingSet->bwset->data[b_mIneq - 1] = WorkingSet->bineq->
+          data[WorkingSet->Wlocalidx->data[b_mIneq - 1] - 1];
+        break;
+
+       case 4:
+        idx_Partition = mEq;
+        mEq++;
+        break;
+
+       default:
+        idx_Partition = idx_upper;
+        idx_upper++;
+        break;
+      }
+
+      TrialState->workingset_old->data[idx_Partition - 1] =
+        WorkingSet->Wlocalidx->data[b_mIneq - 1];
+    }
+  }
+
+  for (b_mIneq = 0; b_mIneq <= nVar; b_mIneq++) {
+    TrialState->xstar->data[b_mIneq] = TrialState->xstarsqp->data[b_mIneq];
+  }
+
+  qpoptions_0 = *qpoptions;
+  test3_driver_d(Hessian, grad, TrialState, memspace, WorkingSet, QRManager,
+                 CholManager, QPObjective, &qpoptions_0,
+                 qpoptions->MaxIterations);
+  if (WorkingSet->indexEqRemoved->size[0] > 0) {
+    while ((WorkingSet->mEqRemoved > 0) && (WorkingSet->indexEqRemoved->
+            data[WorkingSet->mEqRemoved - 1] >= TrialState->iNonEq0)) {
+      test3_addAeqConstr(WorkingSet, WorkingSet->indexEqRemoved->data
+                         [WorkingSet->mEqRemoved - 1]);
+      WorkingSet->mEqRemoved--;
+    }
+  }
+
+  for (b_mIneq = 0; b_mIneq <= nVar; b_mIneq++) {
+    TrialState_0 = TrialState->socDirection->data[b_mIneq];
+    TrialState->socDirection->data[b_mIneq] = TrialState->xstar->data[b_mIneq] -
+      TrialState_0;
+    TrialState->xstar->data[b_mIneq] = TrialState_0;
+  }
+
+  success = (test3_xnrm2_a(nVar + 1, TrialState->socDirection) <= test3_xnrm2_a
+             (nVar + 1, TrialState->xstar) * 2.0);
+  mIneq = WorkingSet->sizes[1] - 1;
+  b_mIneq = WorkingSet->sizes[2];
+  if (WorkingSet->sizes[1] > 0) {
+    for (nVar = 0; nVar <= mIneq; nVar++) {
+      WorkingSet->beq->data[nVar] = -TrialState->cEq->data[nVar];
+    }
+
+    for (nVar = 0; nVar <= mIneq; nVar++) {
+      WorkingSet->bwset->data[WorkingSet->sizes[0] + nVar] = WorkingSet->
+        beq->data[nVar];
+    }
+  }
+
+  if (WorkingSet->sizes[2] > 0) {
+    for (nVar = 0; nVar < b_mIneq; nVar++) {
+      WorkingSet->bineq->data[nVar] = -TrialState->cIneq->data[nVar];
+    }
+
+    if (!success) {
+      mEq = WorkingSet->nWConstr[0] + WorkingSet->nWConstr[1];
+      idxIneqOffset = mEq + 1;
+      mIneq = WorkingSet->nActiveConstr;
+      for (nVar = idxIneqOffset; nVar <= mIneq; nVar++) {
+        WorkingSet->isActiveConstr->data[(WorkingSet->isActiveIdx
+          [WorkingSet->Wid->data[nVar - 1] - 1] + WorkingSet->Wlocalidx->
+          data[nVar - 1]) - 2] = false;
+      }
+
+      WorkingSet->nWConstr[2] = 0;
+      WorkingSet->nWConstr[3] = 0;
+      WorkingSet->nWConstr[4] = 0;
+      WorkingSet->nActiveConstr = mEq;
+      for (nVar = 0; nVar < nWIneq_old; nVar++) {
+        test3_addAineqConstr(WorkingSet, TrialState->workingset_old->data[nVar]);
+      }
+
+      for (nWIneq_old = 0; nWIneq_old < nWLower_old; nWIneq_old++) {
+        test_addBoundToActiveSetMatrix_(WorkingSet, 4,
+          TrialState->workingset_old->data[nWIneq_old + b_mIneq]);
+      }
+
+      for (nWLower_old = 0; nWLower_old < nWUpper_old; nWLower_old++) {
+        test_addBoundToActiveSetMatrix_(WorkingSet, 5,
+          TrialState->workingset_old->data[(nWLower_old + b_mIneq) +
+          WorkingSet->sizes[3]]);
+      }
+    }
+  }
+
+  if (!success) {
+    for (nWUpper_old = 0; nWUpper_old <= mConstrMax; nWUpper_old++) {
+      TrialState->lambda->data[nWUpper_old] = TrialState->lambdaStopTest->
+        data[nWUpper_old];
+    }
+  } else {
+    test3_sortLambdaQP(TrialState->lambda, WorkingSet->nActiveConstr,
+                       WorkingSet->sizes, WorkingSet->isActiveIdx,
+                       WorkingSet->Wid, WorkingSet->Wlocalidx,
+                       memspace->workspace_double);
+  }
+
+  return success;
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
 static void test3_relaxed(const emxArray_real_T_test3_T *Hessian, const
-  emxArray_real_T_test3_T *grad, s_PLLLBDg14rHiR3qEakQweE_test_T *TrialState,
+  emxArray_real_T_test3_T *grad, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState,
   sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
-  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_k8kXP0ntDjd4qxsrByEVbG_test_T
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
   s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
   QPObjective, somzaGboVhDG7PNQS6E98jD_test3_T *qpoptions)
 {
-  s_k8kXP0ntDjd4qxsrByEVbG_test_T b_WorkingSet;
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T b_WorkingSet;
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T c_WorkingSet;
   somzaGboVhDG7PNQS6E98jD_test3_T qpoptions_0;
   real_T beta;
   real_T qpfvalQuadExcess;
   real_T qpfvalQuadExcess_tmp;
   real_T s;
   real_T smax;
-  int32_T c_ix;
-  int32_T c_ix_tmp;
+  int32_T b_kend;
+  int32_T b_mEq;
+  int32_T idx_max;
+  int32_T idx_negative;
+  int32_T idx_positive;
+  int32_T ix;
+  int32_T mEq;
+  int32_T mIneq;
   int32_T nVarOrig;
-  int32_T temp;
-  nVarOrig = WorkingSet->nVar;
+  int32_T tf_tmp;
+  boolean_T b_tf;
+  boolean_T tf;
+  nVarOrig = WorkingSet->nVar - 1;
+  mIneq = WorkingSet->sizes[2];
+  mEq = WorkingSet->sizes[1];
   beta = 0.0;
-  for (temp = 0; temp < nVarOrig; temp++) {
-    beta += Hessian->data[Hessian->size[0] * temp + temp];
+  for (b_kend = 0; b_kend <= nVarOrig; b_kend++) {
+    beta += Hessian->data[Hessian->size[0] * b_kend + b_kend];
   }
 
   beta /= (real_T)WorkingSet->nVar;
   if (TrialState->sqpIterations <= 1) {
-    c_ix = QPObjective->nvar;
+    b_mEq = QPObjective->nvar;
     if (QPObjective->nvar < 1) {
-      nVarOrig = 0;
+      idx_max = 0;
     } else {
-      nVarOrig = 1;
+      idx_max = 1;
       if (QPObjective->nvar > 1) {
         smax = fabs(grad->data[0]);
-        for (temp = 2; temp <= c_ix; temp++) {
-          s = fabs(grad->data[temp - 1]);
+        for (b_kend = 2; b_kend <= b_mEq; b_kend++) {
+          s = fabs(grad->data[b_kend - 1]);
           if (s > smax) {
-            nVarOrig = temp;
+            idx_max = b_kend;
             smax = s;
           }
         }
       }
     }
 
-    smax = fmax(1.0, fabs(grad->data[nVarOrig - 1])) * 100.0;
+    smax = fmax(1.0, fabs(grad->data[idx_max - 1])) * 100.0;
   } else {
-    c_ix = WorkingSet->mConstr;
+    b_mEq = WorkingSet->mConstr;
     if (WorkingSet->mConstr < 1) {
-      nVarOrig = 0;
+      idx_max = 0;
     } else {
-      nVarOrig = 1;
+      idx_max = 1;
       if (WorkingSet->mConstr > 1) {
         smax = fabs(TrialState->lambdasqp->data[0]);
-        for (temp = 2; temp <= c_ix; temp++) {
-          s = fabs(TrialState->lambdasqp->data[temp - 1]);
+        for (b_kend = 2; b_kend <= b_mEq; b_kend++) {
+          s = fabs(TrialState->lambdasqp->data[b_kend - 1]);
           if (s > smax) {
-            nVarOrig = temp;
+            idx_max = b_kend;
             smax = s;
           }
         }
       }
     }
 
-    smax = fabs(TrialState->lambdasqp->data[nVarOrig - 1]);
+    smax = fabs(TrialState->lambdasqp->data[idx_max - 1]);
   }
 
   QPObjective->nvar = WorkingSet->nVar;
@@ -5878,61 +7362,148 @@ static void test3_relaxed(const emxArray_real_T_test3_T *Hessian, const
   QPObjective->rho = smax;
   QPObjective->hasLinear = true;
   QPObjective->objtype = 4;
-  emxInitStruct_s_k8kXP0ntDjd4qxs(&b_WorkingSet);
-  emxCopyStruct_s_k8kXP0ntDjd4qxs(&b_WorkingSet, WorkingSet);
+  emxInitStruct_s_Wd0eYcEyLXg48EJ(&b_WorkingSet);
+  emxCopyStruct_s_Wd0eYcEyLXg48EJ(&b_WorkingSet, WorkingSet);
   test3_setProblemType(&b_WorkingSet, 2);
-  temp = qpoptions->MaxIterations;
+  idx_max = b_WorkingSet.sizes[2] - 1;
+  b_mEq = b_WorkingSet.sizes[1] - 1;
+  ix = (b_WorkingSet.sizes[3] - (b_WorkingSet.sizes[1] << 1)) -
+    b_WorkingSet.sizes[2];
+  for (b_kend = 0; b_kend <= idx_max; b_kend++) {
+    memspace->workspace_double->data[b_kend] = b_WorkingSet.bineq->data[b_kend];
+  }
+
+  test3_xgemv_bujmjslzp(WorkingSet->nVar, b_WorkingSet.sizes[2],
+                        b_WorkingSet.Aineq, b_WorkingSet.ldA, TrialState->xstar,
+                        memspace->workspace_double);
+  for (b_kend = 0; b_kend <= idx_max; b_kend++) {
+    TrialState->xstar->data[(nVarOrig + b_kend) + 1] = (real_T)
+      (memspace->workspace_double->data[b_kend] > 0.0) *
+      memspace->workspace_double->data[b_kend];
+  }
+
+  for (b_kend = 0; b_kend <= b_mEq; b_kend++) {
+    memspace->workspace_double->data[b_kend] = b_WorkingSet.beq->data[b_kend];
+  }
+
+  test3_xgemv_bujmjslzp(WorkingSet->nVar, b_WorkingSet.sizes[1],
+                        b_WorkingSet.Aeq, b_WorkingSet.ldA, TrialState->xstar,
+                        memspace->workspace_double);
+  for (b_kend = 0; b_kend <= b_mEq; b_kend++) {
+    idx_positive = (idx_max + b_kend) + 2;
+    idx_negative = ((idx_max + b_mEq) + b_kend) + 3;
+    if (memspace->workspace_double->data[b_kend] <= 0.0) {
+      TrialState->xstar->data[nVarOrig + idx_positive] = 0.0;
+      TrialState->xstar->data[nVarOrig + idx_negative] =
+        -memspace->workspace_double->data[b_kend];
+      test_addBoundToActiveSetMatrix_(&b_WorkingSet, 4, ix + idx_positive);
+      if (memspace->workspace_double->data[b_kend] >= -1.0E-6) {
+        test_addBoundToActiveSetMatrix_(&b_WorkingSet, 4, ix + idx_negative);
+      }
+    } else {
+      TrialState->xstar->data[nVarOrig + idx_positive] =
+        memspace->workspace_double->data[b_kend];
+      TrialState->xstar->data[nVarOrig + idx_negative] = 0.0;
+      test_addBoundToActiveSetMatrix_(&b_WorkingSet, 4, ix + idx_negative);
+      if (memspace->workspace_double->data[b_kend] <= 1.0E-6) {
+        test_addBoundToActiveSetMatrix_(&b_WorkingSet, 4, ix + idx_positive);
+      }
+    }
+  }
+
+  nVarOrig = qpoptions->MaxIterations;
   qpoptions->MaxIterations = (qpoptions->MaxIterations + b_WorkingSet.nVar) -
     WorkingSet->nVar;
   qpoptions_0 = *qpoptions;
   test3_driver_d(Hessian, grad, TrialState, memspace, &b_WorkingSet, QRManager,
                  CholManager, QPObjective, &qpoptions_0,
                  qpoptions->MaxIterations);
-  qpoptions->MaxIterations = temp;
+  qpoptions->MaxIterations = nVarOrig;
+  idx_max = b_WorkingSet.sizes[2];
+  b_mEq = b_WorkingSet.sizes[1];
+  idx_negative = b_WorkingSet.sizes[1] << 1;
+  ix = (idx_negative + b_WorkingSet.sizes[2]) - 1;
+  idx_positive = b_WorkingSet.sizes[3] - 1;
+  nVarOrig = 0;
+  for (b_kend = 0; b_kend < b_mEq; b_kend++) {
+    tf_tmp = b_WorkingSet.isActiveIdx[3] + idx_positive;
+    tf = b_WorkingSet.isActiveConstr->data[(tf_tmp - idx_negative) + b_kend];
+    b_tf = b_WorkingSet.isActiveConstr->data[(tf_tmp - b_mEq) + b_kend];
+    memspace->workspace_int->data[b_kend] = tf;
+    memspace->workspace_int->data[b_kend + b_mEq] = b_tf;
+    nVarOrig = (nVarOrig + tf) + b_tf;
+  }
+
+  for (b_kend = 0; b_kend < idx_max; b_kend++) {
+    tf = b_WorkingSet.isActiveConstr->data[(((b_WorkingSet.isActiveIdx[3] +
+      idx_positive) - ix) + b_kend) - 1];
+    memspace->workspace_int->data[b_kend + idx_negative] = tf;
+    nVarOrig += tf;
+  }
+
   if (TrialState->state != -6) {
-    nVarOrig = (b_WorkingSet.nVarMax - WorkingSet->nVar) - 1;
-    c_ix_tmp = WorkingSet->nVar + 1;
+    idx_max = (b_WorkingSet.nVarMax - WorkingSet->nVar) - 1;
+    idx_positive = WorkingSet->nVar + 1;
     s = 0.0;
     qpfvalQuadExcess = 0.0;
-    if (nVarOrig >= 1) {
-      c_ix = WorkingSet->nVar + nVarOrig;
-      for (temp = c_ix_tmp; temp <= c_ix; temp++) {
-        s += fabs(TrialState->xstar->data[temp - 1]);
+    if (idx_max >= 1) {
+      ix = WorkingSet->nVar + idx_max;
+      for (b_kend = idx_positive; b_kend <= ix; b_kend++) {
+        s += fabs(TrialState->xstar->data[b_kend - 1]);
       }
 
-      for (temp = 0; temp < nVarOrig; temp++) {
-        qpfvalQuadExcess_tmp = TrialState->xstar->data[WorkingSet->nVar + temp];
+      for (b_kend = 0; b_kend < idx_max; b_kend++) {
+        qpfvalQuadExcess_tmp = TrialState->xstar->data[WorkingSet->nVar + b_kend];
         qpfvalQuadExcess += qpfvalQuadExcess_tmp * qpfvalQuadExcess_tmp;
       }
     }
 
     beta = (TrialState->fstar - smax * s) - beta / 2.0 * qpfvalQuadExcess;
-    temp = (WorkingSet->nVarMax - WorkingSet->nVar) - 1;
+    b_mEq = (WorkingSet->nVarMax - WorkingSet->nVar) - 1;
     smax = MeritFunction->penaltyParam;
-    s = MeritFunction->linearizedConstrViol;
-    qpfvalQuadExcess = 0.0;
-    if (temp >= 1) {
-      c_ix = WorkingSet->nVar + temp;
-      for (temp = c_ix_tmp; temp <= c_ix; temp++) {
-        qpfvalQuadExcess += fabs(TrialState->xstar->data[temp - 1]);
+    s = 0.0;
+    if (WorkingSet->sizes[1] >= 1) {
+      ix = WorkingSet->sizes[1];
+      for (b_kend = 0; b_kend < ix; b_kend++) {
+        s += fabs(TrialState->cEq->data[b_kend]);
       }
     }
 
-    MeritFunction->linearizedConstrViol = qpfvalQuadExcess;
-    s -= qpfvalQuadExcess;
-    if ((s > 2.2204460492503131E-16) && (beta > 0.0)) {
+    qpfvalQuadExcess = 0.0;
+    for (b_kend = 0; b_kend < mIneq; b_kend++) {
+      qpfvalQuadExcess_tmp = TrialState->cIneq->data[b_kend];
+      if (qpfvalQuadExcess_tmp > 0.0) {
+        qpfvalQuadExcess += qpfvalQuadExcess_tmp;
+      }
+    }
+
+    s += qpfvalQuadExcess;
+    qpfvalQuadExcess = MeritFunction->linearizedConstrViol;
+    qpfvalQuadExcess_tmp = 0.0;
+    if (b_mEq >= 1) {
+      b_kend = WorkingSet->nVar + b_mEq;
+      for (mIneq = idx_positive; mIneq <= b_kend; mIneq++) {
+        qpfvalQuadExcess_tmp += fabs(TrialState->xstar->data[mIneq - 1]);
+      }
+    }
+
+    MeritFunction->linearizedConstrViol = qpfvalQuadExcess_tmp;
+    qpfvalQuadExcess = (s + qpfvalQuadExcess) - qpfvalQuadExcess_tmp;
+    if ((qpfvalQuadExcess > 2.2204460492503131E-16) && (beta > 0.0)) {
       if (TrialState->sqpFval == 0.0) {
         smax = 1.0;
       } else {
         smax = 1.5;
       }
 
-      smax = smax * beta / s;
+      smax = smax * beta / qpfvalQuadExcess;
     }
 
     if (smax < MeritFunction->penaltyParam) {
-      MeritFunction->phi = smax * 0.0 + TrialState->sqpFval;
-      if ((smax * 0.0 + MeritFunction->initFval) - MeritFunction->phi > (real_T)
+      MeritFunction->phi = smax * s + TrialState->sqpFval;
+      if (((MeritFunction->initConstrViolationEq +
+            MeritFunction->initConstrViolationIneq) * smax +
+           MeritFunction->initFval) - MeritFunction->phi > (real_T)
           MeritFunction->nPenaltyDecreases * MeritFunction->threshold) {
         MeritFunction->nPenaltyDecreases++;
         if ((MeritFunction->nPenaltyDecreases << 1) > TrialState->sqpIterations)
@@ -5942,32 +7513,64 @@ static void test3_relaxed(const emxArray_real_T_test3_T *Hessian, const
 
         MeritFunction->penaltyParam = fmax(smax, 1.0E-10);
       } else {
-        MeritFunction->phi = MeritFunction->penaltyParam * 0.0 +
+        MeritFunction->phi = MeritFunction->penaltyParam * s +
           TrialState->sqpFval;
       }
     } else {
       MeritFunction->penaltyParam = fmax(smax, 1.0E-10);
-      MeritFunction->phi = MeritFunction->penaltyParam * 0.0 +
-        TrialState->sqpFval;
+      MeritFunction->phi = MeritFunction->penaltyParam * s + TrialState->sqpFval;
     }
 
-    MeritFunction->phiPrimePlus = fmin(beta - MeritFunction->penaltyParam * 0.0,
+    MeritFunction->phiPrimePlus = fmin(beta - MeritFunction->penaltyParam * s,
       0.0);
-    nVarOrig = b_WorkingSet.isActiveIdx[2];
-    c_ix = b_WorkingSet.nActiveConstr;
-    for (temp = nVarOrig; temp <= c_ix; temp++) {
-      if (b_WorkingSet.Wid->data[temp - 1] == 3) {
-        TrialState->lambda->data[temp - 1] *= (real_T)memspace->
-          workspace_int->data[b_WorkingSet.Wlocalidx->data[temp - 1] - 1];
+    b_kend = b_WorkingSet.isActiveIdx[1] - 2;
+    for (mIneq = 0; mIneq < mEq; mIneq++) {
+      if ((memspace->workspace_int->data[mIneq] != 0) &&
+          (memspace->workspace_int->data[mIneq + mEq] != 0)) {
+        tf = true;
+      } else {
+        tf = false;
+      }
+
+      b_mEq = (mIneq + b_kend) + 1;
+      TrialState->lambda->data[b_mEq] *= (real_T)tf;
+    }
+
+    b_kend = b_WorkingSet.isActiveIdx[2];
+    idx_max = b_WorkingSet.nActiveConstr;
+    for (mIneq = b_kend; mIneq <= idx_max; mIneq++) {
+      if (b_WorkingSet.Wid->data[mIneq - 1] == 3) {
+        TrialState->lambda->data[mIneq - 1] *= (real_T)memspace->
+          workspace_int->data[(b_WorkingSet.Wlocalidx->data[mIneq - 1] + (mEq <<
+          1)) - 1];
       }
     }
   }
 
+  emxInitStruct_s_Wd0eYcEyLXg48EJ(&c_WorkingSet);
+  emxCopyStruct_s_Wd0eYcEyLXg48EJ(&c_WorkingSet, &b_WorkingSet);
+  mEq = (b_WorkingSet.sizes[3] - idx_negative) - b_WorkingSet.sizes[2];
+  mIneq = b_WorkingSet.nActiveConstr;
+  while ((mIneq > b_WorkingSet.sizes[0] + b_WorkingSet.sizes[1]) && (nVarOrig >
+          0)) {
+    if ((c_WorkingSet.Wid->data[mIneq - 1] == 4) &&
+        (c_WorkingSet.Wlocalidx->data[mIneq - 1] > mEq)) {
+      beta = TrialState->lambda->data[c_WorkingSet.nActiveConstr - 1];
+      TrialState->lambda->data[c_WorkingSet.nActiveConstr - 1] = 0.0;
+      TrialState->lambda->data[mIneq - 1] = beta;
+      test3_removeConstr(&c_WorkingSet, mIneq);
+      nVarOrig--;
+    }
+
+    mIneq--;
+  }
+
+  emxFreeStruct_s_Wd0eYcEyLXg48EJ(&b_WorkingSet);
   QPObjective->nvar = WorkingSet->nVar;
   QPObjective->hasLinear = true;
   QPObjective->objtype = 3;
-  emxCopyStruct_s_k8kXP0ntDjd4qxs(WorkingSet, &b_WorkingSet);
-  emxFreeStruct_s_k8kXP0ntDjd4qxs(&b_WorkingSet);
+  emxCopyStruct_s_Wd0eYcEyLXg48EJ(WorkingSet, &c_WorkingSet);
+  emxFreeStruct_s_Wd0eYcEyLXg48EJ(&c_WorkingSet);
   test3_setProblemType(WorkingSet, 3);
   test3_sortLambdaQP(TrialState->lambda, WorkingSet->nActiveConstr,
                      WorkingSet->sizes, WorkingSet->isActiveIdx, WorkingSet->Wid,
@@ -5977,31 +7580,33 @@ static void test3_relaxed(const emxArray_real_T_test3_T *Hessian, const
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
 static boolean_T test3_step_o(int32_T *STEP_TYPE, emxArray_real_T_test3_T
   *Hessian, const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub,
-  s_PLLLBDg14rHiR3qEakQweE_test_T *TrialState, sG8JZ69axY52WWR6RKyApQC_test3_T
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState, sG8JZ69axY52WWR6RKyApQC_test3_T
   *MeritFunction, s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace,
-  s_k8kXP0ntDjd4qxsrByEVbG_test_T *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T
   *QRManager, s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager,
   s_saWPFfMboRdWeRqIEJ4x8C_test_T *QPObjective, somzaGboVhDG7PNQS6E98jD_test3_T *
   qpoptions)
 {
-  emxArray_real_T_test3_T *b;
-  s_k8kXP0ntDjd4qxsrByEVbG_test_T b_WorkingSet;
+  emxArray_real_T_test3_T *d;
   somzaGboVhDG7PNQS6E98jD_test3_T qpoptions_0;
-  real_T linearizedConstrViolPrev;
-  real_T oldDirIdx;
-  int32_T b_nVar;
+  real_T TrialState_0;
+  real_T constrViolationEq;
+  real_T constrViolationIneq;
+  real_T penaltyParamTrial;
+  int32_T eqNonLinStart;
   int32_T exitg1;
   int32_T iH0;
   int32_T k;
-  int32_T mConstrMax;
-  int32_T nVar_tmp_tmp;
+  int32_T kend;
+  int32_T nVar;
   boolean_T checkBoundViolation;
   boolean_T guard1;
+  boolean_T nonlinEqRemoved;
   boolean_T stepSuccess;
   stepSuccess = true;
   checkBoundViolation = true;
-  nVar_tmp_tmp = WorkingSet->nVar - 1;
-  for (k = 0; k <= nVar_tmp_tmp; k++) {
+  nVar = WorkingSet->nVar - 1;
+  for (k = 0; k <= nVar; k++) {
     if (*STEP_TYPE != 3) {
       TrialState->xstar->data[k] = TrialState->xstarsqp->data[k];
     } else {
@@ -6009,8 +7614,7 @@ static boolean_T test3_step_o(int32_T *STEP_TYPE, emxArray_real_T_test3_T
     }
   }
 
-  emxInitStruct_s_k8kXP0ntDjd4qxs(&b_WorkingSet);
-  test3_emxInit_real_T(&b, 1);
+  test3_emxInit_real_T(&d, 1);
   do {
     exitg1 = 0;
     guard1 = false;
@@ -6021,54 +7625,95 @@ static boolean_T test3_step_o(int32_T *STEP_TYPE, emxArray_real_T_test3_T
                      QRManager, CholManager, QPObjective, &qpoptions_0,
                      qpoptions->MaxIterations);
       if (TrialState->state > 0) {
-        oldDirIdx = MeritFunction->penaltyParam;
-        linearizedConstrViolPrev = MeritFunction->linearizedConstrViol;
-        MeritFunction->linearizedConstrViol = 0.0;
-        if ((linearizedConstrViolPrev > 2.2204460492503131E-16) &&
-            (TrialState->fstar > 0.0)) {
-          if (TrialState->sqpFval == 0.0) {
-            oldDirIdx = 1.0;
-          } else {
-            oldDirIdx = 1.5;
+        eqNonLinStart = WorkingSet->sizes[2];
+        penaltyParamTrial = MeritFunction->penaltyParam;
+        constrViolationEq = 0.0;
+        if (WorkingSet->sizes[1] >= 1) {
+          kend = WorkingSet->sizes[1];
+          for (k = 0; k < kend; k++) {
+            constrViolationEq += fabs(TrialState->cEq->data[k]);
           }
-
-          oldDirIdx = oldDirIdx * TrialState->fstar / linearizedConstrViolPrev;
         }
 
-        if (oldDirIdx < MeritFunction->penaltyParam) {
-          MeritFunction->phi = oldDirIdx * 0.0 + TrialState->sqpFval;
-          if ((oldDirIdx * 0.0 + MeritFunction->initFval) - MeritFunction->phi >
-              (real_T)MeritFunction->nPenaltyDecreases *
-              MeritFunction->threshold) {
+        constrViolationIneq = 0.0;
+        for (k = 0; k < eqNonLinStart; k++) {
+          TrialState_0 = TrialState->cIneq->data[k];
+          if (TrialState_0 > 0.0) {
+            constrViolationIneq += TrialState_0;
+          }
+        }
+
+        constrViolationEq += constrViolationIneq;
+        constrViolationIneq = MeritFunction->linearizedConstrViol;
+        MeritFunction->linearizedConstrViol = 0.0;
+        constrViolationIneq += constrViolationEq;
+        if ((constrViolationIneq > 2.2204460492503131E-16) && (TrialState->fstar
+             > 0.0)) {
+          if (TrialState->sqpFval == 0.0) {
+            penaltyParamTrial = 1.0;
+          } else {
+            penaltyParamTrial = 1.5;
+          }
+
+          penaltyParamTrial = penaltyParamTrial * TrialState->fstar /
+            constrViolationIneq;
+        }
+
+        if (penaltyParamTrial < MeritFunction->penaltyParam) {
+          MeritFunction->phi = penaltyParamTrial * constrViolationEq +
+            TrialState->sqpFval;
+          if (((MeritFunction->initConstrViolationEq +
+                MeritFunction->initConstrViolationIneq) * penaltyParamTrial +
+               MeritFunction->initFval) - MeritFunction->phi > (real_T)
+              MeritFunction->nPenaltyDecreases * MeritFunction->threshold) {
             MeritFunction->nPenaltyDecreases++;
             if ((MeritFunction->nPenaltyDecreases << 1) >
                 TrialState->sqpIterations) {
               MeritFunction->threshold *= 10.0;
             }
 
-            MeritFunction->penaltyParam = fmax(oldDirIdx, 1.0E-10);
+            MeritFunction->penaltyParam = fmax(penaltyParamTrial, 1.0E-10);
           } else {
-            MeritFunction->phi = MeritFunction->penaltyParam * 0.0 +
-              TrialState->sqpFval;
+            MeritFunction->phi = MeritFunction->penaltyParam * constrViolationEq
+              + TrialState->sqpFval;
           }
         } else {
-          MeritFunction->penaltyParam = fmax(oldDirIdx, 1.0E-10);
-          MeritFunction->phi = MeritFunction->penaltyParam * 0.0 +
+          MeritFunction->penaltyParam = fmax(penaltyParamTrial, 1.0E-10);
+          MeritFunction->phi = MeritFunction->penaltyParam * constrViolationEq +
             TrialState->sqpFval;
         }
 
         MeritFunction->phiPrimePlus = fmin(TrialState->fstar -
-          MeritFunction->penaltyParam * 0.0, 0.0);
+          MeritFunction->penaltyParam * constrViolationEq, 0.0);
       }
 
       test3_sortLambdaQP(TrialState->lambda, WorkingSet->nActiveConstr,
                          WorkingSet->sizes, WorkingSet->isActiveIdx,
                          WorkingSet->Wid, WorkingSet->Wlocalidx,
                          memspace->workspace_double);
+      nonlinEqRemoved = (WorkingSet->mEqRemoved > 0);
+      if (WorkingSet->indexEqRemoved->size[0] > 0) {
+        while ((WorkingSet->mEqRemoved > 0) && (WorkingSet->indexEqRemoved->
+                data[WorkingSet->mEqRemoved - 1] >= TrialState->iNonEq0)) {
+          test3_addAeqConstr(WorkingSet, WorkingSet->indexEqRemoved->
+                             data[WorkingSet->mEqRemoved - 1]);
+          WorkingSet->mEqRemoved--;
+        }
+      }
+
+      if (nonlinEqRemoved) {
+        eqNonLinStart = (WorkingSet->sizes[0] + TrialState->iNonEq0) - 1;
+        kend = TrialState->mNonlinEq;
+        for (k = 0; k < kend; k++) {
+          WorkingSet->Wlocalidx->data[eqNonLinStart + k] = TrialState->iNonEq0 +
+            k;
+        }
+      }
+
       if ((TrialState->state <= 0) && (TrialState->state != -6)) {
         *STEP_TYPE = 2;
       } else {
-        for (k = 0; k <= nVar_tmp_tmp; k++) {
+        for (k = 0; k <= nVar; k++) {
           TrialState->delta_x->data[k] = TrialState->xstar->data[k];
         }
 
@@ -6078,9 +7723,9 @@ static boolean_T test3_step_o(int32_T *STEP_TYPE, emxArray_real_T_test3_T
 
      case 2:
       iH0 = WorkingSet->nWConstr[0] + WorkingSet->nWConstr[1];
-      mConstrMax = iH0 + 1;
-      b_nVar = WorkingSet->nActiveConstr;
-      for (k = mConstrMax; k <= b_nVar; k++) {
+      eqNonLinStart = iH0 + 1;
+      kend = WorkingSet->nActiveConstr;
+      for (k = eqNonLinStart; k <= kend; k++) {
         WorkingSet->isActiveConstr->data[(WorkingSet->isActiveIdx
           [WorkingSet->Wid->data[k - 1] - 1] + WorkingSet->Wlocalidx->data[k - 1])
           - 2] = false;
@@ -6090,36 +7735,41 @@ static boolean_T test3_step_o(int32_T *STEP_TYPE, emxArray_real_T_test3_T
       WorkingSet->nWConstr[3] = 0;
       WorkingSet->nWConstr[4] = 0;
       WorkingSet->nActiveConstr = iH0;
-      b_nVar = b->size[0];
-      b->size[0] = TrialState->xstar->size[0];
-      test3_emxEnsureCapacity_real_T(b, b_nVar);
+      kend = d->size[0];
+      d->size[0] = TrialState->xstar->size[0];
+      test3_emxEnsureCapacity_real_T(d, kend);
       iH0 = TrialState->xstar->size[0];
-      for (b_nVar = 0; b_nVar < iH0; b_nVar++) {
-        b->data[b_nVar] = TrialState->xstar->data[b_nVar];
+      for (kend = 0; kend < iH0; kend++) {
+        d->data[kend] = TrialState->xstar->data[kend];
       }
 
-      b_nVar = WorkingSet->sizes[3] - 1;
-      mConstrMax = WorkingSet->sizes[4] - 1;
+      kend = WorkingSet->sizes[3] - 1;
+      eqNonLinStart = WorkingSet->sizes[4] - 1;
       if (lb->size[0] != 0) {
         if (ub->size[0] == 0) {
-          for (k = 0; k <= b_nVar; k++) {
-            oldDirIdx = WorkingSet->lb->data[WorkingSet->indexLB->data[k] - 1];
-            if (-b->data[WorkingSet->indexLB->data[k] - 1] > oldDirIdx) {
-              b->data[WorkingSet->indexLB->data[k] - 1] = -oldDirIdx + fabs
-                (oldDirIdx);
+          for (k = 0; k <= kend; k++) {
+            penaltyParamTrial = WorkingSet->lb->data[WorkingSet->indexLB->data[k]
+              - 1];
+            if (-d->data[WorkingSet->indexLB->data[k] - 1] > penaltyParamTrial)
+            {
+              d->data[WorkingSet->indexLB->data[k] - 1] = -penaltyParamTrial +
+                fabs(penaltyParamTrial);
             }
           }
         } else {
-          for (k = 0; k <= b_nVar; k++) {
-            oldDirIdx = WorkingSet->lb->data[WorkingSet->indexLB->data[k] - 1];
-            if (-b->data[WorkingSet->indexLB->data[k] - 1] > oldDirIdx) {
+          for (k = 0; k <= kend; k++) {
+            penaltyParamTrial = WorkingSet->lb->data[WorkingSet->indexLB->data[k]
+              - 1];
+            if (-d->data[WorkingSet->indexLB->data[k] - 1] > penaltyParamTrial)
+            {
               if (rtIsInf(ub->data[WorkingSet->indexLB->data[k] - 1])) {
-                b->data[WorkingSet->indexLB->data[k] - 1] = -WorkingSet->
+                d->data[WorkingSet->indexLB->data[k] - 1] = -WorkingSet->
                   lb->data[WorkingSet->indexLB->data[k] - 1] + fabs
                   (WorkingSet->lb->data[WorkingSet->indexLB->data[k] - 1]);
               } else {
-                b->data[WorkingSet->indexLB->data[k] - 1] = (WorkingSet->
-                  ub->data[WorkingSet->indexLB->data[k] - 1] - oldDirIdx) / 2.0;
+                d->data[WorkingSet->indexLB->data[k] - 1] = (WorkingSet->
+                  ub->data[WorkingSet->indexLB->data[k] - 1] - penaltyParamTrial)
+                  / 2.0;
               }
             }
           }
@@ -6128,23 +7778,25 @@ static boolean_T test3_step_o(int32_T *STEP_TYPE, emxArray_real_T_test3_T
 
       if (ub->size[0] != 0) {
         if (lb->size[0] == 0) {
-          for (k = 0; k <= mConstrMax; k++) {
-            oldDirIdx = WorkingSet->ub->data[WorkingSet->indexUB->data[k] - 1];
-            if (b->data[WorkingSet->indexUB->data[k] - 1] > oldDirIdx) {
-              b->data[WorkingSet->indexUB->data[k] - 1] = oldDirIdx - fabs
-                (oldDirIdx);
+          for (k = 0; k <= eqNonLinStart; k++) {
+            penaltyParamTrial = WorkingSet->ub->data[WorkingSet->indexUB->data[k]
+              - 1];
+            if (d->data[WorkingSet->indexUB->data[k] - 1] > penaltyParamTrial) {
+              d->data[WorkingSet->indexUB->data[k] - 1] = penaltyParamTrial -
+                fabs(penaltyParamTrial);
             }
           }
         } else {
-          for (k = 0; k <= mConstrMax; k++) {
-            oldDirIdx = WorkingSet->ub->data[WorkingSet->indexUB->data[k] - 1];
-            if (b->data[WorkingSet->indexUB->data[k] - 1] > oldDirIdx) {
+          for (k = 0; k <= eqNonLinStart; k++) {
+            penaltyParamTrial = WorkingSet->ub->data[WorkingSet->indexUB->data[k]
+              - 1];
+            if (d->data[WorkingSet->indexUB->data[k] - 1] > penaltyParamTrial) {
               if (rtIsInf(lb->data[WorkingSet->indexUB->data[k] - 1])) {
-                b->data[WorkingSet->indexUB->data[k] - 1] = WorkingSet->ub->
+                d->data[WorkingSet->indexUB->data[k] - 1] = WorkingSet->ub->
                   data[WorkingSet->indexUB->data[k] - 1] - fabs(WorkingSet->
                   ub->data[WorkingSet->indexUB->data[k] - 1]);
               } else {
-                b->data[WorkingSet->indexUB->data[k] - 1] = (oldDirIdx -
+                d->data[WorkingSet->indexUB->data[k] - 1] = (penaltyParamTrial -
                   WorkingSet->lb->data[WorkingSet->indexUB->data[k] - 1]) / 2.0;
               }
             }
@@ -6152,18 +7804,18 @@ static boolean_T test3_step_o(int32_T *STEP_TYPE, emxArray_real_T_test3_T
         }
       }
 
-      b_nVar = TrialState->xstar->size[0];
-      TrialState->xstar->size[0] = b->size[0];
-      test3_emxEnsureCapacity_real_T(TrialState->xstar, b_nVar);
-      iH0 = b->size[0];
-      for (b_nVar = 0; b_nVar < iH0; b_nVar++) {
-        TrialState->xstar->data[b_nVar] = b->data[b_nVar];
+      kend = TrialState->xstar->size[0];
+      TrialState->xstar->size[0] = d->size[0];
+      test3_emxEnsureCapacity_real_T(TrialState->xstar, kend);
+      iH0 = d->size[0];
+      for (kend = 0; kend < iH0; kend++) {
+        TrialState->xstar->data[kend] = d->data[kend];
       }
 
       test3_relaxed(Hessian, TrialState->grad, TrialState, MeritFunction,
                     memspace, WorkingSet, QRManager, CholManager, QPObjective,
                     qpoptions);
-      for (k = 0; k <= nVar_tmp_tmp; k++) {
+      for (k = 0; k <= nVar; k++) {
         TrialState->delta_x->data[k] = TrialState->xstar->data[k];
       }
 
@@ -6171,50 +7823,11 @@ static boolean_T test3_step_o(int32_T *STEP_TYPE, emxArray_real_T_test3_T
       break;
 
      default:
-      b_nVar = WorkingSet->nVar - 1;
-      mConstrMax = WorkingSet->mConstrMax - 1;
-      for (k = 0; k <= b_nVar; k++) {
-        TrialState->xstarsqp->data[k] = TrialState->xstarsqp_old->data[k];
-        TrialState->socDirection->data[k] = TrialState->xstar->data[k];
-      }
-
-      for (k = 0; k <= mConstrMax; k++) {
-        TrialState->lambdaStopTest->data[k] = TrialState->lambda->data[k];
-      }
-
-      for (k = 0; k <= b_nVar; k++) {
-        TrialState->xstar->data[k] = TrialState->xstarsqp->data[k];
-      }
-
-      emxCopyStruct_s_k8kXP0ntDjd4qxs(&b_WorkingSet, WorkingSet);
-      qpoptions_0 = *qpoptions;
-      test3_driver_d(Hessian, TrialState->grad, TrialState, memspace,
-                     &b_WorkingSet, QRManager, CholManager, QPObjective,
-                     &qpoptions_0, qpoptions->MaxIterations);
-      for (k = 0; k <= b_nVar; k++) {
-        oldDirIdx = TrialState->socDirection->data[k];
-        TrialState->socDirection->data[k] = TrialState->xstar->data[k] -
-          oldDirIdx;
-        TrialState->xstar->data[k] = oldDirIdx;
-      }
-
-      stepSuccess = (test3_xnrm2_a(WorkingSet->nVar, TrialState->socDirection) <=
-                     2.0 * test3_xnrm2_a(WorkingSet->nVar, TrialState->xstar));
-      if (!stepSuccess) {
-        for (k = 0; k <= mConstrMax; k++) {
-          TrialState->lambda->data[k] = TrialState->lambdaStopTest->data[k];
-        }
-      } else {
-        test3_sortLambdaQP(TrialState->lambda, b_WorkingSet.nActiveConstr,
-                           b_WorkingSet.sizes, b_WorkingSet.isActiveIdx,
-                           b_WorkingSet.Wid, b_WorkingSet.Wlocalidx,
-                           memspace->workspace_double);
-      }
-
-      emxCopyStruct_s_k8kXP0ntDjd4qxs(WorkingSet, &b_WorkingSet);
+      stepSuccess = test3_soc(Hessian, TrialState->grad, TrialState, memspace,
+        WorkingSet, QRManager, CholManager, QPObjective, qpoptions);
       checkBoundViolation = stepSuccess;
       if (stepSuccess && (TrialState->state != -6)) {
-        for (k = 0; k <= nVar_tmp_tmp; k++) {
+        for (k = 0; k <= nVar; k++) {
           TrialState->delta_x->data[k] = TrialState->xstar->data[k] +
             TrialState->socDirection->data[k];
         }
@@ -6228,100 +7841,103 @@ static boolean_T test3_step_o(int32_T *STEP_TYPE, emxArray_real_T_test3_T
       if (TrialState->state != -6) {
         exitg1 = 1;
       } else {
-        b_nVar = Hessian->size[0] - 1;
-        oldDirIdx = 0.0;
-        linearizedConstrViolPrev = 1.0;
-        for (k = 0; k <= b_nVar; k++) {
-          oldDirIdx = fmax(oldDirIdx, fabs(TrialState->grad->data[k]));
-          linearizedConstrViolPrev = fmax(linearizedConstrViolPrev, fabs
-            (TrialState->xstar->data[k]));
+        kend = Hessian->size[0] - 1;
+        penaltyParamTrial = 0.0;
+        constrViolationEq = 1.0;
+        for (k = 0; k <= kend; k++) {
+          penaltyParamTrial = fmax(penaltyParamTrial, fabs(TrialState->
+            grad->data[k]));
+          constrViolationEq = fmax(constrViolationEq, fabs(TrialState->
+            xstar->data[k]));
         }
 
-        oldDirIdx = fmax(2.2204460492503131E-16, oldDirIdx /
-                         linearizedConstrViolPrev);
-        for (k = 0; k <= b_nVar; k++) {
-          iH0 = (b_nVar + 1) * k;
-          for (mConstrMax = 0; mConstrMax < k; mConstrMax++) {
-            Hessian->data[iH0 + mConstrMax] = 0.0;
+        penaltyParamTrial = fmax(2.2204460492503131E-16, penaltyParamTrial /
+          constrViolationEq);
+        for (k = 0; k <= kend; k++) {
+          iH0 = (kend + 1) * k;
+          for (eqNonLinStart = 0; eqNonLinStart < k; eqNonLinStart++) {
+            Hessian->data[iH0 + eqNonLinStart] = 0.0;
           }
 
-          Hessian->data[k + Hessian->size[0] * k] = oldDirIdx;
+          Hessian->data[k + Hessian->size[0] * k] = penaltyParamTrial;
           iH0 += k;
-          mConstrMax = b_nVar - k;
-          if (mConstrMax - 1 >= 0) {
-            memset(&Hessian->data[iH0 + 1], 0, (uint32_T)((mConstrMax + iH0) -
-                    iH0) * sizeof(real_T));
+          eqNonLinStart = kend - k;
+          if (eqNonLinStart - 1 >= 0) {
+            memset(&Hessian->data[iH0 + 1], 0, (uint32_T)((eqNonLinStart + iH0)
+                    - iH0) * sizeof(real_T));
           }
         }
       }
     }
   } while (exitg1 == 0);
 
-  emxFreeStruct_s_k8kXP0ntDjd4qxs(&b_WorkingSet);
   if (checkBoundViolation) {
-    mConstrMax = WorkingSet->sizes[3];
+    eqNonLinStart = WorkingSet->sizes[3];
     k = WorkingSet->sizes[4];
-    b_nVar = b->size[0];
-    b->size[0] = TrialState->delta_x->size[0];
-    test3_emxEnsureCapacity_real_T(b, b_nVar);
+    kend = d->size[0];
+    d->size[0] = TrialState->delta_x->size[0];
+    test3_emxEnsureCapacity_real_T(d, kend);
     iH0 = TrialState->delta_x->size[0];
-    for (b_nVar = 0; b_nVar < iH0; b_nVar++) {
-      b->data[b_nVar] = TrialState->delta_x->data[b_nVar];
+    for (kend = 0; kend < iH0; kend++) {
+      d->data[kend] = TrialState->delta_x->data[kend];
     }
 
     if (lb->size[0] != 0) {
-      for (b_nVar = 0; b_nVar < mConstrMax; b_nVar++) {
-        linearizedConstrViolPrev = b->data[WorkingSet->indexLB->data[b_nVar] - 1];
-        oldDirIdx = (TrialState->xstarsqp->data[WorkingSet->indexLB->data[b_nVar]
-                     - 1] + linearizedConstrViolPrev) - lb->data
-          [WorkingSet->indexLB->data[b_nVar] - 1];
-        if (oldDirIdx < 0.0) {
-          b->data[WorkingSet->indexLB->data[b_nVar] - 1] =
-            linearizedConstrViolPrev - oldDirIdx;
-          TrialState->xstar->data[WorkingSet->indexLB->data[b_nVar] - 1] -=
-            oldDirIdx;
+      for (nVar = 0; nVar < eqNonLinStart; nVar++) {
+        constrViolationEq = d->data[WorkingSet->indexLB->data[nVar] - 1];
+        penaltyParamTrial = (TrialState->xstarsqp->data[WorkingSet->
+                             indexLB->data[nVar] - 1] + constrViolationEq) -
+          lb->data[WorkingSet->indexLB->data[nVar] - 1];
+        if (penaltyParamTrial < 0.0) {
+          d->data[WorkingSet->indexLB->data[nVar] - 1] = constrViolationEq -
+            penaltyParamTrial;
+          TrialState->xstar->data[WorkingSet->indexLB->data[nVar] - 1] -=
+            penaltyParamTrial;
         }
       }
     }
 
     if (ub->size[0] != 0) {
-      for (b_nVar = 0; b_nVar < k; b_nVar++) {
-        linearizedConstrViolPrev = b->data[WorkingSet->indexUB->data[b_nVar] - 1];
-        oldDirIdx = (ub->data[WorkingSet->indexUB->data[b_nVar] - 1] -
-                     TrialState->xstarsqp->data[WorkingSet->indexUB->data[b_nVar]
-                     - 1]) - linearizedConstrViolPrev;
-        if (oldDirIdx < 0.0) {
-          b->data[WorkingSet->indexUB->data[b_nVar] - 1] =
-            linearizedConstrViolPrev + oldDirIdx;
-          TrialState->xstar->data[WorkingSet->indexUB->data[b_nVar] - 1] +=
-            oldDirIdx;
+      for (nVar = 0; nVar < k; nVar++) {
+        constrViolationEq = d->data[WorkingSet->indexUB->data[nVar] - 1];
+        penaltyParamTrial = (ub->data[WorkingSet->indexUB->data[nVar] - 1] -
+                             TrialState->xstarsqp->data[WorkingSet->
+                             indexUB->data[nVar] - 1]) - constrViolationEq;
+        if (penaltyParamTrial < 0.0) {
+          d->data[WorkingSet->indexUB->data[nVar] - 1] = constrViolationEq +
+            penaltyParamTrial;
+          TrialState->xstar->data[WorkingSet->indexUB->data[nVar] - 1] +=
+            penaltyParamTrial;
         }
       }
     }
 
-    b_nVar = TrialState->delta_x->size[0];
-    TrialState->delta_x->size[0] = b->size[0];
-    test3_emxEnsureCapacity_real_T(TrialState->delta_x, b_nVar);
-    iH0 = b->size[0];
-    for (b_nVar = 0; b_nVar < iH0; b_nVar++) {
-      TrialState->delta_x->data[b_nVar] = b->data[b_nVar];
+    kend = TrialState->delta_x->size[0];
+    TrialState->delta_x->size[0] = d->size[0];
+    test3_emxEnsureCapacity_real_T(TrialState->delta_x, kend);
+    iH0 = d->size[0];
+    for (kend = 0; kend < iH0; kend++) {
+      TrialState->delta_x->data[kend] = d->data[kend];
     }
   }
 
-  test3_emxFree_real_T(&b);
+  test3_emxFree_real_T(&d);
   return stepSuccess;
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_evalObjAndConstr(const s_IhzSggsSakhYrqTLyRPh4_test3_T
-  obj_next_next_next_next_next_ne, const emxArray_real_T_test3_T *x, real_T
-  *fval, int32_T *status)
+static void test3_evalObjAndConstr(int32_T obj_next_next_next_next_b_value,
+  int32_T obj_next_next_next_next_next_b_, const real_T
+  obj_next_next_next_next_next_ne[4], real_T obj_next_next_next_next_next__0,
+  const s_orfxVcOir3wnnUkquctgqH_test_T obj_next_next_next_next_next__1, const
+  emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *Cineq_workspace, int32_T
+  ineq0, emxArray_real_T_test3_T *Ceq_workspace, int32_T eq0, real_T *fval,
+  int32_T *status)
 {
   boolean_T tmp;
-  *fval = test3_eML_blk_kernel_anonFcn1(obj_next_next_next_next_next_ne.x0,
-    obj_next_next_next_next_next_ne.xref, obj_next_next_next_next_next_ne.uref,
-    obj_next_next_next_next_next_ne.N, x);
-  *status = 1;
+  *fval = test3_eML_blk_kernel_anonFcn1(obj_next_next_next_next_next__1.x0,
+    obj_next_next_next_next_next__1.xref, obj_next_next_next_next_next__1.uref,
+    obj_next_next_next_next_next__1.N, x);
   tmp = rtIsNaN(*fval);
   if (rtIsInf(*fval) || tmp) {
     if (tmp) {
@@ -6331,64 +7947,139 @@ static void test3_evalObjAndConstr(const s_IhzSggsSakhYrqTLyRPh4_test3_T
     } else {
       *status = -2;
     }
+  } else {
+    *status = test3_computeConstraints_(obj_next_next_next_next_b_value,
+      obj_next_next_next_next_next_b_, obj_next_next_next_next_next_ne,
+      obj_next_next_next_next_next__0, x, Cineq_workspace, ineq0, Ceq_workspace,
+      eq0);
   }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function' */
+static real_T test3_computeMeritFcn(real_T obj_penaltyParam, real_T fval, const
+  emxArray_real_T_test3_T *Cineq_workspace, int32_T mIneq, const
+  emxArray_real_T_test3_T *Ceq_workspace, int32_T mEq, boolean_T evalWellDefined)
+{
+  real_T val;
+  int32_T kend;
+  if (evalWellDefined) {
+    real_T constrViolationEq;
+    real_T constrViolationIneq;
+    constrViolationEq = 0.0;
+    if (mEq >= 1) {
+      for (kend = 0; kend < mEq; kend++) {
+        constrViolationEq += fabs(Ceq_workspace->data[kend]);
+      }
+    }
+
+    constrViolationIneq = 0.0;
+    for (kend = 0; kend < mIneq; kend++) {
+      real_T Cineq_workspace_0;
+      Cineq_workspace_0 = Cineq_workspace->data[kend];
+      if (Cineq_workspace_0 > 0.0) {
+        constrViolationIneq += Cineq_workspace_0;
+      }
+    }
+
+    val = (constrViolationEq + constrViolationIneq) * obj_penaltyParam + fval;
+  } else {
+    val = (rtInf);
+  }
+
+  return val;
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
 static void test3_driver(emxArray_real_T_test3_T *Hessian, const
   emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub,
-  s_PLLLBDg14rHiR3qEakQweE_test_T *TrialState, sG8JZ69axY52WWR6RKyApQC_test3_T
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState, sG8JZ69axY52WWR6RKyApQC_test3_T
   *MeritFunction, const coder_internal_stickyStruct_9_T *FcnEvaluator,
-  s_ZbRibKlg6CoahmaZOjRYjD_test_T *FiniteDifferences,
-  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_k8kXP0ntDjd4qxsrByEVbG_test_T
+  s_tzdJIwhhx1jgWYIJOPrjUD_test_T *FiniteDifferences,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
   *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
   s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
-  QPObjective, int32_T runTimeOptions_MaxFunctionEvalu)
+  QPObjective, const emxArray_real_T_test3_T *fscales_cineq_constraint, int32_T
+  runTimeOptions_MaxFunctionEvalu)
 {
   s7RdrPWkr8UPAUyTdDJkLaG_test3_T Flags;
   somzaGboVhDG7PNQS6E98jD_test3_T expl_temp;
   real_T TrialState_0;
   real_T phi_alpha;
+  int32_T b_ix;
+  int32_T b_iy;
+  int32_T b_mLinIneq;
   int32_T b_nVar;
-  int32_T e;
+  int32_T b_nVar_tmp;
+  int32_T b_nVar_tmp_0;
+  int32_T d_ix;
+  int32_T eqL0;
+  int32_T g;
+  int32_T i;
+  int32_T ix;
+  int32_T iy;
+  int32_T k;
   int32_T mConstr;
+  int32_T mConstr_tmp;
+  int32_T mEq;
   int32_T mFixed;
+  int32_T mIneq;
   int32_T mLB;
+  int32_T mLinEq;
+  int32_T mLinIneq;
   int32_T mUB;
   int32_T qpoptions_MaxIterations;
-  int32_T u1;
-  boolean_T hasLB;
-  boolean_T hasUB;
+  boolean_T b;
   boolean_T tooSmallX;
-  static const char_T g[7] = { 'f', 'm', 'i', 'n', 'c', 'o', 'n' };
+  static const char_T q[7] = { 'f', 'm', 'i', 'n', 'c', 'o', 'n' };
 
   somzaGboVhDG7PNQS6E98jD_test3_T expl_temp_0;
   int32_T exitg1;
   int32_T exitg2;
   int32_T nVar_tmp_tmp;
   boolean_T exitg3;
-  nVar_tmp_tmp = WorkingSet->nVar - 1;
+  boolean_T socTaken;
+  nVar_tmp_tmp = WorkingSet->nVar;
   mFixed = WorkingSet->sizes[0];
+  mEq = WorkingSet->sizes[1];
+  mIneq = WorkingSet->sizes[2];
   mLB = WorkingSet->sizes[3];
   mUB = WorkingSet->sizes[4];
-  mConstr = (WorkingSet->sizes[0] + WorkingSet->sizes[3]) + WorkingSet->sizes[4];
-  u1 = (WorkingSet->sizes[3] + WorkingSet->sizes[4]) + (WorkingSet->sizes[0] <<
-    1);
-  if (WorkingSet->nVar >= u1) {
-    u1 = WorkingSet->nVar;
+  mConstr_tmp = WorkingSet->sizes[0] + WorkingSet->sizes[1];
+  mConstr = ((mConstr_tmp + WorkingSet->sizes[2]) + WorkingSet->sizes[3]) +
+    WorkingSet->sizes[4];
+  mLinIneq = WorkingSet->sizes[2] - TrialState->mNonlinIneq;
+  mLinEq = WorkingSet->sizes[1] - TrialState->mNonlinEq;
+  b_nVar = ((WorkingSet->sizes[2] + WorkingSet->sizes[3]) + WorkingSet->sizes[4])
+    + (WorkingSet->sizes[0] << 1);
+  if (WorkingSet->nVar >= b_nVar) {
+    b_nVar = WorkingSet->nVar;
   }
 
-  qpoptions_MaxIterations = 10 * u1;
+  qpoptions_MaxIterations = 10 * b_nVar;
   TrialState->steplength = 1.0;
   test3_test_exit(MeritFunction, WorkingSet, TrialState, lb, ub,
                   runTimeOptions_MaxFunctionEvalu, &Flags.gradOK, &Flags.fevalOK,
                   &Flags.done, &Flags.stepAccepted, &Flags.failedLineSearch,
                   &Flags.stepType);
+  test3_saveJacobian(TrialState, WorkingSet->nVar, WorkingSet->sizes[2],
+                     WorkingSet->Aineq, TrialState->iNonIneq0, WorkingSet->
+                     sizes[1], WorkingSet->Aeq, TrialState->iNonEq0,
+                     WorkingSet->ldA);
   TrialState->sqpFval_old = TrialState->sqpFval;
   b_nVar = TrialState->xstarsqp->size[0] - 1;
-  for (u1 = 0; u1 <= b_nVar; u1++) {
-    TrialState->xstarsqp_old->data[u1] = TrialState->xstarsqp->data[u1];
-    TrialState->grad_old->data[u1] = TrialState->grad->data[u1];
+  for (k = 0; k <= b_nVar; k++) {
+    TrialState->xstarsqp_old->data[k] = TrialState->xstarsqp->data[k];
+    TrialState->grad_old->data[k] = TrialState->grad->data[k];
+  }
+
+  b_nVar_tmp = TrialState->mIneq;
+  for (k = 0; k < b_nVar_tmp; k++) {
+    TrialState->cIneq_old->data[k] = TrialState->cIneq->data[k];
+  }
+
+  b_nVar_tmp_0 = TrialState->mEq;
+  for (k = 0; k < b_nVar_tmp_0; k++) {
+    TrialState->cEq_old->data[k] = TrialState->cEq->data[k];
   }
 
   if (!Flags.done) {
@@ -6407,68 +8098,19 @@ static void test3_driver(emxArray_real_T_test3_T *Hessian, const
       expl_temp.OptimalityTolerance = 2.2204460492503131E-14;
       expl_temp.StepTolerance = 1.0E-6;
       expl_temp.MaxIterations = qpoptions_MaxIterations;
-      for (b_nVar = 0; b_nVar < 7; b_nVar++) {
-        expl_temp.SolverName[b_nVar] = g[b_nVar];
+      for (i = 0; i < 7; i++) {
+        expl_temp.SolverName[i] = q[i];
       }
     }
 
     do {
       exitg1 = 0;
-      hasLB = !Flags.failedLineSearch;
-      if ((!Flags.stepAccepted) && hasLB) {
+      socTaken = !Flags.failedLineSearch;
+      if ((!Flags.stepAccepted) && socTaken) {
         if (Flags.stepType != 3) {
-          hasLB = (lb->size[0] != 0);
-          hasUB = (ub->size[0] != 0);
-          if (hasLB) {
-            for (u1 = 0; u1 < mLB; u1++) {
-              WorkingSet->lb->data[WorkingSet->indexLB->data[u1] - 1] =
-                -lb->data[WorkingSet->indexLB->data[u1] - 1] +
-                TrialState->xstarsqp->data[WorkingSet->indexLB->data[u1] - 1];
-            }
-          }
-
-          if (hasUB) {
-            for (u1 = 0; u1 < mUB; u1++) {
-              WorkingSet->ub->data[WorkingSet->indexUB->data[u1] - 1] = ub->
-                data[WorkingSet->indexUB->data[u1] - 1] - TrialState->
-                xstarsqp->data[WorkingSet->indexUB->data[u1] - 1];
-            }
-          }
-
-          if (hasLB && hasUB) {
-            for (u1 = 0; u1 < mFixed; u1++) {
-              TrialState_0 = ub->data[WorkingSet->indexFixed->data[u1] - 1] -
-                TrialState->xstarsqp->data[WorkingSet->indexFixed->data[u1] - 1];
-              WorkingSet->ub->data[WorkingSet->indexFixed->data[u1] - 1] =
-                TrialState_0;
-              WorkingSet->bwset->data[u1] = TrialState_0;
-            }
-          }
-
-          if (WorkingSet->nActiveConstr > mFixed) {
-            if (mFixed + 1 >= 1) {
-              b_nVar = mFixed + 1;
-            } else {
-              b_nVar = 1;
-            }
-
-            e = WorkingSet->nActiveConstr;
-            for (u1 = b_nVar; u1 <= e; u1++) {
-              switch (WorkingSet->Wid->data[u1 - 1]) {
-               case 4:
-                WorkingSet->bwset->data[u1 - 1] = WorkingSet->lb->
-                  data[WorkingSet->indexLB->data[WorkingSet->Wlocalidx->data[u1
-                  - 1] - 1] - 1];
-                break;
-
-               case 5:
-                WorkingSet->bwset->data[u1 - 1] = WorkingSet->ub->
-                  data[WorkingSet->indexUB->data[WorkingSet->Wlocalidx->data[u1
-                  - 1] - 1] - 1];
-                break;
-              }
-            }
-          }
+          test3_updateWorkingSetForNewQP(TrialState->xstarsqp, WorkingSet, mIneq,
+            TrialState->mNonlinIneq, TrialState->cIneq, mEq,
+            TrialState->mNonlinEq, TrialState->cEq, mLB, lb, mUB, ub, mFixed);
         }
 
         expl_temp_0 = expl_temp;
@@ -6476,21 +8118,34 @@ static void test3_driver(emxArray_real_T_test3_T *Hessian, const
           TrialState, MeritFunction, memspace, WorkingSet, QRManager,
           CholManager, QPObjective, &expl_temp_0);
         if (Flags.stepAccepted) {
-          for (u1 = 0; u1 <= nVar_tmp_tmp; u1++) {
-            TrialState->xstarsqp->data[u1] += TrialState->delta_x->data[u1];
+          for (k = 0; k < nVar_tmp_tmp; k++) {
+            TrialState->xstarsqp->data[k] += TrialState->delta_x->data[k];
           }
 
-          test3_evalObjAndConstr
-            (FcnEvaluator->next.next.next.next.next.next.next.next.b_value.workspace,
-             TrialState->xstarsqp, &TrialState->sqpFval, &u1);
-          Flags.fevalOK = (u1 == 1);
+          test3_evalObjAndConstr(FcnEvaluator->next.next.next.next.b_value,
+            FcnEvaluator->next.next.next.next.next.b_value,
+            FcnEvaluator->next.next.next.next.next.next.next.b_value.workspace.x0,
+            FcnEvaluator->next.next.next.next.next.next.next.b_value.workspace.N,
+            FcnEvaluator->next.next.next.next.next.next.next.next.b_value.workspace,
+            TrialState->xstarsqp, TrialState->cIneq, TrialState->iNonIneq0,
+            TrialState->cEq, TrialState->iNonEq0, &TrialState->sqpFval, &k);
+          Flags.fevalOK = (k == 1);
           TrialState->FunctionEvaluations++;
-          if (Flags.fevalOK) {
-            MeritFunction->phiFullStep = MeritFunction->penaltyParam * 0.0 +
-              TrialState->sqpFval;
-          } else {
-            MeritFunction->phiFullStep = (rtInf);
+          if (mLinIneq > 0) {
+            test3_xgemv_bujmjs(nVar_tmp_tmp, mLinIneq, WorkingSet->Aineq,
+                               WorkingSet->ldA, TrialState->xstarsqp,
+                               TrialState->cIneq);
           }
+
+          if (mLinEq > 0) {
+            test3_xgemv_bujmjs(nVar_tmp_tmp, mLinEq, WorkingSet->Aeq,
+                               WorkingSet->ldA, TrialState->xstarsqp,
+                               TrialState->cEq);
+          }
+
+          MeritFunction->phiFullStep = test3_computeMeritFcn
+            (MeritFunction->penaltyParam, TrialState->sqpFval, TrialState->cIneq,
+             mIneq, TrialState->cEq, mEq, Flags.fevalOK);
         }
 
         if ((Flags.stepType == 1) && Flags.stepAccepted && Flags.fevalOK &&
@@ -6499,84 +8154,101 @@ static void test3_driver(emxArray_real_T_test3_T *Hessian, const
           Flags.stepType = 3;
           Flags.stepAccepted = false;
         } else {
-          hasLB = ((Flags.stepType == 3) && Flags.stepAccepted);
-          hasUB = Flags.fevalOK;
+          socTaken = ((Flags.stepType == 3) && Flags.stepAccepted);
+          b = Flags.fevalOK;
           b_nVar = WorkingSet->nVar - 1;
+          b_mLinIneq = TrialState->mIneq - TrialState->mNonlinIneq;
+          d_ix = TrialState->mEq - TrialState->mNonlinEq;
           TrialState_0 = 1.0;
-          e = 1;
+          eqL0 = 1;
           phi_alpha = MeritFunction->phiFullStep;
-          for (u1 = 0; u1 <= b_nVar; u1++) {
-            TrialState->searchDir->data[u1] = TrialState->delta_x->data[u1];
+          for (k = 0; k <= b_nVar; k++) {
+            TrialState->searchDir->data[k] = TrialState->delta_x->data[k];
           }
 
           do {
             exitg2 = 0;
             if (TrialState->FunctionEvaluations <
                 runTimeOptions_MaxFunctionEvalu) {
-              if (hasUB && (phi_alpha <= TrialState_0 * 0.0001 *
-                            MeritFunction->phiPrimePlus + MeritFunction->phi)) {
+              if (b && (phi_alpha <= TrialState_0 * 0.0001 *
+                        MeritFunction->phiPrimePlus + MeritFunction->phi)) {
                 exitg2 = 1;
               } else {
                 TrialState_0 *= 0.7;
-                for (u1 = 0; u1 <= b_nVar; u1++) {
-                  TrialState->delta_x->data[u1] = TrialState_0 *
-                    TrialState->xstar->data[u1];
+                for (k = 0; k <= b_nVar; k++) {
+                  TrialState->delta_x->data[k] = TrialState_0 *
+                    TrialState->xstar->data[k];
                 }
 
-                if (hasLB) {
+                if (socTaken) {
                   phi_alpha = TrialState_0 * TrialState_0;
                   if ((b_nVar + 1 >= 1) && (!(phi_alpha == 0.0))) {
-                    for (u1 = 0; u1 <= b_nVar; u1++) {
-                      TrialState->delta_x->data[u1] += phi_alpha *
-                        TrialState->socDirection->data[u1];
+                    for (k = 0; k <= b_nVar; k++) {
+                      TrialState->delta_x->data[k] += phi_alpha *
+                        TrialState->socDirection->data[k];
                     }
                   }
                 }
 
                 tooSmallX = true;
-                u1 = 0;
+                k = 0;
                 exitg3 = false;
-                while ((!exitg3) && (u1 <= b_nVar)) {
-                  if (1.0E-6 * fmax(1.0, fabs(TrialState->xstarsqp->data[u1])) <=
-                      fabs(TrialState->delta_x->data[u1])) {
+                while ((!exitg3) && (k <= b_nVar)) {
+                  if (1.0E-6 * fmax(1.0, fabs(TrialState->xstarsqp->data[k])) <=
+                      fabs(TrialState->delta_x->data[k])) {
                     tooSmallX = false;
                     exitg3 = true;
                   } else {
-                    u1++;
+                    k++;
                   }
                 }
 
                 if (tooSmallX) {
-                  e = -2;
+                  eqL0 = -2;
                   exitg2 = 1;
                 } else {
-                  for (u1 = 0; u1 <= b_nVar; u1++) {
-                    TrialState->xstarsqp->data[u1] = TrialState->
-                      xstarsqp_old->data[u1] + TrialState->delta_x->data[u1];
+                  for (k = 0; k <= b_nVar; k++) {
+                    TrialState->xstarsqp->data[k] = TrialState->
+                      xstarsqp_old->data[k] + TrialState->delta_x->data[k];
                   }
 
                   test3_evalObjAndConstr
-                    (FcnEvaluator->next.next.next.next.next.next.next.next.b_value.workspace,
-                     TrialState->xstarsqp, &TrialState->sqpFval, &u1);
-                  TrialState->FunctionEvaluations++;
-                  hasUB = (u1 == 1);
-                  if (hasUB) {
-                    phi_alpha = MeritFunction->penaltyParam * 0.0 +
-                      TrialState->sqpFval;
-                  } else {
-                    phi_alpha = (rtInf);
+                    (FcnEvaluator->next.next.next.next.b_value,
+                     FcnEvaluator->next.next.next.next.next.b_value,
+                     FcnEvaluator->next.next.next.next.next.next.next.b_value.workspace.x0,
+                     FcnEvaluator->next.next.next.next.next.next.next.b_value.workspace.N,
+                     FcnEvaluator->next.next.next.next.next.next.next.next.b_value.workspace,
+                     TrialState->xstarsqp, TrialState->cIneq,
+                     TrialState->iNonIneq0, TrialState->cEq, TrialState->iNonEq0,
+                     &TrialState->sqpFval, &k);
+                  if (b_mLinIneq > 0) {
+                    test3_xgemv_bujmjs(b_nVar + 1, b_mLinIneq, WorkingSet->Aineq,
+                                       WorkingSet->ldA, TrialState->xstarsqp,
+                                       TrialState->cIneq);
                   }
+
+                  if (d_ix > 0) {
+                    test3_xgemv_bujmjs(b_nVar + 1, d_ix, WorkingSet->Aeq,
+                                       WorkingSet->ldA, TrialState->xstarsqp,
+                                       TrialState->cEq);
+                  }
+
+                  TrialState->FunctionEvaluations++;
+                  b = (k == 1);
+                  phi_alpha = test3_computeMeritFcn(MeritFunction->penaltyParam,
+                    TrialState->sqpFval, TrialState->cIneq, TrialState->mIneq,
+                    TrialState->cEq, TrialState->mEq, b);
                 }
               }
             } else {
-              e = 0;
+              eqL0 = 0;
               exitg2 = 1;
             }
           } while (exitg2 == 0);
 
-          Flags.fevalOK = hasUB;
+          Flags.fevalOK = b;
           TrialState->steplength = TrialState_0;
-          if (e > 0) {
+          if (eqL0 > 0) {
             Flags.stepAccepted = true;
           } else {
             Flags.failedLineSearch = true;
@@ -6587,52 +8259,149 @@ static void test3_driver(emxArray_real_T_test3_T *Hessian, const
       }
     } while (exitg1 == 0);
 
-    if (Flags.stepAccepted && hasLB) {
-      for (u1 = 0; u1 <= nVar_tmp_tmp; u1++) {
-        TrialState->xstarsqp->data[u1] = TrialState->xstarsqp_old->data[u1] +
-          TrialState->delta_x->data[u1];
+    if (Flags.stepAccepted && socTaken) {
+      for (k = 0; k < nVar_tmp_tmp; k++) {
+        TrialState->xstarsqp->data[k] = TrialState->xstarsqp_old->data[k] +
+          TrialState->delta_x->data[k];
       }
 
-      for (u1 = 0; u1 < mConstr; u1++) {
-        TrialState_0 = TrialState->lambdasqp->data[u1];
-        TrialState->lambdasqp->data[u1] = (TrialState->lambda->data[u1] -
+      for (k = 0; k < mConstr; k++) {
+        TrialState_0 = TrialState->lambdasqp->data[k];
+        TrialState->lambdasqp->data[k] = (TrialState->lambda->data[k] -
           TrialState_0) * TrialState->steplength + TrialState_0;
       }
 
       TrialState->sqpFval_old = TrialState->sqpFval;
       b_nVar = TrialState->xstarsqp->size[0] - 1;
-      for (u1 = 0; u1 <= b_nVar; u1++) {
-        TrialState->xstarsqp_old->data[u1] = TrialState->xstarsqp->data[u1];
-        TrialState->grad_old->data[u1] = TrialState->grad->data[u1];
+      for (k = 0; k <= b_nVar; k++) {
+        TrialState->xstarsqp_old->data[k] = TrialState->xstarsqp->data[k];
+        TrialState->grad_old->data[k] = TrialState->grad->data[k];
+      }
+
+      for (k = 0; k < b_nVar_tmp; k++) {
+        TrialState->cIneq_old->data[k] = TrialState->cIneq->data[k];
+      }
+
+      for (k = 0; k < b_nVar_tmp_0; k++) {
+        TrialState->cEq_old->data[k] = TrialState->cEq->data[k];
       }
 
       Flags.gradOK = test3_computeFiniteDifferences(FiniteDifferences,
-        TrialState->sqpFval, TrialState->xstarsqp, TrialState->grad, lb, ub);
+        TrialState->sqpFval, TrialState->cIneq, TrialState->iNonIneq0,
+        TrialState->cEq, TrialState->iNonEq0, TrialState->xstarsqp,
+        TrialState->grad, WorkingSet->Aineq, TrialState->iNonIneq0,
+        WorkingSet->ldA, WorkingSet->Aeq, TrialState->iNonEq0, WorkingSet->ldA,
+        lb, ub);
       TrialState->FunctionEvaluations += FiniteDifferences->numEvals;
     } else {
       TrialState->sqpFval = TrialState->sqpFval_old;
       b_nVar = TrialState->xstarsqp->size[0];
-      for (u1 = 0; u1 < b_nVar; u1++) {
-        TrialState->xstarsqp->data[u1] = TrialState->xstarsqp_old->data[u1];
+      for (k = 0; k < b_nVar; k++) {
+        TrialState->xstarsqp->data[k] = TrialState->xstarsqp_old->data[k];
+      }
+
+      for (k = 0; k < b_nVar_tmp; k++) {
+        TrialState->cIneq->data[k] = TrialState->cIneq_old->data[k];
+      }
+
+      for (k = 0; k < b_nVar_tmp_0; k++) {
+        TrialState->cEq->data[k] = TrialState->cEq_old->data[k];
       }
     }
 
-    test3_test_exit_k(&Flags, memspace, MeritFunction, WorkingSet, TrialState,
-                      QRManager, lb, ub, runTimeOptions_MaxFunctionEvalu);
+    test3_test_exit_k(&Flags, memspace, MeritFunction, fscales_cineq_constraint,
+                      WorkingSet, TrialState, QRManager, lb, ub,
+                      runTimeOptions_MaxFunctionEvalu);
     if ((!Flags.done) && Flags.stepAccepted) {
       Flags.stepAccepted = false;
       Flags.stepType = 1;
       Flags.failedLineSearch = false;
-      for (u1 = 0; u1 <= nVar_tmp_tmp; u1++) {
-        TrialState_0 = TrialState->grad->data[u1];
-        TrialState->delta_gradLag->data[u1] = TrialState_0;
-        if (nVar_tmp_tmp + 1 >= 1) {
-          TrialState->delta_gradLag->data[u1] = TrialState_0 -
-            TrialState->grad_old->data[u1];
+      eqL0 = (mFixed + TrialState->iNonEq0) - 1;
+      b_nVar = (mConstr_tmp + TrialState->iNonIneq0) - 1;
+      k = WorkingSet->ldA;
+      for (b_mLinIneq = 0; b_mLinIneq < nVar_tmp_tmp; b_mLinIneq++) {
+        TrialState_0 = TrialState->grad->data[b_mLinIneq];
+        TrialState->delta_gradLag->data[b_mLinIneq] = TrialState_0;
+        if (nVar_tmp_tmp >= 1) {
+          TrialState->delta_gradLag->data[b_mLinIneq] = TrialState_0 -
+            TrialState->grad_old->data[b_mLinIneq];
         }
       }
 
-      test3_BFGSUpdate(nVar_tmp_tmp + 1, Hessian, TrialState->delta_x,
+      if (TrialState->mNonlinEq > 0) {
+        b_ix = (TrialState->iNonEq0 - 1) * WorkingSet->ldA + 1;
+        if (nVar_tmp_tmp != 0) {
+          ix = eqL0;
+          iy = (TrialState->mNonlinEq - 1) * WorkingSet->ldA;
+          b_iy = iy + b_ix;
+          for (b_mLinIneq = b_ix; k < 0 ? b_mLinIneq >= b_iy : b_mLinIneq <=
+               b_iy; b_mLinIneq += k) {
+            g = (b_mLinIneq + nVar_tmp_tmp) - 1;
+            for (d_ix = b_mLinIneq; d_ix <= g; d_ix++) {
+              i = d_ix - b_mLinIneq;
+              TrialState->delta_gradLag->data[i] += WorkingSet->Aeq->data[d_ix -
+                1] * TrialState->lambdasqp->data[ix];
+            }
+
+            ix++;
+          }
+
+          b_ix = eqL0;
+          ix = iy + 1;
+          for (b_mLinIneq = 1; k < 0 ? b_mLinIneq >= ix : b_mLinIneq <= ix;
+               b_mLinIneq += k) {
+            iy = (b_mLinIneq + nVar_tmp_tmp) - 1;
+            for (d_ix = b_mLinIneq; d_ix <= iy; d_ix++) {
+              i = d_ix - b_mLinIneq;
+              TrialState->delta_gradLag->data[i] += TrialState->
+                JacCeqTrans_old->data[d_ix - 1] * -TrialState->lambdasqp->
+                data[b_ix];
+            }
+
+            b_ix++;
+          }
+        }
+      }
+
+      if (TrialState->mNonlinIneq > 0) {
+        eqL0 = (TrialState->iNonIneq0 - 1) * WorkingSet->ldA + 1;
+        if (nVar_tmp_tmp != 0) {
+          b_ix = b_nVar;
+          b_iy = (TrialState->mNonlinIneq - 1) * WorkingSet->ldA;
+          ix = b_iy + eqL0;
+          for (b_mLinIneq = eqL0; k < 0 ? b_mLinIneq >= ix : b_mLinIneq <= ix;
+               b_mLinIneq += k) {
+            iy = (b_mLinIneq + nVar_tmp_tmp) - 1;
+            for (d_ix = b_mLinIneq; d_ix <= iy; d_ix++) {
+              i = d_ix - b_mLinIneq;
+              TrialState->delta_gradLag->data[i] += WorkingSet->Aineq->data[d_ix
+                - 1] * TrialState->lambdasqp->data[b_ix];
+            }
+
+            b_ix++;
+          }
+
+          d_ix = b_nVar;
+          b_ix = b_iy + 1;
+          for (b_nVar = 1; k < 0 ? b_nVar >= b_ix : b_nVar <= b_ix; b_nVar += k)
+          {
+            b_iy = (b_nVar + nVar_tmp_tmp) - 1;
+            for (b_mLinIneq = b_nVar; b_mLinIneq <= b_iy; b_mLinIneq++) {
+              i = b_mLinIneq - b_nVar;
+              TrialState->delta_gradLag->data[i] +=
+                TrialState->JacCineqTrans_old->data[b_mLinIneq - 1] *
+                -TrialState->lambdasqp->data[d_ix];
+            }
+
+            d_ix++;
+          }
+        }
+      }
+
+      test3_saveJacobian(TrialState, nVar_tmp_tmp, mIneq, WorkingSet->Aineq,
+                         TrialState->iNonIneq0, mEq, WorkingSet->Aeq,
+                         TrialState->iNonEq0, WorkingSet->ldA);
+      test3_BFGSUpdate(nVar_tmp_tmp, Hessian, TrialState->delta_x,
                        TrialState->delta_gradLag, memspace->workspace_double);
       TrialState->sqpIterations++;
     }
@@ -6669,7 +8438,7 @@ static void emxFreeStruct_s_l1Gll5dfO9DpqQr(s_l1Gll5dfO9DpqQrvRqAf7E_test_T
   test3_emxFree_real_T(&pStruct->tau);
 }
 
-static void emxFreeStruct_s_IhzSggsSakhYrqT(s_IhzSggsSakhYrqTLyRPh4_test3_T
+static void emxFreeStruct_s_orfxVcOir3wnnUk(s_orfxVcOir3wnnUkquctgqH_test_T
   *pStruct)
 {
   test3_emxFree_real_T(&pStruct->xref);
@@ -6678,13 +8447,17 @@ static void emxFreeStruct_s_IhzSggsSakhYrqT(s_IhzSggsSakhYrqTLyRPh4_test3_T
 
 static void emxFreeStruct_anonymous_functio(anonymous_function_test3_T *pStruct)
 {
-  emxFreeStruct_s_IhzSggsSakhYrqT(&pStruct->workspace);
+  emxFreeStruct_s_orfxVcOir3wnnUk(&pStruct->workspace);
 }
 
-static void emxFreeStruct_s_ZbRibKlg6Coahma(s_ZbRibKlg6CoahmaZOjRYjD_test_T
+static void emxFreeStruct_s_tzdJIwhhx1jgWYI(s_tzdJIwhhx1jgWYIJOPrjUD_test_T
   *pStruct)
 {
   emxFreeStruct_anonymous_functio(&pStruct->objfun);
+  test3_emxFree_real_T(&pStruct->cIneq_1);
+  test3_emxFree_real_T(&pStruct->cEq_1);
+  test3_emxFree_real_T(&pStruct->cIneq_2);
+  test3_emxFree_real_T(&pStruct->cEq_2);
   test3_emxFree_boolean_T(&pStruct->hasLB);
   test3_emxFree_boolean_T(&pStruct->hasUB);
 }
@@ -6743,11 +8516,15 @@ static void emxFreeStruct_coder_in_kyv1kfe2(coder_internal_stickyStruct_9_T
   emxFreeStruct_coder_int_kyv1kfe(&pStruct->next);
 }
 
-static void emxFreeStruct_s_PLLLBDg14rHiR3q(s_PLLLBDg14rHiR3qEakQweE_test_T
+static void emxFreeStruct_s_0Mw3d4AlMrOoSnA(s_0Mw3d4AlMrOoSnA1Aci4tH_test_T
   *pStruct)
 {
   test3_emxFree_real_T(&pStruct->xstarsqp);
   test3_emxFree_real_T(&pStruct->xstarsqp_old);
+  test3_emxFree_real_T(&pStruct->cIneq);
+  test3_emxFree_real_T(&pStruct->cIneq_old);
+  test3_emxFree_real_T(&pStruct->cEq);
+  test3_emxFree_real_T(&pStruct->cEq_old);
   test3_emxFree_real_T(&pStruct->grad);
   test3_emxFree_real_T(&pStruct->grad_old);
   test3_emxFree_real_T(&pStruct->lambdasqp);
@@ -6756,6 +8533,8 @@ static void emxFreeStruct_s_PLLLBDg14rHiR3q(s_PLLLBDg14rHiR3qEakQweE_test_T
   test3_emxFree_real_T(&pStruct->delta_x);
   test3_emxFree_real_T(&pStruct->socDirection);
   test3_emxFree_int32_T(&pStruct->workingset_old);
+  test3_emxFree_real_T(&pStruct->JacCineqTrans_old);
+  test3_emxFree_real_T(&pStruct->JacCeqTrans_old);
   test3_emxFree_real_T(&pStruct->gradLag);
   test3_emxFree_real_T(&pStruct->delta_gradLag);
   test3_emxFree_real_T(&pStruct->xstar);
@@ -6764,87 +8543,108 @@ static void emxFreeStruct_s_PLLLBDg14rHiR3q(s_PLLLBDg14rHiR3qEakQweE_test_T
 }
 
 /* Function for MATLAB Function: '<Root>/MATLAB Function' */
-static void test3_fmincon(const real_T fun_workspace_x0[3], const
+static void test3_fmincon(const real_T fun_workspace_x0[4], const
   emxArray_real_T_test3_T *fun_workspace_xref, const emxArray_real_T_test3_T
   *fun_workspace_uref, real_T fun_workspace_N, const emxArray_real_T_test3_T *x0,
-  const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub,
-  emxArray_real_T_test3_T *x)
+  const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub, const
+  s6lIrH89xwD47fl4e1dZNiE_test3_T nonlcon_workspace, emxArray_real_T_test3_T *x)
 {
   coder_internal_stickyStruct_9_T FcnEvaluator;
+  emxArray_real_T_test3_T *Ceq;
+  emxArray_real_T_test3_T *Cineq;
   emxArray_real_T_test3_T *Hessian;
   sG8JZ69axY52WWR6RKyApQC_test3_T MeritFunction;
-  s_PLLLBDg14rHiR3qEakQweE_test_T TrialState;
-  s_ZbRibKlg6CoahmaZOjRYjD_test_T FiniteDifferences;
-  s_k8kXP0ntDjd4qxsrByEVbG_test_T WorkingSet;
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T TrialState;
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T WorkingSet;
   s_l1Gll5dfO9DpqQrvRqAf7E_test_T QRManager;
   s_pIaUYPkQBTqVmAKxFPiGQF_test_T memspace;
   s_saWPFfMboRdWeRqIEJ4x8C_test_T QPObjective;
+  s_tzdJIwhhx1jgWYIJOPrjUD_test_T FiniteDifferences;
   s_vdGXtauKr5HuLAqoxBLhXH_test_T CholManager;
+  real_T TrialState_0;
   real_T fval;
-  int32_T Hessian_0;
-  int32_T colOffsetATw;
-  int32_T i;
+  int32_T iATw0;
+  int32_T iAeq0;
+  int32_T loop_ub;
   int32_T mConstrMax;
+  int32_T mConstrMax_tmp;
+  int32_T mNonlinIneq;
   int32_T maxDims;
   int32_T nVar;
-  boolean_T hasLB;
-  boolean_T hasUB;
+  int32_T nVarMax;
+  boolean_T tmp;
+  test3_emxInit_real_T(&Cineq, 1);
+  test3_emxInit_real_T(&Ceq, 1);
+  test3_eML_blk_kernel_anonFcn2(nonlcon_workspace.x0, nonlcon_workspace.N, x0,
+    Cineq, Ceq);
+  mNonlinIneq = Cineq->size[0];
   nVar = x0->size[0] - 1;
-  mConstrMax = (lb->size[0] + ub->size[0]) + 1;
-  if (x0->size[0] + 1 >= mConstrMax) {
-    maxDims = x0->size[0] + 1;
+  iATw0 = Ceq->size[0] << 1;
+  mConstrMax_tmp = Cineq->size[0] + Ceq->size[0];
+  mConstrMax = ((((mConstrMax_tmp + lb->size[0]) + ub->size[0]) + iATw0) +
+                Cineq->size[0]) + 1;
+  nVarMax = ((iATw0 + x0->size[0]) + Cineq->size[0]) + 1;
+  if (nVarMax >= mConstrMax) {
+    maxDims = nVarMax;
   } else {
     maxDims = mConstrMax;
   }
 
   test3_emxInit_real_T(&Hessian, 2);
-  colOffsetATw = Hessian->size[0] * Hessian->size[1];
+  loop_ub = Hessian->size[0] * Hessian->size[1];
   Hessian->size[0] = x0->size[0];
   Hessian->size[1] = x0->size[0];
-  test3_emxEnsureCapacity_real_T(Hessian, colOffsetATw);
-  colOffsetATw = x0->size[0] * x0->size[0];
-  if (colOffsetATw - 1 >= 0) {
-    memset(&Hessian->data[0], 0, (uint32_T)colOffsetATw * sizeof(real_T));
+  test3_emxEnsureCapacity_real_T(Hessian, loop_ub);
+  loop_ub = x0->size[0] * x0->size[0];
+  if (loop_ub - 1 >= 0) {
+    memset(&Hessian->data[0], 0, (uint32_T)loop_ub * sizeof(real_T));
   }
 
   if (x0->size[0] > 0) {
-    for (colOffsetATw = 0; colOffsetATw <= nVar; colOffsetATw++) {
-      Hessian->data[colOffsetATw + Hessian->size[0] * colOffsetATw] = 1.0;
+    for (iAeq0 = 0; iAeq0 <= nVar; iAeq0++) {
+      Hessian->data[iAeq0 + Hessian->size[0] * iAeq0] = 1.0;
     }
   }
 
-  emxInitStruct_s_PLLLBDg14rHiR3q(&TrialState);
-  test3_factoryConstruct(x0->size[0] + 1, mConstrMax, x0, &TrialState);
-  for (colOffsetATw = 0; colOffsetATw <= nVar; colOffsetATw++) {
-    TrialState.xstarsqp->data[colOffsetATw] = x0->data[colOffsetATw];
+  emxInitStruct_s_0Mw3d4AlMrOoSnA(&TrialState);
+  test3_factoryConstruct(nVarMax, mConstrMax, Cineq->size[0], Ceq->size[0], x0,
+    Cineq->size[0], Ceq->size[0], &TrialState);
+  for (iAeq0 = 0; iAeq0 <= nVar; iAeq0++) {
+    TrialState.xstarsqp->data[iAeq0] = x0->data[iAeq0];
   }
 
   emxInitStruct_coder_internal_st(&FcnEvaluator);
+  FcnEvaluator.next.next.next.next.b_value = Ceq->size[0];
+  FcnEvaluator.next.next.next.next.next.b_value = Cineq->size[0];
+  FcnEvaluator.next.next.next.next.next.next.next.b_value.workspace =
+    nonlcon_workspace;
   FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.x0[0] =
     fun_workspace_x0[0];
   FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.x0[1] =
     fun_workspace_x0[1];
   FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.x0[2] =
     fun_workspace_x0[2];
-  colOffsetATw =
+  FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.x0[3] =
+    fun_workspace_x0[3];
+  loop_ub =
     FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.xref->
     size[0] *
     FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.xref->
     size[1];
   FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.xref->size
-    [0] = 3;
+    [0] = 4;
   FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.xref->size
     [1] = fun_workspace_xref->size[1];
   test3_emxEnsureCapacity_real_T
     (FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.xref,
-     colOffsetATw);
-  colOffsetATw = 3 * fun_workspace_xref->size[1];
-  for (i = 0; i < colOffsetATw; i++) {
+     loop_ub);
+  loop_ub = fun_workspace_xref->size[1] << 2;
+  for (iAeq0 = 0; iAeq0 < loop_ub; iAeq0++) {
     FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.xref->
-      data[i] = fun_workspace_xref->data[i];
+      data[iAeq0] = fun_workspace_xref->data[iAeq0];
   }
 
-  colOffsetATw =
+  loop_ub =
     FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.uref->
     size[0] *
     FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.uref->
@@ -6855,52 +8655,53 @@ static void test3_fmincon(const real_T fun_workspace_x0[3], const
     [1] = fun_workspace_uref->size[1];
   test3_emxEnsureCapacity_real_T
     (FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.uref,
-     colOffsetATw);
-  colOffsetATw = fun_workspace_uref->size[1] << 1;
-  for (i = 0; i < colOffsetATw; i++) {
+     loop_ub);
+  loop_ub = fun_workspace_uref->size[1] << 1;
+  for (iAeq0 = 0; iAeq0 < loop_ub; iAeq0++) {
     FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.uref->
-      data[i] = fun_workspace_uref->data[i];
+      data[iAeq0] = fun_workspace_uref->data[iAeq0];
   }
 
   FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.N =
     fun_workspace_N;
-  emxInitStruct_s_ZbRibKlg6Coahma(&FiniteDifferences);
+  emxInitStruct_s_tzdJIwhhx1jgWYI(&FiniteDifferences);
   test3_factoryConstruct_i(fun_workspace_x0, fun_workspace_xref,
-    fun_workspace_uref, fun_workspace_N, x0->size[0], lb, ub, &FiniteDifferences);
+    fun_workspace_uref, fun_workspace_N, nonlcon_workspace, x0->size[0],
+    Cineq->size[0], Ceq->size[0], lb, ub, &FiniteDifferences);
   emxInitStruct_s_l1Gll5dfO9DpqQr(&QRManager);
   QRManager.ldq = maxDims;
-  colOffsetATw = QRManager.QR->size[0] * QRManager.QR->size[1];
+  loop_ub = QRManager.QR->size[0] * QRManager.QR->size[1];
   QRManager.QR->size[0] = maxDims;
   QRManager.QR->size[1] = maxDims;
-  test3_emxEnsureCapacity_real_T(QRManager.QR, colOffsetATw);
-  colOffsetATw = QRManager.Q->size[0] * QRManager.Q->size[1];
+  test3_emxEnsureCapacity_real_T(QRManager.QR, loop_ub);
+  loop_ub = QRManager.Q->size[0] * QRManager.Q->size[1];
   QRManager.Q->size[0] = maxDims;
   QRManager.Q->size[1] = maxDims;
-  test3_emxEnsureCapacity_real_T(QRManager.Q, colOffsetATw);
-  colOffsetATw = maxDims * maxDims;
-  for (i = 0; i < colOffsetATw; i++) {
-    QRManager.Q->data[i] = 0.0;
+  test3_emxEnsureCapacity_real_T(QRManager.Q, loop_ub);
+  loop_ub = maxDims * maxDims;
+  for (iAeq0 = 0; iAeq0 < loop_ub; iAeq0++) {
+    QRManager.Q->data[iAeq0] = 0.0;
   }
 
-  colOffsetATw = QRManager.jpvt->size[0];
+  loop_ub = QRManager.jpvt->size[0];
   QRManager.jpvt->size[0] = maxDims;
-  test3_emxEnsureCapacity_int32_T(QRManager.jpvt, colOffsetATw);
-  for (i = 0; i < maxDims; i++) {
-    QRManager.jpvt->data[i] = 0;
+  test3_emxEnsureCapacity_int32_T(QRManager.jpvt, loop_ub);
+  for (iAeq0 = 0; iAeq0 < maxDims; iAeq0++) {
+    QRManager.jpvt->data[iAeq0] = 0;
   }
 
   QRManager.mrows = 0;
   QRManager.ncols = 0;
-  colOffsetATw = QRManager.tau->size[0];
+  loop_ub = QRManager.tau->size[0];
   QRManager.tau->size[0] = maxDims;
-  test3_emxEnsureCapacity_real_T(QRManager.tau, colOffsetATw);
+  test3_emxEnsureCapacity_real_T(QRManager.tau, loop_ub);
   QRManager.minRowCol = 0;
   QRManager.usedPivoting = false;
   emxInitStruct_s_vdGXtauKr5HuLAq(&CholManager);
-  colOffsetATw = CholManager.FMat->size[0] * CholManager.FMat->size[1];
+  loop_ub = CholManager.FMat->size[0] * CholManager.FMat->size[1];
   CholManager.FMat->size[0] = maxDims;
   CholManager.FMat->size[1] = maxDims;
-  test3_emxEnsureCapacity_real_T(CholManager.FMat, colOffsetATw);
+  test3_emxEnsureCapacity_real_T(CholManager.FMat, loop_ub);
   CholManager.ldm = maxDims;
   CholManager.ndims = 0;
   CholManager.info = 0;
@@ -6910,13 +8711,13 @@ static void test3_fmincon(const real_T fun_workspace_x0[3], const
   CholManager.workspace_ = (rtInf);
   CholManager.workspace2_ = (rtInf);
   emxInitStruct_s_saWPFfMboRdWeRq(&QPObjective);
-  colOffsetATw = QPObjective.grad->size[0];
-  QPObjective.grad->size[0] = x0->size[0] + 1;
-  test3_emxEnsureCapacity_real_T(QPObjective.grad, colOffsetATw);
-  colOffsetATw = QPObjective.Hx->size[0];
-  QPObjective.Hx->size[0] = x0->size[0];
-  test3_emxEnsureCapacity_real_T(QPObjective.Hx, colOffsetATw);
-  QPObjective.maxVar = x0->size[0] + 1;
+  loop_ub = QPObjective.grad->size[0];
+  QPObjective.grad->size[0] = nVarMax;
+  test3_emxEnsureCapacity_real_T(QPObjective.grad, loop_ub);
+  loop_ub = QPObjective.Hx->size[0];
+  QPObjective.Hx->size[0] = nVarMax - 1;
+  test3_emxEnsureCapacity_real_T(QPObjective.Hx, loop_ub);
+  QPObjective.maxVar = nVarMax;
   QPObjective.beta = 0.0;
   QPObjective.rho = 0.0;
   QPObjective.prev_objtype = 3;
@@ -6927,180 +8728,225 @@ static void test3_fmincon(const real_T fun_workspace_x0[3], const
   QPObjective.hasLinear = true;
   QPObjective.objtype = 3;
   emxInitStruct_s_pIaUYPkQBTqVmAK(&memspace);
-  colOffsetATw = memspace.workspace_double->size[0] *
-    memspace.workspace_double->size[1];
+  loop_ub = memspace.workspace_double->size[0] * memspace.workspace_double->
+    size[1];
   memspace.workspace_double->size[0] = maxDims;
-  test3_emxEnsureCapacity_real_T(memspace.workspace_double, colOffsetATw);
-  if (x0->size[0] + 1 > 2) {
-    i = x0->size[0];
+  test3_emxEnsureCapacity_real_T(memspace.workspace_double, loop_ub);
+  if (nVarMax >= 2) {
+    loop_ub = memspace.workspace_double->size[0] *
+      memspace.workspace_double->size[1];
+    memspace.workspace_double->size[1] = nVarMax;
+    test3_emxEnsureCapacity_real_T(memspace.workspace_double, loop_ub);
   } else {
-    i = 1;
+    loop_ub = memspace.workspace_double->size[0] *
+      memspace.workspace_double->size[1];
+    memspace.workspace_double->size[1] = 2;
+    test3_emxEnsureCapacity_real_T(memspace.workspace_double, loop_ub);
   }
 
-  colOffsetATw = memspace.workspace_double->size[0] *
-    memspace.workspace_double->size[1];
-  memspace.workspace_double->size[1] = i + 1;
-  test3_emxEnsureCapacity_real_T(memspace.workspace_double, colOffsetATw);
-  colOffsetATw = memspace.workspace_int->size[0];
+  loop_ub = memspace.workspace_int->size[0];
   memspace.workspace_int->size[0] = maxDims;
-  test3_emxEnsureCapacity_int32_T(memspace.workspace_int, colOffsetATw);
-  colOffsetATw = memspace.workspace_sort->size[0];
+  test3_emxEnsureCapacity_int32_T(memspace.workspace_int, loop_ub);
+  loop_ub = memspace.workspace_sort->size[0];
   memspace.workspace_sort->size[0] = maxDims;
-  test3_emxEnsureCapacity_int32_T(memspace.workspace_sort, colOffsetATw);
-  emxInitStruct_s_k8kXP0ntDjd4qxs(&WorkingSet);
-  test3_factoryConstruct_ir(x0->size[0], x0->size[0] + 1, mConstrMax,
-    &WorkingSet);
+  test3_emxEnsureCapacity_int32_T(memspace.workspace_sort, loop_ub);
+  emxInitStruct_s_Wd0eYcEyLXg48EJ(&WorkingSet);
+  test3_factoryConstruct_ir(Cineq->size[0], Ceq->size[0], x0->size[0], nVarMax,
+    mConstrMax, &WorkingSet);
   test3_compressBounds(x0->size[0], WorkingSet.indexLB, WorkingSet.indexUB,
-                       WorkingSet.indexFixed, lb, ub, &colOffsetATw, &maxDims,
-                       &nVar);
+                       WorkingSet.indexFixed, lb, ub, &nVar, &nVarMax, &maxDims);
   WorkingSet.mConstrMax = mConstrMax;
-  mConstrMax = (colOffsetATw + maxDims) + nVar;
+  mConstrMax = ((mConstrMax_tmp + nVar) + nVarMax) + maxDims;
   WorkingSet.mConstr = mConstrMax;
   WorkingSet.mConstrOrig = mConstrMax;
-  WorkingSet.sizes[0] = nVar;
-  WorkingSet.sizes[1] = 0;
-  WorkingSet.sizes[2] = 0;
-  WorkingSet.sizes[3] = colOffsetATw;
-  WorkingSet.sizes[4] = maxDims;
-  WorkingSet.sizesPhaseOne[0] = nVar;
-  WorkingSet.sizesPhaseOne[1] = 0;
-  WorkingSet.sizesPhaseOne[2] = 0;
-  WorkingSet.sizesPhaseOne[3] = colOffsetATw + 1;
-  WorkingSet.sizesPhaseOne[4] = maxDims;
-  for (i = 0; i < 5; i++) {
-    Hessian_0 = WorkingSet.sizes[i];
-    WorkingSet.sizesNormal[i] = Hessian_0;
-    WorkingSet.sizesRegularized[i] = Hessian_0;
-    WorkingSet.sizesRegPhaseOne[i] = WorkingSet.sizesPhaseOne[i];
+  WorkingSet.sizes[0] = maxDims;
+  WorkingSet.sizes[1] = Ceq->size[0];
+  WorkingSet.sizes[2] = Cineq->size[0];
+  WorkingSet.sizes[3] = nVar;
+  WorkingSet.sizes[4] = nVarMax;
+  for (iAeq0 = 0; iAeq0 < 5; iAeq0++) {
+    WorkingSet.sizesNormal[iAeq0] = WorkingSet.sizes[iAeq0];
   }
 
-  WorkingSet.isActiveIdxRegularized[0] = 1;
-  WorkingSet.isActiveIdxRegularized[1] = nVar;
-  WorkingSet.isActiveIdxRegularized[2] = 0;
-  WorkingSet.isActiveIdxRegularized[3] = 0;
-  WorkingSet.isActiveIdxRegularized[4] = colOffsetATw;
-  WorkingSet.isActiveIdxRegularized[5] = maxDims;
-  for (i = 0; i < 6; i++) {
-    WorkingSet.isActiveIdxPhaseOne[i] = WorkingSet.isActiveIdxRegularized[i];
+  WorkingSet.sizesPhaseOne[0] = maxDims;
+  WorkingSet.sizesPhaseOne[1] = Ceq->size[0];
+  WorkingSet.sizesPhaseOne[2] = Cineq->size[0];
+  WorkingSet.sizesPhaseOne[3] = nVar + 1;
+  WorkingSet.sizesPhaseOne[4] = nVarMax;
+  WorkingSet.sizesRegularized[0] = maxDims;
+  WorkingSet.sizesRegularized[1] = Ceq->size[0];
+  WorkingSet.sizesRegularized[2] = Cineq->size[0];
+  iAeq0 = (nVar + Cineq->size[0]) + iATw0;
+  WorkingSet.sizesRegularized[3] = iAeq0;
+  WorkingSet.sizesRegularized[4] = nVarMax;
+  WorkingSet.sizesRegPhaseOne[0] = maxDims;
+  WorkingSet.sizesRegPhaseOne[1] = Ceq->size[0];
+  WorkingSet.sizesRegPhaseOne[2] = Cineq->size[0];
+  WorkingSet.sizesRegPhaseOne[3] = iAeq0 + 1;
+  WorkingSet.sizesRegPhaseOne[4] = nVarMax;
+  WorkingSet.isActiveIdxNormal[0] = 1;
+  WorkingSet.isActiveIdxNormal[1] = maxDims;
+  WorkingSet.isActiveIdxNormal[2] = Ceq->size[0];
+  WorkingSet.isActiveIdxNormal[3] = Cineq->size[0];
+  WorkingSet.isActiveIdxNormal[4] = nVar;
+  WorkingSet.isActiveIdxNormal[5] = nVarMax;
+  for (mConstrMax = 0; mConstrMax < 6; mConstrMax++) {
+    WorkingSet.isActiveIdxRegPhaseOne[mConstrMax] =
+      WorkingSet.isActiveIdxNormal[mConstrMax];
   }
 
   for (mConstrMax = 0; mConstrMax < 5; mConstrMax++) {
-    WorkingSet.isActiveIdxPhaseOne[mConstrMax + 1] +=
-      WorkingSet.isActiveIdxPhaseOne[mConstrMax];
+    WorkingSet.isActiveIdxRegPhaseOne[mConstrMax + 1] +=
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
   }
 
-  for (i = 0; i < 6; i++) {
-    WorkingSet.isActiveIdx[i] = WorkingSet.isActiveIdxPhaseOne[i];
-    WorkingSet.isActiveIdxPhaseOne[i] = WorkingSet.isActiveIdxRegularized[i];
-  }
-
-  for (mConstrMax = 0; mConstrMax < 5; mConstrMax++) {
-    WorkingSet.isActiveIdxPhaseOne[mConstrMax + 1] +=
-      WorkingSet.isActiveIdxPhaseOne[mConstrMax];
+  for (mConstrMax = 0; mConstrMax < 6; mConstrMax++) {
+    WorkingSet.isActiveIdx[mConstrMax] =
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
   }
 
   WorkingSet.isActiveIdxRegPhaseOne[0] = 1;
-  WorkingSet.isActiveIdxRegPhaseOne[1] = nVar;
-  WorkingSet.isActiveIdxRegPhaseOne[2] = 0;
-  WorkingSet.isActiveIdxRegPhaseOne[3] = 0;
-  WorkingSet.isActiveIdxRegPhaseOne[4] = colOffsetATw + 1;
-  WorkingSet.isActiveIdxRegPhaseOne[5] = maxDims;
-  for (i = 0; i < 6; i++) {
-    WorkingSet.isActiveIdxNormal[i] = WorkingSet.isActiveIdxPhaseOne[i];
-    WorkingSet.isActiveIdxPhaseOne[i] = WorkingSet.isActiveIdxRegPhaseOne[i];
+  WorkingSet.isActiveIdxRegPhaseOne[1] = maxDims;
+  WorkingSet.isActiveIdxRegPhaseOne[2] = Ceq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[3] = Cineq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[4] = nVar + 1;
+  WorkingSet.isActiveIdxRegPhaseOne[5] = nVarMax;
+  for (mConstrMax = 0; mConstrMax < 5; mConstrMax++) {
+    WorkingSet.isActiveIdxNormal[mConstrMax + 1] +=
+      WorkingSet.isActiveIdxNormal[mConstrMax];
+    WorkingSet.isActiveIdxRegPhaseOne[mConstrMax + 1] +=
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
   }
 
+  for (mConstrMax = 0; mConstrMax < 6; mConstrMax++) {
+    WorkingSet.isActiveIdxPhaseOne[mConstrMax] =
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
+  }
+
+  WorkingSet.isActiveIdxRegPhaseOne[0] = 1;
+  WorkingSet.isActiveIdxRegPhaseOne[1] = maxDims;
+  WorkingSet.isActiveIdxRegPhaseOne[2] = Ceq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[3] = Cineq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[4] = iAeq0;
+  WorkingSet.isActiveIdxRegPhaseOne[5] = nVarMax;
   for (mConstrMax = 0; mConstrMax < 5; mConstrMax++) {
-    WorkingSet.isActiveIdxPhaseOne[mConstrMax + 1] +=
-      WorkingSet.isActiveIdxPhaseOne[mConstrMax];
-    WorkingSet.isActiveIdxRegularized[mConstrMax + 1] +=
-      WorkingSet.isActiveIdxRegularized[mConstrMax];
+    WorkingSet.isActiveIdxRegPhaseOne[mConstrMax + 1] +=
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
+  }
+
+  for (mConstrMax = 0; mConstrMax < 6; mConstrMax++) {
+    WorkingSet.isActiveIdxRegularized[mConstrMax] =
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
+  }
+
+  WorkingSet.isActiveIdxRegPhaseOne[0] = 1;
+  WorkingSet.isActiveIdxRegPhaseOne[1] = maxDims;
+  WorkingSet.isActiveIdxRegPhaseOne[2] = Ceq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[3] = Cineq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[4] = iAeq0 + 1;
+  WorkingSet.isActiveIdxRegPhaseOne[5] = nVarMax;
+  for (mConstrMax = 0; mConstrMax < 5; mConstrMax++) {
     WorkingSet.isActiveIdxRegPhaseOne[mConstrMax + 1] +=
       WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
   }
 
   if (lb->size[0] != 0) {
-    for (mConstrMax = 0; mConstrMax < colOffsetATw; mConstrMax++) {
+    for (mConstrMax = 0; mConstrMax < nVar; mConstrMax++) {
       TrialState.xstarsqp->data[WorkingSet.indexLB->data[mConstrMax] - 1] = 0.0;
     }
   }
 
   if (ub->size[0] != 0) {
-    for (mConstrMax = 0; mConstrMax < maxDims; mConstrMax++) {
+    for (mConstrMax = 0; mConstrMax < nVarMax; mConstrMax++) {
       TrialState.xstarsqp->data[WorkingSet.indexUB->data[mConstrMax] - 1] = 0.0;
     }
 
-    for (mConstrMax = 0; mConstrMax < nVar; mConstrMax++) {
-      Hessian_0 = WorkingSet.indexFixed->data[mConstrMax];
-      TrialState.xstarsqp->data[Hessian_0 - 1] = ub->data[Hessian_0 - 1];
+    for (mConstrMax = 0; mConstrMax < maxDims; mConstrMax++) {
+      iATw0 = WorkingSet.indexFixed->data[mConstrMax];
+      TrialState.xstarsqp->data[iATw0 - 1] = ub->data[iATw0 - 1];
     }
   }
 
   fval = test3_eML_blk_kernel_anonFcn1(fun_workspace_x0, fun_workspace_xref,
     fun_workspace_uref, fun_workspace_N, TrialState.xstarsqp);
+  mConstrMax = 1;
+  tmp = rtIsNaN(fval);
+  if (rtIsInf(fval) || tmp) {
+    if (tmp) {
+      mConstrMax = -3;
+    } else if (fval < 0.0) {
+      mConstrMax = -1;
+    } else {
+      mConstrMax = -2;
+    }
+  }
+
   TrialState.sqpFval = fval;
-  test3_computeFiniteDifferences(&FiniteDifferences, fval, TrialState.xstarsqp,
-    TrialState.grad, lb, ub);
+  if (mConstrMax == 1) {
+    test3_computeConstraints_(Ceq->size[0], Cineq->size[0], nonlcon_workspace.x0,
+      nonlcon_workspace.N, TrialState.xstarsqp, TrialState.cIneq,
+      TrialState.iNonIneq0, TrialState.cEq, TrialState.iNonEq0);
+  }
+
+  test3_computeFiniteDifferences(&FiniteDifferences, fval, TrialState.cIneq,
+    TrialState.iNonIneq0, TrialState.cEq, TrialState.iNonEq0,
+    TrialState.xstarsqp, TrialState.grad, WorkingSet.Aineq, TrialState.iNonIneq0,
+    WorkingSet.ldA, WorkingSet.Aeq, TrialState.iNonEq0, WorkingSet.ldA, lb, ub);
   TrialState.FunctionEvaluations = FiniteDifferences.numEvals + 1;
-  hasLB = (lb->size[0] != 0);
-  hasUB = (ub->size[0] != 0);
-  if (hasLB) {
-    for (mConstrMax = 0; mConstrMax < colOffsetATw; mConstrMax++) {
-      WorkingSet.lb->data[WorkingSet.indexLB->data[mConstrMax] - 1] = -lb->
-        data[WorkingSet.indexLB->data[mConstrMax] - 1];
-    }
-  }
-
-  if (hasUB) {
-    for (colOffsetATw = 0; colOffsetATw < maxDims; colOffsetATw++) {
-      WorkingSet.ub->data[WorkingSet.indexUB->data[colOffsetATw] - 1] = ub->
-        data[WorkingSet.indexUB->data[colOffsetATw] - 1];
-    }
-  }
-
-  if (hasLB && hasUB) {
-    for (maxDims = 0; maxDims < nVar; maxDims++) {
-      WorkingSet.ub->data[WorkingSet.indexFixed->data[maxDims] - 1] = ub->
-        data[WorkingSet.indexFixed->data[maxDims] - 1];
-      WorkingSet.bwset->data[maxDims] = ub->data[WorkingSet.indexFixed->
-        data[maxDims] - 1];
-    }
-  }
-
+  test3_updateWorkingSetForNewQP(x0, &WorkingSet, Cineq->size[0],
+    TrialState.mNonlinIneq, TrialState.cIneq, Ceq->size[0], TrialState.mNonlinEq,
+    TrialState.cEq, nVar, lb, nVarMax, ub, maxDims);
   test3_setProblemType(&WorkingSet, 3);
   nVar = WorkingSet.isActiveIdx[2];
-  maxDims = WorkingSet.mConstrMax;
-  for (colOffsetATw = nVar; colOffsetATw <= maxDims; colOffsetATw++) {
-    WorkingSet.isActiveConstr->data[colOffsetATw - 1] = false;
+  nVarMax = WorkingSet.mConstrMax;
+  for (maxDims = nVar; maxDims <= nVarMax; maxDims++) {
+    WorkingSet.isActiveConstr->data[maxDims - 1] = false;
   }
 
   WorkingSet.nWConstr[0] = WorkingSet.sizes[0];
-  WorkingSet.nWConstr[1] = 0;
+  WorkingSet.nWConstr[1] = WorkingSet.sizes[1];
   WorkingSet.nWConstr[2] = 0;
   WorkingSet.nWConstr[3] = 0;
   WorkingSet.nWConstr[4] = 0;
-  WorkingSet.nActiveConstr = WorkingSet.nWConstr[0];
+  WorkingSet.nActiveConstr = WorkingSet.nWConstr[0] + WorkingSet.nWConstr[1];
   nVar = WorkingSet.sizes[0];
-  for (maxDims = 0; maxDims < nVar; maxDims++) {
-    WorkingSet.Wid->data[maxDims] = 1;
-    WorkingSet.Wlocalidx->data[maxDims] = maxDims + 1;
-    WorkingSet.isActiveConstr->data[maxDims] = true;
-    colOffsetATw = WorkingSet.ldA * maxDims;
-    mConstrMax = WorkingSet.indexFixed->data[maxDims];
-    for (i = 0; i <= mConstrMax - 2; i++) {
-      WorkingSet.ATwset->data[i + colOffsetATw] = 0.0;
+  for (nVarMax = 0; nVarMax < nVar; nVarMax++) {
+    WorkingSet.Wid->data[nVarMax] = 1;
+    WorkingSet.Wlocalidx->data[nVarMax] = nVarMax + 1;
+    WorkingSet.isActiveConstr->data[nVarMax] = true;
+    maxDims = WorkingSet.ldA * nVarMax;
+    mConstrMax = WorkingSet.indexFixed->data[nVarMax];
+    for (iAeq0 = 0; iAeq0 <= mConstrMax - 2; iAeq0++) {
+      WorkingSet.ATwset->data[iAeq0 + maxDims] = 0.0;
     }
 
-    WorkingSet.ATwset->data[(WorkingSet.indexFixed->data[maxDims] + colOffsetATw)
-      - 1] = 1.0;
-    mConstrMax = WorkingSet.indexFixed->data[maxDims] + 1;
-    i = WorkingSet.nVar;
-    for (Hessian_0 = mConstrMax; Hessian_0 <= i; Hessian_0++) {
-      WorkingSet.ATwset->data[(Hessian_0 + colOffsetATw) - 1] = 0.0;
+    WorkingSet.ATwset->data[(WorkingSet.indexFixed->data[nVarMax] + maxDims) - 1]
+      = 1.0;
+    mConstrMax = WorkingSet.indexFixed->data[nVarMax] + 1;
+    iAeq0 = WorkingSet.nVar;
+    for (iATw0 = mConstrMax; iATw0 <= iAeq0; iATw0++) {
+      WorkingSet.ATwset->data[(iATw0 + maxDims) - 1] = 0.0;
     }
 
-    WorkingSet.bwset->data[maxDims] = WorkingSet.ub->data
-      [WorkingSet.indexFixed->data[maxDims] - 1];
+    WorkingSet.bwset->data[nVarMax] = WorkingSet.ub->data
+      [WorkingSet.indexFixed->data[nVarMax] - 1];
+  }
+
+  nVarMax = WorkingSet.sizes[1];
+  for (maxDims = 0; maxDims < nVarMax; maxDims++) {
+    mConstrMax = nVar + maxDims;
+    WorkingSet.Wid->data[mConstrMax] = 2;
+    WorkingSet.Wlocalidx->data[mConstrMax] = maxDims + 1;
+    WorkingSet.isActiveConstr->data[mConstrMax] = true;
+    iAeq0 = WorkingSet.ldA * maxDims;
+    iATw0 = WorkingSet.ldA * mConstrMax;
+    mConstrMax_tmp = WorkingSet.nVar - 1;
+    for (loop_ub = 0; loop_ub <= mConstrMax_tmp; loop_ub++) {
+      WorkingSet.ATwset->data[iATw0 + loop_ub] = WorkingSet.Aeq->data[iAeq0 +
+        loop_ub];
+    }
+
+    WorkingSet.bwset->data[mConstrMax] = WorkingSet.beq->data[maxDims];
   }
 
   MeritFunction.initFval = fval;
@@ -7108,8 +8954,25 @@ static void test3_fmincon(const real_T fun_workspace_x0[3], const
   MeritFunction.threshold = 0.0001;
   MeritFunction.nPenaltyDecreases = 0;
   MeritFunction.linearizedConstrViol = 0.0;
-  MeritFunction.initConstrViolationEq = 0.0;
-  MeritFunction.initConstrViolationIneq = 0.0;
+  fval = 0.0;
+  if (Ceq->size[0] >= 1) {
+    nVar = Ceq->size[0];
+    for (nVarMax = 0; nVarMax < nVar; nVarMax++) {
+      fval += fabs(TrialState.cEq->data[nVarMax]);
+    }
+  }
+
+  test3_emxFree_real_T(&Ceq);
+  MeritFunction.initConstrViolationEq = fval;
+  fval = 0.0;
+  for (nVar = 0; nVar < mNonlinIneq; nVar++) {
+    TrialState_0 = TrialState.cIneq->data[nVar];
+    if (TrialState_0 > 0.0) {
+      fval += TrialState_0;
+    }
+  }
+
+  MeritFunction.initConstrViolationIneq = fval;
   MeritFunction.phi = 0.0;
   MeritFunction.phiPrimePlus = 0.0;
   MeritFunction.phiFullStep = 0.0;
@@ -7119,245 +8982,170 @@ static void test3_fmincon(const real_T fun_workspace_x0[3], const
   MeritFunction.nlpComplError = 0.0;
   MeritFunction.firstOrderOpt = 0.0;
   MeritFunction.hasObjective = true;
+  mNonlinIneq = Cineq->size[0];
+  for (iAeq0 = 0; iAeq0 < mNonlinIneq; iAeq0++) {
+    Cineq->data[iAeq0] = 1.0;
+  }
+
   test3_driver(Hessian, lb, ub, &TrialState, &MeritFunction, &FcnEvaluator,
                &FiniteDifferences, &memspace, &WorkingSet, &QRManager,
-               &CholManager, &QPObjective, 100 * x0->size[0]);
+               &CholManager, &QPObjective, Cineq, 100 * x0->size[0]);
+  test3_emxFree_real_T(&Cineq);
   test3_emxFree_real_T(&Hessian);
-  emxFreeStruct_s_k8kXP0ntDjd4qxs(&WorkingSet);
+  emxFreeStruct_s_Wd0eYcEyLXg48EJ(&WorkingSet);
   emxFreeStruct_s_pIaUYPkQBTqVmAK(&memspace);
   emxFreeStruct_s_saWPFfMboRdWeRq(&QPObjective);
   emxFreeStruct_s_vdGXtauKr5HuLAq(&CholManager);
   emxFreeStruct_s_l1Gll5dfO9DpqQr(&QRManager);
-  emxFreeStruct_s_ZbRibKlg6Coahma(&FiniteDifferences);
+  emxFreeStruct_s_tzdJIwhhx1jgWYI(&FiniteDifferences);
   emxFreeStruct_coder_in_kyv1kfe2(&FcnEvaluator);
-  colOffsetATw = x->size[0];
+  loop_ub = x->size[0];
   x->size[0] = TrialState.xstarsqp->size[0];
-  test3_emxEnsureCapacity_real_T(x, colOffsetATw);
-  colOffsetATw = TrialState.xstarsqp->size[0];
-  for (i = 0; i < colOffsetATw; i++) {
-    x->data[i] = TrialState.xstarsqp->data[i];
+  test3_emxEnsureCapacity_real_T(x, loop_ub);
+  loop_ub = TrialState.xstarsqp->size[0];
+  for (iAeq0 = 0; iAeq0 < loop_ub; iAeq0++) {
+    x->data[iAeq0] = TrialState.xstarsqp->data[iAeq0];
   }
 
-  emxFreeStruct_s_PLLLBDg14rHiR3q(&TrialState);
+  emxFreeStruct_s_0Mw3d4AlMrOoSnA(&TrialState);
 }
 
 /* Model output function */
 void test3_output(void)
 {
-  emxArray_real_T_test3_T *h;
+  emxArray_real_T_test3_T *c;
+  emxArray_real_T_test3_T *d;
   emxArray_real_T_test3_T *horizon_idx;
   emxArray_real_T_test3_T *lb;
-  emxArray_real_T_test3_T *tmp_0;
+  emxArray_real_T_test3_T *tmp;
   emxArray_real_T_test3_T *u_opt;
   emxArray_real_T_test3_T *ub;
-  emxArray_real_T_test3_T *xref;
-  real_T tmp[3];
+  s6lIrH89xwD47fl4e1dZNiE_test3_T expl_temp;
   real_T rtb_TmpSignalConversionAtHILWri[2];
   real_T apnd;
-  real_T b_b;
   real_T cdiff;
   real_T ndbl;
-  real_T rtb_Clock;
   int32_T ibcol;
   int32_T k;
   int32_T nm1d2;
   int32_T ntilerows;
   boolean_T didZcEventOccur;
-  static const real_T g[603] = { 0.0, 0.0, 1.0121970114513341, 0.05,
-    0.080000000000000016, 1.0121970114513341, 0.1, 0.16000000000000003,
-    1.0121970114513341, 0.15000000000000002, 0.24000000000000005,
-    1.0121970114513341, 0.2, 0.32000000000000006, 1.0121970114513341, 0.25, 0.4,
-    1.0121970114513341, 0.30000000000000004, 0.48000000000000009,
-    1.0121970114513341, 0.35000000000000003, 0.56, 1.0121970114513341, 0.4,
-    0.64000000000000012, 1.0121970114513341, 0.45, 0.72000000000000008,
-    1.0121970114513341, 0.5, 0.8, 1.0121970114513341, 0.55, 0.88000000000000012,
-    1.0121970114513341, 0.60000000000000009, 0.96000000000000019,
-    1.0121970114513341, 0.65, 1.04, 1.0121970114513341, 0.70000000000000007,
-    1.12, 1.0121970114513341, 0.75, 1.2000000000000002, 1.0121970114513341, 0.8,
-    1.2800000000000002, 1.0121970114513341, 0.85000000000000009,
-    1.3600000000000003, 1.0121970114513341, 0.9, 1.4400000000000002,
-    1.0121970114513341, 0.95000000000000007, 1.5200000000000002,
-    1.0121970114513341, 1.0, 1.6, 1.0121970114513341, 1.05, 1.6800000000000002,
-    1.0121970114513341, 1.1, 1.7600000000000002, 1.0121970114513341,
-    1.1500000000000001, 1.8400000000000003, 1.0121970114513341,
-    1.2000000000000002, 1.9200000000000004, 1.0121970114513341, 1.25, 2.0,
-    1.0121970114513341, 1.3, 2.08, 1.0121970114513341, 1.35, 2.16,
-    1.0121970114513341, 1.4000000000000001, 2.24, 1.0121970114513341,
-    1.4500000000000002, 2.3200000000000003, 1.0121970114513341, 1.5,
-    2.4000000000000004, 1.0121970114513341, 1.55, 2.4800000000000004,
-    1.0121970114513341, 1.6, 2.5600000000000005, 1.0121970114513341,
-    1.6500000000000001, 2.6400000000000006, 1.0121970114513341,
-    1.7000000000000002, 2.7200000000000006, 1.0121970114513341, 1.75,
-    2.8000000000000003, 1.0121970114513341, 1.8, 2.8800000000000003,
-    1.0121970114513341, 1.85, 2.9600000000000004, 1.0121970114513341,
-    1.9000000000000001, 3.0400000000000005, 1.0121970114513341,
-    1.9500000000000002, 3.1200000000000006, 1.0121970114513341, 2.0, 3.2,
-    1.0121970114513341, 2.0500000000000003, 3.2800000000000007,
-    1.0121970114513341, 2.1, 3.3600000000000003, 1.0121970114513341, 2.15, 3.44,
-    1.0121970114513341, 2.2, 3.5200000000000005, 1.0121970114513341, 2.25, 3.6,
-    1.0121970114513341, 2.3000000000000003, 3.6800000000000006,
-    1.0121970114513341, 2.35, 3.7600000000000002, 1.0121970114513341,
-    2.4000000000000004, 3.8400000000000007, 1.0121970114513341, 2.45,
-    3.9200000000000004, 1.0121970114513341, 2.5, 4.0, 1.0121970114513341,
-    2.5500000000000003, 4.080000000000001, 1.0121970114513341, 2.6, 4.16,
-    1.0121970114513341, 2.6500000000000004, 4.2400000000000011,
-    1.0121970114513341, 2.7, 4.32, 1.0121970114513341, 2.75, 4.4,
-    1.0121970114513341, 2.8000000000000003, 4.48, 1.0121970114513341, 2.85,
-    4.5600000000000005, 1.0121970114513341, 2.9000000000000004,
-    4.6400000000000006, 1.0121970114513341, 2.95, 4.7200000000000006,
-    1.0121970114513341, 3.0, 4.8000000000000007, 1.0121970114513341,
-    3.0500000000000003, 4.8800000000000008, 1.0121970114513341, 3.1,
-    4.9600000000000009, 1.0121970114513341, 3.1500000000000004,
-    5.0400000000000009, 1.0121970114513341, 3.2, 5.120000000000001,
-    1.0121970114513341, 3.25, 5.2, 1.0121970114513341, 3.3000000000000003,
-    5.2800000000000011, 1.0121970114513341, 3.35, 5.36, 1.0121970114513341,
-    3.4000000000000004, 5.4400000000000013, 1.0121970114513341, 3.45,
-    5.5200000000000005, 1.0121970114513341, 3.5, 5.6000000000000005,
-    1.0121970114513341, 3.5500000000000003, 5.6800000000000006,
-    1.0121970114513341, 3.6, 5.7600000000000007, 1.0121970114513341,
-    3.6500000000000004, 5.8400000000000007, 1.0121970114513341, 3.7,
-    5.9200000000000008, 1.0121970114513341, 3.75, 6.0, 1.0121970114513341,
-    3.8000000000000003, 6.080000000000001, 1.0121970114513341, 3.85, 6.16,
-    1.0121970114513341, 3.9000000000000004, 6.2400000000000011,
-    1.0121970114513341, 3.95, 6.32, 1.0121970114513341, 4.0, 6.4,
-    1.0121970114513341, 4.05, 6.48, 1.0121970114513341, 4.1000000000000005,
-    6.5600000000000014, 1.0121970114513341, 4.15, 6.6400000000000006,
-    1.0121970114513341, 4.2, 6.7200000000000006, 1.0121970114513341, 4.25,
-    6.8000000000000007, 1.0121970114513341, 4.3, 6.88, 1.0121970114513341,
-    4.3500000000000005, 6.9600000000000009, 1.0121970114513341, 4.4,
-    7.0400000000000009, 1.0121970114513341, 4.45, 7.120000000000001,
-    1.0121970114513341, 4.5, 7.2, 1.0121970114513341, 4.55, 7.28,
-    1.0121970114513341, 4.6000000000000005, 7.3600000000000012,
-    1.0121970114513341, 4.65, 7.4400000000000013, 1.0121970114513341, 4.7,
-    7.5200000000000005, 1.0121970114513341, 4.75, 7.6000000000000005,
-    1.0121970114513341, 4.8000000000000007, 7.6800000000000015,
-    1.0121970114513341, 4.8500000000000005, 7.7600000000000016,
-    1.0121970114513341, 4.9, 7.8400000000000007, 1.0121970114513341, 4.95,
-    7.9200000000000008, 1.0121970114513341, 5.0, 8.0, 1.0121970114513341, 5.05,
-    8.08, 1.0121970114513341, 5.1, 8.16, 1.0121970114513341, 5.1499999999999995,
-    8.24, 1.0121970114513341, 5.1999999999999993, 8.3199999999999985,
-    1.0121970114513341, 5.25, 8.4, 1.0121970114513341, 5.3, 8.48,
-    1.0121970114513341, 5.35, 8.56, 1.0121970114513341, 5.3999999999999995,
-    8.6399999999999988, 1.0121970114513341, 5.45, 8.72, 1.0121970114513341, 5.5,
-    8.8, 1.0121970114513341, 5.55, 8.88, 1.0121970114513341, 5.6,
-    8.9599999999999991, 1.0121970114513341, 5.6499999999999995, 9.04,
-    1.0121970114513341, 5.7, 9.120000000000001, 1.0121970114513341, 5.75,
-    9.2000000000000011, 1.0121970114513341, 5.8, 9.28, 1.0121970114513341, 5.85,
-    9.36, 1.0121970114513341, 5.8999999999999995, 9.44, 1.0121970114513341, 5.95,
-    9.5200000000000014, 1.0121970114513341, 6.0, 9.6000000000000014,
-    1.0121970114513341, 6.05, 9.68, 1.0121970114513341, 6.1, 9.76,
-    1.0121970114513341, 6.15, 9.8400000000000016, 1.0121970114513341,
-    6.1999999999999993, 9.92, 1.0121970114513341, 6.25, 10.0, 1.0121970114513341,
-    6.3, 10.08, 1.0121970114513341, 6.35, 10.16, 1.0121970114513341, 6.4,
-    10.240000000000002, 1.0121970114513341, 6.4499999999999993, 10.32,
-    1.0121970114513341, 6.5, 10.4, 1.0121970114513341, 6.55, 10.48,
-    1.0121970114513341, 6.6, 10.56, 1.0121970114513341, 6.65, 10.64,
-    1.0121970114513341, 6.6999999999999993, 10.719999999999999,
-    1.0121970114513341, 6.75, 10.8, 1.0121970114513341, 6.8, 10.88,
-    1.0121970114513341, 6.85, 10.96, 1.0121970114513341, 6.9, 11.040000000000001,
-    1.0121970114513341, 6.9499999999999993, 11.12, 1.0121970114513341, 7.0,
-    11.200000000000001, 1.0121970114513341, 7.05, 11.280000000000001,
-    1.0121970114513341, 7.1, 11.36, 1.0121970114513341, 7.15, 11.440000000000001,
-    1.0121970114513341, 7.1999999999999993, 11.52, 1.0121970114513341, 7.25,
-    11.600000000000001, 1.0121970114513341, 7.3, 11.68, 1.0121970114513341, 7.35,
-    11.76, 1.0121970114513341, 7.4, 11.840000000000002, 1.0121970114513341,
-    7.4499999999999993, 11.92, 1.0121970114513341, 7.5, 12.0, 1.0121970114513341,
-    7.55, 12.08, 1.0121970114513341, 7.6, 12.16, 1.0121970114513341, 7.65,
-    12.240000000000002, 1.0121970114513341, 7.6999999999999993, 12.32,
-    1.0121970114513341, 7.75, 12.4, 1.0121970114513341, 7.8, 12.48,
-    1.0121970114513341, 7.85, 12.56, 1.0121970114513341, 7.9, 12.64,
-    1.0121970114513341, 7.9499999999999993, 12.719999999999999,
-    1.0121970114513341, 8.0, 12.8, 1.0121970114513341, 8.05, 12.880000000000003,
-    1.0121970114513341, 8.1, 12.96, 1.0121970114513341, 8.15, 13.040000000000001,
-    1.0121970114513341, 8.2, 13.12, 1.0121970114513341, 8.25, 13.200000000000001,
-    1.0121970114513341, 8.3, 13.280000000000001, 1.0121970114513341, 8.35, 13.36,
-    1.0121970114513341, 8.4, 13.440000000000001, 1.0121970114513341, 8.45, 13.52,
-    1.0121970114513341, 8.5, 13.600000000000001, 1.0121970114513341, 8.55,
-    13.680000000000001, 1.0121970114513341, 8.6, 13.76, 1.0121970114513341, 8.65,
-    13.840000000000002, 1.0121970114513341, 8.7, 13.92, 1.0121970114513341, 8.75,
-    14.0, 1.0121970114513341, 8.8, 14.080000000000002, 1.0121970114513341, 8.85,
-    14.16, 1.0121970114513341, 8.9, 14.240000000000002, 1.0121970114513341, 8.95,
-    14.32, 1.0121970114513341, 9.0, 14.4, 1.0121970114513341, 9.05,
-    14.480000000000002, 1.0121970114513341, 9.1, 14.56, 1.0121970114513341, 9.15,
-    14.64, 1.0121970114513341, 9.2, 14.719999999999999, 1.0121970114513341, 9.25,
-    14.8, 1.0121970114513341, 9.3, 14.880000000000003, 1.0121970114513341, 9.35,
-    14.96, 1.0121970114513341, 9.4, 15.040000000000001, 1.0121970114513341, 9.45,
-    15.12, 1.0121970114513341, 9.5, 15.200000000000001, 1.0121970114513341, 9.55,
-    15.280000000000001, 1.0121970114513341, 9.6, 15.36, 1.0121970114513341, 9.65,
-    15.440000000000001, 1.0121970114513341, 9.7, 15.52, 1.0121970114513341, 9.75,
-    15.600000000000001, 1.0121970114513341, 9.8, 15.680000000000001,
-    1.0121970114513341, 9.85, 15.76, 1.0121970114513341, 9.9, 15.840000000000002,
-    1.0121970114513341, 9.95, 15.92, 1.0121970114513341, 10.0, 16.0,
-    1.0121970114513341 };
+  static const real_T c_0[268] = { 1.0, 0.0, 1.5707963267948966,
+    0.25061770109901327, 0.99820053993520419, 0.059964006479444595,
+    1.6307963267948966, 0.25061770109901327, 0.99280863585386625,
+    0.11971220728891936, 1.6907963267948967, 0.25061770109901327,
+    0.98384369278812145, 0.17902957342582418, 1.7507963267948967,
+    0.25061770109901332, 0.97133797485202966, 0.23770262642713458,
+    1.8107963267948968, 0.25061770109901332, 0.955336489125606,
+    0.2955202066613396, 1.8707963267948966, 0.25061770109901327,
+    0.93589682367793481, 0.35227423327508994, 1.9307963267948967,
+    0.25061770109901332, 0.91308894031230825, 0.4077604530595702,
+    1.9907963267948967, 0.25061770109901338, 0.88699492277928416,
+    0.46177917554148284, 2.050796326794897, 0.25061770109901327,
+    0.85770868136382417, 0.51413599165311308, 2.1107963267948966,
+    0.25061770109901327, 0.82533561490967822, 0.56464247339503548,
+    2.1707963267948966, 0.25061770109901327, 0.78999223149736508,
+    0.6131168519734338, 2.2307963267948967, 0.25061770109901321,
+    0.751805729140895, 0.6593846719714731, 2.2907963267948963,
+    0.25061770109901332, 0.7109135380122773, 0.70327941920041015,
+    2.3507963267948968, 0.25061770109901332, 0.667462825841308,
+    0.74464311997085941, 2.4107963267948969, 0.25061770109901327,
+    0.62160996827066439, 0.78332690962748341, 2.4707963267948969,
+    0.25061770109901327, 0.57351998607245669, 0.81919156830099826,
+    2.5307963267948965, 0.25061770109901327, 0.52336595125164953,
+    0.852108021949363, 2.5907963267948966, 0.25061770109901332,
+    0.47132836417374013, 0.8819578068849474, 2.6507963267948966,
+    0.25061770109901332, 0.41759450395835795, 0.90863349611588329,
+    2.7107963267948967, 0.25061770109901338, 0.3623577544766734,
+    0.9320390859672264, 2.7707963267948967, 0.25061770109901327,
+    0.30581690837828934, 0.95209034159051575, 2.8307963267948963,
+    0.25061770109901338, 0.2481754516523729, 0.96871510011826523,
+    2.8907963267948968, 0.25061770109901327, 0.18964083129783446,
+    0.98185353037235967, 2.9507963267948965, 0.25061770109901332,
+    0.13042370873814554, 0.99145834819168643, 3.0107963267948965,
+    0.25061770109901327, 0.0707372016677029, 0.99749498660405445,
+    3.0707963267948966, 0.25061770109901327, 0.010796117058267392,
+    0.9999417202299663, 3.1307963267948966, 0.25061770109901327,
+    -0.049183821914170554, 0.998789743470524, -3.0923889803846896,
+    0.25061770109901332, -0.10898675223987134, 0.994043202198076,
+    -3.0323889803846895, 0.25061770109901321, -0.16839744794907702,
+    0.98571917883555349, -2.97238898038469, 0.25061770109901327,
+    -0.22720209469308711, 0.97384763087819515, -2.91238898038469,
+    0.25061770109901332, -0.28518905924502064, 0.95847128307891416,
+    -2.85238898038469, 0.25061770109901321, -0.34214965115089818,
+    0.93964547368532492, -2.7923889803846897, 0.25061770109901321,
+    -0.39787887378991615, 0.91743795528180971, -2.7323889803846897,
+    0.25061770109901321, -0.45217616214091239, 0.89192865095337936,
+    -2.6723889803846892, 0.25061770109901327, -0.5048461045998579,
+    0.86320936664887349, -2.6123889803846891, 0.25061770109901327,
+    -0.55569914625061267, 0.83138346077868308, -2.5523889803846895,
+    0.25061770109901321, -0.60455227105792964, 0.79656547223608654,
+    -2.49238898038469, 0.25061770109901327, -0.65122966052754583,
+    0.75888070818092179, -2.43238898038469, 0.25061770109901338,
+    -0.69556332646290231, 0.71846479306912592, -2.37238898038469,
+    0.25061770109901327, -0.73739371554124578, 0.67546318055115062,
+    -2.3123889803846893, 0.25061770109901338, -0.77657028353329338,
+    0.63003062999589188, -2.2523889803846893, 0.25061770109901327,
+    -0.81295203709989028, 0.58233064952408153, -2.1923889803846892,
+    0.25061770109901332, -0.84640804121577584, 0.53253490755562072,
+    -2.1323889803846896, 0.25061770109901327, -0.87681789039428171,
+    0.48082261498864787, -2.0723889803846891, 0.25061770109901321,
+    -0.90407214201706121, 0.42737988023382978, -2.0123889803846895,
+    0.25061770109901327, -0.9280727102093328, 0.37239903942505531,
+    -1.9523889803846897, 0.25061770109901327, -0.94873321884310724,
+    0.31607796421705342, -1.8923889803846896, 0.25061770109901332,
+    -0.965979312397975, 0.25861934966110994, -1.8323889803846891,
+    0.25061770109901327, -0.97974892356068433, 0.20022998472177009,
+    -1.7723889803846895, 0.25061770109901321, -0.98999249660044542,
+    0.14112000805986721, -1.71238898038469, 0.25061770109901327,
+    -0.99667316571604658, 0.081502151760268676, -1.6523889803846894,
+    0.25061770109901332, -0.99976688771292843, 0.021590975726095515,
+    -1.5923889803846893, 0.25061770109901327, -0.99926252853272091,
+    -0.038397904505235378, -1.5323889803846897, 0.25061770109901332,
+    -0.99516190332383025, -0.098248593745109122, -1.4723889803846892,
+    0.25061770109901327, -0.98747976990886488, -0.15774569414324865,
+    -1.4123889803846896, 0.25061770109901332, -0.97624377567240983,
+    -0.21667508038738006, -1.3523889803846896, 0.25061770109901332,
+    -0.9614943580602987, -0.27482467032312441, -1.2923889803846895,
+    0.25061770109901321, -0.94328459904847561, -0.33198518822073453,
+    -1.2323889803846892, 0.25061770109901332, -0.92168003410520338,
+    -0.38795091794173031, -1.1723889803846899, 0.25061770109901327,
+    -0.896758416334147, -0.44252044329485246, -1.1123889803846898,
+    0.25061770109901327, -0.86860943664716483, -0.49549737291684492,
+    -1.0523889803846898, 0.25061770109901327, -0.83733440097387979,
+    -0.54669104706928762, -0.99238898038468926, 0.25061770109901332,
+    -0.80304586566973035, -0.59591722380776457, -0.9323889803846892,
+    0.25061770109901327, -0.76586723243463739, -0.64299874205390883,
+    -0.87238898038468993, 0.25061770109901332, -0.72593230420013988,
+    -0.6877661591839741, -0.81238898038468943, 0.25061770109901327,
+    -0.683384803583336, -0.73005836083929987, -0.75238898038468949,
+    0.25061770109901332 };
 
-  static const real_T h_0[402] = { 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0, 0.94339811320566047, 0.0, 0.94339811320566047,
-    0.0, 0.94339811320566047, 0.0 };
+  static const real_T d_0[134] = { 0.4, 0.0, 0.4, 2.7676492480409595E-18, 0.4,
+    -3.9072695266460607E-18, 0.4, 4.5584811144204056E-18, 0.4,
+    -7.814539053292123E-18, 0.4, -3.2560579388717166E-18, 0.39999999999999997,
+    0.0, 0.39999999999999997, 0.0, 0.4, -9.11696222884081E-18, 0.4,
+    1.5629078106584243E-17, 0.4, 0.0, 0.4, 0.0, 0.4, -6.5121158777434332E-18,
+    0.39999999999999997, 6.5121158777434355E-18, 0.4, 0.0, 0.4,
+    -2.6048463510973752E-18, 0.4, 1.5629078106584243E-17, 0.4,
+    1.5629078106584246E-17, 0.4, 6.5121158777434332E-18, 0.39999999999999997,
+    -1.5629078106584255E-17, 0.4, -1.5629078106584243E-17, 0.39999999999999997,
+    9.1169622288408173E-18, 0.4, 7.8145390532921214E-18, 0.39999999999999997,
+    0.0, 0.4, -6.1865100838562631E-18, 0.4, 3.0932550419281316E-18, 0.4,
+    -2.849050696512753E-19, 0.39999999999999997, 0.0, 0.40000000000000008,
+    -3.9072695266460584E-18, 0.4, 0.0, 0.39999999999999997,
+    3.2560579388717178E-18, 0.4, 1.562907810658424E-17, 0.4, 0.0, 0.4, 0.0, 0.4,
+    0.0, 0.4, -6.5121158777434332E-18, 0.4, 6.5121158777434332E-18, 0.4,
+    2.2141193984327676E-17, 0.39999999999999997, 0.0, 0.4,
+    -6.5121158777434332E-18, 0.39999999999999997, 0.0, 0.4, 0.0, 0.4,
+    6.5121158777434332E-18, 0.4, -1.5629078106584243E-17, 0.40000000000000008,
+    0.0, 0.4, 0.0, 0.4, -1.5629078106584243E-17, 0.4, 0.0, 0.4,
+    -3.2560579388717166E-18, 0.4, -7.81453905329212E-18, 0.4, 0.0,
+    0.39999999999999997, 1.6280289694358589E-18, 0.4, 1.9536347633230304E-18,
+    0.4, 0.0, 0.4, -2.2792405572102024E-18, 0.4, 4.5584811144204056E-18, 0.4,
+    0.0, 0.4, -3.2560579388717166E-18, 0.39999999999999997, 0.0, 0.4,
+    -2.4746040335425052E-17, 0.4, 0.0, 0.4, 0.0, 0.4, 0.0, 0.4, 0.0, 0.4,
+    -3.1258156213168492E-17, 0.4, -3.7770272090911922E-17, 0.4, 0.0 };
 
   if (rtmIsMajorTimeStep(test3_M)) {
     /* set solver stop time */
@@ -7379,25 +9167,25 @@ void test3_output(void)
   if (rtmIsMajorTimeStep(test3_M)) {
   }
 
-  /* Product: '<S8>/Product1' incorporates:
-   *  Constant: '<S6>/Constant2'
-   *  Integrator: '<S8>/Integrator2'
+  /* Product: '<S9>/Product1' incorporates:
+   *  Constant: '<S7>/Constant2'
+   *  Integrator: '<S9>/Integrator2'
    */
   test3_B.Product1 = test3_P.Constant2_Value * test3_X.Integrator2_CSTATE;
 
-  /* Product: '<S9>/Product1' incorporates:
-   *  Constant: '<S6>/Constant4'
-   *  Integrator: '<S9>/Integrator2'
+  /* Product: '<S10>/Product1' incorporates:
+   *  Constant: '<S7>/Constant4'
+   *  Integrator: '<S10>/Integrator2'
    */
   test3_B.Product1_i = test3_P.Constant4_Value * test3_X.Integrator2_CSTATE_i;
 
-  /* Product: '<S10>/Product1' incorporates:
-   *  Constant: '<S6>/Constant6'
-   *  Integrator: '<S10>/Integrator2'
+  /* Product: '<S11>/Product1' incorporates:
+   *  Constant: '<S7>/Constant6'
+   *  Integrator: '<S11>/Integrator2'
    */
   test3_B.Product1_n = test3_P.Constant6_Value * test3_X.Integrator2_CSTATE_c;
   if (rtmIsMajorTimeStep(test3_M)) {
-    /* S-Function (hil_read_block): '<S6>/HIL Read' */
+    /* S-Function (hil_read_block): '<S7>/HIL Read' */
 
     /* S-Function Block: test3/basicQCarIO/HIL Read (hil_read_block) */
     {
@@ -7421,15 +9209,15 @@ void test3_output(void)
     }
   }
 
-  /* Integrator: '<S12>/Integrator1' */
+  /* Integrator: '<S13>/Integrator1' */
   if (test3_DW.Integrator1_IWORK != 0) {
     test3_X.Integrator1_CSTATE = test3_B.analogpower;
   }
 
-  /* Integrator: '<S12>/Integrator1' */
+  /* Integrator: '<S13>/Integrator1' */
   test3_B.Integrator1 = test3_X.Integrator1_CSTATE;
   if (rtmIsMajorTimeStep(test3_M)) {
-    /* S-Function (inverse_modulus_block): '<S6>/Unwrap 2^2' */
+    /* S-Function (inverse_modulus_block): '<S7>/Unwrap 2^2' */
     /* S-Function Block: test3/basicQCarIO/Unwrap 2^2 (inverse_modulus_block) */
     {
       static const real_T sampling_period = 0.002;
@@ -7457,24 +9245,24 @@ void test3_output(void)
     }
   }
 
-  /* Integrator: '<S13>/Integrator1' */
+  /* Integrator: '<S14>/Integrator1' */
   if (test3_DW.Integrator1_IWORK_i != 0) {
     test3_X.Integrator1_CSTATE_m = test3_B.Unwrap22;
   }
 
-  /* Integrator: '<S13>/Integrator1' */
+  /* Integrator: '<S14>/Integrator1' */
   test3_B.Integrator1_g = test3_X.Integrator1_CSTATE_m;
 
-  /* Product: '<S11>/Product1' incorporates:
-   *  Constant: '<S6>/Constant8'
-   *  Integrator: '<S11>/Integrator2'
+  /* Product: '<S12>/Product1' incorporates:
+   *  Constant: '<S7>/Constant8'
+   *  Integrator: '<S12>/Integrator2'
    */
   test3_B.Product1_p = test3_P.Constant8_Value * test3_X.Integrator2_CSTATE_f;
 
-  /* Integrator: '<S6>/Integrator' */
+  /* Integrator: '<S7>/Integrator' */
   test3_B.Integrator = test3_X.Integrator_CSTATE;
   if (rtmIsMajorTimeStep(test3_M)) {
-    /* S-Function (inverse_modulus_block): '<S6>/Unwrap 2^24' */
+    /* S-Function (inverse_modulus_block): '<S7>/Unwrap 2^24' */
     /* S-Function Block: test3/basicQCarIO/Unwrap 2^24 (inverse_modulus_block) */
     {
       static const real_T sampling_period = 0.002;
@@ -7502,33 +9290,14 @@ void test3_output(void)
     }
   }
 
-  /* Integrator: '<S8>/Integrator1' */
+  /* Integrator: '<S9>/Integrator1' */
   if (test3_DW.Integrator1_IWORK_g != 0) {
     test3_X.Integrator1_CSTATE_p = test3_B.Unwrap224;
   }
 
-  /* Product: '<S8>/Product' incorporates:
-   *  Constant: '<S6>/Constant1'
-   *  Constant: '<S6>/Constant2'
-   *  Constant: '<S8>/Constant'
-   *  Integrator: '<S8>/Integrator1'
-   *  Integrator: '<S8>/Integrator2'
-   *  Product: '<S8>/Product2'
-   *  Sum: '<S8>/Sum'
-   *  Sum: '<S8>/Sum1'
-   */
-  test3_B.Product = ((test3_B.Unwrap224 - test3_X.Integrator1_CSTATE_p) -
-                     test3_X.Integrator2_CSTATE * test3_P.Constant_Value_h *
-                     test3_P.Constant1_Value) * test3_P.Constant2_Value;
-
-  /* Integrator: '<S9>/Integrator1' */
-  if (test3_DW.Integrator1_IWORK_d != 0) {
-    test3_X.Integrator1_CSTATE_h = test3_B.HILRead_o3[1];
-  }
-
   /* Product: '<S9>/Product' incorporates:
-   *  Constant: '<S6>/Constant3'
-   *  Constant: '<S6>/Constant4'
+   *  Constant: '<S7>/Constant1'
+   *  Constant: '<S7>/Constant2'
    *  Constant: '<S9>/Constant'
    *  Integrator: '<S9>/Integrator1'
    *  Integrator: '<S9>/Integrator2'
@@ -7536,30 +9305,49 @@ void test3_output(void)
    *  Sum: '<S9>/Sum'
    *  Sum: '<S9>/Sum1'
    */
-  test3_B.Product_d = ((test3_B.HILRead_o3[1] - test3_X.Integrator1_CSTATE_h) -
-                       test3_X.Integrator2_CSTATE_i * test3_P.Constant_Value_l *
-                       test3_P.Constant3_Value) * test3_P.Constant4_Value;
+  test3_B.Product = ((test3_B.Unwrap224 - test3_X.Integrator1_CSTATE_p) -
+                     test3_X.Integrator2_CSTATE * test3_P.Constant_Value_h *
+                     test3_P.Constant1_Value) * test3_P.Constant2_Value;
 
   /* Integrator: '<S10>/Integrator1' */
-  if (test3_DW.Integrator1_IWORK_gg != 0) {
-    test3_X.Integrator1_CSTATE_b = test3_B.HILRead_o3[2];
+  if (test3_DW.Integrator1_IWORK_d != 0) {
+    test3_X.Integrator1_CSTATE_h = test3_B.HILRead_o3[1];
   }
 
   /* Product: '<S10>/Product' incorporates:
    *  Constant: '<S10>/Constant'
-   *  Constant: '<S6>/Constant5'
-   *  Constant: '<S6>/Constant6'
+   *  Constant: '<S7>/Constant3'
+   *  Constant: '<S7>/Constant4'
    *  Integrator: '<S10>/Integrator1'
    *  Integrator: '<S10>/Integrator2'
    *  Product: '<S10>/Product2'
    *  Sum: '<S10>/Sum'
    *  Sum: '<S10>/Sum1'
    */
+  test3_B.Product_d = ((test3_B.HILRead_o3[1] - test3_X.Integrator1_CSTATE_h) -
+                       test3_X.Integrator2_CSTATE_i * test3_P.Constant_Value_l *
+                       test3_P.Constant3_Value) * test3_P.Constant4_Value;
+
+  /* Integrator: '<S11>/Integrator1' */
+  if (test3_DW.Integrator1_IWORK_gg != 0) {
+    test3_X.Integrator1_CSTATE_b = test3_B.HILRead_o3[2];
+  }
+
+  /* Product: '<S11>/Product' incorporates:
+   *  Constant: '<S11>/Constant'
+   *  Constant: '<S7>/Constant5'
+   *  Constant: '<S7>/Constant6'
+   *  Integrator: '<S11>/Integrator1'
+   *  Integrator: '<S11>/Integrator2'
+   *  Product: '<S11>/Product2'
+   *  Sum: '<S11>/Sum'
+   *  Sum: '<S11>/Sum1'
+   */
   test3_B.Product_m = ((test3_B.HILRead_o3[2] - test3_X.Integrator1_CSTATE_b) -
                        test3_X.Integrator2_CSTATE_c * test3_P.Constant_Value_i *
                        test3_P.Constant5_Value) * test3_P.Constant6_Value;
   if (rtmIsMajorTimeStep(test3_M)) {
-    /* S-Function (inverse_modulus_block): '<S6>/Unwrap 2^1' */
+    /* S-Function (inverse_modulus_block): '<S7>/Unwrap 2^1' */
     /* S-Function Block: test3/basicQCarIO/Unwrap 2^1 (inverse_modulus_block) */
     {
       static const real_T sampling_period = 0.002;
@@ -7587,67 +9375,67 @@ void test3_output(void)
     }
   }
 
-  /* Integrator: '<S11>/Integrator1' */
+  /* Integrator: '<S12>/Integrator1' */
   if (test3_DW.Integrator1_IWORK_l != 0) {
     test3_X.Integrator1_CSTATE_n = test3_B.Unwrap21;
   }
 
-  /* Product: '<S11>/Product' incorporates:
-   *  Constant: '<S11>/Constant'
-   *  Constant: '<S6>/Constant7'
-   *  Constant: '<S6>/Constant8'
-   *  Integrator: '<S11>/Integrator1'
-   *  Integrator: '<S11>/Integrator2'
-   *  Product: '<S11>/Product2'
-   *  Sum: '<S11>/Sum'
-   *  Sum: '<S11>/Sum1'
-   */
-  test3_B.Product_b = ((test3_B.Unwrap21 - test3_X.Integrator1_CSTATE_n) -
-                       test3_X.Integrator2_CSTATE_f * test3_P.Constant_Value_e *
-                       test3_P.Constant7_Value) * test3_P.Constant8_Value;
-
   /* Product: '<S12>/Product' incorporates:
    *  Constant: '<S12>/Constant'
-   *  Constant: '<S6>/Constant10'
-   *  Constant: '<S6>/Constant9'
+   *  Constant: '<S7>/Constant7'
+   *  Constant: '<S7>/Constant8'
+   *  Integrator: '<S12>/Integrator1'
    *  Integrator: '<S12>/Integrator2'
    *  Product: '<S12>/Product2'
    *  Sum: '<S12>/Sum'
    *  Sum: '<S12>/Sum1'
    */
-  test3_B.Product_e = ((test3_B.analogpower - test3_B.Integrator1) -
-                       test3_X.Integrator2_CSTATE_m * test3_P.Constant_Value_j *
-                       test3_P.Constant9_Value_f) * test3_P.Constant10_Value_f;
-
-  /* Product: '<S12>/Product1' incorporates:
-   *  Constant: '<S6>/Constant10'
-   *  Integrator: '<S12>/Integrator2'
-   */
-  test3_B.Product1_b = test3_P.Constant10_Value_f * test3_X.Integrator2_CSTATE_m;
+  test3_B.Product_b = ((test3_B.Unwrap21 - test3_X.Integrator1_CSTATE_n) -
+                       test3_X.Integrator2_CSTATE_f * test3_P.Constant_Value_e *
+                       test3_P.Constant7_Value) * test3_P.Constant8_Value;
 
   /* Product: '<S13>/Product' incorporates:
    *  Constant: '<S13>/Constant'
-   *  Constant: '<S6>/Constant11'
-   *  Constant: '<S6>/Constant12'
+   *  Constant: '<S7>/Constant10'
+   *  Constant: '<S7>/Constant9'
    *  Integrator: '<S13>/Integrator2'
    *  Product: '<S13>/Product2'
    *  Sum: '<S13>/Sum'
    *  Sum: '<S13>/Sum1'
    */
+  test3_B.Product_e = ((test3_B.analogpower - test3_B.Integrator1) -
+                       test3_X.Integrator2_CSTATE_m * test3_P.Constant_Value_j *
+                       test3_P.Constant9_Value_f) * test3_P.Constant10_Value_f;
+
+  /* Product: '<S13>/Product1' incorporates:
+   *  Constant: '<S7>/Constant10'
+   *  Integrator: '<S13>/Integrator2'
+   */
+  test3_B.Product1_b = test3_P.Constant10_Value_f * test3_X.Integrator2_CSTATE_m;
+
+  /* Product: '<S14>/Product' incorporates:
+   *  Constant: '<S14>/Constant'
+   *  Constant: '<S7>/Constant11'
+   *  Constant: '<S7>/Constant12'
+   *  Integrator: '<S14>/Integrator2'
+   *  Product: '<S14>/Product2'
+   *  Sum: '<S14>/Sum'
+   *  Sum: '<S14>/Sum1'
+   */
   test3_B.Product_p = ((test3_B.Unwrap22 - test3_B.Integrator1_g) -
                        test3_X.Integrator2_CSTATE_b * test3_P.Constant_Value_n *
                        test3_P.Constant11_Value) * test3_P.Constant12_Value;
 
-  /* Product: '<S13>/Product1' incorporates:
-   *  Constant: '<S6>/Constant12'
-   *  Integrator: '<S13>/Integrator2'
+  /* Product: '<S14>/Product1' incorporates:
+   *  Constant: '<S7>/Constant12'
+   *  Integrator: '<S14>/Integrator2'
    */
   test3_B.Product1_g = test3_P.Constant12_Value * test3_X.Integrator2_CSTATE_b;
 
-  /* Gain: '<S14>/Gain3' incorporates:
-   *  Gain: '<S14>/Gain1'
-   *  Gain: '<S14>/Gain2'
-   *  Gain: '<S14>/Gain4'
+  /* Gain: '<S15>/Gain3' incorporates:
+   *  Gain: '<S15>/Gain1'
+   *  Gain: '<S15>/Gain2'
+   *  Gain: '<S15>/Gain4'
    */
   test3_B.Gain3 = test3_P.Gain1_Gain * test3_B.Product1_p * test3_P.Gain4_Gain *
     test3_P.Gain2_Gain * test3_P.Gain3_Gain;
@@ -7659,57 +9447,65 @@ void test3_output(void)
   test3_B.Integrator6 = test3_X.Integrator6_CSTATE;
 
   /* Clock: '<Root>/Clock' */
-  rtb_Clock = test3_M->Timing.t[0];
+  test3_B.Clock = test3_M->Timing.t[0];
+
+  /* SignalConversion generated from: '<S1>/ SFunction ' incorporates:
+   *  Integrator: '<Root>/Integrator3'
+   *  MATLAB Function: '<Root>/MATLAB Function'
+   */
+  expl_temp.x0[0] = test3_B.Integrator5;
+  expl_temp.x0[1] = test3_B.Integrator6;
+  expl_temp.x0[2] = test3_B.Integrator;
+  expl_temp.x0[3] = test3_X.Integrator3_CSTATE;
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
   test3_DW.sfEvent = test3_CALL_EVENT;
 
   /* MATLAB Function 'MATLAB Function': '<S1>:1' */
-  /* '<S1>:1:59' */
-  /* '<S1>:1:35' */
-  /* '<S1>:1:60' */
-  /* '<S1>:1:36' */
-  /* '<S1>:1:35' */
-  /* '<S1>:1:36' */
-  /* '<S1>:1:53' */
-  b_b = fmin(rtb_Clock + 12.0, 201.0);
+  /* '<S1>:1:234' */
+  /* '<S1>:1:212' */
+  /* '<S1>:1:235' */
+  /* '<S1>:1:213' */
+  /* '<S1>:1:212' */
+  /* '<S1>:1:213' */
+  /* '<S1>:1:230' */
   test3_emxInit_real_T(&horizon_idx, 2);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  if (rtIsNaN(rtb_Clock)) {
+  if (rtIsNaN(test3_B.Clock)) {
     ibcol = horizon_idx->size[0] * horizon_idx->size[1];
     horizon_idx->size[0] = 1;
     horizon_idx->size[1] = 1;
     test3_emxEnsureCapacity_real_T(horizon_idx, ibcol);
     horizon_idx->data[0] = (rtNaN);
-  } else if (b_b < rtb_Clock) {
-    horizon_idx->size[0] = 1;
+  } else if ((test3_B.Clock + 12.0) - 1.0 < test3_B.Clock) {
     horizon_idx->size[1] = 0;
-  } else if ((rtIsInf(rtb_Clock) || rtIsInf(b_b)) && (rtb_Clock == b_b)) {
+  } else if ((rtIsInf(test3_B.Clock) || rtIsInf((test3_B.Clock + 12.0) - 1.0)) &&
+             ((test3_B.Clock + 12.0) - 1.0 == test3_B.Clock)) {
     ibcol = horizon_idx->size[0] * horizon_idx->size[1];
     horizon_idx->size[0] = 1;
     horizon_idx->size[1] = 1;
     test3_emxEnsureCapacity_real_T(horizon_idx, ibcol);
     horizon_idx->data[0] = (rtNaN);
-  } else if (floor(rtb_Clock) == rtb_Clock) {
+  } else if (floor(test3_B.Clock) == test3_B.Clock) {
     ibcol = horizon_idx->size[0] * horizon_idx->size[1];
     horizon_idx->size[0] = 1;
-    nm1d2 = (int32_T)(b_b - rtb_Clock);
+    nm1d2 = (int32_T)(((test3_B.Clock + 12.0) - 1.0) - test3_B.Clock);
     horizon_idx->size[1] = nm1d2 + 1;
     test3_emxEnsureCapacity_real_T(horizon_idx, ibcol);
     for (ntilerows = 0; ntilerows <= nm1d2; ntilerows++) {
-      horizon_idx->data[ntilerows] = rtb_Clock + (real_T)ntilerows;
+      horizon_idx->data[ntilerows] = test3_B.Clock + (real_T)ntilerows;
     }
   } else {
-    ndbl = floor((b_b - rtb_Clock) + 0.5);
-    apnd = rtb_Clock + ndbl;
-    cdiff = apnd - b_b;
-    if (fabs(cdiff) < 4.4408920985006262E-16 * fmax(fabs(rtb_Clock), fabs(b_b)))
-    {
+    ndbl = floor((((test3_B.Clock + 12.0) - 1.0) - test3_B.Clock) + 0.5);
+    apnd = test3_B.Clock + ndbl;
+    cdiff = apnd - ((test3_B.Clock + 12.0) - 1.0);
+    if (fabs(cdiff) < fmax(fabs(test3_B.Clock), fabs((test3_B.Clock + 12.0) -
+          1.0)) * 4.4408920985006262E-16) {
       ndbl++;
-      apnd = b_b;
+      apnd = (test3_B.Clock + 12.0) - 1.0;
     } else if (cdiff > 0.0) {
-      apnd = (ndbl - 1.0) + rtb_Clock;
+      apnd = (ndbl - 1.0) + test3_B.Clock;
     } else {
       ndbl++;
     }
@@ -7725,72 +9521,52 @@ void test3_output(void)
     horizon_idx->size[1] = ntilerows + 1;
     test3_emxEnsureCapacity_real_T(horizon_idx, ibcol);
     if (ntilerows + 1 > 0) {
-      horizon_idx->data[0] = rtb_Clock;
+      horizon_idx->data[0] = test3_B.Clock;
       if (ntilerows + 1 > 1) {
         horizon_idx->data[ntilerows] = apnd;
         nm1d2 = ntilerows / 2;
         for (k = 0; k <= nm1d2 - 2; k++) {
-          horizon_idx->data[k + 1] = ((real_T)k + 1.0) + rtb_Clock;
+          horizon_idx->data[k + 1] = ((real_T)k + 1.0) + test3_B.Clock;
           horizon_idx->data[(ntilerows - k) - 1] = apnd - ((real_T)k + 1.0);
         }
 
         if (nm1d2 << 1 == ntilerows) {
-          horizon_idx->data[nm1d2] = (rtb_Clock + apnd) / 2.0;
+          horizon_idx->data[nm1d2] = (test3_B.Clock + apnd) / 2.0;
         } else {
-          horizon_idx->data[nm1d2] = rtb_Clock + (real_T)nm1d2;
+          horizon_idx->data[nm1d2] = test3_B.Clock + (real_T)nm1d2;
           horizon_idx->data[nm1d2 + 1] = apnd - (real_T)nm1d2;
         }
       }
     }
   }
 
-  /* '<S1>:1:54' */
-  /* '<S1>:1:55' */
-  /* '<S1>:1:56' */
-  memset(&test3_B.xrf[0], 0, 201U * sizeof(real_T));
-  memset(&test3_B.yrf[0], 0, 201U * sizeof(real_T));
-
-  /* '<S1>:1:59' */
-  test3_emxInit_real_T(&xref, 2);
-
-  /* MATLAB Function: '<Root>/MATLAB Function' */
-  ibcol = xref->size[0] * xref->size[1];
-  xref->size[0] = 3;
-  xref->size[1] = horizon_idx->size[1];
-  test3_emxEnsureCapacity_real_T(xref, ibcol);
-  nm1d2 = horizon_idx->size[1];
-  for (ntilerows = 0; ntilerows < nm1d2; ntilerows++) {
-    k = ((int32_T)horizon_idx->data[ntilerows] - 1) * 3;
-    xref->data[3 * ntilerows] = g[k];
-    xref->data[1 + 3 * ntilerows] = g[k + 1];
-    xref->data[2 + 3 * ntilerows] = g[k + 2];
-  }
-
-  /* '<S1>:1:60' */
-  /* '<S1>:1:62' */
-  if (horizon_idx->size[1] < 1) {
-    nm1d2 = -1;
-  } else {
-    nm1d2 = horizon_idx->size[1] - 1;
-  }
-
+  ibcol = horizon_idx->size[0] * horizon_idx->size[1];
+  horizon_idx->size[0] = 1;
+  test3_emxEnsureCapacity_real_T(horizon_idx, ibcol);
+  nm1d2 = horizon_idx->size[1] - 1;
   for (ntilerows = 0; ntilerows <= nm1d2; ntilerows++) {
-    test3_B.xrf[ntilerows] = xref->data[3 * ntilerows];
+    ndbl = horizon_idx->data[ntilerows];
+    if (rtIsNaN(ndbl) || rtIsInf(ndbl)) {
+      apnd = (rtNaN);
+    } else if (ndbl == 0.0) {
+      apnd = 0.0;
+    } else {
+      apnd = fmod(ndbl, 67.0);
+      if (apnd == 0.0) {
+        apnd = 0.0;
+      } else if (ndbl < 0.0) {
+        apnd += 67.0;
+      }
+    }
+
+    horizon_idx->data[ntilerows] = apnd + 1.0;
   }
 
-  /* '<S1>:1:63' */
-  if (horizon_idx->size[1] < 1) {
-    nm1d2 = -1;
-  } else {
-    nm1d2 = horizon_idx->size[1] - 1;
-  }
-
-  for (ntilerows = 0; ntilerows <= nm1d2; ntilerows++) {
-    test3_B.yrf[ntilerows] = xref->data[3 * ntilerows + 1];
-  }
-
-  /* '<S1>:1:69' */
-  /* '<S1>:1:72' */
+  /* '<S1>:1:231' */
+  /* '<S1>:1:234' */
+  /* '<S1>:1:235' */
+  /* '<S1>:1:241' */
+  /* '<S1>:1:244' */
   test3_emxInit_real_T(&lb, 1);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
@@ -7801,11 +9577,11 @@ void test3_output(void)
   ntilerows = horizon_idx->size[1];
   for (nm1d2 = 0; nm1d2 < ntilerows; nm1d2++) {
     ibcol = nm1d2 << 1;
-    lb->data[ibcol] = -0.25;
-    lb->data[ibcol + 1] = -0.01;
+    lb->data[ibcol] = -0.4;
+    lb->data[ibcol + 1] = -0.2;
   }
 
-  /* '<S1>:1:73' */
+  /* '<S1>:1:245' */
   test3_emxInit_real_T(&ub, 1);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
@@ -7814,55 +9590,65 @@ void test3_output(void)
   test3_emxEnsureCapacity_real_T(ub, ibcol);
   ntilerows = horizon_idx->size[1];
 
-  /* SignalConversion generated from: '<S1>/ SFunction ' incorporates:
-   *  MATLAB Function: '<Root>/MATLAB Function'
-   */
-  /* '<S1>:1:82' */
-  /* '<S1>:1:86' */
-  tmp[0] = test3_B.Integrator5;
-  tmp[1] = test3_B.Integrator6;
-  tmp[2] = test3_B.Integrator;
-  test3_emxInit_real_T(&h, 2);
+  /* '<S1>:1:254' */
+  /* '<S1>:1:255' */
+  /* '<S1>:1:258' */
+  expl_temp.N = horizon_idx->size[1];
+  test3_emxInit_real_T(&c, 2);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  ibcol = h->size[0] * h->size[1];
-  h->size[0] = 2;
-  h->size[1] = horizon_idx->size[1];
-  test3_emxEnsureCapacity_real_T(h, ibcol);
+  ibcol = c->size[0] * c->size[1];
+  c->size[0] = 4;
+  c->size[1] = horizon_idx->size[1];
+  test3_emxEnsureCapacity_real_T(c, ibcol);
+  test3_emxInit_real_T(&d, 2);
+
+  /* MATLAB Function: '<Root>/MATLAB Function' */
+  ibcol = d->size[0] * d->size[1];
+  d->size[0] = 2;
+  d->size[1] = horizon_idx->size[1];
+  test3_emxEnsureCapacity_real_T(d, ibcol);
   for (nm1d2 = 0; nm1d2 < ntilerows; nm1d2++) {
     ibcol = nm1d2 << 1;
-    ub->data[ibcol] = 0.25;
-    ub->data[ibcol + 1] = 0.01;
-    ibcol = ((int32_T)horizon_idx->data[nm1d2] - 1) << 1;
-    h->data[nm1d2 << 1] = h_0[ibcol];
-    h->data[1 + (nm1d2 << 1)] = h_0[ibcol + 1];
+    ub->data[ibcol] = 0.4;
+    ub->data[ibcol + 1] = 0.2;
+    ndbl = horizon_idx->data[nm1d2];
+    ibcol = ((int32_T)ndbl - 1) << 2;
+    c->data[nm1d2 << 2] = c_0[ibcol];
+    c->data[1 + (nm1d2 << 2)] = c_0[ibcol + 1];
+    c->data[2 + (nm1d2 << 2)] = c_0[ibcol + 2];
+    c->data[3 + (nm1d2 << 2)] = c_0[ibcol + 3];
+    ibcol = ((int32_T)ndbl - 1) << 1;
+    d->data[nm1d2 << 1] = d_0[ibcol];
+    d->data[1 + (nm1d2 << 1)] = d_0[ibcol + 1];
   }
 
-  test3_emxInit_real_T(&tmp_0, 1);
+  test3_emxInit_real_T(&tmp, 1);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  ibcol = tmp_0->size[0];
-  tmp_0->size[0] = k;
-  test3_emxEnsureCapacity_real_T(tmp_0, ibcol);
+  ibcol = tmp->size[0];
+  tmp->size[0] = k;
+  test3_emxEnsureCapacity_real_T(tmp, ibcol);
   if (k - 1 >= 0) {
-    memset(&tmp_0->data[0], 0, (uint32_T)k * sizeof(real_T));
+    memset(&tmp->data[0], 0, (uint32_T)k * sizeof(real_T));
   }
 
   test3_emxInit_real_T(&u_opt, 1);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  test3_fmincon(tmp, xref, h, (real_T)horizon_idx->size[1], tmp_0, lb, ub, u_opt);
-  test3_emxFree_real_T(&tmp_0);
-  test3_emxFree_real_T(&h);
-  test3_emxFree_real_T(&xref);
+  test3_fmincon(expl_temp.x0, c, d, (real_T)horizon_idx->size[1], tmp, lb, ub,
+                expl_temp, u_opt);
+  test3_emxFree_real_T(&tmp);
+  test3_emxFree_real_T(&d);
+  test3_emxFree_real_T(&c);
   test3_emxFree_real_T(&ub);
   test3_emxFree_real_T(&lb);
   test3_emxFree_real_T(&horizon_idx);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  /* '<S1>:1:89' */
-  /* '<S1>:1:90' */
-  test3_B.phi = u_opt->data[1];
+  /* '<S1>:1:261' */
+  /* '<S1>:1:262' */
+  test3_B.omeg = u_opt->data[1];
   if (rtmIsMajorTimeStep(test3_M)) {
     /* ManualSwitch: '<Root>/1 - Arm, 0 - Disarm2' */
     if (test3_P.uArm0Disarm2_CurrentSetting == 1) {
@@ -7880,36 +9666,36 @@ void test3_output(void)
     /* End of ManualSwitch: '<Root>/1 - Arm, 0 - Disarm2' */
   }
 
-  /* Saturate: '<S7>/command saturation' incorporates:
+  /* Saturate: '<S8>/command saturation' incorporates:
    *  MATLAB Function: '<Root>/MATLAB Function'
    */
   if (u_opt->data[0] > test3_P.commandsaturation_UpperSat) {
-    rtb_Clock = test3_P.commandsaturation_UpperSat;
+    ndbl = test3_P.commandsaturation_UpperSat;
   } else if (u_opt->data[0] < test3_P.commandsaturation_LowerSat) {
-    rtb_Clock = test3_P.commandsaturation_LowerSat;
+    ndbl = test3_P.commandsaturation_LowerSat;
   } else {
-    rtb_Clock = u_opt->data[0];
+    ndbl = u_opt->data[0];
   }
 
   test3_emxFree_real_T(&u_opt);
 
-  /* Product: '<S7>/Multiply1' incorporates:
-   *  Saturate: '<S7>/command saturation'
+  /* Product: '<S8>/Multiply1' incorporates:
+   *  Saturate: '<S8>/command saturation'
    */
-  test3_B.desired = rtb_Clock * test3_B.switch_l;
+  test3_B.desired = ndbl * test3_B.switch_l;
 
-  /* Product: '<S7>/Multiply' */
+  /* Product: '<S8>/Multiply' */
   test3_B.measured = test3_B.Gain3 * test3_B.switch_l;
 
-  /* Sum: '<S7>/Sum' */
-  rtb_Clock = test3_B.desired - test3_B.measured;
+  /* Sum: '<S8>/Sum' */
+  ndbl = test3_B.desired - test3_B.measured;
 
-  /* RelationalOperator: '<S16>/Compare' incorporates:
-   *  Constant: '<S16>/Constant'
+  /* RelationalOperator: '<S17>/Compare' incorporates:
+   *  Constant: '<S17>/Constant'
    */
   test3_B.Compare = (test3_B.desired == test3_P.Constant_Value);
 
-  /* Integrator: '<S7>/Integrator1' */
+  /* Integrator: '<S8>/Integrator1' */
   /* Limited  Integrator  */
   if (rtsiIsModeUpdateTimeStep(&test3_M->solverInfo)) {
     didZcEventOccur = (((test3_PrevZCX.Integrator1_Reset_ZCE == POS_ZCSIG) !=
@@ -7930,53 +9716,54 @@ void test3_output(void)
     test3_X.Integrator1_CSTATE_ng = test3_P.Integrator1_LowerSat;
   }
 
-  /* Sum: '<S7>/Add1' incorporates:
-   *  Gain: '<S7>/Kff  (% // m//s)'
-   *  Gain: '<S7>/Kp (% // m//s)'
-   *  Integrator: '<S7>/Integrator1'
-   *  Sum: '<S7>/Add'
+  /* Sum: '<S8>/Add1' incorporates:
+   *  Gain: '<S8>/Kff  (% // m//s)'
+   *  Gain: '<S8>/Kp (% // m//s)'
+   *  Integrator: '<S8>/Integrator1'
+   *  Sum: '<S8>/Add'
    */
-  b_b = (test3_P.Kpms_Gain * rtb_Clock + test3_X.Integrator1_CSTATE_ng) +
+  apnd = (test3_P.Kpms_Gain * ndbl + test3_X.Integrator1_CSTATE_ng) +
     test3_P.Kffms_Gain * test3_B.desired;
 
-  /* Saturate: '<S7>/command saturation1' */
-  if (b_b > test3_P.commandsaturation1_UpperSat) {
-    b_b = test3_P.commandsaturation1_UpperSat;
-  } else if (b_b < test3_P.commandsaturation1_LowerSat) {
-    b_b = test3_P.commandsaturation1_LowerSat;
+  /* Saturate: '<S8>/command saturation1' */
+  if (apnd > test3_P.commandsaturation1_UpperSat) {
+    apnd = test3_P.commandsaturation1_UpperSat;
+  } else if (apnd < test3_P.commandsaturation1_LowerSat) {
+    apnd = test3_P.commandsaturation1_LowerSat;
   }
 
-  /* Gain: '<S6>/direction convention' incorporates:
-   *  Product: '<S7>/Multiply2'
-   *  Saturate: '<S7>/command saturation1'
+  /* Gain: '<S7>/direction convention' incorporates:
+   *  Product: '<S8>/Multiply2'
+   *  Saturate: '<S8>/command saturation1'
    */
-  b_b = b_b * test3_B.switch_l * test3_P.directionconvention_Gain;
+  apnd = apnd * test3_B.switch_l * test3_P.directionconvention_Gain;
 
-  /* Saturate: '<S6>/command saturation' */
-  if (b_b > test3_P.commandsaturation_UpperSat_n) {
-    /* Saturate: '<S6>/command saturation' */
+  /* Saturate: '<S7>/command saturation' */
+  if (apnd > test3_P.commandsaturation_UpperSat_n) {
+    /* Saturate: '<S7>/command saturation' */
     test3_B.commandsaturation = test3_P.commandsaturation_UpperSat_n;
-  } else if (b_b < test3_P.commandsaturation_LowerSat_i) {
-    /* Saturate: '<S6>/command saturation' */
+  } else if (apnd < test3_P.commandsaturation_LowerSat_i) {
+    /* Saturate: '<S7>/command saturation' */
     test3_B.commandsaturation = test3_P.commandsaturation_LowerSat_i;
   } else {
-    /* Saturate: '<S6>/command saturation' */
-    test3_B.commandsaturation = b_b;
+    /* Saturate: '<S7>/command saturation' */
+    test3_B.commandsaturation = apnd;
   }
 
-  /* End of Saturate: '<S6>/command saturation' */
+  /* End of Saturate: '<S7>/command saturation' */
 
-  /* Bias: '<S6>/Steering Bias' incorporates:
-   *  Gain: '<S6>/Gain'
+  /* Bias: '<S7>/Steering Bias' incorporates:
+   *  Gain: '<S7>/Gain'
+   *  Integrator: '<Root>/Integrator3'
    */
-  test3_B.SteeringBias = test3_P.Gain_Gain * test3_B.phi +
+  test3_B.SteeringBias = test3_P.Gain_Gain * test3_X.Integrator3_CSTATE +
     test3_P.SteeringBias_Bias;
   if (rtmIsMajorTimeStep(test3_M)) {
-    /* SignalConversion generated from: '<S6>/HIL Write' */
+    /* SignalConversion generated from: '<S7>/HIL Write' */
     rtb_TmpSignalConversionAtHILWri[0] = test3_B.commandsaturation;
     rtb_TmpSignalConversionAtHILWri[1] = test3_B.SteeringBias;
 
-    /* S-Function (hil_write_block): '<S6>/HIL Write' */
+    /* S-Function (hil_write_block): '<S7>/HIL Write' */
 
     /* S-Function Block: test3/basicQCarIO/HIL Write (hil_write_block) */
     {
@@ -8009,34 +9796,90 @@ void test3_output(void)
    */
   test3_B.Product1_ij = sin(test3_B.Integrator) * test3_B.Gain3;
   if (rtmIsMajorTimeStep(test3_M)) {
+    /* S-Function (inverse_modulus_block): '<Root>/Unwrap 2^1' */
+    /* S-Function Block: test3/Unwrap 2^1 (inverse_modulus_block) */
+    {
+      static const real_T sampling_period = 0.002;
+      real_T half_range = test3_P.Unwrap21_Modulus_p / 2.0;
+      real_T du, dy;
+      if (test3_DW.Unwrap21_FirstSample_o) {
+        test3_DW.Unwrap21_FirstSample_o = false;
+        test3_DW.Unwrap21_PreviousInput_d = test3_B.omeg;
+      }
+
+      du = (real_T) test3_B.omeg - test3_DW.Unwrap21_PreviousInput_d;
+      if (du > half_range) {
+        test3_DW.Unwrap21_Revolutions_o = test3_DW.Unwrap21_Revolutions_o - 1;
+        dy = du - test3_P.Unwrap21_Modulus_p;
+      } else if (du < -half_range) {
+        test3_DW.Unwrap21_Revolutions_o = test3_DW.Unwrap21_Revolutions_o + 1;
+        dy = du + test3_P.Unwrap21_Modulus_p;
+      } else {
+        dy = du;
+      }
+
+      test3_B.Unwrap21_o = test3_B.omeg + test3_DW.Unwrap21_Revolutions_o *
+        test3_P.Unwrap21_Modulus_p;
+      test3_DW.Unwrap21_PreviousInput_d = test3_B.omeg;
+    }
   }
 
-  /* Gain: '<S7>/Ki (% // m)  ' */
-  test3_B.Kim = test3_P.Kim_Gain * rtb_Clock;
+  /* Integrator: '<S6>/Integrator1' */
+  if (test3_DW.Integrator1_IWORK_a != 0) {
+    test3_X.Integrator1_CSTATE_me = test3_B.Unwrap21_o;
+  }
+
+  /* Integrator: '<S6>/Integrator1' */
+  test3_B.Integrator1_f = test3_X.Integrator1_CSTATE_me;
+
+  /* Product: '<S6>/Product' incorporates:
+   *  Constant: '<Root>/Constant7'
+   *  Constant: '<Root>/Constant8'
+   *  Constant: '<S6>/Constant'
+   *  Integrator: '<S6>/Integrator2'
+   *  Product: '<S6>/Product2'
+   *  Sum: '<S6>/Sum'
+   *  Sum: '<S6>/Sum1'
+   */
+  test3_B.Product_g = ((test3_B.Unwrap21_o - test3_B.Integrator1_f) -
+                       test3_X.Integrator2_CSTATE_k * test3_P.Constant_Value_p *
+                       test3_P.Constant7_Value_o) * test3_P.Constant8_Value_g;
+
+  /* Product: '<S6>/Product1' incorporates:
+   *  Constant: '<Root>/Constant8'
+   *  Integrator: '<S6>/Integrator2'
+   */
+  test3_B.Product1_b3 = test3_P.Constant8_Value_g * test3_X.Integrator2_CSTATE_k;
   if (rtmIsMajorTimeStep(test3_M)) {
   }
+
+  /* Gain: '<S8>/Ki (% // m)  ' */
+  test3_B.Kim = test3_P.Kim_Gain * ndbl;
 }
 
 /* Model update function */
 void test3_update(void)
 {
-  /* Update for Integrator: '<S12>/Integrator1' */
+  /* Update for Integrator: '<S13>/Integrator1' */
   test3_DW.Integrator1_IWORK = 0;
 
-  /* Update for Integrator: '<S13>/Integrator1' */
+  /* Update for Integrator: '<S14>/Integrator1' */
   test3_DW.Integrator1_IWORK_i = 0;
 
-  /* Update for Integrator: '<S8>/Integrator1' */
+  /* Update for Integrator: '<S9>/Integrator1' */
   test3_DW.Integrator1_IWORK_g = 0;
 
-  /* Update for Integrator: '<S9>/Integrator1' */
+  /* Update for Integrator: '<S10>/Integrator1' */
   test3_DW.Integrator1_IWORK_d = 0;
 
-  /* Update for Integrator: '<S10>/Integrator1' */
+  /* Update for Integrator: '<S11>/Integrator1' */
   test3_DW.Integrator1_IWORK_gg = 0;
 
-  /* Update for Integrator: '<S11>/Integrator1' */
+  /* Update for Integrator: '<S12>/Integrator1' */
   test3_DW.Integrator1_IWORK_l = 0;
+
+  /* Update for Integrator: '<S6>/Integrator1' */
+  test3_DW.Integrator1_IWORK_a = 0;
   if (rtmIsMajorTimeStep(test3_M)) {
     rt_ertODEUpdateContinuousStates(&test3_M->solverInfo);
   }
@@ -8084,43 +9927,43 @@ void test3_derivatives(void)
   boolean_T usat;
   _rtXdot = ((XDot_test3_T *) test3_M->derivs);
 
-  /* Derivatives for Integrator: '<S8>/Integrator2' */
+  /* Derivatives for Integrator: '<S9>/Integrator2' */
   _rtXdot->Integrator2_CSTATE = test3_B.Product;
 
-  /* Derivatives for Integrator: '<S9>/Integrator2' */
+  /* Derivatives for Integrator: '<S10>/Integrator2' */
   _rtXdot->Integrator2_CSTATE_i = test3_B.Product_d;
 
-  /* Derivatives for Integrator: '<S10>/Integrator2' */
+  /* Derivatives for Integrator: '<S11>/Integrator2' */
   _rtXdot->Integrator2_CSTATE_c = test3_B.Product_m;
 
-  /* Derivatives for Integrator: '<S12>/Integrator1' */
+  /* Derivatives for Integrator: '<S13>/Integrator1' */
   _rtXdot->Integrator1_CSTATE = test3_B.Product1_b;
 
-  /* Derivatives for Integrator: '<S13>/Integrator1' */
+  /* Derivatives for Integrator: '<S14>/Integrator1' */
   _rtXdot->Integrator1_CSTATE_m = test3_B.Product1_g;
 
-  /* Derivatives for Integrator: '<S11>/Integrator2' */
+  /* Derivatives for Integrator: '<S12>/Integrator2' */
   _rtXdot->Integrator2_CSTATE_f = test3_B.Product_b;
 
-  /* Derivatives for Integrator: '<S6>/Integrator' */
+  /* Derivatives for Integrator: '<S7>/Integrator' */
   _rtXdot->Integrator_CSTATE = test3_B.Integrator1_g;
 
-  /* Derivatives for Integrator: '<S8>/Integrator1' */
+  /* Derivatives for Integrator: '<S9>/Integrator1' */
   _rtXdot->Integrator1_CSTATE_p = test3_B.Product1;
 
-  /* Derivatives for Integrator: '<S9>/Integrator1' */
+  /* Derivatives for Integrator: '<S10>/Integrator1' */
   _rtXdot->Integrator1_CSTATE_h = test3_B.Product1_i;
 
-  /* Derivatives for Integrator: '<S10>/Integrator1' */
+  /* Derivatives for Integrator: '<S11>/Integrator1' */
   _rtXdot->Integrator1_CSTATE_b = test3_B.Product1_n;
 
-  /* Derivatives for Integrator: '<S11>/Integrator1' */
+  /* Derivatives for Integrator: '<S12>/Integrator1' */
   _rtXdot->Integrator1_CSTATE_n = test3_B.Product1_p;
 
-  /* Derivatives for Integrator: '<S12>/Integrator2' */
+  /* Derivatives for Integrator: '<S13>/Integrator2' */
   _rtXdot->Integrator2_CSTATE_m = test3_B.Product_e;
 
-  /* Derivatives for Integrator: '<S13>/Integrator2' */
+  /* Derivatives for Integrator: '<S14>/Integrator2' */
   _rtXdot->Integrator2_CSTATE_b = test3_B.Product_p;
 
   /* Derivatives for Integrator: '<S2>/Integrator5' */
@@ -8129,7 +9972,10 @@ void test3_derivatives(void)
   /* Derivatives for Integrator: '<S3>/Integrator6' */
   _rtXdot->Integrator6_CSTATE = test3_B.Product1_ij;
 
-  /* Derivatives for Integrator: '<S7>/Integrator1' */
+  /* Derivatives for Integrator: '<Root>/Integrator3' */
+  _rtXdot->Integrator3_CSTATE = test3_B.Integrator1_f;
+
+  /* Derivatives for Integrator: '<S8>/Integrator1' */
   lsat = (test3_X.Integrator1_CSTATE_ng <= test3_P.Integrator1_LowerSat);
   usat = (test3_X.Integrator1_CSTATE_ng >= test3_P.Integrator1_UpperSat);
   if (((!lsat) && (!usat)) || (lsat && (test3_B.Kim > 0.0)) || (usat &&
@@ -8140,13 +9986,19 @@ void test3_derivatives(void)
     _rtXdot->Integrator1_CSTATE_ng = 0.0;
   }
 
-  /* End of Derivatives for Integrator: '<S7>/Integrator1' */
+  /* End of Derivatives for Integrator: '<S8>/Integrator1' */
+
+  /* Derivatives for Integrator: '<S6>/Integrator1' */
+  _rtXdot->Integrator1_CSTATE_me = test3_B.Product1_b3;
+
+  /* Derivatives for Integrator: '<S6>/Integrator2' */
+  _rtXdot->Integrator2_CSTATE_k = test3_B.Product_g;
 }
 
 /* Model initialize function */
 void test3_initialize(void)
 {
-  /* Start for S-Function (hil_initialize_block): '<S6>/HIL Initialize' */
+  /* Start for S-Function (hil_initialize_block): '<S7>/HIL Initialize' */
 
   /* S-Function Block: test3/basicQCarIO/HIL Initialize (hil_initialize_block) */
   {
@@ -8470,7 +10322,7 @@ void test3_initialize(void)
     }
   }
 
-  /* Start for S-Function (inverse_modulus_block): '<S6>/Unwrap 2^2' */
+  /* Start for S-Function (inverse_modulus_block): '<S7>/Unwrap 2^2' */
 
   /* S-Function Block: test3/basicQCarIO/Unwrap 2^2 (inverse_modulus_block) */
   {
@@ -8478,7 +10330,7 @@ void test3_initialize(void)
     test3_DW.Unwrap22_Revolutions = 0;
   }
 
-  /* Start for S-Function (inverse_modulus_block): '<S6>/Unwrap 2^24' */
+  /* Start for S-Function (inverse_modulus_block): '<S7>/Unwrap 2^24' */
 
   /* S-Function Block: test3/basicQCarIO/Unwrap 2^24 (inverse_modulus_block) */
   {
@@ -8486,7 +10338,7 @@ void test3_initialize(void)
     test3_DW.Unwrap224_Revolutions = 0;
   }
 
-  /* Start for S-Function (inverse_modulus_block): '<S6>/Unwrap 2^1' */
+  /* Start for S-Function (inverse_modulus_block): '<S7>/Unwrap 2^1' */
 
   /* S-Function Block: test3/basicQCarIO/Unwrap 2^1 (inverse_modulus_block) */
   {
@@ -8494,19 +10346,27 @@ void test3_initialize(void)
     test3_DW.Unwrap21_Revolutions = 0;
   }
 
+  /* Start for S-Function (inverse_modulus_block): '<Root>/Unwrap 2^1' */
+
+  /* S-Function Block: test3/Unwrap 2^1 (inverse_modulus_block) */
+  {
+    test3_DW.Unwrap21_FirstSample_o = true;
+    test3_DW.Unwrap21_Revolutions_o = 0;
+  }
+
   test3_PrevZCX.Integrator1_Reset_ZCE = UNINITIALIZED_ZCSIG;
 
-  /* InitializeConditions for Integrator: '<S8>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S9>/Integrator2' */
   test3_X.Integrator2_CSTATE = test3_P.Integrator2_IC;
 
-  /* InitializeConditions for Integrator: '<S9>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S10>/Integrator2' */
   test3_X.Integrator2_CSTATE_i = test3_P.Integrator2_IC_j;
 
-  /* InitializeConditions for Integrator: '<S10>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S11>/Integrator2' */
   test3_X.Integrator2_CSTATE_c = test3_P.Integrator2_IC_d;
 
-  /* InitializeConditions for Integrator: '<S12>/Integrator1' incorporates:
-   *  Integrator: '<S13>/Integrator1'
+  /* InitializeConditions for Integrator: '<S13>/Integrator1' incorporates:
+   *  Integrator: '<S14>/Integrator1'
    */
   if (rtmIsFirstInitCond(test3_M)) {
     test3_X.Integrator1_CSTATE = 0.0;
@@ -8515,19 +10375,19 @@ void test3_initialize(void)
 
   test3_DW.Integrator1_IWORK = 1;
 
-  /* End of InitializeConditions for Integrator: '<S12>/Integrator1' */
+  /* End of InitializeConditions for Integrator: '<S13>/Integrator1' */
 
-  /* InitializeConditions for Integrator: '<S13>/Integrator1' */
+  /* InitializeConditions for Integrator: '<S14>/Integrator1' */
   test3_DW.Integrator1_IWORK_i = 1;
 
-  /* InitializeConditions for Integrator: '<S11>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S12>/Integrator2' */
   test3_X.Integrator2_CSTATE_f = test3_P.Integrator2_IC_l;
 
-  /* InitializeConditions for Integrator: '<S6>/Integrator' */
+  /* InitializeConditions for Integrator: '<S7>/Integrator' */
   test3_X.Integrator_CSTATE = test3_P.Integrator_IC;
 
-  /* InitializeConditions for Integrator: '<S8>/Integrator1' incorporates:
-   *  Integrator: '<S9>/Integrator1'
+  /* InitializeConditions for Integrator: '<S9>/Integrator1' incorporates:
+   *  Integrator: '<S10>/Integrator1'
    */
   if (rtmIsFirstInitCond(test3_M)) {
     test3_X.Integrator1_CSTATE_p = 0.0;
@@ -8536,13 +10396,13 @@ void test3_initialize(void)
 
   test3_DW.Integrator1_IWORK_g = 1;
 
-  /* End of InitializeConditions for Integrator: '<S8>/Integrator1' */
+  /* End of InitializeConditions for Integrator: '<S9>/Integrator1' */
 
-  /* InitializeConditions for Integrator: '<S9>/Integrator1' */
+  /* InitializeConditions for Integrator: '<S10>/Integrator1' */
   test3_DW.Integrator1_IWORK_d = 1;
 
-  /* InitializeConditions for Integrator: '<S10>/Integrator1' incorporates:
-   *  Integrator: '<S11>/Integrator1'
+  /* InitializeConditions for Integrator: '<S11>/Integrator1' incorporates:
+   *  Integrator: '<S12>/Integrator1'
    */
   if (rtmIsFirstInitCond(test3_M)) {
     test3_X.Integrator1_CSTATE_b = 0.0;
@@ -8551,15 +10411,15 @@ void test3_initialize(void)
 
   test3_DW.Integrator1_IWORK_gg = 1;
 
-  /* End of InitializeConditions for Integrator: '<S10>/Integrator1' */
+  /* End of InitializeConditions for Integrator: '<S11>/Integrator1' */
 
-  /* InitializeConditions for Integrator: '<S11>/Integrator1' */
+  /* InitializeConditions for Integrator: '<S12>/Integrator1' */
   test3_DW.Integrator1_IWORK_l = 1;
 
-  /* InitializeConditions for Integrator: '<S12>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S13>/Integrator2' */
   test3_X.Integrator2_CSTATE_m = test3_P.Integrator2_IC_n;
 
-  /* InitializeConditions for Integrator: '<S13>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S14>/Integrator2' */
   test3_X.Integrator2_CSTATE_b = test3_P.Integrator2_IC_h;
 
   /* InitializeConditions for Integrator: '<S2>/Integrator5' */
@@ -8568,8 +10428,23 @@ void test3_initialize(void)
   /* InitializeConditions for Integrator: '<S3>/Integrator6' */
   test3_X.Integrator6_CSTATE = test3_P.Integrator6_IC;
 
-  /* InitializeConditions for Integrator: '<S7>/Integrator1' */
+  /* InitializeConditions for Integrator: '<Root>/Integrator3' */
+  test3_X.Integrator3_CSTATE = test3_P.Integrator3_IC;
+
+  /* InitializeConditions for Integrator: '<S8>/Integrator1' */
   test3_X.Integrator1_CSTATE_ng = test3_P.Integrator1_IC;
+
+  /* InitializeConditions for Integrator: '<S6>/Integrator1' */
+  if (rtmIsFirstInitCond(test3_M)) {
+    test3_X.Integrator1_CSTATE_me = 0.0;
+  }
+
+  test3_DW.Integrator1_IWORK_a = 1;
+
+  /* End of InitializeConditions for Integrator: '<S6>/Integrator1' */
+
+  /* InitializeConditions for Integrator: '<S6>/Integrator2' */
+  test3_X.Integrator2_CSTATE_k = test3_P.Integrator2_IC_a;
 
   /* SystemInitialize for MATLAB Function: '<Root>/MATLAB Function' */
   test3_DW.sfEvent = test3_CALL_EVENT;
@@ -8584,7 +10459,7 @@ void test3_initialize(void)
 /* Model terminate function */
 void test3_terminate(void)
 {
-  /* Terminate for S-Function (hil_initialize_block): '<S6>/HIL Initialize' */
+  /* Terminate for S-Function (hil_initialize_block): '<S7>/HIL Initialize' */
 
   /* S-Function Block: test3/basicQCarIO/HIL Initialize (hil_initialize_block) */
   {
@@ -8829,10 +10704,10 @@ RT_MODEL_test3_T *test3(void)
   rtmSetFirstInitCond(test3_M, 1);
 
   /* External mode info */
-  test3_M->Sizes.checksums[0] = (3730588023U);
-  test3_M->Sizes.checksums[1] = (3831843368U);
-  test3_M->Sizes.checksums[2] = (980540883U);
-  test3_M->Sizes.checksums[3] = (3104373542U);
+  test3_M->Sizes.checksums[0] = (4221162907U);
+  test3_M->Sizes.checksums[1] = (3802657217U);
+  test3_M->Sizes.checksums[2] = (1709486394U);
+  test3_M->Sizes.checksums[3] = (3752576086U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -8894,16 +10769,16 @@ RT_MODEL_test3_T *test3(void)
   }
 
   /* Initialize Sizes */
-  test3_M->Sizes.numContStates = (16); /* Number of continuous states */
+  test3_M->Sizes.numContStates = (19); /* Number of continuous states */
   test3_M->Sizes.numPeriodicContStates = (0);
                                       /* Number of periodic continuous states */
   test3_M->Sizes.numY = (0);           /* Number of model outputs */
   test3_M->Sizes.numU = (0);           /* Number of model inputs */
   test3_M->Sizes.sysDirFeedThru = (0); /* The model is not direct feedthrough */
   test3_M->Sizes.numSampTimes = (2);   /* Number of sample times */
-  test3_M->Sizes.numBlocks = (121);    /* Number of blocks */
-  test3_M->Sizes.numBlockIO = (37);    /* Number of block outputs */
-  test3_M->Sizes.numBlockPrms = (168); /* Sum of parameter "widths" */
+  test3_M->Sizes.numBlocks = (131);    /* Number of blocks */
+  test3_M->Sizes.numBlockIO = (40);    /* Number of block outputs */
+  test3_M->Sizes.numBlockPrms = (174); /* Sum of parameter "widths" */
   return test3_M;
 }
 

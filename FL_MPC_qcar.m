@@ -5,16 +5,16 @@ load("trajectory.mat")
 
 %% Parameters
 N_pred_val = 5;                      % Prediction horizon
-Q_val = 20;                          % State weight value
+Q_val = 10;                          % State weight value
 R_val = 1;                           % Input weight value
-P_val = 300;                         % Terminal state value
+P_val = 1;                         % Terminal state value
 l = 0.256;                           % Length between front and rear
 Delta = 0.35;                        % Distance in front of the car
 
 % Define prediction and simulation steps
-Ts = 0.1;                            % Sampling time
+Ts = 0.3;                            % Sampling time
 Npred = N_pred_val;                  % Prediction horizon
-Nsim =  650;                          % Number of simulation steps
+Nsim =  900;                          % Number of simulation steps
 
 % Define system dimensions
 dx = 4;                              % State dimensions: x, y, theta
@@ -117,7 +117,7 @@ end
 
 
 %% Constraints
-rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 1);
+rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 0.5);
 
 % Weights for cost function
 Q = Q_val * eye(dz);
@@ -163,7 +163,7 @@ for k = 1 : Npred
     solver.subject_to(z(:, k+1) == A * z(:, k) + B * w(:, k));
 
     % Nonlinear dynamics constraints
-    O = LinDyna(eta, l, Delta);
+    O = LinDyna(eta(:, k), l, Delta);
     solver.subject_to(eta(:, k+1) == eta(:, k) + Ts * O * w(:, k));
     
     % Control input constraints
@@ -293,12 +293,16 @@ grid
 
 subplot(4,1,3)
 plot(1:Nsim, xsim(3,1:end-1))
+hold on 
+plot(1:Nsim, thetar(1:Nsim), '--')
 legend('$\theta$','interpreter','latex')
 xlabel('time (s)')
 grid
 
 subplot(4,1,4)
 plot(1:Nsim, xsim(4,1:end-1))
+hold on 
+plot(1:Nsim, phir(1:Nsim), '--')
 legend('$\varphi$','interpreter','latex')
 xlabel('time (s)')
 grid

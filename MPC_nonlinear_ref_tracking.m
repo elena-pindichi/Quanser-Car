@@ -10,7 +10,7 @@ load("trajectory.mat")
 %% Parameters
 N_pred_val = 12;        % Prediction horizon
 Q_val = 10000000;          % State weight value
-Q_val = 1000;
+Q_val = 100;
 R_val = 2;              % Input weight value
 P_val = 1000;           % Terminal state value
 P_val = 10;
@@ -19,7 +19,7 @@ l = 0.256;
 % Define prediction and simulation steps
 Ts = 0.1;                           % Sampling time
 Npred = N_pred_val;                 % Prediction horizon
-Nsim = 1200;                        % Number of simulation steps
+Nsim = 3000;                        % Number of simulation steps
 
 % Define system dimensions
 dx = 4;              % State dimensions: x, y, theta
@@ -31,8 +31,8 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Time
-t = 0 : 0.1 : 50;
-t = 0 : 0.1 : 2000;
+t = 0 : 0.01 : 50;
+% t = 0 : 0.1 : 2000;
 
 % % % % % % % % % % % % % % % % % 
 % Line reference
@@ -42,7 +42,7 @@ xr = alpha * t;     dxr = alpha + 0*t;    ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
 yr = beta * t;      dyr = beta + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Square trajectory
-n = 700;
+n = 850;
 
 side_length = 10; 
 total_points = n;
@@ -77,11 +77,11 @@ dyr = gradient(yr, 0.1);        ddyr = gradient(dyr, 0.1);      dddyr = gradient
 % yr = st;    dyr = 0 + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Circle reference
-% alpha   = 5;
-% beta    = 5;
-% ang     = 0.2;
-% xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
-% yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
+alpha   = 5;
+beta    = 5;
+ang     = 0.2;
+xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
+yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
 
 % Spline reference
 % xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
@@ -107,8 +107,8 @@ phimax = pi/2;                   % Front wheels orientation limits
 
 % Weights for cost function
 Q = Q_val * eye(dx);
-Q(3,3) = 0.1;
-Q(4,4) = 0.1;
+Q(3,3) = 10;
+Q(4,4) = 5;
 R = R_val * eye(du);
 P = P_val * Q;
 

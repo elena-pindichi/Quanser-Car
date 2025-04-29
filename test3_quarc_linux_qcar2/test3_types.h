@@ -6,9 +6,9 @@
  *
  * Code generation for model "test3".
  *
- * Model version              : 15.44
+ * Model version              : 15.48
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Thu Apr 24 16:07:37 2025
+ * C source code generated on : Tue Apr 29 15:35:05 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -145,6 +145,62 @@ typedef struct emxArray_int32_T emxArray_int32_T_test3_T;
 
 #endif                                 /* typedef_emxArray_int32_T_test3_T */
 
+/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function' */
+#ifndef struct_tag_0Mw3d4AlMrOoSnA1Aci4tH
+#define struct_tag_0Mw3d4AlMrOoSnA1Aci4tH
+
+struct tag_0Mw3d4AlMrOoSnA1Aci4tH
+{
+  int32_T nVarMax;
+  int32_T mNonlinIneq;
+  int32_T mNonlinEq;
+  int32_T mIneq;
+  int32_T mEq;
+  int32_T iNonIneq0;
+  int32_T iNonEq0;
+  real_T sqpFval;
+  real_T sqpFval_old;
+  emxArray_real_T_test3_T *xstarsqp;
+  emxArray_real_T_test3_T *xstarsqp_old;
+  emxArray_real_T_test3_T *cIneq;
+  emxArray_real_T_test3_T *cIneq_old;
+  emxArray_real_T_test3_T *cEq;
+  emxArray_real_T_test3_T *cEq_old;
+  emxArray_real_T_test3_T *grad;
+  emxArray_real_T_test3_T *grad_old;
+  int32_T FunctionEvaluations;
+  int32_T sqpIterations;
+  int32_T sqpExitFlag;
+  emxArray_real_T_test3_T *lambdasqp;
+  emxArray_real_T_test3_T *lambdaStopTest;
+  emxArray_real_T_test3_T *lambdaStopTestPrev;
+  real_T steplength;
+  emxArray_real_T_test3_T *delta_x;
+  emxArray_real_T_test3_T *socDirection;
+  emxArray_int32_T_test3_T *workingset_old;
+  emxArray_real_T_test3_T *JacCineqTrans_old;
+  emxArray_real_T_test3_T *JacCeqTrans_old;
+  emxArray_real_T_test3_T *gradLag;
+  emxArray_real_T_test3_T *delta_gradLag;
+  emxArray_real_T_test3_T *xstar;
+  real_T fstar;
+  real_T firstorderopt;
+  emxArray_real_T_test3_T *lambda;
+  int32_T state;
+  real_T maxConstr;
+  int32_T iterations;
+  emxArray_real_T_test3_T *searchDir;
+};
+
+#endif                                 /* struct_tag_0Mw3d4AlMrOoSnA1Aci4tH */
+
+#ifndef typedef_s_0Mw3d4AlMrOoSnA1Aci4tH_test_T
+#define typedef_s_0Mw3d4AlMrOoSnA1Aci4tH_test_T
+
+typedef struct tag_0Mw3d4AlMrOoSnA1Aci4tH s_0Mw3d4AlMrOoSnA1Aci4tH_test_T;
+
+#endif                             /* typedef_s_0Mw3d4AlMrOoSnA1Aci4tH_test_T */
+
 #ifndef struct_emxArray_boolean_T
 #define struct_emxArray_boolean_T
 
@@ -264,298 +320,10 @@ typedef struct tag_pIaUYPkQBTqVmAKxFPiGQF s_pIaUYPkQBTqVmAKxFPiGQF_test_T;
 
 #endif                             /* typedef_s_pIaUYPkQBTqVmAKxFPiGQF_test_T */
 
-#ifndef struct_tag_PLLLBDg14rHiR3qEakQweE
-#define struct_tag_PLLLBDg14rHiR3qEakQweE
+#ifndef struct_tag_Wd0eYcEyLXg48EJ7pCjsH
+#define struct_tag_Wd0eYcEyLXg48EJ7pCjsH
 
-struct tag_PLLLBDg14rHiR3qEakQweE
-{
-  int32_T nVarMax;
-  int32_T mNonlinIneq;
-  int32_T mNonlinEq;
-  int32_T mIneq;
-  int32_T mEq;
-  int32_T iNonIneq0;
-  int32_T iNonEq0;
-  real_T sqpFval;
-  real_T sqpFval_old;
-  emxArray_real_T_test3_T *xstarsqp;
-  emxArray_real_T_test3_T *xstarsqp_old;
-  emxArray_real_T_test3_T *grad;
-  emxArray_real_T_test3_T *grad_old;
-  int32_T FunctionEvaluations;
-  int32_T sqpIterations;
-  int32_T sqpExitFlag;
-  emxArray_real_T_test3_T *lambdasqp;
-  emxArray_real_T_test3_T *lambdaStopTest;
-  emxArray_real_T_test3_T *lambdaStopTestPrev;
-  real_T steplength;
-  emxArray_real_T_test3_T *delta_x;
-  emxArray_real_T_test3_T *socDirection;
-  emxArray_int32_T_test3_T *workingset_old;
-  emxArray_real_T_test3_T *gradLag;
-  emxArray_real_T_test3_T *delta_gradLag;
-  emxArray_real_T_test3_T *xstar;
-  real_T fstar;
-  real_T firstorderopt;
-  emxArray_real_T_test3_T *lambda;
-  int32_T state;
-  real_T maxConstr;
-  int32_T iterations;
-  emxArray_real_T_test3_T *searchDir;
-};
-
-#endif                                 /* struct_tag_PLLLBDg14rHiR3qEakQweE */
-
-#ifndef typedef_s_PLLLBDg14rHiR3qEakQweE_test_T
-#define typedef_s_PLLLBDg14rHiR3qEakQweE_test_T
-
-typedef struct tag_PLLLBDg14rHiR3qEakQweE s_PLLLBDg14rHiR3qEakQweE_test_T;
-
-#endif                             /* typedef_s_PLLLBDg14rHiR3qEakQweE_test_T */
-
-#ifndef struct_tag_IhzSggsSakhYrqTLyRPh4
-#define struct_tag_IhzSggsSakhYrqTLyRPh4
-
-struct tag_IhzSggsSakhYrqTLyRPh4
-{
-  real_T x0[3];
-  emxArray_real_T_test3_T *xref;
-  emxArray_real_T_test3_T *uref;
-  real_T N;
-};
-
-#endif                                 /* struct_tag_IhzSggsSakhYrqTLyRPh4 */
-
-#ifndef typedef_s_IhzSggsSakhYrqTLyRPh4_test3_T
-#define typedef_s_IhzSggsSakhYrqTLyRPh4_test3_T
-
-typedef struct tag_IhzSggsSakhYrqTLyRPh4 s_IhzSggsSakhYrqTLyRPh4_test3_T;
-
-#endif                             /* typedef_s_IhzSggsSakhYrqTLyRPh4_test3_T */
-
-#ifndef struct_tag_XUKrep5gYdlDqi2AZc1RdB
-#define struct_tag_XUKrep5gYdlDqi2AZc1RdB
-
-struct tag_XUKrep5gYdlDqi2AZc1RdB
-{
-  s_IhzSggsSakhYrqTLyRPh4_test3_T workspace;
-};
-
-#endif                                 /* struct_tag_XUKrep5gYdlDqi2AZc1RdB */
-
-#ifndef typedef_anonymous_function_test3_T
-#define typedef_anonymous_function_test3_T
-
-typedef struct tag_XUKrep5gYdlDqi2AZc1RdB anonymous_function_test3_T;
-
-#endif                                 /* typedef_anonymous_function_test3_T */
-
-#ifndef struct_tag_2PRYoCjgKB130RE12wMdUF
-#define struct_tag_2PRYoCjgKB130RE12wMdUF
-
-struct tag_2PRYoCjgKB130RE12wMdUF
-{
-  anonymous_function_test3_T b_value;
-};
-
-#endif                                 /* struct_tag_2PRYoCjgKB130RE12wMdUF */
-
-#ifndef typedef_coder_internal_stickyStruct_1_T
-#define typedef_coder_internal_stickyStruct_1_T
-
-typedef struct tag_2PRYoCjgKB130RE12wMdUF coder_internal_stickyStruct_1_T;
-
-#endif                             /* typedef_coder_internal_stickyStruct_1_T */
-
-#ifndef struct_tag_2oAYgGoyMhsoabPZFUiy8E
-#define struct_tag_2oAYgGoyMhsoabPZFUiy8E
-
-struct tag_2oAYgGoyMhsoabPZFUiy8E
-{
-  coder_internal_stickyStruct_1_T next;
-};
-
-#endif                                 /* struct_tag_2oAYgGoyMhsoabPZFUiy8E */
-
-#ifndef typedef_coder_internal_stickyStruct_2_T
-#define typedef_coder_internal_stickyStruct_2_T
-
-typedef struct tag_2oAYgGoyMhsoabPZFUiy8E coder_internal_stickyStruct_2_T;
-
-#endif                             /* typedef_coder_internal_stickyStruct_2_T */
-
-#ifndef struct_tag_5U3nDybsVBPjb0k8uQ7NdF
-#define struct_tag_5U3nDybsVBPjb0k8uQ7NdF
-
-struct tag_5U3nDybsVBPjb0k8uQ7NdF
-{
-  coder_internal_stickyStruct_2_T next;
-};
-
-#endif                                 /* struct_tag_5U3nDybsVBPjb0k8uQ7NdF */
-
-#ifndef typedef_coder_internal_stickyStruct_3_T
-#define typedef_coder_internal_stickyStruct_3_T
-
-typedef struct tag_5U3nDybsVBPjb0k8uQ7NdF coder_internal_stickyStruct_3_T;
-
-#endif                             /* typedef_coder_internal_stickyStruct_3_T */
-
-#ifndef struct_tag_HG2842ZCVp4kueYTIIzInC
-#define struct_tag_HG2842ZCVp4kueYTIIzInC
-
-struct tag_HG2842ZCVp4kueYTIIzInC
-{
-  coder_internal_stickyStruct_3_T next;
-};
-
-#endif                                 /* struct_tag_HG2842ZCVp4kueYTIIzInC */
-
-#ifndef typedef_coder_internal_stickyStruct_4_T
-#define typedef_coder_internal_stickyStruct_4_T
-
-typedef struct tag_HG2842ZCVp4kueYTIIzInC coder_internal_stickyStruct_4_T;
-
-#endif                             /* typedef_coder_internal_stickyStruct_4_T */
-
-#ifndef struct_tag_jWZ3oB09OJ2qYTeFi4WxdD
-#define struct_tag_jWZ3oB09OJ2qYTeFi4WxdD
-
-struct tag_jWZ3oB09OJ2qYTeFi4WxdD
-{
-  coder_internal_stickyStruct_4_T next;
-};
-
-#endif                                 /* struct_tag_jWZ3oB09OJ2qYTeFi4WxdD */
-
-#ifndef typedef_coder_internal_stickyStruct_5_T
-#define typedef_coder_internal_stickyStruct_5_T
-
-typedef struct tag_jWZ3oB09OJ2qYTeFi4WxdD coder_internal_stickyStruct_5_T;
-
-#endif                             /* typedef_coder_internal_stickyStruct_5_T */
-
-#ifndef struct_tag_xOfErVP6acFqpp8DX9YmxB
-#define struct_tag_xOfErVP6acFqpp8DX9YmxB
-
-struct tag_xOfErVP6acFqpp8DX9YmxB
-{
-  coder_internal_stickyStruct_5_T next;
-};
-
-#endif                                 /* struct_tag_xOfErVP6acFqpp8DX9YmxB */
-
-#ifndef typedef_coder_internal_stickyStruct_6_T
-#define typedef_coder_internal_stickyStruct_6_T
-
-typedef struct tag_xOfErVP6acFqpp8DX9YmxB coder_internal_stickyStruct_6_T;
-
-#endif                             /* typedef_coder_internal_stickyStruct_6_T */
-
-#ifndef struct_tag_xjuDI8Su4NLEknSQsKL8qF
-#define struct_tag_xjuDI8Su4NLEknSQsKL8qF
-
-struct tag_xjuDI8Su4NLEknSQsKL8qF
-{
-  coder_internal_stickyStruct_6_T next;
-};
-
-#endif                                 /* struct_tag_xjuDI8Su4NLEknSQsKL8qF */
-
-#ifndef typedef_coder_internal_stickyStruct_7_T
-#define typedef_coder_internal_stickyStruct_7_T
-
-typedef struct tag_xjuDI8Su4NLEknSQsKL8qF coder_internal_stickyStruct_7_T;
-
-#endif                             /* typedef_coder_internal_stickyStruct_7_T */
-
-#ifndef struct_tag_HsdThpNRV9t1UCax29PgKH
-#define struct_tag_HsdThpNRV9t1UCax29PgKH
-
-struct tag_HsdThpNRV9t1UCax29PgKH
-{
-  coder_internal_stickyStruct_7_T next;
-};
-
-#endif                                 /* struct_tag_HsdThpNRV9t1UCax29PgKH */
-
-#ifndef typedef_coder_internal_stickyStruct_8_T
-#define typedef_coder_internal_stickyStruct_8_T
-
-typedef struct tag_HsdThpNRV9t1UCax29PgKH coder_internal_stickyStruct_8_T;
-
-#endif                             /* typedef_coder_internal_stickyStruct_8_T */
-
-/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function' */
-#ifndef struct_tag_4tjeM4310gildRMRSRSpND
-#define struct_tag_4tjeM4310gildRMRSRSpND
-
-struct tag_4tjeM4310gildRMRSRSpND
-{
-  coder_internal_stickyStruct_8_T next;
-};
-
-#endif                                 /* struct_tag_4tjeM4310gildRMRSRSpND */
-
-#ifndef typedef_coder_internal_stickyStruct_9_T
-#define typedef_coder_internal_stickyStruct_9_T
-
-typedef struct tag_4tjeM4310gildRMRSRSpND coder_internal_stickyStruct_9_T;
-
-#endif                             /* typedef_coder_internal_stickyStruct_9_T */
-
-#ifndef struct_tag_ZbRibKlg6CoahmaZOjRYjD
-#define struct_tag_ZbRibKlg6CoahmaZOjRYjD
-
-struct tag_ZbRibKlg6CoahmaZOjRYjD
-{
-  anonymous_function_test3_T objfun;
-  real_T f_1;
-  real_T f_2;
-  int32_T nVar;
-  int32_T mIneq;
-  int32_T mEq;
-  int32_T numEvals;
-  boolean_T SpecifyObjectiveGradient;
-  boolean_T SpecifyConstraintGradient;
-  boolean_T isEmptyNonlcon;
-  emxArray_boolean_T_test3_T *hasLB;
-  emxArray_boolean_T_test3_T *hasUB;
-  boolean_T hasBounds;
-  int32_T FiniteDifferenceType;
-};
-
-#endif                                 /* struct_tag_ZbRibKlg6CoahmaZOjRYjD */
-
-#ifndef typedef_s_ZbRibKlg6CoahmaZOjRYjD_test_T
-#define typedef_s_ZbRibKlg6CoahmaZOjRYjD_test_T
-
-typedef struct tag_ZbRibKlg6CoahmaZOjRYjD s_ZbRibKlg6CoahmaZOjRYjD_test_T;
-
-#endif                             /* typedef_s_ZbRibKlg6CoahmaZOjRYjD_test_T */
-
-#ifndef struct_emxArray_real_T_0
-#define struct_emxArray_real_T_0
-
-struct emxArray_real_T_0
-{
-  int32_T size;
-};
-
-#endif                                 /* struct_emxArray_real_T_0 */
-
-#ifndef typedef_emxArray_real_T_0_test3_T
-#define typedef_emxArray_real_T_0_test3_T
-
-typedef struct emxArray_real_T_0 emxArray_real_T_0_test3_T;
-
-#endif                                 /* typedef_emxArray_real_T_0_test3_T */
-
-/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function' */
-#ifndef struct_tag_k8kXP0ntDjd4qxsrByEVbG
-#define struct_tag_k8kXP0ntDjd4qxsrByEVbG
-
-struct tag_k8kXP0ntDjd4qxsrByEVbG
+struct tag_Wd0eYcEyLXg48EJ7pCjsH
 {
   int32_T mConstr;
   int32_T mConstrOrig;
@@ -564,14 +332,17 @@ struct tag_k8kXP0ntDjd4qxsrByEVbG
   int32_T nVarOrig;
   int32_T nVarMax;
   int32_T ldA;
-  emxArray_real_T_0_test3_T Aineq;
-  emxArray_real_T_0_test3_T Aeq;
+  emxArray_real_T_test3_T *Aineq;
+  emxArray_real_T_test3_T *bineq;
+  emxArray_real_T_test3_T *Aeq;
+  emxArray_real_T_test3_T *beq;
   emxArray_real_T_test3_T *lb;
   emxArray_real_T_test3_T *ub;
   emxArray_int32_T_test3_T *indexLB;
   emxArray_int32_T_test3_T *indexUB;
   emxArray_int32_T_test3_T *indexFixed;
   int32_T mEqRemoved;
+  emxArray_int32_T_test3_T *indexEqRemoved;
   emxArray_real_T_test3_T *ATwset;
   emxArray_real_T_test3_T *bwset;
   int32_T nActiveConstr;
@@ -594,14 +365,278 @@ struct tag_k8kXP0ntDjd4qxsrByEVbG
   real_T SLACK0;
 };
 
-#endif                                 /* struct_tag_k8kXP0ntDjd4qxsrByEVbG */
+#endif                                 /* struct_tag_Wd0eYcEyLXg48EJ7pCjsH */
 
-#ifndef typedef_s_k8kXP0ntDjd4qxsrByEVbG_test_T
-#define typedef_s_k8kXP0ntDjd4qxsrByEVbG_test_T
+#ifndef typedef_s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+#define typedef_s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
 
-typedef struct tag_k8kXP0ntDjd4qxsrByEVbG s_k8kXP0ntDjd4qxsrByEVbG_test_T;
+typedef struct tag_Wd0eYcEyLXg48EJ7pCjsH s_Wd0eYcEyLXg48EJ7pCjsH_test3_T;
 
-#endif                             /* typedef_s_k8kXP0ntDjd4qxsrByEVbG_test_T */
+#endif                             /* typedef_s_Wd0eYcEyLXg48EJ7pCjsH_test3_T */
+
+#ifndef struct_tag_s6lIrH89xwD47fl4e1dZNiE
+#define struct_tag_s6lIrH89xwD47fl4e1dZNiE
+
+struct tag_s6lIrH89xwD47fl4e1dZNiE
+{
+  real_T x0[4];
+  real_T N;
+};
+
+#endif                                 /* struct_tag_s6lIrH89xwD47fl4e1dZNiE */
+
+#ifndef typedef_s6lIrH89xwD47fl4e1dZNiE_test3_T
+#define typedef_s6lIrH89xwD47fl4e1dZNiE_test3_T
+
+typedef struct tag_s6lIrH89xwD47fl4e1dZNiE s6lIrH89xwD47fl4e1dZNiE_test3_T;
+
+#endif                             /* typedef_s6lIrH89xwD47fl4e1dZNiE_test3_T */
+
+#ifndef struct_tag_lEH3FrOxyyhckl9xmvL2m
+#define struct_tag_lEH3FrOxyyhckl9xmvL2m
+
+struct tag_lEH3FrOxyyhckl9xmvL2m
+{
+  s6lIrH89xwD47fl4e1dZNiE_test3_T workspace;
+};
+
+#endif                                 /* struct_tag_lEH3FrOxyyhckl9xmvL2m */
+
+#ifndef typedef_anonymous_function_1_test3_T
+#define typedef_anonymous_function_1_test3_T
+
+typedef struct tag_lEH3FrOxyyhckl9xmvL2m anonymous_function_1_test3_T;
+
+#endif                                /* typedef_anonymous_function_1_test3_T */
+
+#ifndef struct_tag_orfxVcOir3wnnUkquctgqH
+#define struct_tag_orfxVcOir3wnnUkquctgqH
+
+struct tag_orfxVcOir3wnnUkquctgqH
+{
+  real_T x0[4];
+  emxArray_real_T_test3_T *xref;
+  emxArray_real_T_test3_T *uref;
+  real_T N;
+};
+
+#endif                                 /* struct_tag_orfxVcOir3wnnUkquctgqH */
+
+#ifndef typedef_s_orfxVcOir3wnnUkquctgqH_test_T
+#define typedef_s_orfxVcOir3wnnUkquctgqH_test_T
+
+typedef struct tag_orfxVcOir3wnnUkquctgqH s_orfxVcOir3wnnUkquctgqH_test_T;
+
+#endif                             /* typedef_s_orfxVcOir3wnnUkquctgqH_test_T */
+
+#ifndef struct_tag_CWi4mtoJwsMyTk4ETNHAZB
+#define struct_tag_CWi4mtoJwsMyTk4ETNHAZB
+
+struct tag_CWi4mtoJwsMyTk4ETNHAZB
+{
+  s_orfxVcOir3wnnUkquctgqH_test_T workspace;
+};
+
+#endif                                 /* struct_tag_CWi4mtoJwsMyTk4ETNHAZB */
+
+#ifndef typedef_anonymous_function_test3_T
+#define typedef_anonymous_function_test3_T
+
+typedef struct tag_CWi4mtoJwsMyTk4ETNHAZB anonymous_function_test3_T;
+
+#endif                                 /* typedef_anonymous_function_test3_T */
+
+#ifndef struct_tag_BHfKGlQpt8H50ITj9VlMhB
+#define struct_tag_BHfKGlQpt8H50ITj9VlMhB
+
+struct tag_BHfKGlQpt8H50ITj9VlMhB
+{
+  anonymous_function_test3_T b_value;
+};
+
+#endif                                 /* struct_tag_BHfKGlQpt8H50ITj9VlMhB */
+
+#ifndef typedef_coder_internal_stickyStruct_1_T
+#define typedef_coder_internal_stickyStruct_1_T
+
+typedef struct tag_BHfKGlQpt8H50ITj9VlMhB coder_internal_stickyStruct_1_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_1_T */
+
+#ifndef struct_tag_cw9k1JKm2MZVdh1iY6u60D
+#define struct_tag_cw9k1JKm2MZVdh1iY6u60D
+
+struct tag_cw9k1JKm2MZVdh1iY6u60D
+{
+  anonymous_function_1_test3_T b_value;
+  coder_internal_stickyStruct_1_T next;
+};
+
+#endif                                 /* struct_tag_cw9k1JKm2MZVdh1iY6u60D */
+
+#ifndef typedef_coder_internal_stickyStruct_2_T
+#define typedef_coder_internal_stickyStruct_2_T
+
+typedef struct tag_cw9k1JKm2MZVdh1iY6u60D coder_internal_stickyStruct_2_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_2_T */
+
+#ifndef struct_tag_fB9QmqhLXtg8IMsU3HQzM
+#define struct_tag_fB9QmqhLXtg8IMsU3HQzM
+
+struct tag_fB9QmqhLXtg8IMsU3HQzM
+{
+  coder_internal_stickyStruct_2_T next;
+};
+
+#endif                                 /* struct_tag_fB9QmqhLXtg8IMsU3HQzM */
+
+#ifndef typedef_coder_internal_stickyStruct_3_T
+#define typedef_coder_internal_stickyStruct_3_T
+
+typedef struct tag_fB9QmqhLXtg8IMsU3HQzM coder_internal_stickyStruct_3_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_3_T */
+
+#ifndef struct_tag_YFDgxaui1XnWiPQK197QnB
+#define struct_tag_YFDgxaui1XnWiPQK197QnB
+
+struct tag_YFDgxaui1XnWiPQK197QnB
+{
+  int32_T b_value;
+  coder_internal_stickyStruct_3_T next;
+};
+
+#endif                                 /* struct_tag_YFDgxaui1XnWiPQK197QnB */
+
+#ifndef typedef_coder_internal_stickyStruct_4_T
+#define typedef_coder_internal_stickyStruct_4_T
+
+typedef struct tag_YFDgxaui1XnWiPQK197QnB coder_internal_stickyStruct_4_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_4_T */
+
+#ifndef struct_tag_YX2QeST1vuADktRYFaRpiD
+#define struct_tag_YX2QeST1vuADktRYFaRpiD
+
+struct tag_YX2QeST1vuADktRYFaRpiD
+{
+  int32_T b_value;
+  coder_internal_stickyStruct_4_T next;
+};
+
+#endif                                 /* struct_tag_YX2QeST1vuADktRYFaRpiD */
+
+#ifndef typedef_coder_internal_stickyStruct_5_T
+#define typedef_coder_internal_stickyStruct_5_T
+
+typedef struct tag_YX2QeST1vuADktRYFaRpiD coder_internal_stickyStruct_5_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_5_T */
+
+#ifndef struct_tag_Db8n6VDfRNyDU7JCkMAAhE
+#define struct_tag_Db8n6VDfRNyDU7JCkMAAhE
+
+struct tag_Db8n6VDfRNyDU7JCkMAAhE
+{
+  coder_internal_stickyStruct_5_T next;
+};
+
+#endif                                 /* struct_tag_Db8n6VDfRNyDU7JCkMAAhE */
+
+#ifndef typedef_coder_internal_stickyStruct_6_T
+#define typedef_coder_internal_stickyStruct_6_T
+
+typedef struct tag_Db8n6VDfRNyDU7JCkMAAhE coder_internal_stickyStruct_6_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_6_T */
+
+#ifndef struct_tag_kSmV1GebGl5x0BXUFO9KVB
+#define struct_tag_kSmV1GebGl5x0BXUFO9KVB
+
+struct tag_kSmV1GebGl5x0BXUFO9KVB
+{
+  coder_internal_stickyStruct_6_T next;
+};
+
+#endif                                 /* struct_tag_kSmV1GebGl5x0BXUFO9KVB */
+
+#ifndef typedef_coder_internal_stickyStruct_7_T
+#define typedef_coder_internal_stickyStruct_7_T
+
+typedef struct tag_kSmV1GebGl5x0BXUFO9KVB coder_internal_stickyStruct_7_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_7_T */
+
+#ifndef struct_tag_5fZdirw4i8b3LXP1VaK9GE
+#define struct_tag_5fZdirw4i8b3LXP1VaK9GE
+
+struct tag_5fZdirw4i8b3LXP1VaK9GE
+{
+  coder_internal_stickyStruct_7_T next;
+};
+
+#endif                                 /* struct_tag_5fZdirw4i8b3LXP1VaK9GE */
+
+#ifndef typedef_coder_internal_stickyStruct_8_T
+#define typedef_coder_internal_stickyStruct_8_T
+
+typedef struct tag_5fZdirw4i8b3LXP1VaK9GE coder_internal_stickyStruct_8_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_8_T */
+
+/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function' */
+#ifndef struct_tag_ubRgV3XvjOC86U3gunYX7E
+#define struct_tag_ubRgV3XvjOC86U3gunYX7E
+
+struct tag_ubRgV3XvjOC86U3gunYX7E
+{
+  coder_internal_stickyStruct_8_T next;
+};
+
+#endif                                 /* struct_tag_ubRgV3XvjOC86U3gunYX7E */
+
+#ifndef typedef_coder_internal_stickyStruct_9_T
+#define typedef_coder_internal_stickyStruct_9_T
+
+typedef struct tag_ubRgV3XvjOC86U3gunYX7E coder_internal_stickyStruct_9_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_9_T */
+
+#ifndef struct_tag_tzdJIwhhx1jgWYIJOPrjUD
+#define struct_tag_tzdJIwhhx1jgWYIJOPrjUD
+
+struct tag_tzdJIwhhx1jgWYIJOPrjUD
+{
+  anonymous_function_test3_T objfun;
+  anonymous_function_1_test3_T nonlin;
+  real_T f_1;
+  emxArray_real_T_test3_T *cIneq_1;
+  emxArray_real_T_test3_T *cEq_1;
+  real_T f_2;
+  emxArray_real_T_test3_T *cIneq_2;
+  emxArray_real_T_test3_T *cEq_2;
+  int32_T nVar;
+  int32_T mIneq;
+  int32_T mEq;
+  int32_T numEvals;
+  boolean_T SpecifyObjectiveGradient;
+  boolean_T SpecifyConstraintGradient;
+  boolean_T isEmptyNonlcon;
+  emxArray_boolean_T_test3_T *hasLB;
+  emxArray_boolean_T_test3_T *hasUB;
+  boolean_T hasBounds;
+  int32_T FiniteDifferenceType;
+};
+
+#endif                                 /* struct_tag_tzdJIwhhx1jgWYIJOPrjUD */
+
+#ifndef typedef_s_tzdJIwhhx1jgWYIJOPrjUD_test_T
+#define typedef_s_tzdJIwhhx1jgWYIJOPrjUD_test_T
+
+typedef struct tag_tzdJIwhhx1jgWYIJOPrjUD s_tzdJIwhhx1jgWYIJOPrjUD_test_T;
+
+#endif                             /* typedef_s_tzdJIwhhx1jgWYIJOPrjUD_test_T */
 
 /* Parameters (default storage) */
 typedef struct P_test3_T_ P_test3_T;

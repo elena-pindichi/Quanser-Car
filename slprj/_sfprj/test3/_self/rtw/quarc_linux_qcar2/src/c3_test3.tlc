@@ -1,0 +1,110 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   13 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "sfEvent"\
+      Description  "ActiveChartEvent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "doneDoubleBufferReInit"\
+      Description  "DoubleBufferInitCheck"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_c3_test3"\
+      Description  "StateIsActive"\
+      SFName       "is_active_c3_test3"\
+      Path         "is_active_c3_test3"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "sample_sum"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "test3:257:72-82"\
+    }\
+    ChartData {\
+      Name         "sample_sum_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "test3:257:72-82"\
+    }\
+    ChartData {\
+      Name         "remaining_samples"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "test3:257:95-112"\
+    }\
+    ChartData {\
+      Name         "remaining_samples_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "test3:257:95-112"\
+    }\
+    ChartData {\
+      Name         "last_offset"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "test3:257:125-136"\
+    }\
+    ChartData {\
+      Name         "last_offset_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "test3:257:125-136"\
+    }\
+    ChartData {\
+      Name         "last_ready"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "test3:257:149-159"\
+    }\
+    ChartData {\
+      Name         "last_ready_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "test3:257:149-159"\
+    }\
+    ChartData {\
+      Name         "remaining_startup_samples"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "test3:257:172-197"\
+    }\
+    ChartData {\
+      Name         "remaining_startup_samples_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "test3:257:172-197"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction
