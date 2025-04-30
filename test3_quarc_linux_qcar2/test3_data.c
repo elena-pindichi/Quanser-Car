@@ -8,7 +8,7 @@
  *
  * Model version              : 15.50
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Wed Apr 30 10:33:29 2025
+ * C source code generated on : Wed Apr 30 11:05:57 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -680,7 +680,7 @@ P_test3_T test3_P = {
   /* Computed Parameter: UpNLDownFL2_CurrentSetting
    * Referenced by: '<Root>/Up - NL, Down - FL 2'
    */
-  0U,
+  1U,
 
   /* Computed Parameter: uArm0Disarm2_CurrentSetting
    * Referenced by: '<Root>/1 - Arm, 0 - Disarm2'
@@ -695,5 +695,5 @@ P_test3_T test3_P = {
   /* Computed Parameter: UpNLDownFL_CurrentSetting
    * Referenced by: '<Root>/Up - NL, Down - FL'
    */
-  0U
+  1U
 };
