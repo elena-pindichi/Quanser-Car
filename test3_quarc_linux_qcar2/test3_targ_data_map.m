@@ -164,83 +164,83 @@
                     section.data(19).logicalSrcIdx = 27;
                     section.data(19).dtTransOffset = 18;
 
-                    ;% test3_P.Constant4_Value
+                    ;% test3_P.Unwrap22_Modulus
                     section.data(20).logicalSrcIdx = 28;
                     section.data(20).dtTransOffset = 19;
 
-                    ;% test3_P.Integrator2_IC_j
+                    ;% test3_P.Constant8_Value
                     section.data(21).logicalSrcIdx = 29;
                     section.data(21).dtTransOffset = 20;
 
-                    ;% test3_P.Constant6_Value
+                    ;% test3_P.Integrator2_IC_l
                     section.data(22).logicalSrcIdx = 30;
                     section.data(22).dtTransOffset = 21;
 
-                    ;% test3_P.Integrator2_IC_d
+                    ;% test3_P.Constant1_Value
                     section.data(23).logicalSrcIdx = 31;
                     section.data(23).dtTransOffset = 22;
 
-                    ;% test3_P.Unwrap22_Modulus
+                    ;% test3_P.Constant10_Value_f
                     section.data(24).logicalSrcIdx = 32;
                     section.data(24).dtTransOffset = 23;
 
-                    ;% test3_P.Constant8_Value
+                    ;% test3_P.Constant11_Value
                     section.data(25).logicalSrcIdx = 33;
                     section.data(25).dtTransOffset = 24;
 
-                    ;% test3_P.Integrator2_IC_l
+                    ;% test3_P.Constant12_Value
                     section.data(26).logicalSrcIdx = 34;
                     section.data(26).dtTransOffset = 25;
 
-                    ;% test3_P.Constant1_Value
+                    ;% test3_P.Constant3_Value
                     section.data(27).logicalSrcIdx = 35;
                     section.data(27).dtTransOffset = 26;
 
-                    ;% test3_P.Constant10_Value_f
+                    ;% test3_P.Constant4_Value
                     section.data(28).logicalSrcIdx = 36;
                     section.data(28).dtTransOffset = 27;
 
-                    ;% test3_P.Constant11_Value
+                    ;% test3_P.Constant5_Value
                     section.data(29).logicalSrcIdx = 37;
                     section.data(29).dtTransOffset = 28;
 
-                    ;% test3_P.Constant12_Value
+                    ;% test3_P.Constant6_Value
                     section.data(30).logicalSrcIdx = 38;
                     section.data(30).dtTransOffset = 29;
 
-                    ;% test3_P.Constant3_Value
+                    ;% test3_P.Constant7_Value
                     section.data(31).logicalSrcIdx = 39;
                     section.data(31).dtTransOffset = 30;
 
-                    ;% test3_P.Constant5_Value
+                    ;% test3_P.Constant9_Value_f
                     section.data(32).logicalSrcIdx = 40;
                     section.data(32).dtTransOffset = 31;
 
-                    ;% test3_P.Constant7_Value
+                    ;% test3_P.Integrator_IC
                     section.data(33).logicalSrcIdx = 41;
                     section.data(33).dtTransOffset = 32;
 
-                    ;% test3_P.Constant9_Value_f
+                    ;% test3_P.Constant_Value_h
                     section.data(34).logicalSrcIdx = 42;
                     section.data(34).dtTransOffset = 33;
 
-                    ;% test3_P.Integrator_IC
+                    ;% test3_P.Unwrap224_Modulus
                     section.data(35).logicalSrcIdx = 43;
                     section.data(35).dtTransOffset = 34;
 
-                    ;% test3_P.Constant_Value_h
+                    ;% test3_P.Constant_Value_l
                     section.data(36).logicalSrcIdx = 44;
                     section.data(36).dtTransOffset = 35;
 
-                    ;% test3_P.Unwrap224_Modulus
+                    ;% test3_P.Integrator2_IC_j
                     section.data(37).logicalSrcIdx = 45;
                     section.data(37).dtTransOffset = 36;
 
-                    ;% test3_P.Constant_Value_l
+                    ;% test3_P.Constant_Value_i
                     section.data(38).logicalSrcIdx = 46;
                     section.data(38).dtTransOffset = 37;
 
-                    ;% test3_P.Constant_Value_i
+                    ;% test3_P.Integrator2_IC_d
                     section.data(39).logicalSrcIdx = 47;
                     section.data(39).dtTransOffset = 38;
 
@@ -601,16 +601,24 @@
             paramMap.sections(7) = section;
             clear section
 
-            section.nData     = 2;
-            section.data(2)  = dumData; %prealloc
+            section.nData     = 4;
+            section.data(4)  = dumData; %prealloc
 
-                    ;% test3_P.uArm0Disarm2_CurrentSetting
+                    ;% test3_P.UpNLDownFL2_CurrentSetting
                     section.data(1).logicalSrcIdx = 131;
                     section.data(1).dtTransOffset = 0;
 
-                    ;% test3_P.XYFigure_Mode
+                    ;% test3_P.uArm0Disarm2_CurrentSetting
                     section.data(2).logicalSrcIdx = 132;
                     section.data(2).dtTransOffset = 1;
+
+                    ;% test3_P.XYFigure_Mode
+                    section.data(3).logicalSrcIdx = 133;
+                    section.data(3).dtTransOffset = 2;
+
+                    ;% test3_P.UpNLDownFL_CurrentSetting
+                    section.data(4).logicalSrcIdx = 134;
+                    section.data(4).dtTransOffset = 3;
 
             nTotData = nTotData + section.nData;
             paramMap.sections(8) = section;
@@ -657,66 +665,66 @@
         ;%
         ;% Auto data (test3_B)
         ;%
-            section.nData     = 38;
-            section.data(38)  = dumData; %prealloc
+            section.nData     = 37;
+            section.data(37)  = dumData; %prealloc
 
                     ;% test3_B.Product1
                     section.data(1).logicalSrcIdx = 0;
                     section.data(1).dtTransOffset = 0;
 
-                    ;% test3_B.Product1_i
+                    ;% test3_B.analogpower
                     section.data(2).logicalSrcIdx = 1;
                     section.data(2).dtTransOffset = 1;
 
-                    ;% test3_B.Product1_n
+                    ;% test3_B.motorencoder
                     section.data(3).logicalSrcIdx = 2;
                     section.data(3).dtTransOffset = 2;
 
-                    ;% test3_B.analogpower
+                    ;% test3_B.HILRead_o3
                     section.data(4).logicalSrcIdx = 3;
                     section.data(4).dtTransOffset = 3;
 
-                    ;% test3_B.motorencoder
-                    section.data(5).logicalSrcIdx = 4;
-                    section.data(5).dtTransOffset = 4;
-
-                    ;% test3_B.HILRead_o3
-                    section.data(6).logicalSrcIdx = 5;
-                    section.data(6).dtTransOffset = 5;
-
                     ;% test3_B.Integrator1
+                    section.data(5).logicalSrcIdx = 4;
+                    section.data(5).dtTransOffset = 7;
+
+                    ;% test3_B.Unwrap22
+                    section.data(6).logicalSrcIdx = 5;
+                    section.data(6).dtTransOffset = 8;
+
+                    ;% test3_B.Integrator1_g
                     section.data(7).logicalSrcIdx = 6;
                     section.data(7).dtTransOffset = 9;
 
-                    ;% test3_B.Unwrap22
+                    ;% test3_B.Product1_p
                     section.data(8).logicalSrcIdx = 7;
                     section.data(8).dtTransOffset = 10;
 
-                    ;% test3_B.Integrator1_g
+                    ;% test3_B.Integrator
                     section.data(9).logicalSrcIdx = 8;
                     section.data(9).dtTransOffset = 11;
 
-                    ;% test3_B.Product1_p
+                    ;% test3_B.Unwrap224
                     section.data(10).logicalSrcIdx = 9;
                     section.data(10).dtTransOffset = 12;
 
-                    ;% test3_B.Integrator
+                    ;% test3_B.Product
                     section.data(11).logicalSrcIdx = 10;
                     section.data(11).dtTransOffset = 13;
 
-                    ;% test3_B.Unwrap224
+                    ;% test3_B.Product_d
                     section.data(12).logicalSrcIdx = 11;
                     section.data(12).dtTransOffset = 14;
 
-                    ;% test3_B.Product
+                    ;% test3_B.Product1_i
                     section.data(13).logicalSrcIdx = 12;
                     section.data(13).dtTransOffset = 15;
 
-                    ;% test3_B.Product_d
+                    ;% test3_B.Product_m
                     section.data(14).logicalSrcIdx = 13;
                     section.data(14).dtTransOffset = 16;
 
-                    ;% test3_B.Product_m
+                    ;% test3_B.Product1_n
                     section.data(15).logicalSrcIdx = 14;
                     section.data(15).dtTransOffset = 17;
 
@@ -756,35 +764,35 @@
                     section.data(24).logicalSrcIdx = 23;
                     section.data(24).dtTransOffset = 26;
 
-                    ;% test3_B.Clock
+                    ;% test3_B.switch_l
                     section.data(25).logicalSrcIdx = 24;
                     section.data(25).dtTransOffset = 27;
 
-                    ;% test3_B.switch_l
+                    ;% test3_B.desired
                     section.data(26).logicalSrcIdx = 25;
                     section.data(26).dtTransOffset = 28;
 
-                    ;% test3_B.desired
+                    ;% test3_B.measured
                     section.data(27).logicalSrcIdx = 26;
                     section.data(27).dtTransOffset = 29;
 
-                    ;% test3_B.measured
+                    ;% test3_B.commandsaturation
                     section.data(28).logicalSrcIdx = 27;
                     section.data(28).dtTransOffset = 30;
 
-                    ;% test3_B.commandsaturation
+                    ;% test3_B.SteeringBias
                     section.data(29).logicalSrcIdx = 28;
                     section.data(29).dtTransOffset = 31;
 
-                    ;% test3_B.SteeringBias
+                    ;% test3_B.Product_f
                     section.data(30).logicalSrcIdx = 29;
                     section.data(30).dtTransOffset = 32;
 
-                    ;% test3_B.Product_f
+                    ;% test3_B.Product1_ij
                     section.data(31).logicalSrcIdx = 30;
                     section.data(31).dtTransOffset = 33;
 
-                    ;% test3_B.Product1_ij
+                    ;% test3_B.switch_o
                     section.data(32).logicalSrcIdx = 31;
                     section.data(32).dtTransOffset = 34;
 
@@ -808,10 +816,6 @@
                     section.data(37).logicalSrcIdx = 36;
                     section.data(37).dtTransOffset = 39;
 
-                    ;% test3_B.omeg
-                    section.data(38).logicalSrcIdx = 38;
-                    section.data(38).dtTransOffset = 40;
-
             nTotData = nTotData + section.nData;
             sigMap.sections(1) = section;
             clear section
@@ -820,7 +824,7 @@
             section.data(1)  = dumData; %prealloc
 
                     ;% test3_B.Compare
-                    section.data(1).logicalSrcIdx = 39;
+                    section.data(1).logicalSrcIdx = 41;
                     section.data(1).dtTransOffset = 0;
 
             nTotData = nTotData + section.nData;
@@ -950,8 +954,8 @@
             dworkMap.sections(2) = section;
             clear section
 
-            section.nData     = 8;
-            section.data(8)  = dumData; %prealloc
+            section.nData     = 7;
+            section.data(7)  = dumData; %prealloc
 
                     ;% test3_DW.HILRead_PWORK
                     section.data(1).logicalSrcIdx = 17;
@@ -961,68 +965,68 @@
                     section.data(2).logicalSrcIdx = 18;
                     section.data(2).dtTransOffset = 1;
 
-                    ;% test3_DW.Scope_PWORK.LoggedData
+                    ;% test3_DW.V_PWORK.LoggedData
                     section.data(3).logicalSrcIdx = 19;
                     section.data(3).dtTransOffset = 2;
 
-                    ;% test3_DW.Scope4_PWORK.LoggedData
+                    ;% test3_DW.Xpos_PWORK.LoggedData
                     section.data(4).logicalSrcIdx = 20;
                     section.data(4).dtTransOffset = 3;
 
-                    ;% test3_DW.V_PWORK.LoggedData
+                    ;% test3_DW.Yaw_PWORK.LoggedData
                     section.data(5).logicalSrcIdx = 21;
                     section.data(5).dtTransOffset = 4;
 
-                    ;% test3_DW.Xpos_PWORK.LoggedData
+                    ;% test3_DW.Ypos_PWORK.LoggedData
                     section.data(6).logicalSrcIdx = 22;
                     section.data(6).dtTransOffset = 5;
 
-                    ;% test3_DW.Ypos_PWORK.LoggedData
+                    ;% test3_DW.Scope_PWORK.LoggedData
                     section.data(7).logicalSrcIdx = 23;
                     section.data(7).dtTransOffset = 6;
-
-                    ;% test3_DW.Scope_PWORK_m.LoggedData
-                    section.data(8).logicalSrcIdx = 24;
-                    section.data(8).dtTransOffset = 7;
 
             nTotData = nTotData + section.nData;
             dworkMap.sections(3) = section;
             clear section
 
-            section.nData     = 8;
-            section.data(8)  = dumData; %prealloc
+            section.nData     = 9;
+            section.data(9)  = dumData; %prealloc
 
                     ;% test3_DW.HILInitialize_DOStates
-                    section.data(1).logicalSrcIdx = 25;
+                    section.data(1).logicalSrcIdx = 24;
                     section.data(1).dtTransOffset = 0;
 
                     ;% test3_DW.HILInitialize_QuadratureModes
-                    section.data(2).logicalSrcIdx = 26;
+                    section.data(2).logicalSrcIdx = 25;
                     section.data(2).dtTransOffset = 16;
 
                     ;% test3_DW.HILInitialize_InitialEICounts
-                    section.data(3).logicalSrcIdx = 27;
+                    section.data(3).logicalSrcIdx = 26;
                     section.data(3).dtTransOffset = 19;
 
                     ;% test3_DW.HILInitialize_POModeValues
-                    section.data(4).logicalSrcIdx = 28;
+                    section.data(4).logicalSrcIdx = 27;
                     section.data(4).dtTransOffset = 22;
 
                     ;% test3_DW.HILInitialize_POAlignValues
-                    section.data(5).logicalSrcIdx = 29;
+                    section.data(5).logicalSrcIdx = 28;
                     section.data(5).dtTransOffset = 24;
 
                     ;% test3_DW.HILInitialize_POPolarityVals
-                    section.data(6).logicalSrcIdx = 30;
+                    section.data(6).logicalSrcIdx = 29;
                     section.data(6).dtTransOffset = 26;
 
                     ;% test3_DW.HILRead_EncoderBuffer
-                    section.data(7).logicalSrcIdx = 31;
+                    section.data(7).logicalSrcIdx = 30;
                     section.data(7).dtTransOffset = 28;
 
                     ;% test3_DW.sfEvent
-                    section.data(8).logicalSrcIdx = 32;
+                    section.data(8).logicalSrcIdx = 31;
                     section.data(8).dtTransOffset = 29;
+
+                    ;% test3_DW.sfEvent_g
+                    section.data(9).logicalSrcIdx = 32;
+                    section.data(9).dtTransOffset = 30;
 
             nTotData = nTotData + section.nData;
             dworkMap.sections(4) = section;
@@ -1078,47 +1082,55 @@
             dworkMap.sections(6) = section;
             clear section
 
-            section.nData     = 1;
-            section.data(1)  = dumData; %prealloc
+            section.nData     = 2;
+            section.data(2)  = dumData; %prealloc
 
-                    ;% test3_DW.is_active_c2_test3
+                    ;% test3_DW.is_active_c4_test3
                     section.data(1).logicalSrcIdx = 42;
                     section.data(1).dtTransOffset = 0;
+
+                    ;% test3_DW.is_active_c2_test3
+                    section.data(2).logicalSrcIdx = 43;
+                    section.data(2).dtTransOffset = 1;
 
             nTotData = nTotData + section.nData;
             dworkMap.sections(7) = section;
             clear section
 
-            section.nData     = 7;
-            section.data(7)  = dumData; %prealloc
+            section.nData     = 8;
+            section.data(8)  = dumData; %prealloc
 
                     ;% test3_DW.HILInitialize_DOBits
-                    section.data(1).logicalSrcIdx = 43;
+                    section.data(1).logicalSrcIdx = 44;
                     section.data(1).dtTransOffset = 0;
 
                     ;% test3_DW.Unwrap22_FirstSample
-                    section.data(2).logicalSrcIdx = 44;
+                    section.data(2).logicalSrcIdx = 45;
                     section.data(2).dtTransOffset = 16;
 
                     ;% test3_DW.Unwrap224_FirstSample
-                    section.data(3).logicalSrcIdx = 45;
+                    section.data(3).logicalSrcIdx = 46;
                     section.data(3).dtTransOffset = 17;
 
                     ;% test3_DW.Unwrap21_FirstSample
-                    section.data(4).logicalSrcIdx = 46;
+                    section.data(4).logicalSrcIdx = 47;
                     section.data(4).dtTransOffset = 18;
 
                     ;% test3_DW.XYFigure_IsFull
-                    section.data(5).logicalSrcIdx = 47;
+                    section.data(5).logicalSrcIdx = 48;
                     section.data(5).dtTransOffset = 19;
 
                     ;% test3_DW.Unwrap21_FirstSample_o
-                    section.data(6).logicalSrcIdx = 48;
+                    section.data(6).logicalSrcIdx = 49;
                     section.data(6).dtTransOffset = 20;
 
                     ;% test3_DW.doneDoubleBufferReInit
-                    section.data(7).logicalSrcIdx = 49;
+                    section.data(7).logicalSrcIdx = 50;
                     section.data(7).dtTransOffset = 21;
+
+                    ;% test3_DW.doneDoubleBufferReInit_g
+                    section.data(8).logicalSrcIdx = 51;
+                    section.data(8).dtTransOffset = 22;
 
             nTotData = nTotData + section.nData;
             dworkMap.sections(8) = section;
@@ -1150,8 +1162,8 @@
     ;%
 
 
-    targMap.checksum0 = 4221162907;
-    targMap.checksum1 = 3802657217;
-    targMap.checksum2 = 1709486394;
-    targMap.checksum3 = 3752576086;
+    targMap.checksum0 = 865445979;
+    targMap.checksum1 = 25977859;
+    targMap.checksum2 = 1689608760;
+    targMap.checksum3 = 3007364481;
 

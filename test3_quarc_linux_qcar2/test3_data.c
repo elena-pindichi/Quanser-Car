@@ -6,9 +6,9 @@
  *
  * Code generation for model "test3".
  *
- * Model version              : 15.48
+ * Model version              : 15.50
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Tue Apr 29 15:35:05 2025
+ * C source code generated on : Wed Apr 30 10:33:29 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -47,22 +47,22 @@ P_test3_T test3_P = {
   100,
 
   /* Mask Parameter: HILRead_analog_channels
-   * Referenced by: '<S7>/HIL Read'
+   * Referenced by: '<S8>/HIL Read'
    */
   4U,
 
   /* Mask Parameter: HILRead_encoder_channels
-   * Referenced by: '<S7>/HIL Read'
+   * Referenced by: '<S8>/HIL Read'
    */
   0U,
 
   /* Mask Parameter: HILRead_other_channels
-   * Referenced by: '<S7>/HIL Read'
+   * Referenced by: '<S8>/HIL Read'
    */
   { 14000U, 4000U, 4001U, 3002U },
 
   /* Mask Parameter: HILWrite_other_channels
-   * Referenced by: '<S7>/HIL Write'
+   * Referenced by: '<S8>/HIL Write'
    */
   { 11000U, 1000U },
 
@@ -77,209 +77,199 @@ P_test3_T test3_P = {
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S17>/Constant'
+   * Referenced by: '<S18>/Constant'
    */
   0.0,
 
   /* Expression: set_other_outputs_at_terminate
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   1.0,
 
   /* Expression: set_other_outputs_at_switch_out
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0.0,
 
   /* Expression: set_other_outputs_at_start
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   1.0,
 
   /* Expression: set_other_outputs_at_switch_in
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0.0,
 
   /* Expression: final_pwm_outputs
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0.0,
 
   /* Expression: final_other_outputs
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0.0,
 
   /* Expression: analog_input_maximums
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   3.3,
 
   /* Expression: analog_input_minimums
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0.0,
 
   /* Expression: encoder_filter_frequency
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   1.0E+8,
 
   /* Expression: pwm_frequency
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   43945.3125,
 
   /* Expression: initial_pwm_outputs
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0.0,
 
   /* Expression: watchdog_pwm_outputs
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0.0,
 
   /* Expression: initial_other_outputs
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0.0,
 
   /* Expression: watchdog_other_outputs
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0.0,
 
   /* Expression: 25
-   * Referenced by: '<S7>/Constant2'
+   * Referenced by: '<S8>/Constant2'
    */
   25.0,
-
-  /* Expression: 0
-   * Referenced by: '<S9>/Integrator2'
-   */
-  0.0,
-
-  /* Expression: 1
-   * Referenced by: '<S7>/Constant4'
-   */
-  1.0,
 
   /* Expression: 0
    * Referenced by: '<S10>/Integrator2'
    */
   0.0,
 
-  /* Expression: 1
-   * Referenced by: '<S7>/Constant6'
-   */
-  1.0,
-
-  /* Expression: 0
-   * Referenced by: '<S11>/Integrator2'
-   */
-  0.0,
-
   /* Expression: modulus
-   * Referenced by: '<S7>/Unwrap 2^2'
+   * Referenced by: '<S8>/Unwrap 2^2'
    */
   1.6777215E+7,
 
   /* Expression: 25
-   * Referenced by: '<S7>/Constant8'
+   * Referenced by: '<S8>/Constant8'
    */
   25.0,
 
   /* Expression: 0
-   * Referenced by: '<S12>/Integrator2'
+   * Referenced by: '<S13>/Integrator2'
    */
   0.0,
 
   /* Expression: 1
-   * Referenced by: '<S7>/Constant1'
+   * Referenced by: '<S8>/Constant1'
    */
   1.0,
 
   /* Expression: 100
-   * Referenced by: '<S7>/Constant10'
+   * Referenced by: '<S8>/Constant10'
    */
   100.0,
 
   /* Expression: 1
-   * Referenced by: '<S7>/Constant11'
+   * Referenced by: '<S8>/Constant11'
    */
   1.0,
 
   /* Expression: 30
-   * Referenced by: '<S7>/Constant12'
+   * Referenced by: '<S8>/Constant12'
    */
   30.0,
 
   /* Expression: 1
-   * Referenced by: '<S7>/Constant3'
+   * Referenced by: '<S8>/Constant3'
    */
   1.0,
 
   /* Expression: 1
-   * Referenced by: '<S7>/Constant5'
+   * Referenced by: '<S8>/Constant4'
    */
   1.0,
 
   /* Expression: 1
-   * Referenced by: '<S7>/Constant7'
+   * Referenced by: '<S8>/Constant5'
    */
   1.0,
 
   /* Expression: 1
-   * Referenced by: '<S7>/Constant9'
+   * Referenced by: '<S8>/Constant6'
+   */
+  1.0,
+
+  /* Expression: 1
+   * Referenced by: '<S8>/Constant7'
+   */
+  1.0,
+
+  /* Expression: 1
+   * Referenced by: '<S8>/Constant9'
    */
   1.0,
 
   /* Expression: 0
-   * Referenced by: '<S7>/Integrator'
+   * Referenced by: '<S8>/Integrator'
    */
   0.0,
-
-  /* Expression: 2
-   * Referenced by: '<S9>/Constant'
-   */
-  2.0,
-
-  /* Expression: modulus
-   * Referenced by: '<S7>/Unwrap 2^24'
-   */
-  1.6777215E+7,
 
   /* Expression: 2
    * Referenced by: '<S10>/Constant'
    */
   2.0,
 
+  /* Expression: modulus
+   * Referenced by: '<S8>/Unwrap 2^24'
+   */
+  1.6777215E+7,
+
   /* Expression: 2
    * Referenced by: '<S11>/Constant'
    */
   2.0,
+
+  /* Expression: 0
+   * Referenced by: '<S11>/Integrator2'
+   */
+  0.0,
 
   /* Expression: 2
    * Referenced by: '<S12>/Constant'
    */
   2.0,
 
-  /* Expression: modulus
-   * Referenced by: '<S7>/Unwrap 2^1'
+  /* Expression: 0
+   * Referenced by: '<S12>/Integrator2'
    */
-  1.6777215E+7,
+  0.0,
 
   /* Expression: 2
    * Referenced by: '<S13>/Constant'
    */
   2.0,
 
-  /* Expression: 0
-   * Referenced by: '<S13>/Integrator2'
+  /* Expression: modulus
+   * Referenced by: '<S8>/Unwrap 2^1'
    */
-  0.0,
+  1.6777215E+7,
 
   /* Expression: 2
    * Referenced by: '<S14>/Constant'
@@ -291,33 +281,43 @@ P_test3_T test3_P = {
    */
   0.0,
 
+  /* Expression: 2
+   * Referenced by: '<S15>/Constant'
+   */
+  2.0,
+
+  /* Expression: 0
+   * Referenced by: '<S15>/Integrator2'
+   */
+  0.0,
+
   /* Expression: 1/(4*720)
-   * Referenced by: '<S15>/Gain1'
+   * Referenced by: '<S16>/Gain1'
    */
   0.00034722222222222224,
 
   /* Expression: (13*19)/(70*37)
-   * Referenced by: '<S15>/Gain4'
+   * Referenced by: '<S16>/Gain4'
    */
   0.095366795366795362,
 
   /* Expression: 2*pi
-   * Referenced by: '<S15>/Gain2'
+   * Referenced by: '<S16>/Gain2'
    */
   6.2831853071795862,
 
   /* Expression: 0.033
-   * Referenced by: '<S15>/Gain3'
+   * Referenced by: '<S16>/Gain3'
    */
   0.033,
 
   /* Expression: 0
-   * Referenced by: '<S2>/Integrator5'
+   * Referenced by: '<S3>/Integrator5'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S3>/Integrator6'
+   * Referenced by: '<S4>/Integrator6'
    */
   0.0,
 
@@ -327,72 +327,72 @@ P_test3_T test3_P = {
   0.0,
 
   /* Expression: 0.8
-   * Referenced by: '<S8>/command saturation'
+   * Referenced by: '<S9>/command saturation'
    */
   0.8,
 
   /* Expression: -0.8
-   * Referenced by: '<S8>/command saturation'
+   * Referenced by: '<S9>/command saturation'
    */
   -0.8,
 
   /* Expression: 0.1
-   * Referenced by: '<S8>/Kff  (% // m//s)'
+   * Referenced by: '<S9>/Kff  (% // m//s)'
    */
   0.1,
 
   /* Expression: 0.1
-   * Referenced by: '<S8>/Kp (% // m//s)'
+   * Referenced by: '<S9>/Kp (% // m//s)'
    */
   0.1,
 
   /* Expression: 0
-   * Referenced by: '<S8>/Integrator1'
+   * Referenced by: '<S9>/Integrator1'
    */
   0.0,
 
   /* Expression: 0.4
-   * Referenced by: '<S8>/Integrator1'
+   * Referenced by: '<S9>/Integrator1'
    */
   0.4,
 
   /* Expression: -0.4
-   * Referenced by: '<S8>/Integrator1'
+   * Referenced by: '<S9>/Integrator1'
    */
   -0.4,
 
   /* Expression: 0.5
-   * Referenced by: '<S8>/command saturation1'
+   * Referenced by: '<S9>/command saturation1'
    */
   0.5,
 
   /* Expression: -0.5
-   * Referenced by: '<S8>/command saturation1'
+   * Referenced by: '<S9>/command saturation1'
    */
   -0.5,
 
   /* Expression: +1
-   * Referenced by: '<S7>/direction convention'
+   * Referenced by: '<S8>/direction convention'
    */
   1.0,
 
   /* Expression: 0.25
-   * Referenced by: '<S7>/command saturation'
+   * Referenced by: '<S8>/command saturation'
    */
   0.25,
 
   /* Expression: -0.25
-   * Referenced by: '<S7>/command saturation'
+   * Referenced by: '<S8>/command saturation'
    */
   -0.25,
 
   /* Expression: +1
-   * Referenced by: '<S7>/Gain'
+   * Referenced by: '<S8>/Gain'
    */
   1.0,
 
   /* Expression: 0.018
-   * Referenced by: '<S7>/Steering Bias'
+   * Referenced by: '<S8>/Steering Bias'
    */
   0.018,
 
@@ -407,7 +407,7 @@ P_test3_T test3_P = {
   25.0,
 
   /* Expression: 2
-   * Referenced by: '<S6>/Constant'
+   * Referenced by: '<S7>/Constant'
    */
   2.0,
 
@@ -417,265 +417,270 @@ P_test3_T test3_P = {
   1.6777215E+7,
 
   /* Expression: 0
-   * Referenced by: '<S6>/Integrator2'
+   * Referenced by: '<S7>/Integrator2'
    */
   0.0,
 
   /* Expression: 0.1
-   * Referenced by: '<S8>/Ki (% // m)  '
+   * Referenced by: '<S9>/Ki (% // m)  '
    */
   0.1,
 
   /* Computed Parameter: HILInitialize_DOWatchdog
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0,
 
   /* Computed Parameter: HILInitialize_EIInitial
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0,
 
   /* Computed Parameter: HILInitialize_POModes
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0,
 
   /* Computed Parameter: HILInitialize_POConfiguration
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0,
 
   /* Computed Parameter: HILInitialize_POAlignment
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   0,
 
   /* Computed Parameter: HILInitialize_POPolarity
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   1,
 
   /* Computed Parameter: HILInitialize_AIChannels
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   { 0U, 1U, 2U, 3U, 4U },
 
   /* Computed Parameter: HILInitialize_DIChannels
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   { 0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 10U, 11U, 12U, 13U, 14U },
 
   /* Computed Parameter: HILInitialize_DOChannels
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   { 11U, 12U, 13U, 14U, 15U, 16U, 17U, 18U, 19U, 20U, 21U, 22U, 23U, 24U, 25U,
     26U },
 
   /* Computed Parameter: HILInitialize_EIChannels
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   { 0U, 1U, 2U },
 
   /* Computed Parameter: HILInitialize_EIQuadrature
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   4U,
 
   /* Computed Parameter: HILInitialize_POChannels
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   { 0U, 1U },
 
   /* Computed Parameter: HILInitialize_OOChannels
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   { 1000U, 11000U },
 
   /* Computed Parameter: HILInitialize_Active
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   true,
 
   /* Computed Parameter: HILInitialize_AOTerminate
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_AOExit
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_DOTerminate
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   true,
 
   /* Computed Parameter: HILInitialize_DOExit
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_POTerminate
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   true,
 
   /* Computed Parameter: HILInitialize_POExit
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_CKPStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_CKPEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_CKStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_CKEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_AIPStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_AIPEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_AOPStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_AOPEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_AOStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_AOEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_AOReset
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_DOPStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_DOPEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_DOStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   true,
 
   /* Computed Parameter: HILInitialize_DOEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_DOReset
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_EIPStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   true,
 
   /* Computed Parameter: HILInitialize_EIPEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_EIStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   true,
 
   /* Computed Parameter: HILInitialize_EIEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_POPStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   true,
 
   /* Computed Parameter: HILInitialize_POPEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_POStart
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   true,
 
   /* Computed Parameter: HILInitialize_POEnter
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_POReset
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_OOReset
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_DOFinal
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILInitialize_DOInitial
-   * Referenced by: '<S7>/HIL Initialize'
+   * Referenced by: '<S8>/HIL Initialize'
    */
   false,
 
   /* Computed Parameter: HILRead_Active
-   * Referenced by: '<S7>/HIL Read'
+   * Referenced by: '<S8>/HIL Read'
    */
   true,
 
   /* Computed Parameter: HILWrite_Active
-   * Referenced by: '<S7>/HIL Write'
+   * Referenced by: '<S8>/HIL Write'
    */
   false,
+
+  /* Computed Parameter: UpNLDownFL2_CurrentSetting
+   * Referenced by: '<Root>/Up - NL, Down - FL 2'
+   */
+  0U,
 
   /* Computed Parameter: uArm0Disarm2_CurrentSetting
    * Referenced by: '<Root>/1 - Arm, 0 - Disarm2'
@@ -685,5 +690,10 @@ P_test3_T test3_P = {
   /* Computed Parameter: XYFigure_Mode
    * Referenced by: '<Root>/XY Figure'
    */
-  1U
+  1U,
+
+  /* Computed Parameter: UpNLDownFL_CurrentSetting
+   * Referenced by: '<Root>/Up - NL, Down - FL'
+   */
+  0U
 };

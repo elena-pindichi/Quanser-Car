@@ -6,9 +6,9 @@
  *
  * Code generation for model "test3".
  *
- * Model version              : 15.48
+ * Model version              : 15.50
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Tue Apr 29 15:35:05 2025
+ * C source code generated on : Wed Apr 30 10:33:29 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -77,7 +77,7 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&test3_B.Product1), 0, 0, 41 },
+  { (char_T *)(&test3_B.Product1), 0, 0, 40 },
 
   { (char_T *)(&test3_B.Compare), 8, 0, 1 }
   ,
@@ -86,17 +86,17 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&test3_DW.HILInitialize_Card), 17, 0, 1 },
 
-  { (char_T *)(&test3_DW.HILRead_PWORK), 11, 0, 9 },
+  { (char_T *)(&test3_DW.HILRead_PWORK), 11, 0, 8 },
 
-  { (char_T *)(&test3_DW.HILInitialize_DOStates[0]), 6, 0, 30 },
+  { (char_T *)(&test3_DW.HILInitialize_DOStates[0]), 6, 0, 31 },
 
   { (char_T *)(&test3_DW.HILInitialize_POSortedChans[0]), 7, 0, 2 },
 
   { (char_T *)(&test3_DW.Integrator1_IWORK), 10, 0, 9 },
 
-  { (char_T *)(&test3_DW.is_active_c2_test3), 3, 0, 1 },
+  { (char_T *)(&test3_DW.is_active_c4_test3), 3, 0, 2 },
 
-  { (char_T *)(&test3_DW.HILInitialize_DOBits[0]), 8, 0, 22 }
+  { (char_T *)(&test3_DW.HILInitialize_DOBits[0]), 8, 0, 23 }
 };
 
 /* data type transition table for block I/O structure */
@@ -121,7 +121,7 @@ static DataTypeTransition rtPTransitions[] = {
 
   { (char_T *)(&test3_P.HILInitialize_Active), 8, 0, 37 },
 
-  { (char_T *)(&test3_P.uArm0Disarm2_CurrentSetting), 3, 0, 2 }
+  { (char_T *)(&test3_P.UpNLDownFL2_CurrentSetting), 3, 0, 4 }
 };
 
 /* data type transition table for Parameters structure */

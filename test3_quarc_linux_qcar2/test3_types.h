@@ -6,9 +6,9 @@
  *
  * Code generation for model "test3".
  *
- * Model version              : 15.48
+ * Model version              : 15.50
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Tue Apr 29 15:35:05 2025
+ * C source code generated on : Wed Apr 30 10:33:29 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -21,7 +21,7 @@
 #define RTW_HEADER_test3_types_h_
 #include "rtwtypes.h"
 
-/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function' */
+/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function2' */
 #ifndef struct_tag_sG8JZ69axY52WWR6RKyApQC
 #define struct_tag_sG8JZ69axY52WWR6RKyApQC
 
@@ -145,7 +145,7 @@ typedef struct emxArray_int32_T emxArray_int32_T_test3_T;
 
 #endif                                 /* typedef_emxArray_int32_T_test3_T */
 
-/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function' */
+/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function2' */
 #ifndef struct_tag_0Mw3d4AlMrOoSnA1Aci4tH
 #define struct_tag_0Mw3d4AlMrOoSnA1Aci4tH
 
@@ -222,7 +222,7 @@ typedef struct emxArray_boolean_T emxArray_boolean_T_test3_T;
 
 #endif                                 /* typedef_emxArray_boolean_T_test3_T */
 
-/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function' */
+/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function2' */
 #ifndef struct_tag_l1Gll5dfO9DpqQrvRqAf7E
 #define struct_tag_l1Gll5dfO9DpqQrvRqAf7E
 
@@ -374,6 +374,7 @@ typedef struct tag_Wd0eYcEyLXg48EJ7pCjsH s_Wd0eYcEyLXg48EJ7pCjsH_test3_T;
 
 #endif                             /* typedef_s_Wd0eYcEyLXg48EJ7pCjsH_test3_T */
 
+/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function' */
 #ifndef struct_tag_s6lIrH89xwD47fl4e1dZNiE
 #define struct_tag_s6lIrH89xwD47fl4e1dZNiE
 
@@ -392,6 +393,26 @@ typedef struct tag_s6lIrH89xwD47fl4e1dZNiE s6lIrH89xwD47fl4e1dZNiE_test3_T;
 
 #endif                             /* typedef_s6lIrH89xwD47fl4e1dZNiE_test3_T */
 
+/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function2' */
+#ifndef struct_tag_sU0htoGcxTaPV5C2NLIldmB
+#define struct_tag_sU0htoGcxTaPV5C2NLIldmB
+
+struct tag_sU0htoGcxTaPV5C2NLIldmB
+{
+  real_T x0[4];
+  real_T N;
+};
+
+#endif                                 /* struct_tag_sU0htoGcxTaPV5C2NLIldmB */
+
+#ifndef typedef_sU0htoGcxTaPV5C2NLIldmB_test3_T
+#define typedef_sU0htoGcxTaPV5C2NLIldmB_test3_T
+
+typedef struct tag_sU0htoGcxTaPV5C2NLIldmB sU0htoGcxTaPV5C2NLIldmB_test3_T;
+
+#endif                             /* typedef_sU0htoGcxTaPV5C2NLIldmB_test3_T */
+
+/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function' */
 #ifndef struct_tag_lEH3FrOxyyhckl9xmvL2m
 #define struct_tag_lEH3FrOxyyhckl9xmvL2m
 
@@ -637,6 +658,253 @@ struct tag_tzdJIwhhx1jgWYIJOPrjUD
 typedef struct tag_tzdJIwhhx1jgWYIJOPrjUD s_tzdJIwhhx1jgWYIJOPrjUD_test_T;
 
 #endif                             /* typedef_s_tzdJIwhhx1jgWYIJOPrjUD_test_T */
+
+/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function2' */
+#ifndef struct_tag_sI4PqhRHPgAqOzFKp1KxiG
+#define struct_tag_sI4PqhRHPgAqOzFKp1KxiG
+
+struct tag_sI4PqhRHPgAqOzFKp1KxiG
+{
+  sU0htoGcxTaPV5C2NLIldmB_test3_T workspace;
+};
+
+#endif                                 /* struct_tag_sI4PqhRHPgAqOzFKp1KxiG */
+
+#ifndef typedef_anonymous_function_1_test3_p_T
+#define typedef_anonymous_function_1_test3_p_T
+
+typedef struct tag_sI4PqhRHPgAqOzFKp1KxiG anonymous_function_1_test3_p_T;
+
+#endif                              /* typedef_anonymous_function_1_test3_p_T */
+
+#ifndef struct_tag_lZflMU9sVqxC63IejQkKIC
+#define struct_tag_lZflMU9sVqxC63IejQkKIC
+
+struct tag_lZflMU9sVqxC63IejQkKIC
+{
+  real_T x0[4];
+  emxArray_real_T_test3_T *zref;
+  emxArray_real_T_test3_T *wref;
+  real_T N;
+};
+
+#endif                                 /* struct_tag_lZflMU9sVqxC63IejQkKIC */
+
+#ifndef typedef_s_lZflMU9sVqxC63IejQkKIC_test_T
+#define typedef_s_lZflMU9sVqxC63IejQkKIC_test_T
+
+typedef struct tag_lZflMU9sVqxC63IejQkKIC s_lZflMU9sVqxC63IejQkKIC_test_T;
+
+#endif                             /* typedef_s_lZflMU9sVqxC63IejQkKIC_test_T */
+
+#ifndef struct_tag_TGBDlgxqIgzHMbRjaMp2FC
+#define struct_tag_TGBDlgxqIgzHMbRjaMp2FC
+
+struct tag_TGBDlgxqIgzHMbRjaMp2FC
+{
+  s_lZflMU9sVqxC63IejQkKIC_test_T workspace;
+};
+
+#endif                                 /* struct_tag_TGBDlgxqIgzHMbRjaMp2FC */
+
+#ifndef typedef_anonymous_function_test3_k_T
+#define typedef_anonymous_function_test3_k_T
+
+typedef struct tag_TGBDlgxqIgzHMbRjaMp2FC anonymous_function_test3_k_T;
+
+#endif                                /* typedef_anonymous_function_test3_k_T */
+
+#ifndef struct_tag_o85INdeDlc3kCNyxnAbQ2F
+#define struct_tag_o85INdeDlc3kCNyxnAbQ2F
+
+struct tag_o85INdeDlc3kCNyxnAbQ2F
+{
+  anonymous_function_test3_k_T b_value;
+};
+
+#endif                                 /* struct_tag_o85INdeDlc3kCNyxnAbQ2F */
+
+#ifndef typedef_coder_internal_stickyStruct_k_T
+#define typedef_coder_internal_stickyStruct_k_T
+
+typedef struct tag_o85INdeDlc3kCNyxnAbQ2F coder_internal_stickyStruct_k_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_k_T */
+
+#ifndef struct_tag_zljci4bPrdx2wRfeerrJZ
+#define struct_tag_zljci4bPrdx2wRfeerrJZ
+
+struct tag_zljci4bPrdx2wRfeerrJZ
+{
+  anonymous_function_1_test3_p_T b_value;
+  coder_internal_stickyStruct_k_T next;
+};
+
+#endif                                 /* struct_tag_zljci4bPrdx2wRfeerrJZ */
+
+#ifndef typedef_coder_internal_stickyStruc_ky_T
+#define typedef_coder_internal_stickyStruc_ky_T
+
+typedef struct tag_zljci4bPrdx2wRfeerrJZ coder_internal_stickyStruc_ky_T;
+
+#endif                             /* typedef_coder_internal_stickyStruc_ky_T */
+
+#ifndef struct_tag_74eHbZzTnJ3rVgwlXVq3dD
+#define struct_tag_74eHbZzTnJ3rVgwlXVq3dD
+
+struct tag_74eHbZzTnJ3rVgwlXVq3dD
+{
+  coder_internal_stickyStruc_ky_T next;
+};
+
+#endif                                 /* struct_tag_74eHbZzTnJ3rVgwlXVq3dD */
+
+#ifndef typedef_coder_internal_stickyStru_kyv_T
+#define typedef_coder_internal_stickyStru_kyv_T
+
+typedef struct tag_74eHbZzTnJ3rVgwlXVq3dD coder_internal_stickyStru_kyv_T;
+
+#endif                             /* typedef_coder_internal_stickyStru_kyv_T */
+
+#ifndef struct_tag_spvvhQETZ5gPSGTX3YMxOB
+#define struct_tag_spvvhQETZ5gPSGTX3YMxOB
+
+struct tag_spvvhQETZ5gPSGTX3YMxOB
+{
+  int32_T b_value;
+  coder_internal_stickyStru_kyv_T next;
+};
+
+#endif                                 /* struct_tag_spvvhQETZ5gPSGTX3YMxOB */
+
+#ifndef typedef_coder_internal_stickyStr_kyv1_T
+#define typedef_coder_internal_stickyStr_kyv1_T
+
+typedef struct tag_spvvhQETZ5gPSGTX3YMxOB coder_internal_stickyStr_kyv1_T;
+
+#endif                             /* typedef_coder_internal_stickyStr_kyv1_T */
+
+#ifndef struct_tag_Y9WofiVbo1E2aV3KMIaR3
+#define struct_tag_Y9WofiVbo1E2aV3KMIaR3
+
+struct tag_Y9WofiVbo1E2aV3KMIaR3
+{
+  int32_T b_value;
+  coder_internal_stickyStr_kyv1_T next;
+};
+
+#endif                                 /* struct_tag_Y9WofiVbo1E2aV3KMIaR3 */
+
+#ifndef typedef_coder_internal_stickySt_kyv1k_T
+#define typedef_coder_internal_stickySt_kyv1k_T
+
+typedef struct tag_Y9WofiVbo1E2aV3KMIaR3 coder_internal_stickySt_kyv1k_T;
+
+#endif                             /* typedef_coder_internal_stickySt_kyv1k_T */
+
+#ifndef struct_tag_ZDR9JjvK0piX6rgKxhFr5D
+#define struct_tag_ZDR9JjvK0piX6rgKxhFr5D
+
+struct tag_ZDR9JjvK0piX6rgKxhFr5D
+{
+  coder_internal_stickySt_kyv1k_T next;
+};
+
+#endif                                 /* struct_tag_ZDR9JjvK0piX6rgKxhFr5D */
+
+#ifndef typedef_coder_internal_stickyS_kyv1kf_T
+#define typedef_coder_internal_stickyS_kyv1kf_T
+
+typedef struct tag_ZDR9JjvK0piX6rgKxhFr5D coder_internal_stickyS_kyv1kf_T;
+
+#endif                             /* typedef_coder_internal_stickyS_kyv1kf_T */
+
+#ifndef struct_tag_2hjmIh3getjRJeC7ohO3HC
+#define struct_tag_2hjmIh3getjRJeC7ohO3HC
+
+struct tag_2hjmIh3getjRJeC7ohO3HC
+{
+  coder_internal_stickyS_kyv1kf_T next;
+};
+
+#endif                                 /* struct_tag_2hjmIh3getjRJeC7ohO3HC */
+
+#ifndef typedef_coder_internal_sticky_kyv1kfe_T
+#define typedef_coder_internal_sticky_kyv1kfe_T
+
+typedef struct tag_2hjmIh3getjRJeC7ohO3HC coder_internal_sticky_kyv1kfe_T;
+
+#endif                             /* typedef_coder_internal_sticky_kyv1kfe_T */
+
+#ifndef struct_tag_AFDYfHf9EcgJjajsHpQdxD
+#define struct_tag_AFDYfHf9EcgJjajsHpQdxD
+
+struct tag_AFDYfHf9EcgJjajsHpQdxD
+{
+  coder_internal_sticky_kyv1kfe_T next;
+};
+
+#endif                                 /* struct_tag_AFDYfHf9EcgJjajsHpQdxD */
+
+#ifndef typedef_coder_internal_stick_kyv1kfe2_T
+#define typedef_coder_internal_stick_kyv1kfe2_T
+
+typedef struct tag_AFDYfHf9EcgJjajsHpQdxD coder_internal_stick_kyv1kfe2_T;
+
+#endif                             /* typedef_coder_internal_stick_kyv1kfe2_T */
+
+/* Custom Type definition for MATLAB Function: '<Root>/MATLAB Function2' */
+#ifndef struct_tag_PXANmPDhIY92bPyzeKLF4B
+#define struct_tag_PXANmPDhIY92bPyzeKLF4B
+
+struct tag_PXANmPDhIY92bPyzeKLF4B
+{
+  coder_internal_stick_kyv1kfe2_T next;
+};
+
+#endif                                 /* struct_tag_PXANmPDhIY92bPyzeKLF4B */
+
+#ifndef typedef_coder_internal_stickyStruct_c_T
+#define typedef_coder_internal_stickyStruct_c_T
+
+typedef struct tag_PXANmPDhIY92bPyzeKLF4B coder_internal_stickyStruct_c_T;
+
+#endif                             /* typedef_coder_internal_stickyStruct_c_T */
+
+#ifndef struct_tag_9imJcZ2iwk426vK9Q2bBEG
+#define struct_tag_9imJcZ2iwk426vK9Q2bBEG
+
+struct tag_9imJcZ2iwk426vK9Q2bBEG
+{
+  anonymous_function_test3_k_T objfun;
+  anonymous_function_1_test3_p_T nonlin;
+  real_T f_1;
+  emxArray_real_T_test3_T *cIneq_1;
+  emxArray_real_T_test3_T *cEq_1;
+  real_T f_2;
+  emxArray_real_T_test3_T *cIneq_2;
+  emxArray_real_T_test3_T *cEq_2;
+  int32_T nVar;
+  int32_T mIneq;
+  int32_T mEq;
+  int32_T numEvals;
+  boolean_T SpecifyObjectiveGradient;
+  boolean_T SpecifyConstraintGradient;
+  boolean_T isEmptyNonlcon;
+  emxArray_boolean_T_test3_T *hasLB;
+  emxArray_boolean_T_test3_T *hasUB;
+  boolean_T hasBounds;
+  int32_T FiniteDifferenceType;
+};
+
+#endif                                 /* struct_tag_9imJcZ2iwk426vK9Q2bBEG */
+
+#ifndef typedef_s_9imJcZ2iwk426vK9Q2bBEG_test_T
+#define typedef_s_9imJcZ2iwk426vK9Q2bBEG_test_T
+
+typedef struct tag_9imJcZ2iwk426vK9Q2bBEG s_9imJcZ2iwk426vK9Q2bBEG_test_T;
+
+#endif                             /* typedef_s_9imJcZ2iwk426vK9Q2bBEG_test_T */
 
 /* Parameters (default storage) */
 typedef struct P_test3_T_ P_test3_T;

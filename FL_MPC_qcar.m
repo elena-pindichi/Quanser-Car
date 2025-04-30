@@ -5,16 +5,16 @@ load("trajectory.mat")
 
 %% Parameters
 N_pred_val = 5;                      % Prediction horizon
-Q_val = 10;                          % State weight value
+Q_val = 30;                          % State weight value
 R_val = 1;                           % Input weight value
-P_val = 1;                         % Terminal state value
+P_val = 10;                         % Terminal state value
 l = 0.256;                           % Length between front and rear
 Delta = 0.35;                        % Distance in front of the car
 
 % Define prediction and simulation steps
-Ts = 0.3;                            % Sampling time
+Ts = 0.1;                            % Sampling time
 Npred = N_pred_val;                  % Prediction horizon
-Nsim =  900;                          % Number of simulation steps
+Nsim =  500;                          % Number of simulation steps
 
 % Define system dimensions
 dx = 4;                              % State dimensions: x, y, theta
@@ -30,15 +30,15 @@ u0 = zeros(du, 1);
 %% Trajectories
 % Time
 t = 0 : 0.3 : 50;
-t = 0 : 0.3 : 500;
-t = 0 : 0.05 : 700;
+t = 0 : 0.1 : 500;
+t = 0 : 0.01 : 50;
 
 % % % % % % % % % % % % % % % % % 
 % Line reference
-alpha   = 0.5;
-beta    = 0.8;
-xr = alpha * t;     dxr = alpha + 0*t;    ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
-yr = beta * t;      dyr = beta + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
+% alpha   = 0.5;
+% beta    = 0.8;
+% xr = alpha * t;     dxr = alpha + 0*t;    ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
+% yr = beta * t;      dyr = beta + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Stairs trajectory
 % st = zeros(1,length(t))+[2*ones(1, 100), 5*zeros(1,300), 4*ones(1, length(t)-400)];
@@ -76,15 +76,15 @@ dxr = gradient(xr, 0.3);        ddxr = gradient(dxr, 0.3);      dddxr = gradient
 dyr = gradient(yr, 0.3);        ddyr = gradient(dyr, 0.3);      dddyr = gradient(ddyr, 0.3); 
    
 % Circle reference
-alpha   = 6;
-beta    = 5;
-ang     = 0.2;
-xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
-yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
+% alpha   = 6;
+% beta    = 5;
+% ang     = 0.2;
+% xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
+% yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
 
-% % Spline reference
-% xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
-% yr = yref;      dyr = dyref;        ddyr = ddyref;      dddyr = dddyref;
+% Spline reference
+xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
+yr = yref;      dyr = dyref;        ddyr = ddyref;      dddyr = dddyref;
 % % % % % % % % % % % % % % % % %
 
 % Computing real input reference
@@ -117,7 +117,7 @@ end
 
 
 %% Constraints
-rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 0.5);
+rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 1);
 
 % Weights for cost function
 Q = Q_val * eye(dz);
@@ -174,11 +174,10 @@ end
 objective = 0;
 for k = 1 : Npred
     objective = objective + (z(:, k) - zref_param(:, k))' * Q * (z(:, k) - zref_param(:, k)) + ...
-                            (w(:, k) - wref_param(:, k))' * R * (w(:, k) - wref_param(:, k));                    
+                            (w(:, k) - wref_param(:, k))' * R * (w(:, k) - wref_param(:, k)); 
 end
 
 objective = objective + (z(:, Npred + 1) - zref_param(:, Npred + 1))' * P * (z(:, Npred + 1) - zref_param(:, Npred + 1));
-
 
 %% Define the objective function
 % Define the solver

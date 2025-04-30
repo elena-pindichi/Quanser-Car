@@ -6,9 +6,9 @@
  *
  * Code generation for model "test3".
  *
- * Model version              : 15.48
+ * Model version              : 15.50
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Tue Apr 29 15:35:05 2025
+ * C source code generated on : Wed Apr 30 10:33:29 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -877,76 +877,67 @@
 
 /* Block signals (default storage) */
 typedef struct {
-  real_T Product1;                     /* '<S9>/Product1' */
-  real_T Product1_i;                   /* '<S10>/Product1' */
-  real_T Product1_n;                   /* '<S11>/Product1' */
-  real_T analogpower;                  /* '<S7>/HIL Read' */
-  real_T motorencoder;                 /* '<S7>/HIL Read' */
-  real_T HILRead_o3[4];                /* '<S7>/HIL Read' */
-  real_T Integrator1;                  /* '<S13>/Integrator1' */
-  real_T Unwrap22;                     /* '<S7>/Unwrap 2^2' */
-  real_T Integrator1_g;                /* '<S14>/Integrator1' */
-  real_T Product1_p;                   /* '<S12>/Product1' */
-  real_T Integrator;                   /* '<S7>/Integrator' */
-  real_T Unwrap224;                    /* '<S7>/Unwrap 2^24' */
-  real_T Product;                      /* '<S9>/Product' */
-  real_T Product_d;                    /* '<S10>/Product' */
-  real_T Product_m;                    /* '<S11>/Product' */
-  real_T Unwrap21;                     /* '<S7>/Unwrap 2^1' */
-  real_T Product_b;                    /* '<S12>/Product' */
-  real_T Product_e;                    /* '<S13>/Product' */
-  real_T Product1_b;                   /* '<S13>/Product1' */
-  real_T Product_p;                    /* '<S14>/Product' */
-  real_T Product1_g;                   /* '<S14>/Product1' */
-  real_T Gain3;                        /* '<S15>/Gain3' */
-  real_T Integrator5;                  /* '<S2>/Integrator5' */
-  real_T Integrator6;                  /* '<S3>/Integrator6' */
-  real_T Clock;                        /* '<Root>/Clock' */
+  real_T Product1;                     /* '<S10>/Product1' */
+  real_T analogpower;                  /* '<S8>/HIL Read' */
+  real_T motorencoder;                 /* '<S8>/HIL Read' */
+  real_T HILRead_o3[4];                /* '<S8>/HIL Read' */
+  real_T Integrator1;                  /* '<S14>/Integrator1' */
+  real_T Unwrap22;                     /* '<S8>/Unwrap 2^2' */
+  real_T Integrator1_g;                /* '<S15>/Integrator1' */
+  real_T Product1_p;                   /* '<S13>/Product1' */
+  real_T Integrator;                   /* '<S8>/Integrator' */
+  real_T Unwrap224;                    /* '<S8>/Unwrap 2^24' */
+  real_T Product;                      /* '<S10>/Product' */
+  real_T Product_d;                    /* '<S11>/Product' */
+  real_T Product1_i;                   /* '<S11>/Product1' */
+  real_T Product_m;                    /* '<S12>/Product' */
+  real_T Product1_n;                   /* '<S12>/Product1' */
+  real_T Unwrap21;                     /* '<S8>/Unwrap 2^1' */
+  real_T Product_b;                    /* '<S13>/Product' */
+  real_T Product_e;                    /* '<S14>/Product' */
+  real_T Product1_b;                   /* '<S14>/Product1' */
+  real_T Product_p;                    /* '<S15>/Product' */
+  real_T Product1_g;                   /* '<S15>/Product1' */
+  real_T Gain3;                        /* '<S16>/Gain3' */
+  real_T Integrator5;                  /* '<S3>/Integrator5' */
+  real_T Integrator6;                  /* '<S4>/Integrator6' */
   real_T switch_l;                     /* '<Root>/1 - Arm, 0 - Disarm2' */
-  real_T desired;                      /* '<S8>/Multiply1' */
-  real_T measured;                     /* '<S8>/Multiply' */
-  real_T commandsaturation;            /* '<S7>/command saturation' */
-  real_T SteeringBias;                 /* '<S7>/Steering Bias' */
-  real_T Product_f;                    /* '<S2>/Product' */
-  real_T Product1_ij;                  /* '<S3>/Product1' */
+  real_T desired;                      /* '<S9>/Multiply1' */
+  real_T measured;                     /* '<S9>/Multiply' */
+  real_T commandsaturation;            /* '<S8>/command saturation' */
+  real_T SteeringBias;                 /* '<S8>/Steering Bias' */
+  real_T Product_f;                    /* '<S3>/Product' */
+  real_T Product1_ij;                  /* '<S4>/Product1' */
+  real_T switch_o;                     /* '<Root>/Up - NL, Down - FL' */
   real_T Unwrap21_o;                   /* '<Root>/Unwrap 2^1' */
-  real_T Integrator1_f;                /* '<S6>/Integrator1' */
-  real_T Product_g;                    /* '<S6>/Product' */
-  real_T Product1_b3;                  /* '<S6>/Product1' */
-  real_T Kim;                          /* '<S8>/Ki (% // m)  ' */
-  real_T omeg;                         /* '<Root>/MATLAB Function' */
-  boolean_T Compare;                   /* '<S17>/Compare' */
+  real_T Integrator1_f;                /* '<S7>/Integrator1' */
+  real_T Product_g;                    /* '<S7>/Product' */
+  real_T Product1_b3;                  /* '<S7>/Product1' */
+  real_T Kim;                          /* '<S9>/Ki (% // m)  ' */
+  boolean_T Compare;                   /* '<S18>/Compare' */
 } B_test3_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  real_T HILInitialize_AIMinimums[5];  /* '<S7>/HIL Initialize' */
-  real_T HILInitialize_AIMaximums[5];  /* '<S7>/HIL Initialize' */
-  real_T HILInitialize_FilterFrequency[3];/* '<S7>/HIL Initialize' */
-  real_T HILInitialize_POSortedFreqs[2];/* '<S7>/HIL Initialize' */
-  real_T HILInitialize_POValues[2];    /* '<S7>/HIL Initialize' */
-  real_T HILInitialize_OOValues[2];    /* '<S7>/HIL Initialize' */
-  real_T Unwrap22_PreviousInput;       /* '<S7>/Unwrap 2^2' */
-  real_T Unwrap22_Revolutions;         /* '<S7>/Unwrap 2^2' */
-  real_T Unwrap224_PreviousInput;      /* '<S7>/Unwrap 2^24' */
-  real_T Unwrap224_Revolutions;        /* '<S7>/Unwrap 2^24' */
-  real_T Unwrap21_PreviousInput;       /* '<S7>/Unwrap 2^1' */
-  real_T Unwrap21_Revolutions;         /* '<S7>/Unwrap 2^1' */
+  real_T HILInitialize_AIMinimums[5];  /* '<S8>/HIL Initialize' */
+  real_T HILInitialize_AIMaximums[5];  /* '<S8>/HIL Initialize' */
+  real_T HILInitialize_FilterFrequency[3];/* '<S8>/HIL Initialize' */
+  real_T HILInitialize_POSortedFreqs[2];/* '<S8>/HIL Initialize' */
+  real_T HILInitialize_POValues[2];    /* '<S8>/HIL Initialize' */
+  real_T HILInitialize_OOValues[2];    /* '<S8>/HIL Initialize' */
+  real_T Unwrap22_PreviousInput;       /* '<S8>/Unwrap 2^2' */
+  real_T Unwrap22_Revolutions;         /* '<S8>/Unwrap 2^2' */
+  real_T Unwrap224_PreviousInput;      /* '<S8>/Unwrap 2^24' */
+  real_T Unwrap224_Revolutions;        /* '<S8>/Unwrap 2^24' */
+  real_T Unwrap21_PreviousInput;       /* '<S8>/Unwrap 2^1' */
+  real_T Unwrap21_Revolutions;         /* '<S8>/Unwrap 2^1' */
   real_T XYFigure_XBuffer[1000000];    /* '<Root>/XY Figure' */
   real_T XYFigure_YBuffer[1000000];    /* '<Root>/XY Figure' */
   real_T Unwrap21_PreviousInput_d;     /* '<Root>/Unwrap 2^1' */
   real_T Unwrap21_Revolutions_o;       /* '<Root>/Unwrap 2^1' */
-  t_card HILInitialize_Card;           /* '<S7>/HIL Initialize' */
-  void *HILRead_PWORK;                 /* '<S7>/HIL Read' */
-  void *HILWrite_PWORK;                /* '<S7>/HIL Write' */
-  struct {
-    void *LoggedData;
-  } Scope_PWORK;                       /* '<Root>/Scope' */
-
-  struct {
-    void *LoggedData;
-  } Scope4_PWORK;                      /* '<Root>/Scope4' */
-
+  t_card HILInitialize_Card;           /* '<S8>/HIL Initialize' */
+  void *HILRead_PWORK;                 /* '<S8>/HIL Read' */
+  void *HILWrite_PWORK;                /* '<S8>/HIL Write' */
   struct {
     void *LoggedData;
   } V_PWORK;                           /* '<Root>/V' */
@@ -957,111 +948,118 @@ typedef struct {
 
   struct {
     void *LoggedData;
+  } Yaw_PWORK;                         /* '<Root>/Yaw' */
+
+  struct {
+    void *LoggedData;
   } Ypos_PWORK;                        /* '<Root>/Ypos' */
 
   struct {
     void *LoggedData[2];
-  } Scope_PWORK_m;                     /* '<S8>/Scope' */
+  } Scope_PWORK;                       /* '<S9>/Scope' */
 
-  int32_T HILInitialize_DOStates[16];  /* '<S7>/HIL Initialize' */
-  int32_T HILInitialize_QuadratureModes[3];/* '<S7>/HIL Initialize' */
-  int32_T HILInitialize_InitialEICounts[3];/* '<S7>/HIL Initialize' */
-  int32_T HILInitialize_POModeValues[2];/* '<S7>/HIL Initialize' */
-  int32_T HILInitialize_POAlignValues[2];/* '<S7>/HIL Initialize' */
-  int32_T HILInitialize_POPolarityVals[2];/* '<S7>/HIL Initialize' */
-  int32_T HILRead_EncoderBuffer;       /* '<S7>/HIL Read' */
-  int32_T sfEvent;                     /* '<Root>/MATLAB Function' */
-  uint32_T HILInitialize_POSortedChans[2];/* '<S7>/HIL Initialize' */
-  int_T Integrator1_IWORK;             /* '<S13>/Integrator1' */
-  int_T Integrator1_IWORK_i;           /* '<S14>/Integrator1' */
-  int_T Integrator1_IWORK_g;           /* '<S9>/Integrator1' */
-  int_T Integrator1_IWORK_d;           /* '<S10>/Integrator1' */
-  int_T Integrator1_IWORK_gg;          /* '<S11>/Integrator1' */
-  int_T Integrator1_IWORK_l;           /* '<S12>/Integrator1' */
+  int32_T HILInitialize_DOStates[16];  /* '<S8>/HIL Initialize' */
+  int32_T HILInitialize_QuadratureModes[3];/* '<S8>/HIL Initialize' */
+  int32_T HILInitialize_InitialEICounts[3];/* '<S8>/HIL Initialize' */
+  int32_T HILInitialize_POModeValues[2];/* '<S8>/HIL Initialize' */
+  int32_T HILInitialize_POAlignValues[2];/* '<S8>/HIL Initialize' */
+  int32_T HILInitialize_POPolarityVals[2];/* '<S8>/HIL Initialize' */
+  int32_T HILRead_EncoderBuffer;       /* '<S8>/HIL Read' */
+  int32_T sfEvent;                     /* '<Root>/MATLAB Function2' */
+  int32_T sfEvent_g;                   /* '<Root>/MATLAB Function' */
+  uint32_T HILInitialize_POSortedChans[2];/* '<S8>/HIL Initialize' */
+  int_T Integrator1_IWORK;             /* '<S14>/Integrator1' */
+  int_T Integrator1_IWORK_i;           /* '<S15>/Integrator1' */
+  int_T Integrator1_IWORK_g;           /* '<S10>/Integrator1' */
+  int_T Integrator1_IWORK_d;           /* '<S11>/Integrator1' */
+  int_T Integrator1_IWORK_gg;          /* '<S12>/Integrator1' */
+  int_T Integrator1_IWORK_l;           /* '<S13>/Integrator1' */
   int_T XYFigure_IWORK[2];             /* '<Root>/XY Figure' */
-  int_T Integrator1_IWORK_a;           /* '<S6>/Integrator1' */
+  int_T Integrator1_IWORK_a;           /* '<S7>/Integrator1' */
+  uint8_T is_active_c4_test3;          /* '<Root>/MATLAB Function2' */
   uint8_T is_active_c2_test3;          /* '<Root>/MATLAB Function' */
-  boolean_T HILInitialize_DOBits[16];  /* '<S7>/HIL Initialize' */
-  boolean_T Unwrap22_FirstSample;      /* '<S7>/Unwrap 2^2' */
-  boolean_T Unwrap224_FirstSample;     /* '<S7>/Unwrap 2^24' */
-  boolean_T Unwrap21_FirstSample;      /* '<S7>/Unwrap 2^1' */
+  boolean_T HILInitialize_DOBits[16];  /* '<S8>/HIL Initialize' */
+  boolean_T Unwrap22_FirstSample;      /* '<S8>/Unwrap 2^2' */
+  boolean_T Unwrap224_FirstSample;     /* '<S8>/Unwrap 2^24' */
+  boolean_T Unwrap21_FirstSample;      /* '<S8>/Unwrap 2^1' */
   boolean_T XYFigure_IsFull;           /* '<Root>/XY Figure' */
   boolean_T Unwrap21_FirstSample_o;    /* '<Root>/Unwrap 2^1' */
-  boolean_T doneDoubleBufferReInit;    /* '<Root>/MATLAB Function' */
+  boolean_T doneDoubleBufferReInit;    /* '<Root>/MATLAB Function2' */
+  boolean_T doneDoubleBufferReInit_g;  /* '<Root>/MATLAB Function' */
 } DW_test3_T;
 
 /* Continuous states (default storage) */
 typedef struct {
-  real_T Integrator2_CSTATE;           /* '<S9>/Integrator2' */
-  real_T Integrator2_CSTATE_i;         /* '<S10>/Integrator2' */
-  real_T Integrator2_CSTATE_c;         /* '<S11>/Integrator2' */
-  real_T Integrator1_CSTATE;           /* '<S13>/Integrator1' */
-  real_T Integrator1_CSTATE_m;         /* '<S14>/Integrator1' */
-  real_T Integrator2_CSTATE_f;         /* '<S12>/Integrator2' */
-  real_T Integrator_CSTATE;            /* '<S7>/Integrator' */
-  real_T Integrator1_CSTATE_p;         /* '<S9>/Integrator1' */
-  real_T Integrator1_CSTATE_h;         /* '<S10>/Integrator1' */
-  real_T Integrator1_CSTATE_b;         /* '<S11>/Integrator1' */
-  real_T Integrator1_CSTATE_n;         /* '<S12>/Integrator1' */
-  real_T Integrator2_CSTATE_m;         /* '<S13>/Integrator2' */
-  real_T Integrator2_CSTATE_b;         /* '<S14>/Integrator2' */
-  real_T Integrator5_CSTATE;           /* '<S2>/Integrator5' */
-  real_T Integrator6_CSTATE;           /* '<S3>/Integrator6' */
+  real_T Integrator2_CSTATE;           /* '<S10>/Integrator2' */
+  real_T Integrator1_CSTATE;           /* '<S14>/Integrator1' */
+  real_T Integrator1_CSTATE_m;         /* '<S15>/Integrator1' */
+  real_T Integrator2_CSTATE_f;         /* '<S13>/Integrator2' */
+  real_T Integrator_CSTATE;            /* '<S8>/Integrator' */
+  real_T Integrator1_CSTATE_p;         /* '<S10>/Integrator1' */
+  real_T Integrator1_CSTATE_h;         /* '<S11>/Integrator1' */
+  real_T Integrator2_CSTATE_i;         /* '<S11>/Integrator2' */
+  real_T Integrator1_CSTATE_b;         /* '<S12>/Integrator1' */
+  real_T Integrator2_CSTATE_c;         /* '<S12>/Integrator2' */
+  real_T Integrator1_CSTATE_n;         /* '<S13>/Integrator1' */
+  real_T Integrator2_CSTATE_m;         /* '<S14>/Integrator2' */
+  real_T Integrator2_CSTATE_b;         /* '<S15>/Integrator2' */
+  real_T Integrator5_CSTATE;           /* '<S3>/Integrator5' */
+  real_T Integrator6_CSTATE;           /* '<S4>/Integrator6' */
   real_T Integrator3_CSTATE;           /* '<Root>/Integrator3' */
-  real_T Integrator1_CSTATE_ng;        /* '<S8>/Integrator1' */
-  real_T Integrator1_CSTATE_me;        /* '<S6>/Integrator1' */
-  real_T Integrator2_CSTATE_k;         /* '<S6>/Integrator2' */
+  real_T Integrator1_CSTATE_ng;        /* '<S9>/Integrator1' */
+  real_T Integrator1_CSTATE_me;        /* '<S7>/Integrator1' */
+  real_T Integrator2_CSTATE_k;         /* '<S7>/Integrator2' */
 } X_test3_T;
 
 /* State derivatives (default storage) */
 typedef struct {
-  real_T Integrator2_CSTATE;           /* '<S9>/Integrator2' */
-  real_T Integrator2_CSTATE_i;         /* '<S10>/Integrator2' */
-  real_T Integrator2_CSTATE_c;         /* '<S11>/Integrator2' */
-  real_T Integrator1_CSTATE;           /* '<S13>/Integrator1' */
-  real_T Integrator1_CSTATE_m;         /* '<S14>/Integrator1' */
-  real_T Integrator2_CSTATE_f;         /* '<S12>/Integrator2' */
-  real_T Integrator_CSTATE;            /* '<S7>/Integrator' */
-  real_T Integrator1_CSTATE_p;         /* '<S9>/Integrator1' */
-  real_T Integrator1_CSTATE_h;         /* '<S10>/Integrator1' */
-  real_T Integrator1_CSTATE_b;         /* '<S11>/Integrator1' */
-  real_T Integrator1_CSTATE_n;         /* '<S12>/Integrator1' */
-  real_T Integrator2_CSTATE_m;         /* '<S13>/Integrator2' */
-  real_T Integrator2_CSTATE_b;         /* '<S14>/Integrator2' */
-  real_T Integrator5_CSTATE;           /* '<S2>/Integrator5' */
-  real_T Integrator6_CSTATE;           /* '<S3>/Integrator6' */
+  real_T Integrator2_CSTATE;           /* '<S10>/Integrator2' */
+  real_T Integrator1_CSTATE;           /* '<S14>/Integrator1' */
+  real_T Integrator1_CSTATE_m;         /* '<S15>/Integrator1' */
+  real_T Integrator2_CSTATE_f;         /* '<S13>/Integrator2' */
+  real_T Integrator_CSTATE;            /* '<S8>/Integrator' */
+  real_T Integrator1_CSTATE_p;         /* '<S10>/Integrator1' */
+  real_T Integrator1_CSTATE_h;         /* '<S11>/Integrator1' */
+  real_T Integrator2_CSTATE_i;         /* '<S11>/Integrator2' */
+  real_T Integrator1_CSTATE_b;         /* '<S12>/Integrator1' */
+  real_T Integrator2_CSTATE_c;         /* '<S12>/Integrator2' */
+  real_T Integrator1_CSTATE_n;         /* '<S13>/Integrator1' */
+  real_T Integrator2_CSTATE_m;         /* '<S14>/Integrator2' */
+  real_T Integrator2_CSTATE_b;         /* '<S15>/Integrator2' */
+  real_T Integrator5_CSTATE;           /* '<S3>/Integrator5' */
+  real_T Integrator6_CSTATE;           /* '<S4>/Integrator6' */
   real_T Integrator3_CSTATE;           /* '<Root>/Integrator3' */
-  real_T Integrator1_CSTATE_ng;        /* '<S8>/Integrator1' */
-  real_T Integrator1_CSTATE_me;        /* '<S6>/Integrator1' */
-  real_T Integrator2_CSTATE_k;         /* '<S6>/Integrator2' */
+  real_T Integrator1_CSTATE_ng;        /* '<S9>/Integrator1' */
+  real_T Integrator1_CSTATE_me;        /* '<S7>/Integrator1' */
+  real_T Integrator2_CSTATE_k;         /* '<S7>/Integrator2' */
 } XDot_test3_T;
 
 /* State disabled  */
 typedef struct {
-  boolean_T Integrator2_CSTATE;        /* '<S9>/Integrator2' */
-  boolean_T Integrator2_CSTATE_i;      /* '<S10>/Integrator2' */
-  boolean_T Integrator2_CSTATE_c;      /* '<S11>/Integrator2' */
-  boolean_T Integrator1_CSTATE;        /* '<S13>/Integrator1' */
-  boolean_T Integrator1_CSTATE_m;      /* '<S14>/Integrator1' */
-  boolean_T Integrator2_CSTATE_f;      /* '<S12>/Integrator2' */
-  boolean_T Integrator_CSTATE;         /* '<S7>/Integrator' */
-  boolean_T Integrator1_CSTATE_p;      /* '<S9>/Integrator1' */
-  boolean_T Integrator1_CSTATE_h;      /* '<S10>/Integrator1' */
-  boolean_T Integrator1_CSTATE_b;      /* '<S11>/Integrator1' */
-  boolean_T Integrator1_CSTATE_n;      /* '<S12>/Integrator1' */
-  boolean_T Integrator2_CSTATE_m;      /* '<S13>/Integrator2' */
-  boolean_T Integrator2_CSTATE_b;      /* '<S14>/Integrator2' */
-  boolean_T Integrator5_CSTATE;        /* '<S2>/Integrator5' */
-  boolean_T Integrator6_CSTATE;        /* '<S3>/Integrator6' */
+  boolean_T Integrator2_CSTATE;        /* '<S10>/Integrator2' */
+  boolean_T Integrator1_CSTATE;        /* '<S14>/Integrator1' */
+  boolean_T Integrator1_CSTATE_m;      /* '<S15>/Integrator1' */
+  boolean_T Integrator2_CSTATE_f;      /* '<S13>/Integrator2' */
+  boolean_T Integrator_CSTATE;         /* '<S8>/Integrator' */
+  boolean_T Integrator1_CSTATE_p;      /* '<S10>/Integrator1' */
+  boolean_T Integrator1_CSTATE_h;      /* '<S11>/Integrator1' */
+  boolean_T Integrator2_CSTATE_i;      /* '<S11>/Integrator2' */
+  boolean_T Integrator1_CSTATE_b;      /* '<S12>/Integrator1' */
+  boolean_T Integrator2_CSTATE_c;      /* '<S12>/Integrator2' */
+  boolean_T Integrator1_CSTATE_n;      /* '<S13>/Integrator1' */
+  boolean_T Integrator2_CSTATE_m;      /* '<S14>/Integrator2' */
+  boolean_T Integrator2_CSTATE_b;      /* '<S15>/Integrator2' */
+  boolean_T Integrator5_CSTATE;        /* '<S3>/Integrator5' */
+  boolean_T Integrator6_CSTATE;        /* '<S4>/Integrator6' */
   boolean_T Integrator3_CSTATE;        /* '<Root>/Integrator3' */
-  boolean_T Integrator1_CSTATE_ng;     /* '<S8>/Integrator1' */
-  boolean_T Integrator1_CSTATE_me;     /* '<S6>/Integrator1' */
-  boolean_T Integrator2_CSTATE_k;      /* '<S6>/Integrator2' */
+  boolean_T Integrator1_CSTATE_ng;     /* '<S9>/Integrator1' */
+  boolean_T Integrator1_CSTATE_me;     /* '<S7>/Integrator1' */
+  boolean_T Integrator2_CSTATE_k;      /* '<S7>/Integrator2' */
 } XDis_test3_T;
 
 /* Zero-crossing (trigger) state */
 typedef struct {
-  ZCSigState Integrator1_Reset_ZCE;    /* '<S8>/Integrator1' */
+  ZCSigState Integrator1_Reset_ZCE;    /* '<S9>/Integrator1' */
 } PrevZCX_test3_T;
 
 #ifndef ODE1_INTG
@@ -1108,16 +1106,16 @@ struct P_test3_T_ {
                                         * Referenced by: '<Root>/XY Figure'
                                         */
   uint32_T HILRead_analog_channels;   /* Mask Parameter: HILRead_analog_channels
-                                       * Referenced by: '<S7>/HIL Read'
+                                       * Referenced by: '<S8>/HIL Read'
                                        */
   uint32_T HILRead_encoder_channels; /* Mask Parameter: HILRead_encoder_channels
-                                      * Referenced by: '<S7>/HIL Read'
+                                      * Referenced by: '<S8>/HIL Read'
                                       */
   uint32_T HILRead_other_channels[4];  /* Mask Parameter: HILRead_other_channels
-                                        * Referenced by: '<S7>/HIL Read'
+                                        * Referenced by: '<S8>/HIL Read'
                                         */
   uint32_T HILWrite_other_channels[2];/* Mask Parameter: HILWrite_other_channels
-                                       * Referenced by: '<S7>/HIL Write'
+                                       * Referenced by: '<S8>/HIL Write'
                                        */
   real_T Constant10_Value;             /* Expression: 1
                                         * Referenced by: '<Root>/Constant10'
@@ -1126,196 +1124,196 @@ struct P_test3_T_ {
                                         * Referenced by: '<Root>/Constant9'
                                         */
   real_T Constant_Value;               /* Expression: 0
-                                        * Referenced by: '<S17>/Constant'
+                                        * Referenced by: '<S18>/Constant'
                                         */
   real_T HILInitialize_OOTerminate;/* Expression: set_other_outputs_at_terminate
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   real_T HILInitialize_OOExit;    /* Expression: set_other_outputs_at_switch_out
-                                   * Referenced by: '<S7>/HIL Initialize'
+                                   * Referenced by: '<S8>/HIL Initialize'
                                    */
   real_T HILInitialize_OOStart;        /* Expression: set_other_outputs_at_start
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T HILInitialize_OOEnter;    /* Expression: set_other_outputs_at_switch_in
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   real_T HILInitialize_POFinal;        /* Expression: final_pwm_outputs
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T HILInitialize_OOFinal;        /* Expression: final_other_outputs
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T HILInitialize_AIHigh;         /* Expression: analog_input_maximums
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T HILInitialize_AILow;          /* Expression: analog_input_minimums
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T HILInitialize_EIFrequency;    /* Expression: encoder_filter_frequency
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T HILInitialize_POFrequency;    /* Expression: pwm_frequency
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T HILInitialize_POInitial;      /* Expression: initial_pwm_outputs
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T HILInitialize_POWatchdog;     /* Expression: watchdog_pwm_outputs
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T HILInitialize_OOInitial;      /* Expression: initial_other_outputs
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T HILInitialize_OOWatchdog;     /* Expression: watchdog_other_outputs
-                                        * Referenced by: '<S7>/HIL Initialize'
+                                        * Referenced by: '<S8>/HIL Initialize'
                                         */
   real_T Constant2_Value;              /* Expression: 25
-                                        * Referenced by: '<S7>/Constant2'
+                                        * Referenced by: '<S8>/Constant2'
                                         */
   real_T Integrator2_IC;               /* Expression: 0
-                                        * Referenced by: '<S9>/Integrator2'
-                                        */
-  real_T Constant4_Value;              /* Expression: 1
-                                        * Referenced by: '<S7>/Constant4'
-                                        */
-  real_T Integrator2_IC_j;             /* Expression: 0
                                         * Referenced by: '<S10>/Integrator2'
                                         */
-  real_T Constant6_Value;              /* Expression: 1
-                                        * Referenced by: '<S7>/Constant6'
-                                        */
-  real_T Integrator2_IC_d;             /* Expression: 0
-                                        * Referenced by: '<S11>/Integrator2'
-                                        */
   real_T Unwrap22_Modulus;             /* Expression: modulus
-                                        * Referenced by: '<S7>/Unwrap 2^2'
+                                        * Referenced by: '<S8>/Unwrap 2^2'
                                         */
   real_T Constant8_Value;              /* Expression: 25
-                                        * Referenced by: '<S7>/Constant8'
+                                        * Referenced by: '<S8>/Constant8'
                                         */
   real_T Integrator2_IC_l;             /* Expression: 0
-                                        * Referenced by: '<S12>/Integrator2'
-                                        */
-  real_T Constant1_Value;              /* Expression: 1
-                                        * Referenced by: '<S7>/Constant1'
-                                        */
-  real_T Constant10_Value_f;           /* Expression: 100
-                                        * Referenced by: '<S7>/Constant10'
-                                        */
-  real_T Constant11_Value;             /* Expression: 1
-                                        * Referenced by: '<S7>/Constant11'
-                                        */
-  real_T Constant12_Value;             /* Expression: 30
-                                        * Referenced by: '<S7>/Constant12'
-                                        */
-  real_T Constant3_Value;              /* Expression: 1
-                                        * Referenced by: '<S7>/Constant3'
-                                        */
-  real_T Constant5_Value;              /* Expression: 1
-                                        * Referenced by: '<S7>/Constant5'
-                                        */
-  real_T Constant7_Value;              /* Expression: 1
-                                        * Referenced by: '<S7>/Constant7'
-                                        */
-  real_T Constant9_Value_f;            /* Expression: 1
-                                        * Referenced by: '<S7>/Constant9'
-                                        */
-  real_T Integrator_IC;                /* Expression: 0
-                                        * Referenced by: '<S7>/Integrator'
-                                        */
-  real_T Constant_Value_h;             /* Expression: 2
-                                        * Referenced by: '<S9>/Constant'
-                                        */
-  real_T Unwrap224_Modulus;            /* Expression: modulus
-                                        * Referenced by: '<S7>/Unwrap 2^24'
-                                        */
-  real_T Constant_Value_l;             /* Expression: 2
-                                        * Referenced by: '<S10>/Constant'
-                                        */
-  real_T Constant_Value_i;             /* Expression: 2
-                                        * Referenced by: '<S11>/Constant'
-                                        */
-  real_T Constant_Value_e;             /* Expression: 2
-                                        * Referenced by: '<S12>/Constant'
-                                        */
-  real_T Unwrap21_Modulus;             /* Expression: modulus
-                                        * Referenced by: '<S7>/Unwrap 2^1'
-                                        */
-  real_T Constant_Value_j;             /* Expression: 2
-                                        * Referenced by: '<S13>/Constant'
-                                        */
-  real_T Integrator2_IC_n;             /* Expression: 0
                                         * Referenced by: '<S13>/Integrator2'
                                         */
-  real_T Constant_Value_n;             /* Expression: 2
+  real_T Constant1_Value;              /* Expression: 1
+                                        * Referenced by: '<S8>/Constant1'
+                                        */
+  real_T Constant10_Value_f;           /* Expression: 100
+                                        * Referenced by: '<S8>/Constant10'
+                                        */
+  real_T Constant11_Value;             /* Expression: 1
+                                        * Referenced by: '<S8>/Constant11'
+                                        */
+  real_T Constant12_Value;             /* Expression: 30
+                                        * Referenced by: '<S8>/Constant12'
+                                        */
+  real_T Constant3_Value;              /* Expression: 1
+                                        * Referenced by: '<S8>/Constant3'
+                                        */
+  real_T Constant4_Value;              /* Expression: 1
+                                        * Referenced by: '<S8>/Constant4'
+                                        */
+  real_T Constant5_Value;              /* Expression: 1
+                                        * Referenced by: '<S8>/Constant5'
+                                        */
+  real_T Constant6_Value;              /* Expression: 1
+                                        * Referenced by: '<S8>/Constant6'
+                                        */
+  real_T Constant7_Value;              /* Expression: 1
+                                        * Referenced by: '<S8>/Constant7'
+                                        */
+  real_T Constant9_Value_f;            /* Expression: 1
+                                        * Referenced by: '<S8>/Constant9'
+                                        */
+  real_T Integrator_IC;                /* Expression: 0
+                                        * Referenced by: '<S8>/Integrator'
+                                        */
+  real_T Constant_Value_h;             /* Expression: 2
+                                        * Referenced by: '<S10>/Constant'
+                                        */
+  real_T Unwrap224_Modulus;            /* Expression: modulus
+                                        * Referenced by: '<S8>/Unwrap 2^24'
+                                        */
+  real_T Constant_Value_l;             /* Expression: 2
+                                        * Referenced by: '<S11>/Constant'
+                                        */
+  real_T Integrator2_IC_j;             /* Expression: 0
+                                        * Referenced by: '<S11>/Integrator2'
+                                        */
+  real_T Constant_Value_i;             /* Expression: 2
+                                        * Referenced by: '<S12>/Constant'
+                                        */
+  real_T Integrator2_IC_d;             /* Expression: 0
+                                        * Referenced by: '<S12>/Integrator2'
+                                        */
+  real_T Constant_Value_e;             /* Expression: 2
+                                        * Referenced by: '<S13>/Constant'
+                                        */
+  real_T Unwrap21_Modulus;             /* Expression: modulus
+                                        * Referenced by: '<S8>/Unwrap 2^1'
+                                        */
+  real_T Constant_Value_j;             /* Expression: 2
                                         * Referenced by: '<S14>/Constant'
                                         */
-  real_T Integrator2_IC_h;             /* Expression: 0
+  real_T Integrator2_IC_n;             /* Expression: 0
                                         * Referenced by: '<S14>/Integrator2'
                                         */
+  real_T Constant_Value_n;             /* Expression: 2
+                                        * Referenced by: '<S15>/Constant'
+                                        */
+  real_T Integrator2_IC_h;             /* Expression: 0
+                                        * Referenced by: '<S15>/Integrator2'
+                                        */
   real_T Gain1_Gain;                   /* Expression: 1/(4*720)
-                                        * Referenced by: '<S15>/Gain1'
+                                        * Referenced by: '<S16>/Gain1'
                                         */
   real_T Gain4_Gain;                   /* Expression: (13*19)/(70*37)
-                                        * Referenced by: '<S15>/Gain4'
+                                        * Referenced by: '<S16>/Gain4'
                                         */
   real_T Gain2_Gain;                   /* Expression: 2*pi
-                                        * Referenced by: '<S15>/Gain2'
+                                        * Referenced by: '<S16>/Gain2'
                                         */
   real_T Gain3_Gain;                   /* Expression: 0.033
-                                        * Referenced by: '<S15>/Gain3'
+                                        * Referenced by: '<S16>/Gain3'
                                         */
   real_T Integrator5_IC;               /* Expression: 0
-                                        * Referenced by: '<S2>/Integrator5'
+                                        * Referenced by: '<S3>/Integrator5'
                                         */
   real_T Integrator6_IC;               /* Expression: 0
-                                        * Referenced by: '<S3>/Integrator6'
+                                        * Referenced by: '<S4>/Integrator6'
                                         */
   real_T Integrator3_IC;               /* Expression: 0
                                         * Referenced by: '<Root>/Integrator3'
                                         */
   real_T commandsaturation_UpperSat;   /* Expression: 0.8
-                                        * Referenced by: '<S8>/command saturation'
+                                        * Referenced by: '<S9>/command saturation'
                                         */
   real_T commandsaturation_LowerSat;   /* Expression: -0.8
-                                        * Referenced by: '<S8>/command saturation'
+                                        * Referenced by: '<S9>/command saturation'
                                         */
   real_T Kffms_Gain;                   /* Expression: 0.1
-                                        * Referenced by: '<S8>/Kff  (% // m//s)'
+                                        * Referenced by: '<S9>/Kff  (% // m//s)'
                                         */
   real_T Kpms_Gain;                    /* Expression: 0.1
-                                        * Referenced by: '<S8>/Kp (% // m//s)'
+                                        * Referenced by: '<S9>/Kp (% // m//s)'
                                         */
   real_T Integrator1_IC;               /* Expression: 0
-                                        * Referenced by: '<S8>/Integrator1'
+                                        * Referenced by: '<S9>/Integrator1'
                                         */
   real_T Integrator1_UpperSat;         /* Expression: 0.4
-                                        * Referenced by: '<S8>/Integrator1'
+                                        * Referenced by: '<S9>/Integrator1'
                                         */
   real_T Integrator1_LowerSat;         /* Expression: -0.4
-                                        * Referenced by: '<S8>/Integrator1'
+                                        * Referenced by: '<S9>/Integrator1'
                                         */
   real_T commandsaturation1_UpperSat;  /* Expression: 0.5
-                                        * Referenced by: '<S8>/command saturation1'
+                                        * Referenced by: '<S9>/command saturation1'
                                         */
   real_T commandsaturation1_LowerSat;  /* Expression: -0.5
-                                        * Referenced by: '<S8>/command saturation1'
+                                        * Referenced by: '<S9>/command saturation1'
                                         */
   real_T directionconvention_Gain;     /* Expression: +1
-                                        * Referenced by: '<S7>/direction convention'
+                                        * Referenced by: '<S8>/direction convention'
                                         */
   real_T commandsaturation_UpperSat_n; /* Expression: 0.25
-                                        * Referenced by: '<S7>/command saturation'
+                                        * Referenced by: '<S8>/command saturation'
                                         */
   real_T commandsaturation_LowerSat_i; /* Expression: -0.25
-                                        * Referenced by: '<S7>/command saturation'
+                                        * Referenced by: '<S8>/command saturation'
                                         */
   real_T Gain_Gain;                    /* Expression: +1
-                                        * Referenced by: '<S7>/Gain'
+                                        * Referenced by: '<S8>/Gain'
                                         */
   real_T SteeringBias_Bias;            /* Expression: 0.018
-                                        * Referenced by: '<S7>/Steering Bias'
+                                        * Referenced by: '<S8>/Steering Bias'
                                         */
   real_T Constant7_Value_o;            /* Expression: 1
                                         * Referenced by: '<Root>/Constant7'
@@ -1324,182 +1322,186 @@ struct P_test3_T_ {
                                         * Referenced by: '<Root>/Constant8'
                                         */
   real_T Constant_Value_p;             /* Expression: 2
-                                        * Referenced by: '<S6>/Constant'
+                                        * Referenced by: '<S7>/Constant'
                                         */
   real_T Unwrap21_Modulus_p;           /* Expression: modulus
                                         * Referenced by: '<Root>/Unwrap 2^1'
                                         */
   real_T Integrator2_IC_a;             /* Expression: 0
-                                        * Referenced by: '<S6>/Integrator2'
+                                        * Referenced by: '<S7>/Integrator2'
                                         */
   real_T Kim_Gain;                     /* Expression: 0.1
-                                        * Referenced by: '<S8>/Ki (% // m)  '
+                                        * Referenced by: '<S9>/Ki (% // m)  '
                                         */
   int32_T HILInitialize_DOWatchdog;
                                  /* Computed Parameter: HILInitialize_DOWatchdog
-                                  * Referenced by: '<S7>/HIL Initialize'
+                                  * Referenced by: '<S8>/HIL Initialize'
                                   */
   int32_T HILInitialize_EIInitial;/* Computed Parameter: HILInitialize_EIInitial
-                                   * Referenced by: '<S7>/HIL Initialize'
+                                   * Referenced by: '<S8>/HIL Initialize'
                                    */
   int32_T HILInitialize_POModes;    /* Computed Parameter: HILInitialize_POModes
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   int32_T HILInitialize_POConfiguration;
                             /* Computed Parameter: HILInitialize_POConfiguration
-                             * Referenced by: '<S7>/HIL Initialize'
+                             * Referenced by: '<S8>/HIL Initialize'
                              */
   int32_T HILInitialize_POAlignment;
                                 /* Computed Parameter: HILInitialize_POAlignment
-                                 * Referenced by: '<S7>/HIL Initialize'
+                                 * Referenced by: '<S8>/HIL Initialize'
                                  */
   int32_T HILInitialize_POPolarity;
                                  /* Computed Parameter: HILInitialize_POPolarity
-                                  * Referenced by: '<S7>/HIL Initialize'
+                                  * Referenced by: '<S8>/HIL Initialize'
                                   */
   uint32_T HILInitialize_AIChannels[5];
                                  /* Computed Parameter: HILInitialize_AIChannels
-                                  * Referenced by: '<S7>/HIL Initialize'
+                                  * Referenced by: '<S8>/HIL Initialize'
                                   */
   uint32_T HILInitialize_DIChannels[15];
                                  /* Computed Parameter: HILInitialize_DIChannels
-                                  * Referenced by: '<S7>/HIL Initialize'
+                                  * Referenced by: '<S8>/HIL Initialize'
                                   */
   uint32_T HILInitialize_DOChannels[16];
                                  /* Computed Parameter: HILInitialize_DOChannels
-                                  * Referenced by: '<S7>/HIL Initialize'
+                                  * Referenced by: '<S8>/HIL Initialize'
                                   */
   uint32_T HILInitialize_EIChannels[3];
                                  /* Computed Parameter: HILInitialize_EIChannels
-                                  * Referenced by: '<S7>/HIL Initialize'
+                                  * Referenced by: '<S8>/HIL Initialize'
                                   */
   uint32_T HILInitialize_EIQuadrature;
                                /* Computed Parameter: HILInitialize_EIQuadrature
-                                * Referenced by: '<S7>/HIL Initialize'
+                                * Referenced by: '<S8>/HIL Initialize'
                                 */
   uint32_T HILInitialize_POChannels[2];
                                  /* Computed Parameter: HILInitialize_POChannels
-                                  * Referenced by: '<S7>/HIL Initialize'
+                                  * Referenced by: '<S8>/HIL Initialize'
                                   */
   uint32_T HILInitialize_OOChannels[2];
                                  /* Computed Parameter: HILInitialize_OOChannels
-                                  * Referenced by: '<S7>/HIL Initialize'
+                                  * Referenced by: '<S8>/HIL Initialize'
                                   */
   boolean_T HILInitialize_Active;    /* Computed Parameter: HILInitialize_Active
-                                      * Referenced by: '<S7>/HIL Initialize'
+                                      * Referenced by: '<S8>/HIL Initialize'
                                       */
   boolean_T HILInitialize_AOTerminate;
                                 /* Computed Parameter: HILInitialize_AOTerminate
-                                 * Referenced by: '<S7>/HIL Initialize'
+                                 * Referenced by: '<S8>/HIL Initialize'
                                  */
   boolean_T HILInitialize_AOExit;    /* Computed Parameter: HILInitialize_AOExit
-                                      * Referenced by: '<S7>/HIL Initialize'
+                                      * Referenced by: '<S8>/HIL Initialize'
                                       */
   boolean_T HILInitialize_DOTerminate;
                                 /* Computed Parameter: HILInitialize_DOTerminate
-                                 * Referenced by: '<S7>/HIL Initialize'
+                                 * Referenced by: '<S8>/HIL Initialize'
                                  */
   boolean_T HILInitialize_DOExit;    /* Computed Parameter: HILInitialize_DOExit
-                                      * Referenced by: '<S7>/HIL Initialize'
+                                      * Referenced by: '<S8>/HIL Initialize'
                                       */
   boolean_T HILInitialize_POTerminate;
                                 /* Computed Parameter: HILInitialize_POTerminate
-                                 * Referenced by: '<S7>/HIL Initialize'
+                                 * Referenced by: '<S8>/HIL Initialize'
                                  */
   boolean_T HILInitialize_POExit;    /* Computed Parameter: HILInitialize_POExit
-                                      * Referenced by: '<S7>/HIL Initialize'
+                                      * Referenced by: '<S8>/HIL Initialize'
                                       */
   boolean_T HILInitialize_CKPStart;/* Computed Parameter: HILInitialize_CKPStart
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_CKPEnter;/* Computed Parameter: HILInitialize_CKPEnter
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_CKStart;  /* Computed Parameter: HILInitialize_CKStart
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_CKEnter;  /* Computed Parameter: HILInitialize_CKEnter
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_AIPStart;/* Computed Parameter: HILInitialize_AIPStart
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_AIPEnter;/* Computed Parameter: HILInitialize_AIPEnter
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_AOPStart;/* Computed Parameter: HILInitialize_AOPStart
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_AOPEnter;/* Computed Parameter: HILInitialize_AOPEnter
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_AOStart;  /* Computed Parameter: HILInitialize_AOStart
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_AOEnter;  /* Computed Parameter: HILInitialize_AOEnter
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_AOReset;  /* Computed Parameter: HILInitialize_AOReset
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_DOPStart;/* Computed Parameter: HILInitialize_DOPStart
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_DOPEnter;/* Computed Parameter: HILInitialize_DOPEnter
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_DOStart;  /* Computed Parameter: HILInitialize_DOStart
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_DOEnter;  /* Computed Parameter: HILInitialize_DOEnter
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_DOReset;  /* Computed Parameter: HILInitialize_DOReset
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_EIPStart;/* Computed Parameter: HILInitialize_EIPStart
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_EIPEnter;/* Computed Parameter: HILInitialize_EIPEnter
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_EIStart;  /* Computed Parameter: HILInitialize_EIStart
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_EIEnter;  /* Computed Parameter: HILInitialize_EIEnter
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_POPStart;/* Computed Parameter: HILInitialize_POPStart
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_POPEnter;/* Computed Parameter: HILInitialize_POPEnter
-                                    * Referenced by: '<S7>/HIL Initialize'
+                                    * Referenced by: '<S8>/HIL Initialize'
                                     */
   boolean_T HILInitialize_POStart;  /* Computed Parameter: HILInitialize_POStart
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_POEnter;  /* Computed Parameter: HILInitialize_POEnter
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_POReset;  /* Computed Parameter: HILInitialize_POReset
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_OOReset;  /* Computed Parameter: HILInitialize_OOReset
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_DOFinal;  /* Computed Parameter: HILInitialize_DOFinal
-                                     * Referenced by: '<S7>/HIL Initialize'
+                                     * Referenced by: '<S8>/HIL Initialize'
                                      */
   boolean_T HILInitialize_DOInitial;
                                   /* Computed Parameter: HILInitialize_DOInitial
-                                   * Referenced by: '<S7>/HIL Initialize'
+                                   * Referenced by: '<S8>/HIL Initialize'
                                    */
   boolean_T HILRead_Active;            /* Computed Parameter: HILRead_Active
-                                        * Referenced by: '<S7>/HIL Read'
+                                        * Referenced by: '<S8>/HIL Read'
                                         */
   boolean_T HILWrite_Active;           /* Computed Parameter: HILWrite_Active
-                                        * Referenced by: '<S7>/HIL Write'
+                                        * Referenced by: '<S8>/HIL Write'
                                         */
+  uint8_T UpNLDownFL2_CurrentSetting;
+                               /* Computed Parameter: UpNLDownFL2_CurrentSetting
+                                * Referenced by: '<Root>/Up - NL, Down - FL 2'
+                                */
   uint8_T uArm0Disarm2_CurrentSetting;
                               /* Computed Parameter: uArm0Disarm2_CurrentSetting
                                * Referenced by: '<Root>/1 - Arm, 0 - Disarm2'
@@ -1507,6 +1509,10 @@ struct P_test3_T_ {
   uint8_T XYFigure_Mode;               /* Computed Parameter: XYFigure_Mode
                                         * Referenced by: '<Root>/XY Figure'
                                         */
+  uint8_T UpNLDownFL_CurrentSetting;
+                                /* Computed Parameter: UpNLDownFL_CurrentSetting
+                                 * Referenced by: '<Root>/Up - NL, Down - FL'
+                                 */
 };
 
 /* Real-time Model Data Structure */
@@ -1664,21 +1670,22 @@ extern RT_MODEL_test3_T *const test3_M;
  *
  * '<Root>' : 'test3'
  * '<S1>'   : 'test3/MATLAB Function'
- * '<S2>'   : 'test3/PosX'
- * '<S3>'   : 'test3/PosY'
- * '<S4>'   : 'test3/Powered by QUARC'
- * '<S5>'   : 'test3/Quanser'
- * '<S6>'   : 'test3/Second-Order Low-Pass Filter1'
- * '<S7>'   : 'test3/basicQCarIO'
- * '<S8>'   : 'test3/speedController'
- * '<S9>'   : 'test3/basicQCarIO/Second-Order Low-Pass Filter'
- * '<S10>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter1'
- * '<S11>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter2'
- * '<S12>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter3'
- * '<S13>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter4'
- * '<S14>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter5'
- * '<S15>'  : 'test3/basicQCarIO/SpeedEstimation'
- * '<S16>'  : 'test3/basicQCarIO/SpeedEstimation1'
- * '<S17>'  : 'test3/speedController/Compare To Zero'
+ * '<S2>'   : 'test3/MATLAB Function2'
+ * '<S3>'   : 'test3/PosX'
+ * '<S4>'   : 'test3/PosY'
+ * '<S5>'   : 'test3/Powered by QUARC'
+ * '<S6>'   : 'test3/Quanser'
+ * '<S7>'   : 'test3/Second-Order Low-Pass Filter1'
+ * '<S8>'   : 'test3/basicQCarIO'
+ * '<S9>'   : 'test3/speedController'
+ * '<S10>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter'
+ * '<S11>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter1'
+ * '<S12>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter2'
+ * '<S13>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter3'
+ * '<S14>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter4'
+ * '<S15>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter5'
+ * '<S16>'  : 'test3/basicQCarIO/SpeedEstimation'
+ * '<S17>'  : 'test3/basicQCarIO/SpeedEstimation1'
+ * '<S18>'  : 'test3/speedController/Compare To Zero'
  */
 #endif                                 /* RTW_HEADER_test3_h_ */

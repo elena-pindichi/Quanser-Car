@@ -6,9 +6,9 @@
  *
  * Code generation for model "test3".
  *
- * Model version              : 15.48
+ * Model version              : 15.50
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Tue Apr 29 15:35:05 2025
+ * C source code generated on : Wed Apr 30 10:33:29 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -24,6 +24,7 @@
 #include <math.h>
 #include <string.h>
 #include "test3_private.h"
+#include "rt_defines.h"
 #include <stdlib.h>
 #include <stddef.h>
 #include "zero_crossing_types.h"
@@ -432,6 +433,176 @@ static void test3_fmincon(const real_T fun_workspace_x0[4], const
   *fun_workspace_uref, real_T fun_workspace_N, const emxArray_real_T_test3_T *x0,
   const emxArray_real_T_test3_T *lb, const emxArray_real_T_test3_T *ub, const
   s6lIrH89xwD47fl4e1dZNiE_test3_T nonlcon_workspace, emxArray_real_T_test3_T *x);
+static void test3_eML_blk_kernel_anonFcn2_m(const real_T x0[4], real_T N, const
+  emxArray_real_T_test3_T *w, emxArray_real_T_test3_T *varargout_1,
+  emxArray_real_T_test3_T *varargout_2);
+static void emxInitStruct_s_lZflMU9sVqxC63I(s_lZflMU9sVqxC63IejQkKIC_test_T
+  *pStruct);
+static void emxInitStruct_anonymous_funct_k(anonymous_function_test3_k_T
+  *pStruct);
+static void emxInitStruct_coder_internal__p(coder_internal_stickyStruct_k_T
+  *pStruct);
+static void emxInitStruct_coder_internal__d(coder_internal_stickyStruc_ky_T
+  *pStruct);
+static void emxInitStruct_c_kyv1kfe2tm4hq5k(coder_internal_stickyStru_kyv_T
+  *pStruct);
+static void emxInitStruct_co_kyv1kfe2tm4hq5(coder_internal_stickyStr_kyv1_T
+  *pStruct);
+static void emxInitStruct_cod_kyv1kfe2tm4hq(coder_internal_stickySt_kyv1k_T
+  *pStruct);
+static void emxInitStruct_code_kyv1kfe2tm4h(coder_internal_stickyS_kyv1kf_T
+  *pStruct);
+static void emxInitStruct_coder_kyv1kfe2tm4(coder_internal_sticky_kyv1kfe_T
+  *pStruct);
+static void emxInitStruct_coder__kyv1kfe2tm(coder_internal_stick_kyv1kfe2_T
+  *pStruct);
+static void emxInitStruct_coder_i_kyv1kfe2t(coder_internal_stickyStruct_c_T
+  *pStruct);
+static void emxInitStruct_s_9imJcZ2iwk426vK(s_9imJcZ2iwk426vK9Q2bBEG_test_T
+  *pStruct);
+static real_T test3_eML_blk_kernel_anonFcn1_e(const real_T x0[4], const
+  emxArray_real_T_test3_T *zref, const emxArray_real_T_test3_T *wref, real_T N,
+  const emxArray_real_T_test3_T *w);
+static int32_T test3_computeConstraints__c(int32_T
+  obj_next_next_next_next_b_value, int32_T obj_next_next_next_next_next_b_,
+  const real_T obj_next_next_next_next_next_ne[4], real_T
+  obj_next_next_next_next_next__0, const emxArray_real_T_test3_T *x,
+  emxArray_real_T_test3_T *Cineq_workspace, int32_T ineq0,
+  emxArray_real_T_test3_T *Ceq_workspace, int32_T eq0);
+static boolean_T test3_finDiffEvalAndChkErr_p(const real_T
+  obj_objfun_workspace_x0[4], const emxArray_real_T_test3_T
+  *obj_objfun_workspace_zref, const emxArray_real_T_test3_T
+  *obj_objfun_workspace_wref, real_T obj_objfun_workspace_N, const real_T
+  obj_nonlin_workspace_x0[4], real_T obj_nonlin_workspace_N, int32_T obj_mIneq,
+  int32_T obj_mEq, real_T *fplus, emxArray_real_T_test3_T *cIneqPlus,
+  emxArray_real_T_test3_T *cEqPlus, int32_T dim, real_T delta,
+  emxArray_real_T_test3_T *xk);
+static boolean_T test_computeFiniteDifferences_k(s_9imJcZ2iwk426vK9Q2bBEG_test_T
+  *obj, real_T fCurrent, const emxArray_real_T_test3_T *cIneqCurrent, int32_T
+  ineq0, const emxArray_real_T_test3_T *cEqCurrent, int32_T eq0,
+  emxArray_real_T_test3_T *xk, emxArray_real_T_test3_T *gradf,
+  emxArray_real_T_test3_T *JacCineqTrans, int32_T CineqColStart, int32_T ldJI,
+  emxArray_real_T_test3_T *JacCeqTrans, int32_T CeqColStart, int32_T ldJE);
+static void test3_modifyOverheadPhaseOne__h(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj);
+static void test3_setProblemType_g(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj, int32_T
+  PROBLEM_TYPE);
+static real_T test3_computePrimalFeasError_d(int32_T mLinIneq, int32_T
+  mNonlinIneq, const emxArray_real_T_test3_T *cIneq, int32_T mLinEq, int32_T
+  mNonlinEq, const emxArray_real_T_test3_T *cEq);
+static void test3_test_exit_ks(sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
+  const s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet,
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState, int32_T
+  runTimeOptions_MaxFunctionEvalu, boolean_T *Flags_gradOK, boolean_T
+  *Flags_fevalOK, boolean_T *Flags_done, boolean_T *Flags_stepAccepted,
+  boolean_T *Flags_failedLineSearch, int32_T *Flags_stepType);
+static real_T test3_computeComplError_c(const emxArray_real_T_test3_T
+  *fscales_cineq_constraint, int32_T mIneq, const emxArray_real_T_test3_T *cIneq,
+  int32_T mLB, const emxArray_real_T_test3_T *lambda, int32_T iL0);
+static void test_updateWorkingSetForNewQP_b(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *WorkingSet, int32_T mIneq, int32_T mNonlinIneq, const emxArray_real_T_test3_T
+  *cIneq, int32_T mEq, int32_T mNonlinEq, const emxArray_real_T_test3_T *cEq);
+static void test3_sortLambdaQP_e(emxArray_real_T_test3_T *lambda, int32_T
+  WorkingSet_nActiveConstr, const int32_T WorkingSet_sizes[5], const int32_T
+  WorkingSet_isActiveIdx[6], const emxArray_int32_T_test3_T *WorkingSet_Wid,
+  const emxArray_int32_T_test3_T *WorkingSet_Wlocalidx, emxArray_real_T_test3_T *
+  workspace);
+static void test3_test_exit_ksj(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, sG8JZ69axY52WWR6RKyApQC_test3_T
+  *MeritFunction, const emxArray_real_T_test3_T *fscales_cineq_constraint,
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T
+  *TrialState, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager, int32_T
+  runTimeOptions_MaxFunctionEvalu);
+static boolean_T test3_feasibleX0ForWorkingSet_n(emxArray_real_T_test3_T
+  *workspace, emxArray_real_T_test3_T *xCurrent, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager);
+static real_T test3_maxConstraintViolation_f(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *obj, const emxArray_real_T_test3_T *x);
+static void test3_PresolveWorkingSet_p(s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager);
+static void test3_feasibleratiotest_e(const emxArray_real_T_test3_T
+  *solution_xstar, const emxArray_real_T_test3_T *solution_searchDir,
+  emxArray_real_T_test3_T *workspace, int32_T workingset_nVar, int32_T
+  workingset_ldA, const emxArray_real_T_test3_T *workingset_Aineq, const
+  emxArray_real_T_test3_T *workingset_bineq, const emxArray_real_T_test3_T
+  *workingset_lb, const emxArray_int32_T_test3_T *workingset_indexLB, const
+  int32_T workingset_sizes[5], const int32_T workingset_isActiveIdx[6], const
+  emxArray_boolean_T_test3_T *workingset_isActiveConstr, const int32_T
+  workingset_nWConstr[5], boolean_T isPhaseOne, real_T *alpha, boolean_T
+  *newBlocking, int32_T *constrType, int32_T *constrIdx);
+static void test3_iterate_b(const emxArray_real_T_test3_T *H, const
+  emxArray_real_T_test3_T *f, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *cholmanager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  objective, const char_T options_SolverName[7], real_T options_StepTolerance,
+  real_T options_ObjectiveLimit, int32_T runTimeOptions_MaxIterations);
+static void test3_driver_hb(const emxArray_real_T_test3_T *H, const
+  emxArray_real_T_test3_T *f, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *cholmanager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  objective, somzaGboVhDG7PNQS6E98jD_test3_T *options, int32_T
+  runTimeOptions_MaxIterations);
+static void test3_relaxed_i(const emxArray_real_T_test3_T *Hessian, const
+  emxArray_real_T_test3_T *grad, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState,
+  sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  QPObjective, somzaGboVhDG7PNQS6E98jD_test3_T *qpoptions);
+static boolean_T test3_step_p(int32_T *STEP_TYPE, emxArray_real_T_test3_T
+  *Hessian, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState,
+  sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  QPObjective, somzaGboVhDG7PNQS6E98jD_test3_T *qpoptions);
+static void test3_evalObjAndConstr_f(int32_T obj_next_next_next_next_b_value,
+  int32_T obj_next_next_next_next_next_b_, const real_T
+  obj_next_next_next_next_next_ne[4], real_T obj_next_next_next_next_next__0,
+  const s_lZflMU9sVqxC63IejQkKIC_test_T obj_next_next_next_next_next__1, const
+  emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *Cineq_workspace, int32_T
+  ineq0, emxArray_real_T_test3_T *Ceq_workspace, int32_T eq0, real_T *fval,
+  int32_T *status);
+static void test3_driver_h(emxArray_real_T_test3_T *Hessian,
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState, sG8JZ69axY52WWR6RKyApQC_test3_T
+  *MeritFunction, const coder_internal_stickyStruct_c_T *FcnEvaluator,
+  s_9imJcZ2iwk426vK9Q2bBEG_test_T *FiniteDifferences,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  QPObjective, const emxArray_real_T_test3_T *fscales_cineq_constraint, int32_T
+  runTimeOptions_MaxFunctionEvalu);
+static void emxFreeStruct_s_lZflMU9sVqxC63I(s_lZflMU9sVqxC63IejQkKIC_test_T
+  *pStruct);
+static void emxFreeStruct_anonymous_funct_k(anonymous_function_test3_k_T
+  *pStruct);
+static void emxFreeStruct_s_9imJcZ2iwk426vK(s_9imJcZ2iwk426vK9Q2bBEG_test_T
+  *pStruct);
+static void emxFreeStruct_coder_i_kyv1kfe2t(coder_internal_stickyStruct_k_T
+  *pStruct);
+static void emxFreeStruct_coder__kyv1kfe2tm(coder_internal_stickyStruc_ky_T
+  *pStruct);
+static void emxFreeStruct_coder_kyv1kfe2tm4(coder_internal_stickyStru_kyv_T
+  *pStruct);
+static void emxFreeStruct_code_kyv1kfe2tm4h(coder_internal_stickyStr_kyv1_T
+  *pStruct);
+static void emxFreeStruct_cod_kyv1kfe2tm4hq(coder_internal_stickySt_kyv1k_T
+  *pStruct);
+static void emxFreeStruct_co_kyv1kfe2tm4hq5(coder_internal_stickyS_kyv1kf_T
+  *pStruct);
+static void emxFreeStruct_c_kyv1kfe2tm4hq5k(coder_internal_sticky_kyv1kfe_T
+  *pStruct);
+static void emxFreeStruct_coder_internal__d(coder_internal_stick_kyv1kfe2_T
+  *pStruct);
+static void emxFreeStruct_coder_internal__p(coder_internal_stickyStruct_c_T
+  *pStruct);
+static void test3_fmincon_l(const real_T fun_workspace_x0[4], const
+  emxArray_real_T_test3_T *fun_workspace_zref, const emxArray_real_T_test3_T
+  *fun_workspace_wref, real_T fun_workspace_N, const emxArray_real_T_test3_T *x0,
+  const sU0htoGcxTaPV5C2NLIldmB_test3_T nonlcon_workspace,
+  emxArray_real_T_test3_T *x);
 
 /*
  * This function updates continuous states using the ODE1 fixed-step
@@ -547,8 +718,8 @@ static void test3_eML_blk_kernel_anonFcn2(const real_T x0[4], real_T N, const
   int32_T tmp;
   uint32_T c;
 
-  /* '<S1>:1:294' */
-  /* '<S1>:1:288' */
+  /* '<S1>:1:121' */
+  /* '<S1>:1:115' */
   test3_emxInit_real_T(&x, 2);
   tmp = x->size[0] * x->size[1];
   x->size[0] = 4;
@@ -559,17 +730,17 @@ static void test3_eML_blk_kernel_anonFcn2(const real_T x0[4], real_T N, const
     memset(&x->data[0], 0, (uint32_T)loop_ub * sizeof(real_T));
   }
 
-  /* '<S1>:1:289' */
+  /* '<S1>:1:116' */
   x->data[0] = x0[0];
   x->data[1] = x0[1];
   x->data[2] = x0[2];
   x->data[3] = x0[3];
 
-  /* '<S1>:1:290' */
+  /* '<S1>:1:117' */
   varargout_2->size[0] = 0;
   b = (int32_T)N;
 
-  /* '<S1>:1:292' */
+  /* '<S1>:1:119' */
   for (loop_ub = 0; loop_ub < b; loop_ub++) {
     c = ((uint32_T)loop_ub << 1) + 1U;
     if (c > ((real_T)loop_ub + 1.0) * 2.0) {
@@ -578,9 +749,9 @@ static void test3_eML_blk_kernel_anonFcn2(const real_T x0[4], real_T N, const
       d = (int32_T)c - 1;
     }
 
-    /* '<S1>:1:293' */
-    /* '<S1>:1:294' */
-    /* '<S1>:1:306' */
+    /* '<S1>:1:120' */
+    /* '<S1>:1:121' */
+    /* '<S1>:1:133' */
     x_next_idx_2 = x->data[(loop_ub << 2) + 2];
     x_next_idx_3 = x->data[(loop_ub << 2) + 3];
     x_next_idx_0 = u->data[d] * cos(x_next_idx_2) * 0.1 + x->data[loop_ub << 2];
@@ -589,8 +760,8 @@ static void test3_eML_blk_kernel_anonFcn2(const real_T x0[4], real_T N, const
     x_next_idx_2 += u->data[d] / 0.256 * tan(x_next_idx_3) * 0.1;
     x_next_idx_3 += u->data[d + 1] * 0.1;
 
-    /* '<S1>:1:295' */
-    /* '<S1>:1:296' */
+    /* '<S1>:1:122' */
+    /* '<S1>:1:123' */
     d = varargout_2->size[0];
     tmp = varargout_2->size[0];
     varargout_2->size[0] += 4;
@@ -614,8 +785,8 @@ static void test3_eML_blk_kernel_anonFcn2(const real_T x0[4], real_T N, const
     loop_ub = x->size[1];
   }
 
-  /* '<S1>:1:300' */
-  /* '<S1>:1:301' */
+  /* '<S1>:1:127' */
+  /* '<S1>:1:128' */
   test3_emxInit_real_T(&varargout_1_tmp, 1);
   loop_ub -= b;
   tmp = varargout_1_tmp->size[0];
@@ -1341,10 +1512,10 @@ static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[4], const
   int32_T x_tmp_0;
   int32_T x_tmp_1;
 
-  /* '<S1>:1:274' */
-  /* '<S1>:1:278' */
-  /* '<S1>:1:282' */
-  /* '<S1>:1:268' */
+  /* '<S1>:1:101' */
+  /* '<S1>:1:105' */
+  /* '<S1>:1:109' */
+  /* '<S1>:1:95' */
   test3_emxInit_real_T(&x, 2);
   loop_ub = x->size[0] * x->size[1];
   x->size[0] = 4;
@@ -1355,17 +1526,17 @@ static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[4], const
     memset(&x->data[0], 0, (uint32_T)loop_ub * sizeof(real_T));
   }
 
-  /* '<S1>:1:269' */
+  /* '<S1>:1:96' */
   x->data[0] = x0[0];
   x->data[1] = x0[1];
   x->data[2] = x0[2];
   x->data[3] = x0[3];
 
-  /* '<S1>:1:270' */
+  /* '<S1>:1:97' */
   varargout_1 = 0.0;
   b = (int32_T)N;
 
-  /* '<S1>:1:272' */
+  /* '<S1>:1:99' */
   for (k = 0; k < b; k++) {
     c = ((uint32_T)k << 1) + 1U;
     d = ((real_T)k + 1.0) * 2.0;
@@ -1377,9 +1548,9 @@ static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[4], const
       e = (int32_T)d;
     }
 
-    /* '<S1>:1:273' */
-    /* '<S1>:1:274' */
-    /* '<S1>:1:306' */
+    /* '<S1>:1:100' */
+    /* '<S1>:1:101' */
+    /* '<S1>:1:133' */
     d_tmp = (k << 2) + 2;
     d = x->data[d_tmp];
     x_tmp_0 = (k << 2) + 1;
@@ -1394,13 +1565,13 @@ static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[4], const
     x->data[2 + loop_ub] = u->data[f] / 0.256 * tan(x_1) * 0.1 + d;
     x->data[3 + loop_ub] = u->data[f + 1] * 0.1 + x_1;
 
-    /* '<S1>:1:276' */
+    /* '<S1>:1:103' */
     err_x[0] = x_2 - xref->data[x_tmp];
     err_x[1] = x_0 - xref->data[x_tmp_0];
     err_x[2] = d - xref->data[d_tmp];
     err_x[3] = x_1 - xref->data[x_tmp_1];
 
-    /* '<S1>:1:277' */
+    /* '<S1>:1:104' */
     loop_ub = e - f;
     if (loop_ub == 2) {
       for (e = 0; e < loop_ub; e++) {
@@ -1410,7 +1581,7 @@ static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[4], const
       test3_binary_expand_op(err_u, u, f, e - 1, uref, k);
     }
 
-    /* '<S1>:1:278' */
+    /* '<S1>:1:105' */
     d = 0.0;
     for (e = 0; e < 4; e++) {
       loop_ub = e << 2;
@@ -1423,7 +1594,7 @@ static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[4], const
       0.0 + err_u[1] * 2.0) * err_u[1]) + (varargout_1 + d);
   }
 
-  /* '<S1>:1:281' */
+  /* '<S1>:1:108' */
   err_x[0] = x->data[(x->size[1] - 1) << 2] - xref->data[(xref->size[1] - 1) <<
     2];
   err_x[1] = x->data[((x->size[1] - 1) << 2) + 1] - xref->data[((xref->size[1] -
@@ -1434,7 +1605,7 @@ static real_T test3_eML_blk_kernel_anonFcn1(const real_T x0[4], const
     1) << 2) + 3];
   test3_emxFree_real_T(&x);
 
-  /* '<S1>:1:282' */
+  /* '<S1>:1:109' */
   d = 0.0;
   for (e = 0; e < 4; e++) {
     loop_ub = e << 2;
@@ -9010,6 +9181,4705 @@ static void test3_fmincon(const real_T fun_workspace_x0[4], const
   emxFreeStruct_s_0Mw3d4AlMrOoSnA(&TrialState);
 }
 
+real_T rt_atan2d_snf(real_T u0, real_T u1)
+{
+  real_T y;
+  if (rtIsNaN(u0) || rtIsNaN(u1)) {
+    y = (rtNaN);
+  } else if (rtIsInf(u0) && rtIsInf(u1)) {
+    int32_T tmp;
+    int32_T tmp_0;
+    if (u0 > 0.0) {
+      tmp = 1;
+    } else {
+      tmp = -1;
+    }
+
+    if (u1 > 0.0) {
+      tmp_0 = 1;
+    } else {
+      tmp_0 = -1;
+    }
+
+    y = atan2(tmp, tmp_0);
+  } else if (u1 == 0.0) {
+    if (u0 > 0.0) {
+      y = RT_PI / 2.0;
+    } else if (u0 < 0.0) {
+      y = -(RT_PI / 2.0);
+    } else {
+      y = 0.0;
+    }
+  } else {
+    y = atan2(u0, u1);
+  }
+
+  return y;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_eML_blk_kernel_anonFcn2_m(const real_T x0[4], real_T N, const
+  emxArray_real_T_test3_T *w, emxArray_real_T_test3_T *varargout_1,
+  emxArray_real_T_test3_T *varargout_2)
+{
+  emxArray_real_T_test3_T *eta;
+  emxArray_real_T_test3_T *z;
+  real_T c1;
+  real_T eta_0;
+  real_T eta_next;
+  real_T eta_next_idx_0;
+  real_T eta_next_tmp_tmp;
+  real_T s1;
+  real_T z_next_idx_0;
+  real_T z_next_idx_1;
+  real_T z_tmp;
+  int32_T e;
+  int32_T f;
+  int32_T k;
+  int32_T loop_ub_tmp;
+  int32_T s1_tmp;
+  int32_T z_next_idx_1_tmp;
+  uint32_T c;
+
+  /* '<S2>:1:168' */
+  /* '<S2>:1:158' */
+  test3_emxInit_real_T(&z, 2);
+  z_next_idx_1_tmp = z->size[0] * z->size[1];
+  z->size[0] = 2;
+  z->size[1] = (int32_T)(N + 1.0);
+  test3_emxEnsureCapacity_real_T(z, z_next_idx_1_tmp);
+  loop_ub_tmp = (int32_T)(N + 1.0) << 1;
+
+  /* '<S2>:1:159' */
+  test3_emxInit_real_T(&eta, 2);
+  z_next_idx_1_tmp = eta->size[0] * eta->size[1];
+  eta->size[0] = 2;
+  eta->size[1] = (int32_T)(N + 1.0);
+  test3_emxEnsureCapacity_real_T(eta, z_next_idx_1_tmp);
+  if (loop_ub_tmp - 1 >= 0) {
+    memset(&z->data[0], 0, (uint32_T)loop_ub_tmp * sizeof(real_T));
+  }
+
+  if (loop_ub_tmp - 1 >= 0) {
+    memset(&eta->data[0], 0, (uint32_T)loop_ub_tmp * sizeof(real_T));
+  }
+
+  /* '<S2>:1:160' */
+  /* '<S2>:1:161' */
+  /* '<S2>:1:118' */
+  z_tmp = x0[2] + x0[3];
+  z->data[0] = (0.256 * cos(x0[2]) + x0[0]) + cos(z_tmp) * 0.35;
+  z->data[1] = (0.256 * sin(x0[2]) + x0[1]) + sin(z_tmp) * 0.35;
+
+  /* '<S2>:1:162' */
+  eta->data[0] = x0[2];
+  eta->data[1] = rt_atan2d_snf(w->data[1], w->data[0]);
+
+  /* '<S2>:1:163' */
+  varargout_2->size[0] = 0;
+
+  /* '<S2>:1:164' */
+  varargout_1->size[0] = 0;
+  loop_ub_tmp = (int32_T)N;
+
+  /* '<S2>:1:166' */
+  for (k = 0; k < loop_ub_tmp; k++) {
+    c = ((uint32_T)k << 1) + 1U;
+    s1 = ((real_T)k + 1.0) * 2.0;
+    if (c > s1) {
+      f = 0;
+      e = 0;
+    } else {
+      f = (int32_T)c - 1;
+      e = (int32_T)s1;
+    }
+
+    /* '<S2>:1:167' */
+    /* '<S2>:1:168' */
+    s1_tmp = (k << 1) + 1;
+    s1 = z->data[s1_tmp];
+    z_next_idx_1_tmp = k << 1;
+    z_next_idx_1 = z->data[z_next_idx_1_tmp];
+    z_tmp = w->data[f + 1];
+    z_next_idx_0 = (z_tmp * 0.0 + 0.1 * w->data[f]) + (0.0 * s1 + z_next_idx_1);
+    z_next_idx_1 = (z_tmp * 0.1 + 0.0 * w->data[f]) + (0.0 * z_next_idx_1 + s1);
+
+    /* '<S2>:1:169' */
+    /* '<S2>:1:171' */
+    /* '<S2>:1:129' */
+    eta_next_idx_0 = eta->data[z_next_idx_1_tmp];
+    eta_0 = eta->data[s1_tmp];
+    c1 = eta_next_idx_0 + eta_0;
+    s1 = sin(c1);
+
+    /* '<S2>:1:129' */
+    c1 = cos(c1);
+
+    /* '<S2>:1:130' */
+    /* '<S2>:1:172' */
+    eta_next_tmp_tmp = sin(eta_0);
+
+    /* '<S2>:1:173' */
+    /* '<S2>:1:175' */
+    z_next_idx_1_tmp = varargout_2->size[0];
+    s1_tmp = varargout_2->size[0];
+    varargout_2->size[0] += 4;
+    test3_emxEnsureCapacity_real_T(varargout_2, s1_tmp);
+    s1_tmp = (k + 1) << 1;
+    z->data[s1_tmp] = z_next_idx_0;
+    eta_next = (eta_next_tmp_tmp * c1 / 0.256 * 0.1 * w->data[f] +
+                eta_next_tmp_tmp * s1 / 0.256 * 0.1 * z_tmp) + eta_next_idx_0;
+    eta_next_idx_0 = eta_next;
+    eta->data[s1_tmp] = eta_next;
+    varargout_2->data[z_next_idx_1_tmp] = z_next_idx_0 - z_next_idx_0;
+    z->data[1 + s1_tmp] = z_next_idx_1;
+    eta_next = ((-eta_next_tmp_tmp * c1 / 0.256 - s1 / 0.35) * 0.1 * w->data[f]
+                + (-eta_next_tmp_tmp * s1 / 0.256 - c1 / 0.35) * 0.1 * z_tmp) +
+      eta_0;
+    eta->data[1 + s1_tmp] = eta_next;
+    varargout_2->data[z_next_idx_1_tmp + 1] = z_next_idx_1 - z_next_idx_1;
+    varargout_2->data[z_next_idx_1_tmp + 2] = eta_next_idx_0 - eta_next_idx_0;
+    varargout_2->data[z_next_idx_1_tmp + 3] = eta_next - eta_next;
+
+    /* '<S2>:1:176' */
+    z_next_idx_1_tmp = varargout_1->size[0];
+    s1_tmp = varargout_1->size[0];
+    varargout_1->size[0]++;
+    test3_emxEnsureCapacity_real_T(varargout_1, s1_tmp);
+    z_tmp = 0.0;
+    e -= f;
+    for (s1_tmp = 0; s1_tmp < e; s1_tmp++) {
+      z_next_idx_0 = w->data[f + s1_tmp];
+      z_tmp += z_next_idx_0 * z_next_idx_0;
+    }
+
+    varargout_1->data[z_next_idx_1_tmp] = z_tmp - 0.5;
+  }
+
+  test3_emxFree_real_T(&eta);
+  test3_emxFree_real_T(&z);
+}
+
+static void emxInitStruct_s_lZflMU9sVqxC63I(s_lZflMU9sVqxC63IejQkKIC_test_T
+  *pStruct)
+{
+  test3_emxInit_real_T(&pStruct->zref, 2);
+  test3_emxInit_real_T(&pStruct->wref, 2);
+}
+
+static void emxInitStruct_anonymous_funct_k(anonymous_function_test3_k_T
+  *pStruct)
+{
+  emxInitStruct_s_lZflMU9sVqxC63I(&pStruct->workspace);
+}
+
+static void emxInitStruct_coder_internal__p(coder_internal_stickyStruct_k_T
+  *pStruct)
+{
+  emxInitStruct_anonymous_funct_k(&pStruct->b_value);
+}
+
+static void emxInitStruct_coder_internal__d(coder_internal_stickyStruc_ky_T
+  *pStruct)
+{
+  emxInitStruct_coder_internal__p(&pStruct->next);
+}
+
+static void emxInitStruct_c_kyv1kfe2tm4hq5k(coder_internal_stickyStru_kyv_T
+  *pStruct)
+{
+  emxInitStruct_coder_internal__d(&pStruct->next);
+}
+
+static void emxInitStruct_co_kyv1kfe2tm4hq5(coder_internal_stickyStr_kyv1_T
+  *pStruct)
+{
+  emxInitStruct_c_kyv1kfe2tm4hq5k(&pStruct->next);
+}
+
+static void emxInitStruct_cod_kyv1kfe2tm4hq(coder_internal_stickySt_kyv1k_T
+  *pStruct)
+{
+  emxInitStruct_co_kyv1kfe2tm4hq5(&pStruct->next);
+}
+
+static void emxInitStruct_code_kyv1kfe2tm4h(coder_internal_stickyS_kyv1kf_T
+  *pStruct)
+{
+  emxInitStruct_cod_kyv1kfe2tm4hq(&pStruct->next);
+}
+
+static void emxInitStruct_coder_kyv1kfe2tm4(coder_internal_sticky_kyv1kfe_T
+  *pStruct)
+{
+  emxInitStruct_code_kyv1kfe2tm4h(&pStruct->next);
+}
+
+static void emxInitStruct_coder__kyv1kfe2tm(coder_internal_stick_kyv1kfe2_T
+  *pStruct)
+{
+  emxInitStruct_coder_kyv1kfe2tm4(&pStruct->next);
+}
+
+static void emxInitStruct_coder_i_kyv1kfe2t(coder_internal_stickyStruct_c_T
+  *pStruct)
+{
+  emxInitStruct_coder__kyv1kfe2tm(&pStruct->next);
+}
+
+static void emxInitStruct_s_9imJcZ2iwk426vK(s_9imJcZ2iwk426vK9Q2bBEG_test_T
+  *pStruct)
+{
+  emxInitStruct_anonymous_funct_k(&pStruct->objfun);
+  test3_emxInit_real_T(&pStruct->cIneq_1, 1);
+  test3_emxInit_real_T(&pStruct->cEq_1, 1);
+  test3_emxInit_real_T(&pStruct->cIneq_2, 1);
+  test3_emxInit_real_T(&pStruct->cEq_2, 1);
+  test3_emxInit_boolean_T(&pStruct->hasLB, 1);
+  test3_emxInit_boolean_T(&pStruct->hasUB, 1);
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static real_T test3_eML_blk_kernel_anonFcn1_e(const real_T x0[4], const
+  emxArray_real_T_test3_T *zref, const emxArray_real_T_test3_T *wref, real_T N,
+  const emxArray_real_T_test3_T *w)
+{
+  emxArray_real_T_test3_T *z;
+  real_T err_w[2];
+  real_T err_z_idx_0;
+  real_T err_z_idx_1;
+  real_T varargout_1;
+  real_T z_0;
+  real_T z_1;
+  int32_T b;
+  int32_T e;
+  int32_T f;
+  int32_T k;
+  int32_T loop_ub;
+  int32_T z_tmp;
+  int32_T z_tmp_0;
+  uint32_T c;
+
+  /* '<S2>:1:144' */
+  /* '<S2>:1:148' */
+  /* '<S2>:1:137' */
+  test3_emxInit_real_T(&z, 2);
+  loop_ub = z->size[0] * z->size[1];
+  z->size[0] = 2;
+  z->size[1] = (int32_T)(N + 1.0);
+  test3_emxEnsureCapacity_real_T(z, loop_ub);
+  loop_ub = (int32_T)(N + 1.0) << 1;
+  if (loop_ub - 1 >= 0) {
+    memset(&z->data[0], 0, (uint32_T)loop_ub * sizeof(real_T));
+  }
+
+  /* '<S2>:1:139' */
+  /* '<S2>:1:118' */
+  err_z_idx_1 = x0[2] + x0[3];
+  z->data[0] = (0.256 * cos(x0[2]) + x0[0]) + cos(err_z_idx_1) * 0.35;
+  z->data[1] = (0.256 * sin(x0[2]) + x0[1]) + sin(err_z_idx_1) * 0.35;
+
+  /* '<S2>:1:140' */
+  varargout_1 = 0.0;
+  b = (int32_T)N;
+
+  /* '<S2>:1:142' */
+  for (k = 0; k < b; k++) {
+    c = ((uint32_T)k << 1) + 1U;
+    err_z_idx_0 = ((real_T)k + 1.0) * 2.0;
+    if (c > err_z_idx_0) {
+      f = 0;
+      e = 0;
+    } else {
+      f = (int32_T)c - 1;
+      e = (int32_T)err_z_idx_0;
+    }
+
+    /* '<S2>:1:143' */
+    /* '<S2>:1:144' */
+    z_tmp = k << 1;
+    z_0 = z->data[z_tmp];
+    z_tmp_0 = (k << 1) + 1;
+    z_1 = z->data[z_tmp_0];
+
+    /* '<S2>:1:146' */
+    err_z_idx_1 = w->data[f + 1];
+    loop_ub = (k + 1) << 1;
+    z->data[loop_ub] = (err_z_idx_1 * 0.0 + 0.1 * w->data[f]) + (0.0 * z_1 + z_0);
+    err_z_idx_0 = z_0 - zref->data[z_tmp];
+    z->data[1 + loop_ub] = (err_z_idx_1 * 0.1 + 0.0 * w->data[f]) + (0.0 * z_0 +
+      z_1);
+    err_z_idx_1 = z_1 - zref->data[z_tmp_0];
+
+    /* '<S2>:1:147' */
+    loop_ub = e - f;
+    if (loop_ub == 2) {
+      for (e = 0; e < loop_ub; e++) {
+        err_w[e] = w->data[f + e] - wref->data[(k << 1) + e];
+      }
+    } else {
+      test3_binary_expand_op(err_w, w, f, e - 1, wref, k);
+    }
+
+    /* '<S2>:1:148' */
+    varargout_1 = (((err_z_idx_0 * 10.0 + err_z_idx_1 * 0.0) * err_z_idx_0 +
+                    (err_z_idx_0 * 0.0 + err_z_idx_1 * 10.0) * err_z_idx_1) +
+                   varargout_1) + ((err_w[1] * 0.0 + err_w[0]) * err_w[0] +
+      (err_w[0] * 0.0 + err_w[1]) * err_w[1]);
+  }
+
+  /* '<S2>:1:151' */
+  err_z_idx_0 = z->data[(z->size[1] - 1) << 1] - zref->data[(zref->size[1] - 1) <<
+    1];
+  err_z_idx_1 = z->data[((z->size[1] - 1) << 1) + 1] - zref->data[((zref->size[1]
+    - 1) << 1) + 1];
+  test3_emxFree_real_T(&z);
+
+  /* '<S2>:1:152' */
+  varargout_1 += (err_z_idx_0 * 10.0 + err_z_idx_1 * 0.0) * err_z_idx_0 +
+    (err_z_idx_0 * 0.0 + err_z_idx_1 * 10.0) * err_z_idx_1;
+  return varargout_1;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static int32_T test3_computeConstraints__c(int32_T
+  obj_next_next_next_next_b_value, int32_T obj_next_next_next_next_next_b_,
+  const real_T obj_next_next_next_next_next_ne[4], real_T
+  obj_next_next_next_next_next__0, const emxArray_real_T_test3_T *x,
+  emxArray_real_T_test3_T *Cineq_workspace, int32_T ineq0,
+  emxArray_real_T_test3_T *Ceq_workspace, int32_T eq0)
+{
+  emxArray_int32_T_test3_T *eqRange;
+  emxArray_int32_T_test3_T *ineqRange;
+  emxArray_real_T_test3_T *b;
+  emxArray_real_T_test3_T *c;
+  int32_T k;
+  int32_T n;
+  int32_T status;
+  int32_T yk;
+  if (obj_next_next_next_next_next_b_ - 1 < 0) {
+    n = 0;
+  } else {
+    n = obj_next_next_next_next_next_b_;
+  }
+
+  test3_emxInit_int32_T(&ineqRange, 2);
+  k = ineqRange->size[0] * ineqRange->size[1];
+  ineqRange->size[0] = 1;
+  ineqRange->size[1] = n;
+  test3_emxEnsureCapacity_int32_T(ineqRange, k);
+  if (n > 0) {
+    ineqRange->data[0] = 0;
+    yk = 0;
+    for (k = 2; k <= n; k++) {
+      yk++;
+      ineqRange->data[k - 1] = yk;
+    }
+  }
+
+  k = ineqRange->size[0] * ineqRange->size[1];
+  ineqRange->size[0] = 1;
+  test3_emxEnsureCapacity_int32_T(ineqRange, k);
+  n = ineqRange->size[1] - 1;
+  for (k = 0; k <= n; k++) {
+    ineqRange->data[k] += ineq0;
+  }
+
+  if (obj_next_next_next_next_b_value - 1 < 0) {
+    n = 0;
+  } else {
+    n = obj_next_next_next_next_b_value;
+  }
+
+  test3_emxInit_int32_T(&eqRange, 2);
+  k = eqRange->size[0] * eqRange->size[1];
+  eqRange->size[0] = 1;
+  eqRange->size[1] = n;
+  test3_emxEnsureCapacity_int32_T(eqRange, k);
+  if (n > 0) {
+    eqRange->data[0] = 0;
+    yk = 0;
+    for (k = 2; k <= n; k++) {
+      yk++;
+      eqRange->data[k - 1] = yk;
+    }
+  }
+
+  k = eqRange->size[0] * eqRange->size[1];
+  eqRange->size[0] = 1;
+  test3_emxEnsureCapacity_int32_T(eqRange, k);
+  n = eqRange->size[1] - 1;
+  for (k = 0; k <= n; k++) {
+    eqRange->data[k] += eq0;
+  }
+
+  test3_emxInit_real_T(&b, 1);
+  test3_emxInit_real_T(&c, 1);
+  test3_eML_blk_kernel_anonFcn2_m(obj_next_next_next_next_next_ne,
+    obj_next_next_next_next_next__0, x, b, c);
+  n = ineqRange->size[1];
+  for (k = 0; k < n; k++) {
+    Cineq_workspace->data[ineqRange->data[k] - 1] = b->data[k];
+  }
+
+  test3_emxFree_real_T(&b);
+  test3_emxFree_int32_T(&ineqRange);
+  n = eqRange->size[1];
+  for (k = 0; k < n; k++) {
+    Ceq_workspace->data[eqRange->data[k] - 1] = c->data[k];
+  }
+
+  test3_emxFree_real_T(&c);
+  test3_emxFree_int32_T(&eqRange);
+  status = test3_checkVectorNonFinite(obj_next_next_next_next_next_b_,
+    Cineq_workspace, ineq0);
+  if (status == 1) {
+    status = test3_checkVectorNonFinite(obj_next_next_next_next_b_value,
+      Ceq_workspace, eq0);
+  }
+
+  return status;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static boolean_T test3_finDiffEvalAndChkErr_p(const real_T
+  obj_objfun_workspace_x0[4], const emxArray_real_T_test3_T
+  *obj_objfun_workspace_zref, const emxArray_real_T_test3_T
+  *obj_objfun_workspace_wref, real_T obj_objfun_workspace_N, const real_T
+  obj_nonlin_workspace_x0[4], real_T obj_nonlin_workspace_N, int32_T obj_mIneq,
+  int32_T obj_mEq, real_T *fplus, emxArray_real_T_test3_T *cIneqPlus,
+  emxArray_real_T_test3_T *cEqPlus, int32_T dim, real_T delta,
+  emxArray_real_T_test3_T *xk)
+{
+  real_T temp_tmp;
+  int32_T idx;
+  boolean_T evalOK;
+  temp_tmp = xk->data[dim - 1];
+  xk->data[dim - 1] = temp_tmp + delta;
+  *fplus = test3_eML_blk_kernel_anonFcn1_e(obj_objfun_workspace_x0,
+    obj_objfun_workspace_zref, obj_objfun_workspace_wref, obj_objfun_workspace_N,
+    xk);
+  evalOK = ((!rtIsInf(*fplus)) && (!rtIsNaN(*fplus)));
+  if (evalOK) {
+    test3_eML_blk_kernel_anonFcn2_m(obj_nonlin_workspace_x0,
+      obj_nonlin_workspace_N, xk, cIneqPlus, cEqPlus);
+    idx = 0;
+    while (evalOK && (idx + 1 <= obj_mIneq)) {
+      evalOK = ((!rtIsInf(cIneqPlus->data[idx])) && (!rtIsNaN(cIneqPlus->
+                  data[idx])));
+      idx++;
+    }
+
+    if (evalOK) {
+      idx = 0;
+      while (evalOK && (idx + 1 <= obj_mEq)) {
+        evalOK = ((!rtIsInf(cEqPlus->data[idx])) && (!rtIsNaN(cEqPlus->data[idx])));
+        idx++;
+      }
+
+      xk->data[dim - 1] = temp_tmp;
+    }
+  }
+
+  return evalOK;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static boolean_T test_computeFiniteDifferences_k(s_9imJcZ2iwk426vK9Q2bBEG_test_T
+  *obj, real_T fCurrent, const emxArray_real_T_test3_T *cIneqCurrent, int32_T
+  ineq0, const emxArray_real_T_test3_T *cEqCurrent, int32_T eq0,
+  emxArray_real_T_test3_T *xk, emxArray_real_T_test3_T *gradf,
+  emxArray_real_T_test3_T *JacCineqTrans, int32_T CineqColStart, int32_T ldJI,
+  emxArray_real_T_test3_T *JacCeqTrans, int32_T CeqColStart, int32_T ldJE)
+{
+  real_T deltaX;
+  int32_T b;
+  int32_T b_idx;
+  int32_T b_idx_row;
+  boolean_T evalOK;
+  boolean_T exitg1;
+  boolean_T guard1;
+  evalOK = true;
+  obj->numEvals = 0;
+  b_idx = 0;
+  exitg1 = false;
+  while ((!exitg1) && (b_idx <= obj->nVar - 1)) {
+    deltaX = (1.0 - (real_T)(xk->data[b_idx] < 0.0) * 2.0) *
+      1.4901161193847656E-8 * fmax(fabs(xk->data[b_idx]), 1.0);
+    evalOK = test3_finDiffEvalAndChkErr_p(obj->objfun.workspace.x0,
+      obj->objfun.workspace.zref, obj->objfun.workspace.wref,
+      obj->objfun.workspace.N, obj->nonlin.workspace.x0, obj->nonlin.workspace.N,
+      obj->mIneq, obj->mEq, &obj->f_1, obj->cIneq_1, obj->cEq_1, b_idx + 1,
+      deltaX, xk);
+    obj->numEvals++;
+    guard1 = false;
+    if (!evalOK) {
+      deltaX = -deltaX;
+      evalOK = test3_finDiffEvalAndChkErr_p(obj->objfun.workspace.x0,
+        obj->objfun.workspace.zref, obj->objfun.workspace.wref,
+        obj->objfun.workspace.N, obj->nonlin.workspace.x0,
+        obj->nonlin.workspace.N, obj->mIneq, obj->mEq, &obj->f_1, obj->cIneq_1,
+        obj->cEq_1, b_idx + 1, deltaX, xk);
+      obj->numEvals++;
+      if (!evalOK) {
+        exitg1 = true;
+      } else {
+        guard1 = true;
+      }
+    } else {
+      guard1 = true;
+    }
+
+    if (guard1) {
+      gradf->data[b_idx] = (obj->f_1 - fCurrent) / deltaX;
+      b = obj->mIneq;
+      for (b_idx_row = 0; b_idx_row < b; b_idx_row++) {
+        JacCineqTrans->data[b_idx + ldJI * ((CineqColStart + b_idx_row) - 1)] =
+          (obj->cIneq_1->data[b_idx_row] - cIneqCurrent->data[(ineq0 + b_idx_row)
+           - 1]) / deltaX;
+      }
+
+      b = obj->mEq;
+      for (b_idx_row = 0; b_idx_row < b; b_idx_row++) {
+        JacCeqTrans->data[b_idx + ldJE * ((CeqColStart + b_idx_row) - 1)] =
+          (obj->cEq_1->data[b_idx_row] - cEqCurrent->data[(eq0 + b_idx_row) - 1])
+          / deltaX;
+      }
+
+      b_idx++;
+    }
+  }
+
+  return evalOK;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_modifyOverheadPhaseOne__h(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj)
+{
+  int32_T idx;
+  int32_T idxEq;
+  int32_T idxStartIneq;
+  idxStartIneq = obj->sizes[1];
+  for (idx = 0; idx < idxStartIneq; idx++) {
+    idxEq = (obj->ldA * idx + obj->nVar) - 1;
+    obj->Aeq->data[idxEq] = 0.0;
+    obj->ATwset->data[idxEq + obj->ldA * (obj->isActiveIdx[1] - 1)] = 0.0;
+  }
+
+  idxStartIneq = obj->sizes[2];
+  for (idx = 0; idx < idxStartIneq; idx++) {
+    obj->Aineq->data[(obj->nVar + obj->ldA * idx) - 1] = -1.0;
+  }
+
+  obj->indexLB->data[obj->sizes[3] - 1] = obj->nVar;
+  obj->lb->data[obj->nVar - 1] = 1.0E-5;
+  idxStartIneq = obj->isActiveIdx[2];
+  idxEq = obj->nActiveConstr;
+  for (idx = idxStartIneq; idx <= idxEq; idx++) {
+    obj->ATwset->data[(obj->nVar + obj->ldA * (idx - 1)) - 1] = -1.0;
+  }
+
+  if (obj->nWConstr[4] > 0) {
+    obj->isActiveConstr->data[obj->isActiveIdx[4] - 1] = false;
+  }
+
+  obj->isActiveConstr->data[obj->isActiveIdx[4] - 2] = false;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_setProblemType_g(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *obj, int32_T
+  PROBLEM_TYPE)
+{
+  int32_T b;
+  int32_T b_tmp;
+  int32_T colOffsetATw;
+  int32_T colOffsetAineq;
+  int32_T mEq;
+  int32_T mIneq;
+  int32_T offsetEq1;
+  int32_T offsetEq1_tmp;
+  int32_T offsetEq2;
+  int32_T offsetIneq_tmp;
+  switch (PROBLEM_TYPE) {
+   case 3:
+    obj->nVar = obj->nVarOrig;
+    obj->mConstr = obj->mConstrOrig;
+    for (mIneq = 0; mIneq < 5; mIneq++) {
+      obj->sizes[mIneq] = obj->sizesNormal[mIneq];
+    }
+
+    for (mIneq = 0; mIneq < 6; mIneq++) {
+      obj->isActiveIdx[mIneq] = obj->isActiveIdxNormal[mIneq];
+    }
+    break;
+
+   case 1:
+    obj->nVar = obj->nVarOrig + 1;
+    obj->mConstr = obj->mConstrOrig + 1;
+    for (mIneq = 0; mIneq < 5; mIneq++) {
+      obj->sizes[mIneq] = obj->sizesPhaseOne[mIneq];
+    }
+
+    for (mIneq = 0; mIneq < 6; mIneq++) {
+      obj->isActiveIdx[mIneq] = obj->isActiveIdxPhaseOne[mIneq];
+    }
+
+    test3_modifyOverheadPhaseOne__h(obj);
+    break;
+
+   case 2:
+    obj->nVar = obj->nVarMax - 1;
+    obj->mConstr = obj->mConstrMax - 1;
+    for (mIneq = 0; mIneq < 5; mIneq++) {
+      obj->sizes[mIneq] = obj->sizesRegularized[mIneq];
+    }
+
+    if (obj->probType != 4) {
+      mIneq = obj->sizes[2];
+      mEq = obj->sizes[1];
+      offsetIneq_tmp = obj->nVarOrig + 1;
+      offsetEq1_tmp = obj->nVarOrig + obj->sizes[2];
+      offsetEq2 = offsetEq1_tmp + obj->sizes[1];
+      for (colOffsetATw = 0; colOffsetATw < mIneq; colOffsetATw++) {
+        colOffsetAineq = obj->ldA * colOffsetATw - 1;
+        b_tmp = offsetIneq_tmp + colOffsetATw;
+        b = b_tmp - 1;
+        for (offsetEq1 = offsetIneq_tmp; offsetEq1 <= b; offsetEq1++) {
+          obj->Aineq->data[offsetEq1 + colOffsetAineq] = 0.0;
+        }
+
+        obj->Aineq->data[b_tmp + colOffsetAineq] = -1.0;
+        offsetEq1 = b_tmp + 1;
+        b = obj->nVar;
+        for (b_tmp = offsetEq1; b_tmp <= b; b_tmp++) {
+          obj->Aineq->data[b_tmp + colOffsetAineq] = 0.0;
+        }
+      }
+
+      for (mIneq = 0; mIneq < mEq; mIneq++) {
+        colOffsetAineq = mIneq * obj->ldA - 1;
+        colOffsetATw = (obj->isActiveIdx[1] - 1) * obj->ldA + colOffsetAineq;
+        for (offsetEq1 = offsetIneq_tmp; offsetEq1 <= offsetEq1_tmp; offsetEq1++)
+        {
+          obj->Aeq->data[offsetEq1 + colOffsetAineq] = 0.0;
+          obj->ATwset->data[offsetEq1 + colOffsetATw] = 0.0;
+        }
+
+        b_tmp = mIneq + offsetEq1_tmp;
+        for (offsetEq1 = offsetEq1_tmp + 1; offsetEq1 <= b_tmp; offsetEq1++) {
+          obj->Aeq->data[offsetEq1 + colOffsetAineq] = 0.0;
+          obj->ATwset->data[offsetEq1 + colOffsetATw] = 0.0;
+        }
+
+        obj->Aeq->data[(b_tmp + colOffsetAineq) + 1] = -1.0;
+        obj->ATwset->data[(b_tmp + colOffsetATw) + 1] = -1.0;
+        b = b_tmp + 2;
+        for (offsetEq1 = b; offsetEq1 <= offsetEq2; offsetEq1++) {
+          obj->Aeq->data[offsetEq1 + colOffsetAineq] = 0.0;
+          obj->ATwset->data[offsetEq1 + colOffsetATw] = 0.0;
+        }
+
+        b_tmp = mIneq + offsetEq2;
+        for (offsetEq1 = offsetEq2 + 1; offsetEq1 <= b_tmp; offsetEq1++) {
+          obj->Aeq->data[offsetEq1 + colOffsetAineq] = 0.0;
+          obj->ATwset->data[offsetEq1 + colOffsetATw] = 0.0;
+        }
+
+        obj->Aeq->data[(b_tmp + colOffsetAineq) + 1] = 1.0;
+        obj->ATwset->data[(b_tmp + colOffsetATw) + 1] = 1.0;
+        offsetEq1 = b_tmp + 2;
+        b = obj->nVar;
+        for (b_tmp = offsetEq1; b_tmp <= b; b_tmp++) {
+          obj->Aeq->data[b_tmp + colOffsetAineq] = 0.0;
+          obj->ATwset->data[b_tmp + colOffsetATw] = 0.0;
+        }
+      }
+
+      mEq = obj->nVarOrig;
+      offsetEq1 = obj->sizesRegularized[3];
+      for (colOffsetATw = 1; colOffsetATw <= offsetEq1; colOffsetATw++) {
+        mEq++;
+        obj->indexLB->data[colOffsetATw - 1] = mEq;
+      }
+
+      mEq = obj->isActiveIdx[4];
+      offsetEq1 = obj->isActiveIdxRegularized[4] - 1;
+      for (colOffsetATw = mEq; colOffsetATw <= offsetEq1; colOffsetATw++) {
+        obj->isActiveConstr->data[colOffsetATw - 1] = false;
+      }
+
+      offsetEq1 = (obj->sizes[1] << 1) + offsetEq1_tmp;
+      for (colOffsetATw = offsetIneq_tmp; colOffsetATw <= offsetEq1;
+           colOffsetATw++) {
+        obj->lb->data[colOffsetATw - 1] = 0.0;
+      }
+
+      offsetEq1 = obj->isActiveIdx[2];
+      offsetEq2 = obj->nActiveConstr;
+      for (mEq = offsetEq1; mEq <= offsetEq2; mEq++) {
+        colOffsetATw = (mEq - 1) * obj->ldA - 1;
+        if (obj->Wid->data[mEq - 1] == 3) {
+          offsetEq1_tmp = obj->Wlocalidx->data[mEq - 1] + offsetIneq_tmp;
+          mIneq = offsetEq1_tmp - 2;
+          for (b_tmp = offsetIneq_tmp; b_tmp <= mIneq; b_tmp++) {
+            obj->ATwset->data[b_tmp + colOffsetATw] = 0.0;
+          }
+
+          obj->ATwset->data[(offsetEq1_tmp + colOffsetATw) - 1] = -1.0;
+          colOffsetAineq = obj->nVar;
+          for (b_tmp = offsetEq1_tmp; b_tmp <= colOffsetAineq; b_tmp++) {
+            obj->ATwset->data[b_tmp + colOffsetATw] = 0.0;
+          }
+        } else {
+          mIneq = obj->nVar;
+          for (b_tmp = offsetIneq_tmp; b_tmp <= mIneq; b_tmp++) {
+            obj->ATwset->data[b_tmp + colOffsetATw] = 0.0;
+          }
+        }
+      }
+    }
+
+    for (mIneq = 0; mIneq < 6; mIneq++) {
+      obj->isActiveIdx[mIneq] = obj->isActiveIdxRegularized[mIneq];
+    }
+    break;
+
+   default:
+    obj->nVar = obj->nVarMax;
+    obj->mConstr = obj->mConstrMax;
+    for (mIneq = 0; mIneq < 5; mIneq++) {
+      obj->sizes[mIneq] = obj->sizesRegPhaseOne[mIneq];
+    }
+
+    for (mIneq = 0; mIneq < 6; mIneq++) {
+      obj->isActiveIdx[mIneq] = obj->isActiveIdxRegPhaseOne[mIneq];
+    }
+
+    test3_modifyOverheadPhaseOne__h(obj);
+    break;
+  }
+
+  obj->probType = PROBLEM_TYPE;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static real_T test3_computePrimalFeasError_d(int32_T mLinIneq, int32_T
+  mNonlinIneq, const emxArray_real_T_test3_T *cIneq, int32_T mLinEq, int32_T
+  mNonlinEq, const emxArray_real_T_test3_T *cEq)
+{
+  real_T feasError;
+  int32_T idx;
+  int32_T mEq;
+  int32_T mIneq;
+  feasError = 0.0;
+  mEq = mNonlinEq + mLinEq;
+  mIneq = mNonlinIneq + mLinIneq;
+  for (idx = 0; idx < mEq; idx++) {
+    feasError = fmax(feasError, fabs(cEq->data[idx]));
+  }
+
+  for (mEq = 0; mEq < mIneq; mEq++) {
+    feasError = fmax(feasError, cIneq->data[mEq]);
+  }
+
+  return feasError;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_test_exit_ks(sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
+  const s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet,
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState, int32_T
+  runTimeOptions_MaxFunctionEvalu, boolean_T *Flags_gradOK, boolean_T
+  *Flags_fevalOK, boolean_T *Flags_done, boolean_T *Flags_stepAccepted,
+  boolean_T *Flags_failedLineSearch, int32_T *Flags_stepType)
+{
+  real_T s;
+  real_T smax;
+  int32_T k;
+  int32_T mLB;
+  int32_T mLambda;
+  int32_T mLambda_tmp;
+  int32_T nVar;
+  boolean_T isFeasible;
+  *Flags_fevalOK = true;
+  *Flags_stepAccepted = false;
+  *Flags_failedLineSearch = false;
+  *Flags_stepType = 1;
+  nVar = WorkingSet->nVar - 1;
+  mLB = WorkingSet->sizes[3];
+  mLambda_tmp = WorkingSet->sizes[1] + WorkingSet->sizes[2];
+  mLambda = (mLambda_tmp + WorkingSet->sizes[3]) - 1;
+  for (k = 0; k <= mLambda; k++) {
+    TrialState->lambdaStopTest->data[k] = TrialState->lambdasqp->data[k];
+  }
+
+  for (k = 0; k <= nVar; k++) {
+    TrialState->gradLag->data[k] = TrialState->grad->data[k];
+  }
+
+  test3_xgemv(WorkingSet->nVar, WorkingSet->sizes[1], WorkingSet->Aeq,
+              WorkingSet->ldA, TrialState->lambdaStopTest, 1,
+              TrialState->gradLag);
+  test3_xgemv(WorkingSet->nVar, WorkingSet->sizes[2], WorkingSet->Aineq,
+              WorkingSet->ldA, TrialState->lambdaStopTest, WorkingSet->sizes[1]
+              + 1, TrialState->gradLag);
+  for (k = 0; k < mLB; k++) {
+    TrialState->gradLag->data[WorkingSet->indexLB->data[k] - 1] -=
+      TrialState->lambdaStopTest->data[mLambda_tmp + k];
+  }
+
+  if (WorkingSet->nVar < 1) {
+    mLB = 0;
+  } else {
+    mLB = 1;
+    if (WorkingSet->nVar > 1) {
+      smax = fabs(TrialState->grad->data[0]);
+      for (k = 2; k <= nVar + 1; k++) {
+        s = fabs(TrialState->grad->data[k - 1]);
+        if (s > smax) {
+          mLB = k;
+          smax = s;
+        }
+      }
+    }
+  }
+
+  smax = fmax(1.0, fabs(TrialState->grad->data[mLB - 1]));
+  if (rtIsInf(smax)) {
+    smax = 1.0;
+  }
+
+  MeritFunction->nlpPrimalFeasError = test3_computePrimalFeasError_d
+    (WorkingSet->sizes[2] - TrialState->mNonlinIneq, TrialState->mNonlinIneq,
+     TrialState->cIneq, WorkingSet->sizes[1] - TrialState->mNonlinEq,
+     TrialState->mNonlinEq, TrialState->cEq);
+  MeritFunction->feasRelativeFactor = fmax(1.0,
+    MeritFunction->nlpPrimalFeasError);
+  isFeasible = (MeritFunction->nlpPrimalFeasError <= 1.0E-6 *
+                MeritFunction->feasRelativeFactor);
+  test3_computeDualFeasError(WorkingSet->nVar, TrialState->gradLag, Flags_gradOK,
+    &MeritFunction->nlpDualFeasError);
+  if (!*Flags_gradOK) {
+    *Flags_done = true;
+    if (isFeasible) {
+      TrialState->sqpExitFlag = 2;
+    } else {
+      TrialState->sqpExitFlag = -2;
+    }
+  } else {
+    MeritFunction->nlpComplError = 0.0;
+    MeritFunction->firstOrderOpt = fmax(MeritFunction->nlpDualFeasError, 0.0);
+    for (nVar = 0; nVar <= mLambda; nVar++) {
+      TrialState->lambdaStopTestPrev->data[nVar] = TrialState->
+        lambdaStopTest->data[nVar];
+    }
+
+    if (isFeasible && (MeritFunction->nlpDualFeasError <= 1.0E-6 * smax)) {
+      *Flags_done = true;
+      TrialState->sqpExitFlag = 1;
+    } else {
+      *Flags_done = false;
+      if (isFeasible && (TrialState->sqpFval < -1.0E+20)) {
+        *Flags_done = true;
+        TrialState->sqpExitFlag = -3;
+      } else if (TrialState->FunctionEvaluations >=
+                 runTimeOptions_MaxFunctionEvalu) {
+        *Flags_done = true;
+        TrialState->sqpExitFlag = 0;
+      }
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static real_T test3_computeComplError_c(const emxArray_real_T_test3_T
+  *fscales_cineq_constraint, int32_T mIneq, const emxArray_real_T_test3_T *cIneq,
+  int32_T mLB, const emxArray_real_T_test3_T *lambda, int32_T iL0)
+{
+  real_T nlpComplError;
+  int32_T idx;
+  int32_T mNonlinIneq;
+  nlpComplError = 0.0;
+  mNonlinIneq = fscales_cineq_constraint->size[0];
+  if (mIneq + mLB > 0) {
+    for (idx = 0; idx < mNonlinIneq; idx++) {
+      real_T cIneq_0;
+      real_T lambda_0;
+      cIneq_0 = cIneq->data[idx];
+      lambda_0 = lambda->data[(iL0 + idx) - 1];
+      nlpComplError = fmax(nlpComplError, fmin(fabs(cIneq_0 * lambda_0), fmin
+        (fabs(cIneq_0), lambda_0)));
+    }
+  }
+
+  return nlpComplError;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test_updateWorkingSetForNewQP_b(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *WorkingSet, int32_T mIneq, int32_T mNonlinIneq, const emxArray_real_T_test3_T
+  *cIneq, int32_T mEq, int32_T mNonlinEq, const emxArray_real_T_test3_T *cEq)
+{
+  int32_T iEq0;
+  int32_T ineqStart;
+  int32_T iw0;
+  int32_T mLinEq;
+  int32_T nVar;
+  nVar = WorkingSet->nVar - 1;
+  for (iw0 = 0; iw0 < mEq; iw0++) {
+    real_T WorkingSet_0;
+    WorkingSet_0 = -cEq->data[iw0];
+    WorkingSet->beq->data[iw0] = WorkingSet_0;
+    WorkingSet->bwset->data[iw0] = WorkingSet_0;
+  }
+
+  iw0 = (mEq - mNonlinEq) * WorkingSet->ldA;
+  iEq0 = iw0;
+  for (mLinEq = 0; mLinEq < mNonlinEq; mLinEq++) {
+    for (ineqStart = 0; ineqStart <= nVar; ineqStart++) {
+      WorkingSet->ATwset->data[iw0 + ineqStart] = WorkingSet->Aeq->data[iEq0 +
+        ineqStart];
+    }
+
+    iw0 += WorkingSet->ldA;
+    iEq0 += WorkingSet->ldA;
+  }
+
+  for (iw0 = 0; iw0 < mIneq; iw0++) {
+    WorkingSet->bineq->data[iw0] = -cIneq->data[iw0];
+  }
+
+  if (WorkingSet->nActiveConstr > mEq) {
+    if (mEq + 1 > 1) {
+      mLinEq = mEq;
+    } else {
+      mLinEq = 0;
+    }
+
+    ineqStart = mLinEq + 1;
+    iEq0 = WorkingSet->nActiveConstr;
+    for (iw0 = ineqStart; iw0 <= iEq0; iw0++) {
+      switch (WorkingSet->Wid->data[iw0 - 1]) {
+       case 4:
+        WorkingSet->bwset->data[iw0 - 1] = WorkingSet->lb->data
+          [WorkingSet->indexLB->data[WorkingSet->Wlocalidx->data[iw0 - 1] - 1] -
+          1];
+        break;
+
+       case 5:
+        WorkingSet->bwset->data[iw0 - 1] = WorkingSet->ub->data
+          [WorkingSet->indexUB->data[WorkingSet->Wlocalidx->data[iw0 - 1] - 1] -
+          1];
+        break;
+
+       default:
+        {
+          mLinEq = WorkingSet->Wlocalidx->data[iw0 - 1];
+          WorkingSet->bwset->data[iw0 - 1] = WorkingSet->bineq->data[mLinEq - 1];
+          if ((mNonlinIneq > 0) && (mLinEq >= mNonlinIneq)) {
+            int32_T ix0;
+            int32_T iy0;
+            iy0 = (iw0 - 1) * WorkingSet->ldA;
+            ix0 = (mLinEq - 1) * WorkingSet->ldA;
+            for (mLinEq = 0; mLinEq <= nVar; mLinEq++) {
+              WorkingSet->ATwset->data[iy0 + mLinEq] = WorkingSet->Aineq->
+                data[mLinEq + ix0];
+            }
+          }
+        }
+        break;
+      }
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_sortLambdaQP_e(emxArray_real_T_test3_T *lambda, int32_T
+  WorkingSet_nActiveConstr, const int32_T WorkingSet_sizes[5], const int32_T
+  WorkingSet_isActiveIdx[6], const emxArray_int32_T_test3_T *WorkingSet_Wid,
+  const emxArray_int32_T_test3_T *WorkingSet_Wlocalidx, emxArray_real_T_test3_T *
+  workspace)
+{
+  int32_T currentMplier;
+  if (WorkingSet_nActiveConstr != 0) {
+    int32_T idxOffset;
+    int32_T mAll;
+    mAll = ((WorkingSet_sizes[1] + WorkingSet_sizes[3]) + WorkingSet_sizes[2]) -
+      1;
+    for (currentMplier = 0; currentMplier <= mAll; currentMplier++) {
+      workspace->data[currentMplier] = lambda->data[currentMplier];
+      lambda->data[currentMplier] = 0.0;
+    }
+
+    currentMplier = 0;
+    mAll = 0;
+    while ((mAll + 1 <= WorkingSet_nActiveConstr) && (WorkingSet_Wid->data[mAll]
+            <= 2)) {
+      if (WorkingSet_Wid->data[mAll] == 1) {
+        idxOffset = 1;
+      } else {
+        idxOffset = WorkingSet_isActiveIdx[1];
+      }
+
+      lambda->data[(idxOffset + WorkingSet_Wlocalidx->data[mAll]) - 2] =
+        workspace->data[currentMplier];
+      currentMplier++;
+      mAll++;
+    }
+
+    while (mAll + 1 <= WorkingSet_nActiveConstr) {
+      switch (WorkingSet_Wid->data[mAll]) {
+       case 3:
+        idxOffset = WorkingSet_isActiveIdx[2];
+        break;
+
+       case 4:
+        idxOffset = WorkingSet_isActiveIdx[3];
+        break;
+
+       default:
+        idxOffset = WorkingSet_isActiveIdx[4];
+        break;
+      }
+
+      lambda->data[(idxOffset + WorkingSet_Wlocalidx->data[mAll]) - 2] =
+        workspace->data[currentMplier];
+      currentMplier++;
+      mAll++;
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_test_exit_ksj(s7RdrPWkr8UPAUyTdDJkLaG_test3_T *Flags,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, sG8JZ69axY52WWR6RKyApQC_test3_T
+  *MeritFunction, const emxArray_real_T_test3_T *fscales_cineq_constraint,
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T *WorkingSet, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T
+  *TrialState, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager, int32_T
+  runTimeOptions_MaxFunctionEvalu)
+{
+  real_T nlpComplErrorLSQ;
+  real_T nlpComplErrorTmp;
+  real_T s;
+  real_T smax;
+  real_T tmp;
+  int32_T b_ix;
+  int32_T fullRank_R;
+  int32_T iL0;
+  int32_T iQR_diag;
+  int32_T ix;
+  int32_T mEq;
+  int32_T mLB;
+  int32_T mLambda;
+  int32_T mLambda_tmp;
+  int32_T nVar;
+  int32_T rankR;
+  boolean_T dxTooSmall;
+  boolean_T exitg1;
+  boolean_T guard1;
+  boolean_T guard2;
+  boolean_T isFeasible;
+  nVar = WorkingSet->nVar - 1;
+  mEq = WorkingSet->sizes[1];
+  mLB = WorkingSet->sizes[3] - 1;
+  mLambda_tmp = WorkingSet->sizes[1] + WorkingSet->sizes[2];
+  mLambda = (mLambda_tmp + WorkingSet->sizes[3]) - 1;
+  for (iQR_diag = 0; iQR_diag <= mLambda; iQR_diag++) {
+    TrialState->lambdaStopTest->data[iQR_diag] = TrialState->lambdasqp->
+      data[iQR_diag];
+  }
+
+  for (iQR_diag = 0; iQR_diag <= nVar; iQR_diag++) {
+    TrialState->gradLag->data[iQR_diag] = TrialState->grad->data[iQR_diag];
+  }
+
+  test3_xgemv(WorkingSet->nVar, WorkingSet->sizes[1], WorkingSet->Aeq,
+              WorkingSet->ldA, TrialState->lambdaStopTest, 1,
+              TrialState->gradLag);
+  test3_xgemv(WorkingSet->nVar, WorkingSet->sizes[2], WorkingSet->Aineq,
+              WorkingSet->ldA, TrialState->lambdaStopTest, WorkingSet->sizes[1]
+              + 1, TrialState->gradLag);
+  for (iQR_diag = 0; iQR_diag <= mLB; iQR_diag++) {
+    TrialState->gradLag->data[WorkingSet->indexLB->data[iQR_diag] - 1] -=
+      TrialState->lambdaStopTest->data[mLambda_tmp + iQR_diag];
+  }
+
+  if (WorkingSet->nVar < 1) {
+    iL0 = 0;
+  } else {
+    iL0 = 1;
+    if (WorkingSet->nVar > 1) {
+      smax = fabs(TrialState->grad->data[0]);
+      for (iQR_diag = 2; iQR_diag <= nVar + 1; iQR_diag++) {
+        s = fabs(TrialState->grad->data[iQR_diag - 1]);
+        if (s > smax) {
+          iL0 = iQR_diag;
+          smax = s;
+        }
+      }
+    }
+  }
+
+  smax = fmax(1.0, fabs(TrialState->grad->data[iL0 - 1]));
+  if (rtIsInf(smax)) {
+    smax = 1.0;
+  }
+
+  MeritFunction->nlpPrimalFeasError = test3_computePrimalFeasError_d
+    (WorkingSet->sizes[2] - TrialState->mNonlinIneq, TrialState->mNonlinIneq,
+     TrialState->cIneq, WorkingSet->sizes[1] - TrialState->mNonlinEq,
+     TrialState->mNonlinEq, TrialState->cEq);
+  if (TrialState->sqpIterations == 0) {
+    MeritFunction->feasRelativeFactor = fmax(1.0,
+      MeritFunction->nlpPrimalFeasError);
+  }
+
+  isFeasible = (MeritFunction->nlpPrimalFeasError <= 1.0E-6 *
+                MeritFunction->feasRelativeFactor);
+  test3_computeDualFeasError(WorkingSet->nVar, TrialState->gradLag,
+    &Flags->gradOK, &MeritFunction->nlpDualFeasError);
+  if (!Flags->gradOK) {
+    Flags->done = true;
+    if (isFeasible) {
+      TrialState->sqpExitFlag = 2;
+    } else {
+      TrialState->sqpExitFlag = -2;
+    }
+  } else {
+    MeritFunction->nlpComplError = test3_computeComplError_c
+      (fscales_cineq_constraint, WorkingSet->sizes[2], TrialState->cIneq,
+       WorkingSet->sizes[3], TrialState->lambdaStopTest, WorkingSet->sizes[1] +
+       1);
+    s = fmax(MeritFunction->nlpDualFeasError, MeritFunction->nlpComplError);
+    MeritFunction->firstOrderOpt = s;
+    if (TrialState->sqpIterations > 1) {
+      for (iQR_diag = 0; iQR_diag <= nVar; iQR_diag++) {
+        memspace->workspace_double->data[iQR_diag] = TrialState->grad->
+          data[iQR_diag];
+      }
+
+      test3_xgemv_b(WorkingSet->nVar, WorkingSet->sizes[1], WorkingSet->Aeq,
+                    WorkingSet->ldA, TrialState->lambdaStopTestPrev, 1,
+                    memspace->workspace_double);
+      test3_xgemv_b(WorkingSet->nVar, WorkingSet->sizes[2], WorkingSet->Aineq,
+                    WorkingSet->ldA, TrialState->lambdaStopTestPrev,
+                    WorkingSet->sizes[1] + 1, memspace->workspace_double);
+      for (iQR_diag = 0; iQR_diag <= mLB; iQR_diag++) {
+        memspace->workspace_double->data[WorkingSet->indexLB->data[iQR_diag] - 1]
+          -= TrialState->lambdaStopTestPrev->data[mLambda_tmp + iQR_diag];
+      }
+
+      test3_computeDualFeasError(WorkingSet->nVar, memspace->workspace_double,
+        &dxTooSmall, &nlpComplErrorLSQ);
+      nlpComplErrorTmp = test3_computeComplError_c(fscales_cineq_constraint,
+        WorkingSet->sizes[2], TrialState->cIneq, WorkingSet->sizes[3],
+        TrialState->lambdaStopTestPrev, WorkingSet->sizes[1] + 1);
+      tmp = fmax(nlpComplErrorLSQ, nlpComplErrorTmp);
+      if (tmp < s) {
+        MeritFunction->nlpDualFeasError = nlpComplErrorLSQ;
+        MeritFunction->nlpComplError = nlpComplErrorTmp;
+        MeritFunction->firstOrderOpt = tmp;
+        for (iQR_diag = 0; iQR_diag <= mLambda; iQR_diag++) {
+          TrialState->lambdaStopTest->data[iQR_diag] =
+            TrialState->lambdaStopTestPrev->data[iQR_diag];
+        }
+      } else {
+        for (iQR_diag = 0; iQR_diag <= mLambda; iQR_diag++) {
+          TrialState->lambdaStopTestPrev->data[iQR_diag] =
+            TrialState->lambdaStopTest->data[iQR_diag];
+        }
+      }
+    } else {
+      for (iQR_diag = 0; iQR_diag <= mLambda; iQR_diag++) {
+        TrialState->lambdaStopTestPrev->data[iQR_diag] =
+          TrialState->lambdaStopTest->data[iQR_diag];
+      }
+    }
+
+    if (isFeasible && (MeritFunction->nlpDualFeasError <= 1.0E-6 * smax) &&
+        (MeritFunction->nlpComplError <= 1.0E-6 * smax)) {
+      Flags->done = true;
+      TrialState->sqpExitFlag = 1;
+    } else {
+      Flags->done = false;
+      if (isFeasible && (TrialState->sqpFval < -1.0E+20)) {
+        Flags->done = true;
+        TrialState->sqpExitFlag = -3;
+      } else {
+        guard1 = false;
+        if (TrialState->sqpIterations > 0) {
+          dxTooSmall = true;
+          iQR_diag = 0;
+          exitg1 = false;
+          while ((!exitg1) && (iQR_diag <= nVar)) {
+            if (1.0E-6 * fmax(1.0, fabs(TrialState->xstarsqp->data[iQR_diag])) <=
+                fabs(TrialState->delta_x->data[iQR_diag])) {
+              dxTooSmall = false;
+              exitg1 = true;
+            } else {
+              iQR_diag++;
+            }
+          }
+
+          if (dxTooSmall) {
+            if (!isFeasible) {
+              if (Flags->stepType != 2) {
+                Flags->stepType = 2;
+                Flags->failedLineSearch = false;
+                Flags->stepAccepted = false;
+                guard1 = true;
+              } else {
+                Flags->done = true;
+                TrialState->sqpExitFlag = -2;
+              }
+            } else {
+              ix = WorkingSet->nActiveConstr - 1;
+              if (WorkingSet->nActiveConstr > 0) {
+                if (TrialState->mNonlinEq + TrialState->mNonlinIneq > 0) {
+                  test_updateWorkingSetForNewQP_b(WorkingSet, WorkingSet->sizes
+                    [2], TrialState->mNonlinIneq, TrialState->cIneq,
+                    WorkingSet->sizes[1], TrialState->mNonlinEq, TrialState->cEq);
+                }
+
+                for (iQR_diag = 0; iQR_diag <= ix; iQR_diag++) {
+                  TrialState->lambda->data[iQR_diag] = 0.0;
+                }
+
+                iQR_diag = WorkingSet->nVar * WorkingSet->nActiveConstr;
+                guard2 = false;
+                if (iQR_diag > 0) {
+                  for (iQR_diag = 0; iQR_diag <= ix; iQR_diag++) {
+                    fullRank_R = WorkingSet->ldA * iQR_diag;
+                    rankR = QRManager->ldq * iQR_diag;
+                    for (iL0 = 0; iL0 <= nVar; iL0++) {
+                      QRManager->QR->data[rankR + iL0] = WorkingSet->
+                        ATwset->data[iL0 + fullRank_R];
+                    }
+                  }
+
+                  guard2 = true;
+                } else if (iQR_diag == 0) {
+                  QRManager->mrows = WorkingSet->nVar;
+                  QRManager->ncols = WorkingSet->nActiveConstr;
+                  QRManager->minRowCol = 0;
+                } else {
+                  guard2 = true;
+                }
+
+                if (guard2) {
+                  QRManager->usedPivoting = true;
+                  QRManager->mrows = WorkingSet->nVar;
+                  QRManager->ncols = WorkingSet->nActiveConstr;
+                  if (WorkingSet->nVar <= WorkingSet->nActiveConstr) {
+                    QRManager->minRowCol = WorkingSet->nVar;
+                  } else {
+                    QRManager->minRowCol = WorkingSet->nActiveConstr;
+                  }
+
+                  test3_xgeqp3(QRManager->QR, WorkingSet->nVar,
+                               WorkingSet->nActiveConstr, QRManager->jpvt,
+                               QRManager->tau);
+                }
+
+                test3_computeQ_(QRManager, QRManager->mrows);
+                test3_xgemv_buj(WorkingSet->nVar, WorkingSet->nVar, QRManager->Q,
+                                QRManager->ldq, TrialState->grad,
+                                memspace->workspace_double);
+                if (WorkingSet->nVar >= WorkingSet->nActiveConstr) {
+                  iQR_diag = WorkingSet->nVar;
+                } else {
+                  iQR_diag = WorkingSet->nActiveConstr;
+                }
+
+                s = fmin(1.4901161193847656E-8, (real_T)iQR_diag *
+                         2.2204460492503131E-16) * fabs(QRManager->QR->data[0]);
+                if (WorkingSet->nVar <= WorkingSet->nActiveConstr) {
+                  fullRank_R = WorkingSet->nVar;
+                } else {
+                  fullRank_R = WorkingSet->nActiveConstr;
+                }
+
+                rankR = 0;
+                iQR_diag = 0;
+                while ((rankR < fullRank_R) && (fabs(QRManager->QR->
+                         data[iQR_diag]) > s)) {
+                  rankR++;
+                  iQR_diag = (iQR_diag + QRManager->ldq) + 1;
+                }
+
+                if (rankR != 0) {
+                  for (iQR_diag = rankR; iQR_diag >= 1; iQR_diag--) {
+                    ix = ((iQR_diag - 1) * QRManager->ldq + iQR_diag) - 2;
+                    memspace->workspace_double->data[iQR_diag - 1] /=
+                      QRManager->QR->data[ix + 1];
+                    for (iL0 = 0; iL0 <= iQR_diag - 2; iL0++) {
+                      b_ix = (iQR_diag - iL0) - 2;
+                      memspace->workspace_double->data[b_ix] -=
+                        memspace->workspace_double->data[iQR_diag - 1] *
+                        QRManager->QR->data[ix - iL0];
+                    }
+                  }
+                }
+
+                if (WorkingSet->nActiveConstr <= fullRank_R) {
+                  iL0 = WorkingSet->nActiveConstr;
+                } else {
+                  iL0 = fullRank_R;
+                }
+
+                for (iQR_diag = 0; iQR_diag < iL0; iQR_diag++) {
+                  TrialState->lambda->data[QRManager->jpvt->data[iQR_diag] - 1] =
+                    memspace->workspace_double->data[iQR_diag];
+                }
+
+                for (iQR_diag = 1; iQR_diag <= mEq; iQR_diag++) {
+                  TrialState->lambda->data[iQR_diag - 1] = -TrialState->
+                    lambda->data[iQR_diag - 1];
+                }
+
+                test3_sortLambdaQP_e(TrialState->lambda,
+                                     WorkingSet->nActiveConstr,
+                                     WorkingSet->sizes, WorkingSet->isActiveIdx,
+                                     WorkingSet->Wid, WorkingSet->Wlocalidx,
+                                     memspace->workspace_double);
+                for (mEq = 0; mEq <= nVar; mEq++) {
+                  memspace->workspace_double->data[mEq] = TrialState->grad->
+                    data[mEq];
+                }
+
+                test3_xgemv_b(WorkingSet->nVar, WorkingSet->sizes[1],
+                              WorkingSet->Aeq, WorkingSet->ldA,
+                              TrialState->lambda, 1, memspace->workspace_double);
+                test3_xgemv_b(WorkingSet->nVar, WorkingSet->sizes[2],
+                              WorkingSet->Aineq, WorkingSet->ldA,
+                              TrialState->lambda, WorkingSet->sizes[1] + 1,
+                              memspace->workspace_double);
+                for (nVar = 0; nVar <= mLB; nVar++) {
+                  memspace->workspace_double->data[WorkingSet->indexLB->
+                    data[nVar] - 1] -= TrialState->lambda->data[mLambda_tmp +
+                    nVar];
+                }
+
+                test3_computeDualFeasError(WorkingSet->nVar,
+                  memspace->workspace_double, &isFeasible, &s);
+                nlpComplErrorLSQ = test3_computeComplError_c
+                  (fscales_cineq_constraint, WorkingSet->sizes[2],
+                   TrialState->cIneq, WorkingSet->sizes[3], TrialState->lambda,
+                   1);
+                if ((s <= 1.0E-6 * smax) && (nlpComplErrorLSQ <= 1.0E-6 * smax))
+                {
+                  MeritFunction->nlpDualFeasError = s;
+                  MeritFunction->nlpComplError = nlpComplErrorLSQ;
+                  MeritFunction->firstOrderOpt = fmax(s, nlpComplErrorLSQ);
+                  for (mLB = 0; mLB <= mLambda; mLB++) {
+                    TrialState->lambdaStopTest->data[mLB] = TrialState->
+                      lambda->data[mLB];
+                  }
+
+                  Flags->done = true;
+                  TrialState->sqpExitFlag = 1;
+                } else {
+                  Flags->done = true;
+                  TrialState->sqpExitFlag = 2;
+                }
+              } else {
+                Flags->done = true;
+                TrialState->sqpExitFlag = 2;
+              }
+            }
+          } else {
+            guard1 = true;
+          }
+        } else {
+          guard1 = true;
+        }
+
+        if (guard1) {
+          if (TrialState->sqpIterations >= 100) {
+            Flags->done = true;
+            TrialState->sqpExitFlag = 0;
+          } else if (TrialState->FunctionEvaluations >=
+                     runTimeOptions_MaxFunctionEvalu) {
+            Flags->done = true;
+            TrialState->sqpExitFlag = 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static boolean_T test3_feasibleX0ForWorkingSet_n(emxArray_real_T_test3_T
+  *workspace, emxArray_real_T_test3_T *xCurrent, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager)
+{
+  emxArray_real_T_test3_T *B;
+  real_T c;
+  real_T d_v;
+  real_T workingset_0;
+  int32_T ar;
+  int32_T b_mIneq;
+  int32_T exitg1;
+  int32_T h;
+  int32_T iAcol;
+  int32_T iy;
+  int32_T jBcol;
+  int32_T ldq;
+  int32_T mWConstr;
+  int32_T minmana;
+  int32_T nVar_tmp_tmp;
+  int32_T offsetEq2;
+  boolean_T nonDegenerateWset;
+  mWConstr = workingset->nActiveConstr - 1;
+  nVar_tmp_tmp = workingset->nVar;
+  nonDegenerateWset = true;
+  if (workingset->nActiveConstr != 0) {
+    for (jBcol = 0; jBcol <= mWConstr; jBcol++) {
+      workspace->data[jBcol] = workingset->bwset->data[jBcol];
+      workspace->data[jBcol + workspace->size[0]] = workingset->bwset->
+        data[jBcol];
+    }
+
+    ldq = workingset->ldA;
+    if ((workingset->nVar != 0) && (workingset->nActiveConstr != 0)) {
+      iy = 0;
+      b_mIneq = (workingset->nActiveConstr - 1) * workingset->ldA + 1;
+      for (minmana = 1; ldq < 0 ? minmana >= b_mIneq : minmana <= b_mIneq;
+           minmana += ldq) {
+        c = 0.0;
+        offsetEq2 = (minmana + nVar_tmp_tmp) - 1;
+        for (jBcol = minmana; jBcol <= offsetEq2; jBcol++) {
+          c += workingset->ATwset->data[jBcol - 1] * xCurrent->data[jBcol -
+            minmana];
+        }
+
+        workspace->data[iy] -= c;
+        iy++;
+      }
+    }
+
+    test3_emxInit_real_T(&B, 2);
+    if (workingset->nActiveConstr >= workingset->nVar) {
+      for (jBcol = 0; jBcol < nVar_tmp_tmp; jBcol++) {
+        ldq = qrmanager->ldq * jBcol;
+        for (minmana = 0; minmana <= mWConstr; minmana++) {
+          qrmanager->QR->data[minmana + ldq] = workingset->ATwset->
+            data[workingset->ldA * minmana + jBcol];
+        }
+      }
+
+      if (workingset->nActiveConstr * workingset->nVar == 0) {
+        qrmanager->mrows = workingset->nActiveConstr;
+        qrmanager->ncols = workingset->nVar;
+        qrmanager->minRowCol = 0;
+      } else {
+        qrmanager->usedPivoting = false;
+        qrmanager->mrows = workingset->nActiveConstr;
+        qrmanager->ncols = workingset->nVar;
+        for (jBcol = 0; jBcol < nVar_tmp_tmp; jBcol++) {
+          qrmanager->jpvt->data[jBcol] = jBcol + 1;
+        }
+
+        if (workingset->nActiveConstr <= workingset->nVar) {
+          jBcol = workingset->nActiveConstr;
+        } else {
+          jBcol = workingset->nVar;
+        }
+
+        qrmanager->minRowCol = jBcol;
+        b_mIneq = B->size[0] * B->size[1];
+        B->size[0] = qrmanager->QR->size[0];
+        B->size[1] = qrmanager->QR->size[1];
+        test3_emxEnsureCapacity_real_T(B, b_mIneq);
+        ldq = qrmanager->QR->size[0] * qrmanager->QR->size[1];
+        for (b_mIneq = 0; b_mIneq < ldq; b_mIneq++) {
+          B->data[b_mIneq] = qrmanager->QR->data[b_mIneq];
+        }
+
+        if (qrmanager->QR->size[0] <= qrmanager->QR->size[1]) {
+          minmana = qrmanager->QR->size[0];
+        } else {
+          minmana = qrmanager->QR->size[1];
+        }
+
+        b_mIneq = qrmanager->tau->size[0];
+        qrmanager->tau->size[0] = minmana;
+        test3_emxEnsureCapacity_real_T(qrmanager->tau, b_mIneq);
+        for (b_mIneq = 0; b_mIneq < minmana; b_mIneq++) {
+          qrmanager->tau->data[b_mIneq] = 0.0;
+        }
+
+        if (jBcol >= 1) {
+          test3_qrf(B, workingset->nActiveConstr, workingset->nVar, jBcol,
+                    qrmanager->tau);
+        }
+
+        b_mIneq = qrmanager->QR->size[0] * qrmanager->QR->size[1];
+        qrmanager->QR->size[0] = B->size[0];
+        qrmanager->QR->size[1] = B->size[1];
+        test3_emxEnsureCapacity_real_T(qrmanager->QR, b_mIneq);
+        ldq = B->size[0] * B->size[1];
+        for (b_mIneq = 0; b_mIneq < ldq; b_mIneq++) {
+          qrmanager->QR->data[b_mIneq] = B->data[b_mIneq];
+        }
+      }
+
+      test3_computeQ_(qrmanager, qrmanager->mrows);
+      ldq = qrmanager->ldq;
+      iy = workspace->size[0];
+      b_mIneq = B->size[0] * B->size[1];
+      B->size[0] = workspace->size[0];
+      B->size[1] = workspace->size[1];
+      test3_emxEnsureCapacity_real_T(B, b_mIneq);
+      ar = workspace->size[0] * workspace->size[1];
+      if (ar - 1 >= 0) {
+        memcpy(&B->data[0], &workspace->data[0], (uint32_T)ar * sizeof(real_T));
+      }
+
+      if (workingset->nVar != 0) {
+        for (jBcol = 0; iy < 0 ? jBcol >= iy : jBcol <= iy; jBcol += iy) {
+          b_mIneq = jBcol + nVar_tmp_tmp;
+          for (minmana = jBcol + 1; minmana <= b_mIneq; minmana++) {
+            workspace->data[minmana - 1] = 0.0;
+          }
+        }
+
+        jBcol = -1;
+        for (b_mIneq = 0; iy < 0 ? b_mIneq >= iy : b_mIneq <= iy; b_mIneq += iy)
+        {
+          iAcol = -1;
+          ar = b_mIneq + nVar_tmp_tmp;
+          for (minmana = b_mIneq + 1; minmana <= ar; minmana++) {
+            c = 0.0;
+            for (offsetEq2 = 0; offsetEq2 <= mWConstr; offsetEq2++) {
+              c += qrmanager->Q->data[(offsetEq2 + iAcol) + 1] * B->data
+                [(offsetEq2 + jBcol) + 1];
+            }
+
+            workspace->data[minmana - 1] += c;
+            iAcol += ldq;
+          }
+
+          jBcol += iy;
+        }
+      }
+
+      for (mWConstr = 0; mWConstr < 2; mWConstr++) {
+        jBcol = iy * mWConstr - 1;
+        for (minmana = nVar_tmp_tmp; minmana >= 1; minmana--) {
+          iAcol = (minmana - 1) * ldq;
+          b_mIneq = minmana + jBcol;
+          c = workspace->data[b_mIneq];
+          if (c != 0.0) {
+            workspace->data[b_mIneq] = c / qrmanager->QR->data[(minmana + iAcol)
+              - 1];
+            for (offsetEq2 = 0; offsetEq2 <= minmana - 2; offsetEq2++) {
+              ar = (offsetEq2 + jBcol) + 1;
+              workspace->data[ar] -= qrmanager->QR->data[offsetEq2 + iAcol] *
+                workspace->data[b_mIneq];
+            }
+          }
+        }
+      }
+    } else {
+      test3_factorQR(qrmanager, workingset->ATwset, workingset->nVar,
+                     workingset->nActiveConstr, workingset->ldA);
+      test3_computeQ_(qrmanager, qrmanager->minRowCol);
+      ldq = qrmanager->ldq;
+      iy = workspace->size[0];
+      for (b_mIneq = 0; b_mIneq < 2; b_mIneq++) {
+        jBcol = iy * b_mIneq;
+        for (minmana = 0; minmana <= mWConstr; minmana++) {
+          iAcol = ldq * minmana;
+          ar = minmana + jBcol;
+          c = workspace->data[ar];
+          for (offsetEq2 = 0; offsetEq2 < minmana; offsetEq2++) {
+            c -= qrmanager->QR->data[offsetEq2 + iAcol] * workspace->
+              data[offsetEq2 + jBcol];
+          }
+
+          workspace->data[ar] = c / qrmanager->QR->data[minmana + iAcol];
+        }
+      }
+
+      b_mIneq = B->size[0] * B->size[1];
+      B->size[0] = workspace->size[0];
+      B->size[1] = workspace->size[1];
+      test3_emxEnsureCapacity_real_T(B, b_mIneq);
+      ar = workspace->size[0] * workspace->size[1];
+      if (ar - 1 >= 0) {
+        memcpy(&B->data[0], &workspace->data[0], (uint32_T)ar * sizeof(real_T));
+      }
+
+      if (workingset->nVar != 0) {
+        for (jBcol = 0; iy < 0 ? jBcol >= iy : jBcol <= iy; jBcol += iy) {
+          b_mIneq = jBcol + nVar_tmp_tmp;
+          for (minmana = jBcol + 1; minmana <= b_mIneq; minmana++) {
+            workspace->data[minmana - 1] = 0.0;
+          }
+        }
+
+        iAcol = 1;
+        for (minmana = 0; iy < 0 ? minmana >= iy : minmana <= iy; minmana += iy)
+        {
+          ar = -1;
+          b_mIneq = iAcol + mWConstr;
+          for (offsetEq2 = iAcol; offsetEq2 <= b_mIneq; offsetEq2++) {
+            h = minmana + nVar_tmp_tmp;
+            for (jBcol = minmana + 1; jBcol <= h; jBcol++) {
+              workspace->data[jBcol - 1] += qrmanager->Q->data[(ar + jBcol) -
+                minmana] * B->data[offsetEq2 - 1];
+            }
+
+            ar += ldq;
+          }
+
+          iAcol += iy;
+        }
+      }
+    }
+
+    test3_emxFree_real_T(&B);
+    jBcol = 0;
+    do {
+      exitg1 = 0;
+      if (jBcol <= nVar_tmp_tmp - 1) {
+        c = workspace->data[jBcol];
+        if (rtIsInf(c) || rtIsNaN(c)) {
+          nonDegenerateWset = false;
+          exitg1 = 1;
+        } else {
+          c = workspace->data[jBcol + workspace->size[0]];
+          if (rtIsInf(c) || rtIsNaN(c)) {
+            nonDegenerateWset = false;
+            exitg1 = 1;
+          } else {
+            jBcol++;
+          }
+        }
+      } else {
+        if (nVar_tmp_tmp >= 1) {
+          for (mWConstr = 0; mWConstr < nVar_tmp_tmp; mWConstr++) {
+            workspace->data[mWConstr] += xCurrent->data[mWConstr];
+          }
+        }
+
+        mWConstr = workspace->size[0];
+        ldq = workingset->sizes[3];
+        if (workingset->probType == 2) {
+          c = 0.0;
+          b_mIneq = workingset->sizes[2] - 1;
+          iy = workingset->sizes[1] - 1;
+          if (workingset->Aineq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= b_mIneq; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                bineq->data[jBcol];
+            }
+
+            test3_xgemv_bujm(workingset->nVarOrig, workingset->sizes[2],
+                             workingset->Aineq, workingset->ldA, workspace,
+                             workingset->maxConstrWorkspace);
+            for (minmana = 0; minmana <= b_mIneq; minmana++) {
+              workingset->maxConstrWorkspace->data[minmana] -= workspace->
+                data[workingset->nVarOrig + minmana];
+              c = fmax(c, workingset->maxConstrWorkspace->data[minmana]);
+            }
+          }
+
+          if (workingset->Aeq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= iy; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                beq->data[jBcol];
+            }
+
+            test3_xgemv_bujm(workingset->nVarOrig, workingset->sizes[1],
+                             workingset->Aeq, workingset->ldA, workspace,
+                             workingset->maxConstrWorkspace);
+            minmana = workingset->nVarOrig + workingset->sizes[2];
+            offsetEq2 = minmana + workingset->sizes[1];
+            for (b_mIneq = 0; b_mIneq <= iy; b_mIneq++) {
+              workingset_0 = (workingset->maxConstrWorkspace->data[b_mIneq] -
+                              workspace->data[minmana + b_mIneq]) +
+                workspace->data[offsetEq2 + b_mIneq];
+              workingset->maxConstrWorkspace->data[b_mIneq] = workingset_0;
+              c = fmax(c, fabs(workingset_0));
+            }
+          }
+        } else {
+          c = 0.0;
+          iy = workingset->sizes[2] - 1;
+          minmana = workingset->sizes[1] - 1;
+          if (workingset->Aineq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= iy; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                bineq->data[jBcol];
+            }
+
+            test3_xgemv_bujm(workingset->nVar, workingset->sizes[2],
+                             workingset->Aineq, workingset->ldA, workspace,
+                             workingset->maxConstrWorkspace);
+            for (jBcol = 0; jBcol <= iy; jBcol++) {
+              c = fmax(c, workingset->maxConstrWorkspace->data[jBcol]);
+            }
+          }
+
+          if (workingset->Aeq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= minmana; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                beq->data[jBcol];
+            }
+
+            test3_xgemv_bujm(workingset->nVar, workingset->sizes[1],
+                             workingset->Aeq, workingset->ldA, workspace,
+                             workingset->maxConstrWorkspace);
+            for (jBcol = 0; jBcol <= minmana; jBcol++) {
+              c = fmax(c, fabs(workingset->maxConstrWorkspace->data[jBcol]));
+            }
+          }
+        }
+
+        if (workingset->sizes[3] > 0) {
+          for (minmana = 0; minmana < ldq; minmana++) {
+            c = fmax(c, -workspace->data[workingset->indexLB->data[minmana] - 1]
+                     - workingset->lb->data[workingset->indexLB->data[minmana] -
+                     1]);
+          }
+        }
+
+        ldq = workingset->sizes[3];
+        if (workingset->probType == 2) {
+          d_v = 0.0;
+          b_mIneq = workingset->sizes[2] - 1;
+          iy = workingset->sizes[1] - 1;
+          if (workingset->Aineq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= b_mIneq; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                bineq->data[jBcol];
+            }
+
+            test3_xgemv_bujmj(workingset->nVarOrig, workingset->sizes[2],
+                              workingset->Aineq, workingset->ldA, workspace,
+                              workspace->size[0] + 1,
+                              workingset->maxConstrWorkspace);
+            for (minmana = 0; minmana <= b_mIneq; minmana++) {
+              workingset->maxConstrWorkspace->data[minmana] -= workspace->data
+                [(mWConstr + workingset->nVarOrig) + minmana];
+              d_v = fmax(d_v, workingset->maxConstrWorkspace->data[minmana]);
+            }
+          }
+
+          if (workingset->Aeq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= iy; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                beq->data[jBcol];
+            }
+
+            test3_xgemv_bujmj(workingset->nVarOrig, workingset->sizes[1],
+                              workingset->Aeq, workingset->ldA, workspace,
+                              workspace->size[0] + 1,
+                              workingset->maxConstrWorkspace);
+            minmana = workingset->nVarOrig + workingset->sizes[2];
+            offsetEq2 = minmana + workingset->sizes[1];
+            for (b_mIneq = 0; b_mIneq <= iy; b_mIneq++) {
+              workingset_0 = (workingset->maxConstrWorkspace->data[b_mIneq] -
+                              workspace->data[(mWConstr + minmana) + b_mIneq]) +
+                workspace->data[(mWConstr + offsetEq2) + b_mIneq];
+              workingset->maxConstrWorkspace->data[b_mIneq] = workingset_0;
+              d_v = fmax(d_v, fabs(workingset_0));
+            }
+          }
+        } else {
+          d_v = 0.0;
+          iy = workingset->sizes[2] - 1;
+          minmana = workingset->sizes[1] - 1;
+          if (workingset->Aineq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= iy; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                bineq->data[jBcol];
+            }
+
+            test3_xgemv_bujmj(workingset->nVar, workingset->sizes[2],
+                              workingset->Aineq, workingset->ldA, workspace,
+                              workspace->size[0] + 1,
+                              workingset->maxConstrWorkspace);
+            for (jBcol = 0; jBcol <= iy; jBcol++) {
+              d_v = fmax(d_v, workingset->maxConstrWorkspace->data[jBcol]);
+            }
+          }
+
+          if (workingset->Aeq->size[0] != 0) {
+            for (jBcol = 0; jBcol <= minmana; jBcol++) {
+              workingset->maxConstrWorkspace->data[jBcol] = workingset->
+                beq->data[jBcol];
+            }
+
+            test3_xgemv_bujmj(workingset->nVar, workingset->sizes[1],
+                              workingset->Aeq, workingset->ldA, workspace,
+                              workspace->size[0] + 1,
+                              workingset->maxConstrWorkspace);
+            for (jBcol = 0; jBcol <= minmana; jBcol++) {
+              d_v = fmax(d_v, fabs(workingset->maxConstrWorkspace->data[jBcol]));
+            }
+          }
+        }
+
+        if (workingset->sizes[3] > 0) {
+          for (minmana = 0; minmana < ldq; minmana++) {
+            d_v = fmax(d_v, -workspace->data[(mWConstr + workingset->
+                        indexLB->data[minmana]) - 1] - workingset->lb->
+                       data[workingset->indexLB->data[minmana] - 1]);
+          }
+        }
+
+        for (jBcol = 0; jBcol < nVar_tmp_tmp; jBcol++) {
+          if ((c <= 2.2204460492503131E-16) || (c < d_v)) {
+            xCurrent->data[jBcol] = workspace->data[jBcol];
+          } else {
+            xCurrent->data[jBcol] = workspace->data[mWConstr + jBcol];
+          }
+        }
+
+        exitg1 = 1;
+      }
+    } while (exitg1 == 0);
+  }
+
+  return nonDegenerateWset;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static real_T test3_maxConstraintViolation_f(s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *obj, const emxArray_real_T_test3_T *x)
+{
+  real_T obj_0;
+  real_T v;
+  int32_T mEq;
+  int32_T mIneq;
+  int32_T mLB;
+  int32_T offsetEq1;
+  int32_T offsetEq2;
+  mLB = obj->sizes[3] - 1;
+  if (obj->probType == 2) {
+    v = 0.0;
+    mIneq = obj->sizes[2] - 1;
+    mEq = obj->sizes[1] - 1;
+    if (obj->Aineq->size[0] != 0) {
+      for (offsetEq1 = 0; offsetEq1 <= mIneq; offsetEq1++) {
+        obj->maxConstrWorkspace->data[offsetEq1] = obj->bineq->data[offsetEq1];
+      }
+
+      test3_xgemv_bujmjs(obj->nVarOrig, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                         obj->maxConstrWorkspace);
+      for (offsetEq1 = 0; offsetEq1 <= mIneq; offsetEq1++) {
+        obj->maxConstrWorkspace->data[offsetEq1] -= x->data[obj->nVarOrig +
+          offsetEq1];
+        v = fmax(v, obj->maxConstrWorkspace->data[offsetEq1]);
+      }
+    }
+
+    if (obj->Aeq->size[0] != 0) {
+      for (mIneq = 0; mIneq <= mEq; mIneq++) {
+        obj->maxConstrWorkspace->data[mIneq] = obj->beq->data[mIneq];
+      }
+
+      test3_xgemv_bujmjs(obj->nVarOrig, obj->sizes[1], obj->Aeq, obj->ldA, x,
+                         obj->maxConstrWorkspace);
+      offsetEq1 = obj->nVarOrig + obj->sizes[2];
+      offsetEq2 = offsetEq1 + obj->sizes[1];
+      for (mIneq = 0; mIneq <= mEq; mIneq++) {
+        obj_0 = (obj->maxConstrWorkspace->data[mIneq] - x->data[offsetEq1 +
+                 mIneq]) + x->data[offsetEq2 + mIneq];
+        obj->maxConstrWorkspace->data[mIneq] = obj_0;
+        v = fmax(v, fabs(obj_0));
+      }
+    }
+  } else {
+    v = 0.0;
+    mIneq = obj->sizes[2] - 1;
+    mEq = obj->sizes[1] - 1;
+    if (obj->Aineq->size[0] != 0) {
+      for (offsetEq1 = 0; offsetEq1 <= mIneq; offsetEq1++) {
+        obj->maxConstrWorkspace->data[offsetEq1] = obj->bineq->data[offsetEq1];
+      }
+
+      test3_xgemv_bujmjs(obj->nVar, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                         obj->maxConstrWorkspace);
+      for (offsetEq1 = 0; offsetEq1 <= mIneq; offsetEq1++) {
+        v = fmax(v, obj->maxConstrWorkspace->data[offsetEq1]);
+      }
+    }
+
+    if (obj->Aeq->size[0] != 0) {
+      for (mIneq = 0; mIneq <= mEq; mIneq++) {
+        obj->maxConstrWorkspace->data[mIneq] = obj->beq->data[mIneq];
+      }
+
+      test3_xgemv_bujmjs(obj->nVar, obj->sizes[1], obj->Aeq, obj->ldA, x,
+                         obj->maxConstrWorkspace);
+      for (mIneq = 0; mIneq <= mEq; mIneq++) {
+        v = fmax(v, fabs(obj->maxConstrWorkspace->data[mIneq]));
+      }
+    }
+  }
+
+  if (obj->sizes[3] > 0) {
+    for (mEq = 0; mEq <= mLB; mEq++) {
+      v = fmax(v, -x->data[obj->indexLB->data[mEq] - 1] - obj->lb->data
+               [obj->indexLB->data[mEq] - 1]);
+    }
+  }
+
+  return v;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_PresolveWorkingSet_p(s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager)
+{
+  real_T c_tol;
+  real_T qtb;
+  int32_T TYPE;
+  int32_T c_idxDiag;
+  int32_T ix;
+  int32_T iy;
+  int32_T k_idx;
+  int32_T mTotalWorkingEq;
+  int32_T mWorkingFixed;
+  int32_T nFixedConstr;
+  int32_T nVar;
+  boolean_T exitg1;
+  boolean_T guard1;
+  boolean_T okWorkingSet;
+  solution->state = 82;
+  nVar = workingset->nVar - 1;
+  mWorkingFixed = workingset->nWConstr[0];
+  mTotalWorkingEq = workingset->nWConstr[0] + workingset->nWConstr[1];
+  nFixedConstr = 0;
+  if (mTotalWorkingEq > 0) {
+    for (nFixedConstr = 0; nFixedConstr < mTotalWorkingEq; nFixedConstr++) {
+      for (TYPE = 0; TYPE <= nVar; TYPE++) {
+        qrmanager->QR->data[nFixedConstr + qrmanager->ldq * TYPE] =
+          workingset->ATwset->data[workingset->ldA * nFixedConstr + TYPE];
+      }
+    }
+
+    nFixedConstr = mTotalWorkingEq - workingset->nVar;
+    if (nFixedConstr <= 0) {
+      nFixedConstr = 0;
+    }
+
+    for (TYPE = 0; TYPE <= nVar; TYPE++) {
+      qrmanager->jpvt->data[TYPE] = 0;
+    }
+
+    if (mTotalWorkingEq * workingset->nVar == 0) {
+      qrmanager->mrows = mTotalWorkingEq;
+      qrmanager->ncols = workingset->nVar;
+      qrmanager->minRowCol = 0;
+    } else {
+      qrmanager->usedPivoting = true;
+      qrmanager->mrows = mTotalWorkingEq;
+      qrmanager->ncols = workingset->nVar;
+      if (mTotalWorkingEq <= workingset->nVar) {
+        qrmanager->minRowCol = mTotalWorkingEq;
+      } else {
+        qrmanager->minRowCol = workingset->nVar;
+      }
+
+      test3_xgeqp3(qrmanager->QR, mTotalWorkingEq, workingset->nVar,
+                   qrmanager->jpvt, qrmanager->tau);
+    }
+
+    c_tol = 100.0 * (real_T)workingset->nVar * 2.2204460492503131E-16;
+    if (workingset->nVar <= mTotalWorkingEq) {
+      TYPE = workingset->nVar;
+    } else {
+      TYPE = mTotalWorkingEq;
+    }
+
+    c_idxDiag = (TYPE - 1) * qrmanager->ldq + TYPE;
+    while ((c_idxDiag > 0) && (fabs(qrmanager->QR->data[c_idxDiag - 1]) < c_tol))
+    {
+      c_idxDiag = (c_idxDiag - qrmanager->ldq) - 1;
+      nFixedConstr++;
+    }
+
+    if (nFixedConstr > 0) {
+      test3_computeQ_(qrmanager, qrmanager->mrows);
+      k_idx = 0;
+      exitg1 = false;
+      while ((!exitg1) && (k_idx <= nFixedConstr - 1)) {
+        ix = ((mTotalWorkingEq - k_idx) - 1) * qrmanager->ldq;
+        qtb = 0.0;
+        for (c_idxDiag = 0; c_idxDiag < mTotalWorkingEq; c_idxDiag++) {
+          qtb += qrmanager->Q->data[ix + c_idxDiag] * workingset->bwset->
+            data[c_idxDiag];
+        }
+
+        if (fabs(qtb) >= c_tol) {
+          nFixedConstr = -1;
+          exitg1 = true;
+        } else {
+          k_idx++;
+        }
+      }
+    }
+
+    if (nFixedConstr > 0) {
+      for (c_idxDiag = 0; c_idxDiag < mTotalWorkingEq; c_idxDiag++) {
+        ix = qrmanager->ldq * c_idxDiag;
+        iy = workingset->ldA * c_idxDiag;
+        for (k_idx = 0; k_idx <= nVar; k_idx++) {
+          qrmanager->QR->data[ix + k_idx] = workingset->ATwset->data[k_idx + iy];
+        }
+      }
+
+      for (nVar = 0; nVar < mWorkingFixed; nVar++) {
+        qrmanager->jpvt->data[nVar] = 1;
+      }
+
+      nVar = workingset->nWConstr[0] + 1;
+      for (mWorkingFixed = nVar; mWorkingFixed <= mTotalWorkingEq; mWorkingFixed
+           ++) {
+        qrmanager->jpvt->data[mWorkingFixed - 1] = 0;
+      }
+
+      if (workingset->nVar * mTotalWorkingEq == 0) {
+        qrmanager->mrows = workingset->nVar;
+        qrmanager->ncols = mTotalWorkingEq;
+        qrmanager->minRowCol = 0;
+      } else {
+        qrmanager->usedPivoting = true;
+        qrmanager->mrows = workingset->nVar;
+        qrmanager->ncols = mTotalWorkingEq;
+        qrmanager->minRowCol = TYPE;
+        test3_xgeqp3(qrmanager->QR, workingset->nVar, mTotalWorkingEq,
+                     qrmanager->jpvt, qrmanager->tau);
+      }
+
+      for (mWorkingFixed = 0; mWorkingFixed < nFixedConstr; mWorkingFixed++) {
+        memspace->workspace_int->data[mWorkingFixed] = qrmanager->jpvt->data
+          [(mTotalWorkingEq - nFixedConstr) + mWorkingFixed];
+      }
+
+      test3_countsort(memspace->workspace_int, nFixedConstr,
+                      memspace->workspace_sort, 1, mTotalWorkingEq);
+      for (mTotalWorkingEq = nFixedConstr; mTotalWorkingEq >= 1; mTotalWorkingEq
+           --) {
+        ix = workingset->nWConstr[0] + workingset->nWConstr[1];
+        if (ix != 0) {
+          nVar = memspace->workspace_int->data[mTotalWorkingEq - 1];
+          if (nVar <= ix) {
+            if ((ix == workingset->nActiveConstr) || (ix == nVar)) {
+              workingset->mEqRemoved++;
+              workingset->indexEqRemoved->data[workingset->mEqRemoved - 1] =
+                workingset->Wlocalidx->data[nVar - 1];
+              test3_removeConstr(workingset, nVar);
+            } else {
+              workingset->mEqRemoved++;
+              TYPE = workingset->Wid->data[nVar - 1] - 1;
+              workingset->indexEqRemoved->data[workingset->mEqRemoved - 1] =
+                workingset->Wlocalidx->data[nVar - 1];
+              workingset->isActiveConstr->data[(workingset->
+                isActiveIdx[workingset->Wid->data[nVar - 1] - 1] +
+                workingset->Wlocalidx->data[nVar - 1]) - 2] = false;
+              workingset->Wid->data[nVar - 1] = workingset->Wid->data[ix - 1];
+              workingset->Wlocalidx->data[nVar - 1] = workingset->
+                Wlocalidx->data[ix - 1];
+              c_idxDiag = workingset->nVar;
+              for (mWorkingFixed = 0; mWorkingFixed < c_idxDiag; mWorkingFixed++)
+              {
+                workingset->ATwset->data[mWorkingFixed + workingset->ldA * (nVar
+                  - 1)] = workingset->ATwset->data[(ix - 1) * workingset->ldA +
+                  mWorkingFixed];
+              }
+
+              workingset->bwset->data[nVar - 1] = workingset->bwset->data[ix - 1];
+              workingset->Wid->data[ix - 1] = workingset->Wid->data
+                [workingset->nActiveConstr - 1];
+              workingset->Wlocalidx->data[ix - 1] = workingset->Wlocalidx->
+                data[workingset->nActiveConstr - 1];
+              c_idxDiag = workingset->nVar;
+              for (mWorkingFixed = 0; mWorkingFixed < c_idxDiag; mWorkingFixed++)
+              {
+                workingset->ATwset->data[mWorkingFixed + workingset->ldA * (ix -
+                  1)] = workingset->ATwset->data[(workingset->nActiveConstr - 1)
+                  * workingset->ldA + mWorkingFixed];
+              }
+
+              workingset->bwset->data[ix - 1] = workingset->bwset->
+                data[workingset->nActiveConstr - 1];
+              workingset->nActiveConstr--;
+              workingset->nWConstr[TYPE]--;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  if ((nFixedConstr != -1) && (workingset->nActiveConstr <= qrmanager->ldq)) {
+    nVar = workingset->nActiveConstr;
+    ix = workingset->nWConstr[0] + workingset->nWConstr[1];
+    mTotalWorkingEq = workingset->nVar;
+    if ((workingset->nWConstr[2] + workingset->nWConstr[3]) +
+        workingset->nWConstr[4] > 0) {
+      c_tol = 100.0 * (real_T)workingset->nVar * 2.2204460492503131E-16;
+      for (mWorkingFixed = 0; mWorkingFixed < ix; mWorkingFixed++) {
+        qrmanager->jpvt->data[mWorkingFixed] = 1;
+      }
+
+      for (mWorkingFixed = ix + 1; mWorkingFixed <= nVar; mWorkingFixed++) {
+        qrmanager->jpvt->data[mWorkingFixed - 1] = 0;
+      }
+
+      TYPE = workingset->nActiveConstr;
+      for (mWorkingFixed = 0; mWorkingFixed < TYPE; mWorkingFixed++) {
+        c_idxDiag = qrmanager->ldq * mWorkingFixed;
+        k_idx = workingset->ldA * mWorkingFixed;
+        for (nVar = 0; nVar < mTotalWorkingEq; nVar++) {
+          qrmanager->QR->data[c_idxDiag + nVar] = workingset->ATwset->data[nVar
+            + k_idx];
+        }
+      }
+
+      if (workingset->nVar * workingset->nActiveConstr == 0) {
+        qrmanager->mrows = workingset->nVar;
+        qrmanager->ncols = workingset->nActiveConstr;
+        qrmanager->minRowCol = 0;
+      } else {
+        qrmanager->usedPivoting = true;
+        qrmanager->mrows = workingset->nVar;
+        qrmanager->ncols = workingset->nActiveConstr;
+        if (workingset->nVar <= workingset->nActiveConstr) {
+          qrmanager->minRowCol = workingset->nVar;
+        } else {
+          qrmanager->minRowCol = workingset->nActiveConstr;
+        }
+
+        test3_xgeqp3(qrmanager->QR, workingset->nVar, workingset->nActiveConstr,
+                     qrmanager->jpvt, qrmanager->tau);
+      }
+
+      mWorkingFixed = 0;
+      for (nVar = workingset->nActiveConstr - 1; nVar + 1 > mTotalWorkingEq;
+           nVar--) {
+        mWorkingFixed++;
+        memspace->workspace_int->data[mWorkingFixed - 1] = qrmanager->jpvt->
+          data[nVar];
+      }
+
+      if (nVar + 1 <= workingset->nVar) {
+        mTotalWorkingEq = qrmanager->ldq * nVar + nVar;
+        while ((nVar + 1 > ix) && (fabs(qrmanager->QR->data[mTotalWorkingEq]) <
+                c_tol)) {
+          mWorkingFixed++;
+          memspace->workspace_int->data[mWorkingFixed - 1] = qrmanager->
+            jpvt->data[nVar];
+          nVar--;
+          mTotalWorkingEq = (mTotalWorkingEq - qrmanager->ldq) - 1;
+        }
+      }
+
+      test3_countsort(memspace->workspace_int, mWorkingFixed,
+                      memspace->workspace_sort, ix + 1,
+                      workingset->nActiveConstr);
+      for (nFixedConstr = mWorkingFixed; nFixedConstr >= 1; nFixedConstr--) {
+        test3_removeConstr(workingset, memspace->workspace_int->
+                           data[nFixedConstr - 1]);
+      }
+    }
+
+    okWorkingSet = test3_feasibleX0ForWorkingSet_n(memspace->workspace_double,
+      solution->xstar, workingset, qrmanager);
+    guard1 = false;
+    if (!okWorkingSet) {
+      nVar = workingset->nActiveConstr;
+      ix = workingset->nWConstr[0] + workingset->nWConstr[1];
+      mTotalWorkingEq = workingset->nVar;
+      if ((workingset->nWConstr[2] + workingset->nWConstr[3]) +
+          workingset->nWConstr[4] > 0) {
+        c_tol = 1000.0 * (real_T)workingset->nVar * 2.2204460492503131E-16;
+        for (mWorkingFixed = 0; mWorkingFixed < ix; mWorkingFixed++) {
+          qrmanager->jpvt->data[mWorkingFixed] = 1;
+        }
+
+        for (mWorkingFixed = ix + 1; mWorkingFixed <= nVar; mWorkingFixed++) {
+          qrmanager->jpvt->data[mWorkingFixed - 1] = 0;
+        }
+
+        TYPE = workingset->nActiveConstr;
+        for (mWorkingFixed = 0; mWorkingFixed < TYPE; mWorkingFixed++) {
+          c_idxDiag = qrmanager->ldq * mWorkingFixed;
+          k_idx = workingset->ldA * mWorkingFixed;
+          for (nVar = 0; nVar < mTotalWorkingEq; nVar++) {
+            qrmanager->QR->data[c_idxDiag + nVar] = workingset->ATwset->
+              data[nVar + k_idx];
+          }
+        }
+
+        if (workingset->nVar * workingset->nActiveConstr == 0) {
+          qrmanager->mrows = workingset->nVar;
+          qrmanager->ncols = workingset->nActiveConstr;
+          qrmanager->minRowCol = 0;
+        } else {
+          qrmanager->usedPivoting = true;
+          qrmanager->mrows = workingset->nVar;
+          qrmanager->ncols = workingset->nActiveConstr;
+          if (workingset->nVar <= workingset->nActiveConstr) {
+            qrmanager->minRowCol = workingset->nVar;
+          } else {
+            qrmanager->minRowCol = workingset->nActiveConstr;
+          }
+
+          test3_xgeqp3(qrmanager->QR, workingset->nVar,
+                       workingset->nActiveConstr, qrmanager->jpvt,
+                       qrmanager->tau);
+        }
+
+        mWorkingFixed = 0;
+        for (nVar = workingset->nActiveConstr - 1; nVar + 1 > mTotalWorkingEq;
+             nVar--) {
+          mWorkingFixed++;
+          memspace->workspace_int->data[mWorkingFixed - 1] = qrmanager->
+            jpvt->data[nVar];
+        }
+
+        if (nVar + 1 <= workingset->nVar) {
+          mTotalWorkingEq = qrmanager->ldq * nVar + nVar;
+          while ((nVar + 1 > ix) && (fabs(qrmanager->QR->data[mTotalWorkingEq]) <
+                  c_tol)) {
+            mWorkingFixed++;
+            memspace->workspace_int->data[mWorkingFixed - 1] = qrmanager->
+              jpvt->data[nVar];
+            nVar--;
+            mTotalWorkingEq = (mTotalWorkingEq - qrmanager->ldq) - 1;
+          }
+        }
+
+        test3_countsort(memspace->workspace_int, mWorkingFixed,
+                        memspace->workspace_sort, ix + 1,
+                        workingset->nActiveConstr);
+        for (nFixedConstr = mWorkingFixed; nFixedConstr >= 1; nFixedConstr--) {
+          test3_removeConstr(workingset, memspace->workspace_int->
+                             data[nFixedConstr - 1]);
+        }
+      }
+
+      okWorkingSet = test3_feasibleX0ForWorkingSet_n(memspace->workspace_double,
+        solution->xstar, workingset, qrmanager);
+      if (!okWorkingSet) {
+        solution->state = -7;
+      } else {
+        guard1 = true;
+      }
+    } else {
+      guard1 = true;
+    }
+
+    if (guard1) {
+      if (workingset->nWConstr[0] + workingset->nWConstr[1] == workingset->nVar)
+      {
+        c_tol = test3_maxConstraintViolation_f(workingset, solution->xstar);
+        if (c_tol > 1.0E-6) {
+          solution->state = -2;
+        }
+      }
+    }
+  } else {
+    solution->state = -3;
+    mTotalWorkingEq = (workingset->nWConstr[0] + workingset->nWConstr[1]) + 1;
+    mWorkingFixed = workingset->nActiveConstr;
+    for (nFixedConstr = mTotalWorkingEq; nFixedConstr <= mWorkingFixed;
+         nFixedConstr++) {
+      workingset->isActiveConstr->data[(workingset->isActiveIdx[workingset->
+        Wid->data[nFixedConstr - 1] - 1] + workingset->Wlocalidx->
+        data[nFixedConstr - 1]) - 2] = false;
+    }
+
+    workingset->nWConstr[2] = 0;
+    workingset->nWConstr[3] = 0;
+    workingset->nWConstr[4] = 0;
+    workingset->nActiveConstr = workingset->nWConstr[0] + workingset->nWConstr[1];
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_feasibleratiotest_e(const emxArray_real_T_test3_T
+  *solution_xstar, const emxArray_real_T_test3_T *solution_searchDir,
+  emxArray_real_T_test3_T *workspace, int32_T workingset_nVar, int32_T
+  workingset_ldA, const emxArray_real_T_test3_T *workingset_Aineq, const
+  emxArray_real_T_test3_T *workingset_bineq, const emxArray_real_T_test3_T
+  *workingset_lb, const emxArray_int32_T_test3_T *workingset_indexLB, const
+  int32_T workingset_sizes[5], const int32_T workingset_isActiveIdx[6], const
+  emxArray_boolean_T_test3_T *workingset_isActiveConstr, const int32_T
+  workingset_nWConstr[5], boolean_T isPhaseOne, real_T *alpha, boolean_T
+  *newBlocking, int32_T *constrType, int32_T *constrIdx)
+{
+  real_T alphaTemp;
+  real_T c;
+  real_T denomTol;
+  real_T phaseOneCorrectionP;
+  real_T ratio;
+  int32_T b_iy;
+  int32_T d;
+  int32_T e;
+  int32_T ia;
+  int32_T iyend;
+  int32_T ldw;
+  int32_T totalIneq;
+  totalIneq = workingset_sizes[2] - 1;
+  *alpha = 1.0E+30;
+  *newBlocking = false;
+  *constrType = 0;
+  *constrIdx = 0;
+  denomTol = 2.2204460492503131E-13 * test3_xnrm2_a(workingset_nVar,
+    solution_searchDir);
+  if (workingset_nWConstr[2] < workingset_sizes[2]) {
+    if (totalIneq >= 0) {
+      memcpy(&workspace->data[0], &workingset_bineq->data[0], (uint32_T)
+             (totalIneq + 1) * sizeof(real_T));
+    }
+
+    test3_xgemv_bujmjslzp(workingset_nVar, workingset_sizes[2], workingset_Aineq,
+                          workingset_ldA, solution_xstar, workspace);
+    ldw = workspace->size[0];
+    if ((workingset_nVar != 0) && (workingset_sizes[2] != 0)) {
+      iyend = workspace->size[0] + workingset_sizes[2];
+      if (ldw + 1 <= iyend) {
+        memset(&workspace->data[ldw], 0, (uint32_T)(iyend - ldw) * sizeof(real_T));
+      }
+
+      iyend = workspace->size[0];
+      d = (workingset_sizes[2] - 1) * workingset_ldA + 1;
+      for (b_iy = 1; workingset_ldA < 0 ? b_iy >= d : b_iy <= d; b_iy +=
+           workingset_ldA) {
+        c = 0.0;
+        e = (b_iy + workingset_nVar) - 1;
+        for (ia = b_iy; ia <= e; ia++) {
+          c += workingset_Aineq->data[ia - 1] * solution_searchDir->data[ia -
+            b_iy];
+        }
+
+        workspace->data[iyend] += c;
+        iyend++;
+      }
+    }
+
+    for (b_iy = 0; b_iy <= totalIneq; b_iy++) {
+      c = workspace->data[ldw + b_iy];
+      if ((c > denomTol) && (!workingset_isActiveConstr->data
+                             [(workingset_isActiveIdx[2] + b_iy) - 1])) {
+        alphaTemp = fmin(fabs(workspace->data[b_iy]), 1.0E-6 - workspace->
+                         data[b_iy]) / c;
+        if (alphaTemp < *alpha) {
+          *alpha = alphaTemp;
+          *constrType = 3;
+          *constrIdx = b_iy + 1;
+          *newBlocking = true;
+        }
+      }
+    }
+  }
+
+  if (workingset_nWConstr[3] < workingset_sizes[3]) {
+    c = solution_xstar->data[workingset_nVar - 1] * (real_T)isPhaseOne;
+    phaseOneCorrectionP = solution_searchDir->data[workingset_nVar - 1] *
+      (real_T)isPhaseOne;
+    ldw = workingset_sizes[3];
+    for (totalIneq = 0; totalIneq <= ldw - 2; totalIneq++) {
+      b_iy = workingset_indexLB->data[totalIneq];
+      alphaTemp = -solution_searchDir->data[b_iy - 1] - phaseOneCorrectionP;
+      if ((alphaTemp > denomTol) && (!workingset_isActiveConstr->data
+           [(workingset_isActiveIdx[3] + totalIneq) - 1])) {
+        ratio = (-solution_xstar->data[b_iy - 1] - workingset_lb->data[b_iy - 1])
+          - c;
+        alphaTemp = fmin(fabs(ratio), 1.0E-6 - ratio) / alphaTemp;
+        if (alphaTemp < *alpha) {
+          *alpha = alphaTemp;
+          *constrType = 4;
+          *constrIdx = totalIneq + 1;
+          *newBlocking = true;
+        }
+      }
+    }
+
+    totalIneq = workingset_indexLB->data[workingset_sizes[3] - 1] - 1;
+    c = -solution_searchDir->data[totalIneq];
+    if ((c > denomTol) && (!workingset_isActiveConstr->data
+                           [(workingset_isActiveIdx[3] + workingset_sizes[3]) -
+                           2])) {
+      ratio = -solution_xstar->data[totalIneq] - workingset_lb->data[totalIneq];
+      alphaTemp = fmin(fabs(ratio), 1.0E-6 - ratio) / c;
+      if (alphaTemp < *alpha) {
+        *alpha = alphaTemp;
+        *constrType = 4;
+        *constrIdx = workingset_sizes[3];
+        *newBlocking = true;
+      }
+    }
+  }
+
+  if (!isPhaseOne) {
+    *newBlocking = (((!*newBlocking) || (!(*alpha > 1.0))) && (*newBlocking));
+    *alpha = fmin(*alpha, 1.0);
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_iterate_b(const emxArray_real_T_test3_T *H, const
+  emxArray_real_T_test3_T *f, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *cholmanager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  objective, const char_T options_SolverName[7], real_T options_StepTolerance,
+  real_T options_ObjectiveLimit, int32_T runTimeOptions_MaxIterations)
+{
+  real_T normDelta;
+  real_T s;
+  real_T temp;
+  int32_T activeSetChangeID;
+  int32_T globalActiveConstrIdx;
+  int32_T idx;
+  int32_T idxRotGCol;
+  int32_T iy;
+  int32_T nVar;
+  boolean_T subProblemChanged;
+  boolean_T updateFval;
+  static const char_T b_b[7] = { 'f', 'm', 'i', 'n', 'c', 'o', 'n' };
+
+  int32_T b_iy;
+  int32_T exitg1;
+  int32_T ix0;
+  int32_T iyend;
+  int32_T nActiveConstr;
+  boolean_T guard1;
+  boolean_T guard11;
+  boolean_T guard2;
+  boolean_T nonDegenerateWset;
+  subProblemChanged = true;
+  updateFval = true;
+  activeSetChangeID = 0;
+  nVar = workingset->nVar;
+  globalActiveConstrIdx = 0;
+  test3_computeGrad_StoreHx(objective, H, f, solution->xstar);
+  solution->fstar = test3_computeFval_ReuseHx(objective,
+    memspace->workspace_double, f, solution->xstar);
+  if (solution->iterations < runTimeOptions_MaxIterations) {
+    solution->state = -5;
+  } else {
+    solution->state = 0;
+  }
+
+  iyend = workingset->mConstrMax;
+  for (idxRotGCol = 0; idxRotGCol < iyend; idxRotGCol++) {
+    solution->lambda->data[idxRotGCol] = 0.0;
+  }
+
+  do {
+    exitg1 = 0;
+    if (solution->state == -5) {
+      guard11 = false;
+      if (subProblemChanged) {
+        switch (activeSetChangeID) {
+         case 1:
+          ix0 = (workingset->nActiveConstr - 1) * workingset->ldA;
+          if (qrmanager->mrows <= qrmanager->ncols + 1) {
+            qrmanager->minRowCol = qrmanager->mrows;
+          } else {
+            qrmanager->minRowCol = qrmanager->ncols + 1;
+          }
+
+          b_iy = qrmanager->ldq * qrmanager->ncols;
+          nActiveConstr = qrmanager->ldq;
+          if (qrmanager->mrows != 0) {
+            iyend = b_iy + qrmanager->mrows;
+            for (idxRotGCol = b_iy + 1; idxRotGCol <= iyend; idxRotGCol++) {
+              qrmanager->QR->data[idxRotGCol - 1] = 0.0;
+            }
+
+            iy = (qrmanager->mrows - 1) * qrmanager->ldq + 1;
+            for (iyend = 1; nActiveConstr < 0 ? iyend >= iy : iyend <= iy; iyend
+                 += nActiveConstr) {
+              normDelta = 0.0;
+              idxRotGCol = (iyend + qrmanager->mrows) - 1;
+              for (idx = iyend; idx <= idxRotGCol; idx++) {
+                normDelta += workingset->ATwset->data[(ix0 + idx) - iyend] *
+                  qrmanager->Q->data[idx - 1];
+              }
+
+              qrmanager->QR->data[b_iy] += normDelta;
+              b_iy++;
+            }
+          }
+
+          qrmanager->ncols++;
+          qrmanager->jpvt->data[qrmanager->ncols - 1] = qrmanager->ncols;
+          for (idx = qrmanager->mrows - 2; idx + 2 > qrmanager->ncols; idx--) {
+            b_iy = (qrmanager->ncols - 1) * qrmanager->ldq + idx;
+            temp = qrmanager->QR->data[b_iy + 1];
+            test3_xrotg(&qrmanager->QR->data[b_iy], &temp, &normDelta, &s);
+            qrmanager->QR->data[b_iy + 1] = temp;
+            idxRotGCol = qrmanager->ldq * idx;
+            nActiveConstr = qrmanager->mrows;
+            if (qrmanager->mrows >= 1) {
+              iy = qrmanager->ldq + idxRotGCol;
+              for (iyend = 0; iyend < nActiveConstr; iyend++) {
+                b_iy = iy + iyend;
+                ix0 = idxRotGCol + iyend;
+                temp = qrmanager->Q->data[ix0] * normDelta + qrmanager->Q->
+                  data[b_iy] * s;
+                qrmanager->Q->data[b_iy] = qrmanager->Q->data[b_iy] * normDelta
+                  - qrmanager->Q->data[ix0] * s;
+                qrmanager->Q->data[ix0] = temp;
+              }
+            }
+          }
+          break;
+
+         case -1:
+          test3_deleteColMoveEnd(qrmanager, globalActiveConstrIdx);
+          break;
+
+         default:
+          test3_factorQR(qrmanager, workingset->ATwset, nVar,
+                         workingset->nActiveConstr, workingset->ldA);
+          test3_computeQ_(qrmanager, qrmanager->mrows);
+          break;
+        }
+
+        idxRotGCol = memcmp(&options_SolverName[0], &b_b[0], 7);
+        test3_compute_deltax(H, solution, memspace, qrmanager, cholmanager,
+                             objective, (idxRotGCol == 0));
+        if (solution->state != -5) {
+          exitg1 = 1;
+        } else {
+          normDelta = test3_xnrm2_a(nVar, solution->searchDir);
+          guard11 = true;
+        }
+      } else {
+        for (idxRotGCol = 0; idxRotGCol < nVar; idxRotGCol++) {
+          solution->searchDir->data[idxRotGCol] = 0.0;
+        }
+
+        normDelta = 0.0;
+        guard11 = true;
+      }
+
+      if (guard11) {
+        if ((!subProblemChanged) || (normDelta < options_StepTolerance) ||
+            (workingset->nActiveConstr >= nVar)) {
+          nActiveConstr = qrmanager->ncols;
+          if (qrmanager->ncols > 0) {
+            guard1 = false;
+            if (objective->objtype != 4) {
+              normDelta = 100.0 * (real_T)qrmanager->mrows *
+                2.2204460492503131E-16;
+              updateFval = ((qrmanager->mrows > 0) && (qrmanager->ncols > 0));
+              if (updateFval) {
+                idxRotGCol = qrmanager->ncols;
+                guard2 = false;
+                if (qrmanager->mrows < qrmanager->ncols) {
+                  iyend = (qrmanager->ncols - 1) * qrmanager->ldq +
+                    qrmanager->mrows;
+                  while ((idxRotGCol > qrmanager->mrows) && (fabs(qrmanager->
+                           QR->data[iyend - 1]) >= normDelta)) {
+                    idxRotGCol--;
+                    iyend -= qrmanager->ldq;
+                  }
+
+                  updateFval = (idxRotGCol == qrmanager->mrows);
+                  if (!updateFval) {
+                  } else {
+                    guard2 = true;
+                  }
+                } else {
+                  guard2 = true;
+                }
+
+                if (guard2) {
+                  iyend = (idxRotGCol - 1) * qrmanager->ldq + idxRotGCol;
+                  while ((idxRotGCol >= 1) && (fabs(qrmanager->QR->data[iyend -
+                           1]) >= normDelta)) {
+                    idxRotGCol--;
+                    iyend = (iyend - qrmanager->ldq) - 1;
+                  }
+
+                  updateFval = (idxRotGCol == 0);
+                }
+              }
+
+              if (!updateFval) {
+                solution->state = -7;
+              } else {
+                guard1 = true;
+              }
+            } else {
+              guard1 = true;
+            }
+
+            if (guard1) {
+              test3_xgemv_buj(qrmanager->mrows, qrmanager->ncols, qrmanager->Q,
+                              qrmanager->ldq, objective->grad,
+                              memspace->workspace_double);
+              if (qrmanager->ncols != 0) {
+                for (iyend = nActiveConstr; iyend >= 1; iyend--) {
+                  b_iy = ((iyend - 1) * qrmanager->ldq + iyend) - 2;
+                  memspace->workspace_double->data[iyend - 1] /= qrmanager->
+                    QR->data[b_iy + 1];
+                  for (idx = 0; idx <= iyend - 2; idx++) {
+                    idxRotGCol = (iyend - idx) - 2;
+                    memspace->workspace_double->data[idxRotGCol] -=
+                      memspace->workspace_double->data[iyend - 1] *
+                      qrmanager->QR->data[b_iy - idx];
+                  }
+                }
+              }
+
+              for (idxRotGCol = 0; idxRotGCol < nActiveConstr; idxRotGCol++) {
+                solution->lambda->data[idxRotGCol] = -memspace->
+                  workspace_double->data[idxRotGCol];
+              }
+            }
+          }
+
+          if ((solution->state != -7) || (workingset->nActiveConstr > nVar)) {
+            iyend = 0;
+            normDelta = 0.0;
+            idx = (workingset->nWConstr[0] + workingset->nWConstr[1]) + 1;
+            ix0 = workingset->nActiveConstr;
+            for (idxRotGCol = idx; idxRotGCol <= ix0; idxRotGCol++) {
+              temp = solution->lambda->data[idxRotGCol - 1];
+              if (temp < normDelta) {
+                normDelta = temp;
+                iyend = idxRotGCol;
+              }
+            }
+
+            if (iyend == 0) {
+              solution->state = 1;
+            } else {
+              activeSetChangeID = -1;
+              globalActiveConstrIdx = iyend;
+              subProblemChanged = true;
+              test3_removeConstr(workingset, iyend);
+              solution->lambda->data[iyend - 1] = 0.0;
+            }
+          } else {
+            iyend = workingset->nActiveConstr;
+            activeSetChangeID = 0;
+            globalActiveConstrIdx = workingset->nActiveConstr;
+            subProblemChanged = true;
+            test3_removeConstr(workingset, workingset->nActiveConstr);
+            solution->lambda->data[iyend - 1] = 0.0;
+          }
+
+          updateFval = false;
+        } else {
+          test3_feasibleratiotest_e(solution->xstar, solution->searchDir,
+            memspace->workspace_double, workingset->nVar, workingset->ldA,
+            workingset->Aineq, workingset->bineq, workingset->lb,
+            workingset->indexLB, workingset->sizes, workingset->isActiveIdx,
+            workingset->isActiveConstr, workingset->nWConstr,
+            (objective->objtype == 5), &normDelta, &updateFval, &idxRotGCol,
+            &iyend);
+          if (updateFval) {
+            switch (idxRotGCol) {
+             case 3:
+              test3_addAineqConstr(workingset, iyend);
+              break;
+
+             case 4:
+              test_addBoundToActiveSetMatrix_(workingset, 4, iyend);
+              break;
+
+             default:
+              test_addBoundToActiveSetMatrix_(workingset, 5, iyend);
+              break;
+            }
+
+            activeSetChangeID = 1;
+          } else {
+            if (objective->objtype == 5) {
+              if (test3_xnrm2_a(objective->nvar, solution->searchDir) > 100.0 *
+                  (real_T)objective->nvar * 1.4901161193847656E-8) {
+                solution->state = 3;
+              } else {
+                solution->state = 4;
+              }
+            }
+
+            subProblemChanged = false;
+            if (workingset->nActiveConstr == 0) {
+              solution->state = 1;
+            }
+          }
+
+          if ((nVar >= 1) && (!(normDelta == 0.0))) {
+            for (idxRotGCol = 0; idxRotGCol < nVar; idxRotGCol++) {
+              solution->xstar->data[idxRotGCol] += normDelta *
+                solution->searchDir->data[idxRotGCol];
+            }
+          }
+
+          test3_computeGrad_StoreHx(objective, H, f, solution->xstar);
+          updateFval = true;
+        }
+
+        solution->iterations++;
+        iyend = objective->nvar - 1;
+        if ((solution->iterations >= runTimeOptions_MaxIterations) &&
+            ((solution->state != 1) || (objective->objtype == 5))) {
+          solution->state = 0;
+        }
+
+        if (solution->iterations - solution->iterations / 50 * 50 == 0) {
+          solution->maxConstr = test3_maxConstraintViolation_f(workingset,
+            solution->xstar);
+          normDelta = solution->maxConstr;
+          if (objective->objtype == 5) {
+            normDelta = solution->maxConstr - solution->xstar->data
+              [objective->nvar - 1];
+          }
+
+          if (normDelta > 1.0E-6) {
+            for (activeSetChangeID = 0; activeSetChangeID <= iyend;
+                 activeSetChangeID++) {
+              solution->searchDir->data[activeSetChangeID] = solution->
+                xstar->data[activeSetChangeID];
+            }
+
+            nonDegenerateWset = test3_feasibleX0ForWorkingSet_n
+              (memspace->workspace_double, solution->searchDir, workingset,
+               qrmanager);
+            if ((!nonDegenerateWset) && (solution->state != 0)) {
+              solution->state = -2;
+            }
+
+            activeSetChangeID = 0;
+            normDelta = test3_maxConstraintViolation_f(workingset,
+              solution->searchDir);
+            if (normDelta < solution->maxConstr) {
+              for (idxRotGCol = 0; idxRotGCol <= iyend; idxRotGCol++) {
+                solution->xstar->data[idxRotGCol] = solution->searchDir->
+                  data[idxRotGCol];
+              }
+
+              solution->maxConstr = normDelta;
+            }
+          }
+        }
+
+        if (updateFval && (options_ObjectiveLimit > (rtMinusInf))) {
+          solution->fstar = test3_computeFval_ReuseHx(objective,
+            memspace->workspace_double, f, solution->xstar);
+          if ((solution->fstar < options_ObjectiveLimit) && ((solution->state !=
+                0) || (objective->objtype != 5))) {
+            solution->state = 2;
+          }
+        }
+      }
+    } else {
+      if (!updateFval) {
+        solution->fstar = test3_computeFval_ReuseHx(objective,
+          memspace->workspace_double, f, solution->xstar);
+      }
+
+      exitg1 = 1;
+    }
+  } while (exitg1 == 0);
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_driver_hb(const emxArray_real_T_test3_T *H, const
+  emxArray_real_T_test3_T *f, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *solution,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *workingset, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *qrmanager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *cholmanager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  objective, somzaGboVhDG7PNQS6E98jD_test3_T *options, int32_T
+  runTimeOptions_MaxIterations)
+{
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T b_workingset;
+  real_T maxConstr_new;
+  int32_T idxEndIneq;
+  int32_T idxStartIneq;
+  int32_T mConstr;
+  int32_T nVar;
+  boolean_T exitg1;
+  boolean_T guard1;
+  solution->iterations = 0;
+  nVar = workingset->nVar - 1;
+  emxInitStruct_s_Wd0eYcEyLXg48EJ(&b_workingset);
+  guard1 = false;
+  if (workingset->probType == 3) {
+    idxStartIneq = workingset->sizes[3];
+    for (mConstr = 0; mConstr < idxStartIneq; mConstr++) {
+      if (workingset->isActiveConstr->data[(workingset->isActiveIdx[3] + mConstr)
+          - 1]) {
+        solution->xstar->data[workingset->indexLB->data[mConstr] - 1] =
+          -workingset->lb->data[workingset->indexLB->data[mConstr] - 1];
+      }
+    }
+
+    test3_PresolveWorkingSet_p(solution, memspace, workingset, qrmanager);
+    if (solution->state < 0) {
+    } else {
+      guard1 = true;
+    }
+  } else {
+    solution->state = 82;
+    guard1 = true;
+  }
+
+  if (guard1) {
+    solution->iterations = 0;
+    solution->maxConstr = test3_maxConstraintViolation_f(workingset,
+      solution->xstar);
+    if (solution->maxConstr > 1.0E-6) {
+      solution->xstar->data[workingset->nVar] = solution->maxConstr + 1.0;
+      emxCopyStruct_s_Wd0eYcEyLXg48EJ(&b_workingset, workingset);
+      if (workingset->probType == 3) {
+        mConstr = 1;
+      } else {
+        mConstr = 4;
+      }
+
+      test3_setProblemType_g(&b_workingset, mConstr);
+      idxStartIneq = (b_workingset.nWConstr[0] + b_workingset.nWConstr[1]) + 1;
+      idxEndIneq = b_workingset.nActiveConstr;
+      for (mConstr = idxStartIneq; mConstr <= idxEndIneq; mConstr++) {
+        b_workingset.isActiveConstr->data
+          [(b_workingset.isActiveIdx[b_workingset.Wid->data[mConstr - 1] - 1] +
+            b_workingset.Wlocalidx->data[mConstr - 1]) - 2] = false;
+      }
+
+      b_workingset.nWConstr[2] = 0;
+      b_workingset.nWConstr[3] = 0;
+      b_workingset.nWConstr[4] = 0;
+      b_workingset.nActiveConstr = b_workingset.nWConstr[0] +
+        b_workingset.nWConstr[1];
+      objective->prev_objtype = objective->objtype;
+      objective->prev_nvar = objective->nvar;
+      objective->prev_hasLinear = objective->hasLinear;
+      objective->objtype = 5;
+      objective->nvar = workingset->nVar + 1;
+      objective->gammaScalar = 1.0;
+      objective->hasLinear = true;
+      solution->fstar = test3_computeFval(objective, memspace->workspace_double,
+        H, f, solution->xstar);
+      solution->state = 5;
+      test3_iterate_b(H, f, solution, memspace, &b_workingset, qrmanager,
+                      cholmanager, objective, options->SolverName,
+                      1.4901161193847657E-10, 1.0E-6,
+                      runTimeOptions_MaxIterations);
+      if (b_workingset.isActiveConstr->data[(b_workingset.isActiveIdx[3] +
+           b_workingset.sizes[3]) - 2]) {
+        mConstr = b_workingset.sizes[1];
+        exitg1 = false;
+        while ((!exitg1) && (mConstr + 1 <= b_workingset.nActiveConstr)) {
+          if ((b_workingset.Wid->data[mConstr] == 4) &&
+              (b_workingset.Wlocalidx->data[mConstr] == b_workingset.sizes[3]))
+          {
+            test3_removeConstr(&b_workingset, mConstr + 1);
+            exitg1 = true;
+          } else {
+            mConstr++;
+          }
+        }
+      }
+
+      mConstr = b_workingset.nActiveConstr;
+      while ((mConstr > b_workingset.sizes[1]) && (mConstr > workingset->nVar))
+      {
+        test3_removeConstr(&b_workingset, mConstr);
+        mConstr--;
+      }
+
+      solution->maxConstr = solution->xstar->data[workingset->nVar];
+      test3_setProblemType_g(&b_workingset, workingset->probType);
+      objective->objtype = objective->prev_objtype;
+      objective->nvar = objective->prev_nvar;
+      objective->hasLinear = objective->prev_hasLinear;
+      options->ObjectiveLimit = (rtMinusInf);
+      options->StepTolerance = 1.0E-6;
+      emxCopyStruct_s_Wd0eYcEyLXg48EJ(workingset, &b_workingset);
+      if (solution->state == 0) {
+      } else {
+        solution->maxConstr = test3_maxConstraintViolation_f(&b_workingset,
+          solution->xstar);
+        emxCopyStruct_s_Wd0eYcEyLXg48EJ(workingset, &b_workingset);
+        if (solution->maxConstr > 1.0E-6) {
+          mConstr = b_workingset.mConstrMax;
+          for (nVar = 0; nVar < mConstr; nVar++) {
+            solution->lambda->data[nVar] = 0.0;
+          }
+
+          solution->fstar = test3_computeFval(objective,
+            memspace->workspace_double, H, f, solution->xstar);
+          solution->state = -2;
+        } else {
+          if (solution->maxConstr > 0.0) {
+            for (mConstr = 0; mConstr <= nVar; mConstr++) {
+              solution->searchDir->data[mConstr] = solution->xstar->data[mConstr];
+            }
+
+            test3_PresolveWorkingSet_p(solution, memspace, &b_workingset,
+              qrmanager);
+            emxCopyStruct_s_Wd0eYcEyLXg48EJ(workingset, &b_workingset);
+            maxConstr_new = test3_maxConstraintViolation_f(workingset,
+              solution->xstar);
+            if (maxConstr_new >= solution->maxConstr) {
+              solution->maxConstr = maxConstr_new;
+              for (mConstr = 0; mConstr <= nVar; mConstr++) {
+                solution->xstar->data[mConstr] = solution->searchDir->
+                  data[mConstr];
+              }
+            }
+          }
+
+          test3_iterate_b(H, f, solution, memspace, workingset, qrmanager,
+                          cholmanager, objective, options->SolverName,
+                          options->StepTolerance, options->ObjectiveLimit,
+                          runTimeOptions_MaxIterations);
+        }
+      }
+    } else {
+      test3_iterate_b(H, f, solution, memspace, workingset, qrmanager,
+                      cholmanager, objective, options->SolverName,
+                      options->StepTolerance, options->ObjectiveLimit,
+                      runTimeOptions_MaxIterations);
+    }
+  }
+
+  emxFreeStruct_s_Wd0eYcEyLXg48EJ(&b_workingset);
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_relaxed_i(const emxArray_real_T_test3_T *Hessian, const
+  emxArray_real_T_test3_T *grad, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState,
+  sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  QPObjective, somzaGboVhDG7PNQS6E98jD_test3_T *qpoptions)
+{
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T b_WorkingSet;
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T c_WorkingSet;
+  somzaGboVhDG7PNQS6E98jD_test3_T qpoptions_0;
+  real_T beta;
+  real_T qpfvalQuadExcess;
+  real_T qpfvalQuadExcess_tmp;
+  real_T s;
+  real_T smax;
+  int32_T b_kend;
+  int32_T b_mEq;
+  int32_T idx_max;
+  int32_T idx_negative;
+  int32_T idx_positive;
+  int32_T ix;
+  int32_T mEq;
+  int32_T mIneq;
+  int32_T nVarOrig;
+  int32_T tf_tmp;
+  boolean_T b_tf;
+  boolean_T tf;
+  nVarOrig = WorkingSet->nVar - 1;
+  mIneq = WorkingSet->sizes[2];
+  mEq = WorkingSet->sizes[1];
+  beta = 0.0;
+  for (b_kend = 0; b_kend <= nVarOrig; b_kend++) {
+    beta += Hessian->data[Hessian->size[0] * b_kend + b_kend];
+  }
+
+  beta /= (real_T)WorkingSet->nVar;
+  if (TrialState->sqpIterations <= 1) {
+    b_mEq = QPObjective->nvar;
+    if (QPObjective->nvar < 1) {
+      idx_max = 0;
+    } else {
+      idx_max = 1;
+      if (QPObjective->nvar > 1) {
+        smax = fabs(grad->data[0]);
+        for (b_kend = 2; b_kend <= b_mEq; b_kend++) {
+          s = fabs(grad->data[b_kend - 1]);
+          if (s > smax) {
+            idx_max = b_kend;
+            smax = s;
+          }
+        }
+      }
+    }
+
+    smax = fmax(1.0, fabs(grad->data[idx_max - 1])) * 100.0;
+  } else {
+    b_mEq = WorkingSet->mConstr;
+    if (WorkingSet->mConstr < 1) {
+      idx_max = 0;
+    } else {
+      idx_max = 1;
+      if (WorkingSet->mConstr > 1) {
+        smax = fabs(TrialState->lambdasqp->data[0]);
+        for (b_kend = 2; b_kend <= b_mEq; b_kend++) {
+          s = fabs(TrialState->lambdasqp->data[b_kend - 1]);
+          if (s > smax) {
+            idx_max = b_kend;
+            smax = s;
+          }
+        }
+      }
+    }
+
+    smax = fabs(TrialState->lambdasqp->data[idx_max - 1]);
+  }
+
+  QPObjective->nvar = WorkingSet->nVar;
+  QPObjective->beta = beta;
+  QPObjective->rho = smax;
+  QPObjective->hasLinear = true;
+  QPObjective->objtype = 4;
+  emxInitStruct_s_Wd0eYcEyLXg48EJ(&b_WorkingSet);
+  emxCopyStruct_s_Wd0eYcEyLXg48EJ(&b_WorkingSet, WorkingSet);
+  test3_setProblemType_g(&b_WorkingSet, 2);
+  idx_max = b_WorkingSet.sizes[2] - 1;
+  b_mEq = b_WorkingSet.sizes[1] - 1;
+  ix = (b_WorkingSet.sizes[3] - (b_WorkingSet.sizes[1] << 1)) -
+    b_WorkingSet.sizes[2];
+  for (b_kend = 0; b_kend <= idx_max; b_kend++) {
+    memspace->workspace_double->data[b_kend] = b_WorkingSet.bineq->data[b_kend];
+  }
+
+  test3_xgemv_bujmjslzp(WorkingSet->nVar, b_WorkingSet.sizes[2],
+                        b_WorkingSet.Aineq, b_WorkingSet.ldA, TrialState->xstar,
+                        memspace->workspace_double);
+  for (b_kend = 0; b_kend <= idx_max; b_kend++) {
+    TrialState->xstar->data[(nVarOrig + b_kend) + 1] = (real_T)
+      (memspace->workspace_double->data[b_kend] > 0.0) *
+      memspace->workspace_double->data[b_kend];
+  }
+
+  for (b_kend = 0; b_kend <= b_mEq; b_kend++) {
+    memspace->workspace_double->data[b_kend] = b_WorkingSet.beq->data[b_kend];
+  }
+
+  test3_xgemv_bujmjslzp(WorkingSet->nVar, b_WorkingSet.sizes[1],
+                        b_WorkingSet.Aeq, b_WorkingSet.ldA, TrialState->xstar,
+                        memspace->workspace_double);
+  for (b_kend = 0; b_kend <= b_mEq; b_kend++) {
+    idx_positive = (idx_max + b_kend) + 2;
+    idx_negative = ((idx_max + b_mEq) + b_kend) + 3;
+    if (memspace->workspace_double->data[b_kend] <= 0.0) {
+      TrialState->xstar->data[nVarOrig + idx_positive] = 0.0;
+      TrialState->xstar->data[nVarOrig + idx_negative] =
+        -memspace->workspace_double->data[b_kend];
+      test_addBoundToActiveSetMatrix_(&b_WorkingSet, 4, ix + idx_positive);
+      if (memspace->workspace_double->data[b_kend] >= -1.0E-6) {
+        test_addBoundToActiveSetMatrix_(&b_WorkingSet, 4, ix + idx_negative);
+      }
+    } else {
+      TrialState->xstar->data[nVarOrig + idx_positive] =
+        memspace->workspace_double->data[b_kend];
+      TrialState->xstar->data[nVarOrig + idx_negative] = 0.0;
+      test_addBoundToActiveSetMatrix_(&b_WorkingSet, 4, ix + idx_negative);
+      if (memspace->workspace_double->data[b_kend] <= 1.0E-6) {
+        test_addBoundToActiveSetMatrix_(&b_WorkingSet, 4, ix + idx_positive);
+      }
+    }
+  }
+
+  nVarOrig = qpoptions->MaxIterations;
+  qpoptions->MaxIterations = (qpoptions->MaxIterations + b_WorkingSet.nVar) -
+    WorkingSet->nVar;
+  qpoptions_0 = *qpoptions;
+  test3_driver_hb(Hessian, grad, TrialState, memspace, &b_WorkingSet, QRManager,
+                  CholManager, QPObjective, &qpoptions_0,
+                  qpoptions->MaxIterations);
+  qpoptions->MaxIterations = nVarOrig;
+  idx_max = b_WorkingSet.sizes[2];
+  b_mEq = b_WorkingSet.sizes[1];
+  idx_negative = b_WorkingSet.sizes[1] << 1;
+  ix = (idx_negative + b_WorkingSet.sizes[2]) - 1;
+  idx_positive = b_WorkingSet.sizes[3] - 1;
+  nVarOrig = 0;
+  for (b_kend = 0; b_kend < b_mEq; b_kend++) {
+    tf_tmp = b_WorkingSet.isActiveIdx[3] + idx_positive;
+    tf = b_WorkingSet.isActiveConstr->data[(tf_tmp - idx_negative) + b_kend];
+    b_tf = b_WorkingSet.isActiveConstr->data[(tf_tmp - b_mEq) + b_kend];
+    memspace->workspace_int->data[b_kend] = tf;
+    memspace->workspace_int->data[b_kend + b_mEq] = b_tf;
+    nVarOrig = (nVarOrig + tf) + b_tf;
+  }
+
+  for (b_kend = 0; b_kend < idx_max; b_kend++) {
+    tf = b_WorkingSet.isActiveConstr->data[(((b_WorkingSet.isActiveIdx[3] +
+      idx_positive) - ix) + b_kend) - 1];
+    memspace->workspace_int->data[b_kend + idx_negative] = tf;
+    nVarOrig += tf;
+  }
+
+  if (TrialState->state != -6) {
+    idx_max = (b_WorkingSet.nVarMax - WorkingSet->nVar) - 1;
+    idx_positive = WorkingSet->nVar + 1;
+    s = 0.0;
+    qpfvalQuadExcess = 0.0;
+    if (idx_max >= 1) {
+      ix = WorkingSet->nVar + idx_max;
+      for (b_kend = idx_positive; b_kend <= ix; b_kend++) {
+        s += fabs(TrialState->xstar->data[b_kend - 1]);
+      }
+
+      for (b_kend = 0; b_kend < idx_max; b_kend++) {
+        qpfvalQuadExcess_tmp = TrialState->xstar->data[WorkingSet->nVar + b_kend];
+        qpfvalQuadExcess += qpfvalQuadExcess_tmp * qpfvalQuadExcess_tmp;
+      }
+    }
+
+    beta = (TrialState->fstar - smax * s) - beta / 2.0 * qpfvalQuadExcess;
+    b_mEq = (WorkingSet->nVarMax - WorkingSet->nVar) - 1;
+    smax = MeritFunction->penaltyParam;
+    s = 0.0;
+    if (WorkingSet->sizes[1] >= 1) {
+      ix = WorkingSet->sizes[1];
+      for (b_kend = 0; b_kend < ix; b_kend++) {
+        s += fabs(TrialState->cEq->data[b_kend]);
+      }
+    }
+
+    qpfvalQuadExcess = 0.0;
+    for (b_kend = 0; b_kend < mIneq; b_kend++) {
+      qpfvalQuadExcess_tmp = TrialState->cIneq->data[b_kend];
+      if (qpfvalQuadExcess_tmp > 0.0) {
+        qpfvalQuadExcess += qpfvalQuadExcess_tmp;
+      }
+    }
+
+    s += qpfvalQuadExcess;
+    qpfvalQuadExcess = MeritFunction->linearizedConstrViol;
+    qpfvalQuadExcess_tmp = 0.0;
+    if (b_mEq >= 1) {
+      b_kend = WorkingSet->nVar + b_mEq;
+      for (mIneq = idx_positive; mIneq <= b_kend; mIneq++) {
+        qpfvalQuadExcess_tmp += fabs(TrialState->xstar->data[mIneq - 1]);
+      }
+    }
+
+    MeritFunction->linearizedConstrViol = qpfvalQuadExcess_tmp;
+    qpfvalQuadExcess = (s + qpfvalQuadExcess) - qpfvalQuadExcess_tmp;
+    if ((qpfvalQuadExcess > 2.2204460492503131E-16) && (beta > 0.0)) {
+      if (TrialState->sqpFval == 0.0) {
+        smax = 1.0;
+      } else {
+        smax = 1.5;
+      }
+
+      smax = smax * beta / qpfvalQuadExcess;
+    }
+
+    if (smax < MeritFunction->penaltyParam) {
+      MeritFunction->phi = smax * s + TrialState->sqpFval;
+      if (((MeritFunction->initConstrViolationEq +
+            MeritFunction->initConstrViolationIneq) * smax +
+           MeritFunction->initFval) - MeritFunction->phi > (real_T)
+          MeritFunction->nPenaltyDecreases * MeritFunction->threshold) {
+        MeritFunction->nPenaltyDecreases++;
+        if ((MeritFunction->nPenaltyDecreases << 1) > TrialState->sqpIterations)
+        {
+          MeritFunction->threshold *= 10.0;
+        }
+
+        MeritFunction->penaltyParam = fmax(smax, 1.0E-10);
+      } else {
+        MeritFunction->phi = MeritFunction->penaltyParam * s +
+          TrialState->sqpFval;
+      }
+    } else {
+      MeritFunction->penaltyParam = fmax(smax, 1.0E-10);
+      MeritFunction->phi = MeritFunction->penaltyParam * s + TrialState->sqpFval;
+    }
+
+    MeritFunction->phiPrimePlus = fmin(beta - MeritFunction->penaltyParam * s,
+      0.0);
+    b_kend = b_WorkingSet.isActiveIdx[1] - 2;
+    for (mIneq = 0; mIneq < mEq; mIneq++) {
+      if ((memspace->workspace_int->data[mIneq] != 0) &&
+          (memspace->workspace_int->data[mIneq + mEq] != 0)) {
+        tf = true;
+      } else {
+        tf = false;
+      }
+
+      b_mEq = (mIneq + b_kend) + 1;
+      TrialState->lambda->data[b_mEq] *= (real_T)tf;
+    }
+
+    b_kend = b_WorkingSet.isActiveIdx[2];
+    idx_max = b_WorkingSet.nActiveConstr;
+    for (mIneq = b_kend; mIneq <= idx_max; mIneq++) {
+      if (b_WorkingSet.Wid->data[mIneq - 1] == 3) {
+        TrialState->lambda->data[mIneq - 1] *= (real_T)memspace->
+          workspace_int->data[(b_WorkingSet.Wlocalidx->data[mIneq - 1] + (mEq <<
+          1)) - 1];
+      }
+    }
+  }
+
+  emxInitStruct_s_Wd0eYcEyLXg48EJ(&c_WorkingSet);
+  emxCopyStruct_s_Wd0eYcEyLXg48EJ(&c_WorkingSet, &b_WorkingSet);
+  mEq = (b_WorkingSet.sizes[3] - idx_negative) - b_WorkingSet.sizes[2];
+  mIneq = b_WorkingSet.nActiveConstr;
+  while ((mIneq > b_WorkingSet.sizes[1]) && (nVarOrig > 0)) {
+    if ((c_WorkingSet.Wid->data[mIneq - 1] == 4) &&
+        (c_WorkingSet.Wlocalidx->data[mIneq - 1] > mEq)) {
+      beta = TrialState->lambda->data[c_WorkingSet.nActiveConstr - 1];
+      TrialState->lambda->data[c_WorkingSet.nActiveConstr - 1] = 0.0;
+      TrialState->lambda->data[mIneq - 1] = beta;
+      test3_removeConstr(&c_WorkingSet, mIneq);
+      nVarOrig--;
+    }
+
+    mIneq--;
+  }
+
+  emxFreeStruct_s_Wd0eYcEyLXg48EJ(&b_WorkingSet);
+  QPObjective->nvar = WorkingSet->nVar;
+  QPObjective->hasLinear = true;
+  QPObjective->objtype = 3;
+  emxCopyStruct_s_Wd0eYcEyLXg48EJ(WorkingSet, &c_WorkingSet);
+  emxFreeStruct_s_Wd0eYcEyLXg48EJ(&c_WorkingSet);
+  test3_setProblemType_g(WorkingSet, 3);
+  test3_sortLambdaQP_e(TrialState->lambda, WorkingSet->nActiveConstr,
+                       WorkingSet->sizes, WorkingSet->isActiveIdx,
+                       WorkingSet->Wid, WorkingSet->Wlocalidx,
+                       memspace->workspace_double);
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static boolean_T test3_step_p(int32_T *STEP_TYPE, emxArray_real_T_test3_T
+  *Hessian, s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState,
+  sG8JZ69axY52WWR6RKyApQC_test3_T *MeritFunction,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  QPObjective, somzaGboVhDG7PNQS6E98jD_test3_T *qpoptions)
+{
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T b_WorkingSet;
+  somzaGboVhDG7PNQS6E98jD_test3_T qpoptions_0;
+  real_T TrialState_0;
+  real_T constrViolationEq;
+  real_T constrViolationIneq;
+  real_T oldDirIdx;
+  int32_T b_mIneq;
+  int32_T b_nVar;
+  int32_T d;
+  int32_T exitg1;
+  int32_T iH0;
+  int32_T idxIneqOffset;
+  int32_T idxStartIneq;
+  int32_T idx_Partition;
+  int32_T idx_upper;
+  int32_T kend;
+  int32_T mConstrMax;
+  int32_T mEq;
+  int32_T mIneq;
+  int32_T nVar_tmp_tmp;
+  boolean_T exitg2;
+  boolean_T guard1;
+  boolean_T nonlinEqRemoved;
+  boolean_T stepSuccess;
+  stepSuccess = true;
+  nVar_tmp_tmp = WorkingSet->nVar - 1;
+  for (mConstrMax = 0; mConstrMax <= nVar_tmp_tmp; mConstrMax++) {
+    if (*STEP_TYPE != 3) {
+      TrialState->xstar->data[mConstrMax] = TrialState->xstarsqp->
+        data[mConstrMax];
+    } else {
+      TrialState->searchDir->data[mConstrMax] = TrialState->xstar->
+        data[mConstrMax];
+    }
+  }
+
+  emxInitStruct_s_Wd0eYcEyLXg48EJ(&b_WorkingSet);
+  do {
+    exitg1 = 0;
+    guard1 = false;
+    switch (*STEP_TYPE) {
+     case 1:
+      qpoptions_0 = *qpoptions;
+      test3_driver_hb(Hessian, TrialState->grad, TrialState, memspace,
+                      WorkingSet, QRManager, CholManager, QPObjective,
+                      &qpoptions_0, qpoptions->MaxIterations);
+      if (TrialState->state > 0) {
+        idxStartIneq = WorkingSet->sizes[2];
+        oldDirIdx = MeritFunction->penaltyParam;
+        constrViolationEq = 0.0;
+        if (WorkingSet->sizes[1] >= 1) {
+          kend = WorkingSet->sizes[1];
+          for (mConstrMax = 0; mConstrMax < kend; mConstrMax++) {
+            constrViolationEq += fabs(TrialState->cEq->data[mConstrMax]);
+          }
+        }
+
+        constrViolationIneq = 0.0;
+        for (mConstrMax = 0; mConstrMax < idxStartIneq; mConstrMax++) {
+          TrialState_0 = TrialState->cIneq->data[mConstrMax];
+          if (TrialState_0 > 0.0) {
+            constrViolationIneq += TrialState_0;
+          }
+        }
+
+        constrViolationEq += constrViolationIneq;
+        constrViolationIneq = MeritFunction->linearizedConstrViol;
+        MeritFunction->linearizedConstrViol = 0.0;
+        constrViolationIneq += constrViolationEq;
+        if ((constrViolationIneq > 2.2204460492503131E-16) && (TrialState->fstar
+             > 0.0)) {
+          if (TrialState->sqpFval == 0.0) {
+            TrialState_0 = 1.0;
+          } else {
+            TrialState_0 = 1.5;
+          }
+
+          oldDirIdx = TrialState_0 * TrialState->fstar / constrViolationIneq;
+        }
+
+        if (oldDirIdx < MeritFunction->penaltyParam) {
+          MeritFunction->phi = oldDirIdx * constrViolationEq +
+            TrialState->sqpFval;
+          if (((MeritFunction->initConstrViolationEq +
+                MeritFunction->initConstrViolationIneq) * oldDirIdx +
+               MeritFunction->initFval) - MeritFunction->phi > (real_T)
+              MeritFunction->nPenaltyDecreases * MeritFunction->threshold) {
+            MeritFunction->nPenaltyDecreases++;
+            if ((MeritFunction->nPenaltyDecreases << 1) >
+                TrialState->sqpIterations) {
+              MeritFunction->threshold *= 10.0;
+            }
+
+            MeritFunction->penaltyParam = fmax(oldDirIdx, 1.0E-10);
+          } else {
+            MeritFunction->phi = MeritFunction->penaltyParam * constrViolationEq
+              + TrialState->sqpFval;
+          }
+        } else {
+          MeritFunction->penaltyParam = fmax(oldDirIdx, 1.0E-10);
+          MeritFunction->phi = MeritFunction->penaltyParam * constrViolationEq +
+            TrialState->sqpFval;
+        }
+
+        MeritFunction->phiPrimePlus = fmin(TrialState->fstar -
+          MeritFunction->penaltyParam * constrViolationEq, 0.0);
+      }
+
+      test3_sortLambdaQP_e(TrialState->lambda, WorkingSet->nActiveConstr,
+                           WorkingSet->sizes, WorkingSet->isActiveIdx,
+                           WorkingSet->Wid, WorkingSet->Wlocalidx,
+                           memspace->workspace_double);
+      nonlinEqRemoved = (WorkingSet->mEqRemoved > 0);
+      if (WorkingSet->indexEqRemoved->size[0] > 0) {
+        while ((WorkingSet->mEqRemoved > 0) && (WorkingSet->indexEqRemoved->
+                data[WorkingSet->mEqRemoved - 1] >= TrialState->iNonEq0)) {
+          test3_addAeqConstr(WorkingSet, WorkingSet->indexEqRemoved->
+                             data[WorkingSet->mEqRemoved - 1]);
+          WorkingSet->mEqRemoved--;
+        }
+      }
+
+      if (nonlinEqRemoved) {
+        idxStartIneq = TrialState->mNonlinEq;
+        for (mConstrMax = 0; mConstrMax < idxStartIneq; mConstrMax++) {
+          b_nVar = TrialState->iNonEq0 + mConstrMax;
+          WorkingSet->Wlocalidx->data[b_nVar - 1] = b_nVar;
+        }
+      }
+
+      if ((TrialState->state <= 0) && (TrialState->state != -6)) {
+        *STEP_TYPE = 2;
+      } else {
+        for (mConstrMax = 0; mConstrMax <= nVar_tmp_tmp; mConstrMax++) {
+          TrialState->delta_x->data[mConstrMax] = TrialState->xstar->
+            data[mConstrMax];
+        }
+
+        guard1 = true;
+      }
+      break;
+
+     case 2:
+      iH0 = WorkingSet->nWConstr[0] + WorkingSet->nWConstr[1];
+      idxStartIneq = iH0 + 1;
+      kend = WorkingSet->nActiveConstr;
+      for (mConstrMax = idxStartIneq; mConstrMax <= kend; mConstrMax++) {
+        WorkingSet->isActiveConstr->data[(WorkingSet->isActiveIdx
+          [WorkingSet->Wid->data[mConstrMax - 1] - 1] + WorkingSet->
+          Wlocalidx->data[mConstrMax - 1]) - 2] = false;
+      }
+
+      WorkingSet->nWConstr[2] = 0;
+      WorkingSet->nWConstr[3] = 0;
+      WorkingSet->nWConstr[4] = 0;
+      WorkingSet->nActiveConstr = iH0;
+      test3_relaxed_i(Hessian, TrialState->grad, TrialState, MeritFunction,
+                      memspace, WorkingSet, QRManager, CholManager, QPObjective,
+                      qpoptions);
+      for (mConstrMax = 0; mConstrMax <= nVar_tmp_tmp; mConstrMax++) {
+        TrialState->delta_x->data[mConstrMax] = TrialState->xstar->
+          data[mConstrMax];
+      }
+
+      guard1 = true;
+      break;
+
+     default:
+      iH0 = WorkingSet->nWConstr[2];
+      kend = WorkingSet->nWConstr[3];
+      idxStartIneq = WorkingSet->nWConstr[4];
+      b_nVar = WorkingSet->nVar - 1;
+      mConstrMax = WorkingSet->mConstrMax - 1;
+      for (b_mIneq = 0; b_mIneq <= b_nVar; b_mIneq++) {
+        TrialState->xstarsqp->data[b_mIneq] = TrialState->xstarsqp_old->
+          data[b_mIneq];
+        TrialState->socDirection->data[b_mIneq] = TrialState->xstar->
+          data[b_mIneq];
+      }
+
+      for (b_mIneq = 0; b_mIneq <= mConstrMax; b_mIneq++) {
+        TrialState->lambdaStopTest->data[b_mIneq] = TrialState->lambda->
+          data[b_mIneq];
+      }
+
+      emxCopyStruct_s_Wd0eYcEyLXg48EJ(&b_WorkingSet, WorkingSet);
+      mEq = WorkingSet->sizes[1] - 1;
+      mIneq = WorkingSet->sizes[2];
+      idxIneqOffset = WorkingSet->isActiveIdx[2];
+      if (WorkingSet->sizes[1] > 0) {
+        for (b_mIneq = 0; b_mIneq <= mEq; b_mIneq++) {
+          b_WorkingSet.beq->data[b_mIneq] = -TrialState->cEq->data[b_mIneq];
+        }
+
+        test3_xgemv_bujmjslzp1(WorkingSet->nVar, WorkingSet->sizes[1],
+          WorkingSet->Aeq, WorkingSet->ldA, TrialState->searchDir,
+          b_WorkingSet.beq);
+        for (b_mIneq = 0; b_mIneq <= mEq; b_mIneq++) {
+          b_WorkingSet.bwset->data[b_mIneq] = b_WorkingSet.beq->data[b_mIneq];
+        }
+      }
+
+      if (b_WorkingSet.sizes[2] > 0) {
+        for (b_mIneq = 0; b_mIneq < mIneq; b_mIneq++) {
+          b_WorkingSet.bineq->data[b_mIneq] = -TrialState->cIneq->data[b_mIneq];
+        }
+
+        test3_xgemv_bujmjslzp1(b_WorkingSet.nVar, b_WorkingSet.sizes[2],
+          b_WorkingSet.Aineq, b_WorkingSet.ldA, TrialState->searchDir,
+          b_WorkingSet.bineq);
+        mIneq = 1;
+        mEq = b_WorkingSet.sizes[2] + 1;
+        idx_upper = (b_WorkingSet.sizes[2] + b_WorkingSet.sizes[3]) + 1;
+        d = b_WorkingSet.nActiveConstr;
+        for (b_mIneq = idxIneqOffset; b_mIneq <= d; b_mIneq++) {
+          switch (b_WorkingSet.Wid->data[b_mIneq - 1]) {
+           case 3:
+            idx_Partition = mIneq;
+            mIneq++;
+            b_WorkingSet.bwset->data[b_mIneq - 1] = b_WorkingSet.bineq->
+              data[b_WorkingSet.Wlocalidx->data[b_mIneq - 1] - 1];
+            break;
+
+           case 4:
+            idx_Partition = mEq;
+            mEq++;
+            break;
+
+           default:
+            idx_Partition = idx_upper;
+            idx_upper++;
+            break;
+          }
+
+          TrialState->workingset_old->data[idx_Partition - 1] =
+            b_WorkingSet.Wlocalidx->data[b_mIneq - 1];
+        }
+      }
+
+      for (b_mIneq = 0; b_mIneq <= b_nVar; b_mIneq++) {
+        TrialState->xstar->data[b_mIneq] = TrialState->xstarsqp->data[b_mIneq];
+      }
+
+      qpoptions_0 = *qpoptions;
+      test3_driver_hb(Hessian, TrialState->grad, TrialState, memspace,
+                      &b_WorkingSet, QRManager, CholManager, QPObjective,
+                      &qpoptions_0, qpoptions->MaxIterations);
+      if (b_WorkingSet.indexEqRemoved->size[0] > 0) {
+        exitg2 = false;
+        while ((!exitg2) && (b_WorkingSet.mEqRemoved > 0)) {
+          b_mIneq = b_WorkingSet.indexEqRemoved->data[b_WorkingSet.mEqRemoved -
+            1];
+          if (b_mIneq >= TrialState->iNonEq0) {
+            test3_addAeqConstr(&b_WorkingSet, b_mIneq);
+            b_WorkingSet.mEqRemoved--;
+          } else {
+            exitg2 = true;
+          }
+        }
+      }
+
+      for (b_mIneq = 0; b_mIneq <= b_nVar; b_mIneq++) {
+        TrialState_0 = TrialState->socDirection->data[b_mIneq];
+        TrialState->socDirection->data[b_mIneq] = TrialState->xstar->
+          data[b_mIneq] - TrialState_0;
+        TrialState->xstar->data[b_mIneq] = TrialState_0;
+      }
+
+      stepSuccess = (test3_xnrm2_a(WorkingSet->nVar, TrialState->socDirection) <=
+                     2.0 * test3_xnrm2_a(WorkingSet->nVar, TrialState->xstar));
+      idxIneqOffset = b_WorkingSet.sizes[1] - 1;
+      b_mIneq = b_WorkingSet.sizes[2];
+      if (b_WorkingSet.sizes[1] > 0) {
+        for (b_nVar = 0; b_nVar <= idxIneqOffset; b_nVar++) {
+          constrViolationEq = -TrialState->cEq->data[b_nVar];
+          b_WorkingSet.beq->data[b_nVar] = constrViolationEq;
+          b_WorkingSet.bwset->data[b_nVar] = constrViolationEq;
+        }
+      }
+
+      if (b_WorkingSet.sizes[2] > 0) {
+        for (b_nVar = 0; b_nVar < b_mIneq; b_nVar++) {
+          b_WorkingSet.bineq->data[b_nVar] = -TrialState->cIneq->data[b_nVar];
+        }
+
+        if (!stepSuccess) {
+          mEq = b_WorkingSet.nWConstr[0] + b_WorkingSet.nWConstr[1];
+          idxIneqOffset = mEq + 1;
+          mIneq = b_WorkingSet.nActiveConstr;
+          for (b_nVar = idxIneqOffset; b_nVar <= mIneq; b_nVar++) {
+            b_WorkingSet.isActiveConstr->data
+              [(b_WorkingSet.isActiveIdx[b_WorkingSet.Wid->data[b_nVar - 1] - 1]
+                + b_WorkingSet.Wlocalidx->data[b_nVar - 1]) - 2] = false;
+          }
+
+          b_WorkingSet.nWConstr[2] = 0;
+          b_WorkingSet.nWConstr[3] = 0;
+          b_WorkingSet.nWConstr[4] = 0;
+          b_WorkingSet.nActiveConstr = mEq;
+          for (b_nVar = 0; b_nVar < iH0; b_nVar++) {
+            test3_addAineqConstr(&b_WorkingSet, TrialState->workingset_old->
+                                 data[b_nVar]);
+          }
+
+          for (iH0 = 0; iH0 < kend; iH0++) {
+            test_addBoundToActiveSetMatrix_(&b_WorkingSet, 4,
+              TrialState->workingset_old->data[iH0 + b_mIneq]);
+          }
+
+          for (kend = 0; kend < idxStartIneq; kend++) {
+            test_addBoundToActiveSetMatrix_(&b_WorkingSet, 5,
+              TrialState->workingset_old->data[(kend + b_mIneq) +
+              b_WorkingSet.sizes[3]]);
+          }
+        }
+      }
+
+      if (!stepSuccess) {
+        for (idxStartIneq = 0; idxStartIneq <= mConstrMax; idxStartIneq++) {
+          TrialState->lambda->data[idxStartIneq] = TrialState->
+            lambdaStopTest->data[idxStartIneq];
+        }
+      } else {
+        test3_sortLambdaQP_e(TrialState->lambda, b_WorkingSet.nActiveConstr,
+                             b_WorkingSet.sizes, b_WorkingSet.isActiveIdx,
+                             b_WorkingSet.Wid, b_WorkingSet.Wlocalidx,
+                             memspace->workspace_double);
+      }
+
+      emxCopyStruct_s_Wd0eYcEyLXg48EJ(WorkingSet, &b_WorkingSet);
+      if (stepSuccess && (TrialState->state != -6)) {
+        for (mConstrMax = 0; mConstrMax <= nVar_tmp_tmp; mConstrMax++) {
+          TrialState->delta_x->data[mConstrMax] = TrialState->xstar->
+            data[mConstrMax] + TrialState->socDirection->data[mConstrMax];
+        }
+      }
+
+      guard1 = true;
+      break;
+    }
+
+    if (guard1) {
+      if (TrialState->state != -6) {
+        exitg1 = 1;
+      } else {
+        kend = Hessian->size[0] - 1;
+        oldDirIdx = 0.0;
+        constrViolationEq = 1.0;
+        for (mConstrMax = 0; mConstrMax <= kend; mConstrMax++) {
+          oldDirIdx = fmax(oldDirIdx, fabs(TrialState->grad->data[mConstrMax]));
+          constrViolationEq = fmax(constrViolationEq, fabs(TrialState->
+            xstar->data[mConstrMax]));
+        }
+
+        oldDirIdx = fmax(2.2204460492503131E-16, oldDirIdx / constrViolationEq);
+        for (mConstrMax = 0; mConstrMax <= kend; mConstrMax++) {
+          iH0 = (kend + 1) * mConstrMax;
+          for (idxStartIneq = 0; idxStartIneq < mConstrMax; idxStartIneq++) {
+            Hessian->data[iH0 + idxStartIneq] = 0.0;
+          }
+
+          Hessian->data[mConstrMax + Hessian->size[0] * mConstrMax] = oldDirIdx;
+          iH0 += mConstrMax;
+          b_nVar = kend - mConstrMax;
+          if (b_nVar - 1 >= 0) {
+            memset(&Hessian->data[iH0 + 1], 0, (uint32_T)((b_nVar + iH0) - iH0) *
+                   sizeof(real_T));
+          }
+        }
+      }
+    }
+  } while (exitg1 == 0);
+
+  emxFreeStruct_s_Wd0eYcEyLXg48EJ(&b_WorkingSet);
+  return stepSuccess;
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_evalObjAndConstr_f(int32_T obj_next_next_next_next_b_value,
+  int32_T obj_next_next_next_next_next_b_, const real_T
+  obj_next_next_next_next_next_ne[4], real_T obj_next_next_next_next_next__0,
+  const s_lZflMU9sVqxC63IejQkKIC_test_T obj_next_next_next_next_next__1, const
+  emxArray_real_T_test3_T *x, emxArray_real_T_test3_T *Cineq_workspace, int32_T
+  ineq0, emxArray_real_T_test3_T *Ceq_workspace, int32_T eq0, real_T *fval,
+  int32_T *status)
+{
+  boolean_T tmp;
+  *fval = test3_eML_blk_kernel_anonFcn1_e(obj_next_next_next_next_next__1.x0,
+    obj_next_next_next_next_next__1.zref, obj_next_next_next_next_next__1.wref,
+    obj_next_next_next_next_next__1.N, x);
+  tmp = rtIsNaN(*fval);
+  if (rtIsInf(*fval) || tmp) {
+    if (tmp) {
+      *status = -3;
+    } else if (*fval < 0.0) {
+      *status = -1;
+    } else {
+      *status = -2;
+    }
+  } else {
+    *status = test3_computeConstraints__c(obj_next_next_next_next_b_value,
+      obj_next_next_next_next_next_b_, obj_next_next_next_next_next_ne,
+      obj_next_next_next_next_next__0, x, Cineq_workspace, ineq0, Ceq_workspace,
+      eq0);
+  }
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_driver_h(emxArray_real_T_test3_T *Hessian,
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T *TrialState, sG8JZ69axY52WWR6RKyApQC_test3_T
+  *MeritFunction, const coder_internal_stickyStruct_c_T *FcnEvaluator,
+  s_9imJcZ2iwk426vK9Q2bBEG_test_T *FiniteDifferences,
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T *memspace, s_Wd0eYcEyLXg48EJ7pCjsH_test3_T
+  *WorkingSet, s_l1Gll5dfO9DpqQrvRqAf7E_test_T *QRManager,
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T *CholManager, s_saWPFfMboRdWeRqIEJ4x8C_test_T *
+  QPObjective, const emxArray_real_T_test3_T *fscales_cineq_constraint, int32_T
+  runTimeOptions_MaxFunctionEvalu)
+{
+  s7RdrPWkr8UPAUyTdDJkLaG_test3_T Flags;
+  somzaGboVhDG7PNQS6E98jD_test3_T expl_temp;
+  real_T TrialState_0;
+  real_T phi_alpha;
+  int32_T b_mLinIneq;
+  int32_T b_nVar;
+  int32_T b_nVar_tmp;
+  int32_T b_nVar_tmp_0;
+  int32_T d_ix;
+  int32_T d_iy;
+  int32_T d_iy_tmp;
+  int32_T g;
+  int32_T i;
+  int32_T ix;
+  int32_T iy;
+  int32_T k;
+  int32_T mConstr;
+  int32_T mEq;
+  int32_T mIneq;
+  int32_T mLinEq;
+  int32_T mLinIneq;
+  int32_T qpoptions_MaxIterations;
+  boolean_T b;
+  boolean_T tooSmallX;
+  static const char_T q[7] = { 'f', 'm', 'i', 'n', 'c', 'o', 'n' };
+
+  somzaGboVhDG7PNQS6E98jD_test3_T expl_temp_0;
+  int32_T exitg1;
+  int32_T exitg2;
+  int32_T nVar_tmp_tmp;
+  boolean_T exitg3;
+  boolean_T socTaken;
+  nVar_tmp_tmp = WorkingSet->nVar;
+  mEq = WorkingSet->sizes[1];
+  mIneq = WorkingSet->sizes[2];
+  mConstr = (WorkingSet->sizes[1] + WorkingSet->sizes[2]) + WorkingSet->sizes[3];
+  mLinIneq = WorkingSet->sizes[2] - TrialState->mNonlinIneq;
+  mLinEq = WorkingSet->sizes[1] - TrialState->mNonlinEq;
+  b_nVar = WorkingSet->sizes[2] + WorkingSet->sizes[3];
+  if (WorkingSet->nVar >= b_nVar) {
+    b_nVar = WorkingSet->nVar;
+  }
+
+  qpoptions_MaxIterations = 10 * b_nVar;
+  TrialState->steplength = 1.0;
+  test3_test_exit_ks(MeritFunction, WorkingSet, TrialState,
+                     runTimeOptions_MaxFunctionEvalu, &Flags.gradOK,
+                     &Flags.fevalOK, &Flags.done, &Flags.stepAccepted,
+                     &Flags.failedLineSearch, &Flags.stepType);
+  test3_saveJacobian(TrialState, WorkingSet->nVar, WorkingSet->sizes[2],
+                     WorkingSet->Aineq, TrialState->iNonIneq0, WorkingSet->
+                     sizes[1], WorkingSet->Aeq, TrialState->iNonEq0,
+                     WorkingSet->ldA);
+  TrialState->sqpFval_old = TrialState->sqpFval;
+  b_nVar = TrialState->xstarsqp->size[0] - 1;
+  for (k = 0; k <= b_nVar; k++) {
+    TrialState->xstarsqp_old->data[k] = TrialState->xstarsqp->data[k];
+    TrialState->grad_old->data[k] = TrialState->grad->data[k];
+  }
+
+  b_nVar_tmp = TrialState->mIneq;
+  for (k = 0; k < b_nVar_tmp; k++) {
+    TrialState->cIneq_old->data[k] = TrialState->cIneq->data[k];
+  }
+
+  b_nVar_tmp_0 = TrialState->mEq;
+  for (k = 0; k < b_nVar_tmp_0; k++) {
+    TrialState->cEq_old->data[k] = TrialState->cEq->data[k];
+  }
+
+  if (!Flags.done) {
+    TrialState->sqpIterations = 1;
+  }
+
+  while (!Flags.done) {
+    if ((!Flags.stepAccepted) && (!Flags.failedLineSearch)) {
+      expl_temp.IterDisplayQP = false;
+      expl_temp.RemainFeasible = false;
+      expl_temp.ProbRelTolFactor = 1.0;
+      expl_temp.ConstrRelTolFactor = 1.0;
+      expl_temp.PricingTolerance = 0.0;
+      expl_temp.ObjectiveLimit = (rtMinusInf);
+      expl_temp.ConstraintTolerance = 1.0E-6;
+      expl_temp.OptimalityTolerance = 2.2204460492503131E-14;
+      expl_temp.StepTolerance = 1.0E-6;
+      expl_temp.MaxIterations = qpoptions_MaxIterations;
+      for (i = 0; i < 7; i++) {
+        expl_temp.SolverName[i] = q[i];
+      }
+    }
+
+    do {
+      exitg1 = 0;
+      socTaken = !Flags.failedLineSearch;
+      if ((!Flags.stepAccepted) && socTaken) {
+        if (Flags.stepType != 3) {
+          test_updateWorkingSetForNewQP_b(WorkingSet, mIneq,
+            TrialState->mNonlinIneq, TrialState->cIneq, mEq,
+            TrialState->mNonlinEq, TrialState->cEq);
+        }
+
+        expl_temp_0 = expl_temp;
+        Flags.stepAccepted = test3_step_p(&Flags.stepType, Hessian, TrialState,
+          MeritFunction, memspace, WorkingSet, QRManager, CholManager,
+          QPObjective, &expl_temp_0);
+        if (Flags.stepAccepted) {
+          for (k = 0; k < nVar_tmp_tmp; k++) {
+            TrialState->xstarsqp->data[k] += TrialState->delta_x->data[k];
+          }
+
+          test3_evalObjAndConstr_f(FcnEvaluator->next.next.next.next.b_value,
+            FcnEvaluator->next.next.next.next.next.b_value,
+            FcnEvaluator->next.next.next.next.next.next.next.b_value.workspace.x0,
+            FcnEvaluator->next.next.next.next.next.next.next.b_value.workspace.N,
+            FcnEvaluator->next.next.next.next.next.next.next.next.b_value.workspace,
+            TrialState->xstarsqp, TrialState->cIneq, TrialState->iNonIneq0,
+            TrialState->cEq, TrialState->iNonEq0, &TrialState->sqpFval, &k);
+          Flags.fevalOK = (k == 1);
+          TrialState->FunctionEvaluations++;
+          if (mLinIneq > 0) {
+            test3_xgemv_bujmjs(nVar_tmp_tmp, mLinIneq, WorkingSet->Aineq,
+                               WorkingSet->ldA, TrialState->xstarsqp,
+                               TrialState->cIneq);
+          }
+
+          if (mLinEq > 0) {
+            test3_xgemv_bujmjs(nVar_tmp_tmp, mLinEq, WorkingSet->Aeq,
+                               WorkingSet->ldA, TrialState->xstarsqp,
+                               TrialState->cEq);
+          }
+
+          MeritFunction->phiFullStep = test3_computeMeritFcn
+            (MeritFunction->penaltyParam, TrialState->sqpFval, TrialState->cIneq,
+             mIneq, TrialState->cEq, mEq, Flags.fevalOK);
+        }
+
+        if ((Flags.stepType == 1) && Flags.stepAccepted && Flags.fevalOK &&
+            (MeritFunction->phi < MeritFunction->phiFullStep) &&
+            (TrialState->sqpFval < TrialState->sqpFval_old)) {
+          Flags.stepType = 3;
+          Flags.stepAccepted = false;
+        } else {
+          socTaken = ((Flags.stepType == 3) && Flags.stepAccepted);
+          b = Flags.fevalOK;
+          b_nVar = WorkingSet->nVar - 1;
+          b_mLinIneq = TrialState->mIneq - TrialState->mNonlinIneq;
+          d_ix = TrialState->mEq - TrialState->mNonlinEq;
+          TrialState_0 = 1.0;
+          iy = 1;
+          phi_alpha = MeritFunction->phiFullStep;
+          for (k = 0; k <= b_nVar; k++) {
+            TrialState->searchDir->data[k] = TrialState->delta_x->data[k];
+          }
+
+          do {
+            exitg2 = 0;
+            if (TrialState->FunctionEvaluations <
+                runTimeOptions_MaxFunctionEvalu) {
+              if (b && (phi_alpha <= TrialState_0 * 0.0001 *
+                        MeritFunction->phiPrimePlus + MeritFunction->phi)) {
+                exitg2 = 1;
+              } else {
+                TrialState_0 *= 0.7;
+                for (k = 0; k <= b_nVar; k++) {
+                  TrialState->delta_x->data[k] = TrialState_0 *
+                    TrialState->xstar->data[k];
+                }
+
+                if (socTaken) {
+                  phi_alpha = TrialState_0 * TrialState_0;
+                  if ((b_nVar + 1 >= 1) && (!(phi_alpha == 0.0))) {
+                    for (k = 0; k <= b_nVar; k++) {
+                      TrialState->delta_x->data[k] += phi_alpha *
+                        TrialState->socDirection->data[k];
+                    }
+                  }
+                }
+
+                tooSmallX = true;
+                k = 0;
+                exitg3 = false;
+                while ((!exitg3) && (k <= b_nVar)) {
+                  if (1.0E-6 * fmax(1.0, fabs(TrialState->xstarsqp->data[k])) <=
+                      fabs(TrialState->delta_x->data[k])) {
+                    tooSmallX = false;
+                    exitg3 = true;
+                  } else {
+                    k++;
+                  }
+                }
+
+                if (tooSmallX) {
+                  iy = -2;
+                  exitg2 = 1;
+                } else {
+                  for (k = 0; k <= b_nVar; k++) {
+                    TrialState->xstarsqp->data[k] = TrialState->
+                      xstarsqp_old->data[k] + TrialState->delta_x->data[k];
+                  }
+
+                  test3_evalObjAndConstr_f
+                    (FcnEvaluator->next.next.next.next.b_value,
+                     FcnEvaluator->next.next.next.next.next.b_value,
+                     FcnEvaluator->next.next.next.next.next.next.next.b_value.workspace.x0,
+                     FcnEvaluator->next.next.next.next.next.next.next.b_value.workspace.N,
+                     FcnEvaluator->next.next.next.next.next.next.next.next.b_value.workspace,
+                     TrialState->xstarsqp, TrialState->cIneq,
+                     TrialState->iNonIneq0, TrialState->cEq, TrialState->iNonEq0,
+                     &TrialState->sqpFval, &k);
+                  if (b_mLinIneq > 0) {
+                    test3_xgemv_bujmjs(b_nVar + 1, b_mLinIneq, WorkingSet->Aineq,
+                                       WorkingSet->ldA, TrialState->xstarsqp,
+                                       TrialState->cIneq);
+                  }
+
+                  if (d_ix > 0) {
+                    test3_xgemv_bujmjs(b_nVar + 1, d_ix, WorkingSet->Aeq,
+                                       WorkingSet->ldA, TrialState->xstarsqp,
+                                       TrialState->cEq);
+                  }
+
+                  TrialState->FunctionEvaluations++;
+                  b = (k == 1);
+                  phi_alpha = test3_computeMeritFcn(MeritFunction->penaltyParam,
+                    TrialState->sqpFval, TrialState->cIneq, TrialState->mIneq,
+                    TrialState->cEq, TrialState->mEq, b);
+                }
+              }
+            } else {
+              iy = 0;
+              exitg2 = 1;
+            }
+          } while (exitg2 == 0);
+
+          Flags.fevalOK = b;
+          TrialState->steplength = TrialState_0;
+          if (iy > 0) {
+            Flags.stepAccepted = true;
+          } else {
+            Flags.failedLineSearch = true;
+          }
+        }
+      } else {
+        exitg1 = 1;
+      }
+    } while (exitg1 == 0);
+
+    if (Flags.stepAccepted && socTaken) {
+      for (k = 0; k < nVar_tmp_tmp; k++) {
+        TrialState->xstarsqp->data[k] = TrialState->xstarsqp_old->data[k] +
+          TrialState->delta_x->data[k];
+      }
+
+      for (k = 0; k < mConstr; k++) {
+        TrialState_0 = TrialState->lambdasqp->data[k];
+        TrialState->lambdasqp->data[k] = (TrialState->lambda->data[k] -
+          TrialState_0) * TrialState->steplength + TrialState_0;
+      }
+
+      TrialState->sqpFval_old = TrialState->sqpFval;
+      b_nVar = TrialState->xstarsqp->size[0] - 1;
+      for (k = 0; k <= b_nVar; k++) {
+        TrialState->xstarsqp_old->data[k] = TrialState->xstarsqp->data[k];
+        TrialState->grad_old->data[k] = TrialState->grad->data[k];
+      }
+
+      for (k = 0; k < b_nVar_tmp; k++) {
+        TrialState->cIneq_old->data[k] = TrialState->cIneq->data[k];
+      }
+
+      for (k = 0; k < b_nVar_tmp_0; k++) {
+        TrialState->cEq_old->data[k] = TrialState->cEq->data[k];
+      }
+
+      Flags.gradOK = test_computeFiniteDifferences_k(FiniteDifferences,
+        TrialState->sqpFval, TrialState->cIneq, TrialState->iNonIneq0,
+        TrialState->cEq, TrialState->iNonEq0, TrialState->xstarsqp,
+        TrialState->grad, WorkingSet->Aineq, TrialState->iNonIneq0,
+        WorkingSet->ldA, WorkingSet->Aeq, TrialState->iNonEq0, WorkingSet->ldA);
+      TrialState->FunctionEvaluations += FiniteDifferences->numEvals;
+    } else {
+      TrialState->sqpFval = TrialState->sqpFval_old;
+      b_nVar = TrialState->xstarsqp->size[0];
+      for (k = 0; k < b_nVar; k++) {
+        TrialState->xstarsqp->data[k] = TrialState->xstarsqp_old->data[k];
+      }
+
+      for (k = 0; k < b_nVar_tmp; k++) {
+        TrialState->cIneq->data[k] = TrialState->cIneq_old->data[k];
+      }
+
+      for (k = 0; k < b_nVar_tmp_0; k++) {
+        TrialState->cEq->data[k] = TrialState->cEq_old->data[k];
+      }
+    }
+
+    test3_test_exit_ksj(&Flags, memspace, MeritFunction,
+                        fscales_cineq_constraint, WorkingSet, TrialState,
+                        QRManager, runTimeOptions_MaxFunctionEvalu);
+    if ((!Flags.done) && Flags.stepAccepted) {
+      Flags.stepAccepted = false;
+      Flags.stepType = 1;
+      Flags.failedLineSearch = false;
+      b_nVar = (mEq + TrialState->iNonIneq0) - 1;
+      k = WorkingSet->ldA;
+      for (b_mLinIneq = 0; b_mLinIneq < nVar_tmp_tmp; b_mLinIneq++) {
+        TrialState_0 = TrialState->grad->data[b_mLinIneq];
+        TrialState->delta_gradLag->data[b_mLinIneq] = TrialState_0;
+        if (nVar_tmp_tmp >= 1) {
+          TrialState->delta_gradLag->data[b_mLinIneq] = TrialState_0 -
+            TrialState->grad_old->data[b_mLinIneq];
+        }
+      }
+
+      if (TrialState->mNonlinEq > 0) {
+        iy = (TrialState->iNonEq0 - 1) * WorkingSet->ldA + 1;
+        if (nVar_tmp_tmp != 0) {
+          ix = TrialState->iNonEq0;
+          d_iy_tmp = (TrialState->mNonlinEq - 1) * WorkingSet->ldA;
+          d_iy = d_iy_tmp + iy;
+          for (b_mLinIneq = iy; k < 0 ? b_mLinIneq >= d_iy : b_mLinIneq <= d_iy;
+               b_mLinIneq += k) {
+            g = (b_mLinIneq + nVar_tmp_tmp) - 1;
+            for (d_ix = b_mLinIneq; d_ix <= g; d_ix++) {
+              i = d_ix - b_mLinIneq;
+              TrialState->delta_gradLag->data[i] += WorkingSet->Aeq->data[d_ix -
+                1] * TrialState->lambdasqp->data[ix - 1];
+            }
+
+            ix++;
+          }
+
+          ix = TrialState->iNonEq0;
+          d_iy = d_iy_tmp + 1;
+          for (b_mLinIneq = 1; k < 0 ? b_mLinIneq >= d_iy : b_mLinIneq <= d_iy;
+               b_mLinIneq += k) {
+            g = (b_mLinIneq + nVar_tmp_tmp) - 1;
+            for (d_ix = b_mLinIneq; d_ix <= g; d_ix++) {
+              i = d_ix - b_mLinIneq;
+              TrialState->delta_gradLag->data[i] += TrialState->
+                JacCeqTrans_old->data[d_ix - 1] * -TrialState->lambdasqp->
+                data[ix - 1];
+            }
+
+            ix++;
+          }
+        }
+      }
+
+      if (TrialState->mNonlinIneq > 0) {
+        iy = (TrialState->iNonIneq0 - 1) * WorkingSet->ldA + 1;
+        if (nVar_tmp_tmp != 0) {
+          ix = b_nVar;
+          d_iy_tmp = (TrialState->mNonlinIneq - 1) * WorkingSet->ldA;
+          d_iy = d_iy_tmp + iy;
+          for (b_mLinIneq = iy; k < 0 ? b_mLinIneq >= d_iy : b_mLinIneq <= d_iy;
+               b_mLinIneq += k) {
+            g = (b_mLinIneq + nVar_tmp_tmp) - 1;
+            for (d_ix = b_mLinIneq; d_ix <= g; d_ix++) {
+              i = d_ix - b_mLinIneq;
+              TrialState->delta_gradLag->data[i] += WorkingSet->Aineq->data[d_ix
+                - 1] * TrialState->lambdasqp->data[ix];
+            }
+
+            ix++;
+          }
+
+          d_ix = b_nVar;
+          ix = d_iy_tmp + 1;
+          for (b_nVar = 1; k < 0 ? b_nVar >= ix : b_nVar <= ix; b_nVar += k) {
+            iy = (b_nVar + nVar_tmp_tmp) - 1;
+            for (b_mLinIneq = b_nVar; b_mLinIneq <= iy; b_mLinIneq++) {
+              i = b_mLinIneq - b_nVar;
+              TrialState->delta_gradLag->data[i] +=
+                TrialState->JacCineqTrans_old->data[b_mLinIneq - 1] *
+                -TrialState->lambdasqp->data[d_ix];
+            }
+
+            d_ix++;
+          }
+        }
+      }
+
+      test3_saveJacobian(TrialState, nVar_tmp_tmp, mIneq, WorkingSet->Aineq,
+                         TrialState->iNonIneq0, mEq, WorkingSet->Aeq,
+                         TrialState->iNonEq0, WorkingSet->ldA);
+      test3_BFGSUpdate(nVar_tmp_tmp, Hessian, TrialState->delta_x,
+                       TrialState->delta_gradLag, memspace->workspace_double);
+      TrialState->sqpIterations++;
+    }
+  }
+}
+
+static void emxFreeStruct_s_lZflMU9sVqxC63I(s_lZflMU9sVqxC63IejQkKIC_test_T
+  *pStruct)
+{
+  test3_emxFree_real_T(&pStruct->zref);
+  test3_emxFree_real_T(&pStruct->wref);
+}
+
+static void emxFreeStruct_anonymous_funct_k(anonymous_function_test3_k_T
+  *pStruct)
+{
+  emxFreeStruct_s_lZflMU9sVqxC63I(&pStruct->workspace);
+}
+
+static void emxFreeStruct_s_9imJcZ2iwk426vK(s_9imJcZ2iwk426vK9Q2bBEG_test_T
+  *pStruct)
+{
+  emxFreeStruct_anonymous_funct_k(&pStruct->objfun);
+  test3_emxFree_real_T(&pStruct->cIneq_1);
+  test3_emxFree_real_T(&pStruct->cEq_1);
+  test3_emxFree_real_T(&pStruct->cIneq_2);
+  test3_emxFree_real_T(&pStruct->cEq_2);
+  test3_emxFree_boolean_T(&pStruct->hasLB);
+  test3_emxFree_boolean_T(&pStruct->hasUB);
+}
+
+static void emxFreeStruct_coder_i_kyv1kfe2t(coder_internal_stickyStruct_k_T
+  *pStruct)
+{
+  emxFreeStruct_anonymous_funct_k(&pStruct->b_value);
+}
+
+static void emxFreeStruct_coder__kyv1kfe2tm(coder_internal_stickyStruc_ky_T
+  *pStruct)
+{
+  emxFreeStruct_coder_i_kyv1kfe2t(&pStruct->next);
+}
+
+static void emxFreeStruct_coder_kyv1kfe2tm4(coder_internal_stickyStru_kyv_T
+  *pStruct)
+{
+  emxFreeStruct_coder__kyv1kfe2tm(&pStruct->next);
+}
+
+static void emxFreeStruct_code_kyv1kfe2tm4h(coder_internal_stickyStr_kyv1_T
+  *pStruct)
+{
+  emxFreeStruct_coder_kyv1kfe2tm4(&pStruct->next);
+}
+
+static void emxFreeStruct_cod_kyv1kfe2tm4hq(coder_internal_stickySt_kyv1k_T
+  *pStruct)
+{
+  emxFreeStruct_code_kyv1kfe2tm4h(&pStruct->next);
+}
+
+static void emxFreeStruct_co_kyv1kfe2tm4hq5(coder_internal_stickyS_kyv1kf_T
+  *pStruct)
+{
+  emxFreeStruct_cod_kyv1kfe2tm4hq(&pStruct->next);
+}
+
+static void emxFreeStruct_c_kyv1kfe2tm4hq5k(coder_internal_sticky_kyv1kfe_T
+  *pStruct)
+{
+  emxFreeStruct_co_kyv1kfe2tm4hq5(&pStruct->next);
+}
+
+static void emxFreeStruct_coder_internal__d(coder_internal_stick_kyv1kfe2_T
+  *pStruct)
+{
+  emxFreeStruct_c_kyv1kfe2tm4hq5k(&pStruct->next);
+}
+
+static void emxFreeStruct_coder_internal__p(coder_internal_stickyStruct_c_T
+  *pStruct)
+{
+  emxFreeStruct_coder_internal__d(&pStruct->next);
+}
+
+/* Function for MATLAB Function: '<Root>/MATLAB Function2' */
+static void test3_fmincon_l(const real_T fun_workspace_x0[4], const
+  emxArray_real_T_test3_T *fun_workspace_zref, const emxArray_real_T_test3_T
+  *fun_workspace_wref, real_T fun_workspace_N, const emxArray_real_T_test3_T *x0,
+  const sU0htoGcxTaPV5C2NLIldmB_test3_T nonlcon_workspace,
+  emxArray_real_T_test3_T *x)
+{
+  coder_internal_stickyStruct_c_T FcnEvaluator;
+  emxArray_real_T_test3_T *Ceq;
+  emxArray_real_T_test3_T *Cineq;
+  emxArray_real_T_test3_T *Hessian;
+  emxArray_real_T_test3_T *fscales_cineq_constraint;
+  sG8JZ69axY52WWR6RKyApQC_test3_T MeritFunction;
+  s_0Mw3d4AlMrOoSnA1Aci4tH_test_T TrialState;
+  s_9imJcZ2iwk426vK9Q2bBEG_test_T FiniteDifferences;
+  s_Wd0eYcEyLXg48EJ7pCjsH_test3_T WorkingSet;
+  s_l1Gll5dfO9DpqQrvRqAf7E_test_T QRManager;
+  s_pIaUYPkQBTqVmAKxFPiGQF_test_T memspace;
+  s_saWPFfMboRdWeRqIEJ4x8C_test_T QPObjective;
+  s_vdGXtauKr5HuLAqoxBLhXH_test_T CholManager;
+  real_T WorkingSet_0;
+  real_T fval;
+  int32_T Hessian_0;
+  int32_T iw0;
+  int32_T k;
+  int32_T loop_ub;
+  int32_T mConstrMax;
+  int32_T mConstrMax_tmp;
+  int32_T mConstrMax_tmp_0;
+  int32_T mNonlinIneq;
+  int32_T maxDims;
+  int32_T nVar;
+  int32_T nVarMax;
+  int32_T tmp_0;
+  boolean_T tmp;
+  test3_emxInit_real_T(&Cineq, 1);
+  test3_emxInit_real_T(&Ceq, 1);
+  test3_eML_blk_kernel_anonFcn2_m(nonlcon_workspace.x0, nonlcon_workspace.N, x0,
+    Cineq, Ceq);
+  mNonlinIneq = Cineq->size[0] - 1;
+  iw0 = Ceq->size[0];
+  nVar = x0->size[0] - 1;
+  mConstrMax_tmp = Ceq->size[0] << 1;
+  mConstrMax_tmp_0 = Cineq->size[0] + Ceq->size[0];
+  mConstrMax = ((mConstrMax_tmp_0 + mConstrMax_tmp) + Cineq->size[0]) + 1;
+  nVarMax = ((mConstrMax_tmp + x0->size[0]) + Cineq->size[0]) + 1;
+  if (nVarMax >= mConstrMax) {
+    maxDims = nVarMax;
+  } else {
+    maxDims = mConstrMax;
+  }
+
+  test3_emxInit_real_T(&Hessian, 2);
+  tmp_0 = Hessian->size[0] * Hessian->size[1];
+  Hessian->size[0] = x0->size[0];
+  Hessian->size[1] = x0->size[0];
+  test3_emxEnsureCapacity_real_T(Hessian, tmp_0);
+  loop_ub = x0->size[0] * x0->size[0];
+  if (loop_ub - 1 >= 0) {
+    memset(&Hessian->data[0], 0, (uint32_T)loop_ub * sizeof(real_T));
+  }
+
+  if (x0->size[0] > 0) {
+    for (k = 0; k <= nVar; k++) {
+      Hessian->data[k + Hessian->size[0] * k] = 1.0;
+    }
+  }
+
+  emxInitStruct_s_0Mw3d4AlMrOoSnA(&TrialState);
+  test3_factoryConstruct(nVarMax, mConstrMax, Cineq->size[0], Ceq->size[0], x0,
+    Cineq->size[0], Ceq->size[0], &TrialState);
+  for (k = 0; k <= nVar; k++) {
+    TrialState.xstarsqp->data[k] = x0->data[k];
+  }
+
+  nVar = Cineq->size[0];
+  emxInitStruct_coder_i_kyv1kfe2t(&FcnEvaluator);
+  FcnEvaluator.next.next.next.next.b_value = Ceq->size[0];
+  FcnEvaluator.next.next.next.next.next.b_value = Cineq->size[0];
+  FcnEvaluator.next.next.next.next.next.next.next.b_value.workspace =
+    nonlcon_workspace;
+  FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.x0[0] =
+    fun_workspace_x0[0];
+  FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.x0[1] =
+    fun_workspace_x0[1];
+  FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.x0[2] =
+    fun_workspace_x0[2];
+  FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.x0[3] =
+    fun_workspace_x0[3];
+  tmp_0 =
+    FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.zref->
+    size[0] *
+    FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.zref->
+    size[1];
+  FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.zref->size
+    [0] = 2;
+  FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.zref->size
+    [1] = fun_workspace_zref->size[1];
+  test3_emxEnsureCapacity_real_T
+    (FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.zref,
+     tmp_0);
+  loop_ub = fun_workspace_zref->size[1] << 1;
+  for (k = 0; k < loop_ub; k++) {
+    FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.zref->
+      data[k] = fun_workspace_zref->data[k];
+  }
+
+  tmp_0 =
+    FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.wref->
+    size[0] *
+    FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.wref->
+    size[1];
+  FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.wref->size
+    [0] = 2;
+  FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.wref->size
+    [1] = fun_workspace_wref->size[1];
+  test3_emxEnsureCapacity_real_T
+    (FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.wref,
+     tmp_0);
+  Hessian_0 = fun_workspace_wref->size[1] << 1;
+  for (k = 0; k < Hessian_0; k++) {
+    FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.wref->
+      data[k] = fun_workspace_wref->data[k];
+  }
+
+  FcnEvaluator.next.next.next.next.next.next.next.next.b_value.workspace.N =
+    fun_workspace_N;
+  emxInitStruct_s_9imJcZ2iwk426vK(&FiniteDifferences);
+  FiniteDifferences.objfun.workspace.x0[0] = fun_workspace_x0[0];
+  FiniteDifferences.objfun.workspace.x0[1] = fun_workspace_x0[1];
+  FiniteDifferences.objfun.workspace.x0[2] = fun_workspace_x0[2];
+  FiniteDifferences.objfun.workspace.x0[3] = fun_workspace_x0[3];
+  tmp_0 = FiniteDifferences.objfun.workspace.zref->size[0] *
+    FiniteDifferences.objfun.workspace.zref->size[1];
+  FiniteDifferences.objfun.workspace.zref->size[0] = 2;
+  FiniteDifferences.objfun.workspace.zref->size[1] = fun_workspace_zref->size[1];
+  test3_emxEnsureCapacity_real_T(FiniteDifferences.objfun.workspace.zref, tmp_0);
+  for (k = 0; k < loop_ub; k++) {
+    FiniteDifferences.objfun.workspace.zref->data[k] = fun_workspace_zref->
+      data[k];
+  }
+
+  tmp_0 = FiniteDifferences.objfun.workspace.wref->size[0] *
+    FiniteDifferences.objfun.workspace.wref->size[1];
+  FiniteDifferences.objfun.workspace.wref->size[0] = 2;
+  FiniteDifferences.objfun.workspace.wref->size[1] = fun_workspace_wref->size[1];
+  test3_emxEnsureCapacity_real_T(FiniteDifferences.objfun.workspace.wref, tmp_0);
+  for (k = 0; k < Hessian_0; k++) {
+    FiniteDifferences.objfun.workspace.wref->data[k] = fun_workspace_wref->
+      data[k];
+  }
+
+  FiniteDifferences.objfun.workspace.N = fun_workspace_N;
+  FiniteDifferences.nonlin.workspace = nonlcon_workspace;
+  FiniteDifferences.f_1 = 0.0;
+  tmp_0 = FiniteDifferences.cIneq_1->size[0];
+  FiniteDifferences.cIneq_1->size[0] = Cineq->size[0];
+  test3_emxEnsureCapacity_real_T(FiniteDifferences.cIneq_1, tmp_0);
+  tmp_0 = FiniteDifferences.cEq_1->size[0];
+  FiniteDifferences.cEq_1->size[0] = Ceq->size[0];
+  test3_emxEnsureCapacity_real_T(FiniteDifferences.cEq_1, tmp_0);
+  FiniteDifferences.f_2 = 0.0;
+  tmp_0 = FiniteDifferences.cIneq_2->size[0];
+  FiniteDifferences.cIneq_2->size[0] = Cineq->size[0];
+  test3_emxEnsureCapacity_real_T(FiniteDifferences.cIneq_2, tmp_0);
+  tmp_0 = FiniteDifferences.cEq_2->size[0];
+  FiniteDifferences.cEq_2->size[0] = Ceq->size[0];
+  test3_emxEnsureCapacity_real_T(FiniteDifferences.cEq_2, tmp_0);
+  FiniteDifferences.nVar = x0->size[0];
+  FiniteDifferences.mIneq = Cineq->size[0];
+  FiniteDifferences.mEq = Ceq->size[0];
+  FiniteDifferences.numEvals = 0;
+  FiniteDifferences.SpecifyObjectiveGradient = false;
+  FiniteDifferences.SpecifyConstraintGradient = false;
+  FiniteDifferences.isEmptyNonlcon = (mConstrMax_tmp_0 == 0);
+  tmp_0 = FiniteDifferences.hasLB->size[0];
+  FiniteDifferences.hasLB->size[0] = x0->size[0];
+  tes_emxEnsureCapacity_boolean_T(FiniteDifferences.hasLB, tmp_0);
+  tmp_0 = FiniteDifferences.hasUB->size[0];
+  FiniteDifferences.hasUB->size[0] = x0->size[0];
+  tes_emxEnsureCapacity_boolean_T(FiniteDifferences.hasUB, tmp_0);
+  FiniteDifferences.FiniteDifferenceType = 0;
+  k = x0->size[0];
+  for (loop_ub = 0; loop_ub < k; loop_ub++) {
+    FiniteDifferences.hasLB->data[loop_ub] = false;
+    FiniteDifferences.hasUB->data[loop_ub] = false;
+  }
+
+  FiniteDifferences.hasBounds = false;
+  emxInitStruct_s_l1Gll5dfO9DpqQr(&QRManager);
+  QRManager.ldq = maxDims;
+  tmp_0 = QRManager.QR->size[0] * QRManager.QR->size[1];
+  QRManager.QR->size[0] = maxDims;
+  QRManager.QR->size[1] = maxDims;
+  test3_emxEnsureCapacity_real_T(QRManager.QR, tmp_0);
+  tmp_0 = QRManager.Q->size[0] * QRManager.Q->size[1];
+  QRManager.Q->size[0] = maxDims;
+  QRManager.Q->size[1] = maxDims;
+  test3_emxEnsureCapacity_real_T(QRManager.Q, tmp_0);
+  loop_ub = maxDims * maxDims;
+  for (k = 0; k < loop_ub; k++) {
+    QRManager.Q->data[k] = 0.0;
+  }
+
+  tmp_0 = QRManager.jpvt->size[0];
+  QRManager.jpvt->size[0] = maxDims;
+  test3_emxEnsureCapacity_int32_T(QRManager.jpvt, tmp_0);
+  for (k = 0; k < maxDims; k++) {
+    QRManager.jpvt->data[k] = 0;
+  }
+
+  QRManager.mrows = 0;
+  QRManager.ncols = 0;
+  tmp_0 = QRManager.tau->size[0];
+  QRManager.tau->size[0] = maxDims;
+  test3_emxEnsureCapacity_real_T(QRManager.tau, tmp_0);
+  QRManager.minRowCol = 0;
+  QRManager.usedPivoting = false;
+  emxInitStruct_s_vdGXtauKr5HuLAq(&CholManager);
+  tmp_0 = CholManager.FMat->size[0] * CholManager.FMat->size[1];
+  CholManager.FMat->size[0] = maxDims;
+  CholManager.FMat->size[1] = maxDims;
+  test3_emxEnsureCapacity_real_T(CholManager.FMat, tmp_0);
+  CholManager.ldm = maxDims;
+  CholManager.ndims = 0;
+  CholManager.info = 0;
+  CholManager.scaleFactor = 0.0;
+  CholManager.ConvexCheck = true;
+  CholManager.regTol_ = (rtInf);
+  CholManager.workspace_ = (rtInf);
+  CholManager.workspace2_ = (rtInf);
+  emxInitStruct_s_saWPFfMboRdWeRq(&QPObjective);
+  tmp_0 = QPObjective.grad->size[0];
+  QPObjective.grad->size[0] = nVarMax;
+  test3_emxEnsureCapacity_real_T(QPObjective.grad, tmp_0);
+  tmp_0 = QPObjective.Hx->size[0];
+  QPObjective.Hx->size[0] = nVarMax - 1;
+  test3_emxEnsureCapacity_real_T(QPObjective.Hx, tmp_0);
+  QPObjective.maxVar = nVarMax;
+  QPObjective.beta = 0.0;
+  QPObjective.rho = 0.0;
+  QPObjective.prev_objtype = 3;
+  QPObjective.prev_nvar = 0;
+  QPObjective.prev_hasLinear = false;
+  QPObjective.gammaScalar = 0.0;
+  QPObjective.nvar = x0->size[0];
+  QPObjective.hasLinear = true;
+  QPObjective.objtype = 3;
+  emxInitStruct_s_pIaUYPkQBTqVmAK(&memspace);
+  tmp_0 = memspace.workspace_double->size[0] * memspace.workspace_double->size[1];
+  memspace.workspace_double->size[0] = maxDims;
+  test3_emxEnsureCapacity_real_T(memspace.workspace_double, tmp_0);
+  if (nVarMax >= 2) {
+    tmp_0 = memspace.workspace_double->size[0] * memspace.workspace_double->
+      size[1];
+    memspace.workspace_double->size[1] = nVarMax;
+    test3_emxEnsureCapacity_real_T(memspace.workspace_double, tmp_0);
+  } else {
+    tmp_0 = memspace.workspace_double->size[0] * memspace.workspace_double->
+      size[1];
+    memspace.workspace_double->size[1] = 2;
+    test3_emxEnsureCapacity_real_T(memspace.workspace_double, tmp_0);
+  }
+
+  tmp_0 = memspace.workspace_int->size[0];
+  memspace.workspace_int->size[0] = maxDims;
+  test3_emxEnsureCapacity_int32_T(memspace.workspace_int, tmp_0);
+  tmp_0 = memspace.workspace_sort->size[0];
+  memspace.workspace_sort->size[0] = maxDims;
+  test3_emxEnsureCapacity_int32_T(memspace.workspace_sort, tmp_0);
+  test3_emxInit_real_T(&fscales_cineq_constraint, 1);
+  tmp_0 = fscales_cineq_constraint->size[0];
+  fscales_cineq_constraint->size[0] = Cineq->size[0];
+  test3_emxEnsureCapacity_real_T(fscales_cineq_constraint, tmp_0);
+  loop_ub = Cineq->size[0];
+  for (k = 0; k < loop_ub; k++) {
+    fscales_cineq_constraint->data[k] = 1.0;
+  }
+
+  emxInitStruct_s_Wd0eYcEyLXg48EJ(&WorkingSet);
+  test3_factoryConstruct_ir(Cineq->size[0], Ceq->size[0], x0->size[0], nVarMax,
+    mConstrMax, &WorkingSet);
+  WorkingSet.mConstrMax = mConstrMax;
+  WorkingSet.mConstr = mConstrMax_tmp_0;
+  WorkingSet.mConstrOrig = mConstrMax_tmp_0;
+  WorkingSet.sizes[0] = 0;
+  WorkingSet.sizes[1] = Ceq->size[0];
+  WorkingSet.sizes[2] = Cineq->size[0];
+  WorkingSet.sizes[3] = 0;
+  WorkingSet.sizes[4] = 0;
+  for (k = 0; k < 5; k++) {
+    WorkingSet.sizesNormal[k] = WorkingSet.sizes[k];
+  }
+
+  WorkingSet.sizesPhaseOne[0] = 0;
+  WorkingSet.sizesPhaseOne[1] = Ceq->size[0];
+  WorkingSet.sizesPhaseOne[2] = Cineq->size[0];
+  WorkingSet.sizesPhaseOne[3] = 1;
+  WorkingSet.sizesPhaseOne[4] = 0;
+  WorkingSet.sizesRegularized[0] = 0;
+  WorkingSet.sizesRegularized[1] = Ceq->size[0];
+  WorkingSet.sizesRegularized[2] = Cineq->size[0];
+  k = mConstrMax_tmp + Cineq->size[0];
+  WorkingSet.sizesRegularized[3] = k;
+  WorkingSet.sizesRegularized[4] = 0;
+  WorkingSet.sizesRegPhaseOne[0] = 0;
+  WorkingSet.sizesRegPhaseOne[1] = Ceq->size[0];
+  WorkingSet.sizesRegPhaseOne[2] = Cineq->size[0];
+  WorkingSet.sizesRegPhaseOne[3] = k + 1;
+  WorkingSet.sizesRegPhaseOne[4] = 0;
+  WorkingSet.isActiveIdxNormal[0] = 1;
+  WorkingSet.isActiveIdxNormal[1] = 0;
+  WorkingSet.isActiveIdxNormal[2] = Ceq->size[0];
+  WorkingSet.isActiveIdxNormal[3] = Cineq->size[0];
+  WorkingSet.isActiveIdxNormal[4] = 0;
+  WorkingSet.isActiveIdxNormal[5] = 0;
+  for (mConstrMax_tmp = 0; mConstrMax_tmp < 6; mConstrMax_tmp++) {
+    WorkingSet.isActiveIdxRegPhaseOne[mConstrMax_tmp] =
+      WorkingSet.isActiveIdxNormal[mConstrMax_tmp];
+  }
+
+  for (mConstrMax = 0; mConstrMax < 5; mConstrMax++) {
+    WorkingSet.isActiveIdxRegPhaseOne[mConstrMax + 1] +=
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
+  }
+
+  for (mConstrMax_tmp = 0; mConstrMax_tmp < 6; mConstrMax_tmp++) {
+    WorkingSet.isActiveIdx[mConstrMax_tmp] =
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax_tmp];
+  }
+
+  WorkingSet.isActiveIdxRegPhaseOne[0] = 1;
+  WorkingSet.isActiveIdxRegPhaseOne[1] = 0;
+  WorkingSet.isActiveIdxRegPhaseOne[2] = Ceq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[3] = Cineq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[4] = 1;
+  WorkingSet.isActiveIdxRegPhaseOne[5] = 0;
+  for (mConstrMax = 0; mConstrMax < 5; mConstrMax++) {
+    WorkingSet.isActiveIdxNormal[mConstrMax + 1] +=
+      WorkingSet.isActiveIdxNormal[mConstrMax];
+    WorkingSet.isActiveIdxRegPhaseOne[mConstrMax + 1] +=
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
+  }
+
+  for (mConstrMax_tmp = 0; mConstrMax_tmp < 6; mConstrMax_tmp++) {
+    WorkingSet.isActiveIdxPhaseOne[mConstrMax_tmp] =
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax_tmp];
+  }
+
+  WorkingSet.isActiveIdxRegPhaseOne[0] = 1;
+  WorkingSet.isActiveIdxRegPhaseOne[1] = 0;
+  WorkingSet.isActiveIdxRegPhaseOne[2] = Ceq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[3] = Cineq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[4] = k;
+  WorkingSet.isActiveIdxRegPhaseOne[5] = 0;
+  for (mConstrMax = 0; mConstrMax < 5; mConstrMax++) {
+    WorkingSet.isActiveIdxRegPhaseOne[mConstrMax + 1] +=
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
+  }
+
+  for (mConstrMax_tmp = 0; mConstrMax_tmp < 6; mConstrMax_tmp++) {
+    WorkingSet.isActiveIdxRegularized[mConstrMax_tmp] =
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax_tmp];
+  }
+
+  WorkingSet.isActiveIdxRegPhaseOne[0] = 1;
+  WorkingSet.isActiveIdxRegPhaseOne[1] = 0;
+  WorkingSet.isActiveIdxRegPhaseOne[2] = Ceq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[3] = Cineq->size[0];
+  WorkingSet.isActiveIdxRegPhaseOne[4] = k + 1;
+  WorkingSet.isActiveIdxRegPhaseOne[5] = 0;
+  for (mConstrMax = 0; mConstrMax < 5; mConstrMax++) {
+    WorkingSet.isActiveIdxRegPhaseOne[mConstrMax + 1] +=
+      WorkingSet.isActiveIdxRegPhaseOne[mConstrMax];
+  }
+
+  tmp_0 = Cineq->size[0];
+  Cineq->size[0] = TrialState.cIneq->size[0];
+  test3_emxEnsureCapacity_real_T(Cineq, tmp_0);
+  loop_ub = TrialState.cIneq->size[0];
+  for (k = 0; k < loop_ub; k++) {
+    Cineq->data[k] = TrialState.cIneq->data[k];
+  }
+
+  fval = test3_eML_blk_kernel_anonFcn1_e(fun_workspace_x0, fun_workspace_zref,
+    fun_workspace_wref, fun_workspace_N, TrialState.xstarsqp);
+  mConstrMax = 1;
+  tmp = rtIsNaN(fval);
+  if (rtIsInf(fval) || tmp) {
+    if (tmp) {
+      mConstrMax = -3;
+    } else if (fval < 0.0) {
+      mConstrMax = -1;
+    } else {
+      mConstrMax = -2;
+    }
+  }
+
+  TrialState.sqpFval = fval;
+  if (mConstrMax == 1) {
+    test3_computeConstraints__c(Ceq->size[0], nVar, nonlcon_workspace.x0,
+      nonlcon_workspace.N, TrialState.xstarsqp, Cineq, TrialState.iNonIneq0,
+      TrialState.cEq, TrialState.iNonEq0);
+  }
+
+  test_computeFiniteDifferences_k(&FiniteDifferences, fval, Cineq,
+    TrialState.iNonIneq0, TrialState.cEq, TrialState.iNonEq0,
+    TrialState.xstarsqp, TrialState.grad, WorkingSet.Aineq, TrialState.iNonIneq0,
+    WorkingSet.ldA, WorkingSet.Aeq, TrialState.iNonEq0, WorkingSet.ldA);
+  TrialState.FunctionEvaluations = FiniteDifferences.numEvals + 1;
+  tmp_0 = TrialState.cIneq->size[0];
+  TrialState.cIneq->size[0] = Cineq->size[0];
+  test3_emxEnsureCapacity_real_T(TrialState.cIneq, tmp_0);
+  loop_ub = Cineq->size[0];
+  for (k = 0; k < loop_ub; k++) {
+    TrialState.cIneq->data[k] = Cineq->data[k];
+  }
+
+  nVar = TrialState.mNonlinEq;
+  for (mConstrMax = 0; mConstrMax < iw0; mConstrMax++) {
+    WorkingSet_0 = -TrialState.cEq->data[mConstrMax];
+    WorkingSet.beq->data[mConstrMax] = WorkingSet_0;
+    WorkingSet.bwset->data[mConstrMax] = WorkingSet_0;
+  }
+
+  iw0 = (Ceq->size[0] - TrialState.mNonlinEq) * WorkingSet.ldA;
+  mConstrMax = iw0;
+  for (nVarMax = 0; nVarMax < nVar; nVarMax++) {
+    maxDims = WorkingSet.nVar - 1;
+    for (k = 0; k <= maxDims; k++) {
+      WorkingSet.ATwset->data[iw0 + k] = WorkingSet.Aeq->data[mConstrMax + k];
+    }
+
+    iw0 += WorkingSet.ldA;
+    mConstrMax = iw0;
+  }
+
+  for (iw0 = 0; iw0 <= mNonlinIneq; iw0++) {
+    WorkingSet.bineq->data[iw0] = -Cineq->data[iw0];
+  }
+
+  test3_setProblemType_g(&WorkingSet, 3);
+  iw0 = WorkingSet.isActiveIdx[2];
+  nVar = WorkingSet.mConstrMax;
+  for (mConstrMax = iw0; mConstrMax <= nVar; mConstrMax++) {
+    WorkingSet.isActiveConstr->data[mConstrMax - 1] = false;
+  }
+
+  WorkingSet.nWConstr[0] = 0;
+  WorkingSet.nWConstr[1] = WorkingSet.sizes[1];
+  WorkingSet.nWConstr[2] = 0;
+  WorkingSet.nWConstr[3] = 0;
+  WorkingSet.nWConstr[4] = 0;
+  WorkingSet.nActiveConstr = WorkingSet.nWConstr[1];
+  iw0 = WorkingSet.sizes[1];
+  for (nVar = 0; nVar < iw0; nVar++) {
+    WorkingSet.Wid->data[nVar] = 2;
+    WorkingSet.Wlocalidx->data[nVar] = nVar + 1;
+    WorkingSet.isActiveConstr->data[nVar] = true;
+    mConstrMax_tmp = WorkingSet.ldA * nVar;
+    maxDims = WorkingSet.nVar - 1;
+    for (k = 0; k <= maxDims; k++) {
+      tmp_0 = mConstrMax_tmp + k;
+      WorkingSet.ATwset->data[tmp_0] = WorkingSet.Aeq->data[tmp_0];
+    }
+
+    WorkingSet.bwset->data[nVar] = WorkingSet.beq->data[nVar];
+  }
+
+  MeritFunction.initFval = fval;
+  MeritFunction.penaltyParam = 1.0;
+  MeritFunction.threshold = 0.0001;
+  MeritFunction.nPenaltyDecreases = 0;
+  MeritFunction.linearizedConstrViol = 0.0;
+  fval = 0.0;
+  if (Ceq->size[0] >= 1) {
+    iw0 = Ceq->size[0];
+    for (nVar = 0; nVar < iw0; nVar++) {
+      fval += fabs(TrialState.cEq->data[nVar]);
+    }
+  }
+
+  test3_emxFree_real_T(&Ceq);
+  MeritFunction.initConstrViolationEq = fval;
+  fval = 0.0;
+  for (iw0 = 0; iw0 <= mNonlinIneq; iw0++) {
+    WorkingSet_0 = Cineq->data[iw0];
+    if (WorkingSet_0 > 0.0) {
+      fval += WorkingSet_0;
+    }
+  }
+
+  test3_emxFree_real_T(&Cineq);
+  MeritFunction.initConstrViolationIneq = fval;
+  MeritFunction.phi = 0.0;
+  MeritFunction.phiPrimePlus = 0.0;
+  MeritFunction.phiFullStep = 0.0;
+  MeritFunction.feasRelativeFactor = 0.0;
+  MeritFunction.nlpPrimalFeasError = 0.0;
+  MeritFunction.nlpDualFeasError = 0.0;
+  MeritFunction.nlpComplError = 0.0;
+  MeritFunction.firstOrderOpt = 0.0;
+  MeritFunction.hasObjective = true;
+  test3_driver_h(Hessian, &TrialState, &MeritFunction, &FcnEvaluator,
+                 &FiniteDifferences, &memspace, &WorkingSet, &QRManager,
+                 &CholManager, &QPObjective, fscales_cineq_constraint, 100 *
+                 x0->size[0]);
+  test3_emxFree_real_T(&Hessian);
+  emxFreeStruct_s_Wd0eYcEyLXg48EJ(&WorkingSet);
+  test3_emxFree_real_T(&fscales_cineq_constraint);
+  emxFreeStruct_s_pIaUYPkQBTqVmAK(&memspace);
+  emxFreeStruct_s_saWPFfMboRdWeRq(&QPObjective);
+  emxFreeStruct_s_vdGXtauKr5HuLAq(&CholManager);
+  emxFreeStruct_s_l1Gll5dfO9DpqQr(&QRManager);
+  emxFreeStruct_s_9imJcZ2iwk426vK(&FiniteDifferences);
+  emxFreeStruct_coder_internal__p(&FcnEvaluator);
+  tmp_0 = x->size[0];
+  x->size[0] = TrialState.xstarsqp->size[0];
+  test3_emxEnsureCapacity_real_T(x, tmp_0);
+  loop_ub = TrialState.xstarsqp->size[0];
+  for (k = 0; k < loop_ub; k++) {
+    x->data[k] = TrialState.xstarsqp->data[k];
+  }
+
+  emxFreeStruct_s_0Mw3d4AlMrOoSnA(&TrialState);
+}
+
 /* Model output function */
 void test3_output(void)
 {
@@ -9020,15 +13890,24 @@ void test3_output(void)
   emxArray_real_T_test3_T *tmp;
   emxArray_real_T_test3_T *u_opt;
   emxArray_real_T_test3_T *ub;
+  emxArray_real_T_test3_T *wref_0;
   s6lIrH89xwD47fl4e1dZNiE_test3_T expl_temp;
+  sU0htoGcxTaPV5C2NLIldmB_test3_T expl_temp_0;
+  real_T wref[134];
   real_T rtb_TmpSignalConversionAtHILWri[2];
+  real_T a_idx_0;
   real_T apnd;
+  real_T b;
   real_T cdiff;
   real_T ndbl;
+  real_T rtb_Clock;
+  real_T x_idx_0;
+  real_T x_idx_1;
+  real_T x_idx_2;
   int32_T ibcol;
-  int32_T k;
   int32_T nm1d2;
   int32_T ntilerows;
+  int32_T tmp_0;
   boolean_T didZcEventOccur;
   static const real_T c_0[268] = { 1.0, 0.0, 1.5707963267948966,
     0.25061770109901327, 0.99820053993520419, 0.059964006479444595,
@@ -9147,6 +14026,78 @@ void test3_output(void)
     -2.4746040335425052E-17, 0.4, 0.0, 0.4, 0.0, 0.4, 0.0, 0.4, 0.0, 0.4,
     -3.1258156213168492E-17, 0.4, -3.7770272090911922E-17, 0.4, 0.0 };
 
+  static const real_T d_1[134] = { 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0, 0.70710678118654757,
+    0.0, 0.70710678118654757, 0.0, 0.70710678118654757, 0.0 };
+
+  static const real_T f[134] = { 0.42850670939904784, 0.42850670939904778,
+    0.50350670939904785, 0.50350670939904774, 0.57850670939904791,
+    0.57850670939904769, 0.65350670939904787, 0.65350670939904776,
+    0.72850670939904782, 0.72850670939904771, 0.80350670939904778,
+    0.80350670939904778, 0.87850670939904774, 0.87850670939904774,
+    0.95350670939904791, 0.9535067093990478, 1.0285067093990479,
+    1.0285067093990476, 1.1035067093990478, 1.1035067093990478,
+    1.1785067093990478, 1.1785067093990478, 1.2535067093990477,
+    1.2535067093990477, 1.3285067093990477, 1.3285067093990477,
+    1.4035067093990476, 1.4035067093990476, 1.4785067093990478,
+    1.4785067093990478, 1.5535067093990478, 1.5535067093990478,
+    1.6285067093990477, 1.6285067093990477, 1.7035067093990477,
+    1.7035067093990477, 1.7785067093990476, 1.7785067093990476,
+    1.8535067093990478, 1.8535067093990478, 1.9285067093990478,
+    1.9285067093990478, 2.0035067093990477, 2.0035067093990477,
+    2.0785067093990479, 2.0785067093990479, 2.1535067093990476,
+    2.1535067093990476, 2.2285067093990478, 2.2285067093990474,
+    2.303506709399048, 2.3035067093990476, 2.3785067093990477,
+    2.3785067093990477, 2.4535067093990475, 2.4535067093990475,
+    2.5285067093990476, 2.5285067093990476, 2.6035067093990478,
+    2.6035067093990474, 2.678506709399048, 2.6785067093990476,
+    2.7535067093990473, 2.7535067093990473, 2.8285067093990475,
+    2.8285067093990475, 2.9035067093990476, 2.9035067093990476,
+    2.9785067093990478, 2.9785067093990478, 3.053506709399048, 3.053506709399048,
+    3.1285067093990482, 3.1285067093990477, 3.2035067093990484,
+    3.2035067093990479, 3.2785067093990476, 3.2785067093990476,
+    3.3535067093990478, 3.3535067093990478, 3.428506709399048,
+    3.4285067093990476, 3.5035067093990482, 3.5035067093990477,
+    3.5785067093990484, 3.5785067093990479, 3.6535067093990485,
+    3.6535067093990481, 3.7285067093990478, 3.7285067093990478,
+    3.803506709399048, 3.8035067093990476, 3.8785067093990482,
+    3.8785067093990477, 3.9535067093990484, 3.9535067093990479,
+    4.028506709399049, 4.0285067093990481, 4.1035067093990483,
+    4.1035067093990474, 4.1785067093990484, 4.1785067093990476,
+    4.2535067093990486, 4.2535067093990477, 4.3285067093990488,
+    4.3285067093990488, 4.4035067093990481, 4.4035067093990481,
+    4.4785067093990492, 4.4785067093990492, 4.5535067093990484,
+    4.5535067093990484, 4.6285067093990486, 4.6285067093990477,
+    4.7035067093990488, 4.7035067093990488, 4.778506709399049,
+    4.7785067093990481, 4.8535067093990483, 4.8535067093990474,
+    4.9285067093990484, 4.9285067093990484, 5.0035067093990486,
+    5.0035067093990477, 5.0785067093990488, 5.0785067093990488,
+    5.153506709399049, 5.1535067093990481, 5.2285067093990483,
+    5.2285067093990474, 5.3035067093990484, 5.3035067093990484,
+    5.3785067093990486, 5.3785067093990477 };
+
+  int32_T tmp_1;
+  int32_T tmp_2;
   if (rtmIsMajorTimeStep(test3_M)) {
     /* set solver stop time */
     if (!(test3_M->Timing.clockTick0+1)) {
@@ -9167,25 +14118,13 @@ void test3_output(void)
   if (rtmIsMajorTimeStep(test3_M)) {
   }
 
-  /* Product: '<S9>/Product1' incorporates:
-   *  Constant: '<S7>/Constant2'
-   *  Integrator: '<S9>/Integrator2'
-   */
-  test3_B.Product1 = test3_P.Constant2_Value * test3_X.Integrator2_CSTATE;
-
   /* Product: '<S10>/Product1' incorporates:
-   *  Constant: '<S7>/Constant4'
+   *  Constant: '<S8>/Constant2'
    *  Integrator: '<S10>/Integrator2'
    */
-  test3_B.Product1_i = test3_P.Constant4_Value * test3_X.Integrator2_CSTATE_i;
-
-  /* Product: '<S11>/Product1' incorporates:
-   *  Constant: '<S7>/Constant6'
-   *  Integrator: '<S11>/Integrator2'
-   */
-  test3_B.Product1_n = test3_P.Constant6_Value * test3_X.Integrator2_CSTATE_c;
+  test3_B.Product1 = test3_P.Constant2_Value * test3_X.Integrator2_CSTATE;
   if (rtmIsMajorTimeStep(test3_M)) {
-    /* S-Function (hil_read_block): '<S7>/HIL Read' */
+    /* S-Function (hil_read_block): '<S8>/HIL Read' */
 
     /* S-Function Block: test3/basicQCarIO/HIL Read (hil_read_block) */
     {
@@ -9209,15 +14148,15 @@ void test3_output(void)
     }
   }
 
-  /* Integrator: '<S13>/Integrator1' */
+  /* Integrator: '<S14>/Integrator1' */
   if (test3_DW.Integrator1_IWORK != 0) {
     test3_X.Integrator1_CSTATE = test3_B.analogpower;
   }
 
-  /* Integrator: '<S13>/Integrator1' */
+  /* Integrator: '<S14>/Integrator1' */
   test3_B.Integrator1 = test3_X.Integrator1_CSTATE;
   if (rtmIsMajorTimeStep(test3_M)) {
-    /* S-Function (inverse_modulus_block): '<S7>/Unwrap 2^2' */
+    /* S-Function (inverse_modulus_block): '<S8>/Unwrap 2^2' */
     /* S-Function Block: test3/basicQCarIO/Unwrap 2^2 (inverse_modulus_block) */
     {
       static const real_T sampling_period = 0.002;
@@ -9245,24 +14184,24 @@ void test3_output(void)
     }
   }
 
-  /* Integrator: '<S14>/Integrator1' */
+  /* Integrator: '<S15>/Integrator1' */
   if (test3_DW.Integrator1_IWORK_i != 0) {
     test3_X.Integrator1_CSTATE_m = test3_B.Unwrap22;
   }
 
-  /* Integrator: '<S14>/Integrator1' */
+  /* Integrator: '<S15>/Integrator1' */
   test3_B.Integrator1_g = test3_X.Integrator1_CSTATE_m;
 
-  /* Product: '<S12>/Product1' incorporates:
-   *  Constant: '<S7>/Constant8'
-   *  Integrator: '<S12>/Integrator2'
+  /* Product: '<S13>/Product1' incorporates:
+   *  Constant: '<S8>/Constant8'
+   *  Integrator: '<S13>/Integrator2'
    */
   test3_B.Product1_p = test3_P.Constant8_Value * test3_X.Integrator2_CSTATE_f;
 
-  /* Integrator: '<S7>/Integrator' */
+  /* Integrator: '<S8>/Integrator' */
   test3_B.Integrator = test3_X.Integrator_CSTATE;
   if (rtmIsMajorTimeStep(test3_M)) {
-    /* S-Function (inverse_modulus_block): '<S7>/Unwrap 2^24' */
+    /* S-Function (inverse_modulus_block): '<S8>/Unwrap 2^24' */
     /* S-Function Block: test3/basicQCarIO/Unwrap 2^24 (inverse_modulus_block) */
     {
       static const real_T sampling_period = 0.002;
@@ -9290,64 +14229,76 @@ void test3_output(void)
     }
   }
 
-  /* Integrator: '<S9>/Integrator1' */
+  /* Integrator: '<S10>/Integrator1' */
   if (test3_DW.Integrator1_IWORK_g != 0) {
     test3_X.Integrator1_CSTATE_p = test3_B.Unwrap224;
   }
 
-  /* Product: '<S9>/Product' incorporates:
-   *  Constant: '<S7>/Constant1'
-   *  Constant: '<S7>/Constant2'
-   *  Constant: '<S9>/Constant'
-   *  Integrator: '<S9>/Integrator1'
-   *  Integrator: '<S9>/Integrator2'
-   *  Product: '<S9>/Product2'
-   *  Sum: '<S9>/Sum'
-   *  Sum: '<S9>/Sum1'
-   */
-  test3_B.Product = ((test3_B.Unwrap224 - test3_X.Integrator1_CSTATE_p) -
-                     test3_X.Integrator2_CSTATE * test3_P.Constant_Value_h *
-                     test3_P.Constant1_Value) * test3_P.Constant2_Value;
-
-  /* Integrator: '<S10>/Integrator1' */
-  if (test3_DW.Integrator1_IWORK_d != 0) {
-    test3_X.Integrator1_CSTATE_h = test3_B.HILRead_o3[1];
-  }
-
   /* Product: '<S10>/Product' incorporates:
    *  Constant: '<S10>/Constant'
-   *  Constant: '<S7>/Constant3'
-   *  Constant: '<S7>/Constant4'
+   *  Constant: '<S8>/Constant1'
+   *  Constant: '<S8>/Constant2'
    *  Integrator: '<S10>/Integrator1'
    *  Integrator: '<S10>/Integrator2'
    *  Product: '<S10>/Product2'
    *  Sum: '<S10>/Sum'
    *  Sum: '<S10>/Sum1'
    */
-  test3_B.Product_d = ((test3_B.HILRead_o3[1] - test3_X.Integrator1_CSTATE_h) -
-                       test3_X.Integrator2_CSTATE_i * test3_P.Constant_Value_l *
-                       test3_P.Constant3_Value) * test3_P.Constant4_Value;
+  test3_B.Product = ((test3_B.Unwrap224 - test3_X.Integrator1_CSTATE_p) -
+                     test3_X.Integrator2_CSTATE * test3_P.Constant_Value_h *
+                     test3_P.Constant1_Value) * test3_P.Constant2_Value;
 
   /* Integrator: '<S11>/Integrator1' */
-  if (test3_DW.Integrator1_IWORK_gg != 0) {
-    test3_X.Integrator1_CSTATE_b = test3_B.HILRead_o3[2];
+  if (test3_DW.Integrator1_IWORK_d != 0) {
+    test3_X.Integrator1_CSTATE_h = test3_B.HILRead_o3[1];
   }
 
   /* Product: '<S11>/Product' incorporates:
    *  Constant: '<S11>/Constant'
-   *  Constant: '<S7>/Constant5'
-   *  Constant: '<S7>/Constant6'
+   *  Constant: '<S8>/Constant3'
+   *  Constant: '<S8>/Constant4'
    *  Integrator: '<S11>/Integrator1'
    *  Integrator: '<S11>/Integrator2'
    *  Product: '<S11>/Product2'
    *  Sum: '<S11>/Sum'
    *  Sum: '<S11>/Sum1'
    */
+  test3_B.Product_d = ((test3_B.HILRead_o3[1] - test3_X.Integrator1_CSTATE_h) -
+                       test3_X.Integrator2_CSTATE_i * test3_P.Constant_Value_l *
+                       test3_P.Constant3_Value) * test3_P.Constant4_Value;
+
+  /* Product: '<S11>/Product1' incorporates:
+   *  Constant: '<S8>/Constant4'
+   *  Integrator: '<S11>/Integrator2'
+   */
+  test3_B.Product1_i = test3_P.Constant4_Value * test3_X.Integrator2_CSTATE_i;
+
+  /* Integrator: '<S12>/Integrator1' */
+  if (test3_DW.Integrator1_IWORK_gg != 0) {
+    test3_X.Integrator1_CSTATE_b = test3_B.HILRead_o3[2];
+  }
+
+  /* Product: '<S12>/Product' incorporates:
+   *  Constant: '<S12>/Constant'
+   *  Constant: '<S8>/Constant5'
+   *  Constant: '<S8>/Constant6'
+   *  Integrator: '<S12>/Integrator1'
+   *  Integrator: '<S12>/Integrator2'
+   *  Product: '<S12>/Product2'
+   *  Sum: '<S12>/Sum'
+   *  Sum: '<S12>/Sum1'
+   */
   test3_B.Product_m = ((test3_B.HILRead_o3[2] - test3_X.Integrator1_CSTATE_b) -
                        test3_X.Integrator2_CSTATE_c * test3_P.Constant_Value_i *
                        test3_P.Constant5_Value) * test3_P.Constant6_Value;
+
+  /* Product: '<S12>/Product1' incorporates:
+   *  Constant: '<S8>/Constant6'
+   *  Integrator: '<S12>/Integrator2'
+   */
+  test3_B.Product1_n = test3_P.Constant6_Value * test3_X.Integrator2_CSTATE_c;
   if (rtmIsMajorTimeStep(test3_M)) {
-    /* S-Function (inverse_modulus_block): '<S7>/Unwrap 2^1' */
+    /* S-Function (inverse_modulus_block): '<S8>/Unwrap 2^1' */
     /* S-Function Block: test3/basicQCarIO/Unwrap 2^1 (inverse_modulus_block) */
     {
       static const real_T sampling_period = 0.002;
@@ -9375,83 +14326,85 @@ void test3_output(void)
     }
   }
 
-  /* Integrator: '<S12>/Integrator1' */
+  /* Integrator: '<S13>/Integrator1' */
   if (test3_DW.Integrator1_IWORK_l != 0) {
     test3_X.Integrator1_CSTATE_n = test3_B.Unwrap21;
   }
 
-  /* Product: '<S12>/Product' incorporates:
-   *  Constant: '<S12>/Constant'
-   *  Constant: '<S7>/Constant7'
-   *  Constant: '<S7>/Constant8'
-   *  Integrator: '<S12>/Integrator1'
-   *  Integrator: '<S12>/Integrator2'
-   *  Product: '<S12>/Product2'
-   *  Sum: '<S12>/Sum'
-   *  Sum: '<S12>/Sum1'
-   */
-  test3_B.Product_b = ((test3_B.Unwrap21 - test3_X.Integrator1_CSTATE_n) -
-                       test3_X.Integrator2_CSTATE_f * test3_P.Constant_Value_e *
-                       test3_P.Constant7_Value) * test3_P.Constant8_Value;
-
   /* Product: '<S13>/Product' incorporates:
    *  Constant: '<S13>/Constant'
-   *  Constant: '<S7>/Constant10'
-   *  Constant: '<S7>/Constant9'
+   *  Constant: '<S8>/Constant7'
+   *  Constant: '<S8>/Constant8'
+   *  Integrator: '<S13>/Integrator1'
    *  Integrator: '<S13>/Integrator2'
    *  Product: '<S13>/Product2'
    *  Sum: '<S13>/Sum'
    *  Sum: '<S13>/Sum1'
    */
-  test3_B.Product_e = ((test3_B.analogpower - test3_B.Integrator1) -
-                       test3_X.Integrator2_CSTATE_m * test3_P.Constant_Value_j *
-                       test3_P.Constant9_Value_f) * test3_P.Constant10_Value_f;
-
-  /* Product: '<S13>/Product1' incorporates:
-   *  Constant: '<S7>/Constant10'
-   *  Integrator: '<S13>/Integrator2'
-   */
-  test3_B.Product1_b = test3_P.Constant10_Value_f * test3_X.Integrator2_CSTATE_m;
+  test3_B.Product_b = ((test3_B.Unwrap21 - test3_X.Integrator1_CSTATE_n) -
+                       test3_X.Integrator2_CSTATE_f * test3_P.Constant_Value_e *
+                       test3_P.Constant7_Value) * test3_P.Constant8_Value;
 
   /* Product: '<S14>/Product' incorporates:
    *  Constant: '<S14>/Constant'
-   *  Constant: '<S7>/Constant11'
-   *  Constant: '<S7>/Constant12'
+   *  Constant: '<S8>/Constant10'
+   *  Constant: '<S8>/Constant9'
    *  Integrator: '<S14>/Integrator2'
    *  Product: '<S14>/Product2'
    *  Sum: '<S14>/Sum'
    *  Sum: '<S14>/Sum1'
    */
+  test3_B.Product_e = ((test3_B.analogpower - test3_B.Integrator1) -
+                       test3_X.Integrator2_CSTATE_m * test3_P.Constant_Value_j *
+                       test3_P.Constant9_Value_f) * test3_P.Constant10_Value_f;
+
+  /* Product: '<S14>/Product1' incorporates:
+   *  Constant: '<S8>/Constant10'
+   *  Integrator: '<S14>/Integrator2'
+   */
+  test3_B.Product1_b = test3_P.Constant10_Value_f * test3_X.Integrator2_CSTATE_m;
+
+  /* Product: '<S15>/Product' incorporates:
+   *  Constant: '<S15>/Constant'
+   *  Constant: '<S8>/Constant11'
+   *  Constant: '<S8>/Constant12'
+   *  Integrator: '<S15>/Integrator2'
+   *  Product: '<S15>/Product2'
+   *  Sum: '<S15>/Sum'
+   *  Sum: '<S15>/Sum1'
+   */
   test3_B.Product_p = ((test3_B.Unwrap22 - test3_B.Integrator1_g) -
                        test3_X.Integrator2_CSTATE_b * test3_P.Constant_Value_n *
                        test3_P.Constant11_Value) * test3_P.Constant12_Value;
 
-  /* Product: '<S14>/Product1' incorporates:
-   *  Constant: '<S7>/Constant12'
-   *  Integrator: '<S14>/Integrator2'
+  /* Product: '<S15>/Product1' incorporates:
+   *  Constant: '<S8>/Constant12'
+   *  Integrator: '<S15>/Integrator2'
    */
   test3_B.Product1_g = test3_P.Constant12_Value * test3_X.Integrator2_CSTATE_b;
 
-  /* Gain: '<S15>/Gain3' incorporates:
-   *  Gain: '<S15>/Gain1'
-   *  Gain: '<S15>/Gain2'
-   *  Gain: '<S15>/Gain4'
+  /* Gain: '<S16>/Gain3' incorporates:
+   *  Gain: '<S16>/Gain1'
+   *  Gain: '<S16>/Gain2'
+   *  Gain: '<S16>/Gain4'
    */
   test3_B.Gain3 = test3_P.Gain1_Gain * test3_B.Product1_p * test3_P.Gain4_Gain *
     test3_P.Gain2_Gain * test3_P.Gain3_Gain;
 
-  /* Integrator: '<S2>/Integrator5' */
+  /* Integrator: '<S3>/Integrator5' */
   test3_B.Integrator5 = test3_X.Integrator5_CSTATE;
 
-  /* Integrator: '<S3>/Integrator6' */
+  /* Integrator: '<S4>/Integrator6' */
   test3_B.Integrator6 = test3_X.Integrator6_CSTATE;
 
   /* Clock: '<Root>/Clock' */
-  test3_B.Clock = test3_M->Timing.t[0];
+  rtb_Clock = test3_M->Timing.t[0];
 
   /* SignalConversion generated from: '<S1>/ SFunction ' incorporates:
    *  Integrator: '<Root>/Integrator3'
    *  MATLAB Function: '<Root>/MATLAB Function'
+   *  MATLAB Function: '<Root>/MATLAB Function2'
+   *  SignalConversion generated from: '<S2>/ SFunction '
    */
   expl_temp.x0[0] = test3_B.Integrator5;
   expl_temp.x0[1] = test3_B.Integrator6;
@@ -9459,53 +14412,56 @@ void test3_output(void)
   expl_temp.x0[3] = test3_X.Integrator3_CSTATE;
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  test3_DW.sfEvent = test3_CALL_EVENT;
+  test3_DW.sfEvent_g = test3_CALL_EVENT;
 
   /* MATLAB Function 'MATLAB Function': '<S1>:1' */
-  /* '<S1>:1:234' */
-  /* '<S1>:1:212' */
-  /* '<S1>:1:235' */
-  /* '<S1>:1:213' */
-  /* '<S1>:1:212' */
-  /* '<S1>:1:213' */
-  /* '<S1>:1:230' */
+  /* '<S1>:1:61' */
+  /* '<S1>:1:39' */
+  /* '<S1>:1:62' */
+  /* '<S1>:1:40' */
+  /* '<S1>:1:39' */
+  /* '<S1>:1:40' */
+  /* '<S1>:1:57' */
   test3_emxInit_real_T(&horizon_idx, 2);
 
-  /* MATLAB Function: '<Root>/MATLAB Function' */
-  if (rtIsNaN(test3_B.Clock)) {
-    ibcol = horizon_idx->size[0] * horizon_idx->size[1];
+  /* MATLAB Function: '<Root>/MATLAB Function' incorporates:
+   *  MATLAB Function: '<Root>/MATLAB Function2'
+   */
+  didZcEventOccur = rtIsNaN(rtb_Clock);
+  if (didZcEventOccur) {
+    tmp_1 = horizon_idx->size[0] * horizon_idx->size[1];
     horizon_idx->size[0] = 1;
     horizon_idx->size[1] = 1;
-    test3_emxEnsureCapacity_real_T(horizon_idx, ibcol);
+    test3_emxEnsureCapacity_real_T(horizon_idx, tmp_1);
     horizon_idx->data[0] = (rtNaN);
-  } else if ((test3_B.Clock + 12.0) - 1.0 < test3_B.Clock) {
+  } else if ((rtb_Clock + 12.0) - 1.0 < rtb_Clock) {
     horizon_idx->size[1] = 0;
-  } else if ((rtIsInf(test3_B.Clock) || rtIsInf((test3_B.Clock + 12.0) - 1.0)) &&
-             ((test3_B.Clock + 12.0) - 1.0 == test3_B.Clock)) {
-    ibcol = horizon_idx->size[0] * horizon_idx->size[1];
+  } else if ((rtIsInf(rtb_Clock) || rtIsInf((rtb_Clock + 12.0) - 1.0)) &&
+             ((rtb_Clock + 12.0) - 1.0 == rtb_Clock)) {
+    tmp_1 = horizon_idx->size[0] * horizon_idx->size[1];
     horizon_idx->size[0] = 1;
     horizon_idx->size[1] = 1;
-    test3_emxEnsureCapacity_real_T(horizon_idx, ibcol);
+    test3_emxEnsureCapacity_real_T(horizon_idx, tmp_1);
     horizon_idx->data[0] = (rtNaN);
-  } else if (floor(test3_B.Clock) == test3_B.Clock) {
-    ibcol = horizon_idx->size[0] * horizon_idx->size[1];
+  } else if (floor(rtb_Clock) == rtb_Clock) {
+    tmp_1 = horizon_idx->size[0] * horizon_idx->size[1];
     horizon_idx->size[0] = 1;
-    nm1d2 = (int32_T)(((test3_B.Clock + 12.0) - 1.0) - test3_B.Clock);
-    horizon_idx->size[1] = nm1d2 + 1;
-    test3_emxEnsureCapacity_real_T(horizon_idx, ibcol);
-    for (ntilerows = 0; ntilerows <= nm1d2; ntilerows++) {
-      horizon_idx->data[ntilerows] = test3_B.Clock + (real_T)ntilerows;
+    ntilerows = (int32_T)(((rtb_Clock + 12.0) - 1.0) - rtb_Clock);
+    horizon_idx->size[1] = ntilerows + 1;
+    test3_emxEnsureCapacity_real_T(horizon_idx, tmp_1);
+    for (nm1d2 = 0; nm1d2 <= ntilerows; nm1d2++) {
+      horizon_idx->data[nm1d2] = rtb_Clock + (real_T)nm1d2;
     }
   } else {
-    ndbl = floor((((test3_B.Clock + 12.0) - 1.0) - test3_B.Clock) + 0.5);
-    apnd = test3_B.Clock + ndbl;
-    cdiff = apnd - ((test3_B.Clock + 12.0) - 1.0);
-    if (fabs(cdiff) < fmax(fabs(test3_B.Clock), fabs((test3_B.Clock + 12.0) -
-          1.0)) * 4.4408920985006262E-16) {
+    ndbl = floor((((rtb_Clock + 12.0) - 1.0) - rtb_Clock) + 0.5);
+    apnd = rtb_Clock + ndbl;
+    cdiff = apnd - ((rtb_Clock + 12.0) - 1.0);
+    if (fabs(cdiff) < fmax(fabs(rtb_Clock), fabs((rtb_Clock + 12.0) - 1.0)) *
+        4.4408920985006262E-16) {
       ndbl++;
-      apnd = (test3_B.Clock + 12.0) - 1.0;
+      apnd = (rtb_Clock + 12.0) - 1.0;
     } else if (cdiff > 0.0) {
-      apnd = (ndbl - 1.0) + test3_B.Clock;
+      apnd = (ndbl - 1.0) + rtb_Clock;
     } else {
       ndbl++;
     }
@@ -9516,36 +14472,37 @@ void test3_output(void)
       ntilerows = -1;
     }
 
-    ibcol = horizon_idx->size[0] * horizon_idx->size[1];
+    tmp_1 = horizon_idx->size[0] * horizon_idx->size[1];
     horizon_idx->size[0] = 1;
     horizon_idx->size[1] = ntilerows + 1;
-    test3_emxEnsureCapacity_real_T(horizon_idx, ibcol);
+    test3_emxEnsureCapacity_real_T(horizon_idx, tmp_1);
     if (ntilerows + 1 > 0) {
-      horizon_idx->data[0] = test3_B.Clock;
+      horizon_idx->data[0] = rtb_Clock;
       if (ntilerows + 1 > 1) {
         horizon_idx->data[ntilerows] = apnd;
         nm1d2 = ntilerows / 2;
-        for (k = 0; k <= nm1d2 - 2; k++) {
-          horizon_idx->data[k + 1] = ((real_T)k + 1.0) + test3_B.Clock;
-          horizon_idx->data[(ntilerows - k) - 1] = apnd - ((real_T)k + 1.0);
+        for (ibcol = 0; ibcol <= nm1d2 - 2; ibcol++) {
+          horizon_idx->data[ibcol + 1] = ((real_T)ibcol + 1.0) + rtb_Clock;
+          horizon_idx->data[(ntilerows - ibcol) - 1] = apnd - ((real_T)ibcol +
+            1.0);
         }
 
         if (nm1d2 << 1 == ntilerows) {
-          horizon_idx->data[nm1d2] = (test3_B.Clock + apnd) / 2.0;
+          horizon_idx->data[nm1d2] = (rtb_Clock + apnd) / 2.0;
         } else {
-          horizon_idx->data[nm1d2] = test3_B.Clock + (real_T)nm1d2;
+          horizon_idx->data[nm1d2] = rtb_Clock + (real_T)nm1d2;
           horizon_idx->data[nm1d2 + 1] = apnd - (real_T)nm1d2;
         }
       }
     }
   }
 
-  ibcol = horizon_idx->size[0] * horizon_idx->size[1];
+  tmp_1 = horizon_idx->size[0] * horizon_idx->size[1];
   horizon_idx->size[0] = 1;
-  test3_emxEnsureCapacity_real_T(horizon_idx, ibcol);
-  nm1d2 = horizon_idx->size[1] - 1;
-  for (ntilerows = 0; ntilerows <= nm1d2; ntilerows++) {
-    ndbl = horizon_idx->data[ntilerows];
+  test3_emxEnsureCapacity_real_T(horizon_idx, tmp_1);
+  ntilerows = horizon_idx->size[1] - 1;
+  for (nm1d2 = 0; nm1d2 <= ntilerows; nm1d2++) {
+    ndbl = horizon_idx->data[nm1d2];
     if (rtIsNaN(ndbl) || rtIsInf(ndbl)) {
       apnd = (rtNaN);
     } else if (ndbl == 0.0) {
@@ -9559,21 +14516,21 @@ void test3_output(void)
       }
     }
 
-    horizon_idx->data[ntilerows] = apnd + 1.0;
+    horizon_idx->data[nm1d2] = apnd + 1.0;
   }
 
-  /* '<S1>:1:231' */
-  /* '<S1>:1:234' */
-  /* '<S1>:1:235' */
-  /* '<S1>:1:241' */
-  /* '<S1>:1:244' */
+  /* '<S1>:1:58' */
+  /* '<S1>:1:61' */
+  /* '<S1>:1:62' */
+  /* '<S1>:1:68' */
+  /* '<S1>:1:71' */
   test3_emxInit_real_T(&lb, 1);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  k = horizon_idx->size[1] << 1;
-  ibcol = lb->size[0];
-  lb->size[0] = k;
-  test3_emxEnsureCapacity_real_T(lb, ibcol);
+  tmp_0 = horizon_idx->size[1] << 1;
+  tmp_1 = lb->size[0];
+  lb->size[0] = tmp_0;
+  test3_emxEnsureCapacity_real_T(lb, tmp_1);
   ntilerows = horizon_idx->size[1];
   for (nm1d2 = 0; nm1d2 < ntilerows; nm1d2++) {
     ibcol = nm1d2 << 1;
@@ -9581,33 +14538,33 @@ void test3_output(void)
     lb->data[ibcol + 1] = -0.2;
   }
 
-  /* '<S1>:1:245' */
+  /* '<S1>:1:72' */
   test3_emxInit_real_T(&ub, 1);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  ibcol = ub->size[0];
-  ub->size[0] = k;
-  test3_emxEnsureCapacity_real_T(ub, ibcol);
+  tmp_1 = ub->size[0];
+  ub->size[0] = tmp_0;
+  test3_emxEnsureCapacity_real_T(ub, tmp_1);
   ntilerows = horizon_idx->size[1];
 
-  /* '<S1>:1:254' */
-  /* '<S1>:1:255' */
-  /* '<S1>:1:258' */
+  /* '<S1>:1:81' */
+  /* '<S1>:1:82' */
+  /* '<S1>:1:85' */
   expl_temp.N = horizon_idx->size[1];
   test3_emxInit_real_T(&c, 2);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  ibcol = c->size[0] * c->size[1];
+  tmp_1 = c->size[0] * c->size[1];
   c->size[0] = 4;
   c->size[1] = horizon_idx->size[1];
-  test3_emxEnsureCapacity_real_T(c, ibcol);
+  test3_emxEnsureCapacity_real_T(c, tmp_1);
   test3_emxInit_real_T(&d, 2);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  ibcol = d->size[0] * d->size[1];
+  tmp_1 = d->size[0] * d->size[1];
   d->size[0] = 2;
   d->size[1] = horizon_idx->size[1];
-  test3_emxEnsureCapacity_real_T(d, ibcol);
+  test3_emxEnsureCapacity_real_T(d, tmp_1);
   for (nm1d2 = 0; nm1d2 < ntilerows; nm1d2++) {
     ibcol = nm1d2 << 1;
     ub->data[ibcol] = 0.4;
@@ -9626,29 +14583,213 @@ void test3_output(void)
   test3_emxInit_real_T(&tmp, 1);
 
   /* MATLAB Function: '<Root>/MATLAB Function' */
-  ibcol = tmp->size[0];
-  tmp->size[0] = k;
-  test3_emxEnsureCapacity_real_T(tmp, ibcol);
-  if (k - 1 >= 0) {
-    memset(&tmp->data[0], 0, (uint32_T)k * sizeof(real_T));
+  tmp_1 = tmp->size[0];
+  tmp->size[0] = tmp_0;
+  test3_emxEnsureCapacity_real_T(tmp, tmp_1);
+  if (tmp_0 - 1 >= 0) {
+    memset(&tmp->data[0], 0, (uint32_T)tmp_0 * sizeof(real_T));
   }
 
   test3_emxInit_real_T(&u_opt, 1);
 
-  /* MATLAB Function: '<Root>/MATLAB Function' */
+  /* MATLAB Function: '<Root>/MATLAB Function' incorporates:
+   *  SignalConversion generated from: '<S1>/ SFunction '
+   */
   test3_fmincon(expl_temp.x0, c, d, (real_T)horizon_idx->size[1], tmp, lb, ub,
                 expl_temp, u_opt);
-  test3_emxFree_real_T(&tmp);
-  test3_emxFree_real_T(&d);
   test3_emxFree_real_T(&c);
   test3_emxFree_real_T(&ub);
-  test3_emxFree_real_T(&lb);
+
+  /* MATLAB Function: '<Root>/MATLAB Function2' incorporates:
+   *  Integrator: '<Root>/Integrator3'
+   *  MATLAB Function: '<Root>/MATLAB Function'
+   *  SignalConversion generated from: '<S1>/ SFunction '
+   */
+  /* '<S1>:1:88' */
+  /* '<S1>:1:89' */
+  test3_DW.sfEvent = test3_CALL_EVENT;
+
+  /* MATLAB Function 'MATLAB Function2': '<S2>:1' */
+  /* '<S2>:1:58' */
+  /* '<S2>:1:40' */
+  /* '<S2>:1:61' */
+  /* '<S2>:1:40' */
+  /* '<S2>:1:49' */
+  /* '<S2>:1:53' */
+  for (ntilerows = 0; ntilerows < 67; ntilerows++) {
+    /* '<S2>:1:56' */
+    /* '<S2>:1:58' */
+    ibcol = ntilerows << 1;
+    ndbl = d_1[ibcol + 1];
+    apnd = d_1[ibcol];
+    wref[ibcol] = ndbl * -0.24748737341529164 + apnd * 0.70710678118654757;
+    wref[ibcol + 1] = ndbl * 0.24748737341529164 + apnd * 0.70710678118654757;
+  }
+
+  /* '<S2>:1:61' */
+  /* '<S2>:1:76' */
+  b = fmin(rtb_Clock + 5.0, 67.0);
+  if (didZcEventOccur) {
+    tmp_1 = horizon_idx->size[0] * horizon_idx->size[1];
+    horizon_idx->size[0] = 1;
+    horizon_idx->size[1] = 1;
+    test3_emxEnsureCapacity_real_T(horizon_idx, tmp_1);
+    horizon_idx->data[0] = (rtNaN);
+  } else if (b < rtb_Clock) {
+    horizon_idx->size[0] = 1;
+    horizon_idx->size[1] = 0;
+  } else if ((rtIsInf(rtb_Clock) || rtIsInf(b)) && (rtb_Clock == b)) {
+    tmp_1 = horizon_idx->size[0] * horizon_idx->size[1];
+    horizon_idx->size[0] = 1;
+    horizon_idx->size[1] = 1;
+    test3_emxEnsureCapacity_real_T(horizon_idx, tmp_1);
+    horizon_idx->data[0] = (rtNaN);
+  } else if (floor(rtb_Clock) == rtb_Clock) {
+    tmp_1 = horizon_idx->size[0] * horizon_idx->size[1];
+    horizon_idx->size[0] = 1;
+    ntilerows = (int32_T)(b - rtb_Clock);
+    horizon_idx->size[1] = ntilerows + 1;
+    test3_emxEnsureCapacity_real_T(horizon_idx, tmp_1);
+    for (nm1d2 = 0; nm1d2 <= ntilerows; nm1d2++) {
+      horizon_idx->data[nm1d2] = rtb_Clock + (real_T)nm1d2;
+    }
+  } else {
+    ndbl = floor((b - rtb_Clock) + 0.5);
+    apnd = rtb_Clock + ndbl;
+    cdiff = apnd - b;
+    if (fabs(cdiff) < 4.4408920985006262E-16 * fmax(fabs(rtb_Clock), fabs(b))) {
+      ndbl++;
+      apnd = b;
+    } else if (cdiff > 0.0) {
+      apnd = (ndbl - 1.0) + rtb_Clock;
+    } else {
+      ndbl++;
+    }
+
+    if (ndbl >= 0.0) {
+      ntilerows = (int32_T)ndbl - 1;
+    } else {
+      ntilerows = -1;
+    }
+
+    tmp_1 = horizon_idx->size[0] * horizon_idx->size[1];
+    horizon_idx->size[0] = 1;
+    horizon_idx->size[1] = ntilerows + 1;
+    test3_emxEnsureCapacity_real_T(horizon_idx, tmp_1);
+    if (ntilerows + 1 > 0) {
+      horizon_idx->data[0] = rtb_Clock;
+      if (ntilerows + 1 > 1) {
+        horizon_idx->data[ntilerows] = apnd;
+        nm1d2 = ntilerows / 2;
+        for (ibcol = 0; ibcol <= nm1d2 - 2; ibcol++) {
+          horizon_idx->data[ibcol + 1] = ((real_T)ibcol + 1.0) + rtb_Clock;
+          horizon_idx->data[(ntilerows - ibcol) - 1] = apnd - ((real_T)ibcol +
+            1.0);
+        }
+
+        if (nm1d2 << 1 == ntilerows) {
+          horizon_idx->data[nm1d2] = (rtb_Clock + apnd) / 2.0;
+        } else {
+          horizon_idx->data[nm1d2] = rtb_Clock + (real_T)nm1d2;
+          horizon_idx->data[nm1d2 + 1] = apnd - (real_T)nm1d2;
+        }
+      }
+    }
+  }
+
+  /* '<S2>:1:77' */
+  /* '<S2>:1:80' */
+  /* '<S2>:1:81' */
+  /* '<S2>:1:87' */
+  /* '<S2>:1:102' */
+  /* '<S2>:1:103' */
+  /* '<S2>:1:106' */
+  expl_temp_0.N = horizon_idx->size[1];
+  expl_temp_0.x0[0] = test3_B.Integrator5;
+  expl_temp_0.x0[1] = test3_B.Integrator6;
+  expl_temp_0.x0[2] = test3_B.Integrator;
+  expl_temp_0.x0[3] = test3_X.Integrator3_CSTATE;
+  tmp_0 = horizon_idx->size[1] << 1;
+  tmp_1 = d->size[0] * d->size[1];
+  d->size[0] = 2;
+  d->size[1] = horizon_idx->size[1];
+  test3_emxEnsureCapacity_real_T(d, tmp_1);
+  ntilerows = horizon_idx->size[1];
+  test3_emxInit_real_T(&wref_0, 2);
+
+  /* MATLAB Function: '<Root>/MATLAB Function2' incorporates:
+   *  SignalConversion generated from: '<S2>/ SFunction '
+   */
+  tmp_1 = wref_0->size[0] * wref_0->size[1];
+  wref_0->size[0] = 2;
+  wref_0->size[1] = horizon_idx->size[1];
+  test3_emxEnsureCapacity_real_T(wref_0, tmp_1);
+  for (nm1d2 = 0; nm1d2 < ntilerows; nm1d2++) {
+    ibcol = ((int32_T)horizon_idx->data[nm1d2] - 1) << 1;
+    tmp_1 = nm1d2 << 1;
+    d->data[tmp_1] = f[ibcol];
+    tmp_2 = (nm1d2 << 1) + 1;
+    d->data[tmp_2] = f[ibcol + 1];
+    wref_0->data[tmp_1] = wref[ibcol];
+    wref_0->data[tmp_2] = wref[ibcol + 1];
+  }
+
+  tmp_1 = tmp->size[0];
+  tmp->size[0] = tmp_0;
+  test3_emxEnsureCapacity_real_T(tmp, tmp_1);
+  if (tmp_0 - 1 >= 0) {
+    memset(&tmp->data[0], 0, (uint32_T)tmp_0 * sizeof(real_T));
+  }
+
+  test3_fmincon_l(expl_temp.x0, d, wref_0, (real_T)horizon_idx->size[1], tmp,
+                  expl_temp_0, lb);
+  test3_emxFree_real_T(&wref_0);
+  test3_emxFree_real_T(&tmp);
+  test3_emxFree_real_T(&d);
   test3_emxFree_real_T(&horizon_idx);
 
-  /* MATLAB Function: '<Root>/MATLAB Function' */
-  /* '<S1>:1:261' */
-  /* '<S1>:1:262' */
-  test3_B.omeg = u_opt->data[1];
+  /* MATLAB Function: '<Root>/MATLAB Function2' incorporates:
+   *  Integrator: '<Root>/Integrator3'
+   *  MATLAB Function: '<Root>/MATLAB Function'
+   *  SignalConversion generated from: '<S1>/ SFunction '
+   *  Trigonometry: '<S3>/Cos'
+   *  Trigonometry: '<S4>/Sin'
+   */
+  /* '<S2>:1:109' */
+  /* '<S2>:1:123' */
+  ndbl = test3_B.Integrator + test3_X.Integrator3_CSTATE;
+  rtb_Clock = sin(ndbl);
+
+  /* '<S2>:1:123' */
+  ndbl = cos(ndbl);
+
+  /* '<S2>:1:124' */
+  apnd = cos(test3_B.Integrator);
+  cdiff = tan(test3_X.Integrator3_CSTATE);
+  b = sin(test3_B.Integrator);
+  x_idx_0 = apnd - (0.35 * rtb_Clock / 0.256 + b) * cdiff;
+  x_idx_2 = -0.35 * rtb_Clock;
+  x_idx_1 = (0.35 * ndbl / 0.256 + apnd) * cdiff + b;
+  cdiff = 0.35 * ndbl;
+
+  /* '<S2>:1:110' */
+  if (fabs(x_idx_1) > fabs(x_idx_0)) {
+    rtb_Clock = x_idx_0 / x_idx_1;
+    ndbl = 1.0 / (rtb_Clock * cdiff - x_idx_2);
+    a_idx_0 = cdiff / x_idx_1 * ndbl;
+    cdiff = -ndbl;
+    x_idx_0 = -x_idx_2 / x_idx_1 * ndbl;
+    ndbl *= rtb_Clock;
+  } else {
+    rtb_Clock = x_idx_1 / x_idx_0;
+    ndbl = 1.0 / (cdiff - rtb_Clock * x_idx_2);
+    a_idx_0 = cdiff / x_idx_0 * ndbl;
+    cdiff = -rtb_Clock * ndbl;
+    x_idx_0 = -x_idx_2 / x_idx_0 * ndbl;
+  }
+
+  /* '<S2>:1:113' */
+  /* '<S2>:1:114' */
   if (rtmIsMajorTimeStep(test3_M)) {
     /* ManualSwitch: '<Root>/1 - Arm, 0 - Disarm2' */
     if (test3_P.uArm0Disarm2_CurrentSetting == 1) {
@@ -9666,36 +14807,42 @@ void test3_output(void)
     /* End of ManualSwitch: '<Root>/1 - Arm, 0 - Disarm2' */
   }
 
-  /* Saturate: '<S8>/command saturation' incorporates:
+  /* ManualSwitch: '<Root>/Up - NL, Down - FL 2' incorporates:
    *  MATLAB Function: '<Root>/MATLAB Function'
+   *  MATLAB Function: '<Root>/MATLAB Function2'
    */
-  if (u_opt->data[0] > test3_P.commandsaturation_UpperSat) {
-    ndbl = test3_P.commandsaturation_UpperSat;
-  } else if (u_opt->data[0] < test3_P.commandsaturation_LowerSat) {
-    ndbl = test3_P.commandsaturation_LowerSat;
+  if (test3_P.UpNLDownFL2_CurrentSetting == 1) {
+    x_idx_0 = u_opt->data[0];
   } else {
-    ndbl = u_opt->data[0];
+    x_idx_0 = a_idx_0 * lb->data[0] + x_idx_0 * lb->data[1];
   }
 
-  test3_emxFree_real_T(&u_opt);
-
-  /* Product: '<S8>/Multiply1' incorporates:
-   *  Saturate: '<S8>/command saturation'
+  /* Saturate: '<S9>/command saturation' incorporates:
+   *  ManualSwitch: '<Root>/Up - NL, Down - FL 2'
    */
-  test3_B.desired = ndbl * test3_B.switch_l;
+  if (x_idx_0 > test3_P.commandsaturation_UpperSat) {
+    x_idx_0 = test3_P.commandsaturation_UpperSat;
+  } else if (x_idx_0 < test3_P.commandsaturation_LowerSat) {
+    x_idx_0 = test3_P.commandsaturation_LowerSat;
+  }
 
-  /* Product: '<S8>/Multiply' */
+  /* Product: '<S9>/Multiply1' incorporates:
+   *  Saturate: '<S9>/command saturation'
+   */
+  test3_B.desired = x_idx_0 * test3_B.switch_l;
+
+  /* Product: '<S9>/Multiply' */
   test3_B.measured = test3_B.Gain3 * test3_B.switch_l;
 
-  /* Sum: '<S8>/Sum' */
-  ndbl = test3_B.desired - test3_B.measured;
+  /* Sum: '<S9>/Sum' */
+  rtb_Clock = test3_B.desired - test3_B.measured;
 
-  /* RelationalOperator: '<S17>/Compare' incorporates:
-   *  Constant: '<S17>/Constant'
+  /* RelationalOperator: '<S18>/Compare' incorporates:
+   *  Constant: '<S18>/Constant'
    */
   test3_B.Compare = (test3_B.desired == test3_P.Constant_Value);
 
-  /* Integrator: '<S8>/Integrator1' */
+  /* Integrator: '<S9>/Integrator1' */
   /* Limited  Integrator  */
   if (rtsiIsModeUpdateTimeStep(&test3_M->solverInfo)) {
     didZcEventOccur = (((test3_PrevZCX.Integrator1_Reset_ZCE == POS_ZCSIG) !=
@@ -9716,54 +14863,54 @@ void test3_output(void)
     test3_X.Integrator1_CSTATE_ng = test3_P.Integrator1_LowerSat;
   }
 
-  /* Sum: '<S8>/Add1' incorporates:
-   *  Gain: '<S8>/Kff  (% // m//s)'
-   *  Gain: '<S8>/Kp (% // m//s)'
-   *  Integrator: '<S8>/Integrator1'
-   *  Sum: '<S8>/Add'
+  /* Sum: '<S9>/Add1' incorporates:
+   *  Gain: '<S9>/Kff  (% // m//s)'
+   *  Gain: '<S9>/Kp (% // m//s)'
+   *  Integrator: '<S9>/Integrator1'
+   *  Sum: '<S9>/Add'
    */
-  apnd = (test3_P.Kpms_Gain * ndbl + test3_X.Integrator1_CSTATE_ng) +
+  x_idx_0 = (test3_P.Kpms_Gain * rtb_Clock + test3_X.Integrator1_CSTATE_ng) +
     test3_P.Kffms_Gain * test3_B.desired;
 
-  /* Saturate: '<S8>/command saturation1' */
-  if (apnd > test3_P.commandsaturation1_UpperSat) {
-    apnd = test3_P.commandsaturation1_UpperSat;
-  } else if (apnd < test3_P.commandsaturation1_LowerSat) {
-    apnd = test3_P.commandsaturation1_LowerSat;
+  /* Saturate: '<S9>/command saturation1' */
+  if (x_idx_0 > test3_P.commandsaturation1_UpperSat) {
+    x_idx_0 = test3_P.commandsaturation1_UpperSat;
+  } else if (x_idx_0 < test3_P.commandsaturation1_LowerSat) {
+    x_idx_0 = test3_P.commandsaturation1_LowerSat;
   }
 
-  /* Gain: '<S7>/direction convention' incorporates:
-   *  Product: '<S8>/Multiply2'
-   *  Saturate: '<S8>/command saturation1'
+  /* Gain: '<S8>/direction convention' incorporates:
+   *  Product: '<S9>/Multiply2'
+   *  Saturate: '<S9>/command saturation1'
    */
-  apnd = apnd * test3_B.switch_l * test3_P.directionconvention_Gain;
+  x_idx_0 = x_idx_0 * test3_B.switch_l * test3_P.directionconvention_Gain;
 
-  /* Saturate: '<S7>/command saturation' */
-  if (apnd > test3_P.commandsaturation_UpperSat_n) {
-    /* Saturate: '<S7>/command saturation' */
+  /* Saturate: '<S8>/command saturation' */
+  if (x_idx_0 > test3_P.commandsaturation_UpperSat_n) {
+    /* Saturate: '<S8>/command saturation' */
     test3_B.commandsaturation = test3_P.commandsaturation_UpperSat_n;
-  } else if (apnd < test3_P.commandsaturation_LowerSat_i) {
-    /* Saturate: '<S7>/command saturation' */
+  } else if (x_idx_0 < test3_P.commandsaturation_LowerSat_i) {
+    /* Saturate: '<S8>/command saturation' */
     test3_B.commandsaturation = test3_P.commandsaturation_LowerSat_i;
   } else {
-    /* Saturate: '<S7>/command saturation' */
-    test3_B.commandsaturation = apnd;
+    /* Saturate: '<S8>/command saturation' */
+    test3_B.commandsaturation = x_idx_0;
   }
 
-  /* End of Saturate: '<S7>/command saturation' */
+  /* End of Saturate: '<S8>/command saturation' */
 
-  /* Bias: '<S7>/Steering Bias' incorporates:
-   *  Gain: '<S7>/Gain'
+  /* Bias: '<S8>/Steering Bias' incorporates:
+   *  Gain: '<S8>/Gain'
    *  Integrator: '<Root>/Integrator3'
    */
   test3_B.SteeringBias = test3_P.Gain_Gain * test3_X.Integrator3_CSTATE +
     test3_P.SteeringBias_Bias;
   if (rtmIsMajorTimeStep(test3_M)) {
-    /* SignalConversion generated from: '<S7>/HIL Write' */
+    /* SignalConversion generated from: '<S8>/HIL Write' */
     rtb_TmpSignalConversionAtHILWri[0] = test3_B.commandsaturation;
     rtb_TmpSignalConversionAtHILWri[1] = test3_B.SteeringBias;
 
-    /* S-Function (hil_write_block): '<S7>/HIL Write' */
+    /* S-Function (hil_write_block): '<S8>/HIL Write' */
 
     /* S-Function Block: test3/basicQCarIO/HIL Write (hil_write_block) */
     {
@@ -9786,15 +14933,28 @@ void test3_output(void)
     }
   }
 
-  /* Product: '<S2>/Product' incorporates:
-   *  Trigonometry: '<S2>/Cos'
-   */
-  test3_B.Product_f = cos(test3_B.Integrator) * test3_B.Gain3;
+  /* Product: '<S3>/Product' */
+  test3_B.Product_f = apnd * test3_B.Gain3;
 
-  /* Product: '<S3>/Product1' incorporates:
-   *  Trigonometry: '<S3>/Sin'
-   */
-  test3_B.Product1_ij = sin(test3_B.Integrator) * test3_B.Gain3;
+  /* Product: '<S4>/Product1' */
+  test3_B.Product1_ij = b * test3_B.Gain3;
+
+  /* ManualSwitch: '<Root>/Up - NL, Down - FL' */
+  if (test3_P.UpNLDownFL_CurrentSetting == 1) {
+    /* ManualSwitch: '<Root>/Up - NL, Down - FL' incorporates:
+     *  MATLAB Function: '<Root>/MATLAB Function'
+     */
+    test3_B.switch_o = u_opt->data[1];
+  } else {
+    /* ManualSwitch: '<Root>/Up - NL, Down - FL' incorporates:
+     *  MATLAB Function: '<Root>/MATLAB Function2'
+     */
+    test3_B.switch_o = cdiff * lb->data[0] + ndbl * lb->data[1];
+  }
+
+  /* End of ManualSwitch: '<Root>/Up - NL, Down - FL' */
+  test3_emxFree_real_T(&u_opt);
+  test3_emxFree_real_T(&lb);
   if (rtmIsMajorTimeStep(test3_M)) {
     /* S-Function (inverse_modulus_block): '<Root>/Unwrap 2^1' */
     /* S-Function Block: test3/Unwrap 2^1 (inverse_modulus_block) */
@@ -9804,10 +14964,10 @@ void test3_output(void)
       real_T du, dy;
       if (test3_DW.Unwrap21_FirstSample_o) {
         test3_DW.Unwrap21_FirstSample_o = false;
-        test3_DW.Unwrap21_PreviousInput_d = test3_B.omeg;
+        test3_DW.Unwrap21_PreviousInput_d = test3_B.switch_o;
       }
 
-      du = (real_T) test3_B.omeg - test3_DW.Unwrap21_PreviousInput_d;
+      du = (real_T) test3_B.switch_o - test3_DW.Unwrap21_PreviousInput_d;
       if (du > half_range) {
         test3_DW.Unwrap21_Revolutions_o = test3_DW.Unwrap21_Revolutions_o - 1;
         dy = du - test3_P.Unwrap21_Modulus_p;
@@ -9818,67 +14978,67 @@ void test3_output(void)
         dy = du;
       }
 
-      test3_B.Unwrap21_o = test3_B.omeg + test3_DW.Unwrap21_Revolutions_o *
+      test3_B.Unwrap21_o = test3_B.switch_o + test3_DW.Unwrap21_Revolutions_o *
         test3_P.Unwrap21_Modulus_p;
-      test3_DW.Unwrap21_PreviousInput_d = test3_B.omeg;
+      test3_DW.Unwrap21_PreviousInput_d = test3_B.switch_o;
     }
   }
 
-  /* Integrator: '<S6>/Integrator1' */
+  /* Integrator: '<S7>/Integrator1' */
   if (test3_DW.Integrator1_IWORK_a != 0) {
     test3_X.Integrator1_CSTATE_me = test3_B.Unwrap21_o;
   }
 
-  /* Integrator: '<S6>/Integrator1' */
+  /* Integrator: '<S7>/Integrator1' */
   test3_B.Integrator1_f = test3_X.Integrator1_CSTATE_me;
 
-  /* Product: '<S6>/Product' incorporates:
+  /* Product: '<S7>/Product' incorporates:
    *  Constant: '<Root>/Constant7'
    *  Constant: '<Root>/Constant8'
-   *  Constant: '<S6>/Constant'
-   *  Integrator: '<S6>/Integrator2'
-   *  Product: '<S6>/Product2'
-   *  Sum: '<S6>/Sum'
-   *  Sum: '<S6>/Sum1'
+   *  Constant: '<S7>/Constant'
+   *  Integrator: '<S7>/Integrator2'
+   *  Product: '<S7>/Product2'
+   *  Sum: '<S7>/Sum'
+   *  Sum: '<S7>/Sum1'
    */
   test3_B.Product_g = ((test3_B.Unwrap21_o - test3_B.Integrator1_f) -
                        test3_X.Integrator2_CSTATE_k * test3_P.Constant_Value_p *
                        test3_P.Constant7_Value_o) * test3_P.Constant8_Value_g;
 
-  /* Product: '<S6>/Product1' incorporates:
+  /* Product: '<S7>/Product1' incorporates:
    *  Constant: '<Root>/Constant8'
-   *  Integrator: '<S6>/Integrator2'
+   *  Integrator: '<S7>/Integrator2'
    */
   test3_B.Product1_b3 = test3_P.Constant8_Value_g * test3_X.Integrator2_CSTATE_k;
   if (rtmIsMajorTimeStep(test3_M)) {
   }
 
-  /* Gain: '<S8>/Ki (% // m)  ' */
-  test3_B.Kim = test3_P.Kim_Gain * ndbl;
+  /* Gain: '<S9>/Ki (% // m)  ' */
+  test3_B.Kim = test3_P.Kim_Gain * rtb_Clock;
 }
 
 /* Model update function */
 void test3_update(void)
 {
-  /* Update for Integrator: '<S13>/Integrator1' */
+  /* Update for Integrator: '<S14>/Integrator1' */
   test3_DW.Integrator1_IWORK = 0;
 
-  /* Update for Integrator: '<S14>/Integrator1' */
+  /* Update for Integrator: '<S15>/Integrator1' */
   test3_DW.Integrator1_IWORK_i = 0;
 
-  /* Update for Integrator: '<S9>/Integrator1' */
+  /* Update for Integrator: '<S10>/Integrator1' */
   test3_DW.Integrator1_IWORK_g = 0;
 
-  /* Update for Integrator: '<S10>/Integrator1' */
+  /* Update for Integrator: '<S11>/Integrator1' */
   test3_DW.Integrator1_IWORK_d = 0;
 
-  /* Update for Integrator: '<S11>/Integrator1' */
+  /* Update for Integrator: '<S12>/Integrator1' */
   test3_DW.Integrator1_IWORK_gg = 0;
 
-  /* Update for Integrator: '<S12>/Integrator1' */
+  /* Update for Integrator: '<S13>/Integrator1' */
   test3_DW.Integrator1_IWORK_l = 0;
 
-  /* Update for Integrator: '<S6>/Integrator1' */
+  /* Update for Integrator: '<S7>/Integrator1' */
   test3_DW.Integrator1_IWORK_a = 0;
   if (rtmIsMajorTimeStep(test3_M)) {
     rt_ertODEUpdateContinuousStates(&test3_M->solverInfo);
@@ -9927,55 +15087,55 @@ void test3_derivatives(void)
   boolean_T usat;
   _rtXdot = ((XDot_test3_T *) test3_M->derivs);
 
-  /* Derivatives for Integrator: '<S9>/Integrator2' */
+  /* Derivatives for Integrator: '<S10>/Integrator2' */
   _rtXdot->Integrator2_CSTATE = test3_B.Product;
 
-  /* Derivatives for Integrator: '<S10>/Integrator2' */
-  _rtXdot->Integrator2_CSTATE_i = test3_B.Product_d;
+  /* Derivatives for Integrator: '<S14>/Integrator1' */
+  _rtXdot->Integrator1_CSTATE = test3_B.Product1_b;
+
+  /* Derivatives for Integrator: '<S15>/Integrator1' */
+  _rtXdot->Integrator1_CSTATE_m = test3_B.Product1_g;
+
+  /* Derivatives for Integrator: '<S13>/Integrator2' */
+  _rtXdot->Integrator2_CSTATE_f = test3_B.Product_b;
+
+  /* Derivatives for Integrator: '<S8>/Integrator' */
+  _rtXdot->Integrator_CSTATE = test3_B.Integrator1_g;
+
+  /* Derivatives for Integrator: '<S10>/Integrator1' */
+  _rtXdot->Integrator1_CSTATE_p = test3_B.Product1;
+
+  /* Derivatives for Integrator: '<S11>/Integrator1' */
+  _rtXdot->Integrator1_CSTATE_h = test3_B.Product1_i;
 
   /* Derivatives for Integrator: '<S11>/Integrator2' */
+  _rtXdot->Integrator2_CSTATE_i = test3_B.Product_d;
+
+  /* Derivatives for Integrator: '<S12>/Integrator1' */
+  _rtXdot->Integrator1_CSTATE_b = test3_B.Product1_n;
+
+  /* Derivatives for Integrator: '<S12>/Integrator2' */
   _rtXdot->Integrator2_CSTATE_c = test3_B.Product_m;
 
   /* Derivatives for Integrator: '<S13>/Integrator1' */
-  _rtXdot->Integrator1_CSTATE = test3_B.Product1_b;
-
-  /* Derivatives for Integrator: '<S14>/Integrator1' */
-  _rtXdot->Integrator1_CSTATE_m = test3_B.Product1_g;
-
-  /* Derivatives for Integrator: '<S12>/Integrator2' */
-  _rtXdot->Integrator2_CSTATE_f = test3_B.Product_b;
-
-  /* Derivatives for Integrator: '<S7>/Integrator' */
-  _rtXdot->Integrator_CSTATE = test3_B.Integrator1_g;
-
-  /* Derivatives for Integrator: '<S9>/Integrator1' */
-  _rtXdot->Integrator1_CSTATE_p = test3_B.Product1;
-
-  /* Derivatives for Integrator: '<S10>/Integrator1' */
-  _rtXdot->Integrator1_CSTATE_h = test3_B.Product1_i;
-
-  /* Derivatives for Integrator: '<S11>/Integrator1' */
-  _rtXdot->Integrator1_CSTATE_b = test3_B.Product1_n;
-
-  /* Derivatives for Integrator: '<S12>/Integrator1' */
   _rtXdot->Integrator1_CSTATE_n = test3_B.Product1_p;
 
-  /* Derivatives for Integrator: '<S13>/Integrator2' */
+  /* Derivatives for Integrator: '<S14>/Integrator2' */
   _rtXdot->Integrator2_CSTATE_m = test3_B.Product_e;
 
-  /* Derivatives for Integrator: '<S14>/Integrator2' */
+  /* Derivatives for Integrator: '<S15>/Integrator2' */
   _rtXdot->Integrator2_CSTATE_b = test3_B.Product_p;
 
-  /* Derivatives for Integrator: '<S2>/Integrator5' */
+  /* Derivatives for Integrator: '<S3>/Integrator5' */
   _rtXdot->Integrator5_CSTATE = test3_B.Product_f;
 
-  /* Derivatives for Integrator: '<S3>/Integrator6' */
+  /* Derivatives for Integrator: '<S4>/Integrator6' */
   _rtXdot->Integrator6_CSTATE = test3_B.Product1_ij;
 
   /* Derivatives for Integrator: '<Root>/Integrator3' */
   _rtXdot->Integrator3_CSTATE = test3_B.Integrator1_f;
 
-  /* Derivatives for Integrator: '<S8>/Integrator1' */
+  /* Derivatives for Integrator: '<S9>/Integrator1' */
   lsat = (test3_X.Integrator1_CSTATE_ng <= test3_P.Integrator1_LowerSat);
   usat = (test3_X.Integrator1_CSTATE_ng >= test3_P.Integrator1_UpperSat);
   if (((!lsat) && (!usat)) || (lsat && (test3_B.Kim > 0.0)) || (usat &&
@@ -9986,19 +15146,19 @@ void test3_derivatives(void)
     _rtXdot->Integrator1_CSTATE_ng = 0.0;
   }
 
-  /* End of Derivatives for Integrator: '<S8>/Integrator1' */
+  /* End of Derivatives for Integrator: '<S9>/Integrator1' */
 
-  /* Derivatives for Integrator: '<S6>/Integrator1' */
+  /* Derivatives for Integrator: '<S7>/Integrator1' */
   _rtXdot->Integrator1_CSTATE_me = test3_B.Product1_b3;
 
-  /* Derivatives for Integrator: '<S6>/Integrator2' */
+  /* Derivatives for Integrator: '<S7>/Integrator2' */
   _rtXdot->Integrator2_CSTATE_k = test3_B.Product_g;
 }
 
 /* Model initialize function */
 void test3_initialize(void)
 {
-  /* Start for S-Function (hil_initialize_block): '<S7>/HIL Initialize' */
+  /* Start for S-Function (hil_initialize_block): '<S8>/HIL Initialize' */
 
   /* S-Function Block: test3/basicQCarIO/HIL Initialize (hil_initialize_block) */
   {
@@ -10322,7 +15482,7 @@ void test3_initialize(void)
     }
   }
 
-  /* Start for S-Function (inverse_modulus_block): '<S7>/Unwrap 2^2' */
+  /* Start for S-Function (inverse_modulus_block): '<S8>/Unwrap 2^2' */
 
   /* S-Function Block: test3/basicQCarIO/Unwrap 2^2 (inverse_modulus_block) */
   {
@@ -10330,7 +15490,7 @@ void test3_initialize(void)
     test3_DW.Unwrap22_Revolutions = 0;
   }
 
-  /* Start for S-Function (inverse_modulus_block): '<S7>/Unwrap 2^24' */
+  /* Start for S-Function (inverse_modulus_block): '<S8>/Unwrap 2^24' */
 
   /* S-Function Block: test3/basicQCarIO/Unwrap 2^24 (inverse_modulus_block) */
   {
@@ -10338,7 +15498,7 @@ void test3_initialize(void)
     test3_DW.Unwrap224_Revolutions = 0;
   }
 
-  /* Start for S-Function (inverse_modulus_block): '<S7>/Unwrap 2^1' */
+  /* Start for S-Function (inverse_modulus_block): '<S8>/Unwrap 2^1' */
 
   /* S-Function Block: test3/basicQCarIO/Unwrap 2^1 (inverse_modulus_block) */
   {
@@ -10356,17 +15516,11 @@ void test3_initialize(void)
 
   test3_PrevZCX.Integrator1_Reset_ZCE = UNINITIALIZED_ZCSIG;
 
-  /* InitializeConditions for Integrator: '<S9>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S10>/Integrator2' */
   test3_X.Integrator2_CSTATE = test3_P.Integrator2_IC;
 
-  /* InitializeConditions for Integrator: '<S10>/Integrator2' */
-  test3_X.Integrator2_CSTATE_i = test3_P.Integrator2_IC_j;
-
-  /* InitializeConditions for Integrator: '<S11>/Integrator2' */
-  test3_X.Integrator2_CSTATE_c = test3_P.Integrator2_IC_d;
-
-  /* InitializeConditions for Integrator: '<S13>/Integrator1' incorporates:
-   *  Integrator: '<S14>/Integrator1'
+  /* InitializeConditions for Integrator: '<S14>/Integrator1' incorporates:
+   *  Integrator: '<S15>/Integrator1'
    */
   if (rtmIsFirstInitCond(test3_M)) {
     test3_X.Integrator1_CSTATE = 0.0;
@@ -10375,19 +15529,19 @@ void test3_initialize(void)
 
   test3_DW.Integrator1_IWORK = 1;
 
-  /* End of InitializeConditions for Integrator: '<S13>/Integrator1' */
+  /* End of InitializeConditions for Integrator: '<S14>/Integrator1' */
 
-  /* InitializeConditions for Integrator: '<S14>/Integrator1' */
+  /* InitializeConditions for Integrator: '<S15>/Integrator1' */
   test3_DW.Integrator1_IWORK_i = 1;
 
-  /* InitializeConditions for Integrator: '<S12>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S13>/Integrator2' */
   test3_X.Integrator2_CSTATE_f = test3_P.Integrator2_IC_l;
 
-  /* InitializeConditions for Integrator: '<S7>/Integrator' */
+  /* InitializeConditions for Integrator: '<S8>/Integrator' */
   test3_X.Integrator_CSTATE = test3_P.Integrator_IC;
 
-  /* InitializeConditions for Integrator: '<S9>/Integrator1' incorporates:
-   *  Integrator: '<S10>/Integrator1'
+  /* InitializeConditions for Integrator: '<S10>/Integrator1' incorporates:
+   *  Integrator: '<S11>/Integrator1'
    */
   if (rtmIsFirstInitCond(test3_M)) {
     test3_X.Integrator1_CSTATE_p = 0.0;
@@ -10396,13 +15550,16 @@ void test3_initialize(void)
 
   test3_DW.Integrator1_IWORK_g = 1;
 
-  /* End of InitializeConditions for Integrator: '<S9>/Integrator1' */
+  /* End of InitializeConditions for Integrator: '<S10>/Integrator1' */
 
-  /* InitializeConditions for Integrator: '<S10>/Integrator1' */
+  /* InitializeConditions for Integrator: '<S11>/Integrator1' */
   test3_DW.Integrator1_IWORK_d = 1;
 
-  /* InitializeConditions for Integrator: '<S11>/Integrator1' incorporates:
-   *  Integrator: '<S12>/Integrator1'
+  /* InitializeConditions for Integrator: '<S11>/Integrator2' */
+  test3_X.Integrator2_CSTATE_i = test3_P.Integrator2_IC_j;
+
+  /* InitializeConditions for Integrator: '<S12>/Integrator1' incorporates:
+   *  Integrator: '<S13>/Integrator1'
    */
   if (rtmIsFirstInitCond(test3_M)) {
     test3_X.Integrator1_CSTATE_b = 0.0;
@@ -10411,44 +15568,51 @@ void test3_initialize(void)
 
   test3_DW.Integrator1_IWORK_gg = 1;
 
-  /* End of InitializeConditions for Integrator: '<S11>/Integrator1' */
+  /* End of InitializeConditions for Integrator: '<S12>/Integrator1' */
 
-  /* InitializeConditions for Integrator: '<S12>/Integrator1' */
+  /* InitializeConditions for Integrator: '<S12>/Integrator2' */
+  test3_X.Integrator2_CSTATE_c = test3_P.Integrator2_IC_d;
+
+  /* InitializeConditions for Integrator: '<S13>/Integrator1' */
   test3_DW.Integrator1_IWORK_l = 1;
 
-  /* InitializeConditions for Integrator: '<S13>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S14>/Integrator2' */
   test3_X.Integrator2_CSTATE_m = test3_P.Integrator2_IC_n;
 
-  /* InitializeConditions for Integrator: '<S14>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S15>/Integrator2' */
   test3_X.Integrator2_CSTATE_b = test3_P.Integrator2_IC_h;
 
-  /* InitializeConditions for Integrator: '<S2>/Integrator5' */
+  /* InitializeConditions for Integrator: '<S3>/Integrator5' */
   test3_X.Integrator5_CSTATE = test3_P.Integrator5_IC;
 
-  /* InitializeConditions for Integrator: '<S3>/Integrator6' */
+  /* InitializeConditions for Integrator: '<S4>/Integrator6' */
   test3_X.Integrator6_CSTATE = test3_P.Integrator6_IC;
 
   /* InitializeConditions for Integrator: '<Root>/Integrator3' */
   test3_X.Integrator3_CSTATE = test3_P.Integrator3_IC;
 
-  /* InitializeConditions for Integrator: '<S8>/Integrator1' */
+  /* InitializeConditions for Integrator: '<S9>/Integrator1' */
   test3_X.Integrator1_CSTATE_ng = test3_P.Integrator1_IC;
 
-  /* InitializeConditions for Integrator: '<S6>/Integrator1' */
+  /* InitializeConditions for Integrator: '<S7>/Integrator1' */
   if (rtmIsFirstInitCond(test3_M)) {
     test3_X.Integrator1_CSTATE_me = 0.0;
   }
 
   test3_DW.Integrator1_IWORK_a = 1;
 
-  /* End of InitializeConditions for Integrator: '<S6>/Integrator1' */
+  /* End of InitializeConditions for Integrator: '<S7>/Integrator1' */
 
-  /* InitializeConditions for Integrator: '<S6>/Integrator2' */
+  /* InitializeConditions for Integrator: '<S7>/Integrator2' */
   test3_X.Integrator2_CSTATE_k = test3_P.Integrator2_IC_a;
 
   /* SystemInitialize for MATLAB Function: '<Root>/MATLAB Function' */
-  test3_DW.sfEvent = test3_CALL_EVENT;
+  test3_DW.sfEvent_g = test3_CALL_EVENT;
   test3_DW.is_active_c2_test3 = 0U;
+
+  /* SystemInitialize for MATLAB Function: '<Root>/MATLAB Function2' */
+  test3_DW.sfEvent = test3_CALL_EVENT;
+  test3_DW.is_active_c4_test3 = 0U;
 
   /* set "at time zero" to false */
   if (rtmIsFirstInitCond(test3_M)) {
@@ -10459,7 +15623,7 @@ void test3_initialize(void)
 /* Model terminate function */
 void test3_terminate(void)
 {
-  /* Terminate for S-Function (hil_initialize_block): '<S7>/HIL Initialize' */
+  /* Terminate for S-Function (hil_initialize_block): '<S8>/HIL Initialize' */
 
   /* S-Function Block: test3/basicQCarIO/HIL Initialize (hil_initialize_block) */
   {
@@ -10704,21 +15868,22 @@ RT_MODEL_test3_T *test3(void)
   rtmSetFirstInitCond(test3_M, 1);
 
   /* External mode info */
-  test3_M->Sizes.checksums[0] = (4221162907U);
-  test3_M->Sizes.checksums[1] = (3802657217U);
-  test3_M->Sizes.checksums[2] = (1709486394U);
-  test3_M->Sizes.checksums[3] = (3752576086U);
+  test3_M->Sizes.checksums[0] = (865445979U);
+  test3_M->Sizes.checksums[1] = (25977859U);
+  test3_M->Sizes.checksums[2] = (1689608760U);
+  test3_M->Sizes.checksums[3] = (3007364481U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
     static RTWExtModeInfo rt_ExtModeInfo;
-    static const sysRanDType *systemRan[4];
+    static const sysRanDType *systemRan[5];
     test3_M->extModeInfo = (&rt_ExtModeInfo);
     rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
     systemRan[0] = &rtAlwaysEnabled;
     systemRan[1] = &rtAlwaysEnabled;
     systemRan[2] = &rtAlwaysEnabled;
     systemRan[3] = &rtAlwaysEnabled;
+    systemRan[4] = &rtAlwaysEnabled;
     rteiSetModelMappingInfoPtr(test3_M->extModeInfo,
       &test3_M->SpecialInfo.mappingInfo);
     rteiSetChecksumsPtr(test3_M->extModeInfo, test3_M->Sizes.checksums);
@@ -10776,9 +15941,9 @@ RT_MODEL_test3_T *test3(void)
   test3_M->Sizes.numU = (0);           /* Number of model inputs */
   test3_M->Sizes.sysDirFeedThru = (0); /* The model is not direct feedthrough */
   test3_M->Sizes.numSampTimes = (2);   /* Number of sample times */
-  test3_M->Sizes.numBlocks = (131);    /* Number of blocks */
-  test3_M->Sizes.numBlockIO = (40);    /* Number of block outputs */
-  test3_M->Sizes.numBlockPrms = (174); /* Sum of parameter "widths" */
+  test3_M->Sizes.numBlocks = (132);    /* Number of blocks */
+  test3_M->Sizes.numBlockIO = (42);    /* Number of block outputs */
+  test3_M->Sizes.numBlockPrms = (176); /* Sum of parameter "widths" */
   return test3_M;
 }
 
