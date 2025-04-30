@@ -14,7 +14,7 @@ Delta = 0.35;                        % Distance in front of the car
 % Define prediction and simulation steps
 Ts = 0.1;                            % Sampling time
 Npred = N_pred_val;                  % Prediction horizon
-Nsim =  500;                          % Number of simulation steps
+Nsim =  900;                          % Number of simulation steps
 
 % Define system dimensions
 dx = 4;                              % State dimensions: x, y, theta
@@ -29,24 +29,24 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Time
-t = 0 : 0.3 : 50;
-t = 0 : 0.1 : 500;
-t = 0 : 0.01 : 50;
+t = 0 : 0.01 : 500;
+t = 0 : 0.1 : 1000;
+% t = 0 : 0.01 : 5000;
 
 % % % % % % % % % % % % % % % % % 
 % Line reference
-% alpha   = 0.5;
-% beta    = 0.8;
-% xr = alpha * t;     dxr = alpha + 0*t;    ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
-% yr = beta * t;      dyr = beta + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
+alpha   = 0.5;
+beta    = 0.8;
+xr = alpha * t;     dxr = alpha + 0*t;    ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
+yr = beta * t;      dyr = beta + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Stairs trajectory
-% st = zeros(1,length(t))+[2*ones(1, 100), 5*zeros(1,300), 4*ones(1, length(t)-400)];
-% xr = t;     dxr = 1 + 0*t;     ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
-% yr = st;    dyr = 0 + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
+st = zeros(1,length(t))+[2*ones(1, 100), 5*zeros(1,300), 4*ones(1, length(t)-400)];
+xr = t;     dxr = 1 + 0*t;     ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
+yr = st;    dyr = 0 + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Square trajectory
-n = 700;
+n = 850;
 
 side_length = 10; 
 total_points = n;
@@ -76,15 +76,15 @@ dxr = gradient(xr, 0.3);        ddxr = gradient(dxr, 0.3);      dddxr = gradient
 dyr = gradient(yr, 0.3);        ddyr = gradient(dyr, 0.3);      dddyr = gradient(ddyr, 0.3); 
    
 % Circle reference
-% alpha   = 6;
-% beta    = 5;
-% ang     = 0.2;
-% xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
-% yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
+alpha   = 5;
+beta    = 5;
+ang     = 0.2;
+xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
+yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
 
 % Spline reference
-xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
-yr = yref;      dyr = dyref;        ddyr = ddyref;      dddyr = dddyref;
+% xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
+% yr = yref;      dyr = dyref;        ddyr = ddyref;      dddyr = dddyref;
 % % % % % % % % % % % % % % % % %
 
 % Computing real input reference
@@ -229,7 +229,7 @@ for i = 1 : Nsim
     etasim(:, i + 1) = xsim(3:4, i+1);
 end
 taltcv = toc(tcv);
-s2 = taltcv / (Nsim)
+s2 = taltcv / (Nsim);
 
 s = sum(tfin);
 s = s/Nsim
@@ -239,7 +239,11 @@ for i =1:Nsim
     err(:,i) = (zsim(:, i) - zref(:, i));
 end
 
+rmse_scalar = sqrt(sum(err(:).^2) / (dz * Nsim))
+
 %% Plot results
+% folder = 'C:\Users\pindiche\Desktop\ObstacleAvoidance\pics\comparison\Circle\Weights'; 
+
 figure
 plot(xsim(1,:), xsim(2,:))
 title('x_{sim}')
@@ -256,22 +260,22 @@ grid
 
 figure
 subplot(2,1,1)
-plot(zsim(1,:))
-xlabel('Nsim')
+plot((1:Nsim)*Ts, zsim(1,1:Nsim))
+xlabel('time (s)')
 ylabel('z_1')
 hold on
-plot(zref(1,1:Nsim),'--')
+plot((1:Nsim)*Ts, zref(1,1:Nsim),'--')
 legend('z_1','ref z_1')
-xlabel('Nsim')
+xlabel('time (s)')
 ylabel('z_1')
 title('Simulation and reference for z1_{state}')
 grid
 
 subplot(2,1,2)
-plot(zsim(2,:))
+plot((1:Nsim)*Ts, zsim(2,1:Nsim))
 hold on
-plot(zref(2,1:Nsim),'--')
-xlabel('Nsim')
+plot((1:Nsim)*Ts, zref(2,1:Nsim),'--')
+xlabel('time (s)')
 ylabel('z_2')
 legend('z_2','ref z_2')
 title('Simulation and reference for z2_{state}')
@@ -279,44 +283,60 @@ grid
 
 figure
 subplot(4,1,1)
-plot(1:Nsim, xsim(1,1:end-1))
+plot((1:Nsim)*Ts, xsim(1,1:end-1))
+hold on 
+plot((1:Nsim)*Ts, xr(1:Nsim), '--')
 legend('x')
 xlabel('time (s)')
 grid
 
 subplot(4,1,2)
-plot(1:Nsim, xsim(2,1:end-1))
+plot((1:Nsim)*Ts, xsim(2,1:end-1))
+hold on 
+plot((1:Nsim)*Ts, yr(1:Nsim), '--')
 legend('y')
 xlabel('time (s)')
 grid
 
 subplot(4,1,3)
-plot(1:Nsim, xsim(3,1:end-1))
+plot((1:Nsim)*Ts, xsim(3,1:end-1))
 hold on 
-plot(1:Nsim, thetar(1:Nsim), '--')
+plot((1:Nsim)*Ts, thetar(1:Nsim), '--')
 legend('$\theta$','interpreter','latex')
 xlabel('time (s)')
 grid
 
 subplot(4,1,4)
-plot(1:Nsim, xsim(4,1:end-1))
+plot((1:Nsim)*Ts, xsim(4,1:end-1))
 hold on 
-plot(1:Nsim, phir(1:Nsim), '--')
+plot((1:Nsim)*Ts, phir(1:Nsim), '--')
 legend('$\varphi$','interpreter','latex')
 xlabel('time (s)')
 grid
 
+% filename = sprintf('%dFLMPC_state.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
+
 figure
 subplot(2,1,1)
 plot(usim(1, :))
+hold on
+plot(ur(1, 1:Nsim), '--')
 legend('V')
 xlabel('Nsim')
 grid
 subplot(2,1,2)
 plot(usim(2, :))
+hold on
+plot(ur(2, 1:Nsim), '--')
 legend('\omega')
 xlabel('Nsim')
 grid
+
+% filename = sprintf('%dFLMPC_input.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 subplot(2,1,1)
@@ -331,29 +351,35 @@ xlabel('Nsim')
 grid
 
 figure
-plot(t(1:Nsim),err(1,:))
+plot((1:Nsim)*Ts,err(1,:))
 hold on
-plot(t(1:Nsim),err(2,:))
+plot((1:Nsim)*Ts,err(2,:))
 legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
+% filename = sprintf('%dFLMPC_err.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
+
 figure
 hold on
 height = 0.4; width = 0.2;
-st = 50;
-% st = 10;
+st = 70;
+% st = 200;
 k=1;
 while k < Nsim
    drawSteeringCar(xsim(:,k), l, height, width)
     k = k + st;
 end
 plot(xsim(1,:),xsim(2,:),'linewidth',2)
-
 title('car position')
-
 xlabel('x (m)')
 ylabel('y (m)')
+
+% filename = sprintf('%dFLMPC_carpos.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 % figure
 % plot(U_approx)

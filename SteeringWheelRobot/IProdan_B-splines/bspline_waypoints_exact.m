@@ -22,18 +22,12 @@ W = [0.5 1.75;
     3.5 5;
     5 2]'; %waypoint (point to pass)
 W = [  0.5  1.75;
-       2.25  2.05;
        3.5   5;
-       5     2;
-       6     3;
        8     4;
-      10     5;
-      12     6;
-      15     7;
-      18     8;
-      22    10;
-      26    12;
-      30    15]'; % Extended waypoints
+      15     10;
+      22    5;
+      32    12;
+      40    6]'; % Extended waypoints
 
 N=size(W,2)-1;
 % wpknot=linspace(min(knot),max(knot)-0.0001,N+1);
