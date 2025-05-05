@@ -1,23 +1,29 @@
 clc; close all; clear;
 
 % Load CasADi
-% addpath('C:\Users\pindiche\Documents\MATLAB\casadi-3.6.7-windows64-matlab2018b\')
+addpath('C:\Users\pindiche\Documents\MATLAB\casadi-3.6.7-windows64-matlab2018b\')
 % addpath('C:\Users\Elena\Documents\MATLAB\casadi-3.6.6-windows64-matlab2018b\')
-addpath('C:\Users\bajdus\Documents\Qcar2\Collision-Avoidance-Algorithm\SteeringWheelRobot\casadi-3.6.7-windows64-matlab2018b\')
+% addpath('C:\Users\bajdus\Documents\Qcar2\Collision-Avoidance-Algorithm\SteeringWheelRobot\casadi-3.6.7-windows64-matlab2018b\')
 import casadi.*;
 load("trajectory.mat")
 
 %% Parameters
+<<<<<<< HEAD
 N_pred_val = 12;        % Prediction horizon
 Q_val = 100;
 R_val = 2;              % Input weight value
+=======
+N_pred_val = 15;        % Prediction horizon
+Q_val = 100;
+R_val = 1;              % Input weight value
+>>>>>>> 78a51a39290575f3212cb9bd51053b451acf99a4
 P_val = 10;
 l = 0.256;
 
 % Define prediction and simulation steps
 Ts = 0.1;                           % Sampling time
 Npred = N_pred_val;                 % Prediction horizon
-Nsim = 3000;                        % Number of simulation steps
+Nsim = 900;                        % Number of simulation steps
 
 % Define system dimensions
 dx = 4;              % State dimensions: x, y, theta
@@ -29,8 +35,8 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Time
-t = 0 : 0.01 : 50;
-% t = 0 : 0.1 : 2000;
+% t = 0 : 0.01 : 500;
+t = 0 : 0.1 : 1000;
 
 % % % % % % % % % % % % % % % % % 
 % Line reference
@@ -40,34 +46,34 @@ xr = alpha * t;     dxr = alpha + 0*t;    ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
 yr = beta * t;      dyr = beta + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Square trajectory
-n = 850;
-
-side_length = 10; 
-total_points = n;
-quarter = round(total_points / 4);
-
-xr = zeros(1, n);
-yr = zeros(1, n);
-
-% Fill square trajectory
-% Bottom edge: (0,0) to (10,0)
-xr(1:quarter) = linspace(0, side_length, quarter);
-yr(1:quarter) = 0;
-
-% Right edge: (10,0) to (10,10)
-xr(quarter+1:2*quarter) = side_length;
-yr(quarter+1:2*quarter) = linspace(0, side_length, quarter);
-
-% Top edge: (10,10) to (0,10)
-xr(2*quarter+1:3*quarter) = linspace(side_length, 0, quarter);
-yr(2*quarter+1:3*quarter) = side_length;
-
-% Left edge: (0,10) to (0,0)
-xr(3*quarter+1:end) = 0;
-yr(3*quarter+1:end) = linspace(side_length, 0, n - 3*quarter);
-
-dxr = gradient(xr, 0.1);        ddxr = gradient(dxr, 0.1);      dddxr = gradient(ddxr, 0.1);   
-dyr = gradient(yr, 0.1);        ddyr = gradient(dyr, 0.1);      dddyr = gradient(ddyr, 0.1); 
+% n = 850;
+% 
+% side_length = 10; 
+% total_points = n;
+% quarter = round(total_points / 4);
+% 
+% xr = zeros(1, n);
+% yr = zeros(1, n);
+% 
+% % Fill square trajectory
+% % Bottom edge: (0,0) to (10,0)
+% xr(1:quarter) = linspace(0, side_length, quarter);
+% yr(1:quarter) = 0;
+% 
+% % Right edge: (10,0) to (10,10)
+% xr(quarter+1:2*quarter) = side_length;
+% yr(quarter+1:2*quarter) = linspace(0, side_length, quarter);
+% 
+% % Top edge: (10,10) to (0,10)
+% xr(2*quarter+1:3*quarter) = linspace(side_length, 0, quarter);
+% yr(2*quarter+1:3*quarter) = side_length;
+% 
+% % Left edge: (0,10) to (0,0)
+% xr(3*quarter+1:end) = 0;
+% yr(3*quarter+1:end) = linspace(side_length, 0, n - 3*quarter);
+% 
+% dxr = gradient(xr, 0.1);        ddxr = gradient(dxr, 0.1);      dddxr = gradient(ddxr, 0.1);   
+% dyr = gradient(yr, 0.1);        ddyr = gradient(dyr, 0.1);      dddyr = gradient(ddyr, 0.1); 
 
 % Stairs trajectory
 % st = zeros(1,length(t))+[2*ones(1, 100), 5*ones(1,300), 4*ones(1, length(t)-400)];
@@ -105,8 +111,8 @@ phimax = pi/2;                   % Front wheels orientation limits
 
 % Weights for cost function
 Q = Q_val * eye(dx);
-Q(3,3) = 10;
-Q(4,4) = 5;
+% Q(3,3) = 10;
+% Q(4,4) = 5;
 R = R_val * eye(du);
 P = P_val * Q;
 
@@ -186,7 +192,8 @@ for i = 1 : Nsim
     xsim(:, i + 1) = xsim(:, i) + Ts * f_dynamics(xsim(:, i), usim(:, i));
 end
 taltcv = toc(tcv);
-s2 = taltcv / (Nsim)
+s2 = taltcv / (Nsim);
+
 s = sum(tfin);
 s = s/Nsim
 
@@ -194,40 +201,71 @@ err = zeros(dx,Nsim);
 for i =1:Nsim
     err(:,i) = (xsim(:, i) - xref(:, i));
 end
+rmse_scalar = sqrt(sum(err(:).^2) / (dx * Nsim))
 
 %% Plot results
+% folder = 'C:\Users\pindiche\Desktop\ObstacleAvoidance\pics\comparison\Circle\Weights'; 
+
 figure
-plot(t(1:Nsim),err(1,:))
+plot((1:Nsim)*Ts,err(1,:))
 hold on
-plot(t(1:Nsim),err(2,:))
+plot((1:Nsim)*Ts,err(2,:))
 legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
+% filename = sprintf('%dNMPC_err.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
+
 figure
-subplot(2,1,1)
-plot(xsim(1,:))
-xlabel('Nsim')
+subplot(4,1,1)
+plot((1:Nsim)*Ts, xsim(1,1:Nsim))
+xlabel('time (s)')
 ylabel('x_1')
 hold on
-plot(xref(1,1:Nsim),'--')
-xlabel('Nsim')
+plot((1:Nsim)*Ts, xref(1,1:Nsim),'--')
+xlabel('time (s)')
 ylabel('x_1')
-legend('x_1','ref x_1')
+legend('x','$x_{ref}$','interpreter','latex')
 title('Simulation and reference for x_{state}')
 grid
 
-subplot(2,1,2)
-plot(xsim(2,:))
-xlabel('Nsim')
+subplot(4,1,2)
+plot((1:Nsim)*Ts, xsim(2,1:Nsim))
+xlabel('time (s)')
 ylabel('x_2')
 hold on
-plot(xref(2,1:Nsim),'--')
-legend('x_2','ref x_2')
-xlabel('Nsim')
+plot((1:Nsim)*Ts, xref(2,1:Nsim),'--')
+legend('y','$y_{ref}$','interpreter','latex')
+xlabel('time (s)')
 ylabel('x_2')
 title('Simulation and reference for y_{state}')
 grid
+
+subplot(4,1,3)
+plot((1:Nsim)*Ts, xsim(3,1:end-1))
+hold on
+plot((1:Nsim)*Ts, xref(3,1:Nsim), '--')
+legend('$\theta$','$\theta_{ref}$','interpreter','latex')
+xlabel('time (s)')
+ylabel('x_3')
+title('Simulation and reference for \theta_{state}')
+grid
+
+subplot(4,1,4)
+plot((1:Nsim)*Ts, xsim(4,1:end-1))
+hold on
+plot((1:Nsim)*Ts, xref(4,1:Nsim), '--')
+legend('$\varphi$','$\varphi_{ref}$','interpreter','latex')
+xlabel('time (s)')
+ylabel('x_4')
+title('Simulation and reference for \phi_{state}')
+grid
+
+% filename = sprintf('%dNMPC_state.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 plot(xsim(1,:),xsim(2,:))
@@ -238,36 +276,27 @@ grid
 
 figure
 subplot(2,1,1)
-plot(1:Nsim, xsim(3,1:end-1))
-hold on
-plot(1:Nsim, xref(3,1:Nsim), '--')
-legend('$\theta$','interpreter','latex')
-xlabel('time (s)')
-grid
-
-subplot(2,1,2)
-plot(1:Nsim, xsim(4,1:end-1))
-hold on
-plot(1:Nsim, xref(4,1:Nsim), '--')
-legend('$\varphi$','interpreter','latex')
-xlabel('time (s)')
-grid
-
-figure
-subplot(2,1,1)
 plot(usim(1, :))
+hold on
+plot(uref(1, 1:Nsim), '--')
 legend('V')
 grid
 subplot(2,1,2)
 plot(usim(2, :))
+hold on
+plot(uref(2, 1:Nsim), '--')
 legend('\omega')
 grid
+
+% filename = sprintf('%dNMPC_input.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 hold on
 height = 0.4; width = 0.2;
-st = 50;
-st = 200;
+st = 70;
+% st = 200;
 k=1;
 while k < Nsim
    drawSteeringCar(xsim(:,k), l, height, width)
@@ -279,3 +308,7 @@ title('car position')
 
 xlabel('x (m)')
 ylabel('y (m)')
+
+% filename = sprintf('%dNMPC_carpos.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
