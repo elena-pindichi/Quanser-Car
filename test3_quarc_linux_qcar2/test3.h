@@ -6,9 +6,9 @@
  *
  * Code generation for model "test3".
  *
- * Model version              : 15.50
+ * Model version              : 15.55
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Wed Apr 30 11:05:57 2025
+ * C source code generated on : Mon May  5 16:02:17 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -35,6 +35,7 @@
 #endif                                 /* test3_COMMON_INCLUDES_ */
 
 #include "test3_types.h"
+#include <math.h>
 #include "rt_nonfinite.h"
 #include "rtGetInf.h"
 #include "rtGetNaN.h"
@@ -877,44 +878,44 @@
 
 /* Block signals (default storage) */
 typedef struct {
-  real_T Product1;                     /* '<S10>/Product1' */
+  real_T Product1;                     /* '<S11>/Product1' */
   real_T analogpower;                  /* '<S8>/HIL Read' */
   real_T motorencoder;                 /* '<S8>/HIL Read' */
   real_T HILRead_o3[4];                /* '<S8>/HIL Read' */
-  real_T Integrator1;                  /* '<S14>/Integrator1' */
+  real_T Integrator1;                  /* '<S15>/Integrator1' */
   real_T Unwrap22;                     /* '<S8>/Unwrap 2^2' */
-  real_T Integrator1_g;                /* '<S15>/Integrator1' */
-  real_T Product1_p;                   /* '<S13>/Product1' */
+  real_T Integrator1_g;                /* '<S16>/Integrator1' */
+  real_T Product1_p;                   /* '<S14>/Product1' */
   real_T Integrator;                   /* '<S8>/Integrator' */
   real_T Unwrap224;                    /* '<S8>/Unwrap 2^24' */
-  real_T Product;                      /* '<S10>/Product' */
-  real_T Product_d;                    /* '<S11>/Product' */
-  real_T Product1_i;                   /* '<S11>/Product1' */
-  real_T Product_m;                    /* '<S12>/Product' */
-  real_T Product1_n;                   /* '<S12>/Product1' */
+  real_T Product;                      /* '<S11>/Product' */
+  real_T Product_d;                    /* '<S12>/Product' */
+  real_T Product1_i;                   /* '<S12>/Product1' */
+  real_T Product_m;                    /* '<S13>/Product' */
+  real_T Product1_n;                   /* '<S13>/Product1' */
   real_T Unwrap21;                     /* '<S8>/Unwrap 2^1' */
-  real_T Product_b;                    /* '<S13>/Product' */
-  real_T Product_e;                    /* '<S14>/Product' */
-  real_T Product1_b;                   /* '<S14>/Product1' */
-  real_T Product_p;                    /* '<S15>/Product' */
-  real_T Product1_g;                   /* '<S15>/Product1' */
-  real_T Gain3;                        /* '<S16>/Gain3' */
-  real_T Integrator5;                  /* '<S3>/Integrator5' */
-  real_T Integrator6;                  /* '<S4>/Integrator6' */
+  real_T Product_b;                    /* '<S14>/Product' */
+  real_T Product_e;                    /* '<S15>/Product' */
+  real_T Product1_b;                   /* '<S15>/Product1' */
+  real_T Product_p;                    /* '<S16>/Product' */
+  real_T Product1_g;                   /* '<S16>/Product1' */
+  real_T Gain3;                        /* '<S17>/Gain3' */
+  real_T Integrator5;                  /* '<S4>/Integrator5' */
+  real_T Integrator6;                  /* '<S5>/Integrator6' */
   real_T switch_l;                     /* '<Root>/1 - Arm, 0 - Disarm2' */
   real_T desired;                      /* '<S9>/Multiply1' */
   real_T measured;                     /* '<S9>/Multiply' */
   real_T commandsaturation;            /* '<S8>/command saturation' */
   real_T SteeringBias;                 /* '<S8>/Steering Bias' */
-  real_T Product_f;                    /* '<S3>/Product' */
-  real_T Product1_ij;                  /* '<S4>/Product1' */
-  real_T switch_o;                     /* '<Root>/Up - NL, Down - FL' */
-  real_T Unwrap21_o;                   /* '<Root>/Unwrap 2^1' */
-  real_T Integrator1_f;                /* '<S7>/Integrator1' */
-  real_T Product_g;                    /* '<S7>/Product' */
-  real_T Product1_b3;                  /* '<S7>/Product1' */
+  real_T omega;                        /* '<Root>/Up - NL, Down - FL' */
+  real_T Unwrap21_o;                   /* '<S1>/Unwrap 2^1' */
+  real_T Integrator1_f;                /* '<S10>/Integrator1' */
+  real_T Product_g;                    /* '<S10>/Product' */
+  real_T Product1_b3;                  /* '<S10>/Product1' */
+  real_T Product_f;                    /* '<S4>/Product' */
+  real_T Product1_ij;                  /* '<S5>/Product1' */
   real_T Kim;                          /* '<S9>/Ki (% // m)  ' */
-  boolean_T Compare;                   /* '<S18>/Compare' */
+  boolean_T Compare;                   /* '<S19>/Compare' */
 } B_test3_T;
 
 /* Block states (default storage) for system '<Root>' */
@@ -933,10 +934,16 @@ typedef struct {
   real_T Unwrap21_Revolutions;         /* '<S8>/Unwrap 2^1' */
   real_T XYFigure_XBuffer[1000000];    /* '<Root>/XY Figure' */
   real_T XYFigure_YBuffer[1000000];    /* '<Root>/XY Figure' */
-  real_T Unwrap21_PreviousInput_d;     /* '<Root>/Unwrap 2^1' */
-  real_T Unwrap21_Revolutions_o;       /* '<Root>/Unwrap 2^1' */
+  real_T Unwrap21_PreviousInput_d;     /* '<S1>/Unwrap 2^1' */
+  real_T Unwrap21_Revolutions_o;       /* '<S1>/Unwrap 2^1' */
   t_card HILInitialize_Card;           /* '<S8>/HIL Initialize' */
   void *HILRead_PWORK;                 /* '<S8>/HIL Read' */
+  struct {
+    void *TimePtr;
+    void *DataPtr;
+    void *RSimInfoPtr;
+  } FromWorkspace_PWORK;               /* '<Root>/From Workspace' */
+
   void *HILWrite_PWORK;                /* '<S8>/HIL Write' */
   struct {
     void *LoggedData;
@@ -968,14 +975,18 @@ typedef struct {
   int32_T sfEvent;                     /* '<Root>/MATLAB Function2' */
   int32_T sfEvent_g;                   /* '<Root>/MATLAB Function' */
   uint32_T HILInitialize_POSortedChans[2];/* '<S8>/HIL Initialize' */
-  int_T Integrator1_IWORK;             /* '<S14>/Integrator1' */
-  int_T Integrator1_IWORK_i;           /* '<S15>/Integrator1' */
-  int_T Integrator1_IWORK_g;           /* '<S10>/Integrator1' */
-  int_T Integrator1_IWORK_d;           /* '<S11>/Integrator1' */
-  int_T Integrator1_IWORK_gg;          /* '<S12>/Integrator1' */
-  int_T Integrator1_IWORK_l;           /* '<S13>/Integrator1' */
+  int_T Integrator1_IWORK;             /* '<S15>/Integrator1' */
+  int_T Integrator1_IWORK_i;           /* '<S16>/Integrator1' */
+  int_T Integrator1_IWORK_g;           /* '<S11>/Integrator1' */
+  int_T Integrator1_IWORK_d;           /* '<S12>/Integrator1' */
+  int_T Integrator1_IWORK_gg;          /* '<S13>/Integrator1' */
+  int_T Integrator1_IWORK_l;           /* '<S14>/Integrator1' */
+  struct {
+    int_T PrevIndex;
+  } FromWorkspace_IWORK;               /* '<Root>/From Workspace' */
+
   int_T XYFigure_IWORK[2];             /* '<Root>/XY Figure' */
-  int_T Integrator1_IWORK_a;           /* '<S7>/Integrator1' */
+  int_T Integrator1_IWORK_a;           /* '<S10>/Integrator1' */
   uint8_T is_active_c4_test3;          /* '<Root>/MATLAB Function2' */
   uint8_T is_active_c2_test3;          /* '<Root>/MATLAB Function' */
   boolean_T HILInitialize_DOBits[16];  /* '<S8>/HIL Initialize' */
@@ -983,78 +994,78 @@ typedef struct {
   boolean_T Unwrap224_FirstSample;     /* '<S8>/Unwrap 2^24' */
   boolean_T Unwrap21_FirstSample;      /* '<S8>/Unwrap 2^1' */
   boolean_T XYFigure_IsFull;           /* '<Root>/XY Figure' */
-  boolean_T Unwrap21_FirstSample_o;    /* '<Root>/Unwrap 2^1' */
+  boolean_T Unwrap21_FirstSample_o;    /* '<S1>/Unwrap 2^1' */
   boolean_T doneDoubleBufferReInit;    /* '<Root>/MATLAB Function2' */
   boolean_T doneDoubleBufferReInit_g;  /* '<Root>/MATLAB Function' */
 } DW_test3_T;
 
 /* Continuous states (default storage) */
 typedef struct {
-  real_T Integrator2_CSTATE;           /* '<S10>/Integrator2' */
-  real_T Integrator1_CSTATE;           /* '<S14>/Integrator1' */
-  real_T Integrator1_CSTATE_m;         /* '<S15>/Integrator1' */
-  real_T Integrator2_CSTATE_f;         /* '<S13>/Integrator2' */
+  real_T Integrator2_CSTATE;           /* '<S11>/Integrator2' */
+  real_T Integrator1_CSTATE;           /* '<S15>/Integrator1' */
+  real_T Integrator1_CSTATE_m;         /* '<S16>/Integrator1' */
+  real_T Integrator2_CSTATE_f;         /* '<S14>/Integrator2' */
   real_T Integrator_CSTATE;            /* '<S8>/Integrator' */
-  real_T Integrator1_CSTATE_p;         /* '<S10>/Integrator1' */
-  real_T Integrator1_CSTATE_h;         /* '<S11>/Integrator1' */
-  real_T Integrator2_CSTATE_i;         /* '<S11>/Integrator2' */
-  real_T Integrator1_CSTATE_b;         /* '<S12>/Integrator1' */
-  real_T Integrator2_CSTATE_c;         /* '<S12>/Integrator2' */
-  real_T Integrator1_CSTATE_n;         /* '<S13>/Integrator1' */
-  real_T Integrator2_CSTATE_m;         /* '<S14>/Integrator2' */
-  real_T Integrator2_CSTATE_b;         /* '<S15>/Integrator2' */
-  real_T Integrator5_CSTATE;           /* '<S3>/Integrator5' */
-  real_T Integrator6_CSTATE;           /* '<S4>/Integrator6' */
-  real_T Integrator3_CSTATE;           /* '<Root>/Integrator3' */
+  real_T Integrator1_CSTATE_p;         /* '<S11>/Integrator1' */
+  real_T Integrator1_CSTATE_h;         /* '<S12>/Integrator1' */
+  real_T Integrator2_CSTATE_i;         /* '<S12>/Integrator2' */
+  real_T Integrator1_CSTATE_b;         /* '<S13>/Integrator1' */
+  real_T Integrator2_CSTATE_c;         /* '<S13>/Integrator2' */
+  real_T Integrator1_CSTATE_n;         /* '<S14>/Integrator1' */
+  real_T Integrator2_CSTATE_m;         /* '<S15>/Integrator2' */
+  real_T Integrator2_CSTATE_b;         /* '<S16>/Integrator2' */
+  real_T Integrator5_CSTATE;           /* '<S4>/Integrator5' */
+  real_T Integrator6_CSTATE;           /* '<S5>/Integrator6' */
+  real_T Integrator3_CSTATE;           /* '<S1>/Integrator3' */
   real_T Integrator1_CSTATE_ng;        /* '<S9>/Integrator1' */
-  real_T Integrator1_CSTATE_me;        /* '<S7>/Integrator1' */
-  real_T Integrator2_CSTATE_k;         /* '<S7>/Integrator2' */
+  real_T Integrator1_CSTATE_me;        /* '<S10>/Integrator1' */
+  real_T Integrator2_CSTATE_k;         /* '<S10>/Integrator2' */
 } X_test3_T;
 
 /* State derivatives (default storage) */
 typedef struct {
-  real_T Integrator2_CSTATE;           /* '<S10>/Integrator2' */
-  real_T Integrator1_CSTATE;           /* '<S14>/Integrator1' */
-  real_T Integrator1_CSTATE_m;         /* '<S15>/Integrator1' */
-  real_T Integrator2_CSTATE_f;         /* '<S13>/Integrator2' */
+  real_T Integrator2_CSTATE;           /* '<S11>/Integrator2' */
+  real_T Integrator1_CSTATE;           /* '<S15>/Integrator1' */
+  real_T Integrator1_CSTATE_m;         /* '<S16>/Integrator1' */
+  real_T Integrator2_CSTATE_f;         /* '<S14>/Integrator2' */
   real_T Integrator_CSTATE;            /* '<S8>/Integrator' */
-  real_T Integrator1_CSTATE_p;         /* '<S10>/Integrator1' */
-  real_T Integrator1_CSTATE_h;         /* '<S11>/Integrator1' */
-  real_T Integrator2_CSTATE_i;         /* '<S11>/Integrator2' */
-  real_T Integrator1_CSTATE_b;         /* '<S12>/Integrator1' */
-  real_T Integrator2_CSTATE_c;         /* '<S12>/Integrator2' */
-  real_T Integrator1_CSTATE_n;         /* '<S13>/Integrator1' */
-  real_T Integrator2_CSTATE_m;         /* '<S14>/Integrator2' */
-  real_T Integrator2_CSTATE_b;         /* '<S15>/Integrator2' */
-  real_T Integrator5_CSTATE;           /* '<S3>/Integrator5' */
-  real_T Integrator6_CSTATE;           /* '<S4>/Integrator6' */
-  real_T Integrator3_CSTATE;           /* '<Root>/Integrator3' */
+  real_T Integrator1_CSTATE_p;         /* '<S11>/Integrator1' */
+  real_T Integrator1_CSTATE_h;         /* '<S12>/Integrator1' */
+  real_T Integrator2_CSTATE_i;         /* '<S12>/Integrator2' */
+  real_T Integrator1_CSTATE_b;         /* '<S13>/Integrator1' */
+  real_T Integrator2_CSTATE_c;         /* '<S13>/Integrator2' */
+  real_T Integrator1_CSTATE_n;         /* '<S14>/Integrator1' */
+  real_T Integrator2_CSTATE_m;         /* '<S15>/Integrator2' */
+  real_T Integrator2_CSTATE_b;         /* '<S16>/Integrator2' */
+  real_T Integrator5_CSTATE;           /* '<S4>/Integrator5' */
+  real_T Integrator6_CSTATE;           /* '<S5>/Integrator6' */
+  real_T Integrator3_CSTATE;           /* '<S1>/Integrator3' */
   real_T Integrator1_CSTATE_ng;        /* '<S9>/Integrator1' */
-  real_T Integrator1_CSTATE_me;        /* '<S7>/Integrator1' */
-  real_T Integrator2_CSTATE_k;         /* '<S7>/Integrator2' */
+  real_T Integrator1_CSTATE_me;        /* '<S10>/Integrator1' */
+  real_T Integrator2_CSTATE_k;         /* '<S10>/Integrator2' */
 } XDot_test3_T;
 
 /* State disabled  */
 typedef struct {
-  boolean_T Integrator2_CSTATE;        /* '<S10>/Integrator2' */
-  boolean_T Integrator1_CSTATE;        /* '<S14>/Integrator1' */
-  boolean_T Integrator1_CSTATE_m;      /* '<S15>/Integrator1' */
-  boolean_T Integrator2_CSTATE_f;      /* '<S13>/Integrator2' */
+  boolean_T Integrator2_CSTATE;        /* '<S11>/Integrator2' */
+  boolean_T Integrator1_CSTATE;        /* '<S15>/Integrator1' */
+  boolean_T Integrator1_CSTATE_m;      /* '<S16>/Integrator1' */
+  boolean_T Integrator2_CSTATE_f;      /* '<S14>/Integrator2' */
   boolean_T Integrator_CSTATE;         /* '<S8>/Integrator' */
-  boolean_T Integrator1_CSTATE_p;      /* '<S10>/Integrator1' */
-  boolean_T Integrator1_CSTATE_h;      /* '<S11>/Integrator1' */
-  boolean_T Integrator2_CSTATE_i;      /* '<S11>/Integrator2' */
-  boolean_T Integrator1_CSTATE_b;      /* '<S12>/Integrator1' */
-  boolean_T Integrator2_CSTATE_c;      /* '<S12>/Integrator2' */
-  boolean_T Integrator1_CSTATE_n;      /* '<S13>/Integrator1' */
-  boolean_T Integrator2_CSTATE_m;      /* '<S14>/Integrator2' */
-  boolean_T Integrator2_CSTATE_b;      /* '<S15>/Integrator2' */
-  boolean_T Integrator5_CSTATE;        /* '<S3>/Integrator5' */
-  boolean_T Integrator6_CSTATE;        /* '<S4>/Integrator6' */
-  boolean_T Integrator3_CSTATE;        /* '<Root>/Integrator3' */
+  boolean_T Integrator1_CSTATE_p;      /* '<S11>/Integrator1' */
+  boolean_T Integrator1_CSTATE_h;      /* '<S12>/Integrator1' */
+  boolean_T Integrator2_CSTATE_i;      /* '<S12>/Integrator2' */
+  boolean_T Integrator1_CSTATE_b;      /* '<S13>/Integrator1' */
+  boolean_T Integrator2_CSTATE_c;      /* '<S13>/Integrator2' */
+  boolean_T Integrator1_CSTATE_n;      /* '<S14>/Integrator1' */
+  boolean_T Integrator2_CSTATE_m;      /* '<S15>/Integrator2' */
+  boolean_T Integrator2_CSTATE_b;      /* '<S16>/Integrator2' */
+  boolean_T Integrator5_CSTATE;        /* '<S4>/Integrator5' */
+  boolean_T Integrator6_CSTATE;        /* '<S5>/Integrator6' */
+  boolean_T Integrator3_CSTATE;        /* '<S1>/Integrator3' */
   boolean_T Integrator1_CSTATE_ng;     /* '<S9>/Integrator1' */
-  boolean_T Integrator1_CSTATE_me;     /* '<S7>/Integrator1' */
-  boolean_T Integrator2_CSTATE_k;      /* '<S7>/Integrator2' */
+  boolean_T Integrator1_CSTATE_me;     /* '<S10>/Integrator1' */
+  boolean_T Integrator2_CSTATE_k;      /* '<S10>/Integrator2' */
 } XDis_test3_T;
 
 /* Zero-crossing (trigger) state */
@@ -1124,7 +1135,7 @@ struct P_test3_T_ {
                                         * Referenced by: '<Root>/Constant9'
                                         */
   real_T Constant_Value;               /* Expression: 0
-                                        * Referenced by: '<S18>/Constant'
+                                        * Referenced by: '<S19>/Constant'
                                         */
   real_T HILInitialize_OOTerminate;/* Expression: set_other_outputs_at_terminate
                                     * Referenced by: '<S8>/HIL Initialize'
@@ -1172,7 +1183,7 @@ struct P_test3_T_ {
                                         * Referenced by: '<S8>/Constant2'
                                         */
   real_T Integrator2_IC;               /* Expression: 0
-                                        * Referenced by: '<S10>/Integrator2'
+                                        * Referenced by: '<S11>/Integrator2'
                                         */
   real_T Unwrap22_Modulus;             /* Expression: modulus
                                         * Referenced by: '<S8>/Unwrap 2^2'
@@ -1181,7 +1192,7 @@ struct P_test3_T_ {
                                         * Referenced by: '<S8>/Constant8'
                                         */
   real_T Integrator2_IC_l;             /* Expression: 0
-                                        * Referenced by: '<S13>/Integrator2'
+                                        * Referenced by: '<S14>/Integrator2'
                                         */
   real_T Constant1_Value;              /* Expression: 1
                                         * Referenced by: '<S8>/Constant1'
@@ -1217,61 +1228,61 @@ struct P_test3_T_ {
                                         * Referenced by: '<S8>/Integrator'
                                         */
   real_T Constant_Value_h;             /* Expression: 2
-                                        * Referenced by: '<S10>/Constant'
+                                        * Referenced by: '<S11>/Constant'
                                         */
   real_T Unwrap224_Modulus;            /* Expression: modulus
                                         * Referenced by: '<S8>/Unwrap 2^24'
                                         */
   real_T Constant_Value_l;             /* Expression: 2
-                                        * Referenced by: '<S11>/Constant'
-                                        */
-  real_T Integrator2_IC_j;             /* Expression: 0
-                                        * Referenced by: '<S11>/Integrator2'
-                                        */
-  real_T Constant_Value_i;             /* Expression: 2
                                         * Referenced by: '<S12>/Constant'
                                         */
-  real_T Integrator2_IC_d;             /* Expression: 0
+  real_T Integrator2_IC_j;             /* Expression: 0
                                         * Referenced by: '<S12>/Integrator2'
                                         */
-  real_T Constant_Value_e;             /* Expression: 2
+  real_T Constant_Value_i;             /* Expression: 2
                                         * Referenced by: '<S13>/Constant'
+                                        */
+  real_T Integrator2_IC_d;             /* Expression: 0
+                                        * Referenced by: '<S13>/Integrator2'
+                                        */
+  real_T Constant_Value_e;             /* Expression: 2
+                                        * Referenced by: '<S14>/Constant'
                                         */
   real_T Unwrap21_Modulus;             /* Expression: modulus
                                         * Referenced by: '<S8>/Unwrap 2^1'
                                         */
   real_T Constant_Value_j;             /* Expression: 2
-                                        * Referenced by: '<S14>/Constant'
-                                        */
-  real_T Integrator2_IC_n;             /* Expression: 0
-                                        * Referenced by: '<S14>/Integrator2'
-                                        */
-  real_T Constant_Value_n;             /* Expression: 2
                                         * Referenced by: '<S15>/Constant'
                                         */
-  real_T Integrator2_IC_h;             /* Expression: 0
+  real_T Integrator2_IC_n;             /* Expression: 0
                                         * Referenced by: '<S15>/Integrator2'
                                         */
+  real_T Constant_Value_n;             /* Expression: 2
+                                        * Referenced by: '<S16>/Constant'
+                                        */
+  real_T Integrator2_IC_h;             /* Expression: 0
+                                        * Referenced by: '<S16>/Integrator2'
+                                        */
   real_T Gain1_Gain;                   /* Expression: 1/(4*720)
-                                        * Referenced by: '<S16>/Gain1'
+                                        * Referenced by: '<S17>/Gain1'
                                         */
   real_T Gain4_Gain;                   /* Expression: (13*19)/(70*37)
-                                        * Referenced by: '<S16>/Gain4'
+                                        * Referenced by: '<S17>/Gain4'
                                         */
   real_T Gain2_Gain;                   /* Expression: 2*pi
-                                        * Referenced by: '<S16>/Gain2'
+                                        * Referenced by: '<S17>/Gain2'
                                         */
   real_T Gain3_Gain;                   /* Expression: 0.033
-                                        * Referenced by: '<S16>/Gain3'
+                                        * Referenced by: '<S17>/Gain3'
                                         */
   real_T Integrator5_IC;               /* Expression: 0
-                                        * Referenced by: '<S3>/Integrator5'
+                                        * Referenced by: '<S4>/Integrator5'
                                         */
   real_T Integrator6_IC;               /* Expression: 0
-                                        * Referenced by: '<S4>/Integrator6'
+                                        * Referenced by: '<S5>/Integrator6'
                                         */
   real_T Integrator3_IC;               /* Expression: 0
-                                        * Referenced by: '<Root>/Integrator3'
+                                        * Referenced by: '<S1>/Integrator3'
                                         */
   real_T commandsaturation_UpperSat;   /* Expression: 0.8
                                         * Referenced by: '<S9>/command saturation'
@@ -1316,19 +1327,19 @@ struct P_test3_T_ {
                                         * Referenced by: '<S8>/Steering Bias'
                                         */
   real_T Constant7_Value_o;            /* Expression: 1
-                                        * Referenced by: '<Root>/Constant7'
+                                        * Referenced by: '<S1>/Constant7'
                                         */
   real_T Constant8_Value_g;            /* Expression: 25
-                                        * Referenced by: '<Root>/Constant8'
+                                        * Referenced by: '<S1>/Constant8'
                                         */
   real_T Constant_Value_p;             /* Expression: 2
-                                        * Referenced by: '<S7>/Constant'
+                                        * Referenced by: '<S10>/Constant'
                                         */
   real_T Unwrap21_Modulus_p;           /* Expression: modulus
-                                        * Referenced by: '<Root>/Unwrap 2^1'
+                                        * Referenced by: '<S1>/Unwrap 2^1'
                                         */
   real_T Integrator2_IC_a;             /* Expression: 0
-                                        * Referenced by: '<S7>/Integrator2'
+                                        * Referenced by: '<S10>/Integrator2'
                                         */
   real_T Kim_Gain;                     /* Expression: 0.1
                                         * Referenced by: '<S9>/Ki (% // m)  '
@@ -1669,23 +1680,24 @@ extern RT_MODEL_test3_T *const test3_M;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'test3'
- * '<S1>'   : 'test3/MATLAB Function'
- * '<S2>'   : 'test3/MATLAB Function2'
- * '<S3>'   : 'test3/PosX'
- * '<S4>'   : 'test3/PosY'
- * '<S5>'   : 'test3/Powered by QUARC'
- * '<S6>'   : 'test3/Quanser'
- * '<S7>'   : 'test3/Second-Order Low-Pass Filter1'
+ * '<S1>'   : 'test3/Filter'
+ * '<S2>'   : 'test3/MATLAB Function'
+ * '<S3>'   : 'test3/MATLAB Function2'
+ * '<S4>'   : 'test3/PosX'
+ * '<S5>'   : 'test3/PosY'
+ * '<S6>'   : 'test3/Powered by QUARC'
+ * '<S7>'   : 'test3/Quanser'
  * '<S8>'   : 'test3/basicQCarIO'
  * '<S9>'   : 'test3/speedController'
- * '<S10>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter'
- * '<S11>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter1'
- * '<S12>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter2'
- * '<S13>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter3'
- * '<S14>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter4'
- * '<S15>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter5'
- * '<S16>'  : 'test3/basicQCarIO/SpeedEstimation'
- * '<S17>'  : 'test3/basicQCarIO/SpeedEstimation1'
- * '<S18>'  : 'test3/speedController/Compare To Zero'
+ * '<S10>'  : 'test3/Filter/Second-Order Low-Pass Filter1'
+ * '<S11>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter'
+ * '<S12>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter1'
+ * '<S13>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter2'
+ * '<S14>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter3'
+ * '<S15>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter4'
+ * '<S16>'  : 'test3/basicQCarIO/Second-Order Low-Pass Filter5'
+ * '<S17>'  : 'test3/basicQCarIO/SpeedEstimation'
+ * '<S18>'  : 'test3/basicQCarIO/SpeedEstimation1'
+ * '<S19>'  : 'test3/speedController/Compare To Zero'
  */
 #endif                                 /* RTW_HEADER_test3_h_ */

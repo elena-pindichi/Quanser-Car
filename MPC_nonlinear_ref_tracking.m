@@ -9,10 +9,8 @@ load("trajectory.mat")
 
 %% Parameters
 N_pred_val = 12;        % Prediction horizon
-Q_val = 10000000;          % State weight value
 Q_val = 100;
 R_val = 2;              % Input weight value
-P_val = 1000;           % Terminal state value
 P_val = 10;
 l = 0.256;
 
