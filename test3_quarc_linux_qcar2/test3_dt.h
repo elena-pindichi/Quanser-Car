@@ -6,9 +6,9 @@
  *
  * Code generation for model "test3".
  *
- * Model version              : 15.50
+ * Model version              : 15.55
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Wed Apr 30 11:05:57 2025
+ * C source code generated on : Mon May  5 16:02:17 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -86,13 +86,13 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&test3_DW.HILInitialize_Card), 17, 0, 1 },
 
-  { (char_T *)(&test3_DW.HILRead_PWORK), 11, 0, 8 },
+  { (char_T *)(&test3_DW.HILRead_PWORK), 11, 0, 9 },
 
   { (char_T *)(&test3_DW.HILInitialize_DOStates[0]), 6, 0, 31 },
 
   { (char_T *)(&test3_DW.HILInitialize_POSortedChans[0]), 7, 0, 2 },
 
-  { (char_T *)(&test3_DW.Integrator1_IWORK), 10, 0, 9 },
+  { (char_T *)(&test3_DW.Integrator1_IWORK), 10, 0, 10 },
 
   { (char_T *)(&test3_DW.is_active_c4_test3), 3, 0, 2 },
 

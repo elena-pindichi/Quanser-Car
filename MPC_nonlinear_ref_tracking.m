@@ -8,9 +8,15 @@ import casadi.*;
 load("trajectory.mat")
 
 %% Parameters
+<<<<<<< HEAD
+N_pred_val = 12;        % Prediction horizon
+Q_val = 100;
+R_val = 2;              % Input weight value
+=======
 N_pred_val = 15;        % Prediction horizon
 Q_val = 100;
 R_val = 1;              % Input weight value
+>>>>>>> 78a51a39290575f3212cb9bd51053b451acf99a4
 P_val = 10;
 l = 0.256;
 

@@ -142,4 +142,22 @@ scatter(P(1,:), P(2,:),'filled','oblue')
 scatter(W(1,:), W(2,:),40,'filled','ored')
 
 %%
-save('trajectory.mat', 'xref', 'yref', 'dddxref', 'dddyref', 'ddxref','ddyref','dxref','dyref')
+% save('trajectory.mat', 'xref', 'yref', 'dddxref', 'dddyref', 'ddxref','ddyref','dxref','dyref')
+ref = [tt', xref', yref', dxref', dyref', ddxref', ddyref', dddxref', dddyref'];
+% xref = [tt; xref];
+% yref = [tt; yref];
+% dxref = [tt; dxref];
+% dyref = [tt; dyref];
+% ddxref = [tt; ddxref];
+% ddyref = [tt; ddyref];
+% dddxref = [tt; dddxref];
+% dddyref = [tt; dddyref];
+% 
+% save('xref.mat', 'xref');
+% save('yref.mat', 'yref');
+% save('dddxref.mat', 'dddxref');
+% save('dddyref.mat', 'dddyref');
+% save('ddxref.mat', 'ddxref');
+% save('ddyref.mat', 'ddyref');
+% save('dxref.mat', 'dxref');
+% save('dyref.mat', 'dyref');

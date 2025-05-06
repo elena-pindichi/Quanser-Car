@@ -6,9 +6,9 @@
  *
  * Code generation for model "test3".
  *
- * Model version              : 15.50
+ * Model version              : 15.55
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Wed Apr 30 11:05:57 2025
+ * C source code generated on : Mon May  5 16:02:17 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -24,10 +24,20 @@
 #include "zero_crossing_types.h"
 #include "test3_types.h"
 
+/* Used by FromWorkspace Block: '<Root>/From Workspace' */
+#ifndef rtInterpolate
+# define rtInterpolate(v1,v2,f1,f2)    (((v1)==(v2))?((double)(v1)): (((f1)*((double)(v1)))+((f2)*((double)(v2)))))
+#endif
+
+#ifndef rtRound
+# define rtRound(v)                    ( ((v) >= 0) ? floor((v) + 0.5) : ceil((v) - 0.5) )
+#endif
+
 /* A global buffer for storing error messages (defined in quanser_common library) */
 EXTERN char _rt_error_message[512];
-extern real_T rt_hypotd_snf(real_T u0, real_T u1);
 extern real_T rt_atan2d_snf(real_T u0, real_T u1);
+extern real_T rt_powd_snf(real_T u0, real_T u1);
+extern real_T rt_hypotd_snf(real_T u0, real_T u1);
 
 /* private model entry point functions */
 extern void test3_derivatives(void);
