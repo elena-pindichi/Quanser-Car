@@ -46,7 +46,7 @@ xr = t;     dxr = 1 + 0*t;     ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
 yr = st;    dyr = 0 + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Square trajectory
-n = 850;
+n = 950;
 
 side_length = 10; 
 total_points = n;
@@ -76,11 +76,11 @@ dxr = gradient(xr, 0.3);        ddxr = gradient(dxr, 0.3);      dddxr = gradient
 dyr = gradient(yr, 0.3);        ddyr = gradient(dyr, 0.3);      dddyr = gradient(ddyr, 0.3); 
    
 % Circle reference
-alpha   = 5;
-beta    = 5;
-ang     = 0.2;
-xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
-yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
+% alpha   = 5;
+% beta    = 5;
+% ang     = 0.2;
+% xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
+% yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
 
 % Spline reference
 % xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
@@ -94,7 +94,7 @@ omegar  = l * Vr .* ((dddyr.*dxr - dddxr.*dyr).*Vr.*Vr - 3 * (ddyr.*dxr - ddxr.*
 ur = [Vr; omegar];
 
 % Computing angle reference
-thetar  = atan2(dyr ./ Vr, dxr ./ Vr);
+thetar  = unwrap(atan2(dyr ./ Vr, dxr ./ Vr));
 phir    = atan((l*(ddyr.*dxr - ddxr.*dyr)) ./ Vr.^3);
 
 % Computing references on z and virtual input w
