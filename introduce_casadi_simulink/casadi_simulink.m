@@ -9,8 +9,8 @@ R_val = 1;
 
 
 Q = Q_val * eye(4);
-Q(3,3) = 10;
-Q(4,4) = 5;
+Q(3,3) = 1;
+Q(4,4) = 1;
 R = R_val * eye(2);
 
 % Define state and control symbols
@@ -56,7 +56,7 @@ thetar  = unwrap(atan2(dyr ./ Vr, dxr ./ Vr));
 phir    = atan((l*(ddyr.*dxr - ddxr.*dyr)) ./ Vr.^3);
 
 xref = [xr; yr; thetar; phir];
-xref = [0; 4; 0; 0];
+xref = [2; 3; 0; 0];
 
 % ZOH
 X0 = MX.sym('X0', n_states);
