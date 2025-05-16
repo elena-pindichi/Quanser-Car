@@ -1,7 +1,7 @@
 import casadi.*
 
-N = 12;   % Horizon time
-T = 20;  % Control intervals
+N = 12;
+T = 20;
 dt = 0.1;
 l = 0.256;
 Q_val = 100;
@@ -92,8 +92,8 @@ for k = 0 : N-1
     Uk = MX.sym(['U_' num2str(k)], n_controls);
     w = {w{:}, Uk};
     w0 = [w0; 0; 0];
-    lbw = [lbw; -1; -pi/4];
-    ubw = [ubw;  1;  pi/4];
+    lbw = [lbw; -1; -1];
+    ubw = [ubw;  1;  1];
 
     % Integrate dynamics
     Fk = F('x0', Xk, 'u', Uk);
@@ -106,8 +106,8 @@ for k = 0 : N-1
     Xk = MX.sym(['X_' num2str(k+1)], n_states);
     w = {w{:}, Xk};
     w0 = [w0; zeros(n_states,1)];
-    lbw = [lbw; -inf(n_states,1)];
-    ubw = [ubw;  inf(n_states,1)];
+    lbw = [lbw; -inf; -inf; -inf; -pi/2];
+    ubw = [ubw;  inf; inf; inf; pi/2];
 
     % Add dynamics constraint
     g = {g{:}, Xk_end - Xk};
