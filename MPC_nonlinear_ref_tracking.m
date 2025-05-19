@@ -10,19 +10,19 @@ import casadi.*;
 load("trajectory.mat")
 
 %% Parameters
-N_pred_val = 12;        % Prediction horizon
+N_pred_val = 12;   
 Q_val = 100;
-R_val = 2;              % Input weight value
+R_val = 2;              
 P_val = 10;
 l = 0.256;
 
 % Define prediction and simulation steps
 Ts = 0.1;                           % Sampling time
 Npred = N_pred_val;                 % Prediction horizon
-Nsim = 900;                        % Number of simulation steps
+Nsim = 900;                         % Number of simulation steps
 
 % Define system dimensions
-dx = 4;              % State dimensions: x, y, theta
+dx = 4;              % State dimensions: x, y, theta, phi
 du = 2;              % Control dimensions: V, omega
 
 % Initial condition and references
@@ -37,7 +37,7 @@ t = 0 : 0.1 : 100;
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
 [xref, uref] = reference(1, t);
 
-%% Constraints 
+%% Constraints values
 Vmin = -1; Vmax = 1;             % Velocity limits
 omegamin = -1; omegamax = 1;     % Angular velocity limits
 phimax = pi/2;                   % Front wheels orientation limits

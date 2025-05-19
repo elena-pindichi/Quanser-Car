@@ -75,31 +75,31 @@ for k = 0 : N-1
     lbw = [lbw; -inf; -inf];
     ubw = [ubw;  inf;  inf];
 
-    % M = LinMatrix(Xk(3:4), Delta, l);
-    % Uk = M^(-1) * Wk;
+    M = LinMatrix(Xk(3:4), Delta, l);
+    Uk = M^(-1) * Wk;
 
     % Integrate dynamics
-    % Fk = F('x0', Xk, 'u', Uk);
-    % Xk_end = Fk.xf;
+    Fk = F('x0', Xk, 'u', Uk);
+    Xk_end = Fk.xf;
 
-    % Zk_end = LinOutput(Xk_end, Delta, l);
-    Zk_end = A * Zk + B * Wk;
+    Zk_end = LinOutput(Xk_end, Delta, l);
+    % Zk_end = A * Zk + B * Wk;
 
     % Cost function: tracking + control effort
     J = J + (Zk - zref)' * Q * (Zk - zref) + Wk' * R * Wk;
 
     % New state variable
-    % Xk = MX.sym(['X_' num2str(k+1)], n_states);
-    % w = {w{:}, Xk};
-    % w0 = [w0; zeros(n_states,1)];
-    % lbw = [lbw; -inf; -inf; -inf; -inf];
-    % ubw = [ubw;  inf; inf; inf; inf];
-    % Zk = LinOutput(Xk, Delta, l);
-    Zk = MX.sym(['Z_' num2str(k+1)], 2);
-    w = {w{:}, Zk};
-    w0 = [w0; zeros(2,1)];
-    lbw = [lbw; -inf; -inf];
-    ubw = [ubw;  inf; inf];
+    Xk = MX.sym(['X_' num2str(k+1)], n_states);
+    w = {w{:}, Xk};
+    w0 = [w0; zeros(n_states,1)];
+    lbw = [lbw; -inf; -inf; -inf; -inf];
+    ubw = [ubw;  inf; inf; inf; inf];
+    Zk = LinOutput(Xk, Delta, l);
+    % Zk = MX.sym(['Z_' num2str(k+1)], 2);
+    % w = {w{:}, Zk};
+    % w0 = [w0; zeros(2,1)];
+    % lbw = [lbw; -inf; -inf];
+    % ubw = [ubw;  inf; inf];
 
     % Add dynamics constraint
     g = {g{:}, Zk_end - A * Zk - B * Wk, Wk' * Wk};

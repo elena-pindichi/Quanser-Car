@@ -4,20 +4,20 @@ addpath(genpath('tools'))
 load("trajectory.mat")
 
 %% Parameters
-N_pred_val = 5;                      % Prediction horizon
-Q_val = 30;                          % State weight value
-R_val = 1;                           % Input weight value
-P_val = 10;                         % Terminal state value
+N_pred_val = 5;                      
+Q_val = 30;                          
+R_val = 1;                           
+P_val = 10;                         
 l = 0.256;                           % Length between front and rear
 Delta = 0.35;                        % Distance in front of the car
 
 % Define prediction and simulation steps
 Ts = 0.1;                            % Sampling time
 Npred = N_pred_val;                  % Prediction horizon
-Nsim =  900;                          % Number of simulation steps
+Nsim =  900;                         % Number of simulation steps
 
 % Define system dimensions
-dx = 4;                              % State dimensions: x, y, theta
+dx = 4;                              % State dimensions: x, y, theta, phi
 du = 2;                              % Control dimensions: V, omega
 dz = 2;
 
@@ -59,7 +59,7 @@ for i = 1:len
 end
 
 
-%% Constraints
+%% Weights matrices
 rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 1);
 
 % Weights for cost function
