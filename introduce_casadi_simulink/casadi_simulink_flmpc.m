@@ -1,17 +1,19 @@
 clc, close all, clear;
 import casadi.*
 
-N = 12;
+N = 5;
 T = 20;
 dt = 0.1;
 l = 0.256;
-Q_val = 100;
+Delta = 0.35;
+Q_val = 30;
 R_val = 1;
+rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 1);
 
-Q = Q_val * eye(4);
-Q(3,3) = 1;
-Q(4,4) = 1;
+Q = Q_val * eye(2);
 R = R_val * eye(2);
+A = eye(2);
+B = dt * eye(2);
 
 % Define state and control symbols
 x = SX.sym('x');    
@@ -35,37 +37,35 @@ xdot = [v*cos(theta);
 % Define the system dynamics function
 f = Function('f', {states, controls}, {xdot});
 
-% Circle reference
-t = 0 : 0.1 : 1000;
-alpha   = 5;
-beta    = 5;
-ang     = 0.2;
-xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
-yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
+% % Circle reference
+% t = 0 : 0.1 : 1000;
+% alpha   = 5;
+% beta    = 5;
+% ang     = 0.2;
+% xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
+% yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
+% 
+% % % % % % % % % % % % % % % % % %
+% 
+% % Computing real input reference
+% Vr      = sqrt(dxr.*dxr + dyr.*dyr);
+% omegar  = l * Vr .* ((dddyr.*dxr - dddxr.*dyr).*Vr.*Vr - 3 * (ddyr.*dxr - ddxr.*dyr) .* (dxr.*ddxr + dyr.*ddyr)) ...
+%           ./ (Vr.^6 + l*l*(ddyr.*dxr - ddxr.*dyr).^2);
+% uref = [Vr; omegar];
+% 
+% % Computing angle reference
+% thetar  = unwrap(atan2(dyr ./ Vr, dxr ./ Vr));
+% phir    = atan((l*(ddyr.*dxr - ddxr.*dyr)) ./ Vr.^3);
+% 
+% xref = [xr; yr; thetar; phir];
+xref = [10; 10; 0; 0];
+zref = LinOutput(xref, Delta, l);
 
-% % % % % % % % % % % % % % % % %
-
-% Computing real input reference
-Vr      = sqrt(dxr.*dxr + dyr.*dyr);
-omegar  = l * Vr .* ((dddyr.*dxr - dddxr.*dyr).*Vr.*Vr - 3 * (ddyr.*dxr - ddxr.*dyr) .* (dxr.*ddxr + dyr.*ddyr)) ...
-          ./ (Vr.^6 + l*l*(ddyr.*dxr - ddxr.*dyr).^2);
-uref = [Vr; omegar];
-
-% Computing angle reference
-thetar  = unwrap(atan2(dyr ./ Vr, dxr ./ Vr));
-phir    = atan((l*(ddyr.*dxr - ddxr.*dyr)) ./ Vr.^3);
-
-xref = [xr; yr; thetar; phir];
-xref = [-1; 8; 0; 0];
-% xref_traj = xref;
-% T = size(xref_traj, 2);
-% horizon_idx = mod(idx : idx + N - 1, T) + 1;
-% xr = xref_traj(:, horizon_idx);
-
-% ZOH
+% ZOH for dynamics
 X0 = MX.sym('X0', n_states);
 U = MX.sym('U', n_controls);
 X = X0;
+Z0 = LinOutput(X0, Delta, l);
 
 F = Function('F', {X0, U}, {X0 + dt*f(X0, U)}, {'x0','u'}, {'xf'});
 
@@ -77,7 +77,7 @@ ubw = [];   % Upper bounds
 g = {};     % Constraints
 lbg = [];
 ubg = [];
-J = 0;      % Cost
+J = 0;
 
 % Initial state
 Xk = MX.sym('X0', n_states);
@@ -85,38 +85,41 @@ w = {w{:}, Xk};
 w0 = [w0; zeros(n_states,1)];
 lbw = [lbw; zeros(n_states,1)];
 ubw = [ubw; zeros(n_states,1)];
+Zk = LinOutput(Xk, Delta, l);
 
 % Formulate optimization problem
 for k = 0 : N-1
-    % Reference at time k
-    % x_ref = xr(:,k+1);
-    x_ref = xref;
-
     % Control variable
-    Uk = MX.sym(['U_' num2str(k)], n_controls);
-    w = {w{:}, Uk};
+    Wk = MX.sym(['W_' num2str(k)], n_controls);
+    w = {w{:}, Wk};
     w0 = [w0; 0; 0];
-    lbw = [lbw; -1; -1];
-    ubw = [ubw;  1;  1];
+    lbw = [lbw; -inf; -inf];
+    ubw = [ubw;  inf;  inf];
+
+    M = LinMatrix(Xk(3:4), Delta, l);
+    Uk = M^(-1) * Wk;
 
     % Integrate dynamics
     Fk = F('x0', Xk, 'u', Uk);
     Xk_end = Fk.xf;
 
+    Zk_end = LinOutput(Xk_end, Delta, l);
+
     % Cost function: tracking + control effort
-    J = J + (Xk - x_ref)' * Q * (Xk - x_ref) + Uk' * R * Uk;
+    J = J + (Zk - zref)' * Q * (Zk - zref) + Wk' * R * Wk;
 
     % New state variable
     Xk = MX.sym(['X_' num2str(k+1)], n_states);
     w = {w{:}, Xk};
     w0 = [w0; zeros(n_states,1)];
-    lbw = [lbw; -inf; -inf; -inf; -pi/2];
-    ubw = [ubw;  inf; inf; inf; pi/2];
+    lbw = [lbw; -inf; -inf; -inf; -inf];
+    ubw = [ubw;  inf; inf; inf; inf];
+    Zk = LinOutput(Xk, Delta, l);
 
     % Add dynamics constraint
-    g = {g{:}, Xk_end - Xk};
-    lbg = [lbg; zeros(n_states,1)];
-    ubg = [ubg; zeros(n_states,1)];
+    g = {g{:}, Zk_end - A * Zk - B * Wk, Wk' * Wk};
+    lbg = [lbg; zeros(2,1); -inf];
+    ubg = [ubg; zeros(2,1); rhat];
 end
 
 % NLP setup
@@ -150,3 +153,20 @@ lib_path = GlobalOptions.getCasadiPath();
 mex('-v',['-I' inc_path],['-L' lib_path],'-lcasadi', 'casadi_fun.c')
 
 disp("MPC function compiled and saved.")
+
+function z = LinOutput(q,Delta,L)
+z = [q(1)+L*cos(q(3))+Delta*cos(q(3)+q(4));
+     q(2)+L*sin(q(3))+Delta*sin(q(3)+q(4))];
+end
+
+function M = LinMatrix(eta, Delta, L)
+s1 = sin(eta(1)+eta(2)); c1 = cos(eta(1)+eta(2)); 
+M = [cos(eta(1))-tan(eta(2))*(sin(eta(1))+Delta*s1/L), -Delta*s1;
+     sin(eta(1))+tan(eta(2))*(cos(eta(1))+Delta*c1/L),  Delta*c1];
+end
+
+function O = LinDyna(eta,L,Delta)
+s1 = sin(eta(1)+eta(2)); c1 = cos(eta(1)+eta(2)); 
+O = [sin(eta(2))*c1/L,             sin(eta(2))*s1/L;
+    -sin(eta(2))*c1/L-s1/Delta,    -sin(eta(2))*s1/L-c1/Delta];
+end
