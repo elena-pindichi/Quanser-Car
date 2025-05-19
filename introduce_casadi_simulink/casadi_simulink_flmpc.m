@@ -37,27 +37,6 @@ xdot = [v*cos(theta);
 % Define the system dynamics function
 f = Function('f', {states, controls}, {xdot});
 
-% % Circle reference
-% t = 0 : 0.1 : 1000;
-% alpha   = 5;
-% beta    = 5;
-% ang     = 0.2;
-% xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
-% yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
-% 
-% % % % % % % % % % % % % % % % % %
-% 
-% % Computing real input reference
-% Vr      = sqrt(dxr.*dxr + dyr.*dyr);
-% omegar  = l * Vr .* ((dddyr.*dxr - dddxr.*dyr).*Vr.*Vr - 3 * (ddyr.*dxr - ddxr.*dyr) .* (dxr.*ddxr + dyr.*ddyr)) ...
-%           ./ (Vr.^6 + l*l*(ddyr.*dxr - ddxr.*dyr).^2);
-% uref = [Vr; omegar];
-% 
-% % Computing angle reference
-% thetar  = unwrap(atan2(dyr ./ Vr, dxr ./ Vr));
-% phir    = atan((l*(ddyr.*dxr - ddxr.*dyr)) ./ Vr.^3);
-% 
-% xref = [xr; yr; thetar; phir];
 xref = [10; 10; 0; 0];
 zref = LinOutput(xref, Delta, l);
 
@@ -96,25 +75,31 @@ for k = 0 : N-1
     lbw = [lbw; -inf; -inf];
     ubw = [ubw;  inf;  inf];
 
-    M = LinMatrix(Xk(3:4), Delta, l);
-    Uk = M^(-1) * Wk;
+    % M = LinMatrix(Xk(3:4), Delta, l);
+    % Uk = M^(-1) * Wk;
 
     % Integrate dynamics
-    Fk = F('x0', Xk, 'u', Uk);
-    Xk_end = Fk.xf;
+    % Fk = F('x0', Xk, 'u', Uk);
+    % Xk_end = Fk.xf;
 
-    Zk_end = LinOutput(Xk_end, Delta, l);
+    % Zk_end = LinOutput(Xk_end, Delta, l);
+    Zk_end = A * Zk + B * Wk;
 
     % Cost function: tracking + control effort
     J = J + (Zk - zref)' * Q * (Zk - zref) + Wk' * R * Wk;
 
     % New state variable
-    Xk = MX.sym(['X_' num2str(k+1)], n_states);
-    w = {w{:}, Xk};
-    w0 = [w0; zeros(n_states,1)];
-    lbw = [lbw; -inf; -inf; -inf; -inf];
-    ubw = [ubw;  inf; inf; inf; inf];
-    Zk = LinOutput(Xk, Delta, l);
+    % Xk = MX.sym(['X_' num2str(k+1)], n_states);
+    % w = {w{:}, Xk};
+    % w0 = [w0; zeros(n_states,1)];
+    % lbw = [lbw; -inf; -inf; -inf; -inf];
+    % ubw = [ubw;  inf; inf; inf; inf];
+    % Zk = LinOutput(Xk, Delta, l);
+    Zk = MX.sym(['Z_' num2str(k+1)], 2);
+    w = {w{:}, Zk};
+    w0 = [w0; zeros(2,1)];
+    lbw = [lbw; -inf; -inf];
+    ubw = [ubw;  inf; inf];
 
     % Add dynamics constraint
     g = {g{:}, Zk_end - A * Zk - B * Wk, Wk' * Wk};
@@ -147,7 +132,7 @@ mpc_fun = Function('mpc_fun', {s0}, {sol_sym.x(n_states+1:n_states+2)});
 % Save to file
 mpc_fun.save('mpc_fun.casadi');
 
-% (Optional) Compile the function using CasADi C interface
+% Compile the function using CasADi C interface
 inc_path = GlobalOptions.getCasadiIncludePath();
 lib_path = GlobalOptions.getCasadiPath();
 mex('-v',['-I' inc_path],['-L' lib_path],'-lcasadi', 'casadi_fun.c')

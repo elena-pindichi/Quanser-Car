@@ -2,6 +2,8 @@ clc; close all; clear;
 
 % Load CasADi
 addpath('C:\Users\pindiche\Documents\MATLAB\casadi-3.6.7-windows64-matlab2018b\')
+setenv('PATH', [getenv('PATH') ';' 'C:\Users\pindiche\Documents\MATLAB\casadi-3.6.7-windows64-matlab2018b\'])
+
 % addpath('C:\Users\Elena\Documents\MATLAB\casadi-3.6.6-windows64-matlab2018b\')
 % addpath('C:\Users\bajdus\Documents\Qcar2\Collision-Avoidance-Algorithm\SteeringWheelRobot\casadi-3.6.7-windows64-matlab2018b\')
 import casadi.*;
@@ -9,18 +11,15 @@ load("trajectory.mat")
 
 %% Parameters
 N_pred_val = 12;        % Prediction horizon
-N_pred_val = 7;
 Q_val = 100;
-% Q_val = 100;
-R_val = 1;              % Input weight value
+R_val = 2;              % Input weight value
 P_val = 10;
 l = 0.256;
 
 % Define prediction and simulation steps
 Ts = 0.1;                           % Sampling time
-Ts = 0.1;
 Npred = N_pred_val;                 % Prediction horizon
-Nsim = 700;                        % Number of simulation steps
+Nsim = 900;                        % Number of simulation steps
 
 % Define system dimensions
 dx = 4;              % State dimensions: x, y, theta
@@ -32,8 +31,8 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Time
-t = 0 : 0.01 : 5000;
-t = 0 : 0.1 : 100;
+% t = 0 : 0.01 : 500;
+t = 0 : 0.1 : 1000;
 
 % % % % % % % % % % % % % % % % % 
 % Line reference
@@ -43,7 +42,7 @@ xr = alpha * t;     dxr = alpha + 0*t;    ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
 yr = beta * t;      dyr = beta + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
 
 % Square trajectory
-n = 2000;
+n = 950;
 
 side_length = 10; 
 total_points = n;
@@ -72,11 +71,6 @@ yr(3*quarter+1:end) = linspace(side_length, 0, n - 3*quarter);
 dxr = gradient(xr, 0.1);        ddxr = gradient(dxr, 0.1);      dddxr = gradient(ddxr, 0.1);   
 dyr = gradient(yr, 0.1);        ddyr = gradient(dyr, 0.1);      dddyr = gradient(ddyr, 0.1); 
 
-% Stairs trajectory
-% st = zeros(1,length(t))+[2*ones(1, 100), 5*ones(1,300), 4*ones(1, length(t)-400)];
-% xr = t;     dxr = 1 + 0*t;     ddxr = 0 + 0*t;   dddxr = 0 + 0*t;
-% yr = st;    dyr = 0 + 0*t;     ddyr = 0 + 0*t;   dddyr = 0 + 0*t;
-
 % Circle reference
 % alpha   = 5;
 % beta    = 5;
@@ -96,7 +90,7 @@ omegar  = l * Vr .* ((dddyr.*dxr - dddxr.*dyr).*Vr.*Vr - 3 * (ddyr.*dxr - ddxr.*
 uref = [Vr; omegar];
 
 % Computing angle reference
-thetar  = atan2(dyr ./ Vr, dxr ./ Vr);
+thetar  = unwrap(atan2(dyr ./ Vr, dxr ./ Vr));
 phir    = atan((l*(ddyr.*dxr - ddxr.*dyr)) ./ Vr.^3);
 
 xref = [xr; yr; thetar; phir];
@@ -201,7 +195,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dx * Nsim))
 
 %% Plot results
-folder = 'C:\Users\pindiche\Desktop\ObstacleAvoidance\pics\comparison\Square\SamplingTime'; 
+% folder = 'C:\Users\pindiche\Desktop\ObstacleAvoidance\pics\comparison\Circle\Weights'; 
 
 figure
 plot((1:Nsim)*Ts,err(1,:))
@@ -211,9 +205,9 @@ legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
-filename = sprintf('%dNMPC_err.png', Ts);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dNMPC_err.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 subplot(4,1,1)
@@ -260,9 +254,9 @@ ylabel('x_4')
 title('Simulation and reference for \phi_{state}')
 grid
 
-filename = sprintf('%dNMPC_state.png', Ts);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dNMPC_state.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 plot(xsim(1,:),xsim(2,:))
@@ -285,9 +279,9 @@ plot(uref(2, 1:Nsim), '--')
 legend('\omega')
 grid
 
-filename = sprintf('%dNMPC_input.png', Ts);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dNMPC_input.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 hold on
@@ -306,6 +300,9 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 
-filename = sprintf('%dNMPC_carpos.png', Ts);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dNMPC_carpos.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
+
+
+function []

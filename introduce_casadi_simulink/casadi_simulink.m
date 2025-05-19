@@ -144,7 +144,7 @@ mpc_fun = Function('mpc_fun', {s0}, {sol_sym.x(n_states+1:n_states+2)});
 % Save to file
 mpc_fun.save('mpc_fun.casadi');
 
-% (Optional) Compile the function using CasADi C interface
+% Compile the function using CasADi C interface
 inc_path = GlobalOptions.getCasadiIncludePath();
 lib_path = GlobalOptions.getCasadiPath();
 mex('-v',['-I' inc_path],['-L' lib_path],'-lcasadi', 'casadi_fun.c')
