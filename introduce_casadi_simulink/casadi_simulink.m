@@ -36,26 +36,26 @@ xdot = [v*cos(theta);
 f = Function('f', {states, controls}, {xdot});
 
 % Circle reference
-t = 0 : 0.1 : 1000;
-alpha   = 5;
-beta    = 5;
-ang     = 0.2;
-xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
-yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
-
-% % % % % % % % % % % % % % % % %
-
-% Computing real input reference
-Vr      = sqrt(dxr.*dxr + dyr.*dyr);
-omegar  = l * Vr .* ((dddyr.*dxr - dddxr.*dyr).*Vr.*Vr - 3 * (ddyr.*dxr - ddxr.*dyr) .* (dxr.*ddxr + dyr.*ddyr)) ...
-          ./ (Vr.^6 + l*l*(ddyr.*dxr - ddxr.*dyr).^2);
-uref = [Vr; omegar];
-
-% Computing angle reference
-thetar  = unwrap(atan2(dyr ./ Vr, dxr ./ Vr));
-phir    = atan((l*(ddyr.*dxr - ddxr.*dyr)) ./ Vr.^3);
-
-xref = [xr; yr; thetar; phir];
+% t = 0 : 0.1 : 1000;
+% alpha   = 5;
+% beta    = 5;
+% ang     = 0.2;
+% xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
+% yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
+% 
+% % % % % % % % % % % % % % % % % %
+% 
+% % Computing real input reference
+% Vr      = sqrt(dxr.*dxr + dyr.*dyr);
+% omegar  = l * Vr .* ((dddyr.*dxr - dddxr.*dyr).*Vr.*Vr - 3 * (ddyr.*dxr - ddxr.*dyr) .* (dxr.*ddxr + dyr.*ddyr)) ...
+%           ./ (Vr.^6 + l*l*(ddyr.*dxr - ddxr.*dyr).^2);
+% uref = [Vr; omegar];
+% 
+% % Computing angle reference
+% thetar  = unwrap(atan2(dyr ./ Vr, dxr ./ Vr));
+% phir    = atan((l*(ddyr.*dxr - ddxr.*dyr)) ./ Vr.^3);
+% 
+% xref = [xr; yr; thetar; phir];
 xref = [-1; 8; 0; 0];
 % xref_traj = xref;
 % T = size(xref_traj, 2);

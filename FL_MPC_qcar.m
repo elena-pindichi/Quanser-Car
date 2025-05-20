@@ -32,7 +32,7 @@ u0 = zeros(du, 1);
 t = 0 : 0.01 : 500;
 t = 0 : 0.1 : 1000;
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-[xref, uref] = reference(1, t);
+[xref, uref] = reference(3, t);
 
 xr = xref(1, :);
 yr = xref(2, :);
@@ -150,7 +150,7 @@ for i = 1 : Nsim
 
     solver.set_value(zref_param, zref(:, i:i+Npred))
     solver.set_value(wref_param, wref(:, i:i+Npred))
-    solver.set_value(etaref_param, etaref(:, i:i+Npred))
+    % solver.set_value(etaref_param, etaref(:, i:i+Npred))
 
     t1 = tic;
     sol = solver.solve();
