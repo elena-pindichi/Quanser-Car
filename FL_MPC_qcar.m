@@ -11,8 +11,13 @@ P_val       = 10;
 l           = 0.256;                 % Length between front and rear
 Delta       = 0.35;                  % Distance in front of the car
 
+
+N_pred_val  = 8;                      
+Q_val       = 60; 
+Ts          = 0.1;
+
 % Define prediction and simulation steps
-Ts      = 0.1;                       % Sampling time
+% Ts      = 0.1;                       % Sampling time
 Npred   = N_pred_val;                % Prediction horizon
 
 % Define system dimensions
@@ -28,7 +33,7 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-[xref, uref, Nsim] = reference(2);
+[xref, uref, Nsim] = reference(1);
 
 xr = xref(1, :);
 yr = xref(2, :);
@@ -174,7 +179,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dz * Nsim))
 
 %% Plot results
-% folder = 'C:\Users\pindiche\Desktop\ObstacleAvoidance\pics\comparison\Circle\Weights'; 
+folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Line1\Npred'; 
 
 figure
 plot(xsim(1,:), xsim(2,:))
@@ -246,9 +251,9 @@ legend('$\varphi$','interpreter','latex')
 xlabel('time (s)')
 grid
 
-% filename = sprintf('%dFLMPC_state.png', Q_val);
-% fullpath = fullfile(folder, filename); 
-% saveas(gcf, fullpath); 
+filename = sprintf('%dFLMPC_state.png', Npred);
+fullpath = fullfile(folder, filename); 
+saveas(gcf, fullpath); 
 
 figure
 subplot(2,1,1)
@@ -266,9 +271,9 @@ legend('\omega')
 xlabel('Nsim')
 grid
 
-% filename = sprintf('%dFLMPC_input.png', Q_val);
-% fullpath = fullfile(folder, filename); 
-% saveas(gcf, fullpath); 
+filename = sprintf('%dFLMPC_input.png', Npred);
+fullpath = fullfile(folder, filename); 
+saveas(gcf, fullpath); 
 
 figure
 subplot(2,1,1)
@@ -290,9 +295,9 @@ legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
-% filename = sprintf('%dFLMPC_err.png', Q_val);
-% fullpath = fullfile(folder, filename); 
-% saveas(gcf, fullpath); 
+filename = sprintf('%dFLMPC_err.png', Npred);
+fullpath = fullfile(folder, filename); 
+saveas(gcf, fullpath); 
 
 figure
 hold on
@@ -309,9 +314,9 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 
-% filename = sprintf('%dFLMPC_carpos.png', Q_val);
-% fullpath = fullfile(folder, filename); 
-% saveas(gcf, fullpath); 
+filename = sprintf('%dFLMPC_carpos.png', Npred);
+fullpath = fullfile(folder, filename); 
+saveas(gcf, fullpath); 
 
 % figure
 % plot(U_approx)
@@ -319,10 +324,7 @@ ylabel('y (m)')
 % ylabel('y(m)')
 % title('Constraints on virtual input')
 
-%%
-% save('matrices.mat', 'Q', 'R', 'P', 'zsim', 'wsim', 'xsim', 'wref', 'ur', 'zref')
-
-
+%% Trajectory Function
 function [xref, uref, Nsim] = reference(idx)
     l = 0.256;
     Delta = 0.35;

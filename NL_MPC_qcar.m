@@ -6,12 +6,16 @@ load("trajectory.mat")
 %% Parameters
 N_pred_val  = 12;   
 Q_val       = 100;
-R_val       = 2;              
+R_val       = 1;              
 P_val       = 10;
 l           = 0.256;                % Length between front and rear
 
+N_pred_val  = 8;   
+Q_val       = 60;
+Ts          = 0.1;
+
 % Define prediction and simulation steps
-Ts    = 0.1;                        % Sampling time
+% Ts    = 0.1;                        % Sampling time
 Npred = N_pred_val;                 % Prediction horizon
 
 % Define system dimensions
@@ -118,7 +122,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dx * Nsim))
 
 %% Plot results
-% folder = 'C:\Users\pindiche\Desktop\ObstacleAvoidance\pics\comparison\Circle\Weights'; 
+folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Line1\Npred'; 
 
 figure
 plot((1:Nsim)*Ts,err(1,:))
@@ -128,9 +132,9 @@ legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
-% filename = sprintf('%dNMPC_err.png', Q_val);
-% fullpath = fullfile(folder, filename); 
-% saveas(gcf, fullpath); 
+filename = sprintf('%dNMPC_err.png', Npred);
+fullpath = fullfile(folder, filename); 
+saveas(gcf, fullpath); 
 
 figure
 subplot(4,1,1)
@@ -177,9 +181,9 @@ ylabel('x_4')
 title('Simulation and reference for \phi_{state}')
 grid
 
-% filename = sprintf('%dNMPC_state.png', Q_val);
-% fullpath = fullfile(folder, filename); 
-% saveas(gcf, fullpath); 
+filename = sprintf('%dNMPC_state.png', Npred);
+fullpath = fullfile(folder, filename); 
+saveas(gcf, fullpath); 
 
 figure
 plot(xsim(1,:),xsim(2,:))
@@ -202,9 +206,9 @@ plot(uref(2, 1:Nsim), '--')
 legend('\omega')
 grid
 
-% filename = sprintf('%dNMPC_input.png', Q_val);
-% fullpath = fullfile(folder, filename); 
-% saveas(gcf, fullpath); 
+filename = sprintf('%dNMPC_input.png', Npred);
+fullpath = fullfile(folder, filename); 
+saveas(gcf, fullpath); 
 
 figure
 hold on
@@ -223,11 +227,11 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 
-% filename = sprintf('%dNMPC_carpos.png', Q_val);
-% fullpath = fullfile(folder, filename); 
-% saveas(gcf, fullpath); 
+filename = sprintf('%dNMPC_carpos.png', Npred);
+fullpath = fullfile(folder, filename); 
+saveas(gcf, fullpath); 
 
-
+%% Trajectory Function
 function [xref, uref, Nsim] = reference(idx)
     l = 0.256;
     Delta = 0.35;
