@@ -11,13 +11,8 @@ P_val       = 10;
 l           = 0.256;                 % Length between front and rear
 Delta       = 0.35;                  % Distance in front of the car
 
-
-N_pred_val  = 8;                      
-Q_val       = 60; 
-Ts          = 0.1;
-
 % Define prediction and simulation steps
-% Ts      = 0.1;                       % Sampling time
+Ts      = 0.1;                       % Sampling time
 Npred   = N_pred_val;                % Prediction horizon
 
 % Define system dimensions
@@ -33,7 +28,7 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-[xref, uref, Nsim] = reference(1);
+[xref, uref, Nsim] = reference(4);
 
 xr = xref(1, :);
 yr = xref(2, :);
@@ -47,8 +42,6 @@ zref = [xr + l*cos(thetar) + Delta*cos(thetar + phir);
 
 etaref = [thetar; phir];
 
-% wref = zeros(2, numel(t));
-% len = numel(t);
 wref = zeros(2, length(xr));
 len = length(xr);
 for i = 1:len
@@ -179,7 +172,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dz * Nsim))
 
 %% Plot results
-folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Line1\Npred'; 
+% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Circle1\Q'; 
 
 figure
 plot(xsim(1,:), xsim(2,:))
@@ -251,9 +244,9 @@ legend('$\varphi$','interpreter','latex')
 xlabel('time (s)')
 grid
 
-filename = sprintf('%dFLMPC_state.png', Npred);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dFLMPC_state.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 subplot(2,1,1)
@@ -271,9 +264,9 @@ legend('\omega')
 xlabel('Nsim')
 grid
 
-filename = sprintf('%dFLMPC_input.png', Npred);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dFLMPC_input.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 subplot(2,1,1)
@@ -295,14 +288,14 @@ legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
-filename = sprintf('%dFLMPC_err.png', Npred);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dFLMPC_err.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 hold on
 height = 0.4; width = 0.2;
-st = 70;
+st = 100;
 % st = 200;
 k=1;
 while k < Nsim
@@ -314,9 +307,9 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 
-filename = sprintf('%dFLMPC_carpos.png', Npred);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dFLMPC_carpos.png', Q_val);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 % figure
 % plot(U_approx)
@@ -376,7 +369,7 @@ function [xref, uref, Nsim] = reference(idx)
         xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
         yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
     elseif idx == 4
-        Nsim = 400;
+        Nsim = 1200;
         % Spline reference
         load("trajectory.mat")
         xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
