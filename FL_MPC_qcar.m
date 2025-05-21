@@ -4,35 +4,31 @@ addpath(genpath('tools'))
 load("trajectory.mat")
 
 %% Parameters
-N_pred_val = 5;                      
-Q_val = 30;                          
-R_val = 1;                           
-P_val = 10;                         
-l = 0.256;                           % Length between front and rear
-Delta = 0.35;                        % Distance in front of the car
+N_pred_val  = 5;                      
+Q_val       = 30;                          
+R_val       = 1;                           
+P_val       = 10;                         
+l           = 0.256;                 % Length between front and rear
+Delta       = 0.35;                  % Distance in front of the car
 
 % Define prediction and simulation steps
-Ts = 0.1;                            % Sampling time
-Npred = N_pred_val;                  % Prediction horizon
-Nsim =  900;                         % Number of simulation steps
+Ts      = 0.1;                       % Sampling time
+Npred   = N_pred_val;                % Prediction horizon
 
 % Define system dimensions
 dx = 4;                              % State dimensions: x, y, theta, phi
 du = 2;                              % Control dimensions: V, omega
-dz = 2;
+dz = 2;                              % Flat ouput dimensions: z1, z2
 
-% Initial condition and references
-x0 = [0; 2.5; 0; pi/3];              % Initial state [x; y; theta; phi]
+% Initial condition
+x0 = [0; 2.5; 0; pi/3];              
 z0 = LinOutput(x0, Delta, l);
 eta0 = x0(3:4);
 u0 = zeros(du, 1);
 
 %% Trajectories
-% Time
-t = 0 : 0.01 : 500;
-t = 0 : 0.1 : 1000;
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-[xref, uref] = reference(3, t);
+[xref, uref, Nsim] = reference(2);
 
 xr = xref(1, :);
 yr = xref(2, :);
@@ -46,8 +42,8 @@ zref = [xr + l*cos(thetar) + Delta*cos(thetar + phir);
 
 etaref = [thetar; phir];
 
-wref = zeros(2, numel(t));
-len = numel(t);
+% wref = zeros(2, numel(t));
+% len = numel(t);
 wref = zeros(2, length(xr));
 len = length(xr);
 for i = 1:len
@@ -69,26 +65,26 @@ P = P_val * Q;
 A = eye(dz);
 B = Ts * eye(dz);
 
-% ptsU = [];
-% for tta = linspace(0,2*pi-1e-4,20)
-%     ptsU = [ptsU; [rhat*cos(tta), rhat*sin(tta)]];
-% end
-% U_approx = Polyhedron('V',ptsU).computeVRep();
+ptsU = [];
+for tta = linspace(0,2*pi-1e-4,20)
+    ptsU = [ptsU; [rhat*cos(tta), rhat*sin(tta)]];
+end
+U_approx = Polyhedron('V',ptsU).computeVRep();
 
 %% CasADi optimization
 solver = casadi.Opti();
 
 % Define optimization variables
-z = solver.variable(dz, Npred + 1);
-w = solver.variable(du, Npred);
+z   = solver.variable(dz, Npred + 1);
+w   = solver.variable(du, Npred);
 eta = solver.variable(dz, Npred + 1);
 
 % Define initial state as a parameter
-zinit = solver.parameter(dz, 1);
-etainit = solver.parameter(dz, 1);
-zref_param = solver.parameter(dz, Npred+1);
-wref_param = solver.parameter(du, Npred+1);
-etaref_param = solver.parameter(dz, Npred + 1);
+zinit           = solver.parameter(dz, 1);
+etainit         = solver.parameter(dz, 1);
+zref_param      = solver.parameter(dz, Npred+1);
+wref_param      = solver.parameter(du, Npred+1);
+etaref_param    = solver.parameter(dz, Npred + 1);
 
 % Nonlinear dynamics 
 f_dynamics = @(x, u) [ u(1) * cos(x(3));
@@ -132,18 +128,18 @@ solver.minimize(objective)
 solver.solver('ipopt', options)
 
 % Simulation loop
-usim = zeros(du, Nsim);
-zsim = zeros(dz, Nsim);
-etasim = zeros(dz, Nsim);
-xsim = zeros(dx, Nsim);
-wsim = zeros(du, Nsim);
+usim    = zeros(du, Nsim);
+zsim    = zeros(dz, Nsim);
+etasim  = zeros(dz, Nsim);
+xsim    = zeros(dx, Nsim);
+wsim    = zeros(du, Nsim);
 
 zsim(:, 1) = z0;
 xsim(:, 1) = x0;
 etasim(:, 1) = eta0;
 usim_init = u0;
+
 tfin = [];
-tcv = tic;
 for i = 1 : Nsim
     solver.set_value(zinit, zsim(:, i))
     solver.set_value(etainit, etasim(:, i))
@@ -162,14 +158,13 @@ for i = 1 : Nsim
     wsim(:, i) = wsol(:, 1);
 
     xsim(:, i + 1) = xsim(:, i) + Ts * f_dynamics(xsim(:, i), usim(:, i));
-    zsim(:, i + 1) = LinOutput(xsim(:, i+1), Delta, l);
+    % zsim(:, i + 1) = LinOutput(xsim(:, i+1), Delta, l);
+    zsim(:, i + 1) = A * zsim(:, i) + B * wsim(:, i);
     etasim(:, i + 1) = xsim(3:4, i+1);
 end
-taltcv = toc(tcv);
-s2 = taltcv / (Nsim);
 
-s = sum(tfin);
-s = s/Nsim
+computation_time = sum(tfin);
+computation_time = computation_time/Nsim
 
 err = zeros(dz,Nsim);
 for i =1:Nsim
@@ -328,10 +323,12 @@ ylabel('y (m)')
 % save('matrices.mat', 'Q', 'R', 'P', 'zsim', 'wsim', 'xsim', 'wref', 'ur', 'zref')
 
 
-function [xref, uref] = reference(idx, t)
+function [xref, uref, Nsim] = reference(idx)
     l = 0.256;
     Delta = 0.35;
     if idx == 1
+        t = 0 : 0.1 : 100;
+        Nsim = 200;
         % Line reference
         alpha   = 0.5;
         beta    = 0.8;
@@ -340,7 +337,7 @@ function [xref, uref] = reference(idx, t)
     elseif idx == 2
         % Square trajectory
         n = 950;
-        
+        Nsim = 850;
         side_length = 10; 
         total_points = n;
         quarter = round(total_points / 4);
@@ -368,6 +365,8 @@ function [xref, uref] = reference(idx, t)
         dxr = gradient(xr, 0.3);        ddxr = gradient(dxr, 0.3);      dddxr = gradient(ddxr, 0.3);   
         dyr = gradient(yr, 0.3);        ddyr = gradient(dyr, 0.3);      dddyr = gradient(ddyr, 0.3);
     elseif idx == 3
+        t = 0 : 0.1 : 100;
+        Nsim = 400;
         % Circle reference
         alpha   = 5;
         beta    = 5;
@@ -375,6 +374,7 @@ function [xref, uref] = reference(idx, t)
         xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
         yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
     elseif idx == 4
+        Nsim = 400;
         % Spline reference
         load("trajectory.mat")
         xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;

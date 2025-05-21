@@ -167,14 +167,14 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     }
 
     /* Run the CasADi function */
-    // if (casadi_c_eval_id(id, arg, res, iw, w, mem)) {
-    //   ssPrintf("Failed to evaluate\n");
-    // }
-    int local_mem = casadi_c_checkout_id(id);  // Get fresh memory
-    if (casadi_c_eval_id(id, arg, res, iw, w, local_mem)) {
-        ssPrintf("Failed to evaluate\n");
+    if (casadi_c_eval_id(id, arg, res, iw, w, mem)) {
+      ssPrintf("Failed to evaluate\n");
     }
-    casadi_c_release_id(id, local_mem);  // Release memory after use
+    // int local_mem = casadi_c_checkout_id(id);  // Get fresh memory
+    // if (casadi_c_eval_id(id, arg, res, iw, w, local_mem)) {
+    //     ssPrintf("Failed to evaluate\n");
+    // }
+    // casadi_c_release_id(id, local_mem);  // Release memory after use
 
 }
 
