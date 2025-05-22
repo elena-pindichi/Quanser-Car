@@ -24,10 +24,9 @@ W = [0.5 1.75;
 W = [  0.5  1.75;
        3.5   5;
        8     4;
-      15     10;
-      22    5;
-      32    12;
-      40    6]'; % Extended waypoints
+      12     2;
+      16     6
+      ]'; % Extended waypoints
 
 N=size(W,2)-1;
 % wpknot=linspace(min(knot),max(knot)-0.0001,N+1);
@@ -136,4 +135,5 @@ scatter(P(1,:), P(2,:),'filled','oblue')
 scatter(W(1,:), W(2,:),40,'filled','ored')
 
 %%
-save('trajectory.mat', 'xref', 'yref', 'dddxref', 'dddyref', 'ddxref','ddyref','dxref','dyref')
+save('trajectory.mat', 'tt', 'xref', 'yref', 'dddxref', 'dddyref', 'ddxref','ddyref','dxref','dyref')
+% save('trajectory.mat', 'xref', 'yref', 'dddxref', 'dddyref', 'ddxref','ddyref','dxref','dyref')

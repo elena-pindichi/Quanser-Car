@@ -1,0 +1,6 @@
+clc, close all;
+
+load('trajectory.mat');
+t = 0:0.1:
+ref = [t, xref', yref', dddxref', dddyref', ddxref', ddyref', dxref', dyref'];
+% ref = timeseries(ref);

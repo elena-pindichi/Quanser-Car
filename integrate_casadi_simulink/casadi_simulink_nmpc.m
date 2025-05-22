@@ -1,30 +1,33 @@
 clc, close all, clear;
 import casadi.*
 
-N = 12;
-T = 20;
-dt = 0.1;
-l = 0.256;
-Q_val = 100;
-R_val = 1;
+N       = 12;
+T       = 20;
+dt      = 0.1;
+l       = 0.256;
+Q_val   = 100;
+R_val   = 1;
+P_val   = 10;
 
-Q = Q_val * eye(4);
-Q(3,3) = 1;
-Q(4,4) = 1;
-R = R_val * eye(2);
+% Weights
+Q       = Q_val * eye(4);
+Q(3,3)  = 1;
+Q(4,4)  = 1;
+R       = R_val * eye(2);
+P       = P_val * Q;
 
 % Define state and control symbols
-x = SX.sym('x');    
-y = SX.sym('y');    
-theta = SX.sym('theta'); 
-phi = SX.sym('phi');
-states = [x; y; theta; phi];
-n_states = length(states);
+x           = SX.sym('x');    
+y           = SX.sym('y');    
+theta       = SX.sym('theta'); 
+phi         = SX.sym('phi');
+states      = [x; y; theta; phi];
+n_states    = length(states);
 
-v = SX.sym('v');        
-omega = SX.sym('omega');
-controls = [v; omega];
-n_controls = length(controls);
+v           = SX.sym('v');        
+omega       = SX.sym('omega');
+controls    = [v; omega];
+n_controls  = length(controls);
 
 % Define system dynamics
 xdot = [v*cos(theta);
@@ -35,99 +38,82 @@ xdot = [v*cos(theta);
 % Define the system dynamics function
 f = Function('f', {states, controls}, {xdot});
 
-% Circle reference
-% t = 0 : 0.1 : 1000;
-% alpha   = 5;
-% beta    = 5;
-% ang     = 0.2;
-% xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
-% yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
-% 
-% % % % % % % % % % % % % % % % % %
-% 
-% % Computing real input reference
-% Vr      = sqrt(dxr.*dxr + dyr.*dyr);
-% omegar  = l * Vr .* ((dddyr.*dxr - dddxr.*dyr).*Vr.*Vr - 3 * (ddyr.*dxr - ddxr.*dyr) .* (dxr.*ddxr + dyr.*ddyr)) ...
-%           ./ (Vr.^6 + l*l*(ddyr.*dxr - ddxr.*dyr).^2);
-% uref = [Vr; omegar];
-% 
-% % Computing angle reference
-% thetar  = unwrap(atan2(dyr ./ Vr, dxr ./ Vr));
-% phir    = atan((l*(ddyr.*dxr - ddxr.*dyr)) ./ Vr.^3);
-% 
-% xref = [xr; yr; thetar; phir];
-xref = [-1; 8; pi/2; 0];
-% xref_traj = xref;
-% T = size(xref_traj, 2);
-% horizon_idx = mod(idx : idx + N - 1, T) + 1;
-% xr = xref_traj(:, horizon_idx);
+xref = [2; 12; pi/2; 0];
 
 % ZOH
-X0 = MX.sym('X0', n_states);
-U = MX.sym('U', n_controls);
-X = X0;
+X0  = MX.sym('X0', n_states);
+U   = MX.sym('U', n_controls);
+X   = X0;
 
 F = Function('F', {X0, U}, {X0 + dt*f(X0, U)}, {'x0','u'}, {'xf'});
 
 % Build the NLP
-w = {};     % Decision variables
-w0 = [];    % Initial guess
-lbw = [];   % Lower bounds
-ubw = [];   % Upper bounds
-g = {};     % Constraints
+w   = {};       % Decision variables
+w0  = [];       % Initial guess
+lbw = [];       % Lower bounds
+ubw = [];       % Upper bounds
+g   = {};       % Constraints
 lbg = [];
 ubg = [];
-J = 0;      % Cost
+J   = 0;      
 
 % Initial state
-Xk = MX.sym('X0', n_states);
-w = {w{:}, Xk};
-w0 = [w0; zeros(n_states,1)];
+Xk  = MX.sym('X0', n_states);
+w   = {w{:}, Xk};
+w0  = [w0; zeros(n_states,1)];
 lbw = [lbw; zeros(n_states,1)];
 ubw = [ubw; zeros(n_states,1)];
+
+% Export external reference
+% ref = MX.sym('ref', n_states, N+1);
+ref = MX.sym('ref', n_states);
 
 % Formulate optimization problem
 for k = 0 : N-1
     % Reference at time k
     % x_ref = xr(:,k+1);
-    x_ref = xref;
+    % x_ref = ref(:, k+1);
+    x_ref = ref;
 
     % Control variable
-    Uk = MX.sym(['U_' num2str(k)], n_controls);
-    w = {w{:}, Uk};
-    w0 = [w0; 0; 0];
+    Uk  = MX.sym(['U_' num2str(k)], n_controls);
+    w   = {w{:}, Uk};
+    w0  = [w0; 0; 0];
     lbw = [lbw; -1; -1];
     ubw = [ubw;  1;  1];
 
     % Integrate dynamics
-    Fk = F('x0', Xk, 'u', Uk);
-    Xk_end = Fk.xf;
+    Fk      = F('x0', Xk, 'u', Uk);
+    Xk_end  = Fk.xf;
 
     % Cost function: tracking + control effort
     J = J + (Xk - x_ref)' * Q * (Xk - x_ref) + Uk' * R * Uk;
 
     % New state variable
-    Xk = MX.sym(['X_' num2str(k+1)], n_states);
-    w = {w{:}, Xk};
-    w0 = [w0; zeros(n_states,1)];
+    Xk  = MX.sym(['X_' num2str(k+1)], n_states);
+    w   = {w{:}, Xk};
+    w0  = [w0; zeros(n_states,1)];
     lbw = [lbw; -inf; -inf; -inf; -pi/2];
     ubw = [ubw;  inf; inf; inf; pi/2];
 
     % Add dynamics constraint
-    g = {g{:}, Xk_end - Xk};
+    g   = {g{:}, Xk_end - Xk};
     lbg = [lbg; zeros(n_states,1)];
     ubg = [ubg; zeros(n_states,1)];
 end
+% x_ref_terminal = ref(:, N+1);
+x_ref_terminal = ref;
+J = J + (Xk - x_ref_terminal)' * P * (Xk - x_ref_terminal);
 
 % NLP setup
-prob = struct('f', J, 'x', vertcat(w{:}), 'g', vertcat(g{:}));
-opts = struct('ipopt', struct('print_level', 0), 'print_time', false);
-solver = nlpsol('solver', 'ipopt', prob, opts);
+prob    = struct('f', J, 'x', vertcat(w{:}), 'g', vertcat(g{:}), 'p', ref);
+opts    = struct('ipopt', struct('print_level', 0), 'print_time', false);
+solver  = nlpsol('solver', 'ipopt', prob, opts);
 
 % Export initial state symbol
-s0 = MX.sym('s0', n_states);
-lbw_sym = MX(lbw);
-ubw_sym = MX(ubw);
+s0                  = MX.sym('s0', n_states);
+lbw_sym             = MX(lbw);
+ubw_sym             = MX(ubw);
 lbw_sym(1:n_states) = s0;
 ubw_sym(1:n_states) = s0;
 
@@ -136,10 +122,11 @@ sol_sym = solver('x0', w0, ...
                  'lbx', lbw_sym, ...
                  'ubx', ubw_sym, ...
                  'lbg', lbg, ...
-                 'ubg', ubg);
+                 'ubg', ubg, ...
+                 'p', ref);
 
 % Map from initial state to first control input
-mpc_fun = Function('mpc_fun', {s0}, {sol_sym.x(n_states+1:n_states+2)});
+mpc_fun = Function('mpc_fun', {s0, ref}, {sol_sym.x(n_states+1:n_states+2)});
 
 % Save to file
 mpc_fun.save('mpc_fun.casadi');
