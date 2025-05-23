@@ -6,10 +6,12 @@
 clc 
 close all
 clear 
-st=500;
+st=2000;
 n=6; 
+n = 15;
 d=5; 
-knot=[0 30]; % from 1 to 10 second
+knot=[0 10]; % from 1 to 10 second
+knot = [0 50]; % Extends trajectory duration from 10s to 50s
 [bs,knot]=bsplines(n,d,knot);
 [M,Sd]=bsplineConversionMatrices(n,d,knot);
 tt=linspace(min(knot),max(knot)-0.000001,st);
@@ -19,8 +21,16 @@ W = [0.5 1.75;
     2.25 2.05;
     3.5 5;
     5 2]'; %waypoint (point to pass)
+W = [  0    0;
+       0    3;
+       5     2;
+       8     6;
+      11     3
+      ]'; % Extended waypoints
+
 N=size(W,2)-1;
-wpknot=linspace(min(knot),max(knot)-0.0001,N+1);
+% wpknot=linspace(min(knot),max(knot)-0.0001,N+1);
+wpknot=linspace(min(knot),max(knot)-0.0001,size(W,2));
 %% construct an yalmip problem where we impose that the bspline passes through given waypoints at given time instants
 clc
 %we take equidistant points alongth the bounds of the knot vector
@@ -125,4 +135,5 @@ scatter(P(1,:), P(2,:),'filled','oblue')
 scatter(W(1,:), W(2,:),40,'filled','ored')
 
 %%
-save('trajectory.mat', 'xref', 'yref', 'dddxref', 'dddyref', 'ddxref','ddyref','dxref','dyref')
+save('trajectory.mat', 'tt', 'xref', 'yref', 'dddxref', 'dddyref', 'ddxref','ddyref','dxref','dyref')
+% save('trajectory.mat', 'xref', 'yref', 'dddxref', 'dddyref', 'ddxref','ddyref','dxref','dyref')

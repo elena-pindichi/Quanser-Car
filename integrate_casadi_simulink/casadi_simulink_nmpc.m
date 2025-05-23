@@ -5,8 +5,8 @@ N       = 12;
 T       = 20;
 dt      = 0.1;
 l       = 0.256;
-Q_val   = 100;
-R_val   = 1;
+Q_val   = 10;
+R_val   = 0.3;
 P_val   = 10;
 
 % Weights
@@ -66,14 +66,17 @@ ubw = [ubw; zeros(n_states,1)];
 
 % Export external reference
 % ref = MX.sym('ref', n_states, N+1);
-ref = MX.sym('ref', n_states);
+% ref = MX.sym('ref', n_states);
+xref = MX.sym('xref', n_states, N+1);
+uref = MX.sym('uref', n_controls, N);
 
 % Formulate optimization problem
 for k = 0 : N-1
     % Reference at time k
     % x_ref = xr(:,k+1);
-    % x_ref = ref(:, k+1);
-    x_ref = ref;
+    x_ref = xref(:, k+1);
+    u_ref = uref(:, k+1);
+    % x_ref = ref;
 
     % Control variable
     Uk  = MX.sym(['U_' num2str(k)], n_controls);
@@ -87,7 +90,7 @@ for k = 0 : N-1
     Xk_end  = Fk.xf;
 
     % Cost function: tracking + control effort
-    J = J + (Xk - x_ref)' * Q * (Xk - x_ref) + Uk' * R * Uk;
+    J = J + (Xk - x_ref)' * Q * (Xk - x_ref) + (Uk - u_ref)' * R * (Uk - u_ref);
 
     % New state variable
     Xk  = MX.sym(['X_' num2str(k+1)], n_states);
@@ -101,11 +104,12 @@ for k = 0 : N-1
     lbg = [lbg; zeros(n_states,1)];
     ubg = [ubg; zeros(n_states,1)];
 end
-% x_ref_terminal = ref(:, N+1);
-x_ref_terminal = ref;
+x_ref_terminal = xref(:, N+1);
+% x_ref_terminal = ref;
 J = J + (Xk - x_ref_terminal)' * P * (Xk - x_ref_terminal);
 
 % NLP setup
+ref = [xref(:); uref(:)];
 prob    = struct('f', J, 'x', vertcat(w{:}), 'g', vertcat(g{:}), 'p', ref);
 opts    = struct('ipopt', struct('print_level', 0), 'print_time', false);
 solver  = nlpsol('solver', 'ipopt', prob, opts);
@@ -126,7 +130,7 @@ sol_sym = solver('x0', w0, ...
                  'p', ref);
 
 % Map from initial state to first control input
-mpc_fun = Function('mpc_fun', {s0, ref}, {sol_sym.x(n_states+1:n_states+2)});
+mpc_fun = Function('mpc_fun', {s0, xref, uref}, {sol_sym.x(n_states+1:n_states+2)});
 
 % Save to file
 mpc_fun.save('mpc_fun.casadi');

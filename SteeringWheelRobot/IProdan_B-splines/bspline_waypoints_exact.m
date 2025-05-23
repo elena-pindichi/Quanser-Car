@@ -6,7 +6,7 @@
 clc 
 close all
 clear 
-st=2000;
+st=200;
 n=6; 
 n = 15;
 d=5; 
@@ -21,12 +21,18 @@ W = [0.5 1.75;
     2.25 2.05;
     3.5 5;
     5 2]'; %waypoint (point to pass)
-W = [  0.5  1.75;
-       3.5   5;
-       8     4;
-      12     2;
-      16     6
+W = [  0    3;       
+       3    3;
+       3    0;
+       0    0;
+       0    3
       ]'; % Extended waypoints
+W = [  0.5    1.75;       
+       2       5;
+       4       2;
+       6       7;
+       7       4
+      ]';
 
 N=size(W,2)-1;
 % wpknot=linspace(min(knot),max(knot)-0.0001,N+1);

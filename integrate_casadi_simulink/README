@@ -1,3 +1,10 @@
+# How to run files:
+### Example for Nonlinear MPC:
+- run the script 'casadi_simulink_nmpc.m' and then the script 'load_trajectory.m'
+- open 'nlmpc_simulink.slx' and run
+(for FLMPC is the same)
+
+# Code explanation
 In each code 'casadi_simulink_..mpc.m' a mex file is created that is uploaded on the S-function in Simulink. The .c script creates a bridge between Casadi and Simulink.
 
 Explanation line by line:
@@ -79,5 +86,5 @@ Explanation line by line:
         ...
         mex(...);
         "
-
+There have been some updates on the code, but the skeleton of the code is explained above and for more details you can access the page from below.
 The .c script is taken from: https://web.casadi.org/blog/mpc-simulink2/, and it is prewritten by Casadi. It is used for initialization of the ports for both input and output and is linking the .m script code with Simulink.

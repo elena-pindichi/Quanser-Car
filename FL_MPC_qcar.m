@@ -5,8 +5,8 @@ load("trajectory.mat")
 
 %% Parameters
 N_pred_val  = 5;                      
-Q_val       = 30;                          
-R_val       = 1;                           
+Q_val       = 5;                          
+R_val       = 0.1;                           
 P_val       = 10;                         
 l           = 0.256;                 % Length between front and rear
 Delta       = 0.35;                  % Distance in front of the car
@@ -21,7 +21,7 @@ du = 2;                              % Control dimensions: V, omega
 dz = 2;                              % Flat ouput dimensions: z1, z2
 
 % Initial condition
-x0 = [0; 2.5; 0; pi/3];              
+x0 = [0; 2.5; 0; 0];              
 z0 = LinOutput(x0, Delta, l);
 eta0 = x0(3:4);
 u0 = zeros(du, 1);
@@ -369,7 +369,7 @@ function [xref, uref, Nsim] = reference(idx)
         xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
         yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
     elseif idx == 4
-        Nsim = 1200;
+        Nsim = 480;
         % Spline reference
         load("trajectory.mat")
         xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;

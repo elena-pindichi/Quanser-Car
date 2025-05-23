@@ -5,8 +5,8 @@ N       = 5;
 T       = 5;
 dt      = 0.1;
 l       = 0.256;
-Q_val   = 30;
-R_val   = 1;
+Q_val   = 5;
+R_val   = 0.1;
 P_val   = 10;
 Delta   = 0.35;
 
@@ -36,7 +36,7 @@ ubw = [];       % Upper bounds
 g   = {};       % Constraints
 lbg = [];
 ubg = [];
-J   = 0;      
+J   = 0; 
 
 % Initial state
 Zk  = MX.sym('Z0', n_states);
@@ -45,8 +45,16 @@ w0  = [w0; zeros(n_states,1)];
 lbw = [lbw; zeros(n_states,1)];
 ubw = [ubw; zeros(n_states,1)];
 
+% ref = MX.sym('ref', n_states, N+1);
+% ref = MX.sym('ref', n_states);
+zref = MX.sym('zref', n_states, N+1);
+wref = MX.sym('wref', n_controls, N);
+
 % Formulate optimization problem
 for k = 0 : N-1
+    z_ref = zref(:, k+1);
+    w_ref = wref(:, k+1);
+
     % Control variable
     Wk  = MX.sym(['W_' num2str(k)], n_controls);
     w   = {w{:}, Wk};
@@ -57,7 +65,7 @@ for k = 0 : N-1
     Zk_end = A*Zk + B * Wk;
 
     % Cost function: tracking + control effort
-    J = J + (Zk - zref)' * Q * (Zk - zref) + Wk' * R * Wk;
+    J = J + (Zk - z_ref)' * Q * (Zk - z_ref) + (Wk - w_ref)' * R * (Wk - w_ref);
 
     % New state variable
     Zk  = MX.sym(['Z_' num2str(k+1)], n_states);
@@ -71,10 +79,12 @@ for k = 0 : N-1
     lbg = [lbg; zeros(n_states,1); -inf];
     ubg = [ubg; zeros(n_states,1); 1];
 end
-J = J + (Zk - zref)' * P * (Zk - zref);
+zref_terminal = zref(:, N + 1);
+J = J + (Zk - zref_terminal)' * P * (Zk - zref_terminal);
 
 % NLP setup
-prob    = struct('f', J, 'x', vertcat(w{:}), 'g', vertcat(g{:}));
+ref = [zref(:); wref(:)];
+prob    = struct('f', J, 'x', vertcat(w{:}), 'g', vertcat(g{:}), 'p', ref);
 opts    = struct('ipopt', struct('print_level', 0), 'print_time', false);
 solver  = nlpsol('solver', 'ipopt', prob, opts);
 
@@ -90,10 +100,11 @@ sol_sym = solver('x0', w0, ...
                  'lbx', lbw_sym, ...
                  'ubx', ubw_sym, ...
                  'lbg', lbg, ...
-                 'ubg', ubg);
+                 'ubg', ubg, ...
+                 'p', ref);
 
 % Map from initial state to first control input
-flmpc_fun = Function('flmpc_fun', {s0}, {sol_sym.x(n_states+1:n_states+2)});
+flmpc_fun = Function('flmpc_fun', {s0, zref, wref}, {sol_sym.x(n_states+1:n_states+2)});
 
 % Save to file
 flmpc_fun.save('flmpc_fun.casadi');

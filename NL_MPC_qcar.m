@@ -5,8 +5,8 @@ load("trajectory.mat")
 
 %% Parameters
 N_pred_val  = 12;   
-Q_val       = 100;
-R_val       = 1;              
+Q_val       = 10;
+R_val       = 0.3;              
 P_val       = 10;
 l           = 0.256;                % Length between front and rear
 
@@ -19,7 +19,7 @@ dx = 4;                             % State dimensions: x, y, theta, phi
 du = 2;                             % Control dimensions: V, omega
 
 % Initial condition
-x0 = [0; 2.5; 0; pi/3];            
+x0 = [0; 2.5; pi/2; 0];            
 u0 = zeros(du, 1);
 
 %% Trajectories
@@ -27,14 +27,14 @@ u0 = zeros(du, 1);
 [xref, uref, Nsim] = reference(4);
 
 %% Constraints values
-Vmin     = -10; Vmax     = 10;       % Velocity limits
+Vmin     = -1; Vmax     = 1;       % Velocity limits
 omegamin = -1; omegamax = 1;       % Angular velocity limits
 phimax   = pi/2;                   % Front wheels orientation limits
 
 % Weights for cost function
 Q = Q_val * eye(dx);
-% Q(3,3) = 10;
-% Q(4,4) = 5;
+Q(3,3) = 1;
+Q(4,4) = 0.1;
 R = R_val * eye(du);
 P = P_val * Q;
 
@@ -210,7 +210,7 @@ figure
 hold on
 height = 0.4; width = 0.2;
 st = 100;
-% st = 200;
+st = 450;
 k=1;
 while k < Nsim
    drawSteeringCar(xsim(:,k), l, height, width)
@@ -282,7 +282,7 @@ function [xref, uref, Nsim] = reference(idx)
         xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
         yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
     elseif idx == 4
-        Nsim = 1200;
+        Nsim = 480;
         % Spline reference
         load("trajectory.mat")
         xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;
