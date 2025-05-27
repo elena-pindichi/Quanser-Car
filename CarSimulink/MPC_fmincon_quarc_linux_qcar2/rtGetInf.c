@@ -6,9 +6,9 @@
  *
  * Code generation for model "MPC_fmincon".
  *
- * Model version              : 15.61
+ * Model version              : 15.62
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Mon May 26 13:34:15 2025
+ * C source code generated on : Tue May 27 11:16:39 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

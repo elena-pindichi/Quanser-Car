@@ -6,9 +6,9 @@
  *
  * Code generation for model "MPC_casadi".
  *
- * Model version              : 15.66
+ * Model version              : 15.65
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Mon May 26 16:26:44 2025
+ * C source code generated on : Tue May 27 13:30:29 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -253,11 +253,11 @@ real_T rt_powd_snf(real_T u0, real_T u1)
 void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
 {
   real_T q_ref[24];
-  real_T ur[12];
   real_T eta[2];
   real_T a_idx_1;
   real_T c1;
   real_T dp_corr;
+  real_T phir;
   real_T q_next_idx_0;
   real_T q_next_idx_2;
   real_T q_next_idx_3_tmp;
@@ -265,9 +265,9 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
   real_T r_tmp;
   real_T s1;
   real_T s1_tmp;
-  real_T ur_0;
+  real_T x_tmp;
   real_T x_tmp_tmp;
-  int32_T c_k;
+  int32_T d_k;
   int32_T i;
   int32_T q_ref_tmp;
   int32_T z_ref_tmp;
@@ -675,7 +675,7 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
     0.81016041530156124, 0.82172177183837825, 0.83295445062260409,
     0.84385395873249214 };
 
-  static const real_T m[601] = { -0.0, -0.0039997333386666166,
+  static const real_T c_y[601] = { -0.0, -0.0039997333386666166,
     -0.0079978668373268339, -0.011992801295888922, -0.015982938793834542,
     -0.019966683329365631, -0.023942441457783879, -0.0279086229288473,
     -0.031863641322849204, -0.035805914685164843, -0.039733866159012247,
@@ -877,7 +877,7 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
     0.12045862621707795, 0.11724164814235627, 0.11397777497157878,
     0.11066831221049607, 0.107314583600087 };
 
-  static const real_T n[601] = { -0.2, -0.19996000133331557,
+  static const real_T d_y[601] = { -0.2, -0.19996000133331557,
     -0.19984002133219558, -0.19964010798704085, -0.19936034126052388,
     -0.19900083305560515, -0.19856172717077325, -0.19804319924252745,
     -0.19744545667512539, -0.19676873855762431, -0.19601331556824833,
@@ -1079,7 +1079,7 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
     -0.15965500108012373, -0.16203208306031225, -0.16434435436767567,
     -0.16659089012452083, -0.16877079174649845 };
 
-  static const real_T o[601] = { 5.0, 4.999000033332889, 4.99600053330489,
+  static const real_T s[601] = { 5.0, 4.999000033332889, 4.99600053330489,
     4.9910026996760211, 4.9840085315130969, 4.9750208263901285,
     4.9640431792693311, 4.9510799810631854, 4.936136416878135,
     4.9192184639406076, 4.9003328892062079, 4.8794872466530279,
@@ -1275,7 +1275,7 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
     3.9303514807051965, 3.9913750270030928, 4.0508020765078063,
     4.1086088591918912, 4.1647722531130205, 4.2192697936624608 };
 
-  static const real_T p[601] = { 0.0, 0.099993333466665418, 0.19994667093317084,
+  static const real_T t[601] = { 0.0, 0.099993333466665418, 0.19994667093317084,
     0.29982003239722305, 0.39957346984586356, 0.49916708323414077,
     0.59856103644459691, 0.69771557322118249, 0.79659103307123,
     0.89514786712912109, 0.99334665397530608, 1.0911481154043468,
@@ -2192,21 +2192,21 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
   MPC_casadi_B.Gain3 = MPC_casadi_P.Gain1_Gain * MPC_casadi_B.Product1_p *
     MPC_casadi_P.Gain4_Gain * MPC_casadi_P.Gain2_Gain * MPC_casadi_P.Gain3_Gain;
   if (rtmIsMajorTimeStep(MPC_casadi_M)) {
+    /* Memory: '<Root>/Memory' */
+    MPC_casadi_B.Memory[0] = MPC_casadi_DW.Memory_PreviousInput[0];
+    MPC_casadi_B.Memory[1] = MPC_casadi_DW.Memory_PreviousInput[1];
+
     /* Memory: '<Root>/Memory1' */
-    MPC_casadi_B.Memory1[0] = MPC_casadi_DW.Memory1_PreviousInput[0];
-    MPC_casadi_B.Memory1[1] = MPC_casadi_DW.Memory1_PreviousInput[1];
+    memcpy(&MPC_casadi_B.Memory1[0], &MPC_casadi_DW.Memory1_PreviousInput[0],
+           12U * sizeof(real_T));
 
     /* Memory: '<Root>/Memory2' */
     memcpy(&MPC_casadi_B.Memory2[0], &MPC_casadi_DW.Memory2_PreviousInput[0],
-           12U * sizeof(real_T));
-
-    /* Memory: '<Root>/Memory3' */
-    memcpy(&MPC_casadi_B.Memory3[0], &MPC_casadi_DW.Memory3_PreviousInput[0],
            10U * sizeof(real_T));
 
-    /* S-Function (casadi_fun): '<Root>/FLMPC S-Function' */
+    /* S-Function (casadi_fun): '<Root>/S-Function' */
 
-    /* Level2 S-Function Block: '<Root>/FLMPC S-Function' (casadi_fun) */
+    /* Level2 S-Function Block: '<Root>/S-Function' (casadi_fun) */
     {
       SimStruct *rts = MPC_casadi_M->childSfunctions[0];
       sfcnOutputs(rts,0);
@@ -2224,7 +2224,7 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
 
   /* MATLAB Function: '<Root>/FL U Mapping' incorporates:
    *  MATLAB Function: '<S1>/Dynamics'
-   *  S-Function (casadi_fun): '<Root>/FLMPC S-Function'
+   *  S-Function (casadi_fun): '<Root>/S-Function'
    *  SignalConversion generated from: '<S2>/ SFunction '
    *  Trigonometry: '<S4>/Cos'
    *  Trigonometry: '<S5>/Sin'
@@ -2269,10 +2269,10 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
     dp_corr = -q_next_idx_2 / q_next_idx_0 * s1;
   }
 
-  MPC_casadi_B.u[0] = c1 * MPC_casadi_B.virtualinput[0] + dp_corr *
-    MPC_casadi_B.virtualinput[1];
-  MPC_casadi_B.u[1] = a_idx_1 * MPC_casadi_B.virtualinput[0] + s1 *
-    MPC_casadi_B.virtualinput[1];
+  MPC_casadi_B.u[0] = c1 * MPC_casadi_B.SFunction[0] + dp_corr *
+    MPC_casadi_B.SFunction[1];
+  MPC_casadi_B.u[1] = a_idx_1 * MPC_casadi_B.SFunction[0] + s1 *
+    MPC_casadi_B.SFunction[1];
   if (rtmIsMajorTimeStep(MPC_casadi_M)) {
     /* ManualSwitch: '<Root>/1 - Arm, 0 - Disarm2' */
     if (MPC_casadi_P.uArm0Disarm2_CurrentSetting == 1) {
@@ -2343,32 +2343,33 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
    *  Integrator: '<S9>/Integrator1'
    *  Sum: '<S9>/Add'
    */
-  s1 = (MPC_casadi_P.Kpms_Gain * r + MPC_casadi_X.Integrator1_CSTATE_ng) +
+  dp_corr = (MPC_casadi_P.Kpms_Gain * r + MPC_casadi_X.Integrator1_CSTATE_ng) +
     MPC_casadi_P.Kffms_Gain * MPC_casadi_B.desired;
 
   /* Saturate: '<S9>/command saturation1' */
-  if (s1 > MPC_casadi_P.commandsaturation1_UpperSat) {
-    s1 = MPC_casadi_P.commandsaturation1_UpperSat;
-  } else if (s1 < MPC_casadi_P.commandsaturation1_LowerSat) {
-    s1 = MPC_casadi_P.commandsaturation1_LowerSat;
+  if (dp_corr > MPC_casadi_P.commandsaturation1_UpperSat) {
+    dp_corr = MPC_casadi_P.commandsaturation1_UpperSat;
+  } else if (dp_corr < MPC_casadi_P.commandsaturation1_LowerSat) {
+    dp_corr = MPC_casadi_P.commandsaturation1_LowerSat;
   }
 
   /* Gain: '<S8>/direction convention' incorporates:
    *  Product: '<S9>/Multiply2'
    *  Saturate: '<S9>/command saturation1'
    */
-  s1 = s1 * MPC_casadi_B.switch_l * MPC_casadi_P.directionconvention_Gain;
+  dp_corr = dp_corr * MPC_casadi_B.switch_l *
+    MPC_casadi_P.directionconvention_Gain;
 
   /* Saturate: '<S8>/command saturation' */
-  if (s1 > MPC_casadi_P.commandsaturation_UpperSat_n) {
+  if (dp_corr > MPC_casadi_P.commandsaturation_UpperSat_n) {
     /* Saturate: '<S8>/command saturation' */
     MPC_casadi_B.commandsaturation = MPC_casadi_P.commandsaturation_UpperSat_n;
-  } else if (s1 < MPC_casadi_P.commandsaturation_LowerSat_i) {
+  } else if (dp_corr < MPC_casadi_P.commandsaturation_LowerSat_i) {
     /* Saturate: '<S8>/command saturation' */
     MPC_casadi_B.commandsaturation = MPC_casadi_P.commandsaturation_LowerSat_i;
   } else {
     /* Saturate: '<S8>/command saturation' */
-    MPC_casadi_B.commandsaturation = s1;
+    MPC_casadi_B.commandsaturation = dp_corr;
   }
 
   /* End of Saturate: '<S8>/command saturation' */
@@ -2408,7 +2409,7 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
     /* RateTransition: '<S1>/RT' */
     if (MPC_casadi_M->Timing.RateInteraction.TID1_3) {
       /* RateTransition: '<S1>/RT' */
-      memcpy(&MPC_casadi_B.RT_m[0], &MPC_casadi_DW.RT_Buffer0[0], 54U * sizeof
+      memcpy(&MPC_casadi_B.RT_e[0], &MPC_casadi_DW.RT_Buffer0[0], 54U * sizeof
              (real_T));
     }
 
@@ -2418,14 +2419,13 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
      *  MATLAB Function: '<Root>/FL U Mapping'
      *  SignalConversion generated from: '<S2>/ SFunction '
      */
-    MPC_casadi_DW.sfEvent_l = MPC_casadi_CALL_EVENT;
+    MPC_casadi_DW.sfEvent_b = MPC_casadi_CALL_EVENT;
 
     /* MATLAB Function 'Current flat output/Dynamics': '<S10>:1' */
     /* '<S10>:1:41' */
     /* '<S10>:1:58' */
     /* '<S10>:1:52' */
-    /* '<S10>:1:83' */
-    /* '<S10>:1:55' */
+    /* '<S10>:1:82' */
     /* '<S10>:1:20' */
     /* '<S10>:1:21' */
     /* '<S10>:1:41' */
@@ -2491,9 +2491,9 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
 
     /* '<S10>:1:49' */
     for (i = 0; i < 601; i++) {
-      dp_corr = m[i] * y[i] - n[i] * b_y[i];
-      MPC_casadi_B.phir_tmp_data[i] = dp_corr;
-      MPC_casadi_B.phir_data[i] = atan(0.256 * dp_corr / rt_powd_snf
+      q_next_idx_2 = c_y[i] * y[i] - d_y[i] * b_y[i];
+      MPC_casadi_B.phir_tmp_data[i] = q_next_idx_2;
+      MPC_casadi_B.phir_data[i] = atan(0.256 * q_next_idx_2 / rt_powd_snf
         (MPC_casadi_B.Vr_data[i], 3.0));
     }
 
@@ -2501,45 +2501,45 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
     memset(&q_ref[0], 0, 24U * sizeof(real_T));
 
     /* '<S10>:1:53' */
-    /* '<S10>:1:55' */
     memset(&MPC_casadi_B.z_ref[0], 0, 12U * sizeof(real_T));
 
+    /* '<S10>:1:54' */
     /* '<S10>:1:56' */
-    s1 = fmin(MPC_casadi_DW.idx + 5.0, 601.0);
-    if (MPC_casadi_DW.idx > s1) {
+    dp_corr = fmin(MPC_casadi_DW.idx + 5.0, 601.0);
+    if (MPC_casadi_DW.idx > dp_corr) {
       i = 1;
     } else {
       i = (int32_T)MPC_casadi_DW.idx;
     }
 
     /* '<S10>:1:58' */
-    for (c_k = 0; c_k < 6; c_k++) {
-      q_ref[c_k << 2] = o[(i + c_k) - 1];
+    for (d_k = 0; d_k < 6; d_k++) {
+      q_ref[d_k << 2] = s[(i + d_k) - 1];
     }
 
-    if (MPC_casadi_DW.idx > s1) {
+    if (MPC_casadi_DW.idx > dp_corr) {
       i = 1;
     } else {
       i = (int32_T)MPC_casadi_DW.idx;
     }
 
     /* '<S10>:1:59' */
-    for (c_k = 0; c_k < 6; c_k++) {
-      q_ref[(c_k << 2) + 1] = p[(i + c_k) - 1];
+    for (d_k = 0; d_k < 6; d_k++) {
+      q_ref[(d_k << 2) + 1] = t[(i + d_k) - 1];
     }
 
-    if (MPC_casadi_DW.idx > s1) {
+    if (MPC_casadi_DW.idx > dp_corr) {
       i = 1;
     } else {
       i = (int32_T)MPC_casadi_DW.idx;
     }
 
     /* '<S10>:1:60' */
-    for (c_k = 0; c_k < 6; c_k++) {
-      q_ref[(c_k << 2) + 2] = MPC_casadi_B.thetar_data[(i + c_k) - 1];
+    for (d_k = 0; d_k < 6; d_k++) {
+      q_ref[(d_k << 2) + 2] = MPC_casadi_B.thetar_data[(i + d_k) - 1];
     }
 
-    if (MPC_casadi_DW.idx > s1) {
+    if (MPC_casadi_DW.idx > dp_corr) {
       i = 1;
     } else {
       i = (int32_T)MPC_casadi_DW.idx;
@@ -2547,68 +2547,80 @@ void MPC_casadi_output0(void)          /* Sample time: [0.0s, 0.0s] */
 
     /* '<S10>:1:61' */
     /* '<S10>:1:68' */
-    /* '<S10>:1:73' */
-    /* '<S10>:1:74' */
-    for (c_k = 0; c_k < 6; c_k++) {
-      c1 = MPC_casadi_B.phir_data[(i + c_k) - 1];
-      q_ref_tmp = c_k << 2;
-      q_ref[q_ref_tmp + 3] = c1;
+    for (d_k = 0; d_k < 6; d_k++) {
+      q_next_idx_0 = MPC_casadi_B.phir_data[(i + d_k) - 1];
+      q_ref_tmp = d_k << 2;
+      q_ref[q_ref_tmp + 3] = q_next_idx_0;
 
       /* '<S10>:1:69' */
       s1 = q_ref[q_ref_tmp + 2];
-      c1 += s1;
-      z_ref_tmp = c_k << 1;
+      q_next_idx_0 += s1;
+      z_ref_tmp = d_k << 1;
       MPC_casadi_B.z_ref[z_ref_tmp] = (0.256 * cos(s1) + q_ref[q_ref_tmp]) + cos
-        (c1) * 0.35;
+        (q_next_idx_0) * 0.35;
 
       /* '<S10>:1:70' */
       MPC_casadi_B.z_ref[z_ref_tmp + 1] = (q_ref[q_ref_tmp + 1] + 0.256 * sin(s1))
-        + sin(c1) * 0.35;
-      q_next_idx_0 = MPC_casadi_B.Vr_data[c_k];
-      ur[z_ref_tmp] = q_next_idx_0;
-      s1 = y[c_k];
-      c1 = b_y[c_k];
-      dp_corr = MPC_casadi_B.phir_tmp_data[c_k];
-      ur[z_ref_tmp + 1] = ((q[c_k] * s1 - r_0[c_k] * c1) * q_next_idx_0 *
-                           q_next_idx_0 - (s1 * n[c_k] + c1 * m[c_k]) * (3.0 *
-        dp_corr)) * (0.256 * q_next_idx_0) / (dp_corr * dp_corr * 0.065536 +
-        rt_powd_snf(q_next_idx_0, 6.0));
+        + sin(q_next_idx_0) * 0.35;
     }
 
-    /* '<S10>:1:76' */
-    /* '<S10>:1:78' */
+    /* '<S10>:1:73' */
+    /* '<S10>:1:75' */
+    /* '<S10>:1:77' */
     for (i = 0; i < 601; i++) {
-      /* '<S10>:1:79' */
-      q_next_idx_2 = MPC_casadi_B.thetar_data[i];
-      q_next_idx_0 = MPC_casadi_B.phir_data[i];
-      c1 = q_next_idx_2 + q_next_idx_0;
+      q_next_idx_0 = MPC_casadi_B.Vr_data[i];
+      s1 = y[i];
+      c1 = b_y[i];
+      q_next_idx_2 = MPC_casadi_B.phir_tmp_data[i];
+      q_next_idx_2 = ((q[i] * s1 - r_0[i] * c1) * q_next_idx_0 * q_next_idx_0 -
+                      (s1 * d_y[i] + c1 * c_y[i]) * (3.0 * q_next_idx_2)) *
+        (0.256 * q_next_idx_0) / (q_next_idx_2 * q_next_idx_2 * 0.065536 +
+        rt_powd_snf(q_next_idx_0, 6.0));
+
+      /* '<S10>:1:78' */
+      a_idx_1 = MPC_casadi_B.thetar_data[i];
+      phir = MPC_casadi_B.phir_data[i];
+      c1 = a_idx_1 + phir;
       s1 = sin(c1);
 
-      /* '<S10>:1:80' */
+      /* '<S10>:1:79' */
       c1 = cos(c1);
 
-      /* '<S10>:1:81' */
-      /* '<S10>:1:83' */
-      dp_corr = cos(q_next_idx_2);
-      q_next_idx_0 = tan(q_next_idx_0);
-      q_next_idx_2 = sin(q_next_idx_2);
-      c_k = i << 1;
-      a_idx_1 = ur[c_k];
-      ur_0 = ur[c_k + 1];
-      MPC_casadi_B.wref_data[i << 1] = (dp_corr - (0.35 * s1 / 0.256 +
-        q_next_idx_2) * q_next_idx_0) * a_idx_1 + -0.35 * s1 * ur_0;
-      MPC_casadi_B.wref_data[1 + (i << 1)] = ((0.35 * c1 / 0.256 + dp_corr) *
-        q_next_idx_0 + q_next_idx_2) * a_idx_1 + 0.35 * c1 * ur_0;
+      /* '<S10>:1:80' */
+      /* '<S10>:1:82' */
+      x_tmp = cos(a_idx_1);
+      phir = tan(phir);
+      a_idx_1 = sin(a_idx_1);
+      MPC_casadi_B.wref_data[i << 1] = (x_tmp - (0.35 * s1 / 0.256 + a_idx_1) *
+        phir) * q_next_idx_0 + -0.35 * s1 * q_next_idx_2;
+      MPC_casadi_B.wref_data[1 + (i << 1)] = ((0.35 * c1 / 0.256 + x_tmp) * phir
+        + a_idx_1) * q_next_idx_0 + 0.35 * c1 * q_next_idx_2;
+    }
+
+    if (MPC_casadi_DW.idx > dp_corr - 1.0) {
+      i = 1;
+    } else {
+      i = (int32_T)MPC_casadi_DW.idx;
+    }
+
+    /* '<S10>:1:84' */
+    for (d_k = 0; d_k < 5; d_k++) {
+      MPC_casadi_B.w_ref[d_k << 1] = MPC_casadi_B.wref_data[((i + d_k) - 1) << 1];
+    }
+
+    if (MPC_casadi_DW.idx > dp_corr - 1.0) {
+      i = 1;
+    } else {
+      i = (int32_T)MPC_casadi_DW.idx;
     }
 
     /* '<S10>:1:85' */
-    for (c_k = 0; c_k < 5; c_k++) {
-      i = c_k << 1;
-      MPC_casadi_B.w_ref[i] = MPC_casadi_B.wref_data[c_k << 1];
-      MPC_casadi_B.w_ref[i + 1] = MPC_casadi_B.wref_data[(c_k << 1) + 1];
+    for (d_k = 0; d_k < 5; d_k++) {
+      MPC_casadi_B.w_ref[(d_k << 1) + 1] = MPC_casadi_B.wref_data[(((i + d_k) -
+        1) << 1) + 1];
     }
 
-    /* '<S10>:1:86' */
+    /* '<S10>:1:87' */
     MPC_casadi_DW.idx++;
     MPC_casadi_B.z_next[0] = (0.256 * r_tmp + MPC_casadi_B.Integrator5) +
       q_next_idx_3_tmp;
@@ -2707,16 +2719,16 @@ void MPC_casadi_update0(void)          /* Sample time: [0.0s, 0.0s] */
   /* Update for Integrator: '<S15>/Integrator1' */
   MPC_casadi_DW.Integrator1_IWORK_l = 0;
   if (rtmIsMajorTimeStep(MPC_casadi_M)) {
-    /* Update for Memory: '<Root>/Memory1' */
-    MPC_casadi_DW.Memory1_PreviousInput[0] = MPC_casadi_B.z_next[0];
-    MPC_casadi_DW.Memory1_PreviousInput[1] = MPC_casadi_B.z_next[1];
+    /* Update for Memory: '<Root>/Memory' */
+    MPC_casadi_DW.Memory_PreviousInput[0] = MPC_casadi_B.z_next[0];
+    MPC_casadi_DW.Memory_PreviousInput[1] = MPC_casadi_B.z_next[1];
 
-    /* Update for Memory: '<Root>/Memory2' */
-    memcpy(&MPC_casadi_DW.Memory2_PreviousInput[0], &MPC_casadi_B.z_ref[0], 12U *
+    /* Update for Memory: '<Root>/Memory1' */
+    memcpy(&MPC_casadi_DW.Memory1_PreviousInput[0], &MPC_casadi_B.z_ref[0], 12U *
            sizeof(real_T));
 
-    /* Update for Memory: '<Root>/Memory3' */
-    memcpy(&MPC_casadi_DW.Memory3_PreviousInput[0], &MPC_casadi_B.w_ref[0], 10U *
+    /* Update for Memory: '<Root>/Memory2' */
+    memcpy(&MPC_casadi_DW.Memory2_PreviousInput[0], &MPC_casadi_B.w_ref[0], 10U *
            sizeof(real_T));
   }
 
@@ -3414,7 +3426,7 @@ void MPC_casadi_initialize(void)
 
     for (i = 0; i < 54; i++) {
       /* Start for RateTransition: '<S1>/RT' */
-      MPC_casadi_B.RT_m[i] = MPC_casadi_P.RT_InitialCondition;
+      MPC_casadi_B.RT_e[i] = MPC_casadi_P.RT_InitialCondition;
     }
 
     /* Start for S-Function (inverse_modulus_block): '<S3>/Unwrap 2^1' */
@@ -5055,27 +5067,25 @@ void MPC_casadi_initialize(void)
     /* InitializeConditions for Integrator: '<S17>/Integrator2' */
     MPC_casadi_X.Integrator2_CSTATE_b = MPC_casadi_P.Integrator2_IC_h;
 
+    /* InitializeConditions for Memory: '<Root>/Memory' */
+    MPC_casadi_DW.Memory_PreviousInput[0] = MPC_casadi_P.Memory_InitialCondition;
+    MPC_casadi_DW.Memory_PreviousInput[1] = MPC_casadi_P.Memory_InitialCondition;
+
     /* InitializeConditions for Memory: '<Root>/Memory1' */
-    MPC_casadi_DW.Memory1_PreviousInput[0] =
-      MPC_casadi_P.Memory1_InitialCondition;
-    MPC_casadi_DW.Memory1_PreviousInput[1] =
-      MPC_casadi_P.Memory1_InitialCondition;
+    for (i = 0; i < 12; i++) {
+      MPC_casadi_DW.Memory1_PreviousInput[i] =
+        MPC_casadi_P.Memory1_InitialCondition;
+    }
+
+    /* End of InitializeConditions for Memory: '<Root>/Memory1' */
 
     /* InitializeConditions for Memory: '<Root>/Memory2' */
-    for (i = 0; i < 12; i++) {
+    for (i = 0; i < 10; i++) {
       MPC_casadi_DW.Memory2_PreviousInput[i] =
         MPC_casadi_P.Memory2_InitialCondition;
     }
 
     /* End of InitializeConditions for Memory: '<Root>/Memory2' */
-
-    /* InitializeConditions for Memory: '<Root>/Memory3' */
-    for (i = 0; i < 10; i++) {
-      MPC_casadi_DW.Memory3_PreviousInput[i] =
-        MPC_casadi_P.Memory3_InitialCondition;
-    }
-
-    /* End of InitializeConditions for Memory: '<Root>/Memory3' */
 
     /* InitializeConditions for Integrator: '<S4>/Integrator5' */
     MPC_casadi_X.Integrator5_CSTATE = MPC_casadi_P.Integrator5_IC;
@@ -5120,8 +5130,8 @@ void MPC_casadi_initialize(void)
     /* End of InitializeConditions for Buffer: '<Root>/Buffer' */
 
     /* SystemInitialize for MATLAB Function: '<S1>/Dynamics' */
-    MPC_casadi_DW.sfEvent_l = MPC_casadi_CALL_EVENT;
-    MPC_casadi_DW.is_active_c2_MPC_casadi = 0U;
+    MPC_casadi_DW.sfEvent_b = MPC_casadi_CALL_EVENT;
+    MPC_casadi_DW.is_active_c1_MPC_casadi = 0U;
     MPC_casadi_DW.idx = 1.0;
     MPC_casadi_DW.idx_not_empty = true;
     MPC_casadi_DW.z_ref_internal[0] = 0.0;
@@ -5130,7 +5140,7 @@ void MPC_casadi_initialize(void)
 
     /* SystemInitialize for MATLAB Function: '<Root>/FL U Mapping' */
     MPC_casadi_DW.sfEvent = MPC_casadi_CALL_EVENT;
-    MPC_casadi_DW.is_active_c1_MPC_casadi = 0U;
+    MPC_casadi_DW.is_active_c4_MPC_casadi = 0U;
 
     /* set "at time zero" to false */
     if (rtmIsFirstInitCond(MPC_casadi_M)) {
@@ -5256,8 +5266,8 @@ void MPC_casadi_terminate(void)
     MPC_casadi_DW.HILInitialize_Card = NULL;
   }
 
-  /* Terminate for S-Function (casadi_fun): '<Root>/FLMPC S-Function' */
-  /* Level2 S-Function Block: '<Root>/FLMPC S-Function' (casadi_fun) */
+  /* Terminate for S-Function (casadi_fun): '<Root>/S-Function' */
+  /* Level2 S-Function Block: '<Root>/S-Function' (casadi_fun) */
   {
     SimStruct *rts = MPC_casadi_M->childSfunctions[0];
     sfcnTerminate(rts);
@@ -5415,10 +5425,10 @@ RT_MODEL_MPC_casadi_T *MPC_casadi(void)
   rtmSetFirstInitCond(MPC_casadi_M, 1);
 
   /* External mode info */
-  MPC_casadi_M->Sizes.checksums[0] = (1944701927U);
-  MPC_casadi_M->Sizes.checksums[1] = (289717629U);
-  MPC_casadi_M->Sizes.checksums[2] = (564656382U);
-  MPC_casadi_M->Sizes.checksums[3] = (4084395969U);
+  MPC_casadi_M->Sizes.checksums[0] = (1690810183U);
+  MPC_casadi_M->Sizes.checksums[1] = (2525781201U);
+  MPC_casadi_M->Sizes.checksums[2] = (3900923522U);
+  MPC_casadi_M->Sizes.checksums[3] = (2012558071U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -5519,7 +5529,7 @@ RT_MODEL_MPC_casadi_T *MPC_casadi(void)
     MPC_casadi_M->childSfunctions[0] =
       (&MPC_casadi_M->NonInlinedSFcns.childSFunctions[0]);
 
-    /* Level2 S-Function Block: MPC_casadi/<Root>/FLMPC S-Function (casadi_fun) */
+    /* Level2 S-Function Block: MPC_casadi/<Root>/S-Function (casadi_fun) */
     {
       SimStruct *rts = MPC_casadi_M->childSfunctions[0];
 
@@ -5591,8 +5601,8 @@ RT_MODEL_MPC_casadi_T *MPC_casadi(void)
             &MPC_casadi_M->NonInlinedSFcns.Sfcn0.UPtrs0;
           int_T *dimensions = (int_T *)
             &MPC_casadi_M->NonInlinedSFcns.Sfcn0.iDims0;
-          sfcnUPtrs[0] = MPC_casadi_B.Memory1;
-          sfcnUPtrs[1] = &MPC_casadi_B.Memory1[1];
+          sfcnUPtrs[0] = MPC_casadi_B.Memory;
+          sfcnUPtrs[1] = &MPC_casadi_B.Memory[1];
           ssSetInputPortSignalPtrs(rts, 0, (InputPtrsType)&sfcnUPtrs[0]);
           dimensions[0] = 2;
           dimensions[1] = 1;
@@ -5610,7 +5620,7 @@ RT_MODEL_MPC_casadi_T *MPC_casadi(void)
 
           {
             int_T i1;
-            const real_T *u1 = MPC_casadi_B.Memory2;
+            const real_T *u1 = MPC_casadi_B.Memory1;
             for (i1=0; i1 < 12; i1++) {
               sfcnUPtrs[i1] = &u1[i1];
             }
@@ -5633,7 +5643,7 @@ RT_MODEL_MPC_casadi_T *MPC_casadi(void)
 
           {
             int_T i1;
-            const real_T *u2 = MPC_casadi_B.Memory3;
+            const real_T *u2 = MPC_casadi_B.Memory2;
             for (i1=0; i1 < 10; i1++) {
               sfcnUPtrs[i1] = &u2[i1];
             }
@@ -5671,13 +5681,13 @@ RT_MODEL_MPC_casadi_T *MPC_casadi(void)
           _ssSetOutputPortDimensionsPtrAsInt(rts, 0, dimensions);
           _ssSetOutputPortNumDimensions(rts, 0, 2);
           ssSetOutputPortWidthAsInt(rts, 0, 2);
-          ssSetOutputPortSignal(rts, 0, ((real_T *) MPC_casadi_B.virtualinput));
+          ssSetOutputPortSignal(rts, 0, ((real_T *) MPC_casadi_B.SFunction));
         }
       }
 
       /* path info */
-      ssSetModelName(rts, "FLMPC S-Function");
-      ssSetPath(rts, "MPC_casadi/FLMPC S-Function");
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "MPC_casadi/S-Function");
       ssSetRTModel(rts,MPC_casadi_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -5689,14 +5699,14 @@ RT_MODEL_MPC_casadi_T *MPC_casadi(void)
           &MPC_casadi_M->NonInlinedSFcns.Sfcn0.params;
         ssSetSFcnParamsCount(rts, 2);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)MPC_casadi_P.FLMPCSFunction_P1_Size);
-        ssSetSFcnParam(rts, 1, (mxArray*)MPC_casadi_P.FLMPCSFunction_P2_Size);
+        ssSetSFcnParam(rts, 0, (mxArray*)MPC_casadi_P.SFunction_P1_Size);
+        ssSetSFcnParam(rts, 1, (mxArray*)MPC_casadi_P.SFunction_P2_Size);
       }
 
       /* work vectors */
-      ssSetRWork(rts, (real_T *) &MPC_casadi_DW.FLMPCSFunction_RWORK[0]);
-      ssSetIWork(rts, (int_T *) &MPC_casadi_DW.FLMPCSFunction_IWORK[0]);
-      ssSetPWork(rts, (void **) &MPC_casadi_DW.FLMPCSFunction_PWORK[0]);
+      ssSetRWork(rts, (real_T *) &MPC_casadi_DW.SFunction_RWORK[0]);
+      ssSetIWork(rts, (int_T *) &MPC_casadi_DW.SFunction_IWORK[0]);
+      ssSetPWork(rts, (void **) &MPC_casadi_DW.SFunction_PWORK[0]);
 
       {
         struct _ssDWorkRecord *dWorkRecord = (struct _ssDWorkRecord *)
@@ -5711,19 +5721,19 @@ RT_MODEL_MPC_casadi_T *MPC_casadi(void)
         ssSetDWorkWidthAsInt(rts, 0, 802);
         ssSetDWorkDataType(rts, 0,SS_DOUBLE);
         ssSetDWorkComplexSignal(rts, 0, 0);
-        ssSetDWork(rts, 0, &MPC_casadi_DW.FLMPCSFunction_RWORK[0]);
+        ssSetDWork(rts, 0, &MPC_casadi_DW.SFunction_RWORK[0]);
 
         /* IWORK */
         ssSetDWorkWidthAsInt(rts, 1, 46);
         ssSetDWorkDataType(rts, 1,SS_INTEGER);
         ssSetDWorkComplexSignal(rts, 1, 0);
-        ssSetDWork(rts, 1, &MPC_casadi_DW.FLMPCSFunction_IWORK[0]);
+        ssSetDWork(rts, 1, &MPC_casadi_DW.SFunction_IWORK[0]);
 
         /* PWORK */
         ssSetDWorkWidthAsInt(rts, 2, 47);
         ssSetDWorkDataType(rts, 2,SS_POINTER);
         ssSetDWorkComplexSignal(rts, 2, 0);
-        ssSetDWork(rts, 2, &MPC_casadi_DW.FLMPCSFunction_PWORK[0]);
+        ssSetDWork(rts, 2, &MPC_casadi_DW.SFunction_PWORK[0]);
       }
 
       /* registration */

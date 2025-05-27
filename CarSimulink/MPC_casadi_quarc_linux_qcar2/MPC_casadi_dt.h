@@ -6,9 +6,9 @@
  *
  * Code generation for model "MPC_casadi".
  *
- * Model version              : 15.66
+ * Model version              : 15.65
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Mon May 26 16:26:44 2025
+ * C source code generated on : Tue May 27 13:30:29 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -86,7 +86,7 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&MPC_casadi_DW.HILInitialize_Card), 17, 0, 1 },
 
-  { (char_T *)(&MPC_casadi_DW.FLMPCSFunction_RWORK[0]), 0, 0, 802 },
+  { (char_T *)(&MPC_casadi_DW.SFunction_RWORK[0]), 0, 0, 802 },
 
   { (char_T *)(&MPC_casadi_DW.HILRead_PWORK), 11, 0, 56 },
 
@@ -96,7 +96,7 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&MPC_casadi_DW.Integrator1_IWORK), 10, 0, 56 },
 
-  { (char_T *)(&MPC_casadi_DW.is_active_c1_MPC_casadi), 3, 0, 2 },
+  { (char_T *)(&MPC_casadi_DW.is_active_c4_MPC_casadi), 3, 0, 2 },
 
   { (char_T *)(&MPC_casadi_DW.HILInitialize_DOBits[0]), 8, 0, 25 }
 };

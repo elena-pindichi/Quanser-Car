@@ -6,9 +6,9 @@
  *
  * Code generation for model "MPC_fmincon".
  *
- * Model version              : 15.61
+ * Model version              : 15.62
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Mon May 26 13:34:15 2025
+ * C source code generated on : Tue May 27 11:16:39 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -17560,10 +17560,10 @@ RT_MODEL_MPC_fmincon_T *MPC_fmincon(void)
   rtmSetFirstInitCond(MPC_fmincon_M, 1);
 
   /* External mode info */
-  MPC_fmincon_M->Sizes.checksums[0] = (1391301494U);
-  MPC_fmincon_M->Sizes.checksums[1] = (1803583885U);
-  MPC_fmincon_M->Sizes.checksums[2] = (1750072613U);
-  MPC_fmincon_M->Sizes.checksums[3] = (3628774880U);
+  MPC_fmincon_M->Sizes.checksums[0] = (3028338210U);
+  MPC_fmincon_M->Sizes.checksums[1] = (907367853U);
+  MPC_fmincon_M->Sizes.checksums[2] = (2948544777U);
+  MPC_fmincon_M->Sizes.checksums[3] = (2694126886U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;

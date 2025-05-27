@@ -6,9 +6,9 @@
  *
  * Code generation for model "MPC_casadi".
  *
- * Model version              : 15.66
+ * Model version              : 15.65
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Mon May 26 16:26:44 2025
+ * C source code generated on : Tue May 27 13:30:29 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -913,10 +913,10 @@ typedef struct {
   real_T Product_p;                    /* '<S17>/Product' */
   real_T Product1_g;                   /* '<S17>/Product1' */
   real_T Gain3;                        /* '<S18>/Gain3' */
-  real_T Memory1[2];                   /* '<Root>/Memory1' */
-  real_T Memory2[12];                  /* '<Root>/Memory2' */
-  real_T Memory3[10];                  /* '<Root>/Memory3' */
-  real_T virtualinput[2];              /* '<Root>/FLMPC S-Function' */
+  real_T Memory[2];                    /* '<Root>/Memory' */
+  real_T Memory1[12];                  /* '<Root>/Memory1' */
+  real_T Memory2[10];                  /* '<Root>/Memory2' */
+  real_T SFunction[2];                 /* '<Root>/S-Function' */
   real_T Integrator5;                  /* '<S4>/Integrator5' */
   real_T Integrator6;                  /* '<S5>/Integrator6' */
   real_T Integrator3;                  /* '<S3>/Integrator3' */
@@ -925,7 +925,7 @@ typedef struct {
   real_T measured;                     /* '<S9>/Multiply' */
   real_T commandsaturation;            /* '<S8>/command saturation' */
   real_T SteeringBias;                 /* '<S8>/Steering Bias' */
-  real_T RT_m[54];                     /* '<S1>/RT' */
+  real_T RT_e[54];                     /* '<S1>/RT' */
   real_T Unwrap21_o;                   /* '<S3>/Unwrap 2^1' */
   real_T Integrator1_f;                /* '<S11>/Integrator1' */
   real_T Product_g;                    /* '<S11>/Product' */
@@ -956,9 +956,9 @@ typedef struct {
   real_T Unwrap224_Revolutions;        /* '<S8>/Unwrap 2^24' */
   real_T Unwrap21_PreviousInput;       /* '<S8>/Unwrap 2^1' */
   real_T Unwrap21_Revolutions;         /* '<S8>/Unwrap 2^1' */
-  real_T Memory1_PreviousInput[2];     /* '<Root>/Memory1' */
-  real_T Memory2_PreviousInput[12];    /* '<Root>/Memory2' */
-  real_T Memory3_PreviousInput[10];    /* '<Root>/Memory3' */
+  real_T Memory_PreviousInput[2];      /* '<Root>/Memory' */
+  real_T Memory1_PreviousInput[12];    /* '<Root>/Memory1' */
+  real_T Memory2_PreviousInput[10];    /* '<Root>/Memory2' */
   real_T XYFigure_XBuffer[1000000];    /* '<Root>/XY Figure' */
   real_T XYFigure_YBuffer[1000000];    /* '<Root>/XY Figure' */
   real_T RT_Buffer0[54];               /* '<S1>/RT' */
@@ -967,9 +967,9 @@ typedef struct {
   real_T idx;                          /* '<S1>/Dynamics' */
   real_T z_ref_internal[2];            /* '<S1>/Dynamics' */
   t_card HILInitialize_Card;           /* '<S8>/HIL Initialize' */
-  real_T FLMPCSFunction_RWORK[802];    /* '<Root>/FLMPC S-Function' */
+  real_T SFunction_RWORK[802];         /* '<Root>/S-Function' */
   void *HILRead_PWORK;                 /* '<S8>/HIL Read' */
-  void *FLMPCSFunction_PWORK[47];      /* '<Root>/FLMPC S-Function' */
+  void *SFunction_PWORK[47];           /* '<Root>/S-Function' */
   void *HILWrite_PWORK;                /* '<S8>/HIL Write' */
   struct {
     void *LoggedData;
@@ -1008,7 +1008,7 @@ typedef struct {
   int32_T HILInitialize_POPolarityVals[2];/* '<S8>/HIL Initialize' */
   int32_T HILRead_EncoderBuffer;       /* '<S8>/HIL Read' */
   int32_T sfEvent;                     /* '<Root>/FL U Mapping' */
-  int32_T sfEvent_l;                   /* '<S1>/Dynamics' */
+  int32_T sfEvent_b;                   /* '<S1>/Dynamics' */
   uint32_T HILInitialize_POSortedChans[2];/* '<S8>/HIL Initialize' */
   int_T Integrator1_IWORK;             /* '<S16>/Integrator1' */
   int_T Integrator1_IWORK_i;           /* '<S17>/Integrator1' */
@@ -1016,15 +1016,15 @@ typedef struct {
   int_T Integrator1_IWORK_d;           /* '<S13>/Integrator1' */
   int_T Integrator1_IWORK_gg;          /* '<S14>/Integrator1' */
   int_T Integrator1_IWORK_l;           /* '<S15>/Integrator1' */
-  int_T FLMPCSFunction_IWORK[46];      /* '<Root>/FLMPC S-Function' */
+  int_T SFunction_IWORK[46];           /* '<Root>/S-Function' */
   int_T XYFigure_IWORK[2];             /* '<Root>/XY Figure' */
   int_T Integrator1_IWORK_a;           /* '<S11>/Integrator1' */
   struct {
     int_T PrevIndex;
   } FromWorkspace1_IWORK;              /* '<Root>/From Workspace1' */
 
-  uint8_T is_active_c1_MPC_casadi;     /* '<Root>/FL U Mapping' */
-  uint8_T is_active_c2_MPC_casadi;     /* '<S1>/Dynamics' */
+  uint8_T is_active_c4_MPC_casadi;     /* '<Root>/FL U Mapping' */
+  uint8_T is_active_c1_MPC_casadi;     /* '<S1>/Dynamics' */
   boolean_T HILInitialize_DOBits[16];  /* '<S8>/HIL Initialize' */
   boolean_T Unwrap22_FirstSample;      /* '<S8>/Unwrap 2^2' */
   boolean_T Unwrap224_FirstSample;     /* '<S8>/Unwrap 2^24' */
@@ -1032,7 +1032,7 @@ typedef struct {
   boolean_T XYFigure_IsFull;           /* '<Root>/XY Figure' */
   boolean_T Unwrap21_FirstSample_o;    /* '<S3>/Unwrap 2^1' */
   boolean_T doneDoubleBufferReInit;    /* '<Root>/FL U Mapping' */
-  boolean_T doneDoubleBufferReInit_f;  /* '<S1>/Dynamics' */
+  boolean_T doneDoubleBufferReInit_j;  /* '<S1>/Dynamics' */
   boolean_T idx_not_empty;             /* '<S1>/Dynamics' */
   boolean_T z_ref_internal_not_empty;  /* '<S1>/Dynamics' */
 } DW_MPC_casadi_T;
@@ -1313,26 +1313,26 @@ struct P_MPC_casadi_T_ {
   real_T Gain3_Gain;                   /* Expression: 0.033
                                         * Referenced by: '<S18>/Gain3'
                                         */
+  real_T Memory_InitialCondition;      /* Expression: 0
+                                        * Referenced by: '<Root>/Memory'
+                                        */
   real_T Memory1_InitialCondition;     /* Expression: 0
                                         * Referenced by: '<Root>/Memory1'
                                         */
   real_T Memory2_InitialCondition;     /* Expression: 0
                                         * Referenced by: '<Root>/Memory2'
                                         */
-  real_T Memory3_InitialCondition;     /* Expression: 0
-                                        * Referenced by: '<Root>/Memory3'
+  real_T SFunction_P1_Size[2];         /* Computed Parameter: SFunction_P1_Size
+                                        * Referenced by: '<Root>/S-Function'
                                         */
-  real_T FLMPCSFunction_P1_Size[2];/* Computed Parameter: FLMPCSFunction_P1_Size
-                                    * Referenced by: '<Root>/FLMPC S-Function'
-                                    */
-  real_T FLMPCSFunction_P1[18];        /* Computed Parameter: FLMPCSFunction_P1
-                                        * Referenced by: '<Root>/FLMPC S-Function'
+  real_T SFunction_P1[18];             /* Computed Parameter: SFunction_P1
+                                        * Referenced by: '<Root>/S-Function'
                                         */
-  real_T FLMPCSFunction_P2_Size[2];/* Computed Parameter: FLMPCSFunction_P2_Size
-                                    * Referenced by: '<Root>/FLMPC S-Function'
-                                    */
-  real_T FLMPCSFunction_P2[11];        /* Computed Parameter: FLMPCSFunction_P2
-                                        * Referenced by: '<Root>/FLMPC S-Function'
+  real_T SFunction_P2_Size[2];         /* Computed Parameter: SFunction_P2_Size
+                                        * Referenced by: '<Root>/S-Function'
+                                        */
+  real_T SFunction_P2[11];             /* Computed Parameter: SFunction_P2
+                                        * Referenced by: '<Root>/S-Function'
                                         */
   real_T Integrator5_IC;               /* Expression: 0
                                         * Referenced by: '<S4>/Integrator5'

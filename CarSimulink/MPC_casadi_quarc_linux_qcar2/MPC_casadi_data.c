@@ -6,9 +6,9 @@
  *
  * Code generation for model "MPC_casadi".
  *
- * Model version              : 15.66
+ * Model version              : 15.65
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Mon May 26 16:26:44 2025
+ * C source code generated on : Tue May 27 13:30:29 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -312,6 +312,11 @@ P_MPC_casadi_T MPC_casadi_P = {
   0.033,
 
   /* Expression: 0
+   * Referenced by: '<Root>/Memory'
+   */
+  0.0,
+
+  /* Expression: 0
    * Referenced by: '<Root>/Memory1'
    */
   0.0,
@@ -321,29 +326,24 @@ P_MPC_casadi_T MPC_casadi_P = {
    */
   0.0,
 
-  /* Expression: 0
-   * Referenced by: '<Root>/Memory3'
-   */
-  0.0,
-
-  /* Computed Parameter: FLMPCSFunction_P1_Size
-   * Referenced by: '<Root>/FLMPC S-Function'
+  /* Computed Parameter: SFunction_P1_Size
+   * Referenced by: '<Root>/S-Function'
    */
   { 1.0, 18.0 },
 
-  /* Computed Parameter: FLMPCSFunction_P1
-   * Referenced by: '<Root>/FLMPC S-Function'
+  /* Computed Parameter: SFunction_P1
+   * Referenced by: '<Root>/S-Function'
    */
   { 102.0, 108.0, 109.0, 112.0, 99.0, 95.0, 111.0, 110.0, 99.0, 97.0, 114.0,
     46.0, 99.0, 97.0, 115.0, 97.0, 100.0, 105.0 },
 
-  /* Computed Parameter: FLMPCSFunction_P2_Size
-   * Referenced by: '<Root>/FLMPC S-Function'
+  /* Computed Parameter: SFunction_P2_Size
+   * Referenced by: '<Root>/S-Function'
    */
   { 1.0, 11.0 },
 
-  /* Computed Parameter: FLMPCSFunction_P2
-   * Referenced by: '<Root>/FLMPC S-Function'
+  /* Computed Parameter: SFunction_P2
+   * Referenced by: '<Root>/S-Function'
    */
   { 102.0, 108.0, 109.0, 112.0, 99.0, 95.0, 111.0, 110.0, 99.0, 97.0, 114.0 },
 
