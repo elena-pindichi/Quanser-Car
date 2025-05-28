@@ -6,9 +6,9 @@
  *
  * Code generation for model "test".
  *
- * Model version              : 15.67
+ * Model version              : 15.68
  * Simulink Coder version : 9.9 (R2023a) 19-Nov-2022
- * C source code generated on : Tue May 27 16:31:33 2025
+ * C source code generated on : Wed May 28 14:32:02 2025
  *
  * Target selection: quarc_linux_qcar2.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
