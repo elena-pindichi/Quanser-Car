@@ -43,7 +43,7 @@ class MPCControllerNode(Node):
         self.DX = 4
         self.DZ = 2
         self.DU = 2
-        self.NPRED = 10
+        self.NPRED = 5
         self.L = 0.256
         self.DELTA = 0.35
 
@@ -104,28 +104,46 @@ class MPCControllerNode(Node):
 
     def create_reference_trajectory(self):
         t = np.arange(0, 10, self.dt)
-        alpha = 0.15
-        beta = 0.15
 
+        alpha = 0.08
+        beta = 0.08
+        l = self.L
+
+        # Positions
         xr = alpha * t
         yr = beta * t
-        dxr = np.full_like(t, alpha)
-        dyr = np.full_like(t, beta)
-        ddxr = np.zeros_like(t)
-        ddyr = np.zeros_like(t)
-        dddxr = np.zeros_like(t)
-        dddyr = np.zeros_like(t)
 
-        Vr = np.sqrt(dxr**2 + dyr**2)
-        epsilon = 1e-6
+        # First derivatives (velocities)
+        dxr = alpha + 0 * t
+        dyr = beta + 0 * t
+
+        # Second derivatives (accelerations)
+        ddxr = 0 + 0 * t
+        ddyr = 0 + 0 * t
+
+        # Third derivatives (jerks)
+        dddxr = 0 + 0 * t
+        dddyr = 0 + 0 * t
+
+        # Compute velocity magnitude Vr
+        Vr = np.sqrt(dxr ** 2 + dyr ** 2)
+
+        # Avoid division by zero by adding a small epsilon
+        epsilon = 1e-8
         Vr_safe = np.maximum(Vr, epsilon)
 
+        # Compute omegar as per MATLAB formula
         numerator = (dddyr * dxr - dddxr * dyr) * (Vr_safe ** 2) - 3 * (ddyr * dxr - ddxr * dyr) * (dxr * ddxr + dyr * ddyr)
-        denominator = (Vr_safe ** 6 + self.L ** 2 * (ddyr * dxr - ddxr * dyr) ** 2)
-        omegar = self.L * Vr_safe * numerator / denominator
+        denominator = (Vr_safe ** 6 + (l ** 2) * (ddyr * dxr - ddxr * dyr) ** 2)
+        omegar = l * Vr_safe * numerator / denominator
 
+        # Compute thetar (angle reference)
         thetar = np.unwrap(np.arctan2(dyr / Vr_safe, dxr / Vr_safe))
-        phir = np.arctan((self.L * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
+
+        # Compute phir (steering angle reference)
+        phir = np.arctan((l * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
+
+        self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
 
         self.ZREF_FULL = np.array([
             xr + self.L * np.cos(thetar) + self.DELTA * np.cos(thetar + phir),
@@ -233,8 +251,9 @@ class MPCControllerNode(Node):
         x_actual = saved_states[0]
         y_actual = saved_states[1]
 
-        x_ref = self.ZREF_FULL[0, :self.idx]
-        y_ref = self.ZREF_FULL[1, :self.idx]
+        x_ref = self.XREF_FULL[0, :self.idx]
+        y_ref = self.XREF_FULL[1, :self.idx]
+        
 
         plt.figure()
         plt.plot(x_ref, y_ref, 'r--', label='Reference')
@@ -247,6 +266,7 @@ class MPCControllerNode(Node):
         plt.grid(True)
         plt.savefig('/tmp/mpc_tracking_plot.png')
         self.get_logger().info("Saved plot to /tmp/mpc_tracking_plot.png")
+        plt.show()
 
 
 
