@@ -26,12 +26,12 @@ def LinMatrix(eta, Delta, l):
 NPRED = 5
 Q_VAL = 20
 R_VAL = 1
-P_VAL = 100
+P_VAL = 10
 L = 0.256
 DELTA = 0.35
 
 # Simulation steps and sampling time
-TS = 0.3
+TS = 0.1
 NSIM = 400
 
 # System dimensions
@@ -91,7 +91,8 @@ omegar  = L * Vr * ((dddyr * dxr - dddxr * dyr) * Vr**2 - 3 * (ddyr * dxr - ddxr
 ur      = np.array([Vr, omegar])
 
 # Computing angle reference
-thetar  = np.arctan2(dyr / Vr, dxr / Vr)
+thetar_notunwrap  = np.arctan2(dyr / Vr, dxr / Vr)
+thetar = np.unwrap(thetar_notunwrap)
 phir    = np.arctan((L * (ddyr * dxr - ddxr * dyr)) / Vr**3)
 
 # Computing references on z and virtual input w
