@@ -73,7 +73,7 @@ class MPCControllerNode(Node):
     def setup_mpc(self):
         Q = 20 * np.eye(self.DZ)
         R = 1 * np.eye(self.DU)
-        P = 100 * Q
+        P = 10 * Q
 
         self.solver = casadi.Opti()
         self.Z = self.solver.variable(self.DZ, self.NPRED)
@@ -140,19 +140,35 @@ class MPCControllerNode(Node):
     def timer_callback(self):
         self.saved_states.append(self.curr_state.copy())
 
-        if self.idx > len(self.ZREF_FULL[0]) - self.NPRED:
-            self.get_logger().info("Trajectory complete.")
+        if self.idx > 10 / self.dt:
+            msg_out = MotorCommands()
+            msg_out.motor_names = ['steering_angle', 'motor_throttle']
+            msg_out.values = [0.0, 0.0]
+            self.cmd_publisher.publish(msg_out)
+            self.get_logger().info("Trajectory complete. Robot stopped.")
+            self.plot_reference_and_states()
             return
 
         try:
             z_current = self.LinOutput(self.curr_state[:, 0])
             self.solver.set_value(self.ZINIT, z_current)
 
-            zref = self.ZREF_FULL[:, self.idx:self.idx + self.NPRED]
-            wref = self.WREF_FULL[:, self.idx:self.idx + self.NPRED]
+            # Prepare ZREF and WREF with padding if needed
+            if self.idx + self.NPRED > self.ZREF_FULL.shape[1]:
+                remaining = self.ZREF_FULL[:, self.idx:]
+                pad_count = self.NPRED - remaining.shape[1]
+                last_col = self.ZREF_FULL[:, -1][:, np.newaxis]
+                padded_zref = np.hstack([remaining, np.repeat(last_col, pad_count, axis=1)])
 
-            self.solver.set_value(self.ZREF, zref)
-            self.solver.set_value(self.WREF, wref)
+                remaining_w = self.WREF_FULL[:, self.idx:]
+                last_col_w = self.WREF_FULL[:, -1][:, np.newaxis]
+                padded_wref = np.hstack([remaining_w, np.repeat(last_col_w, pad_count, axis=1)])
+            else:
+                padded_zref = self.ZREF_FULL[:, self.idx:self.idx + self.NPRED]
+                padded_wref = self.WREF_FULL[:, self.idx:self.idx + self.NPRED]
+
+            self.solver.set_value(self.ZREF, padded_zref)
+            self.solver.set_value(self.WREF, padded_wref)
 
             sol = self.solver.solve()
             w0 = sol.value(self.W[:, 0])
@@ -168,12 +184,16 @@ class MPCControllerNode(Node):
             msg.values = [self.phi, u0[0]]
             self.cmd_publisher.publish(msg)
 
+            self.get_logger().info(f"MPC step: v={u0[0]:.2f}, phi={self.phi:.2f}")
+
             x_next = self.curr_state[:, 0] + self.dt * self.fdynamics(self.curr_state[:, 0], u0)
             self.curr_state = x_next.reshape(-1, 1)
 
-            self.idx += 1
         except Exception as e:
-            self.get_logger().error(f"MPC solve error: {e}")
+            self.get_logger().error(f"MPC solve error: {str(e)}")
+
+        self.idx += 1
+
 
     def fdynamics(self, x, u):
         return np.array([
@@ -202,9 +222,32 @@ class MPCControllerNode(Node):
                 y = named_pose.pose.position.y
                 q = named_pose.pose.orientation
                 _, _, yaw = euler_from_quaternion([q.x, q.y, q.z, q.w])
-                yaw = np.unwrap(yaw)
+                # yaw = np.unwrap(yaw)
 
                 self.curr_state = np.array([[x], [y], [yaw], [self.phi]])
+
+    def plot_reference_and_states(self):
+        import matplotlib.pyplot as plt
+
+        saved_states = np.array(self.saved_states).squeeze().T  # shape (4, N)
+        x_actual = saved_states[0]
+        y_actual = saved_states[1]
+
+        x_ref = self.ZREF_FULL[0, :self.idx]
+        y_ref = self.ZREF_FULL[1, :self.idx]
+
+        plt.figure()
+        plt.plot(x_ref, y_ref, 'r--', label='Reference')
+        plt.plot(x_actual, y_actual, 'b-', label='Actual Path')
+        plt.xlabel('X position')
+        plt.ylabel('Y position')
+        plt.legend()
+        plt.title('Tracking Performance')
+        plt.axis('equal')
+        plt.grid(True)
+        plt.savefig('/tmp/mpc_tracking_plot.png')
+        self.get_logger().info("Saved plot to /tmp/mpc_tracking_plot.png")
+
 
 
 def main(args=None):
