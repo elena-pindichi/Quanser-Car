@@ -34,11 +34,17 @@ class MPCControllerNode(Node):
             10
         )
 
+        msg_out = MotorCommands()
+        msg_out.motor_names = ['steering_angle', 'motor_throttle']
+        msg_out.values = [0.0, 0.0]
+        self.cmd_publisher.publish(msg_out)
+
         self.target_name = 'qcar2'
         self.phi = 0.0
         self.last_time = None
         self.idx = 0
-        self.dt = 0.1
+        self.dt = 0.3
+        self.tf = 30
 
         self.DX = 4
         self.DZ = 2
@@ -49,11 +55,14 @@ class MPCControllerNode(Node):
 
         self.curr_state = np.zeros((self.DX, 1))
         self.saved_states = []
+        self.saved_inputs = []
+        self.last_yaw = None
+        self.phi = 0.0
+        self.PHIMAX = np.pi / 4
 
         self.setup_mpc()
-        self.create_reference_trajectory()
-
         self.timer = self.create_timer(self.dt, self.timer_callback)
+
 
     def LinOutput(self, x):
         return np.array([
@@ -86,7 +95,7 @@ class MPCControllerNode(Node):
         self.solver.subject_to(self.Z[:, 0] == self.ZINIT)
 
         A = np.eye(self.DZ)
-        B = self.dt * np.eye(self.DZ)
+        B = self.dt * np.eye(self.DU)
 
         rhat = min(self.DELTA * self.L * 10 / np.sqrt(self.DELTA**2 + self.L**2), 1)
 
@@ -101,9 +110,10 @@ class MPCControllerNode(Node):
         obj += casadi.mtimes([(self.Z[:, -1] - self.ZREF[:, -1]).T, P, (self.Z[:, -1] - self.ZREF[:, -1])])
         self.solver.minimize(obj)
         self.solver.solver('ipopt', {'ipopt.print_level': 0, 'print_time': 0})
+        self.create_reference_trajectory()
 
     def create_reference_trajectory(self):
-        t = np.arange(0, 10, self.dt)
+        t = np.arange(0, self.tf, self.dt)
 
         alpha = 0.08
         beta = 0.08
@@ -124,6 +134,19 @@ class MPCControllerNode(Node):
         # Third derivatives (jerks)
         dddxr = 0 + 0 * t
         dddyr = 0 + 0 * t
+
+        alpha   = 1
+        beta    = 1
+        ang     = 0.5
+        xr      = alpha*np.cos(ang*t)      
+        dxr     = -alpha*ang*np.sin(ang*t)    
+        ddxr    = -alpha*ang*ang*np.cos(ang*t)       
+        dddxr   = alpha*ang*ang*ang*np.sin(ang*t)
+
+        yr      = beta*np.sin(ang*t)       
+        dyr     = beta*ang*np.cos(ang*t)      
+        ddyr    = -beta*ang*ang*np.sin(ang*t)        
+        dddyr   = -beta*ang*ang*ang*np.cos(ang*t)
 
         # Compute velocity magnitude Vr
         Vr = np.sqrt(dxr ** 2 + dyr ** 2)
@@ -158,7 +181,7 @@ class MPCControllerNode(Node):
     def timer_callback(self):
         self.saved_states.append(self.curr_state.copy())
 
-        if self.idx > 10 / self.dt:
+        if self.idx > self.tf / self.dt:
             msg_out = MotorCommands()
             msg_out.motor_names = ['steering_angle', 'motor_throttle']
             msg_out.values = [0.0, 0.0]
@@ -167,50 +190,82 @@ class MPCControllerNode(Node):
             self.plot_reference_and_states()
             return
 
-        try:
-            z_current = self.LinOutput(self.curr_state[:, 0])
-            self.solver.set_value(self.ZINIT, z_current)
-
-            # Prepare ZREF and WREF with padding if needed
-            if self.idx + self.NPRED > self.ZREF_FULL.shape[1]:
-                remaining = self.ZREF_FULL[:, self.idx:]
-                pad_count = self.NPRED - remaining.shape[1]
-                last_col = self.ZREF_FULL[:, -1][:, np.newaxis]
-                padded_zref = np.hstack([remaining, np.repeat(last_col, pad_count, axis=1)])
+        if self.idx + self.NPRED > self.ZREF_FULL.shape[1]:
+            try:
+                # Pad the reference outputs z and inputs w for last horizon steps
+                remaining_z = self.ZREF_FULL[:, self.idx:]
+                pad_count_z = max(self.NPRED - remaining_z.shape[1], 0)
+                last_col_z = self.ZREF_FULL[:, -1].reshape(self.DZ, 1)
+                padding_z = np.repeat(last_col_z, pad_count_z, axis=1)
+                padded_zref = np.hstack((remaining_z, padding_z))
 
                 remaining_w = self.WREF_FULL[:, self.idx:]
-                last_col_w = self.WREF_FULL[:, -1][:, np.newaxis]
-                padded_wref = np.hstack([remaining_w, np.repeat(last_col_w, pad_count, axis=1)])
-            else:
-                padded_zref = self.ZREF_FULL[:, self.idx:self.idx + self.NPRED]
-                padded_wref = self.WREF_FULL[:, self.idx:self.idx + self.NPRED]
+                pad_count_w = max(self.NPRED - remaining_w.shape[1], 0)
+                last_col_w = self.WREF_FULL[:, -1].reshape(self.DU, 1)
+                padding_w = np.repeat(last_col_w, pad_count_w, axis=1)
+                padded_wref = np.hstack((remaining_w, padding_w))
 
-            self.solver.set_value(self.ZREF, padded_zref)
-            self.solver.set_value(self.WREF, padded_wref)
+                z_current = self.LinOutput(self.curr_state[:, 0])
+                self.solver.set_value(self.ZINIT, z_current)
+                self.solver.set_value(self.ZREF, padded_zref)
+                self.solver.set_value(self.WREF, padded_wref)
 
-            sol = self.solver.solve()
-            w0 = sol.value(self.W[:, 0])
+                self.get_logger().info("In the last part of the reference horizon")
 
-            eta = self.curr_state[2:4, 0]
-            M = self.LinMatrix(eta)
-            u0 = np.linalg.pinv(M) @ w0
+                sol = self.solver.solve()
+                w0 = sol.value(self.W[:, 0])
 
-            self.phi = self.integrate_phi(self.phi, u0[1], self.dt)
+                eta = self.curr_state[2:4, 0]
+                M = self.LinMatrix(eta)
+                u0 = np.linalg.pinv(M) @ w0
 
-            msg = MotorCommands()
-            msg.motor_names = ['steering_angle', 'motor_throttle']
-            msg.values = [self.phi, u0[0]]
-            self.cmd_publisher.publish(msg)
+                self.phi = self.integrate_phi(self.phi, u0[1], self.dt)
 
-            self.get_logger().info(f"MPC step: v={u0[0]:.2f}, phi={self.phi:.2f}")
+                msg_out = MotorCommands()
+                msg_out.motor_names = ['steering_angle', 'motor_throttle']
+                msg_out.values = [self.phi, u0[0]]
+                self.cmd_publisher.publish(msg_out)
 
-            x_next = self.curr_state[:, 0] + self.dt * self.fdynamics(self.curr_state[:, 0], u0)
-            self.curr_state = x_next.reshape(-1, 1)
+                self.get_logger().info(f"MPC step: v={u0[0]:.2f}, phi={self.phi:.2f}")
 
-        except Exception as e:
-            self.get_logger().error(f"MPC solve error: {str(e)}")
+                x_next = self.curr_state[:, 0] + self.dt * self.fdynamics(self.curr_state[:, 0], u0)
+                self.curr_state = x_next.reshape(-1, 1)
+
+            except Exception as e:
+                self.get_logger().error(f"MPC solve error: {str(e)}")
+
+        else:
+            try:
+                z_current = self.LinOutput(self.curr_state[:, 0])
+                self.solver.set_value(self.ZINIT, z_current)
+                self.solver.set_value(self.ZREF, self.ZREF_FULL[:, self.idx:self.idx + self.NPRED])
+                self.solver.set_value(self.WREF, self.WREF_FULL[:, self.idx:self.idx + self.NPRED])
+
+                sol = self.solver.solve()
+                w0 = sol.value(self.W[:, 0])
+
+                eta = self.curr_state[2:4, 0]
+                M = self.LinMatrix(eta)
+                u0 = np.linalg.pinv(M) @ w0
+
+                self.phi = self.integrate_phi(self.phi, u0[1], self.dt)
+
+                msg_out = MotorCommands()
+                msg_out.motor_names = ['steering_angle', 'motor_throttle']
+                msg_out.values = [self.phi, u0[0]]
+                self.cmd_publisher.publish(msg_out)
+
+                self.get_logger().info(f"MPC step: v={u0[0]:.2f}, phi={self.phi:.2f}")
+
+                x_next = self.curr_state[:, 0] + self.dt * self.fdynamics(self.curr_state[:, 0], u0)
+                self.curr_state = x_next.reshape(-1, 1)
+
+            except Exception as e:
+                self.get_logger().error(f"MPC solve error: {str(e)}")
 
         self.idx += 1
+        self.saved_inputs.append(u0[0])
+
 
 
     def fdynamics(self, x, u):
@@ -222,7 +277,8 @@ class MPCControllerNode(Node):
         ])
 
     def integrate_phi(self, phi_current, omega, dt):
-        return np.clip(phi_current + omega * dt, -np.pi / 2, np.pi / 2)
+        PHI_MAX = self.PHIMAX
+        return np.clip(phi_current + omega * dt, -PHI_MAX, PHI_MAX)
 
     def poses_callback(self, msg):
         now = self.get_clock().now()
@@ -239,8 +295,17 @@ class MPCControllerNode(Node):
                 x = named_pose.pose.position.x
                 y = named_pose.pose.position.y
                 q = named_pose.pose.orientation
-                _, _, yaw = euler_from_quaternion([q.x, q.y, q.z, q.w])
-                # yaw = np.unwrap(yaw)
+                _, _, raw_yaw = euler_from_quaternion([q.x, q.y, q.z, q.w])
+                
+                if self.last_yaw is None:
+                    yaw = raw_yaw
+                else:
+                    yaw = self.last_yaw + np.unwrap([self.last_yaw, raw_yaw])[1] - self.last_yaw
+
+                self.last_yaw = yaw 
+
+                current_state = np.array([x, y, yaw, self.phi])
+                self.curr_state = current_state
 
                 self.curr_state = np.array([[x], [y], [yaw], [self.phi]])
 
