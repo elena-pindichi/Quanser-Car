@@ -100,8 +100,11 @@ for k = 1 : Npred
     solver.subject_to(z(:, k+1) == A * z(:, k) + B * w(:, k));
 
     % Nonlinear dynamics constraints
-    O = LinDyna(eta(:, k), l, Delta);
-    solver.subject_to(eta(:, k+1) == eta(:, k) + Ts * O * w(:, k));
+    % O = LinDyna(eta(:, k), l, Delta);
+    % solver.subject_to(eta(:, k+1) == eta(:, k) + Ts * O * w(:, k));
+    
+    L = InConstr(eta(:, k), l, Delta);
+    solver.subject_to(L * w(:, k) <= [10;10;10;10]);
     
     % Control input constraints
     solver.subject_to(w(:, k)' * w(:, k) <= rhat);

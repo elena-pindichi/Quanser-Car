@@ -1,0 +1,176 @@
+clc; close all; clear all
+addpath(genpath('tools'))
+
+%% Define the problem's matrices values
+dz = 2;
+dx = 4;
+du = 2;
+Ts = 0.1;
+N = 5;
+l           = 0.256;
+Delta       = 0.35; 
+rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 1);
+
+A= eye(dz); 
+B= Ts * eye(du);
+Q = 5 * eye(dz);
+R = 0.1 * eye(du);
+
+PSI          = zeros(N * dz, dz);
+THT          = zeros(N * dz, N * du);
+tmp         = eye(dz);
+PSI(1:dz, :) = eye(dz);
+for i = 1 : N-1
+    rows = i*dz + (1:dz);   
+    THT(rows, :) = [tmp * B, THT(rows-dz, 1:end-du)];
+    tmp = A*tmp;
+    PSI(rows, :) = tmp;
+end
+PSIN          = A*tmp;
+THTN          = [tmp * B, THT(end-dz+1 : end, 1:end-du)];
+QQ          = kron(eye(N), Q);
+RR          = kron(eye(N), R);
+Q_u         = kron(eye(N), 1/rhat^2*eye(dz));
+Q_u(1:2,1:2)= zeros(dz);
+
+%% Define parameters
+w = sdpvar(N*du,1);               % Decision variable
+z = sdpvar(dz,1);                 % Param: current state
+eta = sdpvar(2,1);                % Param: nonlinear state
+wr = sdpvar(N*du,1);              % Param: reference control input
+
+H = THT' * QQ * THT + RR;
+p = THT' * QQ * PSI * z - THT' * QQ * THT * wr - RR * wr;
+objective = 0.5 * w' * H * w + p' * w;
+
+L = InConstr(eta, l, Delta);
+Lhat = [L, zeros(dx, N - dx)];
+h = ones(size(Lhat,1),1);
+
+constr1 = Lhat*w(1:3) <= h;
+constr2 = w' * Q_u * w <= 1;
+
+S = eye(dz);
+term1 = w' * THTN' * S * THTN * w;
+term2 = 2 * z' * PSIN' * S * THTN * w;
+term3 = z' * PSIN' * S * PSIN * z;
+
+constr3 = term1 + term2 <= 1 - term3;
+
+constraints = [constr1, constr2, constr3];
+parameters = [z; eta; wr];
+
+% Define optimizer using YALMIP and MPT
+options = sdpsettings('solver','mpc', 'verbose', 1);  % or 'gurobi' if you want to test it numerically first
+
+sol = solvemp(constraints, objective, options, parameters, w);
+
+%% Bachelors
+% %% system data
+% dz = 2;
+% dx = 4;
+% du = 2;
+% Ts = 0.1;
+% 
+% A= eye(dz); 
+% B= Ts * eye(du);
+% sys= LTISystem('A', A, 'B', B);
+% 
+% N = 5;
+% 
+% % define cost function matrices/quadratic forms
+% Q = 5 * eye(dz);
+% sys.x.penalty = QuadFunction( Q );
+% R = 0.1 * eye(du);
+% sys.u.penalty = QuadFunction( R );
+% 
+% % define terminal cost and set
+% P = sys.LQRPenalty;
+% Tset = sys.LQRSet;
+% sys.x.with('terminalPenalty');
+% sys.x.with('terminalSet');
+% sys.x.terminalPenalty = P;
+% sys.x.terminalSet = Tset;
+% 
+% %% generate the matrices for the compact representation
+% 
+% PSI          = zeros(N * dz, dz);
+% THT          = zeros(N * dz, N * du);
+% tmp         = eye(dz);
+% PSI(1:dz, :) = eye(dz);
+% for i = 1 : N-1
+%     rows = i*dz + (1:dz);
+%     THT(rows, :) = [tmp * B, THT(rows-dz, 1:end-du)];
+%     tmp = A*tmp;
+%     PSI(rows, :) = tmp;
+% end
+% PSIN          = A*tmp;
+% THTN          = [tmp * B, THT(end-dz+1 : end, 1:end-du)];
+% QQ          = kron(eye(N), Q);
+% RR          = kron(eye(N), R);
+% 
+% %% generate the explicit solution
+% 
+% c = MPCController(sys, N);
+% empc = c.toExplicit();
+% 
+% % get the list of critical regions
+% CR=empc.partition.Set;
+% % get the affine laws that characterize each of the CR
+% for i=1:empc.feedback.Num
+%     CR(i).addFunction(AffFunction(empc.feedback.Set(i).getFunction('primal').F(1:du, :),...
+%                         empc.feedback.Set(i).getFunction('primal').g(1:du)), 'u0');
+% 
+%     F   = empc.feedback.Set(i).getFunction('primal').F;
+%     g   = empc.feedback.Set(i).getFunction('primal').g
+%     Atil= PSI + THT * F;
+%     Btil= THT * g;
+%     H   = Atil' * QQ * Atil + F' * RR * F;
+%     FF  = 2 * (Btil' * QQ * Atil + g' * RR * F);
+%     gg  = Btil' * QQ * Btil + g' * RR * g;
+% 
+%     Atil= PSIN + THTN * F;
+%     Btil= THTN * g;
+%     H   = H + Atil' * P.H * Atil;
+%     FF  = FF + 2 * (Btil' * P.H * Atil);
+%     gg  = Btil' * P.H * Btil;
+% 
+%     CR(i).addFunction(QuadFunction(H, FF, gg), 'cost');
+% end
+% 
+% %% plotting
+% 
+% figure; grid on; hold on
+% title(['critical regions for N=' num2str(N)])
+% plot(CR)
+% 
+% figure; 
+% title(['solution for N=' num2str(N)])
+% CR.fplot('u0')
+% 
+% figure; 
+% title(['cost for N=' num2str(N)])
+% CR.fplot('cost')
+% 
+% %% show 
+% 
+% domain = Polyhedron([eye(dz); -eye(dz)], [sys.x.max; -sys.x.min]);
+% % points = domain.grid(2);
+% points = [-10 -10];
+% 
+% Nsim = 20; 
+% 
+% fig1 = figure; grid on; hold on
+% plot(CR, 'Alpha', .4)
+% fig2 = figure; grid on; hold on
+% for i = 1 : size(points, 1)
+%     data = empc.simulate(points(i, :)', Nsim);
+%     figure(fig1)
+%     plot(data.X(1,:), data.X(2, :), '*-', 'LineWidth',1)
+%     figure(fig2)
+%     plot(data.U, '*-')
+% end
+% 
+% index = find(CR.contains((rand(2,1)-.5)*10))
+% empc.feedback.Set(index).getFunction('primal').F(1:du, :)
+% empc.feedback.Set(index).getFunction('primal').g(1:du, :)
