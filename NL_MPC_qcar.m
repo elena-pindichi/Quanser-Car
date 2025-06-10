@@ -24,7 +24,7 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-[xref, uref, Nsim] = reference(4);
+[xref, uref, Nsim] = reference(3);
 
 %% Constraints values
 Vmin     = -1; Vmax     = 1;       % Velocity limits
@@ -118,7 +118,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dx * Nsim))
 
 %% Plot results
-% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Circle1\Q'; 
+% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Spline2\Q'; 
 
 figure
 plot((1:Nsim)*Ts,err(1,:))
@@ -210,7 +210,8 @@ figure
 hold on
 height = 0.4; width = 0.2;
 st = 100;
-st = 450;
+% st = 30;
+% st = 450;
 k=1;
 while k < Nsim
    drawSteeringCar(xsim(:,k), l, height, width)

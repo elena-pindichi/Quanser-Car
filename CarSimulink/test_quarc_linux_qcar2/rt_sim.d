@@ -1,7 +1,7 @@
 rt_sim.o: C:/PROGRA~1/MATLAB/R2023a/rtw/c/src/rt_sim.c \
  C:/PROGRA~1/MATLAB/R2023a/extern/include/tmwtypes.h \
  C:/PROGRA~1/MATLAB/R2023a/simulink/include/simstruc_types.h \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h \
  C:/PROGRA~1/MATLAB/R2023a/simulink/include/sl_types_def.h \
  C:/PROGRA~1/MATLAB/R2023a/simulink/include/rtw_matlogging.h \
  C:/PROGRA~1/MATLAB/R2023a/simulink/include/rtw_extmode.h \
@@ -15,7 +15,7 @@ C:/PROGRA~1/MATLAB/R2023a/extern/include/tmwtypes.h:
 
 C:/PROGRA~1/MATLAB/R2023a/simulink/include/simstruc_types.h:
 
-C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h:
+C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h:
 
 C:/PROGRA~1/MATLAB/R2023a/simulink/include/sl_types_def.h:
 

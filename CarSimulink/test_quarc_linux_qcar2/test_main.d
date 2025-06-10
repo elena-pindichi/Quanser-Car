@@ -1,13 +1,13 @@
 test_main.o: \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/test_main.c \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/test_main.c \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h \
  C:/PROGRA~1/MATLAB/R2023a/extern/include/tmwtypes.h \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rtmodel.h \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/test.h \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rtmodel.h \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/test.h \
  C:/PROGRA~1/MATLAB/R2023a/simulink/include/simstruc.h \
  C:/PROGRA~1/MATLAB/R2023a/simulink/include/simstruc_compcond.h \
  C:/PROGRA~1/MATLAB/R2023a/simulink/include/simstruc_types.h \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h \
  C:/PROGRA~1/MATLAB/R2023a/simulink/include/sl_types_def.h \
  C:/PROGRA~1/MATLAB/R2023a/simulink/include/rtw_matlogging.h \
  C:/PROGRA~1/MATLAB/R2023a/simulink/include/rtw_extmode.h \
@@ -53,11 +53,11 @@ test_main.o: \
  C:/PROGRA~1/Quanser/QUARC/include/quanser_runtime.h \
  C:/PROGRA~1/Quanser/QUARC/include/quanser_types.h \
  C:/PROGRA~1/Quanser/QUARC/include/quanser_extern.h \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/test_types.h \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rtGetNaN.h \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rt_nonfinite.h \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rt_defines.h \
- C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/zero_crossing_types.h \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/test_types.h \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rtGetNaN.h \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rt_nonfinite.h \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rt_defines.h \
+ C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/zero_crossing_types.h \
  C:/PROGRA~1/MATLAB/R2023a/rtw/c/src/rt_sim.h \
  C:/PROGRA~1/Quanser/QUARC/include/quanser_timer.h \
  C:/PROGRA~1/Quanser/QUARC/include/quanser_thread.h \
@@ -70,13 +70,13 @@ test_main.o: \
  C:/PROGRA~1/Quanser/QUARC/include/quanser_signal.h \
  C:/PROGRA~1/Quanser/QUARC/include/quanser_string.h
 
-C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h:
+C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h:
 
 C:/PROGRA~1/MATLAB/R2023a/extern/include/tmwtypes.h:
 
-C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rtmodel.h:
+C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rtmodel.h:
 
-C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/test.h:
+C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/test.h:
 
 C:/PROGRA~1/MATLAB/R2023a/simulink/include/simstruc.h:
 
@@ -84,7 +84,7 @@ C:/PROGRA~1/MATLAB/R2023a/simulink/include/simstruc_compcond.h:
 
 C:/PROGRA~1/MATLAB/R2023a/simulink/include/simstruc_types.h:
 
-C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h:
+C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rtwtypes.h:
 
 C:/PROGRA~1/MATLAB/R2023a/simulink/include/sl_types_def.h:
 
@@ -176,15 +176,15 @@ C:/PROGRA~1/Quanser/QUARC/include/quanser_types.h:
 
 C:/PROGRA~1/Quanser/QUARC/include/quanser_extern.h:
 
-C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/test_types.h:
+C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/test_types.h:
 
-C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rtGetNaN.h:
+C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rtGetNaN.h:
 
-C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rt_nonfinite.h:
+C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rt_nonfinite.h:
 
-C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/rt_defines.h:
+C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/rt_defines.h:
 
-C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink/test_quarc_linux_qcar2/zero_crossing_types.h:
+C:/Users/pindiche/Desktop/QcarProject/CarSimulink/test_quarc_linux_qcar2/zero_crossing_types.h:
 
 C:/PROGRA~1/MATLAB/R2023a/rtw/c/src/rt_sim.h:
 

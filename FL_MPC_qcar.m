@@ -28,7 +28,7 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-[xref, uref, Nsim] = reference(4);
+[xref, uref, Nsim] = reference(3);
 
 xr = xref(1, :);
 yr = xref(2, :);
@@ -172,7 +172,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dz * Nsim))
 
 %% Plot results
-% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Circle1\Q'; 
+% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Spline2\Q'; 
 
 figure
 plot(xsim(1,:), xsim(2,:))
@@ -296,6 +296,7 @@ figure
 hold on
 height = 0.4; width = 0.2;
 st = 100;
+% st = 30;
 % st = 200;
 k=1;
 while k < Nsim

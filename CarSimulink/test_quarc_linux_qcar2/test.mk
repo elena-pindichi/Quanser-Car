@@ -2,7 +2,7 @@
 ## Makefile generated for component 'test'. 
 ## 
 ## Makefile     : test.mk
-## Generated on : Wed May 28 14:32:07 2025
+## Generated on : Mon Jun 02 14:12:03 2025
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/test.rt-linux_qcar2
 ## Product type : executable
 ## 
@@ -21,7 +21,7 @@ MAKEFILE                  = test.mk
 MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2023a
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2023a/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
-START_DIR                 = C:/Users/bajdus/Documents/Qcar2/Qcar_project/CarSimulink
+START_DIR                 = C:/Users/pindiche/Desktop/QcarProject/CarSimulink
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 1
