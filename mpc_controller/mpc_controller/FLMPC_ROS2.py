@@ -7,6 +7,7 @@ import casadi
 from motion_capture_tracking_interfaces.msg import NamedPoseArray
 from qcar2_interfaces.msg import MotorCommands
 from tf_transformations import euler_from_quaternion
+from mpc_controller.gen_traj import get_ref
 
 
 class MPCControllerNode(Node):
@@ -43,7 +44,7 @@ class MPCControllerNode(Node):
         self.phi = 0.0
         self.last_time = None
         self.idx = 0
-        self.dt = 0.3
+        self.dt = 0.1
         self.tf = 30
 
         self.DX = 4
@@ -80,8 +81,8 @@ class MPCControllerNode(Node):
         ])
 
     def setup_mpc(self):
-        Q = 20 * np.eye(self.DZ)
-        R = 1 * np.eye(self.DU)
+        Q = 40 * np.eye(self.DZ)
+        R = 2 * np.eye(self.DU)
         P = 10 * Q
 
         self.solver = casadi.Opti()
@@ -166,15 +167,31 @@ class MPCControllerNode(Node):
         # Compute phir (steering angle reference)
         phir = np.arctan((l * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
 
-        self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
+        ########### Spline
+        ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
+        omegar = ref["omegar"]
+        Vr = ref["Vr"]
+        epsilon = 1e-8
+        Vr_safe = np.maximum(Vr, epsilon)
+        XREF = ref["XREF_FULL"]
+
+        # self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
+        self.XREF_FULL = XREF
+        xr = self.XREF_FULL[0, :]
+        yr = self.XREF_FULL[1, :]
+        thetar = self.XREF_FULL[2, :]
+        phir = self.XREF_FULL[3, :]
+
+        # self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
+        self.UREF_FULL = np.vstack([Vr, omegar])
 
         self.ZREF_FULL = np.array([
             xr + self.L * np.cos(thetar) + self.DELTA * np.cos(thetar + phir),
             yr + self.L * np.sin(thetar) + self.DELTA * np.sin(thetar + phir)
         ])
 
-        self.WREF_FULL = np.zeros((2, len(t)))
-        for i in range(len(t)):
+        self.WREF_FULL = np.zeros((2, len(xr)))
+        for i in range(len(xr)):
             M = self.LinMatrix([thetar[i], phir[i]])
             self.WREF_FULL[:, i] = M @ np.array([Vr[i], omegar[i]])
 
@@ -249,6 +266,14 @@ class MPCControllerNode(Node):
                 u0 = np.linalg.pinv(M) @ w0
 
                 self.phi = self.integrate_phi(self.phi, u0[1], self.dt)
+                self.phi = self.phi
+
+                # new_phi = self.phi + u0[1] * self.dt
+
+                # unwrapped = np.unwrap([self.phi, new_phi])
+                # self.phi = unwrapped[-1]
+
+                # self.phi = np.clip(self.phi, -self.PHIMAX, self.PHIMAX)
 
                 msg_out = MotorCommands()
                 msg_out.motor_names = ['steering_angle', 'motor_throttle']
@@ -265,7 +290,6 @@ class MPCControllerNode(Node):
 
         self.idx += 1
         self.saved_inputs.append(u0[0])
-
 
 
     def fdynamics(self, x, u):
@@ -311,26 +335,46 @@ class MPCControllerNode(Node):
 
     def plot_reference_and_states(self):
         import matplotlib.pyplot as plt
-
-        saved_states = np.array(self.saved_states).squeeze().T  # shape (4, N)
-        x_actual = saved_states[0]
-        y_actual = saved_states[1]
-
-        x_ref = self.XREF_FULL[0, :self.idx]
-        y_ref = self.XREF_FULL[1, :self.idx]
-        
+        states = np.array(self.saved_states)
+        inputs = np.array(self.saved_inputs)
+        t_len = states.shape[0]
+        tin_len = inputs.shape[0]
+        ref = self.XREF_FULL[:, :t_len]
+        ref_in = self.UREF_FULL[0, :tin_len]
 
         plt.figure()
-        plt.plot(x_ref, y_ref, 'r--', label='Reference')
-        plt.plot(x_actual, y_actual, 'b-', label='Actual Path')
-        plt.xlabel('X position')
-        plt.ylabel('Y position')
+        plt.plot(states[:, 0], states[:, 1], label='Tracked Position')
+        plt.plot(ref[0, :], ref[1, :], '--', label='Reference Position')
+        plt.xlabel('x')
+        plt.ylabel('y')
         plt.legend()
-        plt.title('Tracking Performance')
-        plt.axis('equal')
         plt.grid(True)
-        plt.savefig('/tmp/mpc_tracking_plot.png')
-        self.get_logger().info("Saved plot to /tmp/mpc_tracking_plot.png")
+        plt.title("Reference vs States")
+
+        plt.figure()
+        plt.plot(states[:, 2], label='Yaw')
+        plt.plot(ref[2, :], '--', label='Reference Yaw')
+        plt.xlabel('time')
+        plt.ylabel('theta')
+        plt.legend()
+        plt.grid(True)
+        plt.title("Reference vs Yaw")
+
+        plt.figure()
+        plt.plot(states[:, 3], label='Phi')
+        plt.plot(ref[3, :], '--', label='Reference Phi')
+        plt.xlabel('time')
+        plt.ylabel('phi')
+        plt.legend()
+        plt.grid(True)
+        plt.title("Reference vs Phi")
+
+        plt.figure()
+        plt.plot(inputs, label='V')
+        plt.plot(ref_in, '--', label='Reference V')
+        plt.grid(True)
+        plt.title("Reference vs V")
+
         plt.show()
 
 
