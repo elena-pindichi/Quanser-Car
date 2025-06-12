@@ -7,6 +7,7 @@ import casadi
 from motion_capture_tracking_interfaces.msg import NamedPoseArray
 from qcar2_interfaces.msg import MotorCommands
 from tf_transformations import euler_from_quaternion
+from mpc_controller.gen_traj import get_ref
 
 
 class MPCControllerNode(Node):
@@ -49,9 +50,9 @@ class MPCControllerNode(Node):
         self.curr_state = np.zeros((4, 1))
         self.dt = 0.3
         self.tf = 30
-        self.PHIMAX = np.pi / 4
-        self.VMAX = 0.75
-        self.WMAX = 0.6
+        self.PHIMAX = np.pi / 5
+        self.VMAX = 1
+        self.WMAX = 0.8
         self.NPRED = 12
         
         self.setup_mpc()    
@@ -159,10 +160,10 @@ class MPCControllerNode(Node):
             self.solver.subject_to(self.U[1, k] >= -WMAX)
             self.solver.subject_to(self.U[1, k] <= WMAX)
 
-        Q = 300 * np.eye(DX)
-        Q[2,2] = 15
+        Q = 500 * np.eye(DX)
+        Q[2,2] = 20
         Q[3,3] = 0.1
-        R = 1 * np.eye(DU)
+        R = 3 * np.eye(DU)
         P = 10 * Q
 
         obj = 0
@@ -242,7 +243,21 @@ class MPCControllerNode(Node):
         # Compute phir (steering angle reference)
         phir = np.arctan((l * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
 
-        # Stack references
+        # # Stack references
+        # self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
+        # ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
+        # omegar = ref["omegar"]
+        # Vr = ref["Vr"]
+        # epsilon = 1e-8
+        # Vr_safe = np.maximum(Vr, epsilon)
+        # XREF = ref["XREF_FULL"]
+
+        # self.XREF_FULL = XREF
+        # xr = self.XREF_FULL[0, :]
+        # yr = self.XREF_FULL[1, :]
+        # thetar = self.XREF_FULL[2, :]
+        # phir = self.XREF_FULL[3, :]
+
         self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
         self.UREF_FULL = np.vstack([Vr, omegar])
 

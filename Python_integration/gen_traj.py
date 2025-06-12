@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 def get_ref(psi, Tsim, dt):
     k = 8  # polynomial degree
-    n_ctrl_pts = 28
+    n_ctrl_pts = 36
     knot = [0, Tsim]
     g = 9.81
 
@@ -21,12 +21,14 @@ def get_ref(psi, Tsim, dt):
     M = BsplineM.bsplineConversionMatrices(n_ctrl_pts, k, knot)
 
     # 2D Waypoints: shape (2, N)
-    # W = np.array([[0, 0.3, 0.6, 0.6, 0.3, 0, -0.3, -0.3, 0],
-    #               [0, -0.3, 0, 0.3, 0.6, 0.6, 0.3, 0, 0]])
+    W = np.array([[0, 0.3, 0.6, 0.6, 0.3, 0, -0.3, -0.3, 0],
+                  [0, -0.3, 0, 0.3, 0.6, 0.6, 0.3, 0, 0]])
     # W = np.array([[0, 0.6, 0.6, 0, 0],
     #               [0,   0, 0.6, 0.6, 0 ]])
-    W = np.array([[0, 0.2, 0.4, 0.5, 0.65],
-                  [0, 0.2, 0 , 0.15, 0]])
+    # W = np.array([[0, 0.2, 0.4, 0.5, 0.65],
+    #               [0, 0.2, 0 , 0.15, 0]])
+    # W = np.array([[0, 0.4, 0.6, 0.8, 1],
+    #               [0, 0.7, 0.4 , 0.4, 0]])
 
     waypoint_time_stamps = np.linspace(min(knot), max(knot), W.shape[1])
 

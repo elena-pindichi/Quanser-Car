@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 def get_ref(psi, Tsim, dt):
     k = 8  # polynomial degree
-    n_ctrl_pts = 28
+    n_ctrl_pts = 36
     knot = [0, Tsim]
     g = 9.81
 
@@ -22,10 +22,13 @@ def get_ref(psi, Tsim, dt):
     # 2D Waypoints: shape (2, N)
     # W = np.array([[0, 0.3, 0.6, 0.6, 0.3, 0, -0.3, -0.3, 0],
     #               [0, -0.3, 0, 0.3, 0.6, 0.6, 0.3, 0, 0]])
-    # W = np.array([[0, 0.6, 0.6, 0, 0],
-    #               [0,   0, 0.6, 0.6, 0 ]])
-    W = np.array([[0, 0.6, 1],
-                  [0, 0.6, 0.6]])
+    W = np.array([[0, 0.8, 1, 1, 0.8, 0, -0.2, -0.2, 0],
+                  [0,   0, 0.3, 0.8, 1, 1, 0.8, 0.3, 0]])
+    # W = np.array([[0, 0.6, 1],
+    #               [0, 0.6, 0.6]])
+
+    # W = np.array([[0, 0.4, 0.6, 0.8, 1],
+    #               [0, 0.7, 0.4 , 0.4, 0]])
 
     waypoint_time_stamps = np.linspace(min(knot), max(knot), W.shape[1])
 
@@ -115,7 +118,7 @@ def get_ref(psi, Tsim, dt):
     thetar = np.unwrap(np.arctan2(dy / Vr_safe, dx / Vr_safe))
 
     phir = np.arctan((l * (ddy * dx - ddx * dy)) / (Vr_safe**3))
-    
+
     XREF_FULL = np.vstack([x, y, thetar, phir])
 
     ref = {

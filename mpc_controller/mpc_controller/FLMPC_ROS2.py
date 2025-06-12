@@ -44,7 +44,7 @@ class MPCControllerNode(Node):
         self.phi = 0.0
         self.last_time = None
         self.idx = 0
-        self.dt = 0.1
+        self.dt = 0.3
         self.tf = 30
 
         self.DX = 4
@@ -59,7 +59,7 @@ class MPCControllerNode(Node):
         self.saved_inputs = []
         self.last_yaw = None
         self.phi = 0.0
-        self.PHIMAX = np.pi / 4
+        self.PHIMAX = np.pi / 5
 
         self.setup_mpc()
         self.timer = self.create_timer(self.dt, self.timer_callback)
@@ -80,20 +80,36 @@ class MPCControllerNode(Node):
             [np.sin(theta) + np.tan(phi)*(np.cos(theta) + self.DELTA * c1 / self.L),  self.DELTA * c1]
         ])
 
+    def LinDyna(self, eta, L, Delta):
+        s1 = casadi.sin(eta[0] + eta[1])
+        c1 = casadi.cos(eta[0] + eta[1])
+        O = casadi.vertcat(
+            casadi.horzcat(casadi.sin(eta[1]) * c1 / L,             casadi.sin(eta[1]) * s1 / L),
+            casadi.horzcat(-casadi.sin(eta[1]) * c1 / L - s1 / Delta, -casadi.sin(eta[1]) * s1 / L - c1 / Delta)
+        )
+        return O
+
+
     def setup_mpc(self):
-        Q = 40 * np.eye(self.DZ)
-        R = 2 * np.eye(self.DU)
+        # Q = 40 * np.eye(self.DZ)
+        Q = 100 * np.eye(self.DZ)
+        # R = 2 * np.eye(self.DU)
+        # R = 0.6 * np.eye(self.DU)
+        R = 0.8 * np.eye(self.DU)
         P = 10 * Q
 
         self.solver = casadi.Opti()
         self.Z = self.solver.variable(self.DZ, self.NPRED)
+        self.ETA = self.solver.variable(self.DZ, self.NPRED)
         self.W = self.solver.variable(self.DU, self.NPRED)
 
         self.ZINIT = self.solver.parameter(self.DZ, 1)
+        self.ETAINIT = self.solver.parameter(self.DZ, 1)
         self.ZREF = self.solver.parameter(self.DZ, self.NPRED)
         self.WREF = self.solver.parameter(self.DU, self.NPRED)
 
         self.solver.subject_to(self.Z[:, 0] == self.ZINIT)
+        self.solver.subject_to(self.ETA[:, 0] == self.ETAINIT)
 
         A = np.eye(self.DZ)
         B = self.dt * np.eye(self.DU)
@@ -103,6 +119,8 @@ class MPCControllerNode(Node):
         for k in range(self.NPRED - 1):
             self.solver.subject_to(self.Z[:, k+1] == A @ self.Z[:, k] + B @ self.W[:, k])
             self.solver.subject_to(casadi.mtimes(self.W[:, k].T, self.W[:, k]) <= rhat)
+            O = self.LinDyna(self.ETA[:, k], self.L, self.DELTA)
+            self.solver.subject_to(self.ETA[:, k+1] == self.ETA[:, k] + self.dt * casadi.mtimes(O, self.W[:, k]))
 
         obj = 0
         for k in range(self.NPRED - 1):
@@ -168,21 +186,21 @@ class MPCControllerNode(Node):
         phir = np.arctan((l * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
 
         ########### Spline
-        ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
-        omegar = ref["omegar"]
-        Vr = ref["Vr"]
-        epsilon = 1e-8
-        Vr_safe = np.maximum(Vr, epsilon)
-        XREF = ref["XREF_FULL"]
+        # ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
+        # omegar = ref["omegar"]
+        # Vr = ref["Vr"]
+        # epsilon = 1e-8
+        # Vr_safe = np.maximum(Vr, epsilon)
+        # XREF = ref["XREF_FULL"]
 
-        # self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
-        self.XREF_FULL = XREF
-        xr = self.XREF_FULL[0, :]
-        yr = self.XREF_FULL[1, :]
-        thetar = self.XREF_FULL[2, :]
-        phir = self.XREF_FULL[3, :]
+        # # self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
+        # self.XREF_FULL = XREF
+        # xr = self.XREF_FULL[0, :]
+        # yr = self.XREF_FULL[1, :]
+        # thetar = self.XREF_FULL[2, :]
+        # phir = self.XREF_FULL[3, :]
 
-        # self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
+        self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
         self.UREF_FULL = np.vstack([Vr, omegar])
 
         self.ZREF_FULL = np.array([
@@ -226,17 +244,18 @@ class MPCControllerNode(Node):
                 self.solver.set_value(self.ZINIT, z_current)
                 self.solver.set_value(self.ZREF, padded_zref)
                 self.solver.set_value(self.WREF, padded_wref)
+                eta = self.curr_state[2:4, 0]
+                self.solver.set_value(self.ETAINIT, eta)
 
                 self.get_logger().info("In the last part of the reference horizon")
 
                 sol = self.solver.solve()
                 w0 = sol.value(self.W[:, 0])
-
-                eta = self.curr_state[2:4, 0]
+     
                 M = self.LinMatrix(eta)
                 u0 = np.linalg.pinv(M) @ w0
 
-                self.phi = self.integrate_phi(self.phi, u0[1], self.dt)
+                self.phi = self.integrate_phi(self.phi, u0[1], self.dt)      
 
                 msg_out = MotorCommands()
                 msg_out.motor_names = ['steering_angle', 'motor_throttle']
@@ -257,11 +276,12 @@ class MPCControllerNode(Node):
                 self.solver.set_value(self.ZINIT, z_current)
                 self.solver.set_value(self.ZREF, self.ZREF_FULL[:, self.idx:self.idx + self.NPRED])
                 self.solver.set_value(self.WREF, self.WREF_FULL[:, self.idx:self.idx + self.NPRED])
+                eta = self.curr_state[2:4, 0]
+                self.solver.set_value(self.ETAINIT, eta)
 
                 sol = self.solver.solve()
                 w0 = sol.value(self.W[:, 0])
 
-                eta = self.curr_state[2:4, 0]
                 M = self.LinMatrix(eta)
                 u0 = np.linalg.pinv(M) @ w0
 
