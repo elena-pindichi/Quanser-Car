@@ -6,7 +6,7 @@ load("trajectory.mat")
 %% Parameters
 N_pred_val  = 12;   
 Q_val       = 10;
-R_val       = 0.3;              
+R_val       = 3;              
 P_val       = 10;
 l           = 0.256;                % Length between front and rear
 
@@ -29,7 +29,7 @@ u0 = zeros(du, 1);
 %% Constraints values
 Vmin     = -1; Vmax     = 1;       % Velocity limits
 omegamin = -1; omegamax = 1;       % Angular velocity limits
-phimax   = pi/2;                   % Front wheels orientation limits
+phimax   = pi/5;                   % Front wheels orientation limits
 
 % Weights for cost function
 Q = Q_val * eye(dx);
