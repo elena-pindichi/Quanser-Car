@@ -5,8 +5,10 @@ N       = 5;
 T       = 5;
 dt      = 0.1;
 l       = 0.256;
-Q_val   = 5;
-R_val   = 0.1;
+% Q_val   = 5;
+Q_val   = 10;
+% R_val   = 0.1;
+R_val   = 0.8;
 P_val   = 10;
 Delta   = 0.35;
 

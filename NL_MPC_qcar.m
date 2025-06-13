@@ -19,7 +19,7 @@ dx = 4;                             % State dimensions: x, y, theta, phi
 du = 2;                             % Control dimensions: V, omega
 
 % Initial condition
-x0 = [0; 2.5; pi/2; 0];            
+x0 = [0; 2.5; 0; 0];            
 u0 = zeros(du, 1);
 
 %% Trajectories
