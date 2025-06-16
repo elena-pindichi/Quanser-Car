@@ -29,8 +29,13 @@ def get_ref(psi, Tsim, dt):
     #               [0, 0.2, 0 , 0.15, 0]])
     # W = np.array([[0, 0.4, 0.6, 0.8, 1],
     #               [0, 0.7, 0.4 , 0.4, 0]])
+    W = np.array([[0, 0.8, 1, 1, 0.8, 0, -0.2, -0.2, 0],
+                  [0,   0, 0.3, 0.8, 1, 1, 0.8, 0.3, 0]])
+    W = np.array([[0, 0.5,  0.7, 0.9,   1, 1.2, 1.5,  1.8],
+                  [0, 0.08, 0.1, 0, -0.2,-0.3, -0.4, -0.3]])
 
     waypoint_time_stamps = np.linspace(min(knot), max(knot), W.shape[1])
+    ctrl_pts_timestamps = np.linspace(min(knot), max(knot), n_ctrl_pts)
 
     ######################## Optimization problem ########################
     solver = casadi.Opti()
@@ -82,12 +87,16 @@ def get_ref(psi, Tsim, dt):
     P = sol.value(P)
     print('Optimal control points found.')
 
+    print('bunq0')
+
     # Bspline evaluation
     z = [BSpline(knot, P[i], k) for i in range(P.shape[0])]
     P1 = np.array(P @ M[0])
     z_d = [BSpline(knot, P1[i], k - 1) for i in range(P1.shape[0])]
     P2 = np.array(P @ M[1])
     z_dd = [BSpline(knot, P2[i], k - 2) for i in range(P2.shape[0])]
+
+    print('bunq1')
 
     x = z[0](tt)
     y = z[1](tt)
@@ -110,6 +119,8 @@ def get_ref(psi, Tsim, dt):
     # Parameters
     l = 0.256
 
+    print('bunq2')
+
     # Numerator and denominator for omegar
     numerator = (dddy * dx - dddx * dy) * (Vr_safe**2) - 3 * (ddy * dx - ddx * dy) * (dx * ddx + dy * ddy)
     denominator = (Vr_safe**6 + (l**2) * (ddy * dx - ddx * dy)**2)
@@ -123,6 +134,49 @@ def get_ref(psi, Tsim, dt):
 
     # Combine state reference
     XREF_FULL = np.vstack([x, y, thetar, phir])
+
+    print('bunq3')
+
+    spn = []
+    if W.shape[0] == 1:
+        spn.append(BSpline(knot, P, k))
+    else:
+        for i in range(P.shape[0]):
+            spn.append(BSpline(knot, P[i], k))
+
+    fig = plt.figure()
+    if W.shape[0] == 2:
+
+        print('bunq4')
+
+        ax1 = fig.add_subplot(1, 1, 1)
+        ax1.plot(spn[0](tt), spn[1](tt), lw=2)
+        ax1.plot(P[0], P[1], lw=1)
+        ax1.scatter(W[0, :], W[1, :], label='waypoints', color='red', lw=5)
+        ax1.scatter(P[0], P[1], label='Control Points')
+        ax1.grid(True)
+        ax1.legend()
+    else:
+        if W.shape[0] == 3:
+            ax1 = fig.add_subplot(1, 1, 1, projection='3d')
+            ax1.plot(spn[0](tt), spn[1](tt), spn[2](tt), lw=2)
+            ax1.plot(P[0], P[1], P[2], lw=1)
+            ax1.scatter(W[0, :], W[1, :], W[2, :], label='waypoints', color='red', lw=5)
+            ax1.scatter(P[0], P[1], P[2], label='Control Points')
+            ax1.grid(True)
+            ax1.legend()
+        else:
+            if W.shape[0] == 1:
+                fig = plt.figure()
+                ax1 = fig.add_subplot(1, 1, 1)
+                ax1.plot(tt, spn[0](tt), lw=2)
+                ax1.plot(ctrl_pts_timestamps, P, lw=1)
+                ax1.scatter(ctrl_pts_timestamps, P, lw=1, label='Control Points')
+                ax1.scatter(waypoint_time_stamps, W, label='waypoints', color='red', lw=5)
+                ax1.grid(True)
+                ax1.legend()
+            else:
+                print('Curves with dimension higher than 3 cannot be plotted')
 
     ref = {
     "trajectory": np.round(np.stack([x, y, dx, dy]), 3).T,
@@ -140,8 +194,9 @@ def get_ref(psi, Tsim, dt):
 
 
 # Generate reference
-rref = get_ref(psi=0, Tsim=30, dt=0.3)
+rref = get_ref(psi=0, Tsim=15, dt=0.3)
 
+print('bunq')
 # Plotting 2D Trajectory
 plt.figure()
 plt.plot(rref["trajectory"][:, 0], rref["trajectory"][:, 1], label="2D Trajectory")

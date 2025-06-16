@@ -29,6 +29,8 @@ def get_ref(psi, Tsim, dt):
 
     # W = np.array([[0, 0.4, 0.6, 0.8, 1],
     #               [0, 0.7, 0.4 , 0.4, 0]])
+    W = np.array([[0, 0.5,  0.7, 0.9,   1, 1.2, 1.5,  1.8],
+                  [0, 0.08, 0.1, 0, -0.2,-0.3, -0.4, -0.3]])
 
     waypoint_time_stamps = np.linspace(min(knot), max(knot), W.shape[1])
 

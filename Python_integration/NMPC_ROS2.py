@@ -49,7 +49,7 @@ class MPCControllerNode(Node):
         self.idx = 0
         self.curr_state = np.zeros((4, 1))
         self.dt = 0.3
-        self.tf = 30
+        self.tf = 12
         self.PHIMAX = np.pi / 5
         self.VMAX = 1
         self.WMAX = 0.8
@@ -160,10 +160,10 @@ class MPCControllerNode(Node):
             self.solver.subject_to(self.U[1, k] >= -WMAX)
             self.solver.subject_to(self.U[1, k] <= WMAX)
 
-        Q = 500 * np.eye(DX)
-        Q[2,2] = 20
+        Q = 800 * np.eye(DX)
+        Q[2,2] = 15
         Q[3,3] = 0.1
-        R = 3 * np.eye(DU)
+        R = 5 * np.eye(DU)
         P = 10 * Q
 
         obj = 0
@@ -243,20 +243,20 @@ class MPCControllerNode(Node):
         # Compute phir (steering angle reference)
         phir = np.arctan((l * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
 
-        # # Stack references
-        # self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
-        # ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
-        # omegar = ref["omegar"]
-        # Vr = ref["Vr"]
-        # epsilon = 1e-8
-        # Vr_safe = np.maximum(Vr, epsilon)
-        # XREF = ref["XREF_FULL"]
+        # Stack references
+        self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
+        ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
+        omegar = ref["omegar"]
+        Vr = ref["Vr"]
+        epsilon = 1e-8
+        Vr_safe = np.maximum(Vr, epsilon)
+        XREF = ref["XREF_FULL"]
 
-        # self.XREF_FULL = XREF
-        # xr = self.XREF_FULL[0, :]
-        # yr = self.XREF_FULL[1, :]
-        # thetar = self.XREF_FULL[2, :]
-        # phir = self.XREF_FULL[3, :]
+        self.XREF_FULL = XREF
+        xr = self.XREF_FULL[0, :]
+        yr = self.XREF_FULL[1, :]
+        thetar = self.XREF_FULL[2, :]
+        phir = self.XREF_FULL[3, :]
 
         self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
         self.UREF_FULL = np.vstack([Vr, omegar])
@@ -291,6 +291,19 @@ class MPCControllerNode(Node):
 
                 current_state = np.array([x, y, yaw, self.phi])
                 self.curr_state = current_state
+
+    def save_data_npz(self, filename="nmpc_data.npz"):
+        states = np.array(self.saved_states)
+        inputs = np.array(self.saved_inputs)
+
+        # Save everything in a compressed NumPy archive
+        np.savez(filename,
+                XREF_FULL=self.XREF_FULL,
+                UREF_FULL=self.UREF_FULL,
+                states=states,
+                inputs=inputs)
+        self.get_logger().info(f"Saved MPC data to {filename}")
+
                 
     def plot_reference_and_states(self):
         import matplotlib.pyplot as plt
@@ -300,6 +313,8 @@ class MPCControllerNode(Node):
         tin_len = inputs.shape[0]
         ref = self.XREF_FULL[:, :t_len]
         ref_in = self.UREF_FULL[0, :tin_len]
+
+        self.save_data_npz("nmpc_data.npz")
 
         plt.figure()
         plt.plot(states[:, 0], states[:, 1], label='Tracked Position')

@@ -117,6 +117,47 @@ def get_ref(psi, Tsim, dt):
     phi = np.arcsin((ddx * np.sin(psi) - ddy * np.cos(psi)) / thrust)
     theta = np.arctan((ddx * np.cos(psi) + ddy * np.sin(psi)) / (ddz + g))
 
+    spn = []
+    if W.shape[0] == 1:
+        spn.append(BSpline(knot, P, k))
+    else:
+        for i in range(P.shape[0]):
+            spn.append(BSpline(knot, P[i], k))
+
+    fig = plt.figure()
+    if W.shape[0] == 2:
+
+        print('bunq4')
+
+        ax1 = fig.add_subplot(1, 1, 1)
+        ax1.plot(spn[0](tt), spn[1](tt), lw=2)
+        ax1.plot(P[0], P[1], lw=1)
+        ax1.scatter(W[0, :], W[1, :], label='waypoints', color='red', lw=5)
+        ax1.scatter(P[0], P[1], label='Control Points')
+        ax1.grid(True)
+        ax1.legend()
+    else:
+        if W.shape[0] == 3:
+            ax1 = fig.add_subplot(1, 1, 1, projection='3d')
+            ax1.plot(spn[0](tt), spn[1](tt), spn[2](tt), lw=2)
+            ax1.plot(P[0], P[1], P[2], lw=1)
+            ax1.scatter(W[0, :], W[1, :], W[2, :], label='waypoints', color='red', lw=5)
+            ax1.scatter(P[0], P[1], P[2], label='Control Points')
+            ax1.grid(True)
+            ax1.legend()
+        else:
+            if W.shape[0] == 1:
+                fig = plt.figure()
+                ax1 = fig.add_subplot(1, 1, 1)
+                ax1.plot(tt, spn[0](tt), lw=2)
+                ax1.plot(ctrl_pts_timestamps, P, lw=1)
+                ax1.scatter(ctrl_pts_timestamps, P, lw=1, label='Control Points')
+                ax1.scatter(waypoint_time_stamps, W, label='waypoints', color='red', lw=5)
+                ax1.grid(True)
+                ax1.legend()
+            else:
+                print('Curves with dimension higher than 3 cannot be plotted')
+
     # print('Reference information:')
     # print('Max Thrust: {txta}g (m/s^2), Min Thrust: {txtb}g (m/s^2)'.format(txta=round(max(thrust) / g, 2),
     #                                                                         txtb=round(min(thrust) / g, 2)))
@@ -190,6 +231,7 @@ def get_ref_setpoints(psi, Tsim, dt, version=1):
 
 rref = get_ref(0, 30, 0.1)
 
+plt.show()
 # # rref2 = copy.deepcopy(rref)
 # # rref2["trajectory"] = np.copy(rref["trajectory"])
 # # rref2["trajectory"][:, 0] += 1
