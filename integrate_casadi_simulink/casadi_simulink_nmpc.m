@@ -5,14 +5,14 @@ N       = 12;
 T       = 20;
 dt      = 0.1;
 l       = 0.256;
-Q_val   = 10;
+Q_val   = 100;
 R_val   = 0.3;
 P_val   = 10;
 
 % Weights
 Q       = Q_val * eye(4);
-Q(3,3)  = 1;
-Q(4,4)  = 1;
+Q(3,3)  = 10;
+Q(4,4)  = 0.1;
 R       = R_val * eye(2);
 P       = P_val * Q;
 
@@ -30,6 +30,7 @@ controls    = [v; omega];
 n_controls  = length(controls);
 
 % Define system dynamics
+% epsilon = 0.01;
 xdot = [v*cos(theta);
         v*sin(theta);
         v/l*tan(phi);
@@ -60,7 +61,7 @@ J   = 0;
 % Initial state
 Xk  = MX.sym('X0', n_states);
 w   = {w{:}, Xk};
-w0  = [w0; zeros(n_states,1)];
+w0  = [w0; 0; 0; 0; 0];
 lbw = [lbw; zeros(n_states,1)];
 ubw = [ubw; zeros(n_states,1)];
 
@@ -96,8 +97,8 @@ for k = 0 : N-1
     Xk  = MX.sym(['X_' num2str(k+1)], n_states);
     w   = {w{:}, Xk};
     w0  = [w0; zeros(n_states,1)];
-    lbw = [lbw; -inf; -inf; -inf; -pi/2];
-    ubw = [ubw;  inf; inf; inf; pi/2];
+    lbw = [lbw; -inf; -inf; -inf; -pi/5];
+    ubw = [ubw;  inf; inf; inf; pi/5];
 
     % Add dynamics constraint
     g   = {g{:}, Xk_end - Xk};

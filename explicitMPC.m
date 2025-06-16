@@ -34,10 +34,10 @@ Q_u         = kron(eye(N), 1/rhat^2*eye(dz));
 Q_u(1:2,1:2)= zeros(dz);
 
 %% Define parameters
-w = sdpvar(N*du,1);               % Decision variable
-z = sdpvar(dz,1);                 % Param: current state
-eta = sdpvar(2,1);                % Param: nonlinear state
-wr = sdpvar(N*du,1);              % Param: reference control input
+w = sdpvar(N*du,1);              
+z = sdpvar(dz,1);                 
+eta = sdpvar(2,1);                
+wr = sdpvar(N*du,1);              
 
 H = THT' * QQ * THT + RR;
 p = THT' * QQ * PSI * z - THT' * QQ * THT * wr - RR * wr;
@@ -60,12 +60,11 @@ constr3 = term1 + term2 <= 1 - term3;
 constraints = [constr1, constr2, constr3];
 parameters = [z; eta; wr];
 
-% Define optimizer using YALMIP and MPT
-options = sdpsettings('solver','mpc', 'verbose', 1);  % or 'gurobi' if you want to test it numerically first
+options = sdpsettings('solver','mpc', 'verbose', 1);
 
 sol = solvemp(constraints, objective, options, parameters, w);
 
-%% Bachelors
+% %% Bachelors
 % %% system data
 % dz = 2;
 % dx = 4;
