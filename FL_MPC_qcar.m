@@ -28,7 +28,8 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-[xref, uref, Nsim] = reference(3);
+idx = 4;
+[xref, uref, Nsim] = reference(idx);
 
 xr = xref(1, :);
 yr = xref(2, :);
@@ -102,12 +103,12 @@ for k = 1 : Npred
     % Nonlinear dynamics constraints
     % O = LinDyna(eta(:, k), l, Delta);
     % solver.subject_to(eta(:, k+1) == eta(:, k) + Ts * O * w(:, k));
-    
+
     L = InConstr(eta(:, k), l, Delta);
     solver.subject_to(L * w(:, k) <= [10;10;10;10]);
     
     % Control input constraints
-    solver.subject_to(w(:, k)' * w(:, k) <= rhat);
+    solver.subject_to(w(:, k)' * w(:, k) <= rhat^2);
     % solver.subject_to(U_approx.A*w(:, k) <= U_approx.b);
 end
 
@@ -175,7 +176,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dz * Nsim))
 
 %% Plot results
-% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Spline2\Q'; 
+% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\simulations\FLMPC'; 
 
 figure
 plot(xsim(1,:), xsim(2,:))
@@ -247,7 +248,7 @@ legend('$\varphi$','interpreter','latex')
 xlabel('time (s)')
 grid
 
-% filename = sprintf('%dFLMPC_state.png', Q_val);
+% filename = sprintf('%dFLMPC_state.png', idx);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -267,7 +268,7 @@ legend('\omega')
 xlabel('Nsim')
 grid
 
-% filename = sprintf('%dFLMPC_input.png', Q_val);
+% filename = sprintf('%dFLMPC_input.png', idx);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -291,7 +292,7 @@ legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
-% filename = sprintf('%dFLMPC_err.png', Q_val);
+% filename = sprintf('%dFLMPC_err.png', idx);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -299,7 +300,7 @@ figure
 hold on
 height = 0.4; width = 0.2;
 st = 100;
-% st = 30;
+st = 40;
 % st = 200;
 k=1;
 while k < Nsim
@@ -311,7 +312,7 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 
-% filename = sprintf('%dFLMPC_carpos.png', Q_val);
+% filename = sprintf('%dFLMPC_carpos.png', idx);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -373,7 +374,7 @@ function [xref, uref, Nsim] = reference(idx)
         xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
         yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
     elseif idx == 4
-        Nsim = 480;
+        Nsim = 180;
         % Spline reference
         load("trajectory.mat")
         xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;

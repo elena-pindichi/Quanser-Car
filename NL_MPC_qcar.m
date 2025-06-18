@@ -24,7 +24,8 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-[xref, uref, Nsim] = reference(3);
+idx = 4;
+[xref, uref, Nsim] = reference(idx);
 
 %% Constraints values
 Vmin     = -1; Vmax     = 1;       % Velocity limits
@@ -118,7 +119,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dx * Nsim))
 
 %% Plot results
-% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Spline2\Q'; 
+% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\simulations\NMPC\Line'; 
 
 figure
 plot((1:Nsim)*Ts,err(1,:))
@@ -128,7 +129,7 @@ legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
-% filename = sprintf('%dNMPC_err.png', Q_val);
+% filename = sprintf('%dNMPC_err.png', idx);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -177,7 +178,7 @@ ylabel('x_4')
 title('Simulation and reference for \phi_{state}')
 grid
 
-% filename = sprintf('%dNMPC_state.png', Q_val);
+% filename = sprintf('%dNMPC_state.png', idx);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -202,7 +203,7 @@ plot(uref(2, 1:Nsim), '--')
 legend('\omega')
 grid
 
-% filename = sprintf('%dNMPC_input.png', Q_val);
+% filename = sprintf('%dNMPC_input.png', idx);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -210,7 +211,7 @@ figure
 hold on
 height = 0.4; width = 0.2;
 st = 100;
-% st = 30;
+st = 40;
 % st = 450;
 k=1;
 while k < Nsim
@@ -224,7 +225,7 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 
-% filename = sprintf('%dNMPC_carpos.png', Q_val);
+% filename = sprintf('%dNMPC_carpos.png', idx);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -283,7 +284,7 @@ function [xref, uref, Nsim] = reference(idx)
         xr = alpha*cos(ang*t);      dxr = -alpha*ang*sin(ang*t);    ddxr = -alpha*ang*ang*cos(ang*t);       dddxr = alpha*ang*ang*ang*sin(ang*t);
         yr = beta*sin(ang*t);       dyr = beta*ang*cos(ang*t);      ddyr = -beta*ang*ang*sin(ang*t);        dddyr = -beta*ang*ang*ang*cos(ang*t);
     elseif idx == 4
-        Nsim = 480;
+        Nsim = 180;
         % Spline reference
         load("trajectory.mat")
         xr = xref;      dxr = dxref;        ddxr = ddxref;      dddxr = dddxref;

@@ -6,12 +6,9 @@ load("trajectory.mat")
 %% Parameters
 N_pred_val  = 12;   
 Q_val       = 10;
-R_val       = 0.1;              
+R_val       = 3;              
 P_val       = 10;
 l           = 0.256;                % Length between front and rear
-
-N_pred_val  = 8;   
-Q_val       = 10;
 
 % Define prediction and simulation steps
 Ts    = 0.1;                        % Sampling time
@@ -22,17 +19,17 @@ dx = 4;                             % State dimensions: x, y, theta, phi
 du = 2;                             % Control dimensions: V, omega
 
 % Initial condition
-x0 = [0; 2.5; pi/2; 0];            
+x0 = [0; 2.5; 0; 0];            
 u0 = zeros(du, 1);
 
 %% Trajectories
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-[xref, uref, Nsim] = reference(4);
+[xref, uref, Nsim] = reference(1);
 
 %% Constraints values
 Vmin     = -1; Vmax     = 1;       % Velocity limits
 omegamin = -1; omegamax = 1;       % Angular velocity limits
-phimax   = pi/2;                   % Front wheels orientation limits
+phimax   = pi/5;                   % Front wheels orientation limits
 
 % Weights for cost function
 Q = Q_val * eye(dx);
@@ -121,7 +118,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dx * Nsim))
 
 %% Plot results
-folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Spline2\Npred'; 
+folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\simulations\NMPC\Line'; 
 
 figure
 plot((1:Nsim)*Ts,err(1,:))
@@ -213,7 +210,7 @@ figure
 hold on
 height = 0.4; width = 0.2;
 st = 100;
-% st = 30;
+st = 30;
 % st = 450;
 k=1;
 while k < Nsim
@@ -227,7 +224,7 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 
-filename = sprintf('%dNMPC_carpos.png', Npred);
+filename = sprintf('%dNMPC_carpos.png', Q_val);
 fullpath = fullfile(folder, filename); 
 saveas(gcf, fullpath); 
 
