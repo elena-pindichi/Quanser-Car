@@ -50,6 +50,7 @@ class MPCControllerNode(Node):
         self.curr_state = np.zeros((4, 1))
         self.dt = 0.3
         self.tf = 12
+        self.tf = 25
         self.PHIMAX = np.pi / 5
         self.VMAX = 1
         self.WMAX = 0.8
@@ -160,7 +161,7 @@ class MPCControllerNode(Node):
             self.solver.subject_to(self.U[1, k] >= -WMAX)
             self.solver.subject_to(self.U[1, k] <= WMAX)
 
-        Q = 800 * np.eye(DX)
+        Q = 500 * np.eye(DX)
         Q[2,2] = 15
         Q[3,3] = 0.1
         R = 5 * np.eye(DU)
@@ -244,7 +245,6 @@ class MPCControllerNode(Node):
         phir = np.arctan((l * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
 
         # Stack references
-        self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
         ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
         omegar = ref["omegar"]
         Vr = ref["Vr"]

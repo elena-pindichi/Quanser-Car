@@ -45,7 +45,7 @@ class MPCControllerNode(Node):
         self.last_time = None
         self.idx = 0
         self.dt = 0.3
-        self.tf = 13
+        self.tf = 25
 
         self.DX = 4
         self.DZ = 2
@@ -92,10 +92,11 @@ class MPCControllerNode(Node):
 
     def setup_mpc(self):
         # Q = 40 * np.eye(self.DZ)
-        Q = 500 * np.eye(self.DZ)
+        Q = 15 * np.eye(self.DZ)
+        Q = 150 * np.eye(self.DZ)
         # R = 2 * np.eye(self.DU)
         # R = 0.6 * np.eye(self.DU)
-        R = 3 * np.eye(self.DU)
+        R = 1 * np.eye(self.DU)
         P = 10 * Q
 
         self.solver = casadi.Opti()
@@ -114,7 +115,7 @@ class MPCControllerNode(Node):
         A = np.eye(self.DZ)
         B = self.dt * np.eye(self.DU)
 
-        rhat = min(self.DELTA * self.L * 10 / np.sqrt(self.DELTA**2 + self.L**2), 0.5)
+        rhat = min(self.DELTA * self.L * 10 / np.sqrt(self.DELTA**2 + self.L**2), 0.7)
 
         for k in range(self.NPRED - 1):
             self.solver.subject_to(self.Z[:, k+1] == A @ self.Z[:, k] + B @ self.W[:, k])
@@ -193,7 +194,6 @@ class MPCControllerNode(Node):
         Vr_safe = np.maximum(Vr, epsilon)
         XREF = ref["XREF_FULL"]
 
-        # self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
         self.XREF_FULL = XREF
         xr = self.XREF_FULL[0, :]
         yr = self.XREF_FULL[1, :]

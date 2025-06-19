@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 
 def get_ref(psi, Tsim, dt):
     k = 8  # polynomial degree
-    n_ctrl_pts = 36
+    # 36
+    n_ctrl_pts = 88
     knot = [0, Tsim]
     g = 9.81
 
@@ -31,8 +32,12 @@ def get_ref(psi, Tsim, dt):
     #               [0, 0.7, 0.4 , 0.4, 0]])
     W = np.array([[0, 0.8, 1, 1, 0.8, 0, -0.2, -0.2, 0],
                   [0,   0, 0.3, 0.8, 1, 1, 0.8, 0.3, 0]])
-    W = np.array([[0, 0.5,  0.7, 0.9,   1, 1.2, 1.5,  1.8],
-                  [0, 0.08, 0.1, 0, -0.2,-0.3, -0.4, -0.3]])
+    W = np.array([[0, 0.5,  0.7, 0.9,   1,1.1, 1.2, 1.5,  1.8],
+                  [0, 0.08, 0.1, 0, -0.1,-0.2,-0.3, -0.4, -0.3]])
+    W = np.array([[-1, -0.7, -0.5, -0.2, 0,0.4, 0.6,   1,1.1, 1.2, 1.5,  1.8],
+                  [0, 0.2, 0.4,  0.8 ,  1, 0.7, 0.3, 0,-0.2,-0.3, -0.4, -0.3]])
+    W = np.array([[-1, -0.7, -0.5, -0.2, 0,0.5,  1,  1.2, 1.5, 1.6,  1.8, 1.8,  1, 0.6,0,-0.4,-1],
+                  [0, 0.2, 0.4,  0.8 ,  1, 1, 0.6,0.4,  0, -0.2, -0.5, -0.7,  -1,  -1,-0.8,  -0.4, 0]])
 
     waypoint_time_stamps = np.linspace(min(knot), max(knot), W.shape[1])
     ctrl_pts_timestamps = np.linspace(min(knot), max(knot), n_ctrl_pts)
@@ -194,7 +199,7 @@ def get_ref(psi, Tsim, dt):
 
 
 # Generate reference
-rref = get_ref(psi=0, Tsim=15, dt=0.3)
+rref = get_ref(psi=0, Tsim=25, dt=0.3)
 
 print('bunq')
 # Plotting 2D Trajectory
