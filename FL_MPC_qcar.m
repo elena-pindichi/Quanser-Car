@@ -28,7 +28,7 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-idx = 4;
+idx = 3;
 [xref, uref, Nsim] = reference(idx);
 
 xr = xref(1, :);
@@ -104,8 +104,8 @@ for k = 1 : Npred
     % O = LinDyna(eta(:, k), l, Delta);
     % solver.subject_to(eta(:, k+1) == eta(:, k) + Ts * O * w(:, k));
 
-    L = InConstr(eta(:, k), l, Delta);
-    solver.subject_to(L * w(:, k) <= [10;10;10;10]);
+    % L = InConstr(eta(:, k), l, Delta);
+    % solver.subject_to(L * w(:, k) <= [10;10;10;10]);
     
     % Control input constraints
     % solver.subject_to(w(:, k)' * w(:, k) <= rhat^2);
