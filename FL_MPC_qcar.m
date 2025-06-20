@@ -55,7 +55,7 @@ end
 
 
 %% Weights matrices
-rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 1);
+rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 10);
 
 % Weights for cost function
 Q = Q_val * eye(dz);
@@ -65,7 +65,7 @@ A = eye(dz);
 B = Ts * eye(dz);
 
 ptsU = [];
-for tta = linspace(0,2*pi-1e-4,20)
+for tta = linspace(0,2*pi-1e-4,10)
     ptsU = [ptsU; [rhat*cos(tta), rhat*sin(tta)]];
 end
 U_approx = Polyhedron('V',ptsU).computeVRep();
@@ -108,8 +108,8 @@ for k = 1 : Npred
     solver.subject_to(L * w(:, k) <= [10;10;10;10]);
     
     % Control input constraints
-    solver.subject_to(w(:, k)' * w(:, k) <= rhat^2);
-    % solver.subject_to(U_approx.A*w(:, k) <= U_approx.b);
+    % solver.subject_to(w(:, k)' * w(:, k) <= rhat^2);
+    solver.subject_to(U_approx.A*w(:, k) <= U_approx.b);
 end
 
 objective = 0;
@@ -316,11 +316,11 @@ ylabel('y (m)')
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
-% figure
-% plot(U_approx)
-% xlabel('x(m)')
-% ylabel('y(m)')
-% title('Constraints on virtual input')
+figure
+plot(U_approx)
+xlabel('x(m)')
+ylabel('y(m)')
+title('Constraints on virtual input')
 
 %% Trajectory Function
 function [xref, uref, Nsim] = reference(idx)

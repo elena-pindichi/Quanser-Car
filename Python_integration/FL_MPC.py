@@ -2,6 +2,7 @@ import casadi
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io
+from scipy.spatial import ConvexHull
 
 def LinOutput(x, Delta, l):
     return np.array([x[0] + l*casadi.cos(x[2]) + Delta*casadi.cos(x[2] + x[3]),
@@ -107,6 +108,14 @@ for i in range(lenref):
 # Constraints
 rhat = min(DELTA*L*10/np.sqrt(DELTA**2 + L**2), 1)
 
+angles = np.linspace(0, 2 * np.pi - 1e-4, 10)
+ptsU = np.array([[rhat * np.cos(theta), rhat * np.sin(theta)] for theta in angles])
+hull = ConvexHull(ptsU)
+U_approx = ptsU[hull.vertices]
+
+U_A = hull.equations[:, :-1]
+U_b = -hull.equations[:, -1]
+
 # CasADI solver
 solver = casadi.Opti()
 
@@ -123,7 +132,8 @@ solver.subject_to(Z[:, 0] == ZINIT)
 # Dynamics constraints
 for k in range(0, NPRED-1):
     solver.subject_to(Z[:, k+1] == A @ Z[:, k] + B @ W[:, k])
-    solver.subject_to(casadi.mtimes(W[:, k].T, W[:, k]) <= rhat)
+    # solver.subject_to(casadi.mtimes(W[:, k].T, W[:, k]) <= rhat)
+    solver.subject_to(casadi.mtimes(U_A, W[:, k]) <= U_b)
 
 options = {'ipopt' : {'print_level': 0, 'sb': 'yes'}, 'print_time': 0}
 
@@ -241,5 +251,14 @@ plt.grid()
 plt.figure()
 plt.plot(ZREF[0,:], ZREF[1,:])
 plt.grid()
+
+plt.figure(figsize=(6, 6))
+for simplex in hull.simplices:
+    plt.plot(ptsU[simplex, 0], ptsU[simplex, 1], 'r-')
+plt.plot(ptsU[:, 0], ptsU[:, 1], 'bo')  # Original points
+plt.gca().set_aspect('equal')
+plt.grid(True)
+plt.title('Convex Hull of Approximated Circle')
+plt.show()
 
 plt.show()
