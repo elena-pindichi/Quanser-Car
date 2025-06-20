@@ -8,6 +8,7 @@ from motion_capture_tracking_interfaces.msg import NamedPoseArray
 from qcar2_interfaces.msg import MotorCommands
 from tf_transformations import euler_from_quaternion
 from mpc_controller.gen_traj import get_ref
+from scipy.spatial import ConvexHull
 
 
 class MPCControllerNode(Node):
@@ -88,15 +89,31 @@ class MPCControllerNode(Node):
             casadi.horzcat(-casadi.sin(eta[1]) * c1 / L - s1 / Delta, -casadi.sin(eta[1]) * s1 / L - c1 / Delta)
         )
         return O
+    
+    def InConstr(self, eta, l, Delta):
+        s1 = casadi.sin(eta[0] + eta[1])
+        c1 = casadi.cos(eta[0] + eta[1])
+        s2 = casadi.sin(eta[0] + 2 * eta[1])
+        c2 = casadi.cos(eta[0] + 2 * eta[1])
+
+        L = casadi.vertcat(
+            casadi.horzcat(-0.5 * (casadi.cos(eta[0]) + c2),              -0.5 * (casadi.sin(eta[0]) + s1)),
+            casadi.horzcat(1 / (2 * l * Delta) * (Delta * s1 - Delta * casadi.sin(eta[0]) + 2 * l * s2),
+                        1 / (2 * l * Delta) * (-Delta * c2 + Delta * casadi.cos(eta[0]) - 2 * l * c1)),
+            casadi.horzcat(0.5 * (casadi.cos(eta[0]) + c2),               0.5 * (casadi.sin(eta[0]) + s1)),
+            casadi.horzcat(-1 / (2 * l * Delta) * (Delta * s1 - Delta * casadi.sin(eta[0]) + 2 * l * s2),
+                        -1 / (2 * l * Delta) * (-Delta * c2 + Delta * casadi.cos(eta[0]) - 2 * l * c1))
+        )
+
+        return L
+
 
 
     def setup_mpc(self):
-        # Q = 40 * np.eye(self.DZ)
-        Q = 15 * np.eye(self.DZ)
+        # Problem parameters
         Q = 150 * np.eye(self.DZ)
-        # R = 2 * np.eye(self.DU)
-        # R = 0.6 * np.eye(self.DU)
         R = 1 * np.eye(self.DU)
+        R = np.diag([10, 1])
         P = 10 * Q
 
         self.solver = casadi.Opti()
@@ -117,11 +134,23 @@ class MPCControllerNode(Node):
 
         rhat = min(self.DELTA * self.L * 10 / np.sqrt(self.DELTA**2 + self.L**2), 0.7)
 
+        angles = np.linspace(0, 2 * np.pi - 1e-4, 10)
+        ptsU = np.array([[rhat * np.cos(theta), rhat * np.sin(theta)] for theta in angles])
+        hull = ConvexHull(ptsU)
+        U_approx = ptsU[hull.vertices]
+
+        U_A = hull.equations[:, :-1]
+        U_b = -hull.equations[:, -1]
+
+        # Constraints for optimizarion problem
         for k in range(self.NPRED - 1):
             self.solver.subject_to(self.Z[:, k+1] == A @ self.Z[:, k] + B @ self.W[:, k])
-            self.solver.subject_to(casadi.mtimes(self.W[:, k].T, self.W[:, k]) <= rhat)
-            O = self.LinDyna(self.ETA[:, k], self.L, self.DELTA)
-            self.solver.subject_to(self.ETA[:, k+1] == self.ETA[:, k] + self.dt * casadi.mtimes(O, self.W[:, k]))
+            # self.solver.subject_to(casadi.mtimes(self.W[:, k].T, self.W[:, k]) <= rhat)
+            # O = self.LinDyna(self.ETA[:, k], self.L, self.DELTA)
+            # self.solver.subject_to(self.ETA[:, k+1] == self.ETA[:, k] + self.dt * casadi.mtimes(O, self.W[:, k]))
+            L = self.InConstr(self.ETA[:, k], self.L, self.DELTA)
+            self.solver.subject_to(casadi.mtimes(L, self.W[:, k]) <= np.array([0.8,0.8,0.8,0.8]).T)
+            self.solver.subject_to(casadi.mtimes(U_A, self.W[:, k]) <= U_b)
 
         obj = 0
         for k in range(self.NPRED - 1):
@@ -133,72 +162,67 @@ class MPCControllerNode(Node):
         self.create_reference_trajectory()
 
     def create_reference_trajectory(self):
-        t = np.arange(0, self.tf, self.dt)
+        idx = 2
+        if idx == 1:
+            # Circle
+            t = np.arange(0, self.tf, self.dt)
 
-        alpha = 0.08
-        beta = 0.08
-        l = self.L
+            alpha   = 0.08
+            beta    = 0.08
+            l       = self.L
 
-        # Positions
-        xr = alpha * t
-        yr = beta * t
+            xr      = alpha * t
+            yr      = beta * t
 
-        # First derivatives (velocities)
-        dxr = alpha + 0 * t
-        dyr = beta + 0 * t
+            dxr     = alpha + 0 * t
+            dyr     = beta + 0 * t
 
-        # Second derivatives (accelerations)
-        ddxr = 0 + 0 * t
-        ddyr = 0 + 0 * t
+            ddxr    = 0 + 0 * t
+            ddyr    = 0 + 0 * t
 
-        # Third derivatives (jerks)
-        dddxr = 0 + 0 * t
-        dddyr = 0 + 0 * t
+            dddxr   = 0 + 0 * t
+            dddyr   = 0 + 0 * t
 
-        alpha   = 1
-        beta    = 1
-        ang     = 0.5
-        xr      = alpha*np.cos(ang*t)      
-        dxr     = -alpha*ang*np.sin(ang*t)    
-        ddxr    = -alpha*ang*ang*np.cos(ang*t)       
-        dddxr   = alpha*ang*ang*ang*np.sin(ang*t)
+            alpha   = 1
+            beta    = 1
+            ang     = 0.5
+            xr      = alpha*np.cos(ang*t)      
+            dxr     = -alpha*ang*np.sin(ang*t)    
+            ddxr    = -alpha*ang*ang*np.cos(ang*t)       
+            dddxr   = alpha*ang*ang*ang*np.sin(ang*t)
 
-        yr      = beta*np.sin(ang*t)       
-        dyr     = beta*ang*np.cos(ang*t)      
-        ddyr    = -beta*ang*ang*np.sin(ang*t)        
-        dddyr   = -beta*ang*ang*ang*np.cos(ang*t)
+            yr      = beta*np.sin(ang*t)       
+            dyr     = beta*ang*np.cos(ang*t)      
+            ddyr    = -beta*ang*ang*np.sin(ang*t)        
+            dddyr   = -beta*ang*ang*ang*np.cos(ang*t)
 
-        # Compute velocity magnitude Vr
-        Vr = np.sqrt(dxr ** 2 + dyr ** 2)
+            Vr      = np.sqrt(dxr ** 2 + dyr ** 2)
 
-        # Avoid division by zero by adding a small epsilon
-        epsilon = 1e-8
-        Vr_safe = np.maximum(Vr, epsilon)
+            epsilon = 1e-8
+            Vr_safe = np.maximum(Vr, epsilon)
 
-        # Compute omegar as per MATLAB formula
-        numerator = (dddyr * dxr - dddxr * dyr) * (Vr_safe ** 2) - 3 * (ddyr * dxr - ddxr * dyr) * (dxr * ddxr + dyr * ddyr)
-        denominator = (Vr_safe ** 6 + (l ** 2) * (ddyr * dxr - ddxr * dyr) ** 2)
-        omegar = l * Vr_safe * numerator / denominator
+            numerator   = (dddyr * dxr - dddxr * dyr) * (Vr_safe ** 2) - 3 * (ddyr * dxr - ddxr * dyr) * (dxr * ddxr + dyr * ddyr)
+            denominator = (Vr_safe ** 6 + (l ** 2) * (ddyr * dxr - ddxr * dyr) ** 2)
+            omegar  = l * Vr_safe * numerator / denominator
 
-        # Compute thetar (angle reference)
-        thetar = np.unwrap(np.arctan2(dyr / Vr_safe, dxr / Vr_safe))
+            thetar  = np.unwrap(np.arctan2(dyr / Vr_safe, dxr / Vr_safe))
 
-        # Compute phir (steering angle reference)
-        phir = np.arctan((l * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
+            phir    = np.arctan((l * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
+        
+        else:
+            # Spline
+            ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
+            omegar = ref["omegar"]
+            Vr = ref["Vr"]
+            epsilon = 1e-8
+            Vr_safe = np.maximum(Vr, epsilon)
+            XREF = ref["XREF_FULL"]
 
-        ########### Spline
-        ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
-        omegar = ref["omegar"]
-        Vr = ref["Vr"]
-        epsilon = 1e-8
-        Vr_safe = np.maximum(Vr, epsilon)
-        XREF = ref["XREF_FULL"]
-
-        self.XREF_FULL = XREF
-        xr = self.XREF_FULL[0, :]
-        yr = self.XREF_FULL[1, :]
-        thetar = self.XREF_FULL[2, :]
-        phir = self.XREF_FULL[3, :]
+            self.XREF_FULL = XREF
+            xr = self.XREF_FULL[0, :]
+            yr = self.XREF_FULL[1, :]
+            thetar = self.XREF_FULL[2, :]
+            phir = self.XREF_FULL[3, :]
 
         self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
         self.UREF_FULL = np.vstack([Vr, omegar])
@@ -227,20 +251,19 @@ class MPCControllerNode(Node):
 
         if self.idx + self.NPRED > self.ZREF_FULL.shape[1]:
             try:
-                # Pad the reference outputs z and inputs w for last horizon steps
-                remaining_z = self.ZREF_FULL[:, self.idx:]
-                pad_count_z = max(self.NPRED - remaining_z.shape[1], 0)
-                last_col_z = self.ZREF_FULL[:, -1].reshape(self.DZ, 1)
-                padding_z = np.repeat(last_col_z, pad_count_z, axis=1)
-                padded_zref = np.hstack((remaining_z, padding_z))
+                remaining_z     = self.ZREF_FULL[:, self.idx:]
+                pad_count_z     = max(self.NPRED - remaining_z.shape[1], 0)
+                last_col_z      = self.ZREF_FULL[:, -1].reshape(self.DZ, 1)
+                padding_z       = np.repeat(last_col_z, pad_count_z, axis=1)
+                padded_zref     = np.hstack((remaining_z, padding_z))
 
-                remaining_w = self.WREF_FULL[:, self.idx:]
-                pad_count_w = max(self.NPRED - remaining_w.shape[1], 0)
-                last_col_w = self.WREF_FULL[:, -1].reshape(self.DU, 1)
-                padding_w = np.repeat(last_col_w, pad_count_w, axis=1)
-                padded_wref = np.hstack((remaining_w, padding_w))
+                remaining_w     = self.WREF_FULL[:, self.idx:]
+                pad_count_w     = max(self.NPRED - remaining_w.shape[1], 0)
+                last_col_w      = self.WREF_FULL[:, -1].reshape(self.DU, 1)
+                padding_w       = np.repeat(last_col_w, pad_count_w, axis=1)
+                padded_wref     = np.hstack((remaining_w, padding_w))
 
-                z_current = self.LinOutput(self.curr_state[:, 0])
+                z_current       = self.LinOutput(self.curr_state[:, 0])
                 self.solver.set_value(self.ZINIT, z_current)
                 self.solver.set_value(self.ZREF, padded_zref)
                 self.solver.set_value(self.WREF, padded_wref)
@@ -249,11 +272,11 @@ class MPCControllerNode(Node):
 
                 self.get_logger().info("In the last part of the reference horizon")
 
-                sol = self.solver.solve()
-                w0 = sol.value(self.W[:, 0])
+                sol     = self.solver.solve()
+                w0      = sol.value(self.W[:, 0])
      
-                M = self.LinMatrix(eta)
-                u0 = np.linalg.pinv(M) @ w0
+                M       = self.LinMatrix(eta)
+                u0      = np.linalg.pinv(M) @ w0
 
                 self.phi = self.integrate_phi(self.phi, u0[1], self.dt)      
 
@@ -272,28 +295,21 @@ class MPCControllerNode(Node):
 
         else:
             try:
-                z_current = self.LinOutput(self.curr_state[:, 0])
+                z_current   = self.LinOutput(self.curr_state[:, 0])
                 self.solver.set_value(self.ZINIT, z_current)
                 self.solver.set_value(self.ZREF, self.ZREF_FULL[:, self.idx:self.idx + self.NPRED])
                 self.solver.set_value(self.WREF, self.WREF_FULL[:, self.idx:self.idx + self.NPRED])
                 eta = self.curr_state[2:4, 0]
                 self.solver.set_value(self.ETAINIT, eta)
 
-                sol = self.solver.solve()
-                w0 = sol.value(self.W[:, 0])
+                sol     = self.solver.solve()
+                w0      = sol.value(self.W[:, 0])
 
-                M = self.LinMatrix(eta)
-                u0 = np.linalg.pinv(M) @ w0
+                M       = self.LinMatrix(eta)
+                u0      = np.linalg.pinv(M) @ w0
 
                 self.phi = self.integrate_phi(self.phi, u0[1], self.dt)
                 self.phi = self.phi
-
-                # new_phi = self.phi + u0[1] * self.dt
-
-                # unwrapped = np.unwrap([self.phi, new_phi])
-                # self.phi = unwrapped[-1]
-
-                # self.phi = np.clip(self.phi, -self.PHIMAX, self.PHIMAX)
 
                 msg_out = MotorCommands()
                 msg_out.motor_names = ['steering_angle', 'motor_throttle']
@@ -357,7 +373,6 @@ class MPCControllerNode(Node):
         states = np.array(self.saved_states)
         inputs = np.array(self.saved_inputs)
 
-        # Save everything in a compressed NumPy archive
         np.savez(filename,
                 XREF_FULL=self.XREF_FULL,
                 UREF_FULL=self.UREF_FULL,
