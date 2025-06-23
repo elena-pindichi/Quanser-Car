@@ -6,9 +6,13 @@ load("trajectory.mat")
 %% Parameters
 N_pred_val  = 12;   
 Q_val       = 10;
-R_val       = 3;              
+R_val       = 3;
 P_val       = 10;
 l           = 0.256;                % Length between front and rear
+
+N_pred_val  = 12;                      
+Q_val       = 10;                          
+R_val       = 1; 
 
 % Define prediction and simulation steps
 Ts    = 0.1;                        % Sampling time
@@ -24,7 +28,7 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-idx = 4;
+idx = 3;
 [xref, uref, Nsim] = reference(idx);
 
 %% Constraints values
@@ -119,7 +123,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dx * Nsim))
 
 %% Plot results
-% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\simulations\NMPC\Line'; 
+% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Circle2\Npred'; 
 
 figure
 plot((1:Nsim)*Ts,err(1,:))
@@ -129,7 +133,7 @@ legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
-% filename = sprintf('%dNMPC_err.png', idx);
+% filename = sprintf('%dNMPC_err.png', Npred);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -178,7 +182,7 @@ ylabel('x_4')
 title('Simulation and reference for \phi_{state}')
 grid
 
-% filename = sprintf('%dNMPC_state.png', idx);
+% filename = sprintf('%dNMPC_state.png', Npred);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -203,7 +207,7 @@ plot(uref(2, 1:Nsim), '--')
 legend('\omega')
 grid
 
-% filename = sprintf('%dNMPC_input.png', idx);
+% filename = sprintf('%dNMPC_input.png', Npred);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -225,7 +229,7 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 
-% filename = sprintf('%dNMPC_carpos.png', idx);
+% filename = sprintf('%dNMPC_carpos.png', Npred);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 

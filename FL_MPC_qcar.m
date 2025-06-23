@@ -6,10 +6,14 @@ load("trajectory.mat")
 %% Parameters
 N_pred_val  = 5;                      
 Q_val       = 5;                          
-R_val       = 0.1;                           
+R_val       = 0.1;  
 P_val       = 10;                         
 l           = 0.256;                 % Length between front and rear
 Delta       = 0.35;                  % Distance in front of the car
+
+N_pred_val  = 12;                      
+Q_val       = 10;                          
+R_val       = 1; 
 
 % Define prediction and simulation steps
 Ts      = 0.1;                       % Sampling time
@@ -55,7 +59,7 @@ end
 
 
 %% Weights matrices
-rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 10);
+rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 5);
 
 % Weights for cost function
 Q = Q_val * eye(dz);
@@ -104,12 +108,12 @@ for k = 1 : Npred
     % O = LinDyna(eta(:, k), l, Delta);
     % solver.subject_to(eta(:, k+1) == eta(:, k) + Ts * O * w(:, k));
 
-    % L = InConstr(eta(:, k), l, Delta);
-    % solver.subject_to(L * w(:, k) <= [10;10;10;10]);
+    L = InConstr(eta(:, k), l, Delta);
+    solver.subject_to(L * w(:, k) <= [5;5;5;5]);
     
     % Control input constraints
-    % solver.subject_to(w(:, k)' * w(:, k) <= rhat^2);
-    solver.subject_to(U_approx.A*w(:, k) <= U_approx.b);
+    solver.subject_to(w(:, k)' * w(:, k) <= rhat^2);
+    % solver.subject_to(U_approx.A*w(:, k) <= U_approx.b);
 end
 
 objective = 0;
@@ -176,7 +180,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dz * Nsim))
 
 %% Plot results
-% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\simulations\FLMPC'; 
+% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\comparison\Circle2\Npred'; 
 
 figure
 plot(xsim(1,:), xsim(2,:))
@@ -248,7 +252,7 @@ legend('$\varphi$','interpreter','latex')
 xlabel('time (s)')
 grid
 
-% filename = sprintf('%dFLMPC_state.png', idx);
+% filename = sprintf('%dFLMPC_state.png', Npred);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -268,7 +272,7 @@ legend('\omega')
 xlabel('Nsim')
 grid
 
-% filename = sprintf('%dFLMPC_input.png', idx);
+% filename = sprintf('%dFLMPC_input.png', Npred);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -292,7 +296,7 @@ legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
-% filename = sprintf('%dFLMPC_err.png', idx);
+% filename = sprintf('%dFLMPC_err.png', Npred);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
@@ -312,7 +316,7 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 
-% filename = sprintf('%dFLMPC_carpos.png', idx);
+% filename = sprintf('%dFLMPC_carpos.png', Npred);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
