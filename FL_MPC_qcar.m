@@ -176,7 +176,7 @@ end
 rmse_scalar = sqrt(sum(err(:).^2) / (dz * Nsim))
 
 %% Plot results
-folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\simulations\FLMPC'; 
+% folder = 'C:\Users\pindiche\Desktop\QcarProject\pics\simulations\FLMPC'; 
 
 figure
 plot(xsim(1,:), xsim(2,:))
@@ -248,9 +248,9 @@ legend('$\varphi$','interpreter','latex')
 xlabel('time (s)')
 grid
 
-filename = sprintf('%dFLMPC_state.png', idx+4);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dFLMPC_state.png', idx+4);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 subplot(2,1,1)
@@ -268,9 +268,9 @@ legend('\omega')
 xlabel('Nsim')
 grid
 
-filename = sprintf('%dFLMPC_input.png', idx+4);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dFLMPC_input.png', idx+4);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 subplot(2,1,1)
@@ -292,9 +292,9 @@ legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
 
-filename = sprintf('%dFLMPC_err.png', idx+4);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dFLMPC_err.png', idx+4);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 hold on
@@ -312,9 +312,9 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 
-filename = sprintf('%dFLMPC_carpos.png', idx+4);
-fullpath = fullfile(folder, filename); 
-saveas(gcf, fullpath); 
+% filename = sprintf('%dFLMPC_carpos.png', idx+4);
+% fullpath = fullfile(folder, filename); 
+% saveas(gcf, fullpath); 
 
 figure
 plot(U_approx)
@@ -322,7 +322,55 @@ xlabel('w1')
 ylabel('w2')
 title('Constraints on virtual input')
 
+% draw_set(rhat, U_approx)
+
 %% Trajectory Function
+function [] = draw_set(rhat, U_approx)
+    %% 3D Plot: Nonlinear constraint vs Polyhedral approximation
+    figure;
+    hold on;
+    grid on;
+    xlabel('w_1');
+    ylabel('w_2');
+    zlabel('Constraint value');
+    title('Nonlinear constraint vs Polyhedral approximation');
+
+    % Create mesh grid over w1 and w2
+    [w1_grid, w2_grid] = meshgrid(linspace(-rhat, rhat, 100), linspace(-rhat, rhat, 100));
+    inside_nonlinear = nan(size(w1_grid));
+    inside_linear = nan(size(w1_grid));
+
+    % Evaluate constraints at each point
+    for i = 1:size(w1_grid, 1)
+        for j = 1:size(w1_grid, 2)
+            w_test = [w1_grid(i, j); w2_grid(i, j)];
+
+            % Nonlinear constraint: w'*w <= rhat^2
+            if norm(w_test) <= rhat
+                inside_nonlinear(i, j) = 1;
+            else
+                inside_nonlinear(i, j) = NaN;
+            end
+
+            % Linear constraint: A*w <= b
+            if all(U_approx.A * w_test <= U_approx.b)
+                inside_linear(i, j) = 1.1; % Slightly offset for visibility
+            else
+                inside_linear(i, j) = NaN;
+            end
+        end
+    end
+
+    % Plot nonlinear constraint as 3D surface
+    surf(w1_grid, w2_grid, inside_nonlinear, 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'FaceColor', 'blue');
+    % Plot polyhedral approximation
+    surf(w1_grid, w2_grid, inside_linear, 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'FaceColor', 'red');
+
+    legend('Nonlinear constraint (circular)', 'Polyhedral approximation');
+    view(3);
+
+end
+
 function [xref, uref, Nsim] = reference(idx)
     l = 0.256;
     Delta = 0.35;

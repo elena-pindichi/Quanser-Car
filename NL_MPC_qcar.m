@@ -24,7 +24,7 @@ u0 = zeros(du, 1);
 
 %% Trajectories
 % Choose trajectories: 1 = line, 2 = square, 3 = circle, 4 = spline
-idx = 3;
+idx = 4;
 [xref, uref, Nsim] = reference(idx);
 
 %% Constraints values

@@ -2,6 +2,7 @@ clc, close all, clear;
 
 load('sim_flmpc.mat')
 load('sim_nlmpc.mat')
+load('trajectory.mat')
 
 len_t = min(size(out_flmpc,3), size(out_nlmpc,3));
 
@@ -19,8 +20,10 @@ figure
 plot(nmpc(1, :), nmpc(2,:))
 hold on
 plot(flmpc(1,:), flmpc(2,:))
+hold on
+plot(xref(1,:), yref(1,:), '--')
 grid
-legend('NMPC', 'FLMPC')
+legend('NMPC', 'FLMPC', 'ref')
 title('Simulation Results Position')
 
 figure
