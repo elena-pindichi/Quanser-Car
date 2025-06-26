@@ -49,7 +49,6 @@ class MPCControllerNode(Node):
         self.idx = 0
         self.curr_state = np.zeros((4, 1))
         self.dt = 0.3
-        self.tf = 12
         self.tf = 25
         self.PHIMAX = np.pi / 5
         self.VMAX = 1
@@ -165,6 +164,7 @@ class MPCControllerNode(Node):
         Q[2,2] = 15
         Q[3,3] = 0.1
         R = 5 * np.eye(DU)
+        R = np.diag([100, 5])
         P = 10 * Q
 
         obj = 0
