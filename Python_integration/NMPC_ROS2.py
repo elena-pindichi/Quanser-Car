@@ -8,6 +8,7 @@ from motion_capture_tracking_interfaces.msg import NamedPoseArray
 from qcar2_interfaces.msg import MotorCommands
 from tf_transformations import euler_from_quaternion
 from mpc_controller.gen_traj import get_ref
+import time
 
 
 class MPCControllerNode(Node):
@@ -42,6 +43,7 @@ class MPCControllerNode(Node):
 
         self.saved_states = []
         self.saved_inputs = []
+        self.computation_times = []
         self.last_yaw = None
         self.target_name = 'qcar2'
         self.phi = 0.0
@@ -49,10 +51,9 @@ class MPCControllerNode(Node):
         self.idx = 0
         self.curr_state = np.zeros((4, 1))
         self.dt = 0.3
-        self.tf = 12
         self.tf = 25
         self.PHIMAX = np.pi / 5
-        self.VMAX = 1
+        self.VMAX = 0.8
         self.WMAX = 0.8
         self.NPRED = 12
         
@@ -89,7 +90,11 @@ class MPCControllerNode(Node):
                 self.solver.set_value(self.UREF, padded_uref)
 
                 self.get_logger().info(f"I am in the last part of the reference ")
+                start_time = time.time()
                 sol = self.solver.solve()
+                computation_time = time.time() - start_time
+                self.computation_times.append(computation_time)
+                self.get_logger().info(f"MPC solve time (last part): {computation_time:.6f} seconds")
                 u0 = sol.value(self.U[:, 0])
 
                 self.phi = self.integrate_phi(self.phi, u0[1], self.dt)
@@ -108,7 +113,11 @@ class MPCControllerNode(Node):
                 self.solver.set_value(self.XREF, self.XREF_FULL[:, self.idx:(self.idx + self.NPRED)])
                 self.solver.set_value(self.UREF, self.UREF_FULL[:, self.idx:(self.idx + self.NPRED)])
 
+                start_time = time.time()
                 sol = self.solver.solve()
+                computation_time = time.time() - start_time
+                self.get_logger().info(f"MPC solve time: {computation_time:.6f} seconds")
+                self.computation_times.append(computation_time)
                 u0 = sol.value(self.U[:, 0])
 
                 self.phi = self.integrate_phi(self.phi, u0[1], self.dt)
@@ -165,7 +174,17 @@ class MPCControllerNode(Node):
         Q[2,2] = 15
         Q[3,3] = 0.1
         R = 5 * np.eye(DU)
+        R = np.diag([10, 5])
         P = 10 * Q
+
+
+        # for tests
+        # Q = 300 * np.eye(DX)
+        # Q[2,2] = 15
+        # Q[3,3] = 0.1
+        # R = 5 * np.eye(DU)
+        # R = np.diag([2, 5])
+        # P = 10 * Q
 
         obj = 0
         for k in range(self.NPRED - 1):
@@ -180,6 +199,7 @@ class MPCControllerNode(Node):
         self.create_reference_trajectory()
 
     def create_reference_trajectory(self):
+        # Circle
         t = np.arange(0, self.tf, self.dt)
         t_const = np.repeat(1,np.size(t))
         alpha = 0.08
@@ -244,7 +264,7 @@ class MPCControllerNode(Node):
         # Compute phir (steering angle reference)
         phir = np.arctan((l * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
 
-        # Stack references
+        # Spline references
         ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
         omegar = ref["omegar"]
         Vr = ref["Vr"]
@@ -295,13 +315,15 @@ class MPCControllerNode(Node):
     def save_data_npz(self, filename="nmpc_data.npz"):
         states = np.array(self.saved_states)
         inputs = np.array(self.saved_inputs)
+        computation_times = np.array(self.computation_times)
 
         # Save everything in a compressed NumPy archive
         np.savez(filename,
                 XREF_FULL=self.XREF_FULL,
                 UREF_FULL=self.UREF_FULL,
                 states=states,
-                inputs=inputs)
+                inputs=inputs,
+                computation_times=computation_times)
         self.get_logger().info(f"Saved MPC data to {filename}")
 
                 
