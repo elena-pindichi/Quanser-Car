@@ -11,6 +11,10 @@ P_val       = 10;
 l           = 0.256;                 % Length between front and rear
 Delta       = 0.35;                  % Distance in front of the car
 
+N_pred_val  = 7;   
+Q_val       = 1;
+R_val       = 1;
+
 % Define prediction and simulation steps
 Ts      = 0.1;                       % Sampling time
 Npred   = N_pred_val;                % Prediction horizon
@@ -104,12 +108,12 @@ for k = 1 : Npred
     % O = LinDyna(eta(:, k), l, Delta);
     % solver.subject_to(eta(:, k+1) == eta(:, k) + Ts * O * w(:, k));
 
-    % L = InConstr(eta(:, k), l, Delta);
-    % solver.subject_to(L * w(:, k) <= [5;5;5;5]);
+    L = InConstr(eta(:, k), l, Delta);
+    solver.subject_to(L * w(:, k) <= [5;5;5;5]);
     
     % Control input constraints
-    % solver.subject_to(w(:, k)' * w(:, k) <= rhat^2);
-    solver.subject_to(U_approx.A*w(:, k) <= U_approx.b);
+    solver.subject_to(w(:, k)' * w(:, k) <= rhat^2);
+    % solver.subject_to(U_approx.A*w(:, k) <= U_approx.b);
 end
 
 objective = 0;
@@ -215,7 +219,8 @@ legend('z_2','ref z_2')
 title('Simulation and reference for z2_{state}')
 grid
 
-figure
+% figure
+f = figure('Units','normalized','Position',[0.1 0.1 0.6 0.8]);
 subplot(4,1,1)
 plot((1:Nsim)*Ts, xsim(1,1:end-1))
 hold on 
@@ -251,8 +256,10 @@ grid
 % filename = sprintf('%dFLMPC_state.png', idx+4);
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
+exportgraphics(gcf, '4FLMPC_state.pdf', 'ContentType','vector', 'BackgroundColor','none')
 
-figure
+% figure
+f = figure('Units','normalized','Position',[0.1 0.1 0.6 0.8]);
 subplot(2,1,1)
 plot(usim(1, :))
 hold on
@@ -267,6 +274,7 @@ plot(ur(2, 1:Nsim), '--')
 legend('\omega')
 xlabel('Nsim')
 grid
+exportgraphics(gcf, '4FLMPC_input.pdf', 'ContentType','vector', 'BackgroundColor','none')
 
 % filename = sprintf('%dFLMPC_input.png', idx+4);
 % fullpath = fullfile(folder, filename); 
@@ -284,13 +292,15 @@ legend('w2_{virtual}')
 xlabel('Nsim')
 grid
 
-figure
+% figure
+f = figure('Units','normalized','Position',[0.1 0.1 0.6 0.8]);
 plot((1:Nsim)*Ts,err(1,:))
 hold on
 plot((1:Nsim)*Ts,err(2,:))
 legend('err_x', 'err_y')
 title('Reference tracking error')
 grid
+exportgraphics(gcf, '4FLMPC_err.pdf', 'ContentType','vector', 'BackgroundColor','none')
 
 % filename = sprintf('%dFLMPC_err.png', idx+4);
 % fullpath = fullfile(folder, filename); 
