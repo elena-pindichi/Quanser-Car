@@ -9,14 +9,43 @@ NMPC_XREF = NMPC_data["XREF_FULL"]
 NMPC_UREF = NMPC_data["UREF_FULL"]
 NMPC_states = NMPC_data["states"]
 NMPC_inputs = NMPC_data["inputs"]
+NMPC_computation = NMPC_data["computation_times"]
 
 FLMPC_XREF = FLMPC_data["XREF_FULL"]
 FLMPC_UREF = FLMPC_data["UREF_FULL"]
 FLMPC_states = FLMPC_data["states"]
 FLMPC_inputs = FLMPC_data["inputs"]
+FLMPC_computation = FLMPC_data["computation_times"]
 
 dt = 0.3
 time = dt * np.arange(NMPC_states.shape[0])
+# print(time.shape)
+# print(FLMPC_XREF.shape)
+# print(FLMPC_states.shape)
+# print(NMPC_XREF.shape)
+# print(NMPC_states.shape)
+# # print(NMPC_UREF.shape)
+# print(len(NMPC_inputs))
+
+xref = NMPC_XREF.T
+err1 = np.mean((NMPC_states[:84,0] - xref[:,0])**2, axis = 0)
+err2 = np.mean((NMPC_states[:84,1] - xref[:,1])**2, axis = 0)
+nmse = (err1+err2)/2
+print(f"MSE Error for NMPC: {nmse:.6f}")
+
+
+err1 = np.mean((FLMPC_states[:84,0,0] - xref[:,0])**2, axis = 0)
+err2 = np.mean((FLMPC_states[:84,1,0] - xref[:,1])**2, axis = 0)
+flmse = (err1+err2)/2
+print(f"MSE Error for FLMPC: {flmse:.6f}")
+
+
+comp_nmpc = sum(NMPC_computation) / len(NMPC_computation)
+print(f"Computation time for NMPC problem: {comp_nmpc:.6f} seconds")
+
+comp_flmpc = sum(FLMPC_computation) / len(FLMPC_computation)
+print(f"Computation time for FLMPC problem: {comp_flmpc:.6f} seconds")
+
 
 # Plot trajectories
 plt.figure()
