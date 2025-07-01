@@ -10,10 +10,6 @@ R_val       = 3;
 P_val       = 10;
 l           = 0.256;                % Length between front and rear
 
-N_pred_val  = 7;   
-Q_val       = 1;
-R_val       = 1;
-
 % Define prediction and simulation steps
 Ts    = 0.1;                        % Sampling time
 Npred = N_pred_val;                 % Prediction horizon

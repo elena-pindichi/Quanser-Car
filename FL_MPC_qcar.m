@@ -11,10 +11,6 @@ P_val       = 10;
 l           = 0.256;                 % Length between front and rear
 Delta       = 0.35;                  % Distance in front of the car
 
-N_pred_val  = 7;   
-Q_val       = 1;
-R_val       = 1;
-
 % Define prediction and simulation steps
 Ts      = 0.1;                       % Sampling time
 Npred   = N_pred_val;                % Prediction horizon
@@ -326,11 +322,13 @@ ylabel('y (m)')
 % fullpath = fullfile(folder, filename); 
 % saveas(gcf, fullpath); 
 
-figure
+% figure
+f = figure('Units','normalized','Position',[0.1 0.1 0.6 0.8]);
 plot(U_approx)
 xlabel('w1')
 ylabel('w2')
 title('Constraints on virtual input')
+exportgraphics(gcf, 'input_poly_constraints.pdf', 'ContentType','vector', 'BackgroundColor','none')
 
 % draw_set(rhat, U_approx)
 
