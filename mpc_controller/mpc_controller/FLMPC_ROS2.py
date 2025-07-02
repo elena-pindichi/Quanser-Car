@@ -113,9 +113,13 @@ class MPCControllerNode(Node):
 
     def setup_mpc(self):
         # Problem parameters
-        Q = 150 * np.eye(self.DZ)
+        Q = 300 * np.eye(self.DZ)
         R = np.diag([0.4, 5])
         P = 10 * Q
+
+        # Q = 30 * np.eye(self.DZ)
+        # R = np.diag([0.1, 5])
+        # P = 10 * Q # pt lin cstr
 
         # Q = 1500 * np.eye(self.DZ)
         # R = np.diag([0.4, 5])
@@ -218,18 +222,18 @@ class MPCControllerNode(Node):
         phir    = np.arctan((self.L * (ddyr * dxr - ddxr * dyr)) / (Vr_safe ** 3))
             
         # Spline
-        ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
-        omegar = ref["omegar"]
-        Vr = ref["Vr"]
-        epsilon = 1e-8
-        Vr_safe = np.maximum(Vr, epsilon)
-        XREF = ref["XREF_FULL"]
+        # ref = get_ref(psi=0, Tsim=self.tf, dt = self.dt)
+        # omegar = ref["omegar"]
+        # Vr = ref["Vr"]
+        # epsilon = 1e-8
+        # Vr_safe = np.maximum(Vr, epsilon)
+        # XREF = ref["XREF_FULL"]
 
-        self.XREF_FULL = XREF
-        xr = self.XREF_FULL[0, :]
-        yr = self.XREF_FULL[1, :]
-        thetar = self.XREF_FULL[2, :]
-        phir = self.XREF_FULL[3, :]
+        # self.XREF_FULL = XREF
+        # xr = self.XREF_FULL[0, :]
+        # yr = self.XREF_FULL[1, :]
+        # thetar = self.XREF_FULL[2, :]
+        # phir = self.XREF_FULL[3, :]
 
         self.XREF_FULL = np.vstack([xr, yr, thetar, phir])
         self.UREF_FULL = np.vstack([Vr, omegar])
@@ -409,7 +413,8 @@ class MPCControllerNode(Node):
 
         self.save_data_npz("flmpc_data.npz")
 
-        plt.figure()
+        # plt.figure()
+        plt.figure(figsize=(10, 8))
         plt.plot(states[:, 0], states[:, 1], label='Tracked Position')
         plt.plot(ref[0, :], ref[1, :], '--', label='Reference Position')
         plt.xlabel('x')
@@ -417,8 +422,10 @@ class MPCControllerNode(Node):
         plt.legend()
         plt.grid(True)
         plt.title("Reference vs States")
+        plt.savefig('FLMPC_carpos.pdf', format='pdf', bbox_inches='tight')
 
-        plt.figure()
+        # plt.figure()
+        plt.figure(figsize=(10, 8))
         plt.plot(states[:, 2], label='Yaw')
         plt.plot(ref[2, :], '--', label='Reference Yaw')
         plt.xlabel('time')
@@ -426,8 +433,10 @@ class MPCControllerNode(Node):
         plt.legend()
         plt.grid(True)
         plt.title("Reference vs Yaw")
+        plt.savefig('FLMPC_yaw.pdf', format='pdf', bbox_inches='tight')
 
-        plt.figure()
+        # plt.figure()
+        plt.figure(figsize=(10, 8))
         plt.plot(states[:, 3], label='Phi')
         plt.plot(ref[3, :], '--', label='Reference Phi')
         plt.xlabel('time')
@@ -435,12 +444,15 @@ class MPCControllerNode(Node):
         plt.legend()
         plt.grid(True)
         plt.title("Reference vs Phi")
+        plt.savefig('FLMPC_phi.pdf', format='pdf', bbox_inches='tight')
 
-        plt.figure()
+        # plt.figure()
+        plt.figure(figsize=(10, 8))
         plt.plot(inputs, label='V')
         plt.plot(ref_in, '--', label='Reference V')
         plt.grid(True)
         plt.title("Reference vs V")
+        plt.savefig('FLMPC_v.pdf', format='pdf', bbox_inches='tight')
 
         plt.show()
 
