@@ -34,8 +34,8 @@ phimax   = pi/5;                   % Front wheels orientation limits
 
 % Weights for cost function
 Q = Q_val * eye(dx);
-% Q(3,3) = 1;
-% Q(4,4) = 0.1;
+Q(3,3) = 1;
+Q(4,4) = 0.1;
 R = R_val * eye(du);
 P = P_val * Q;
 
