@@ -44,7 +44,7 @@ wref  = M * uref;
 % Polyhedral approximation
 rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 5);
 ptsU = [];
-for tta = linspace(0,2*pi-1e-4,10)
+for tta = linspace(0,2*pi-1e-4,20)
     ptsU = [ptsU; [rhat*cos(tta), rhat*sin(tta)]];
 end
 U_approx = Polyhedron('V',ptsU).computeVRep();
@@ -53,7 +53,10 @@ U_approx = Polyhedron('V',ptsU).computeVRep();
 Npred   = N_pred_val;  
 Q = Q_val * eye(dz);
 R = R_val * eye(du);
+R = eye(du);
 P = P_val * Q;
+[~,P] = dlqr(A,B,Q,R);
+P = 100 * P;
 Nsim = 30 / Ts;
 
 solver = casadi.Opti();
@@ -224,3 +227,20 @@ title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
 exportgraphics(gcf, 'obs_avoidance_carpos.pdf', 'ContentType','vector', 'BackgroundColor','none')
+
+%%
+% K = Polyhedron(H,b);
+% figure
+% scatter(xsim(1, :), xsim(2, :))
+% grid
+% title('State space');
+% xlabel 'x1'
+% ylabel 'x2'
+% hold on
+% plot(O)
+
+xx = sdpvar(2,1);
+figure
+plot(xx'*xx <= rhat^2)
+hold on
+plot(U_approx)

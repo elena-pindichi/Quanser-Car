@@ -18,3 +18,25 @@ computation_time =
 rmse_scalar =
 
     0.7188
+
+
+2:
+computation_time =
+
+    2.0923
+
+
+rmse_scalar =
+
+    1.1041
+
+
+3:
+computation_time =
+
+    1.9346
+
+
+rmse_scalar =
+
+    1.0509
