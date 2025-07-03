@@ -1,0 +1,20 @@
+0:
+computation_time =
+
+    1.0129
+
+
+rmse_scalar =
+
+    0.6232
+
+
+1:
+computation_time =
+
+    1.9774
+
+
+rmse_scalar =
+
+    0.7188

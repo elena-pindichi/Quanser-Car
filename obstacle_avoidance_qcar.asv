@@ -29,7 +29,7 @@ f_dynamics = @(x, u) [ u(1) * cos(x(3));
 
 % Reference and initial points
 u0 = zeros(du, 1);
-x0 = [-4; 0.2; 0; 0];
+x0 = [-2; 0.2; 0; 0];
 z0 = LinOutput(x0, Delta, l);
 xref = [5; 0.6; 0; 0];
 zref = LinOutput(xref, Delta, l);
@@ -54,7 +54,7 @@ Npred   = N_pred_val;
 Q = Q_val * eye(dz);
 R = R_val * eye(du);
 P = P_val * Q;
-Nsim = 30 / Ts;
+Nsim = 50 / Ts;
 
 solver = casadi.Opti();
 
@@ -67,7 +67,7 @@ winit = solver.parameter(du, 1);
 
 % Define obstacle constraints
 H = A_ob;
-b = b_ob + 0.5 * ones(4, 1);
+b = b_ob + 0.15 * ones(4, 1);
 M_cstr = 10^5;
 
 %% Initialize constraints
@@ -82,7 +82,7 @@ end
 %% Initialize objective
 objective = 0;
 for k = 1 : Npred
-    objective = objective + (z(:, k) - zref)' * Q * (z(:, k) - zref) + (w(:, k) - wref)' * R * (w(:, k) - wref);
+    objective = objective + (z(:, k) - zref)' * Q * (z(:, k) - zref) + w(:, k)' * R * w(:, k);
 end
 objective = objective + (z(:, Npred + 1) - zref)' * P * (z(:, Npred + 1) - zref);
 
@@ -104,14 +104,10 @@ zsim(:, 1) = z0;
 xsim(:, 1) = x0;
 usim_init = u0;
 
-tfin = [];
 for i = 1 : Nsim
     solver.set_value(zinit, zsim(:, i))
-
-    t1 = tic;
+    % solver.set_value(winit, usim_init)
     sol = solver.solve();
-    tfin = [tfin toc(t1)];
-
     wsol = sol.value(w);
     M = LinMatrix(xsim(3:4, i), Delta, l);
     usim(:, i) = M^(-1) * wsol(:, 1);
@@ -121,31 +117,9 @@ for i = 1 : Nsim
     zsim(:, i + 1) = A * zsim(:, i) + B * wsim(:, i);
 end
 
-computation_time = sum(tfin);
-computation_time = computation_time/Nsim
-
-err = zeros(dx,Nsim);
-for i =1:Nsim
-    err(:,i) = (xsim(:, i) - xref);
-end
-
-rmse_scalar = sqrt(sum(err(:).^2) / (dx * Nsim))
-
 %% Plotting
 close all;
-
-% figure
-f = figure('Units','normalized','Position',[0.1 0.1 0.6 0.8]);
-plot((1:Nsim)*Ts,err(1,:))
-hold on
-plot((1:Nsim)*Ts,err(2,:))
-legend('err_x', 'err_y')
-title('Reference tracking error')
-grid
-exportgraphics(gcf, 'obs_avoidance_err.pdf', 'ContentType','vector', 'BackgroundColor','none')
-
-% figure
-f = figure('Units','normalized','Position',[0.1 0.1 0.6 0.8]);
+figure
 scatter(xsim(1, :), xsim(2, :))
 grid
 title('State space');
@@ -153,47 +127,33 @@ xlabel 'x1'
 ylabel 'x2'
 hold on
 plot(O)
-exportgraphics(gcf, 'obs_avoidance_move.pdf', 'ContentType','vector', 'BackgroundColor','none')
 
-t = 0 : 0.1 : Nsim;
-
-% figure
-f = figure('Units','normalized','Position',[0.1 0.1 0.6 0.8]);
+figure
 subplot(4,1,1)
 plot((1:Nsim)*Ts, xsim(1,1:end-1))
-hold on
-plot((1:Nsim)*Ts, xref(1) * ones(1, Nsim), '--')
 legend('x')
 xlabel('time (s)')
 grid
 
 subplot(4,1,2)
 plot((1:Nsim)*Ts, xsim(2,1:end-1))
-hold on
-plot((1:Nsim)*Ts, xref(2) * ones(1, Nsim), '--')
 legend('y')
 xlabel('time (s)')
 grid
 
 subplot(4,1,3)
 plot((1:Nsim)*Ts, xsim(3,1:end-1))
-hold on
-plot((1:Nsim)*Ts, xref(3) * ones(1, Nsim), '--')
 legend('$\theta$','interpreter','latex')
 xlabel('time (s)')
 grid
 
 subplot(4,1,4)
 plot((1:Nsim)*Ts, xsim(4,1:end-1))
-hold on
-plot((1:Nsim)*Ts, xref(4) * ones(1, Nsim), '--')
 legend('$\varphi$','interpreter','latex')
 xlabel('time (s)')
 grid
-exportgraphics(gcf, 'obs_avoidance_state.pdf', 'ContentType','vector', 'BackgroundColor','none')
 
-% figure
-f = figure('Units','normalized','Position',[0.1 0.1 0.6 0.8]);
+figure
 subplot(2,1,1)
 plot(usim(1, :))
 hold on
@@ -202,13 +162,13 @@ xlabel('Nsim')
 grid
 subplot(2,1,2)
 plot(usim(2, :))
+hold on
+plot(ur(2, 1:Nsim), '--')
 legend('\omega')
 xlabel('Nsim')
 grid
-exportgraphics(gcf, 'obs_avoidance_in.pdf', 'ContentType','vector', 'BackgroundColor','none')
 
-% figure
-f = figure('Units','normalized','Position',[0.1 0.1 0.6 0.8]);
+figure
 hold on
 height = 0.4; width = 0.2;
 st = 10;
@@ -223,4 +183,3 @@ plot(O)
 title('car position')
 xlabel('x (m)')
 ylabel('y (m)')
-exportgraphics(gcf, 'obs_avoidance_carpos.pdf', 'ContentType','vector', 'BackgroundColor','none')
