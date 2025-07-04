@@ -16,7 +16,7 @@ Delta = 0.35;
 l = 0.256;
 N_pred_val  = 5;                      
 Q_val       = 5;                          
-R_val       = 0.1;  
+R_val       = 1;  
 P_val       = 10; 
 A = eye(dz);
 B = Ts * eye(dz);
@@ -33,13 +33,6 @@ x0 = [-4; 0.2; 0; 0];
 z0 = LinOutput(x0, Delta, l);
 xref = [5; 0.6; 0; 0];
 zref = LinOutput(xref, Delta, l);
-uref = [5; 0];
-
-s1    = sin(xref(3) + xref(4)); 
-c1    = cos(xref(3) + xref(4));
-M     = [cos(xref(3)) - tan(xref(4))*(sin(xref(3)) + Delta*s1/l), -Delta*s1;
-         sin(xref(3)) + tan(xref(4))*(cos(xref(3)) + Delta*c1/l),  Delta*c1];
-wref  = M * uref;
 
 % Polyhedral approximation
 rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 5);
@@ -53,10 +46,9 @@ U_approx = Polyhedron('V',ptsU).computeVRep();
 Npred   = N_pred_val;  
 Q = Q_val * eye(dz);
 R = R_val * eye(du);
-R = eye(du);
 P = P_val * Q;
 [~,P] = dlqr(A,B,Q,R);
-P = 100 * P;
+P = 150 * P;
 Nsim = 30 / Ts;
 
 solver = casadi.Opti();
@@ -85,7 +77,11 @@ end
 %% Initialize objective
 objective = 0;
 for k = 1 : Npred
-    objective = objective + (z(:, k) - zref)' * Q * (z(:, k) - zref) + (w(:, k) - wref)' * R * (w(:, k) - wref);
+    if k ~= 1
+        objective = objective + (z(:, k) - zref)' * Q * (z(:, k) - zref) + (w(:, k) - w(:, k-1))' * R * (w(:, k) - w(:, k-1));
+    else
+        objective = objective + (z(:, k) - zref)' * Q * (z(:, k) - zref) + w(:, k)' * R * w(:, k);
+    end
 end
 objective = objective + (z(:, Npred + 1) - zref)' * P * (z(:, Npred + 1) - zref);
 

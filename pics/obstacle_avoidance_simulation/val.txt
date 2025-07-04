@@ -20,7 +20,7 @@ rmse_scalar =
     0.7188
 
 
-2:
+2: P = 50P
 computation_time =
 
     2.0923
@@ -31,7 +31,7 @@ rmse_scalar =
     1.1041
 
 
-3:
+3: P = 100P
 computation_time =
 
     1.9346
@@ -40,3 +40,26 @@ computation_time =
 rmse_scalar =
 
     1.0509
+
+
+4: Delta = 0.1
+computation_time =
+
+    2.5294
+
+
+rmse_scalar =
+
+    1.5526
+
+
+5: P = 150P
+
+computation_time =
+
+    1.2671
+
+
+rmse_scalar =
+
+    1.0519

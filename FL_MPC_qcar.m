@@ -5,9 +5,9 @@ load("trajectory.mat")
 
 %% Parameters
 N_pred_val  = 5;                      
-Q_val       = 5;                          
+Q_val       = 5;     
 R_val       = 0.1;  
-P_val       = 10;                         
+P_val       = 10;
 l           = 0.256;                 % Length between front and rear
 Delta       = 0.35;                  % Distance in front of the car
 
@@ -55,14 +55,17 @@ end
 
 
 %% Weights matrices
-rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 5);
+rhat = min(Delta*l*10/sqrt(Delta*Delta + l*l), 1);
 
 % Weights for cost function
-Q = Q_val * eye(dz);
-R = R_val * eye(du);
-P = P_val * Q;
 A = eye(dz);
 B = Ts * eye(dz);
+
+Q = Q_val * eye(dz);
+R = R_val * eye(du);
+% P = P_val * Q;
+[~,P] = dlqr(A,B,Q,R);
+P = P_val * P;
 
 ptsU = [];
 for tta = linspace(0,2*pi-1e-4,10)
@@ -105,7 +108,7 @@ for k = 1 : Npred
     % solver.subject_to(eta(:, k+1) == eta(:, k) + Ts * O * w(:, k));
 
     L = InConstr(eta(:, k), l, Delta);
-    solver.subject_to(L * w(:, k) <= [5;5;5;5]);
+    solver.subject_to(L * w(:, k) <= [10;10;10;10]);
     
     % Control input constraints
     solver.subject_to(w(:, k)' * w(:, k) <= rhat^2);
